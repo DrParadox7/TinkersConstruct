@@ -44,7 +44,7 @@ public class WeaponryHandler {
         Item item = event.crafting.getItem();
         if (!event.player.worldObj.isRemote)
         {
-            if (item == Item.getItemFromBlock(TinkerTools.toolStationWood))
+            if (item == Item.getItemFromBlock(TinkerTools.toolStation))
             {
                 if (!PHConstruct.beginnerBook)
                 {

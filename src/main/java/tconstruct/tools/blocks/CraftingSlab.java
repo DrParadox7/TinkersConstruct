@@ -34,7 +34,7 @@ public class CraftingSlab extends InventorySlab
     @Override
     public String[] getTextureNames ()
     {
-        String[] textureNames = { "craftingstation_top", "craftingstation_slab_side", "craftingstation_bottom", "toolstation_top", "toolstation_slab_side", "toolstation_bottom", "partbuilder_oak_top", "partbuilder_slab_side", "partbuilder_oak_bottom", "stenciltable_oak_top", "stenciltable_slab_side", "stenciltable_oak_bottom", "patternchest_top", "patternchest_slab_side", "patternchest_bottom", "toolforge_top", "toolforge_slab_side", "toolforge_top" };
+        String[] textureNames = { "craftingstation_top", "craftingstation_slab_side", "craftingstation_bottom", "toolstation_top", "toolstation_slab_side", "toolstation_bottom", "partbuilder_oak_top", "partbuilder_slab_side", "partbuilder_oak_bottom", "stenciltable_oak_top", "stenciltable_slab_side", "stenciltable_oak_bottom", "patternchest_top", "patternchest_slab_side", "patternchest_bottom", "toolstationnew_top", "toolstationnew_slab_side", "toolstationnew_top", "toolforge_top", "toolforge_slab_side", "toolforge_top" };
 
         return textureNames;
     }
@@ -49,7 +49,7 @@ public class CraftingSlab extends InventorySlab
     @SideOnly(Side.CLIENT)
     public IIcon getIcon (int side, int meta)
     {
-        return icons[(meta % 8) * 3 + getTextureIndex(side)];
+        return icons[(meta % 10) * 3 + getTextureIndex(side)];
     }
 
     public int getTextureIndex (int side)
@@ -66,7 +66,7 @@ public class CraftingSlab extends InventorySlab
     public AxisAlignedBB getSelectedBoundingBoxFromPool (World world, int x, int y, int z)
     {
         int metadata = world.getBlockMetadata(x, y, z);
-        if (metadata == 5)
+        if (metadata == 6)
             return AxisAlignedBB.getBoundingBox((double) x + this.minX, (double) y + this.minY, (double) z + this.minZ, (double) x + this.maxX, (double) y + this.maxY - 0.125, (double) z + this.maxZ);
         return AxisAlignedBB.getBoundingBox((double) x + this.minX, (double) y + this.minY, (double) z + this.minZ, (double) x + this.maxX, (double) y + this.maxY, (double) z + this.maxZ);
     }
@@ -74,12 +74,12 @@ public class CraftingSlab extends InventorySlab
     @Override
     public TileEntity createTileEntity (World world, int metadata)
     {
-        switch (metadata % 8)
+        switch (metadata % 10)
         {
         case 0:
             return new CraftingStationLogic();
         case 1:
-            return new ToolStationLogic();
+            return new ToolBenchLogic();
         case 2:
             return new PartBuilderLogic();
         case 3:
@@ -87,6 +87,8 @@ public class CraftingSlab extends InventorySlab
         case 4:
             return new PatternChestLogic();
         case 5:
+            return new ToolStationLogic();
+        case 6:
             return new ToolForgeLogic();
         default:
             return null;
@@ -96,13 +98,13 @@ public class CraftingSlab extends InventorySlab
     @Override
     public Integer getGui (World world, int x, int y, int z, EntityPlayer entityplayer)
     {
-        int meta = world.getBlockMetadata(x, y, z) % 8;
+        int meta = world.getBlockMetadata(x, y, z) % 10;
         switch (meta)
         {
         case 0:
             return ToolProxyCommon.craftingStationID;
         case 1:
-            return ToolProxyCommon.toolStationID;
+            return ToolProxyCommon.toolBenchID;
         case 2:
             return ToolProxyCommon.partBuilderID;
         case 3:
@@ -110,6 +112,8 @@ public class CraftingSlab extends InventorySlab
         case 4:
             return ToolProxyCommon.patternChestID;
         case 5:
+            return ToolProxyCommon.toolStationID;
+        case 6:
             return ToolProxyCommon.toolForgeID;
         }
 
@@ -125,7 +129,7 @@ public class CraftingSlab extends InventorySlab
     @Override
     public void getSubBlocks (Item b, CreativeTabs tab, List list)
     {
-        for (int iter = 0; iter < 6; iter++)
+        for (int iter = 0; iter < 7; iter++)
         {
             list.add(new ItemStack(b, 1, iter));
         }
@@ -168,12 +172,12 @@ public class CraftingSlab extends InventorySlab
     @Override
     public TileEntity createNewTileEntity (World var1, int metadata)
     {
-        switch (metadata % 8)
+        switch (metadata % 10)
         {
         case 0:
             return new CraftingStationLogic();
         case 1:
-            return new ToolStationLogic();
+            return new ToolBenchLogic();
         case 2:
             return new PartBuilderLogic();
         case 3:
@@ -181,6 +185,8 @@ public class CraftingSlab extends InventorySlab
         case 4:
             return new PatternChestLogic();
         case 5:
+            return new ToolStationLogic();
+        case 6:
             return new ToolForgeLogic();
         default:
             return null;

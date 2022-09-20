@@ -31,10 +31,10 @@ public class TVillageTrades implements IVillageTradeHandler
         allowedIngredients.add(new ItemStack(TinkerWorld.barricadeOak, 64));
         allowedIngredients.add(new ItemStack(TinkerWorld.barricadeSpruce, 64));
         allowedIngredients.add(new ItemStack(TinkerWorld.punji, 64));
-        allowedIngredients.add(new ItemStack(TinkerTools.toolStationWood, 3, 0));
-        allowedIngredients.add(new ItemStack(TinkerTools.toolStationWood, 3, 1));
-        allowedIngredients.add(new ItemStack(TinkerTools.toolStationWood, 3, 5));
-        allowedIngredients.add(new ItemStack(TinkerTools.toolStationWood, 3, 10));
+        allowedIngredients.add(new ItemStack(TinkerTools.toolStation, 3, 0));
+        allowedIngredients.add(new ItemStack(TinkerTools.toolStation, 3, 1));
+        allowedIngredients.add(new ItemStack(TinkerTools.toolStation, 3, 5));
+        allowedIngredients.add(new ItemStack(TinkerTools.toolStation, 3, 10));
         for (int sc = 0; sc < 4; sc++)
         {
             allowedIngredients.add(new ItemStack(TinkerMechworks.landmine, 64, sc));

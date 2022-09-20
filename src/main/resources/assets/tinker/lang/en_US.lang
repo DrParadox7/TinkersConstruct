@@ -5,6 +5,7 @@ itemGroup.TConstructParts=TConstruct Tool Parts
 itemGroup.TConstructEquipables=TConstruct Equipables
 itemGroup.TConstructWeaponry=TConstruct Weaponry
 
+crafters.ToolBench=Tool Bench
 crafters.ToolStation=Tool Station
 crafters.ToolForge=Tool Forge
 crafters.TinkerTable=Tinker Table
@@ -25,6 +26,14 @@ ToolStation.PatternShaper.name=Stencil Table
 ToolStation.CastingTable.name=Casting Table
 tile.FurnaceSlab.name=Slab Furnace
 
+ToolBench.Bench.name=Tool Bench
+ToolBench.Parts.name=Part Builder
+ToolBench.PatternChest.name=Pattern Chest
+ToolBench.PatternShaper.name=Stencil Table
+ToolBench.CastingTable.name=Casting Table
+tile.FurnaceSlab.name=Slab Furnace
+
+tile.ToolStation.name=Tool Station
 tile.ToolForge.name=Tool Forge
 tile.TinkerTable.name=Tinker Table
 tile.Armor.DryingRack.name=Drying Rack

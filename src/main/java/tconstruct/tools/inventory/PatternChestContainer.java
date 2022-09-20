@@ -47,7 +47,7 @@ public class PatternChestContainer extends Container
     public boolean canInteractWith (EntityPlayer entityplayer)
     {
         Block block = logic.getWorldObj().getBlock(logic.xCoord, logic.yCoord, logic.zCoord);
-        if (block != TinkerTools.toolStationWood && block != TinkerTools.craftingSlabWood)
+        if (block != TinkerTools.toolBenchWood && block != TinkerTools.craftingSlabWood)
             return false;
         return logic.isUseableByPlayer(entityplayer);
     }

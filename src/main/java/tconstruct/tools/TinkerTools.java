@@ -61,7 +61,7 @@ public class TinkerTools
     public static ToolCore arrow;
 
     // Crafting blocks
-    public static Block toolStationWood;
+    public static Block toolBenchWood;
     public static Block toolStationStone;
     public static Block toolForge;
     public static Block craftingStationWood;
@@ -69,6 +69,7 @@ public class TinkerTools
     public static Block furnaceSlab;
     public static Block heldItemBlock;
     public static Block battlesignBlock;
+    public static Block toolStation;
 
     // Tool parts
     public static Item binding;
@@ -148,11 +149,12 @@ public class TinkerTools
 
 
         //Blocks
-        TinkerTools.toolStationWood = new ToolStationBlock(Material.wood).setBlockName("ToolStation");
+        TinkerTools.toolBenchWood = new ToolBenchBlock(Material.wood).setBlockName("ToolBench");
         TinkerTools.toolForge = new ToolForgeBlock(Material.iron).setBlockName("ToolForge");
         TinkerTools.craftingStationWood = new CraftingStationBlock(Material.wood).setBlockName("CraftingStation");
         TinkerTools.craftingSlabWood = new CraftingSlab(Material.wood).setBlockName("CraftingSlab");
         TinkerTools.furnaceSlab = new FurnaceSlab(Material.rock).setBlockName("FurnaceSlab");
+        TinkerTools.toolStation = new ToolStationBlock(Material.rock).setBlockName("ToolStation");
 
         TinkerTools.heldItemBlock = new EquipBlock(Material.wood).setBlockName("Frypan");
         TinkerTools.battlesignBlock = new BattlesignBlock(Material.wood).setBlockName("Battlesign");
@@ -160,8 +162,8 @@ public class TinkerTools
         TinkerTools.craftedSoil = new SoilBlock().setLightOpacity(0).setBlockName("TConstruct.Soil");
         TinkerTools.craftedSoil.stepSound = Block.soundTypeGravel;
 
-        GameRegistry.registerBlock(TinkerTools.toolStationWood, ToolStationItemBlock.class, "ToolStationBlock");
-        GameRegistry.registerTileEntity(ToolStationLogic.class, "ToolStation");
+        GameRegistry.registerBlock(TinkerTools.toolBenchWood, ToolBenchItemBlock.class, "ToolBenchBlock");
+        GameRegistry.registerTileEntity(ToolBenchLogic.class, "toolBench");
         GameRegistry.registerTileEntity(PartBuilderLogic.class, "PartCrafter");
         GameRegistry.registerTileEntity(PatternChestLogic.class, "PatternHolder");
         GameRegistry.registerTileEntity(StencilTableLogic.class, "PatternShaper");
@@ -176,6 +178,8 @@ public class TinkerTools
         GameRegistry.registerTileEntity(FrypanLogic.class, "FrypanLogic");
         GameRegistry.registerBlock(TinkerTools.battlesignBlock, "BattleSignBlock");
         GameRegistry.registerTileEntity(BattlesignLogic.class, "BattlesignLogic");
+        GameRegistry.registerBlock(TinkerTools.toolStation, MetadataItemBlock.class, "ToolStationBlock");
+        GameRegistry.registerTileEntity(ToolStationLogic.class, "ToolStation");
 
         GameRegistry.registerBlock(TinkerTools.craftedSoil, CraftedSoilItemBlock.class, "CraftedSoil");
 
@@ -378,7 +382,7 @@ public class TinkerTools
     {
         TConstructRegistry.materialTab.init(new ItemStack(TinkerTools.manualBook, 1, 0));
         TConstructRegistry.partTab.init(new ItemStack(TinkerTools.titleIcon, 1, 255));
-        TConstructRegistry.blockTab.init(new ItemStack(TinkerTools.toolStationWood));
+        TConstructRegistry.blockTab.init(new ItemStack(TinkerTools.toolBenchWood));
         ItemStack tool = new ItemStack(TinkerTools.longsword, 1, 0);
 
         NBTTagCompound compound = new NBTTagCompound();
@@ -698,27 +702,28 @@ public class TinkerTools
         // ToolForge Recipes (Metal Version)
         for (int sc = 0; sc < toolForgeBlocks.length; sc++)
         {
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolForge, 1, sc), "bbb", "msm", "m m", 'b', smelteryStack, 's', new ItemStack(TinkerTools.toolStationWood, 1, 0), 'm', toolForgeBlocks[sc]));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolForge, 1, sc), "bbb", "msm", "m m", 'b', smelteryStack, 's', new ItemStack(TinkerTools.toolStation, 1, 0), 'm', toolForgeBlocks[sc]));
             // adding slab version recipe
-            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 5), "bbb", "msm", "m m", 'b', smelteryStack, 's', new ItemStack(TinkerTools.craftingSlabWood, 1, 1), 'm', toolForgeBlocks[sc]));
+            GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 6), "bbb", "msm", "m m", 'b', smelteryStack, 's', new ItemStack(TinkerTools.craftingSlabWood, 1, 5), 'm', toolForgeBlocks[sc]));
         }
 
         // ToolStation Recipes (Wooden Version)
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 0), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', "crafterWood"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 0), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', "craftingTableWood"));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 0), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(TinkerTools.craftingStationWood, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 0), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(TinkerTools.craftingSlabWood, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 2), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.log, 1, 1));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 3), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.log, 1, 2));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 4), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.log, 1, 3));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 5), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', "chestWood"));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 1), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', "logWood"));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 10), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.planks, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 11), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.planks, 1, 1));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 12), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.planks, 1, 2));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 13), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.planks, 1, 3));
-        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolStationWood, 1, 10), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', "plankWood"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 0), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', "crafterWood"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 0), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', "craftingTableWood"));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 0), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(TinkerTools.craftingStationWood, 1, 0));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 0), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(TinkerTools.craftingSlabWood, 1, 0));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 2), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.log, 1, 1));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 3), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.log, 1, 2));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 4), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.log, 1, 3));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 5), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', "chestWood"));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 1), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', "logWood"));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 10), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.planks, 1, 0));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 11), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.planks, 1, 1));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 12), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.planks, 1, 2));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 13), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.planks, 1, 3));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 10), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', "plankWood"));
         GameRegistry.addRecipe(new ItemStack(TinkerTools.furnaceSlab, 1, 0), "###", "# #", "###", '#', new ItemStack(Blocks.stone_slab, 1, 3));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.toolStation, 1, 0), "sss", "bxb", "b b", 's', Blocks.stonebrick, 'x', new ItemStack(TinkerTools.toolBenchWood, 1, 0), 'b', smelteryStack);
 
         // Blank Pattern Recipe
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.blankPattern, 4, 0), "ps", "sp", 'p', "plankWood", 's', "stickWood"));
@@ -765,17 +770,18 @@ public class TinkerTools
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.craftingSlabWood, 6, 0), "bbb", 'b', "crafterWood"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.craftingSlabWood, 6, 0), "bbb", 'b', "craftingTableWood"));
         GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 0), "b", 'b', new ItemStack(TinkerTools.craftingStationWood, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 1), "b", 'b', new ItemStack(TinkerTools.toolStationWood, 1, 0));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 2), "b", 'b', new ItemStack(TinkerTools.toolStationWood, 1, 1));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 2), "b", 'b', new ItemStack(TinkerTools.toolStationWood, 1, 2));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 2), "b", 'b', new ItemStack(TinkerTools.toolStationWood, 1, 3));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 2), "b", 'b', new ItemStack(TinkerTools.toolStationWood, 1, 4));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 4), "b", 'b', new ItemStack(TinkerTools.toolStationWood, 1, 5));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 3), "b", 'b', new ItemStack(TinkerTools.toolStationWood, 1, 10));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 3), "b", 'b', new ItemStack(TinkerTools.toolStationWood, 1, 11));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 3), "b", 'b', new ItemStack(TinkerTools.toolStationWood, 1, 12));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 3), "b", 'b', new ItemStack(TinkerTools.toolStationWood, 1, 13));
-        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 5), "b", 'b', new ItemStack(TinkerTools.toolForge, 1, Short.MAX_VALUE));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 1), "b", 'b', new ItemStack(TinkerTools.toolBenchWood, 1, 0));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 2), "b", 'b', new ItemStack(TinkerTools.toolBenchWood, 1, 1));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 2), "b", 'b', new ItemStack(TinkerTools.toolBenchWood, 1, 2));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 2), "b", 'b', new ItemStack(TinkerTools.toolBenchWood, 1, 3));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 2), "b", 'b', new ItemStack(TinkerTools.toolBenchWood, 1, 4));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 4), "b", 'b', new ItemStack(TinkerTools.toolBenchWood, 1, 5));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 3), "b", 'b', new ItemStack(TinkerTools.toolBenchWood, 1, 10));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 3), "b", 'b', new ItemStack(TinkerTools.toolBenchWood, 1, 11));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 3), "b", 'b', new ItemStack(TinkerTools.toolBenchWood, 1, 12));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 3), "b", 'b', new ItemStack(TinkerTools.toolBenchWood, 1, 13));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 5), "b", 'b', new ItemStack(TinkerTools.toolStation, 1, 0));
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.craftingSlabWood, 1, 6), "b", 'b', new ItemStack(TinkerTools.toolForge, 1, Short.MAX_VALUE));
 
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 1, 41), "dustArdite", "dustCobalt"));
         GameRegistry.addRecipe(new ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 4, 42), "dustAluminium", "dustAluminium", "dustAluminium", "dustCopper"));

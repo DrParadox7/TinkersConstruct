@@ -47,7 +47,7 @@ public class TinkerToolEvents
         Item item = event.crafting.getItem();
         if (!event.player.worldObj.isRemote)
         {
-            if (item == Item.getItemFromBlock(TinkerTools.toolStationWood))
+            if (item == Item.getItemFromBlock(TinkerTools.toolBenchWood))
             {
                 if (!PHConstruct.beginnerBook)
                 {
@@ -70,7 +70,7 @@ public class TinkerToolEvents
                     if(stack == null)
                         continue;
                     // regular pattern chest
-                    if(stack.getItem() == Item.getItemFromBlock(TinkerTools.toolStationWood) && stack.getItemDamage() == 5)
+                    if(stack.getItem() == Item.getItemFromBlock(TinkerTools.toolBenchWood) && stack.getItemDamage() == 5)
                     {
                         event.crafting.setTagCompound(stack.getTagCompound());
                         break;

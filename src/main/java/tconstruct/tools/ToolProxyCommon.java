@@ -15,9 +15,11 @@ public class ToolProxyCommon implements IGuiHandler
     public static final int stencilTableID = 3;
     public static final int frypanGuiID = 4;
     public static final int toolForgeID = 5;
+
     public static final int furnaceID = 8;
     public static final int craftingStationID = 11;
     public static final int battlesignTextID = 12;
+    public static final int toolBenchID = 13;
 
     public ToolProxyCommon()
     {
@@ -38,6 +40,7 @@ public class ToolProxyCommon implements IGuiHandler
         TProxyCommon.registerServerGuiHandler(toolForgeID, this);
         TProxyCommon.registerServerGuiHandler(furnaceID, this);
         TProxyCommon.registerServerGuiHandler(craftingStationID, this);
+        TProxyCommon.registerServerGuiHandler(toolBenchID, this);
     }
 
     @Override

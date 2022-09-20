@@ -118,15 +118,15 @@ public class ComponentToolWorkshop extends StructureVillagePieces.House1
         this.placeBlockAtCurrentPosition(world, Blocks.ladder, i, 3, 3, 5, sbb);
         this.placeBlockAtCurrentPosition(world, Blocks.ladder, i, 3, 4, 5, sbb);
 
-        this.placeBlockAtCurrentPosition(world, TinkerTools.toolStationWood, 0, 1, 1, 1, sbb); // Inside
+        this.placeBlockAtCurrentPosition(world, TinkerTools.toolStation, 0, 1, 1, 1, sbb); // Inside
         this.generateStructurePatternChestContents(world, sbb, random, 1, 1, 2, TinkerWorld.tinkerHousePatterns.getItems(random), TinkerWorld.tinkerHousePatterns.getCount(random));
-        // this.placeBlockAtCurrentPosition(world, TRepo.toolStationWood, 5, 1,
+        // this.placeBlockAtCurrentPosition(world, TRepo.toolStation, 5, 1,
         // 1, 2, sbb);
-        this.placeBlockAtCurrentPosition(world, TinkerTools.toolStationWood, 1, 1, 1, 3, sbb);
+        this.placeBlockAtCurrentPosition(world, TinkerTools.toolStation, 1, 1, 1, 3, sbb);
         this.generateStructureCraftingStationContents(world, sbb, random, 1, 1, 4, TinkerWorld.tinkerHouseChest.getItems(random), TinkerWorld.tinkerHouseChest.getCount(random));
         // this.placeBlockAtCurrentPosition(world, TRepo.craftingStationWood, 0,
         // 1, 1, 4, sbb);
-        this.placeBlockAtCurrentPosition(world, TinkerTools.toolStationWood, 10, 1, 1, 5, sbb);
+        this.placeBlockAtCurrentPosition(world, TinkerTools.toolStation, 10, 1, 1, 5, sbb);
 
         // ChestGenHooks info = ChestGenHooks.getInfo("TinkerHouse");
 
@@ -181,7 +181,7 @@ public class ComponentToolWorkshop extends StructureVillagePieces.House1
 
         if (par2StructureBoundingBox.isVecInside(posX, posY, posZ) && world.getBlock(posX, posY, posZ) != Blocks.chest)
         {
-            world.setBlock(posX, posY, posZ, TinkerTools.toolStationWood, 5, 2);
+            world.setBlock(posX, posY, posZ, TinkerTools.toolStation, 5, 2);
             PatternChestLogic logic = (PatternChestLogic) world.getTileEntity(posX, posY, posZ);
 
             if (logic != null)

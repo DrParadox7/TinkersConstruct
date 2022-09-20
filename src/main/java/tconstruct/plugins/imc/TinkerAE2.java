@@ -15,7 +15,7 @@ public class TinkerAE2
 
     private static List<String> spatialIOSmelteryLogics = Arrays.asList("AdaptiveSmelteryLogic", "AqueductLogic", "CastingBasinLogic", "CastingChannelLogic", "CastingTableLogic", "FaucetLogic", "LavaTankLogic", "SmelteryDrainLogic", "SmelteryLogic", "TankAirLogic", "TowerFurnaceLogic");
 
-    private static List<String> spatialIOToolLogics = Arrays.asList("CraftingStationLogic", "FrypanLogic", "PartBuilderLogic", "PatternChestLogic", "StencilTableLogic", "ToolForgeLogic", "ToolStationLogic");
+    private static List<String> spatialIOToolLogics = Arrays.asList("CraftingStationLogic", "FrypanLogic", "PartBuilderLogic", "PatternChestLogic", "StencilTableLogic", "ToolForgeLogic", "ToolStationLogic", "ToolBenchLogic");
 
     @Handler
     public void init (FMLInitializationEvent event)

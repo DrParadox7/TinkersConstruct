@@ -7,11 +7,11 @@ import net.minecraft.util.MathHelper;
 
 public class CraftingSlabItemBlock extends MultiItemBlock
 {
-    public static final String blockTypes[] = { "tile.CraftingStation", "Crafter", "Parts", "PatternShaper", "PatternChest", "tile.ToolForge" };
+    public static final String blockTypes[] = { "tile.CraftingStation", "Bench", "Parts", "PatternShaper", "PatternChest", "tile.ToolStation", "tile.ToolForge" };
 
     public CraftingSlabItemBlock(Block b)
     {
-        super(b, "ToolStation", blockTypes);
+        super(b, "ToolBench", blockTypes);
         setMaxDamage(0);
         setHasSubtypes(true);
     }
@@ -20,7 +20,7 @@ public class CraftingSlabItemBlock extends MultiItemBlock
     public String getUnlocalizedName (ItemStack itemstack)
     {
         int pos = MathHelper.clamp_int(itemstack.getItemDamage(), 0, this.blockTypes.length - 1);
-        if (pos == 0 || pos == 5)
+        if (pos == 0 || pos == 5 || pos == 6)
         {
             return this.blockTypes[pos];
         }

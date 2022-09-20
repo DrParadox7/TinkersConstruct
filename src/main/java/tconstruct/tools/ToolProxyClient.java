@@ -144,10 +144,10 @@ public class ToolProxyClient extends ToolProxyCommon
 
         //Tables
         MantleClientRegistry.registerManualIcon("blankpattern", new ItemStack(TinkerTools.blankPattern, 1, 0));
-        MantleClientRegistry.registerManualIcon("toolstation", new ItemStack(TinkerTools.toolStationWood, 1, 0));
-        MantleClientRegistry.registerManualIcon("partcrafter", new ItemStack(TinkerTools.toolStationWood, 1, 1));
-        MantleClientRegistry.registerManualIcon("patternchest", new ItemStack(TinkerTools.toolStationWood, 1, 5));
-        MantleClientRegistry.registerManualIcon("stenciltable", new ItemStack(TinkerTools.toolStationWood, 1, 10));
+        MantleClientRegistry.registerManualIcon("toolstation", new ItemStack(TinkerTools.toolBenchWood, 1, 0));
+        MantleClientRegistry.registerManualIcon("partcrafter", new ItemStack(TinkerTools.toolBenchWood, 1, 1));
+        MantleClientRegistry.registerManualIcon("patternchest", new ItemStack(TinkerTools.toolBenchWood, 1, 5));
+        MantleClientRegistry.registerManualIcon("stenciltable", new ItemStack(TinkerTools.toolBenchWood, 1, 10));
 
         //TODO: Untwine this
         MantleClientRegistry.registerManualIcon("blueslimecrystal", new ItemStack(TinkerTools.materials, 1, 17));
@@ -198,12 +198,12 @@ public class ToolProxyClient extends ToolProxyCommon
         MantleClientRegistry.registerManualSmallRecipe("patternbook2", new ItemStack(TinkerTools.manualBook, 1, 1), new ItemStack(TinkerTools.manualBook, 1, 0), null, null, null);
         MantleClientRegistry.registerManualSmallRecipe("patternbook3", new ItemStack(TinkerTools.manualBook, 1, 2), new ItemStack(TinkerTools.manualBook, 1, 1), null, null, null);
         MantleClientRegistry.registerManualSmallRecipe("blankpattern", pattern, plank, stick, stick, plank);
-        MantleClientRegistry.registerManualSmallRecipe("toolstation", new ItemStack(TinkerTools.toolStationWood, 1, 0), null, pattern, null, workbench);
-        MantleClientRegistry.registerManualSmallRecipe("partcrafter", new ItemStack(TinkerTools.toolStationWood, 1, 1), null, pattern, null, log);
-        MantleClientRegistry.registerManualSmallRecipe("patternchest", new ItemStack(TinkerTools.toolStationWood, 1, 5), null, pattern, null, chest);
-        MantleClientRegistry.registerManualSmallRecipe("stenciltable", new ItemStack(TinkerTools.toolStationWood, 1, 10), null, pattern, null, plank);
+        MantleClientRegistry.registerManualSmallRecipe("toolstation", new ItemStack(TinkerTools.toolBenchWood, 1, 0), null, pattern, null, workbench);
+        MantleClientRegistry.registerManualSmallRecipe("partcrafter", new ItemStack(TinkerTools.toolBenchWood, 1, 1), null, pattern, null, log);
+        MantleClientRegistry.registerManualSmallRecipe("patternchest", new ItemStack(TinkerTools.toolBenchWood, 1, 5), null, pattern, null, chest);
+        MantleClientRegistry.registerManualSmallRecipe("stenciltable", new ItemStack(TinkerTools.toolBenchWood, 1, 10), null, pattern, null, plank);
 
-        MantleClientRegistry.registerManualLargeRecipe("toolforge", new ItemStack(TinkerTools.toolForge, 1, 0), searedbrickBlock, searedbrickBlock, searedbrickBlock, ironblock, new ItemStack(TinkerTools.toolStationWood, 1, 0), ironblock, ironblock, null, ironblock); //TODO: Alternate recipe for Smeltery disabled
+        MantleClientRegistry.registerManualLargeRecipe("toolforge", new ItemStack(TinkerTools.toolForge, 1, 0), searedbrickBlock, searedbrickBlock, searedbrickBlock, ironblock, new ItemStack(TinkerTools.toolBenchWood, 1, 0), ironblock, ironblock, null, ironblock); //TODO: Alternate recipe for Smeltery disabled
 
         MantleClientRegistry.registerManualLargeRecipe("slimymud", slimyMud, null, slimeball, slimeball, null, slimeball, slimeball, null, dirt, sand);
         MantleClientRegistry.registerManualFurnaceRecipe("slimecrystal", new ItemStack(TinkerTools.materials, 1, 1), slimyMud);
@@ -264,6 +264,7 @@ public class ToolProxyClient extends ToolProxyCommon
         TProxyCommon.registerClientGuiHandler(furnaceID, this);
         TProxyCommon.registerClientGuiHandler(craftingStationID, this);
         TProxyCommon.registerClientGuiHandler(battlesignTextID, this);
+        TProxyCommon.registerClientGuiHandler(toolBenchID, this);
     }
 
     @Override
@@ -289,6 +290,10 @@ public class ToolProxyClient extends ToolProxyCommon
 
         if (ID == ToolProxyCommon.furnaceID)
             return new FurnaceGui(player.inventory, (FurnaceLogic) world.getTileEntity(x, y, z));
+
+        if (ID == ToolProxyCommon.toolBenchID)
+            return new ToolBenchGui(player.inventory, (ToolBenchLogic) world.getTileEntity(x, y, z), world, x, y, z);
+
 
         return null;
     }
