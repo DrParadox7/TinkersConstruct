@@ -6,6 +6,7 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemFood;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import tconstruct.achievements.TAchievements;
 
 public class SlotFrypan extends Slot {
@@ -20,8 +21,7 @@ public class SlotFrypan extends Slot {
     @Override
     public void putStack(ItemStack par1ItemStack) {
         super.putStack(par1ItemStack);
-        if (par1ItemStack != null
-                && par1ItemStack.getItem() != null
+        if (par1ItemStack != null && par1ItemStack.getItem() != null
                 && par1ItemStack.getItem() instanceof ItemFood
                 && par1ItemStack.hasTagCompound()) {
             NBTTagCompound stackTagCompound = par1ItemStack.getTagCompound();

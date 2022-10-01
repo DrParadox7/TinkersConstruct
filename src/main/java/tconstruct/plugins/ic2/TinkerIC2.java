@@ -1,17 +1,19 @@
 package tconstruct.plugins.ic2;
 
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
 import mantle.pulsar.pulse.Handler;
 import mantle.pulsar.pulse.Pulse;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
+
 import tconstruct.TConstruct;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.LiquidCasting;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
 
 @ObjectHolder(TConstruct.modID)
 @Pulse(
@@ -20,6 +22,7 @@ import tconstruct.library.crafting.LiquidCasting;
         modsRequired = "IC2",
         forced = true)
 public class TinkerIC2 {
+
     private static final String IC2_UUM_FLUIDNAME = "ic2fluiduumatter";
 
     @Handler
@@ -34,6 +37,10 @@ public class TinkerIC2 {
 
         // Block casting
         basinCasting.addCastingRecipe(
-                new ItemStack(Blocks.diamond_block), fluidStackBlock, new ItemStack(Blocks.dirt), true, 50);
+                new ItemStack(Blocks.diamond_block),
+                fluidStackBlock,
+                new ItemStack(Blocks.dirt),
+                true,
+                50);
     }
 }

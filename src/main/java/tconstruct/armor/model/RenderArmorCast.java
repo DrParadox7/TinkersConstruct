@@ -2,6 +2,7 @@ package tconstruct.armor.model;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -11,7 +12,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.common.util.ForgeDirection;
+
 import org.lwjgl.opengl.GL11;
+
 import tconstruct.armor.items.ArmorPattern;
 
 public class RenderArmorCast implements IItemRenderer {
@@ -43,8 +46,7 @@ public class RenderArmorCast implements IItemRenderer {
     public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
         RenderBlocks renderer = Minecraft.getMinecraft().renderGlobal.renderBlocksRg;
         Tessellator tessellator = Tessellator.instance;
-        IIcon baseIcon = item.getItem() instanceof ArmorPattern
-                ? ((ArmorPattern) item.getItem()).getBaseIcon()
+        IIcon baseIcon = item.getItem() instanceof ArmorPattern ? ((ArmorPattern) item.getItem()).getBaseIcon()
                 : item.getIconIndex();
         GL11.glPushMatrix();
         switch (type) {
@@ -96,8 +98,8 @@ public class RenderArmorCast implements IItemRenderer {
         tessellator.draw();
     }
 
-    public void renderSelectedCube(
-            Tessellator tessellator, RenderBlocks renderer, IIcon icon, List<ForgeDirection> sidesToRender) {
+    public void renderSelectedCube(Tessellator tessellator, RenderBlocks renderer, IIcon icon,
+            List<ForgeDirection> sidesToRender) {
         tessellator.startDrawingQuads();
         tessellator.setNormal(-1F, 0F, 0F);
         if (sidesToRender.contains(ForgeDirection.WEST)) renderer.renderFaceXNeg((Block) null, 0F, 0F, 0F, icon);
@@ -147,15 +149,8 @@ public class RenderArmorCast implements IItemRenderer {
         GL11.glPopMatrix();
     }
 
-    public static void renderItemIn2D(
-            Tessellator par0Tessellator,
-            float par1,
-            float par2,
-            float par3,
-            float par4,
-            float par5,
-            float par6,
-            float par7) {
+    public static void renderItemIn2D(Tessellator par0Tessellator, float par1, float par2, float par3, float par4,
+            float par5, float par6, float par7) {
         par0Tessellator.startDrawingQuads();
         par0Tessellator.setNormal(0.0F, 0.0F, 1.0F);
         par0Tessellator.addVertexWithUV(0.0D, 0.0D, 0.0D, (double) par1, (double) par4);

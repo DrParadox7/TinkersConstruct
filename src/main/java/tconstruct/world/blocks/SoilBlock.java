@@ -10,12 +10,13 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.DamageSource;
 import net.minecraft.world.World;
+
 import tconstruct.blocks.TConstructBlock;
 
 public class SoilBlock extends TConstructBlock {
-    static String[] soilTypes = new String[] {
-        "slimesand", "grout", "slimesandblue", "graveyardsoil", "consecratedsoil", "slimedirt_blue", "nether_grout"
-    };
+
+    static String[] soilTypes = new String[] { "slimesand", "grout", "slimesandblue", "graveyardsoil",
+            "consecratedsoil", "slimedirt_blue", "nether_grout" };
 
     public SoilBlock() {
         super(Material.ground, 3.0F, soilTypes);
@@ -56,9 +57,8 @@ public class SoilBlock extends TConstructBlock {
     }
 
     /*
-     * public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y,
-     * int z) { this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F); if
-     * (world.getBlockMetadata(x, y, z) >= 3) { this.setBlockBounds(0.0F, 0.0F,
-     * 0.0F, 1.0F, 0.875F, 1.0F); } }
+     * public void setBlockBoundsBasedOnState(IBlockAccess world, int x, int y, int z) { this.setBlockBounds(0.0F, 0.0F,
+     * 0.0F, 1.0F, 1.0F, 1.0F); if (world.getBlockMetadata(x, y, z) >= 3) { this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F,
+     * 0.875F, 1.0F); } }
      */
 }

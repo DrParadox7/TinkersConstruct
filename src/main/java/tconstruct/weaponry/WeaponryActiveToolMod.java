@@ -3,10 +3,12 @@ package tconstruct.weaponry;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import tconstruct.library.ActiveToolMod;
 import tconstruct.library.weaponry.IAmmo;
 
 public class WeaponryActiveToolMod extends ActiveToolMod {
+
     @Override
     public boolean damageTool(ItemStack stack, int damage, EntityLivingBase entity) {
         // does not proc on tool 'healing'

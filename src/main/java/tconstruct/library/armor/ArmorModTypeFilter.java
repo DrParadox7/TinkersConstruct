@@ -3,13 +3,15 @@ package tconstruct.library.armor;
 import java.util.ArrayList;
 import java.util.EnumSet;
 import java.util.List;
+
 import net.minecraft.item.ItemStack;
 
 public abstract class ArmorModTypeFilter extends ArmorMod {
+
     public final List<Integer> increase;
 
-    public ArmorModTypeFilter(
-            int effect, String dataKey, EnumSet<ArmorPart> armorTypes, ItemStack[] items, int[] values) {
+    public ArmorModTypeFilter(int effect, String dataKey, EnumSet<ArmorPart> armorTypes, ItemStack[] items,
+            int[] values) {
         super(effect, dataKey, armorTypes, items);
         assert items.length == values.length
                 : "Itemstacks and their values for armor modifiers must be the same length";
@@ -20,13 +22,10 @@ public abstract class ArmorModTypeFilter extends ArmorMod {
     }
 
     /**
-     * Checks to see if the inputs match the stored items Note: Filters types,
-     * doesn't care about amount
+     * Checks to see if the inputs match the stored items Note: Filters types, doesn't care about amount
      *
-     * @param input
-     *            The ItemStacks to compare against
-     * @param tool
-     *            Item to modify, used for restrictions
+     * @param input The ItemStacks to compare against
+     * @param tool  Item to modify, used for restrictions
      * @return Whether the recipe matches the input
      */
     @Override
@@ -82,15 +81,12 @@ public abstract class ArmorModTypeFilter extends ArmorMod {
     /**
      * Adds a new itemstack to the list for increases
      *
-     * @param stack
-     *            ItemStack to compare against
-     * @param amount
-     *            Amount to increase
+     * @param stack  ItemStack to compare against
+     * @param amount Amount to increase
      */
     public void addStackToMatchList(ItemStack stack, int amount) {
-        if (stack == null)
-            throw new NullPointerException(
-                    "ItemStack added to " + this.getClass().getSimpleName() + " cannot be null.");
+        if (stack == null) throw new NullPointerException(
+                "ItemStack added to " + this.getClass().getSimpleName() + " cannot be null.");
         stacks.add(stack);
         increase.add(amount);
     }

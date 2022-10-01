@@ -1,6 +1,7 @@
 package tconstruct.tools;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
@@ -19,6 +20,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
+
 import tconstruct.library.ActiveToolMod;
 import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.tools.HarvestTool;
@@ -28,37 +30,37 @@ import tconstruct.world.TinkerWorld;
 import tconstruct.world.entity.BlueSlime;
 
 public class TActiveOmniMod extends ActiveToolMod {
+
     Random random = new Random();
 
     /* Updating */
     @Override
     public void updateTool(ToolCore tool, ItemStack stack, World world, Entity entity) {
-        if (!world.isRemote
-                && entity instanceof EntityLivingBase
+        if (!world.isRemote && entity instanceof EntityLivingBase
                 && !((EntityLivingBase) entity).isSwingInProgress
                 && stack.getTagCompound() != null) {
-            //            if(entity instanceof EntityPlayer && (((EntityPlayer) entity).isUsingItem()))
-            //                return;
-            //            NBTTagCompound tags = stack.getTagCompound().getCompoundTag("InfiTool");
-            //            if (tags.hasKey("Moss"))
-            //            {
-            //                int chance = tags.getInteger("Moss");
-            //                int check = world.canBlockSeeTheSky((int) entity.posX, (int) entity.posY, (int)
+            // if(entity instanceof EntityPlayer && (((EntityPlayer) entity).isUsingItem()))
+            // return;
+            // NBTTagCompound tags = stack.getTagCompound().getCompoundTag("InfiTool");
+            // if (tags.hasKey("Moss"))
+            // {
+            // int chance = tags.getInteger("Moss");
+            // int check = world.canBlockSeeTheSky((int) entity.posX, (int) entity.posY, (int)
             // entity.posZ) ? 350 : 1150;
-            //                // REGROWING AMMO :OOoo
-            //                if(tool instanceof IAmmo && random.nextInt(check*3) < chance) // ammo regenerates at a
+            // // REGROWING AMMO :OOoo
+            // if(tool instanceof IAmmo && random.nextInt(check*3) < chance) // ammo regenerates at a
             // much slower rate
-            //                {
-            //                    IAmmo ammothing = (IAmmo)tool;
-            //                    if(ammothing.getAmmoCount(stack) > 0) // must have ammo
-            //                        ammothing.addAmmo(1, stack);
-            //                }
-            //                // selfrepairing tool. LAAAAAME
-            //                else if (random.nextInt(check) < chance)
-            //                {
-            //                    AbilityHelper.healTool(stack, 1, (EntityLivingBase) entity, true);
-            //                }
-            //            }
+            // {
+            // IAmmo ammothing = (IAmmo)tool;
+            // if(ammothing.getAmmoCount(stack) > 0) // must have ammo
+            // ammothing.addAmmo(1, stack);
+            // }
+            // // selfrepairing tool. LAAAAAME
+            // else if (random.nextInt(check) < chance)
+            // {
+            // AbilityHelper.healTool(stack, 1, (EntityLivingBase) entity, true);
+            // }
+            // }
         }
     }
 
@@ -76,14 +78,14 @@ public class TActiveOmniMod extends ActiveToolMod {
     }
 
     @Override
-    public void afterBlockBreak(
-            ToolCore tool, ItemStack stack, Block block, int x, int y, int z, EntityLivingBase entity) {
+    public void afterBlockBreak(ToolCore tool, ItemStack stack, Block block, int x, int y, int z,
+            EntityLivingBase entity) {
         NBTTagCompound tags = stack.getTagCompound().getCompoundTag("InfiTool");
         slimify(tool, tags, block, x, y, z, entity.worldObj);
     }
 
-    private boolean autoSmelt(
-            ToolCore tool, NBTTagCompound tags, ItemStack stack, int x, int y, int z, EntityLivingBase entity) {
+    private boolean autoSmelt(ToolCore tool, NBTTagCompound tags, ItemStack stack, int x, int y, int z,
+            EntityLivingBase entity) {
         World world = entity.worldObj;
         Block block = world.getBlock(x, y, z);
         if (block == null) return false;
@@ -111,8 +113,10 @@ public class TActiveOmniMod extends ActiveToolMod {
                 if (entity instanceof EntityPlayer && !((EntityPlayer) entity).capabilities.isCreativeMode)
                     tool.onBlockDestroyed(stack, world, block, x, y, z, entity);
                 if (!world.isRemote) {
-                    ItemStack spawnme =
-                            new ItemStack(result.getItem(), amount * result.stackSize, result.getItemDamage());
+                    ItemStack spawnme = new ItemStack(
+                            result.getItem(),
+                            amount * result.stackSize,
+                            result.getItemDamage());
                     if (result.hasTagCompound()) spawnme.setTagCompound(result.getTagCompound());
                     if (!(result.getItem() instanceof ItemBlock) && PHConstruct.lavaFortuneInteraction) {
                         int loot = EnchantmentHelper.getEnchantmentLevel(Enchantment.fortune.effectId, stack);
@@ -176,15 +180,8 @@ public class TActiveOmniMod extends ActiveToolMod {
     /* Attacking */
 
     @Override
-    public int baseAttackDamage(
-            int earlyModDamage,
-            int damage,
-            ToolCore tool,
-            NBTTagCompound tags,
-            NBTTagCompound toolTags,
-            ItemStack stack,
-            EntityLivingBase player,
-            Entity entity) {
+    public int baseAttackDamage(int earlyModDamage, int damage, ToolCore tool, NBTTagCompound tags,
+            NBTTagCompound toolTags, ItemStack stack, EntityLivingBase player, Entity entity) {
         TinkerTools.modLapis.midStreamModify(stack, tool);
         baconator(tool, stack, player, tags);
         return 0;
@@ -244,15 +241,8 @@ public class TActiveOmniMod extends ActiveToolMod {
     }
 
     @Override
-    public int attackDamage(
-            int modDamage,
-            int currentDamage,
-            ToolCore tool,
-            NBTTagCompound tags,
-            NBTTagCompound toolTags,
-            ItemStack stack,
-            EntityLivingBase player,
-            Entity entity) {
+    public int attackDamage(int modDamage, int currentDamage, ToolCore tool, NBTTagCompound tags,
+            NBTTagCompound toolTags, ItemStack stack, EntityLivingBase player, Entity entity) {
         int bonus = modDamage;
         if (entity instanceof EntityLivingBase) {
             EnumCreatureAttribute attribute = ((EntityLivingBase) entity).getCreatureAttribute();
@@ -279,15 +269,8 @@ public class TActiveOmniMod extends ActiveToolMod {
     }
 
     @Override
-    public float knockback(
-            float modKnockback,
-            float currentKnockback,
-            ToolCore tool,
-            NBTTagCompound tags,
-            NBTTagCompound toolTags,
-            ItemStack stack,
-            EntityLivingBase player,
-            Entity entity) {
+    public float knockback(float modKnockback, float currentKnockback, ToolCore tool, NBTTagCompound tags,
+            NBTTagCompound toolTags, ItemStack stack, EntityLivingBase player, Entity entity) {
         float bonus = modKnockback;
         if (toolTags.hasKey("Knockback")) {
             float level = toolTags.getFloat("Knockback");
@@ -297,13 +280,8 @@ public class TActiveOmniMod extends ActiveToolMod {
     }
 
     @Override
-    public boolean doesCriticalHit(
-            ToolCore tool,
-            NBTTagCompound tags,
-            NBTTagCompound toolTags,
-            ItemStack stack,
-            EntityLivingBase player,
-            Entity entity) {
+    public boolean doesCriticalHit(ToolCore tool, NBTTagCompound tags, NBTTagCompound toolTags, ItemStack stack,
+            EntityLivingBase player, Entity entity) {
         if (tool == TinkerTools.cutlass && random.nextInt(10) == 0) return true;
         return false;
     }

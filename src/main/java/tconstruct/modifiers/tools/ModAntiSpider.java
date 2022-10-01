@@ -6,6 +6,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class ModAntiSpider extends ItemModTypeFilter {
+
     String tooltipName;
     int max = 4;
     String guiType;
@@ -70,7 +71,7 @@ public class ModAntiSpider extends ItemModTypeFilter {
 
             String modName = "\u00a72" + guiType + " (" + increase + "/" + max + ")";
             int tooltipIndex = addToolTip(tool, tooltipName, modName);
-            int[] keyPair = new int[] {increase, max, tooltipIndex};
+            int[] keyPair = new int[] { increase, max, tooltipIndex };
             tags.setIntArray(key, keyPair);
         }
     }

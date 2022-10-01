@@ -1,7 +1,5 @@
 package tconstruct.smeltery.model;
 
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
@@ -9,12 +7,17 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
+
 import org.lwjgl.opengl.GL11;
+
 import tconstruct.client.BlockSkinRenderHelper;
 import tconstruct.smeltery.logic.LavaTankLogic;
 import tconstruct.util.ItemHelper;
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class TankRender implements ISimpleBlockRenderingHandler {
+
     public static int tankModelID = RenderingRegistry.getNextAvailableRenderId();
     public static int renderPass = 0;
 
@@ -31,8 +34,8 @@ public class TankRender implements ISimpleBlockRenderingHandler {
     }
 
     @Override
-    public boolean renderWorldBlock(
-            IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer) {
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID,
+            RenderBlocks renderer) {
         if (modelID == tankModelID) {
             // Liquid
             if (renderPass == 0) {

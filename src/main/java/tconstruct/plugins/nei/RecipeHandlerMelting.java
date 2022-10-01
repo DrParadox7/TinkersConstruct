@@ -1,24 +1,29 @@
 package tconstruct.plugins.nei;
 
-import codechicken.lib.gui.GuiDraw;
-import codechicken.nei.NEIServerUtils;
-import codechicken.nei.PositionedStack;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map.Entry;
+
 import mantle.utils.ItemMetaWrapper;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.fluids.FluidStack;
+
 import org.lwjgl.opengl.GL11;
+
 import tconstruct.library.crafting.Smeltery;
+import codechicken.lib.gui.GuiDraw;
+import codechicken.nei.NEIServerUtils;
+import codechicken.nei.PositionedStack;
 
 public class RecipeHandlerMelting extends RecipeHandlerBase {
 
     public static final Rectangle MOLTEN_TANK = new Rectangle(115, 20, 18, 18);
 
     public class CachedMeltingRecipe extends CachedBaseRecipe {
+
         private PositionedStack input;
         private int temperature;
         private FluidTankElement output;
@@ -65,8 +70,8 @@ public class RecipeHandlerMelting extends RecipeHandlerBase {
 
     @Override
     public void loadTransferRects() {
-        this.transferRects.add(
-                new RecipeTransferRect(new Rectangle(72, 20, 16, 34), this.getRecipeID(), new Object[0]));
+        this.transferRects
+                .add(new RecipeTransferRect(new Rectangle(72, 20, 16, 34), this.getRecipeID(), new Object[0]));
     }
 
     @Override
@@ -95,8 +100,7 @@ public class RecipeHandlerMelting extends RecipeHandlerBase {
 
     @Override
     public void loadCraftingRecipes(FluidStack result) {
-        for (Entry<ItemMetaWrapper, FluidStack> pair :
-                Smeltery.getSmeltingList().entrySet()) {
+        for (Entry<ItemMetaWrapper, FluidStack> pair : Smeltery.getSmeltingList().entrySet()) {
             if (areFluidsEqual(pair.getValue(), result)) {
                 this.arecipes.add(new CachedMeltingRecipe(new ItemStack(pair.getKey().item, 1, pair.getKey().meta)));
             }

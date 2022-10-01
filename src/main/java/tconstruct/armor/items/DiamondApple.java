@@ -1,7 +1,5 @@
 package tconstruct.armor.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemFood;
@@ -11,10 +9,14 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class DiamondApple extends ItemFood {
+
     public IIcon[] icons;
-    public String[] textureNames = new String[] {"food/apple_diamond"};
-    public String[] itemNames = new String[] {"apple.diamond"};
+    public String[] textureNames = new String[] { "food/apple_diamond" };
+    public String[] itemNames = new String[] { "apple.diamond" };
 
     public DiamondApple() {
         super(4, 2.0F, false);
@@ -66,11 +68,9 @@ public class DiamondApple extends ItemFood {
     /* Name override */
     @Override
     public String getUnlocalizedName(ItemStack itemstack) {
-        return (new StringBuilder())
-                .append("item.food.")
-                .append(itemNames[
-                        (itemstack.getItemDamage() >= itemNames.length || itemstack.getItemDamage() < 0)
-                                ? (0)
+        return (new StringBuilder()).append("item.food.")
+                .append(
+                        itemNames[(itemstack.getItemDamage() >= itemNames.length || itemstack.getItemDamage() < 0) ? (0)
                                 : (itemstack.getItemDamage())])
                 .toString();
     }

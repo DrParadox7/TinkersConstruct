@@ -1,14 +1,16 @@
 package tconstruct.tools.gui;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class ChestSlot extends Slot {
+
     /*
      * A Slot, used for adjacent Chest Inventories, that can be disabled.
      */
@@ -24,7 +26,7 @@ public class ChestSlot extends Slot {
 
     @SideOnly(Side.CLIENT)
     @Override
-    public boolean func_111238_b /*isEnabled*/() {
+    public boolean func_111238_b /* isEnabled */() {
         return enabled;
     }
 

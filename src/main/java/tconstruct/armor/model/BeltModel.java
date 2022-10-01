@@ -5,6 +5,7 @@ import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 
 public class BeltModel extends ModelBiped {
+
     ModelRenderer Buckle;
     ModelRenderer FrontRight;
     ModelRenderer FrontLeft;
@@ -58,11 +59,9 @@ public class BeltModel extends ModelBiped {
         setRotationAngles(f, f1, f2, f3, f4, f5, entity);
         bipedBody.render(f5);
         // Buckle.render(f5);
-        /*FrontRight.render(f5);
-        FrontLeft.render(f5);
-        SideRight.render(f5);
-        SideLeft.render(f5);
-        Back.render(f5);*/
+        /*
+         * FrontRight.render(f5); FrontLeft.render(f5); SideRight.render(f5); SideLeft.render(f5); Back.render(f5);
+         */
     }
 
     private void setRotation(ModelRenderer model, float x, float y, float z) {

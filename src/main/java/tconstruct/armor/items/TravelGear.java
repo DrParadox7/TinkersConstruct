@@ -1,9 +1,7 @@
 package tconstruct.armor.items;
 
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.settings.GameSettings;
@@ -14,17 +12,19 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
 import tconstruct.armor.ArmorProxyClient;
 import tconstruct.armor.TinkerArmor;
 import tconstruct.library.armor.ArmorCore;
 import tconstruct.library.armor.ArmorPart;
 import thaumcraft.api.IGoggles;
 import thaumcraft.api.nodes.IRevealer;
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-@Optional.InterfaceList({
-    @Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.nodes.IRevealer"),
-    @Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.IGoggles")
-})
+@Optional.InterfaceList({ @Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.nodes.IRevealer"),
+        @Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.IGoggles") })
 public class TravelGear extends ArmorCore implements IRevealer, IGoggles {
 
     public TravelGear(ArmorPart part) {
@@ -103,12 +103,14 @@ public class TravelGear extends ArmorCore implements IRevealer, IGoggles {
     @Override
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister iconRegister) {
-        this.itemIcon = iconRegister.registerIcon("tinker:" + textureFolder + "/" + textureName + "_"
-                + (this.armorType == 0
-                        ? "goggles"
-                        : this.armorType == 1
-                                ? "vest"
-                                : this.armorType == 2 ? "wings" : this.armorType == 3 ? "boots" : "helmet"));
+        this.itemIcon = iconRegister.registerIcon(
+                "tinker:" + textureFolder
+                        + "/"
+                        + textureName
+                        + "_"
+                        + (this.armorType == 0 ? "goggles"
+                                : this.armorType == 1 ? "vest"
+                                        : this.armorType == 2 ? "wings" : this.armorType == 3 ? "boots" : "helmet"));
         registerModifiers(iconRegister);
     }
 
@@ -124,44 +126,44 @@ public class TravelGear extends ArmorCore implements IRevealer, IGoggles {
     @Override
     @SideOnly(Side.CLIENT)
     protected void registerModifiers(IIconRegister iconRegister) // temporary
-            {
+    {
         switch (armorType) {
             case 0:
                 modifiers = new IIcon[5];
-                modifiers[0] =
-                        iconRegister.registerIcon("tinker:" + textureFolder + "/" + "goggles" + "_" + "nightvision");
-                modifiers[1] =
-                        iconRegister.registerIcon("tinker:" + textureFolder + "/" + "goggles" + "_" + "thaumic1");
-                modifiers[2] =
-                        iconRegister.registerIcon("tinker:" + textureFolder + "/" + "goggles" + "_" + "thaumic2");
-                //            modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "goggles" + "_"
+                modifiers[0] = iconRegister
+                        .registerIcon("tinker:" + textureFolder + "/" + "goggles" + "_" + "nightvision");
+                modifiers[1] = iconRegister
+                        .registerIcon("tinker:" + textureFolder + "/" + "goggles" + "_" + "thaumic1");
+                modifiers[2] = iconRegister
+                        .registerIcon("tinker:" + textureFolder + "/" + "goggles" + "_" + "thaumic2");
+                // modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "goggles" + "_"
                 // + "moss");
                 break;
             case 1:
                 modifiers = new IIcon[5];
                 modifiers[0] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "vest" + "_" + "dodge");
                 modifiers[1] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "vest" + "_" + "stealth");
-                //            modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "vest" + "_" +
+                // modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "vest" + "_" +
                 // "moss");
                 break;
             case 2:
                 modifiers = new IIcon[5];
-                modifiers[0] =
-                        iconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "doublejump");
-                modifiers[1] =
-                        iconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "featherfall");
-                //            modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" +
+                modifiers[0] = iconRegister
+                        .registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "doublejump");
+                modifiers[1] = iconRegister
+                        .registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "featherfall");
+                // modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" +
                 // "moss");
                 break;
             case 3:
                 modifiers = new IIcon[5];
-                modifiers[0] =
-                        iconRegister.registerIcon("tinker:" + textureFolder + "/" + "boots" + "_" + "doublejump");
+                modifiers[0] = iconRegister
+                        .registerIcon("tinker:" + textureFolder + "/" + "boots" + "_" + "doublejump");
                 modifiers[1] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "boots" + "_" + "waterwalk");
-                modifiers[2] =
-                        iconRegister.registerIcon("tinker:" + textureFolder + "/" + "boots" + "_" + "leadweight");
+                modifiers[2] = iconRegister
+                        .registerIcon("tinker:" + textureFolder + "/" + "boots" + "_" + "leadweight");
                 modifiers[3] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "boots" + "_" + "slimysole");
-                //            modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "boots" + "_" +
+                // modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "boots" + "_" +
                 // "moss");
                 break;
         }
@@ -173,10 +175,14 @@ public class TravelGear extends ArmorCore implements IRevealer, IGoggles {
 
         switch (armorPart) {
             case Head:
-                list.add("\u00a76" + StatCollector.translateToLocal("armor.travelgoggles.ability")
-                        + GameSettings.getKeyDisplayString(tconstruct.client.ArmorControls.zoomKey.getKeyCode()));
-                list.add("\u00a76" + StatCollector.translateToLocal("armor.travelgoggles.toggleabilities")
-                        + GameSettings.getKeyDisplayString(tconstruct.client.ArmorControls.toggleGoggles.getKeyCode()));
+                list.add(
+                        "\u00a76" + StatCollector.translateToLocal("armor.travelgoggles.ability")
+                                + GameSettings
+                                        .getKeyDisplayString(tconstruct.client.ArmorControls.zoomKey.getKeyCode()));
+                list.add(
+                        "\u00a76" + StatCollector.translateToLocal("armor.travelgoggles.toggleabilities")
+                                + GameSettings.getKeyDisplayString(
+                                        tconstruct.client.ArmorControls.toggleGoggles.getKeyCode()));
                 break;
             case Chest:
                 list.add("\u00a76" + StatCollector.translateToLocal("armor.travelvest.ability"));

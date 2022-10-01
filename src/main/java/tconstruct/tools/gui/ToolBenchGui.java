@@ -1,21 +1,23 @@
 package tconstruct.tools.gui;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
 import tconstruct.library.client.TConstructClientRegistry;
 import tconstruct.library.client.ToolGuiElement;
 import tconstruct.tools.logic.ToolBenchLogic;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class ToolBenchGui extends ToolStationGui {
+
     int selectedButton;
 
-    public ToolBenchGui(
-            InventoryPlayer inventoryplayer, ToolBenchLogic stationlogic, World world, int x, int y, int z) {
+    public ToolBenchGui(InventoryPlayer inventoryplayer, ToolBenchLogic stationlogic, World world, int x, int y,
+            int z) {
         super(inventoryplayer, stationlogic, world, x, y, z);
     }
 
@@ -79,8 +81,8 @@ public class ToolBenchGui extends ToolStationGui {
         this.text.setText("");
         selectedButton = 0;
         setSlotType(0);
-        iconX = new int[] {0, 1, 2, 13};
-        iconY = new int[] {13, 13, 13, 13};
+        iconX = new int[] { 0, 1, 2, 13 };
+        iconY = new int[] { 13, 13, 13, 13 };
         title = "\u00A7n" + StatCollector.translateToLocal("gui.toolforge1");
         body = StatCollector.translateToLocal("gui.toolforge2");
     }
@@ -89,28 +91,28 @@ public class ToolBenchGui extends ToolStationGui {
     void setSlotType(int type) {
         switch (type) {
             case 0:
-                slotX = new int[] {56, 38, 38}; // Repair
-                slotY = new int[] {37, 28, 46};
+                slotX = new int[] { 56, 38, 38 }; // Repair
+                slotY = new int[] { 37, 28, 46 };
                 break;
             case 1:
-                slotX = new int[] {56, 56, 56}; // Three parts
-                slotY = new int[] {19, 55, 37};
+                slotX = new int[] { 56, 56, 56 }; // Three parts
+                slotY = new int[] { 19, 55, 37 };
                 break;
             case 2:
-                slotX = new int[] {56, 56, 14}; // Two parts
-                slotY = new int[] {28, 46, 37};
+                slotX = new int[] { 56, 56, 14 }; // Two parts
+                slotY = new int[] { 28, 46, 37 };
                 break;
             case 3:
-                slotX = new int[] {38, 47, 56}; // Double head
-                slotY = new int[] {28, 46, 28};
+                slotX = new int[] { 38, 47, 56 }; // Double head
+                slotY = new int[] { 28, 46, 28 };
                 break;
             case 4:
-                slotX = new int[] {47, 38, 56}; // Four parts
-                slotY = new int[] {19, 37, 37};
+                slotX = new int[] { 47, 38, 56 }; // Four parts
+                slotY = new int[] { 19, 37, 37 };
                 break;
             case 5:
-                slotX = new int[] {38, 47, 56, 47}; // Four parts, double head
-                slotY = new int[] {19, 55, 19, 37};
+                slotX = new int[] { 38, 47, 56, 47 }; // Four parts, double head
+                slotY = new int[] { 19, 55, 19, 37 };
                 break;
         }
         toolSlots.resetSlots(slotX, slotY);

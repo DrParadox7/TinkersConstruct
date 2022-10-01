@@ -5,19 +5,21 @@ import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.InputStream;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.Tessellator;
+
 import org.lwjgl.opengl.GL11;
 
 /**
  *
  * @author TheObliterator
  *
- *         A class to create and draw true type fonts onto the Minecraft game
- *         engine.
+ *         A class to create and draw true type fonts onto the Minecraft game engine.
  */
 public class CustomFont {
+
     private int texID;
     private int[] xPos;
     private int[] yPos;
@@ -26,39 +28,29 @@ public class CustomFont {
     private FontMetrics metrics;
 
     /**
-     * Instantiates the font, filling in default start and end character
-     * parameters.
+     * Instantiates the font, filling in default start and end character parameters.
      *
      * 'new CustomFont(ModLoader.getMinecraftInstance(), "Arial", 12);
      *
-     * @param mc
-     *            The Minecraft instance for the font to be bound to.
-     * @param fontName
-     *            The name of the font to be drawn.
-     * @param size
-     *            The size of the font to be drawn.
+     * @param mc       The Minecraft instance for the font to be bound to.
+     * @param fontName The name of the font to be drawn.
+     * @param size     The size of the font to be drawn.
      */
     public CustomFont(Minecraft mc, Object font, int size) {
         this(mc, font, size, 0, 4000);
     }
 
     /**
-     * Instantiates the font, pre-rendering a sprite font image by using a true
-     * type font on a bitmap. Then allocating that bitmap to the Minecraft
-     * rendering engine for later use.
+     * Instantiates the font, pre-rendering a sprite font image by using a true type font on a bitmap. Then allocating
+     * that bitmap to the Minecraft rendering engine for later use.
      *
      * 'new CustomFont(ModLoader.getMinecraftInstance(), "Arial", 12, 32, 126);'
      *
-     * @param mc
-     *            The Minecraft instance for the font to be bound to.
-     * @param fontName
-     *            The name of the font to be drawn.
-     * @param size
-     *            The size of the font to be drawn.
-     * @param startChar
-     *            The starting ASCII character id to be drawable. (Default 32)
-     * @param endChar
-     *            The ending ASCII character id to be drawable. (Default 126)
+     * @param mc        The Minecraft instance for the font to be bound to.
+     * @param fontName  The name of the font to be drawn.
+     * @param size      The size of the font to be drawn.
+     * @param startChar The starting ASCII character id to be drawable. (Default 32)
+     * @param endChar   The ending ASCII character id to be drawable. (Default 126)
      */
     public CustomFont(Minecraft mc, Object font, int size, int startChar, int endChar) {
         this.startChar = startChar;
@@ -76,12 +68,10 @@ public class CustomFont {
             if (font instanceof String) {
                 String fontName = (String) font;
                 if (fontName.contains("/"))
-                    g.setFont(Font.createFont(Font.TRUETYPE_FONT, new File(fontName))
-                            .deriveFont((float) size));
+                    g.setFont(Font.createFont(Font.TRUETYPE_FONT, new File(fontName)).deriveFont((float) size));
                 else g.setFont(new Font(fontName, 0, size));
             } else if (font instanceof InputStream) {
-                g.setFont(
-                        Font.createFont(Font.TRUETYPE_FONT, (InputStream) font).deriveFont((float) size));
+                g.setFont(Font.createFont(Font.TRUETYPE_FONT, (InputStream) font).deriveFont((float) size));
             } else if (font instanceof File) {
                 g.setFont(Font.createFont(Font.TRUETYPE_FONT, (File) font).deriveFont((float) size));
             }
@@ -121,16 +111,11 @@ public class CustomFont {
     /**
      * Draws a given string with an automatically calculated shadow below it.
      *
-     * @param gui
-     *            The gui/subclass to be drawn on
-     * @param text
-     *            The string to be drawn
-     * @param x
-     *            The x position to start drawing
-     * @param y
-     *            The y position to start drawing
-     * @param color
-     *            The color of the non-shadowed text (Hex)
+     * @param gui   The gui/subclass to be drawn on
+     * @param text  The string to be drawn
+     * @param x     The x position to start drawing
+     * @param y     The y position to start drawing
+     * @param color The color of the non-shadowed text (Hex)
      */
     public void drawStringS(Gui gui, String text, int x, int y, int color) {
         int l = color & 0xff000000;
@@ -143,16 +128,11 @@ public class CustomFont {
     /**
      * Draws a given string onto a gui/subclass.
      *
-     * @param gui
-     *            The gui/subclass to be drawn on
-     * @param text
-     *            The string to be drawn
-     * @param x
-     *            The x position to start drawing
-     * @param y
-     *            The y position to start drawing
-     * @param color
-     *            The color of the non-shadowed text (Hex)
+     * @param gui   The gui/subclass to be drawn on
+     * @param text  The string to be drawn
+     * @param x     The x position to start drawing
+     * @param y     The y position to start drawing
+     * @param color The color of the non-shadowed text (Hex)
      */
     public void drawString(Gui gui, String text, int x, int y, int color) {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
@@ -181,8 +161,7 @@ public class CustomFont {
     }
 
     /**
-     * Returns the created FontMetrics which is used to retrive various
-     * information about the True Type Font
+     * Returns the created FontMetrics which is used to retrive various information about the True Type Font
      *
      * @return FontMetrics of the created font.
      */
@@ -193,8 +172,7 @@ public class CustomFont {
     /**
      * Gets the drawing width of a given string of string.
      *
-     * @param text
-     *            The string to be measured
+     * @param text The string to be measured
      * @return The width of the given string.
      */
     public int getStringWidth(String text) {
@@ -204,8 +182,7 @@ public class CustomFont {
     /**
      * Gets the drawing height of a given string of string.
      *
-     * @param text
-     *            The string to be measured
+     * @param text The string to be measured
      * @return The height of the given string.
      */
     public int getStringHeight(String text) {
@@ -213,13 +190,10 @@ public class CustomFont {
     }
 
     /**
-     * A method that returns a Rectangle that contains the width and height
-     * demensions of the given string.
+     * A method that returns a Rectangle that contains the width and height demensions of the given string.
      *
-     * @param text
-     *            The string to be measured
-     * @return Rectangle containing width and height that the text will consume
-     *         when drawn.
+     * @param text The string to be measured
+     * @return Rectangle containing width and height that the text will consume when drawn.
      */
     private Rectangle getBounds(String text) {
         int w = 0;
@@ -266,7 +240,11 @@ public class CustomFont {
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV((x + 0), (y + height), 0, ((u + 0) * offsetWidth), ((v + height) * offsetHeight));
         tessellator.addVertexWithUV(
-                (x + width), (y + height), 0, ((u + width) * offsetWidth), ((v + height) * offsetHeight));
+                (x + width),
+                (y + height),
+                0,
+                ((u + width) * offsetWidth),
+                ((v + height) * offsetHeight));
         tessellator.addVertexWithUV((x + width), (y + 0), 0, ((u + width) * offsetWidth), ((v + 0) * offsetHeight));
         tessellator.addVertexWithUV((x + 0), (y + 0), 0, ((u + 0) * offsetWidth), ((v + 0) * offsetHeight));
         tessellator.draw();

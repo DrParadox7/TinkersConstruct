@@ -1,11 +1,14 @@
 package tconstruct.common;
 
-import cpw.mods.fml.common.network.IGuiHandler;
 import java.util.HashMap;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.network.IGuiHandler;
+
 public class TProxyCommon implements IGuiHandler {
+
     public void initialize() {}
 
     @Override

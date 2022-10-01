@@ -1,11 +1,9 @@
 package tconstruct.library.tools;
 
-import cofh.api.energy.IEnergyContainerItem;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.eventhandler.Event.Result;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -28,19 +26,24 @@ import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.player.UseHoeEvent;
+
 import tconstruct.TConstruct;
 import tconstruct.library.ActiveToolMod;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.util.PiercingEntityDamage;
 import tconstruct.modifiers.tools.ModMoss;
+import cofh.api.energy.IEnergyContainerItem;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class AbilityHelper {
+
     public static Random random = new Random();
     public static boolean necroticUHS;
 
     /* Normal interactions */
-    public static boolean onBlockChanged(
-            ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase player, Random random) {
+    public static boolean onBlockChanged(ItemStack stack, World world, Block block, int x, int y, int z,
+            EntityLivingBase player, Random random) {
         if (!stack.hasTagCompound()) return false;
 
         int reinforced = 0;
@@ -59,11 +62,11 @@ public class AbilityHelper {
     }
 
     public static boolean onLeftClickEntity(ItemStack stack, EntityLivingBase player, Entity entity, ToolCore tool) {
-        return onLeftClickEntity(stack, player, entity, tool, 0);
+        return onLeftClickEntity(stack, player, entity, tool, 1);
     }
 
-    public static boolean onLeftClickEntity(
-            ItemStack stack, EntityLivingBase player, Entity entity, ToolCore tool, int baseDamage) {
+    public static boolean onLeftClickEntity(ItemStack stack, EntityLivingBase player, Entity entity, ToolCore tool,
+            int baseDamage) {
         if (entity != null && player != null && entity.canAttackWithItem() && stack.hasTagCompound()) {
             if (!entity.hitByEntity(player)) // can't attack this entity
             {
@@ -87,8 +90,7 @@ public class AbilityHelper {
                 }
 
                 if (damage > 0 || enchantDamage > 0) {
-                    boolean criticalHit = player.fallDistance > 0.0F
-                            && !player.onGround
+                    boolean criticalHit = player.fallDistance > 0.0F && !player.onGround
                             && !player.isOnLadder()
                             && !player.isInWater()
                             && !player.isPotionActive(Potion.blindness)
@@ -110,8 +112,7 @@ public class AbilityHelper {
                     }
 
                     if (broken) {
-                        if (baseDamage > 0) damage = baseDamage;
-                        else damage = 1;
+                        damage = 1;
                     }
                     boolean causedDamage = false;
                     boolean isAlive = entity.isEntityAlive();
@@ -119,14 +120,12 @@ public class AbilityHelper {
                         int armorValue = Math.min(20, ((EntityLivingBase) entity).getTotalArmorValue());
                         damage = (int) (damage / (1 - (0.04 * armorValue)));
 
-                        if (player instanceof EntityPlayer)
-                            causedDamage =
-                                    entity.attackEntityFrom(causePlayerPiercingDamage((EntityPlayer) player), damage);
+                        if (player instanceof EntityPlayer) causedDamage = entity
+                                .attackEntityFrom(causePlayerPiercingDamage((EntityPlayer) player), damage);
                         else causedDamage = entity.attackEntityFrom(causePiercingDamage(player), damage);
                     } else {
-                        if (player instanceof EntityPlayer)
-                            causedDamage = entity.attackEntityFrom(
-                                    DamageSource.causePlayerDamage((EntityPlayer) player), damage);
+                        if (player instanceof EntityPlayer) causedDamage = entity
+                                .attackEntityFrom(DamageSource.causePlayerDamage((EntityPlayer) player), damage);
                         else causedDamage = entity.attackEntityFrom(DamageSource.causeMobDamage(player), damage);
                     }
 
@@ -135,10 +134,8 @@ public class AbilityHelper {
 
                         // damageTool(stack, 1, player, false);
                         tool.onEntityDamaged(player.worldObj, player, entity);
-                        if (!necroticUHS
-                                || (entity instanceof IMob
-                                        && entity instanceof EntityLivingBase
-                                        && ((EntityLivingBase) entity).getHealth() <= 0)) {
+                        if (!necroticUHS || (entity instanceof IMob && entity instanceof EntityLivingBase
+                                && ((EntityLivingBase) entity).getHealth() <= 0)) {
                             if (isAlive) {
                                 int drain = toolTags.getInteger("Necrotic") * 2;
                                 if (drain > 0) player.heal(random.nextInt(drain + 1));
@@ -205,15 +202,22 @@ public class AbilityHelper {
         return false;
     }
 
-    public static int calcDamage(
-            Entity user, Entity entity, ItemStack stack, ToolCore tool, NBTTagCompound toolTags, int baseDamage) {
+    public static int calcDamage(Entity user, Entity entity, ItemStack stack, ToolCore tool, NBTTagCompound toolTags,
+            int baseDamage) {
         EntityLivingBase living = user instanceof EntityLivingBase ? (EntityLivingBase) user : null;
 
-        int damage = toolTags.getInteger("Attack") + baseDamage;
+        int damage = toolTags.getInteger("Attack");
         int earlyModDamage = 0;
         for (ActiveToolMod mod : TConstructRegistry.activeModifiers) {
             earlyModDamage = mod.baseAttackDamage(
-                    earlyModDamage, damage, tool, stack.getTagCompound(), toolTags, stack, living, entity);
+                    earlyModDamage,
+                    damage,
+                    tool,
+                    stack.getTagCompound(),
+                    toolTags,
+                    stack,
+                    living,
+                    entity);
         }
         damage += earlyModDamage;
 
@@ -239,16 +243,18 @@ public class AbilityHelper {
 
         int modDamage = 0;
         for (ActiveToolMod mod : TConstructRegistry.activeModifiers) {
-            modDamage =
-                    mod.attackDamage(modDamage, damage, tool, stack.getTagCompound(), toolTags, stack, living, entity);
+            modDamage = mod
+                    .attackDamage(modDamage, damage, tool, stack.getTagCompound(), toolTags, stack, living, entity);
         }
         damage += modDamage;
+
+        damage += baseDamage;
 
         return damage;
     }
 
-    public static float calcKnockback(
-            Entity user, Entity entity, ItemStack stack, ToolCore tool, NBTTagCompound toolTags, int baseDamage) {
+    public static float calcKnockback(Entity user, Entity entity, ItemStack stack, ToolCore tool,
+            NBTTagCompound toolTags, int baseDamage) {
         if (user == null) return 0;
         float knockback = 0;
 
@@ -315,20 +321,18 @@ public class AbilityHelper {
                 List var6 = player.worldObj.getEntitiesWithinAABB(
                         EntityWolf.class,
                         AxisAlignedBB.getBoundingBox(
-                                        player.posX,
-                                        player.posY,
-                                        player.posZ,
-                                        player.posX + 1.0D,
-                                        player.posY + 1.0D,
-                                        player.posZ + 1.0D)
-                                .expand(16.0D, 4.0D, 16.0D));
+                                player.posX,
+                                player.posY,
+                                player.posZ,
+                                player.posX + 1.0D,
+                                player.posY + 1.0D,
+                                player.posZ + 1.0D).expand(16.0D, 4.0D, 16.0D));
                 Iterator var4 = var6.iterator();
 
                 while (var4.hasNext()) {
                     EntityWolf var5 = (EntityWolf) var4.next();
 
-                    if (var5.isTamed()
-                            && var5.getEntityToAttack() == null
+                    if (var5.isTamed() && var5.getEntityToAttack() == null
                             && player.getDisplayName().equals(var5.func_152113_b())
                             && (!par2 || !var5.isSitting())) {
                         var5.setSitting(false);
@@ -350,8 +354,8 @@ public class AbilityHelper {
         damageTool(stack, -dam, tags, entity, ignoreCharge);
     }
 
-    public static void damageTool(
-            ItemStack stack, int dam, NBTTagCompound tags, EntityLivingBase entity, boolean ignoreCharge) {
+    public static void damageTool(ItemStack stack, int dam, NBTTagCompound tags, EntityLivingBase entity,
+            boolean ignoreCharge) {
         if (entity instanceof EntityPlayer && ((EntityPlayer) entity).capabilities.isCreativeMode || tags == null)
             return;
 
@@ -496,8 +500,8 @@ public class AbilityHelper {
         tags.setInteger("Energy", max - missing);
     }
 
-    private static boolean equalityOverrideLoaded =
-            Loader.isModLoaded("CoFHCore"); // Mods should be loaded far enough before this is ever initialized
+    private static boolean equalityOverrideLoaded = Loader.isModLoaded("CoFHCore"); // Mods should be loaded far enough
+                                                                                    // before this is ever initialized
 
     public static void breakTool(ItemStack stack, NBTTagCompound tags, Entity entity) {
         tags.getCompoundTag("InfiTool").setBoolean("Broken", true);
@@ -524,8 +528,8 @@ public class AbilityHelper {
         living.motionZ *= boost;
     }
 
-    public static boolean hoeGround(
-            ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side, Random random) {
+    public static boolean hoeGround(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side,
+            Random random) {
         if (!player.canPlayerEdit(x, y, z, side, stack)) {
             return false;
         } else {
@@ -541,8 +545,7 @@ public class AbilityHelper {
 
             Block block = world.getBlock(x, y, z);
 
-            if (side != 0
-                    && world.getBlock(x, y + 1, z).isAir(world, x, y + 1, z)
+            if (side != 0 && world.getBlock(x, y + 1, z).isAir(world, x, y + 1, z)
                     && (block == Blocks.grass || block == Blocks.dirt)) {
                 Block block1 = Blocks.farmland;
                 world.playSoundEffect(
@@ -568,8 +571,12 @@ public class AbilityHelper {
 
     public static void spawnItemAtEntity(Entity entity, ItemStack stack, int delay) {
         if (!entity.worldObj.isRemote) {
-            EntityItem entityitem =
-                    new EntityItem(entity.worldObj, entity.posX + 0.5D, entity.posY + 0.5D, entity.posZ + 0.5D, stack);
+            EntityItem entityitem = new EntityItem(
+                    entity.worldObj,
+                    entity.posX + 0.5D,
+                    entity.posY + 0.5D,
+                    entity.posZ + 0.5D,
+                    stack);
             entityitem.delayBeforeCanPickup = delay;
             entity.worldObj.spawnEntityInWorld(entityitem);
         }
@@ -578,13 +585,18 @@ public class AbilityHelper {
     public static void spawnItemAtPlayer(EntityPlayer player, ItemStack stack) {
         if (!player.worldObj.isRemote) {
             // try to put it into the players inventory
-            if (player instanceof FakePlayer
-                    || !player.inventory.addItemStackToInventory(
-                            stack)) // note that the addItemStackToInventory is not called for fake players
+            if (player instanceof FakePlayer || !player.inventory.addItemStackToInventory(stack)) // note that the
+                                                                                                  // addItemStackToInventory
+                                                                                                  // is not called for
+                                                                                                  // fake players
             {
                 // drop the rest as an entity
                 EntityItem entityitem = new EntityItem(
-                        player.worldObj, player.posX + 0.5D, player.posY + 0.5D, player.posZ + 0.5D, stack);
+                        player.worldObj,
+                        player.posX + 0.5D,
+                        player.posY + 0.5D,
+                        player.posZ + 0.5D,
+                        stack);
                 player.worldObj.spawnEntityInWorld(entityitem);
                 if (!(player instanceof FakePlayer)) entityitem.onCollideWithPlayer(player);
             }
@@ -642,8 +654,8 @@ public class AbilityHelper {
         return addItemStackToWorld(world, f, f1, f2, itemstack, false);
     }
 
-    public static EntityItem addItemStackToWorld(
-            World world, float f, float f1, float f2, ItemStack itemstack, boolean flag) {
+    public static EntityItem addItemStackToWorld(World world, float f, float f1, float f2, ItemStack itemstack,
+            boolean flag) {
         EntityItem entityitem;
         if (flag) {
             entityitem = new EntityItem(world, f, f1, f2, itemstack);

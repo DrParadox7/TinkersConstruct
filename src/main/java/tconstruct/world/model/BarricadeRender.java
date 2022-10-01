@@ -1,13 +1,15 @@
 package tconstruct.world.model;
 
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
+
 import tconstruct.util.ItemHelper;
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class BarricadeRender implements ISimpleBlockRenderingHandler {
+
     public static int model;
 
     public BarricadeRender() {
@@ -15,8 +17,8 @@ public class BarricadeRender implements ISimpleBlockRenderingHandler {
     }
 
     @Override
-    public boolean renderWorldBlock(
-            IBlockAccess world, int x, int y, int z, Block barricade, int modelId, RenderBlocks renderer) {
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block barricade, int modelId,
+            RenderBlocks renderer) {
         if (modelId == model) {
             int meta = world.getBlockMetadata(x, y, z);
             int type = meta % 4;

@@ -1,10 +1,8 @@
 package tconstruct.plugins.te4;
 
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
 import mantle.pulsar.pulse.Handler;
 import mantle.pulsar.pulse.Pulse;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -13,11 +11,15 @@ import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapelessOreRecipe;
+
 import tconstruct.TConstruct;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.smeltery.TinkerSmeltery;
 import tconstruct.tools.TinkerTools;
 import tconstruct.world.TinkerWorld;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
 
 @ObjectHolder(TConstruct.modID)
 @Pulse(
@@ -26,6 +28,7 @@ import tconstruct.world.TinkerWorld;
         modsRequired = "ThermalExpansion",
         forced = true)
 public class TinkerTE4 {
+
     @Handler
     public void init() {
         TConstruct.logger.info("Thermal Expansion detected. Adding Pulverizer & Induction Smelter recipes");
@@ -38,9 +41,17 @@ public class TinkerTE4 {
                 null,
                 0);
         TE4Helper.addPulverizerRecipe(
-                1000, new ItemStack(TinkerTools.materials, 1, 3), new ItemStack(TinkerTools.materials, 1, 39), null, 0);
+                1000,
+                new ItemStack(TinkerTools.materials, 1, 3),
+                new ItemStack(TinkerTools.materials, 1, 39),
+                null,
+                0);
         TE4Helper.addPulverizerRecipe(
-                1000, new ItemStack(TinkerTools.materials, 1, 4), new ItemStack(TinkerTools.materials, 1, 38), null, 0);
+                1000,
+                new ItemStack(TinkerTools.materials, 1, 4),
+                new ItemStack(TinkerTools.materials, 1, 38),
+                null,
+                0);
 
         TE4Helper.addPulverizerRecipe(
                 12000,
@@ -87,12 +98,13 @@ public class TinkerTE4 {
         // Dust Recipes
         GameRegistry.addRecipe(
                 new ShapelessOreRecipe(new ItemStack(TinkerTools.materials, 1, 41), "dustArdite", "dustCobalt"));
-        GameRegistry.addRecipe(new ShapelessOreRecipe(
-                new ItemStack(TinkerTools.materials, 4, 42),
-                "dustAluminum",
-                "dustAluminum",
-                "dustAluminum",
-                "dustCopper"));
+        GameRegistry.addRecipe(
+                new ShapelessOreRecipe(
+                        new ItemStack(TinkerTools.materials, 4, 42),
+                        "dustAluminum",
+                        "dustAluminum",
+                        "dustAluminum",
+                        "dustCopper"));
     }
 
     @Handler

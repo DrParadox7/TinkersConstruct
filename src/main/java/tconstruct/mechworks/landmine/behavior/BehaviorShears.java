@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
@@ -13,6 +14,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
+
 import tconstruct.mechworks.itemblocks.ItemBlockLandmine;
 
 // TODO Add a block that is similar to landmine, but only triggers by redstone, does not hurt the player, and does not
@@ -26,13 +28,7 @@ import tconstruct.mechworks.itemblocks.ItemBlockLandmine;
 public class BehaviorShears extends Behavior {
 
     @Override
-    public void executeLogic(
-            World par1World,
-            int par2,
-            int par3,
-            int par4,
-            ItemStack par5ItemStack,
-            Entity triggerer,
+    public void executeLogic(World par1World, int par2, int par3, int par4, ItemStack par5ItemStack, Entity triggerer,
             boolean willBlockBeRemoved) {
         Random rand = ItemBlockLandmine.getRandom();
 
@@ -83,7 +79,11 @@ public class BehaviorShears extends Behavior {
             double d1 = (double) (par1World.rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
             double d2 = (double) (par1World.rand.nextFloat() * f) + (double) (1.0F - f) * 0.5D;
             EntityItem entityitem = new EntityItem(
-                    par1World, (double) par2 + d0, (double) par3 + d1, (double) par4 + d2, par5ItemStack);
+                    par1World,
+                    (double) par2 + d0,
+                    (double) par3 + d1,
+                    (double) par4 + d2,
+                    par5ItemStack);
             entityitem.delayBeforeCanPickup = 10;
             par1World.spawnEntityInWorld(entityitem);
         }

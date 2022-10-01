@@ -1,18 +1,21 @@
 package tconstruct.armor.player;
 
 import java.lang.ref.WeakReference;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
+
 import tconstruct.api.IPlayerExtendedInventoryWrapper;
 
-public class TPlayerStats
-        implements IExtendedEntityProperties,
-                IPlayerExtendedInventoryWrapper // TODO: IExtendedEntityProperties is not appropriate!
+public class TPlayerStats implements IExtendedEntityProperties, IPlayerExtendedInventoryWrapper // TODO:
+                                                                                                // IExtendedEntityProperties
+                                                                                                // is not appropriate!
 {
+
     public static final String PROP_NAME = "TConstruct";
 
     public WeakReference<EntityPlayer> player;

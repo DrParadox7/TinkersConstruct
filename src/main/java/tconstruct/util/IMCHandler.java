@@ -1,17 +1,15 @@
 package tconstruct.util;
 
-import cofh.api.energy.IEnergyContainerItem;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.common.event.FMLInterModComms;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.fluids.FluidStack;
+
 import tconstruct.TConstruct;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.client.TConstructClientRegistry;
@@ -24,8 +22,13 @@ import tconstruct.library.tools.ToolMaterial;
 import tconstruct.library.util.IPattern;
 import tconstruct.smeltery.TinkerSmeltery;
 import tconstruct.tools.TinkerTools;
+import cofh.api.energy.IEnergyContainerItem;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.FMLLog;
+import cpw.mods.fml.common.event.FMLInterModComms;
 
 public final class IMCHandler {
+
     private IMCHandler() {}
 
     public static void processIMC(List<FMLInterModComms.IMCMessage> messages) {
@@ -68,8 +71,7 @@ public final class IMCHandler {
                     // add additional render mapping so resource packs or the mods themselves can have custom textures
                     // for the tools
                     if (FMLCommonHandler.instance().getSide().isClient())
-                        TConstructClientRegistry.addMaterialRenderMapping(
-                                id, "tinker", mat.name().toLowerCase(), true);
+                        TConstructClientRegistry.addMaterialRenderMapping(id, "tinker", mat.name().toLowerCase(), true);
                 }
             } else if (type.equals("addPartBuilderMaterial")) {
                 if (!message.isNBTMessage()) {
@@ -100,7 +102,12 @@ public final class IMCHandler {
 
                 // register the material
                 PatternBuilder.instance.registerFullMaterial(
-                        item, value, TConstructRegistry.getMaterial(matID).materialName, shard, rod, matID);
+                        item,
+                        value,
+                        TConstructRegistry.getMaterial(matID).materialName,
+                        shard,
+                        rod,
+                        matID);
 
                 List<Item> addItems = new LinkedList<Item>();
                 List<Integer> addMetas = new LinkedList<Integer>();
@@ -131,8 +138,9 @@ public final class IMCHandler {
                 for (int i = 0; i < addItems.size(); i++)
                     TConstructRegistry.addPartMapping(addItems.get(i), addMetas.get(i), matID, addOUtputs.get(i));
 
-                TConstruct.logger.debug("PartBuilder IMC: Added Part builder mapping for "
-                        + TConstructRegistry.getMaterial(matID).materialName);
+                TConstruct.logger.debug(
+                        "PartBuilder IMC: Added Part builder mapping for "
+                                + TConstructRegistry.getMaterial(matID).materialName);
             } else if (type.equals("addPartCastingMaterial")) {
                 if (!message.isNBTMessage()) {
                     logInvalidMessage(message);
@@ -165,9 +173,9 @@ public final class IMCHandler {
                 for (CastingRecipe recipe : TConstructRegistry.getTableCasting().getCastingRecipes()) {
                     if (recipe.castingMetal.getFluid() != TinkerSmeltery.moltenIronFluid) continue;
                     if (recipe.cast == null || !(recipe.cast.getItem() instanceof IPattern)) continue;
-                    if (!(recipe.getResult().getItem()
-                            instanceof DynamicToolPart)) // has to be dynamic toolpart to support automatic addition
-                    continue;
+                    if (!(recipe.getResult().getItem() instanceof DynamicToolPart)) // has to be dynamic toolpart to
+                                                                                    // support automatic addition
+                        continue;
 
                     newRecipies.add(recipe);
                 }
@@ -229,7 +237,12 @@ public final class IMCHandler {
 
                     // register the material
                     PatternBuilder.instance.registerFullMaterial(
-                            stack, value, TConstructRegistry.getMaterial(id).materialName, shard, rod, id);
+                            stack,
+                            value,
+                            TConstructRegistry.getMaterial(id).materialName,
+                            shard,
+                            rod,
+                            id);
                 }
             } else if (type.equals("addSmelteryMelting")) {
                 if (!message.isNBTMessage()) {
@@ -254,19 +267,23 @@ public final class IMCHandler {
                 ItemStack block = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("Block"));
                 int temperature = tag.getInteger("Temperature");
 
-                if (FluidType.getFluidType(liquid.getFluid()) == null)
-                    FluidType.registerFluidType(
-                            liquid.getFluid().getName(),
-                            Block.getBlockFromItem(block.getItem()),
-                            block.getItemDamage(),
-                            temperature,
-                            liquid.getFluid(),
-                            false);
+                if (FluidType.getFluidType(liquid.getFluid()) == null) FluidType.registerFluidType(
+                        liquid.getFluid().getName(),
+                        Block.getBlockFromItem(block.getItem()),
+                        block.getItemDamage(),
+                        temperature,
+                        liquid.getFluid(),
+                        false);
 
                 Smeltery.addMelting(
-                        item, Block.getBlockFromItem(block.getItem()), block.getItemDamage(), temperature, liquid);
-                TConstruct.logger.debug("Smeltery IMC: Added melting: " + item.getDisplayName() + " to " + liquid.amount
-                        + "mb " + liquid.getLocalizedName());
+                        item,
+                        Block.getBlockFromItem(block.getItem()),
+                        block.getItemDamage(),
+                        temperature,
+                        liquid);
+                TConstruct.logger.debug(
+                        "Smeltery IMC: Added melting: " + item
+                                .getDisplayName() + " to " + liquid.amount + "mb " + liquid.getLocalizedName());
             } else if (type.equals("addSmelteryFuel")) {
                 if (!message.isNBTMessage()) {
                     logInvalidMessage(message);
@@ -287,8 +304,9 @@ public final class IMCHandler {
 
                 Smeltery.addSmelteryFuel(liquid.getFluid(), temperature, duration);
 
-                TConstruct.logger.debug("Smeltery IMC: Added fuel: " + liquid.getLocalizedName() + " (" + temperature
-                        + ", " + duration + ")");
+                TConstruct.logger.debug(
+                        "Smeltery IMC: Added fuel: " + liquid
+                                .getLocalizedName() + " (" + temperature + ", " + duration + ")");
             } else if (type.equals("addFluxBattery")) {
                 if (!message.isItemStackMessage()) {
                     logInvalidMessage(message, "ItemStack");
@@ -310,11 +328,10 @@ public final class IMCHandler {
 
     private static boolean checkRequiredTags(String prefix, NBTTagCompound tag, String... tags) {
         boolean ok = true;
-        for (String t : tags)
-            if (!tag.hasKey(t)) {
-                FMLLog.bigWarning(String.format("%s IMC: Missing required NBT Tag %s", prefix, t));
-                ok = false; // don't abort, report all missing tags
-            }
+        for (String t : tags) if (!tag.hasKey(t)) {
+            FMLLog.bigWarning(String.format("%s IMC: Missing required NBT Tag %s", prefix, t));
+            ok = false; // don't abort, report all missing tags
+        }
 
         return ok;
     }
@@ -324,8 +341,12 @@ public final class IMCHandler {
     }
 
     private static void logInvalidMessage(FMLInterModComms.IMCMessage message, String type) {
-        FMLLog.bigWarning(String.format(
-                "Received invalid IMC '%s' from %s. Not a %s Message.", message.key, message.getSender(), type));
+        FMLLog.bigWarning(
+                String.format(
+                        "Received invalid IMC '%s' from %s. Not a %s Message.",
+                        message.key,
+                        message.getSender(),
+                        type));
     }
 
     private static ToolMaterial scanMaterial(NBTTagCompound tag) {
@@ -361,19 +382,18 @@ public final class IMCHandler {
 
         if (tag.hasKey("Jagged")) shoddy = -tag.getFloat("Jagged");
 
-        if (tag.hasKey("localizationString"))
-            return new ToolMaterial(
-                    name,
-                    tag.getString("localizationString"),
-                    hlvl,
-                    durability,
-                    speed,
-                    attack,
-                    handle,
-                    reinforced,
-                    shoddy,
-                    style,
-                    color);
+        if (tag.hasKey("localizationString")) return new ToolMaterial(
+                name,
+                tag.getString("localizationString"),
+                hlvl,
+                durability,
+                speed,
+                attack,
+                handle,
+                reinforced,
+                shoddy,
+                style,
+                color);
         else return new ToolMaterial(name, hlvl, durability, speed, attack, handle, reinforced, shoddy, style, color);
     }
 

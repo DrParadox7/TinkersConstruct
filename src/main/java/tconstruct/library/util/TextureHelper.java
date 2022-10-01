@@ -1,12 +1,14 @@
 package tconstruct.library.util;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 // Stolen from CofHLib RegistryUtil
 public final class TextureHelper {
+
     private TextureHelper() {}
 
     @SideOnly(Side.CLIENT)

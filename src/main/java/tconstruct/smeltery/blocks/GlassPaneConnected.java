@@ -1,8 +1,7 @@
 package tconstruct.smeltery.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
@@ -12,8 +11,11 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+
 import tconstruct.smeltery.model.PaneConnectedRender;
 import tconstruct.util.config.PHConstruct;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class GlassPaneConnected extends GlassBlockConnected {
 
@@ -33,10 +35,8 @@ public class GlassPaneConnected extends GlassBlockConnected {
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
         if (par5 == 0 || par5 == 1) {
-            return par1IBlockAccess.getBlock(par2, par3 - 1, par4) == this && par5 == 0
-                    ? icons[15]
-                    : par1IBlockAccess.getBlock(par2, par3 + 1, par4) == this && par5 == 1
-                            ? icons[15]
+            return par1IBlockAccess.getBlock(par2, par3 - 1, par4) == this && par5 == 0 ? icons[15]
+                    : par1IBlockAccess.getBlock(par2, par3 + 1, par4) == this && par5 == 1 ? icons[15]
                             : getSideTextureIndex();
         } else {
             return super.getIcon(par1IBlockAccess, par2, par3, par4, par5);
@@ -44,8 +44,8 @@ public class GlassPaneConnected extends GlassBlockConnected {
     }
 
     @Override
-    public IIcon getConnectedBlockTexture(
-            IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5, IIcon[] icons) {
+    public IIcon getConnectedBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5,
+            IIcon[] icons) {
         if (par5 == 0 || par5 == 1) {
             return getSideTextureIndex();
         }
@@ -501,14 +501,8 @@ public class GlassPaneConnected extends GlassBlockConnected {
     }
 
     @Override
-    public void addCollisionBoxesToList(
-            World par1World,
-            int par2,
-            int par3,
-            int par4,
-            AxisAlignedBB par5AxisAlignedBB,
-            List par6List,
-            Entity par7Entity) {
+    public void addCollisionBoxesToList(World par1World, int par2, int par3, int par4, AxisAlignedBB par5AxisAlignedBB,
+            List par6List, Entity par7Entity) {
         boolean flag = this.canPaneConnectTo(par1World, par2, par3, par4, ForgeDirection.NORTH);
         boolean flag1 = this.canPaneConnectTo(par1World, par2, par3, par4, ForgeDirection.SOUTH);
         boolean flag2 = this.canPaneConnectTo(par1World, par2, par3, par4, ForgeDirection.WEST);

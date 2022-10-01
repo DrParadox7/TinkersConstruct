@@ -1,6 +1,5 @@
 package tconstruct.weaponry.client;
 
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -8,21 +7,29 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
+
 import org.lwjgl.opengl.GL11;
+
 import tconstruct.library.weaponry.IWindup;
 import tconstruct.util.Reference;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class CrosshairHandler {
+
     private static Minecraft mc = Minecraft.getMinecraft();
 
-    private static ResourceLocation crossHairSquare =
-            new ResourceLocation(Reference.RESOURCE, "textures/gui/Crosshair.png");
-    private static ResourceLocation crossHairTip =
-            new ResourceLocation(Reference.RESOURCE, "textures/gui/Crosshair2.png");
-    private static ResourceLocation crossHairWeird =
-            new ResourceLocation(Reference.RESOURCE, "textures/gui/Crosshair3.png");
-    private static ResourceLocation crossHairSpike =
-            new ResourceLocation(Reference.RESOURCE, "textures/gui/Crosshair4.png");
+    private static ResourceLocation crossHairSquare = new ResourceLocation(
+            Reference.RESOURCE,
+            "textures/gui/Crosshair.png");
+    private static ResourceLocation crossHairTip = new ResourceLocation(
+            Reference.RESOURCE,
+            "textures/gui/Crosshair2.png");
+    private static ResourceLocation crossHairWeird = new ResourceLocation(
+            Reference.RESOURCE,
+            "textures/gui/Crosshair3.png");
+    private static ResourceLocation crossHairSpike = new ResourceLocation(
+            Reference.RESOURCE,
+            "textures/gui/Crosshair4.png");
 
     @SubscribeEvent
     public void onRenderOverlay(RenderGameOverlayEvent.Pre event) {
@@ -100,7 +107,7 @@ public class CrosshairHandler {
         double v1 = 0;
 
         switch (part) {
-                // top left
+            // top left
             case 0:
                 w -= s;
                 h -= s;

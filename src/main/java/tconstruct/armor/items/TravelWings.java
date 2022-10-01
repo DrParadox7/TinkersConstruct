@@ -1,7 +1,5 @@
 package tconstruct.armor.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
@@ -9,8 +7,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
 import tconstruct.library.armor.ArmorPart;
 import tconstruct.tools.TinkerTools;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class TravelWings extends TravelGear {
 
@@ -25,11 +26,11 @@ public class TravelWings extends TravelGear {
         modifiers = new IIcon[5];
         modifiers[0] = IIconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "doublejump");
         modifiers[1] = IIconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "featherfall");
-        /*modifiers[4] = IIconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "moss");
-        modifiers = new IIcon[3];
-        modifiers[0] = IIconRegister.registerIcon(base + "slimewings");
-        modifiers[1] = IIconRegister.registerIcon(base + "piston");
-        modifiers[2] = IIconRegister.registerIcon(base + "pearl");*/
+        /*
+         * modifiers[4] = IIconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "moss");
+         * modifiers = new IIcon[3]; modifiers[0] = IIconRegister.registerIcon(base + "slimewings"); modifiers[1] =
+         * IIconRegister.registerIcon(base + "piston"); modifiers[2] = IIconRegister.registerIcon(base + "pearl");
+         */
     }
 
     @Override

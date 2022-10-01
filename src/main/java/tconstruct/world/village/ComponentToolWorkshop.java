@@ -2,6 +2,7 @@ package tconstruct.world.village;
 
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.init.Blocks;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
@@ -9,36 +10,38 @@ import net.minecraft.world.gen.structure.StructureBoundingBox;
 import net.minecraft.world.gen.structure.StructureComponent;
 import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
+
 import tconstruct.tools.TinkerTools;
 import tconstruct.tools.logic.CraftingStationLogic;
 import tconstruct.tools.logic.PatternChestLogic;
 import tconstruct.world.TinkerWorld;
 
 public class ComponentToolWorkshop extends StructureVillagePieces.House1 {
+
     private int averageGroundLevel = -1;
 
     public ComponentToolWorkshop() {}
 
-    public ComponentToolWorkshop(
-            Start villagePiece, int par2, Random par3Random, StructureBoundingBox par4StructureBoundingBox, int par5) {
+    public ComponentToolWorkshop(Start villagePiece, int par2, Random par3Random,
+            StructureBoundingBox par4StructureBoundingBox, int par5) {
         super();
         this.coordBaseMode = par5;
         this.boundingBox = par4StructureBoundingBox;
     }
 
-    public static ComponentToolWorkshop buildComponent(
-            Start villagePiece, List pieces, Random random, int p1, int p2, int p3, int p4, int p5) {
-        StructureBoundingBox structureboundingbox =
-                StructureBoundingBox.getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 7, 6, 7, p4);
+    public static ComponentToolWorkshop buildComponent(Start villagePiece, List pieces, Random random, int p1, int p2,
+            int p3, int p4, int p5) {
+        StructureBoundingBox structureboundingbox = StructureBoundingBox
+                .getComponentToAddBoundingBox(p1, p2, p3, 0, 0, 0, 7, 6, 7, p4);
         return canVillageGoDeeper(structureboundingbox)
-                        && StructureComponent.findIntersecting(pieces, structureboundingbox) == null
-                ? new ComponentToolWorkshop(villagePiece, p5, random, structureboundingbox, p4)
-                : null;
+                && StructureComponent.findIntersecting(pieces, structureboundingbox) == null
+                        ? new ComponentToolWorkshop(villagePiece, p5, random, structureboundingbox, p4)
+                        : null;
     }
 
     /**
-     * second Part of Structure generating, this for example places Spiderwebs,
-     * Mob Spawners, it closes Mineshafts at the end, it adds Fences...
+     * second Part of Structure generating, this for example places Spiderwebs, Mob Spawners, it closes Mineshafts at
+     * the end, it adds Fences...
      */
     @Override
     public boolean addComponentParts(World world, Random random, StructureBoundingBox sbb) {
@@ -53,9 +56,8 @@ public class ComponentToolWorkshop extends StructureVillagePieces.House1 {
         }
 
         /**
-         * arguments: (World worldObj, StructureBoundingBox structBB, int minX,
-         * int minY, int minZ, int maxX, int maxY, int maxZ, int placeBlockId,
-         * int replaceBlockId, boolean alwaysreplace)
+         * arguments: (World worldObj, StructureBoundingBox structBB, int minX, int minY, int minZ, int maxX, int maxY,
+         * int maxZ, int placeBlockId, int replaceBlockId, boolean alwaysreplace)
          */
         this.fillWithBlocks(world, sbb, 0, 0, 0, 6, 0, 6, Blocks.cobblestone, Blocks.cobblestone, false); // Base
         this.fillWithBlocks(world, sbb, 0, 5, 0, 6, 5, 6, Blocks.fence, Blocks.fence, false);
@@ -172,15 +174,9 @@ public class ComponentToolWorkshop extends StructureVillagePieces.House1 {
         return true;
     }
 
-    protected boolean generateStructureCraftingStationContents(
-            World world,
-            StructureBoundingBox par2StructureBoundingBox,
-            Random random,
-            int x,
-            int y,
-            int z,
-            WeightedRandomChestContent[] content,
-            int par8) {
+    protected boolean generateStructureCraftingStationContents(World world,
+            StructureBoundingBox par2StructureBoundingBox, Random random, int x, int y, int z,
+            WeightedRandomChestContent[] content, int par8) {
         int posX = this.getXWithOffset(x, z);
         int posY = this.getYWithOffset(y);
         int posZ = this.getZWithOffset(x, z);
@@ -200,15 +196,8 @@ public class ComponentToolWorkshop extends StructureVillagePieces.House1 {
         }
     }
 
-    protected boolean generateStructurePatternChestContents(
-            World world,
-            StructureBoundingBox par2StructureBoundingBox,
-            Random random,
-            int x,
-            int y,
-            int z,
-            WeightedRandomChestContent[] content,
-            int par8) {
+    protected boolean generateStructurePatternChestContents(World world, StructureBoundingBox par2StructureBoundingBox,
+            Random random, int x, int y, int z, WeightedRandomChestContent[] content, int par8) {
         int posX = this.getXWithOffset(x, z);
         int posY = this.getYWithOffset(y);
         int posZ = this.getZWithOffset(x, z);
@@ -229,8 +218,7 @@ public class ComponentToolWorkshop extends StructureVillagePieces.House1 {
     }
 
     /**
-     * Returns the villager type to spawn in this component, based on the number
-     * of villagers already spawned.
+     * Returns the villager type to spawn in this component, based on the number of villagers already spawned.
      */
     @Override
     protected int getVillagerType(int par1) {

@@ -1,16 +1,13 @@
 package tconstruct.armor;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import java.util.Random;
+
 import mantle.lib.client.MantleClientRegistry;
+
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
 import net.minecraft.client.gui.inventory.GuiInventory;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.Tessellator;
-import net.minecraft.client.settings.GameSettings;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.IAttributeInstance;
@@ -30,6 +27,7 @@ import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import net.minecraftforge.client.event.RenderGameOverlayEvent.ElementType;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 import net.minecraftforge.common.MinecraftForge;
+
 import tconstruct.armor.gui.ArmorExtendedGui;
 import tconstruct.armor.gui.KnapsackGui;
 import tconstruct.armor.items.TravelGear;
@@ -50,8 +48,12 @@ import tconstruct.library.accessory.IAccessoryModel;
 import tconstruct.library.client.TConstructClientRegistry;
 import tconstruct.library.crafting.ModifyBuilder;
 import tconstruct.world.TinkerWorld;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class ArmorProxyClient extends ArmorProxyCommon {
+
     public static WingModel wings = new WingModel();
     public static BootBump bootbump = new BootBump();
     public static HiddenPlayerModel glove = new HiddenPlayerModel(0.25F, 4);
@@ -62,6 +64,9 @@ public class ArmorProxyClient extends ArmorProxyCommon {
 
     public static KnapsackInventory knapsack = new KnapsackInventory();
     public static ArmorExtended armorExtended = new ArmorExtended();
+    private final boolean isRpghudLoaded = Loader.isModLoaded("rpghud");
+    private final boolean isTukmc_vzLoaded = Loader.isModLoaded("tukmc_Vz");
+    private final boolean isBorderlandsModLoaded = Loader.isModLoaded("borderlands");
 
     @Override
     public void preInit() {
@@ -127,16 +132,8 @@ public class ArmorProxyClient extends ArmorProxyCommon {
                 new ItemStack(Blocks.piston),
                 null);
 
-        ItemStack[] recipe = new ItemStack[] {
-            new ItemStack(TinkerWorld.slimeGel, 1, 0),
-            new ItemStack(Items.ender_pearl),
-            feather,
-            feather,
-            feather,
-            feather,
-            feather,
-            feather
-        };
+        ItemStack[] recipe = new ItemStack[] { new ItemStack(TinkerWorld.slimeGel, 1, 0),
+                new ItemStack(Items.ender_pearl), feather, feather, feather, feather, feather, feather };
         ItemStack modWings = ModifyBuilder.instance.modifyItem(wings, recipe);
         MantleClientRegistry.registerManualLargeRecipe(
                 "featherfall",
@@ -160,7 +157,10 @@ public class ArmorProxyClient extends ArmorProxyCommon {
                 new ItemStack(Blocks.piston),
                 null);
         TConstructClientRegistry.registerManualModifier(
-                "waterwalk", boots.copy(), new ItemStack(Blocks.waterlily), new ItemStack(Blocks.waterlily));
+                "waterwalk",
+                boots.copy(),
+                new ItemStack(Blocks.waterlily),
+                new ItemStack(Blocks.waterlily));
         TConstructClientRegistry.registerManualModifier("leadboots", boots.copy(), new ItemStack(Blocks.iron_block));
         TConstructClientRegistry.registerManualModifier(
                 "slimysoles",
@@ -169,8 +169,8 @@ public class ArmorProxyClient extends ArmorProxyCommon {
                 new ItemStack(TinkerWorld.slimePad, 1, 0));
 
         ItemStack gloves = TinkerArmor.travelGlove.getDefaultItem();
-        TConstructClientRegistry.registerManualModifier(
-                "glovehaste", gloves.copy(), redstone, new ItemStack(Blocks.redstone_block));
+        TConstructClientRegistry
+                .registerManualModifier("glovehaste", gloves.copy(), redstone, new ItemStack(Blocks.redstone_block));
         // MantleClientRegistry.registerManualSmallRecipe("gloveclimb", gloves.copy(), new ItemStack(Items.slime_ball),
         // new ItemStack(Blocks.web), new ItemStack(TinkerTools.materials, 1, 25), null);
         TConstructClientRegistry.registerManualModifier(
@@ -180,11 +180,11 @@ public class ArmorProxyClient extends ArmorProxyCommon {
                 new ItemStack(Blocks.quartz_block, 1, Short.MAX_VALUE));
 
         // moss
-        //		ItemStack moss = new ItemStack(TinkerTools.materials, 1, 6);
-        //		TConstructClientRegistry.registerManualModifier("mossgoggles", goggles.copy(), moss.copy());
-        //		TConstructClientRegistry.registerManualModifier("mossvest", vest.copy(), moss.copy());
-        //		TConstructClientRegistry.registerManualModifier("mosswings", wings.copy(), moss.copy());
-        //		TConstructClientRegistry.registerManualModifier("mossboots", boots.copy(), moss.copy());
+        // ItemStack moss = new ItemStack(TinkerTools.materials, 1, 6);
+        // TConstructClientRegistry.registerManualModifier("mossgoggles", goggles.copy(), moss.copy());
+        // TConstructClientRegistry.registerManualModifier("mossvest", vest.copy(), moss.copy());
+        // TConstructClientRegistry.registerManualModifier("mosswings", wings.copy(), moss.copy());
+        // TConstructClientRegistry.registerManualModifier("mossboots", boots.copy(), moss.copy());
     }
 
     @Override
@@ -238,8 +238,6 @@ public class ArmorProxyClient extends ArmorProxyCommon {
     Random rand = new Random();
     int updateCounter = 0;
 
-    GameSettings gs = Minecraft.getMinecraft().gameSettings;
-
     @SubscribeEvent
     public void goggleZoom(FOVUpdateEvent event) {
         if (ArmorControls.zoom) {
@@ -255,123 +253,123 @@ public class ArmorProxyClient extends ArmorProxyCommon {
     /* HUD */
     @SubscribeEvent
     public void renderHealthbar(RenderGameOverlayEvent.Pre event) {
-        if (Loader.isModLoaded("rpghud")) // uses different display, displays health correctly by itself.
-        return;
 
-        if (!Loader.isModLoaded("tukmc_Vz") || Loader.isModLoaded("borderlands")) // Loader check to avoid conflicting
-        // with a GUI mod (thanks Vazkii!)
-        {
-            if (event.type == ElementType.HEALTH) {
-                updateCounter++;
+        if (event.type != ElementType.HEALTH) {
+            return;
+        }
 
-                ScaledResolution scaledresolution =
-                        new ScaledResolution(this.mc, this.mc.displayWidth, this.mc.displayHeight);
-                int scaledWidth = scaledresolution.getScaledWidth();
-                int scaledHeight = scaledresolution.getScaledHeight();
-                int xBasePos = scaledWidth / 2 - 91;
-                int yBasePos = scaledHeight - 39;
+        // uses different display, displays health correctly by itself.
+        if (isRpghudLoaded) {
+            return;
+        }
 
-                boolean highlight = mc.thePlayer.hurtResistantTime / 3 % 2 == 1;
+        if (isTukmc_vzLoaded && !isBorderlandsModLoaded) {
+            // Loader check to avoid conflicting
+            // with a GUI mod (thanks Vazkii!)
+            return;
+        }
 
-                if (mc.thePlayer.hurtResistantTime < 10) {
-                    highlight = false;
-                }
+        updateCounter++;
 
-                IAttributeInstance attrMaxHealth =
-                        this.mc.thePlayer.getEntityAttribute(SharedMonsterAttributes.maxHealth);
-                int health = MathHelper.ceiling_float_int(mc.thePlayer.getHealth());
-                int healthLast = MathHelper.ceiling_float_int(mc.thePlayer.prevHealth);
-                float healthMax = (float) attrMaxHealth.getAttributeValue();
-                if (healthMax > 20) healthMax = 20;
-                float absorb = this.mc.thePlayer.getAbsorptionAmount();
+        int scaledWidth = event.resolution.getScaledWidth();
+        int scaledHeight = event.resolution.getScaledHeight();
+        int xBasePos = scaledWidth / 2 - 91;
+        int yBasePos = scaledHeight - 39;
 
-                int healthRows = MathHelper.ceiling_float_int((healthMax + absorb) / 2.0F / 10.0F);
-                int rowHeight = Math.max(10 - (healthRows - 2), 3);
+        boolean highlight = mc.thePlayer.hurtResistantTime / 3 % 2 == 1;
 
-                this.rand.setSeed((long) (updateCounter * 312871));
+        if (mc.thePlayer.hurtResistantTime < 10) {
+            highlight = false;
+        }
 
-                int left = scaledWidth / 2 - 91;
-                int top = scaledHeight - GuiIngameForge.left_height;
+        IAttributeInstance attrMaxHealth = this.mc.thePlayer.getEntityAttribute(SharedMonsterAttributes.maxHealth);
+        int health = MathHelper.ceiling_float_int(mc.thePlayer.getHealth());
+        int healthLast = MathHelper.ceiling_float_int(mc.thePlayer.prevHealth);
+        float healthMax = (float) attrMaxHealth.getAttributeValue();
+        if (healthMax > 20) healthMax = 20;
+        float absorb = this.mc.thePlayer.getAbsorptionAmount();
 
-                if (!GuiIngameForge.renderExperiance) {
-                    top += 7;
-                    yBasePos += 7;
-                }
+        int healthRows = MathHelper.ceiling_float_int((healthMax + absorb) / 2.0F / 10.0F);
+        int rowHeight = Math.max(10 - (healthRows - 2), 3);
 
-                int regen = -1;
-                if (mc.thePlayer.isPotionActive(Potion.regeneration)) {
-                    regen = updateCounter % 25;
-                }
+        this.rand.setSeed(updateCounter * 312871L);
 
-                final int TOP = 9 * (mc.theWorld.getWorldInfo().isHardcoreModeEnabled() ? 5 : 0);
-                final int BACKGROUND = (highlight ? 25 : 16);
-                int MARGIN = 16;
-                if (mc.thePlayer.isPotionActive(Potion.poison)) MARGIN += 36;
-                else if (mc.thePlayer.isPotionActive(Potion.wither)) MARGIN += 72;
-                float absorbRemaining = absorb;
+        int left = scaledWidth / 2 - 91;
+        int top = scaledHeight - GuiIngameForge.left_height;
 
-                for (int i = MathHelper.ceiling_float_int((healthMax + absorb) / 2.0F) - 1; i >= 0; --i) {
-                    int b0 = (highlight ? 1 : 0);
-                    int row = MathHelper.ceiling_float_int((float) (i + 1) / 10.0F) - 1;
-                    int x = left + i % 10 * 8;
-                    int y = top - row * rowHeight;
+        if (!GuiIngameForge.renderExperiance) {
+            top += 7;
+            yBasePos += 7;
+        }
 
-                    if (health <= 4) y += rand.nextInt(2);
-                    if (i == regen) y -= 2;
+        int regen = -1;
+        if (mc.thePlayer.isPotionActive(Potion.regeneration)) {
+            regen = updateCounter % 25;
+        }
 
-                    drawTexturedModalRect(x, y, BACKGROUND, TOP, 9, 9);
+        final int TOP = 9 * (mc.theWorld.getWorldInfo().isHardcoreModeEnabled() ? 5 : 0);
+        final int BACKGROUND = (highlight ? 25 : 16);
+        int MARGIN = 16;
+        if (mc.thePlayer.isPotionActive(Potion.poison)) MARGIN += 36;
+        else if (mc.thePlayer.isPotionActive(Potion.wither)) MARGIN += 72;
+        float absorbRemaining = absorb;
 
-                    if (highlight) {
-                        if (i * 2 + 1 < healthLast) drawTexturedModalRect(x, y, MARGIN + 54, TOP, 9, 9); // 6
-                        else if (i * 2 + 1 == healthLast) drawTexturedModalRect(x, y, MARGIN + 63, TOP, 9, 9); // 7
-                    }
+        for (int i = MathHelper.ceiling_float_int((healthMax + absorb) / 2.0F) - 1; i >= 0; --i) {
+            int b0 = (highlight ? 1 : 0);
+            int row = MathHelper.ceiling_float_int((float) (i + 1) / 10.0F) - 1;
+            int x = left + i % 10 * 8;
+            int y = top - row * rowHeight;
 
-                    if (absorbRemaining > 0.0F) {
-                        if (absorbRemaining == absorb && absorb % 2.0F == 1.0F)
-                            drawTexturedModalRect(x, y, MARGIN + 153, TOP, 9, 9); // 17
-                        else drawTexturedModalRect(x, y, MARGIN + 144, TOP, 9, 9); // 16
-                        absorbRemaining -= 2.0F;
-                    } else {
-                        if (i * 2 + 1 < health) drawTexturedModalRect(x, y, MARGIN + 36, TOP, 9, 9); // 4
-                        else if (i * 2 + 1 == health) drawTexturedModalRect(x, y, MARGIN + 45, TOP, 9, 9); // 5
-                    }
-                }
+            if (health <= 4) y += rand.nextInt(2);
+            if (i == regen) y -= 2;
 
-                int potionOffset = 0;
-                PotionEffect potion = mc.thePlayer.getActivePotionEffect(Potion.wither);
-                if (potion != null) potionOffset = 18;
-                potion = mc.thePlayer.getActivePotionEffect(Potion.poison);
-                if (potion != null) potionOffset = 9;
-                if (mc.theWorld.getWorldInfo().isHardcoreModeEnabled()) potionOffset += 27;
+            drawTexturedModalRect(x, y, BACKGROUND, TOP, 9, 9);
 
-                // Extra hearts
-                this.mc.getTextureManager().bindTexture(hearts);
+            if (highlight) {
+                if (i * 2 + 1 < healthLast) drawTexturedModalRect(x, y, MARGIN + 54, TOP, 9, 9); // 6
+                else if (i * 2 + 1 == healthLast) drawTexturedModalRect(x, y, MARGIN + 63, TOP, 9, 9); // 7
+            }
 
-                int hp = MathHelper.ceiling_float_int(this.mc.thePlayer.getHealth());
-                for (int iter = 0; iter < hp / 20; iter++) {
-                    int renderHearts = (hp - 20 * (iter + 1)) / 2;
-                    if (renderHearts > 10) renderHearts = 10;
-                    for (int i = 0; i < renderHearts; i++) {
-                        int y = 0;
-                        if (i == regen) y -= 2;
-                        this.drawTexturedModalRect(xBasePos + 8 * i, yBasePos + y, 0 + 18 * iter, potionOffset, 9, 9);
-                    }
-                    if (hp % 2 == 1 && renderHearts < 10) {
-                        this.drawTexturedModalRect(
-                                xBasePos + 8 * renderHearts, yBasePos, 9 + 18 * iter, potionOffset, 9, 9);
-                    }
-                }
-
-                this.mc.getTextureManager().bindTexture(icons);
-                GuiIngameForge.left_height += 10;
-                if (absorb > 0) GuiIngameForge.left_height += 10;
-
-                event.setCanceled(true);
-                if (event.type == ElementType.CROSSHAIRS && gs.thirdPersonView != 0) {
-                    event.setCanceled(true);
-                }
+            if (absorbRemaining > 0.0F) {
+                if (absorbRemaining == absorb && absorb % 2.0F == 1.0F)
+                    drawTexturedModalRect(x, y, MARGIN + 153, TOP, 9, 9); // 17
+                else drawTexturedModalRect(x, y, MARGIN + 144, TOP, 9, 9); // 16
+                absorbRemaining -= 2.0F;
+            } else {
+                if (i * 2 + 1 < health) drawTexturedModalRect(x, y, MARGIN + 36, TOP, 9, 9); // 4
+                else if (i * 2 + 1 == health) drawTexturedModalRect(x, y, MARGIN + 45, TOP, 9, 9); // 5
             }
         }
+
+        int potionOffset = 0;
+        PotionEffect potion = mc.thePlayer.getActivePotionEffect(Potion.wither);
+        if (potion != null) potionOffset = 18;
+        potion = mc.thePlayer.getActivePotionEffect(Potion.poison);
+        if (potion != null) potionOffset = 9;
+        if (mc.theWorld.getWorldInfo().isHardcoreModeEnabled()) potionOffset += 27;
+
+        // Extra hearts
+        this.mc.getTextureManager().bindTexture(hearts);
+
+        int hp = MathHelper.ceiling_float_int(this.mc.thePlayer.getHealth());
+        for (int iter = 0; iter < hp / 20; iter++) {
+            int renderHearts = (hp - 20 * (iter + 1)) / 2;
+            if (renderHearts > 10) renderHearts = 10;
+            for (int i = 0; i < renderHearts; i++) {
+                int y = 0;
+                if (i == regen) y -= 2;
+                this.drawTexturedModalRect(xBasePos + 8 * i, yBasePos + y, 0 + 18 * iter, potionOffset, 9, 9);
+            }
+            if (hp % 2 == 1 && renderHearts < 10) {
+                this.drawTexturedModalRect(xBasePos + 8 * renderHearts, yBasePos, 9 + 18 * iter, potionOffset, 9, 9);
+            }
+        }
+
+        this.mc.getTextureManager().bindTexture(icons);
+        GuiIngameForge.left_height += 10;
+        if (absorb > 0) GuiIngameForge.left_height += 10;
+
+        event.setCanceled(true);
     }
 
     public void drawTexturedModalRect(int par1, int par2, int par3, int par4, int par5, int par6) {
@@ -467,7 +465,9 @@ public class ArmorProxyClient extends ArmorProxyCommon {
         if (player.isRiding() && player.ridingEntity instanceof EntityLivingBase) {
             EntityLivingBase entitylivingbase1 = (EntityLivingBase) player.ridingEntity;
             yawOffset = this.interpolateRotation(
-                    entitylivingbase1.prevRenderYawOffset, entitylivingbase1.renderYawOffset, partialTick);
+                    entitylivingbase1.prevRenderYawOffset,
+                    entitylivingbase1.renderYawOffset,
+                    partialTick);
             pitch = MathHelper.wrapAngleTo180_float(yawRotation - yawOffset);
 
             if (pitch < -85.0F) {
@@ -487,8 +487,8 @@ public class ArmorProxyClient extends ArmorProxyCommon {
 
         pitch = this.handleRotationFloat(player, partialTick);
         float bodyRotation = player.prevRotationPitch + (player.rotationPitch - player.prevRotationPitch) * partialTick;
-        float limbSwing =
-                player.prevLimbSwingAmount + (player.limbSwingAmount - player.prevLimbSwingAmount) * partialTick;
+        float limbSwing = player.prevLimbSwingAmount
+                + (player.limbSwingAmount - player.prevLimbSwingAmount) * partialTick;
         float limbSwingMod = player.limbSwing - player.limbSwingAmount * (1.0F - partialTick);
         // TPlayerStats stats = TPlayerStats.get(player);
         ArmorExtended armor = ArmorProxyClient.armorExtended; // TODO: Do this for every player, not just the client
@@ -497,8 +497,7 @@ public class ArmorProxyClient extends ArmorProxyCommon {
             ModelBiped model = item.getArmorModel(player, armor.inventory[1], 4);
 
             if (item instanceof IAccessoryModel) {
-                this.mc
-                        .getTextureManager()
+                this.mc.getTextureManager()
                         .bindTexture(((IAccessoryModel) item).getWearbleTexture(player, armor.inventory[1], 1));
                 model.setLivingAnimations(player, limbSwingMod, limbSwing, partialTick);
                 model.render(
@@ -517,8 +516,7 @@ public class ArmorProxyClient extends ArmorProxyCommon {
             ModelBiped model = item.getArmorModel(player, armor.inventory[3], 5);
 
             if (item instanceof IAccessoryModel) {
-                this.mc
-                        .getTextureManager()
+                this.mc.getTextureManager()
                         .bindTexture(((IAccessoryModel) item).getWearbleTexture(player, armor.inventory[1], 1));
                 model.setLivingAnimations(player, limbSwingMod, limbSwing, partialTick);
                 model.render(

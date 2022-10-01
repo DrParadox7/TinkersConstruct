@@ -1,14 +1,17 @@
 package tconstruct.world.gen;
 
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.gen.feature.WorldGenerator;
+
 import tconstruct.util.config.PHConstruct;
 
 public class SurfaceOreGen extends WorldGenerator {
+
     /** The block of the ore to be placed using this generator. */
     private Block minableBlock;
 
@@ -88,10 +91,10 @@ public class SurfaceOreGen extends WorldGenerator {
             double d7 = d4 + (d5 - d4) * (double) l / (double) blockNumber;
             double d8 = d2 + (d3 - d2) * (double) l / (double) blockNumber;
             double d9 = random.nextDouble() * (double) blockNumber / 16.0D;
-            double d10 =
-                    (double) (MathHelper.sin((float) l * (float) Math.PI / (float) blockNumber) + 1.0F) * d9 + 1.0D;
-            double d11 =
-                    (double) (MathHelper.sin((float) l * (float) Math.PI / (float) blockNumber) + 1.0F) * d9 + 1.0D;
+            double d10 = (double) (MathHelper.sin((float) l * (float) Math.PI / (float) blockNumber) + 1.0F) * d9
+                    + 1.0D;
+            double d11 = (double) (MathHelper.sin((float) l * (float) Math.PI / (float) blockNumber) + 1.0F) * d9
+                    + 1.0D;
             int i1 = MathHelper.floor_double(d6 - d10 / 2.0D);
             int j1 = MathHelper.floor_double(d7 - d11 / 2.0D);
             int k1 = MathHelper.floor_double(d8 - d10 / 2.0D);
@@ -112,8 +115,7 @@ public class SurfaceOreGen extends WorldGenerator {
 
                                 Block block = world.getBlock(k2, l2, i3);
                                 if (d12 * d12 + d13 * d13 + d14 * d14 < 1.0D) {
-                                    if (block == null
-                                            || !world.getBlock(k2, l2, i3).isOpaqueCube())
+                                    if (block == null || !world.getBlock(k2, l2, i3).isOpaqueCube())
                                         world.setBlock(k2, l2, i3, this.minableBlock, minableBlockMeta, 2);
                                     else {
                                         for (int iter = 0; iter < replaceBlocks.length; iter++) {

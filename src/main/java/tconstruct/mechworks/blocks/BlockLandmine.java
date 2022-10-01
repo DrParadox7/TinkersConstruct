@@ -2,13 +2,13 @@ package tconstruct.mechworks.blocks;
 
 import static net.minecraftforge.common.util.ForgeDirection.*;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
+
 import mantle.blocks.BlockUtils;
 import mantle.world.WorldHelper;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockPressurePlate.Sensitivity;
@@ -32,12 +32,15 @@ import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+
 import tconstruct.TConstruct;
 import tconstruct.mechworks.MechworksProxyCommon;
 import tconstruct.mechworks.landmine.Helper;
 import tconstruct.mechworks.logic.LandmineExplodeLogic;
 import tconstruct.mechworks.logic.TileEntityLandmine;
 import tconstruct.world.model.RenderLandmine;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  *
@@ -118,16 +121,8 @@ public class BlockLandmine extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(
-            World par1World,
-            int par2,
-            int par3,
-            int par4,
-            EntityPlayer par5EntityPlayer,
-            int par6,
-            float par7,
-            float par8,
-            float par9) {
+    public boolean onBlockActivated(World par1World, int par2, int par3, int par4, EntityPlayer par5EntityPlayer,
+            int par6, float par7, float par8, float par9) {
         par5EntityPlayer.openGui(TConstruct.instance, MechworksProxyCommon.landmineID, par1World, par2, par3, par4);
         return true;
     }
@@ -138,8 +133,7 @@ public class BlockLandmine extends BlockContainer {
 
         int metadata = par1World.getBlockMetadata(par2, par3, par4);
 
-        if (tileentity != null
-                && (!explodeOnBroken || !hasItems(par1World, par2, par3, par4))
+        if (tileentity != null && (!explodeOnBroken || !hasItems(par1World, par2, par3, par4))
                 && par6 != 193
                 && !tileentity.isExploding) {
             if (this != null) {
@@ -148,7 +142,11 @@ public class BlockLandmine extends BlockContainer {
                     is.setStackDisplayName(tileentity.getInventoryName());
                 }
                 dropBlockAsItem(
-                        par1World, par2, par3, par4, new ItemStack(this, 1, damageDropped(tileentity.triggerType)));
+                        par1World,
+                        par2,
+                        par3,
+                        par4,
+                        new ItemStack(this, 1, damageDropped(tileentity.triggerType)));
             }
 
             for (int j1 = 0; j1 < tileentity.getSizeInventory(); ++j1) {
@@ -167,8 +165,8 @@ public class BlockLandmine extends BlockContainer {
                                 new ItemStack(itemstack.getItem(), ss, itemstack.getItemDamage()));
 
                         if (itemstack.hasTagCompound()) {
-                            entityitem.getEntityItem().setTagCompound((NBTTagCompound)
-                                    itemstack.getTagCompound().copy());
+                            entityitem.getEntityItem()
+                                    .setTagCompound((NBTTagCompound) itemstack.getTagCompound().copy());
                         }
 
                         float f3 = 0.05F;
@@ -214,8 +212,7 @@ public class BlockLandmine extends BlockContainer {
 
     @Override
     public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
-        return par1World.isSideSolid(par2 - 1, par3, par4, EAST)
-                || par1World.isSideSolid(par2 + 1, par3, par4, WEST)
+        return par1World.isSideSolid(par2 - 1, par3, par4, EAST) || par1World.isSideSolid(par2 + 1, par3, par4, WEST)
                 || par1World.isSideSolid(par2, par3, par4 - 1, SOUTH)
                 || par1World.isSideSolid(par2, par3, par4 + 1, NORTH)
                 || par1World.isSideSolid(par2, par3 - 1, par4, UP)
@@ -223,8 +220,8 @@ public class BlockLandmine extends BlockContainer {
     }
 
     @Override
-    public int onBlockPlaced(
-            World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9) {
+    public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7,
+            float par8, int par9) {
         int j1 = par9 & 8;
         int k1 = par9 & 7;
         byte b0 = -1;
@@ -257,12 +254,7 @@ public class BlockLandmine extends BlockContainer {
     }
 
     @Override
-    public void onBlockPlacedBy(
-            World par1World,
-            int par2,
-            int par3,
-            int par4,
-            EntityLivingBase par5EntityLivingBase,
+    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase,
             ItemStack par6ItemStack) {
         int l = par1World.getBlockMetadata(par2, par3, par4);
         int i1 = l & 7;
@@ -411,8 +403,7 @@ public class BlockLandmine extends BlockContainer {
 
     private boolean hasItems(World par1World, int par2, int par3, int par4) {
         TileEntityLandmine te = (TileEntityLandmine) par1World.getTileEntity(par2, par3, par4);
-        if (te != null && te.getStackInSlot(0) != null
-                || te.getStackInSlot(1) != null
+        if (te != null && te.getStackInSlot(0) != null || te.getStackInSlot(1) != null
                 || te.getStackInSlot(2) != null) {
             return true;
         } else {
@@ -451,17 +442,18 @@ public class BlockLandmine extends BlockContainer {
 
             if (triggerType == Sensitivity.everything) {
                 list = par1World.getEntitiesWithinAABBExcludingEntity(
-                        (Entity) null, getSensitiveAABB(par1World, par2, par3, par4));
+                        (Entity) null,
+                        getSensitiveAABB(par1World, par2, par3, par4));
             }
 
             if (triggerType == Sensitivity.mobs) {
-                list = par1World.getEntitiesWithinAABB(
-                        EntityLivingBase.class, getSensitiveAABB(par1World, par2, par3, par4));
+                list = par1World
+                        .getEntitiesWithinAABB(EntityLivingBase.class, getSensitiveAABB(par1World, par2, par3, par4));
             }
 
             if (triggerType == Sensitivity.players) {
-                list = par1World.getEntitiesWithinAABB(
-                        EntityPlayer.class, this.getSensitiveAABB(par1World, par2, par3, par4));
+                list = par1World
+                        .getEntitiesWithinAABB(EntityPlayer.class, this.getSensitiveAABB(par1World, par2, par3, par4));
             }
 
             if (list != null && !list.isEmpty()) {
@@ -490,11 +482,7 @@ public class BlockLandmine extends BlockContainer {
         int i1 = l & 7;
         boolean flag = (l & 8) > 0;
 
-        float minX = par2 + f,
-                minY = par3,
-                minZ = par4 + f,
-                maxX = par2 + 1 - f,
-                maxY = par3 + 0.25F,
+        float minX = par2 + f, minY = par3, minZ = par4 + f, maxX = par2 + 1 - f, maxY = par3 + 0.25F,
                 maxZ = par4 + 1 - f;
 
         ForgeDirection dir = Helper.convertMetaToForgeOrientation(i1);

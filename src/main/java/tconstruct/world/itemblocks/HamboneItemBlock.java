@@ -1,9 +1,7 @@
 package tconstruct.world.itemblocks;
 
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.EnumAction;
@@ -13,7 +11,12 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class HamboneItemBlock extends ItemBlock {
+
     public HamboneItemBlock(Block b) {
         super(b);
         itemUseDuration = 32;
@@ -46,14 +49,12 @@ public class HamboneItemBlock extends ItemBlock {
     private final boolean isWolfsFavoriteMeat;
 
     /**
-     * If this field is true, the food can be consumed even if the player don't
-     * need to eat.
+     * If this field is true, the food can be consumed even if the player don't need to eat.
      */
     private boolean alwaysEdible;
 
     /**
-     * represents the potion effect that will occurr upon eating this food. Set
-     * by setPotionEffect
+     * represents the potion effect that will occurr upon eating this food. Set by setPotionEffect
      */
     private int potionId;
 
@@ -67,12 +68,9 @@ public class HamboneItemBlock extends ItemBlock {
     private float potionEffectProbability;
 
     /*
-     * public ItemFood(int par1, int par2, float par3, boolean par4) {
-     * super(par1); this.itemUseDuration = 32; this.healAmount = par2;
-     * this.isWolfsFavoriteMeat = par4; this.saturationModifier = par3;
-     * this.setCreativeTab(CreativeTabs.tabFood); }
-     *
-     * public ItemFood(int par1, int par2, boolean par3) { this(par1, par2,
+     * public ItemFood(int par1, int par2, float par3, boolean par4) { super(par1); this.itemUseDuration = 32;
+     * this.healAmount = par2; this.isWolfsFavoriteMeat = par4; this.saturationModifier = par3;
+     * this.setCreativeTab(CreativeTabs.tabFood); } public ItemFood(int par1, int par2, boolean par3) { this(par1, par2,
      * 0.6F, par3); }
      */
 
@@ -87,8 +85,8 @@ public class HamboneItemBlock extends ItemBlock {
 
     protected void onFoodEaten(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {
         if (!par2World.isRemote && this.potionId > 0 && par2World.rand.nextFloat() < this.potionEffectProbability) {
-            par3EntityPlayer.addPotionEffect(
-                    new PotionEffect(this.potionId, this.potionDuration * 20, this.potionAmplifier));
+            par3EntityPlayer
+                    .addPotionEffect(new PotionEffect(this.potionId, this.potionDuration * 20, this.potionAmplifier));
         }
     }
 
@@ -101,8 +99,7 @@ public class HamboneItemBlock extends ItemBlock {
     }
 
     /**
-     * returns the action that specifies what animation to play when the items
-     * is being used
+     * returns the action that specifies what animation to play when the items is being used
      */
     @Override
     public EnumAction getItemUseAction(ItemStack par1ItemStack) {
@@ -110,8 +107,7 @@ public class HamboneItemBlock extends ItemBlock {
     }
 
     /**
-     * Called whenever this item is equipped and the right mouse button is
-     * pressed. Args: itemStack, world, entityPlayer
+     * Called whenever this item is equipped and the right mouse button is pressed. Args: itemStack, world, entityPlayer
      */
     @Override
     public ItemStack onItemRightClick(ItemStack par1ItemStack, World par2World, EntityPlayer par3EntityPlayer) {

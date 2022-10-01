@@ -16,13 +16,7 @@ import net.minecraft.world.World;
 public class BehaviorSpawnEgg extends Behavior {
 
     @Override
-    public void executeLogic(
-            World par1World,
-            int par2,
-            int par3,
-            int par4,
-            ItemStack par5ItemStack,
-            Entity triggerer,
+    public void executeLogic(World par1World, int par2, int par3, int par4, ItemStack par5ItemStack, Entity triggerer,
             boolean willBlockBeRemoved) {
         EnumFacing enumfacing = getFacing(par1World, par2, par3, par4);
         double d0 = par2 + Math.random() + (double) enumfacing.getFrontOffsetX();

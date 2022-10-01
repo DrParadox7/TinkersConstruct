@@ -2,8 +2,10 @@ package tconstruct.modifiers.tools;
 
 import java.util.HashSet;
 import java.util.Set;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.library.modifier.ItemModifier;
@@ -13,6 +15,7 @@ import tconstruct.library.weaponry.IAmmo;
 import tconstruct.weaponry.weapons.Shuriken;
 
 public class ModAmmoRestock extends ItemModifier {
+
     public ModAmmoRestock() {
         super(new ItemStack[0], 0, "");
     }

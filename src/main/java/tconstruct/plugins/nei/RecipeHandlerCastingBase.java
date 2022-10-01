@@ -1,19 +1,23 @@
 package tconstruct.plugins.nei;
 
-import codechicken.nei.NEIServerUtils;
-import codechicken.nei.PositionedStack;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
+
 import tconstruct.library.crafting.CastingRecipe;
+import codechicken.nei.NEIServerUtils;
+import codechicken.nei.PositionedStack;
 
 public abstract class RecipeHandlerCastingBase extends RecipeHandlerBase {
+
     public static final Rectangle MOLTEN_FLOW = new Rectangle(60, 8, 6, 11);
     public static final Rectangle MOLTEN_FLOW_NO_ITEM = new Rectangle(60, 8, 6, 27);
 
     public class CachedCastingRecipe extends CachedBaseRecipe {
+
         private List<PositionedStack> resources;
         private FluidTankElement metal;
         private PositionedStack output = null;
@@ -60,8 +64,8 @@ public abstract class RecipeHandlerCastingBase extends RecipeHandlerBase {
 
     @Override
     public void loadTransferRects() {
-        this.transferRects.add(
-                new RecipeTransferRect(new Rectangle(76, 18, 22, 15), this.getRecipeID(), new Object[0]));
+        this.transferRects
+                .add(new RecipeTransferRect(new Rectangle(76, 18, 22, 15), this.getRecipeID(), new Object[0]));
     }
 
     public abstract List<CastingRecipe> getCastingRecipes();

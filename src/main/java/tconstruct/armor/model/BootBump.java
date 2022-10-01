@@ -4,6 +4,7 @@ import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.model.ModelRenderer;
 
 public class BootBump extends ModelBiped {
+
     ModelRenderer rightBump;
     ModelRenderer leftBump;
 

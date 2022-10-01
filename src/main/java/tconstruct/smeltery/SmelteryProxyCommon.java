@@ -1,13 +1,16 @@
 package tconstruct.smeltery;
 
-import cpw.mods.fml.common.network.IGuiHandler;
 import mantle.blocks.abstracts.InventoryLogic;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
 import tconstruct.common.TProxyCommon;
+import cpw.mods.fml.common.network.IGuiHandler;
 
 public class SmelteryProxyCommon implements IGuiHandler {
+
     public static final int smelteryGuiID = 7;
 
     public void initialize() {

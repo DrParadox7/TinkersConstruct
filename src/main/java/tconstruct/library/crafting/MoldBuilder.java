@@ -1,23 +1,27 @@
 package tconstruct.library.crafting;
 
 import java.util.*;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class MoldBuilder {
+
     public static MoldBuilder instance = new MoldBuilder();
 
-    public List<ItemStack> blankMolds =
-            new LinkedList<ItemStack>(); // i wish ItemStack would support equals so i could use a Set here...
+    public List<ItemStack> blankMolds = new LinkedList<ItemStack>(); // i wish ItemStack would support equals so i could
+                                                                     // use a Set here...
     public Map<Integer, ItemStack> molds = new TreeMap<Integer, ItemStack>();
 
     /**
      * Returns whether the given ItemStack is a blank mold and therefore usable for mold crafting.
      */
     public static boolean isBlank(ItemStack stack) {
-        for (ItemStack blank : instance.blankMolds)
-            if (OreDictionary.itemMatches(stack, blank, false)) // this has nothing to do with the oredictionary.
+        for (ItemStack blank : instance.blankMolds) if (OreDictionary.itemMatches(stack, blank, false)) // this has
+                                                                                                        // nothing to do
+                                                                                                        // with the
+                                                                                                        // oredictionary.
             return true;
 
         return false;
@@ -32,9 +36,8 @@ public class MoldBuilder {
     }
 
     public static void registerMold(int id, ItemStack mold) {
-        if (instance.molds.containsKey(id))
-            throw new IllegalArgumentException("[TCon API] Mold ID " + id + " is already occupied by "
-                    + instance.molds.get(id).getDisplayName());
+        if (instance.molds.containsKey(id)) throw new IllegalArgumentException(
+                "[TCon API] Mold ID " + id + " is already occupied by " + instance.molds.get(id).getDisplayName());
 
         instance.molds.put(id, mold);
     }

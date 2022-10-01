@@ -3,6 +3,7 @@ package tconstruct.armor.inventory;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
 import tconstruct.mechworks.landmine.behavior.Behavior;
 
 public class SlotBehavedOnly extends Slot {
@@ -21,8 +22,7 @@ public class SlotBehavedOnly extends Slot {
 
         int stackL = b.getStackLimit(par1ItemStack);
 
-        if (b != null
-                && this.inventory.getStackInSlot(this.slotNumber) != null
+        if (b != null && this.inventory.getStackInSlot(this.slotNumber) != null
                 && !this.inventory.getStackInSlot(this.slotNumber).isItemEqual(par1ItemStack)) {
             ItemStack is = this.inventory.getStackInSlot(this.slotNumber);
             if (is.stackSize + par1ItemStack.stackSize <= stackL) {

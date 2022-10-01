@@ -1,21 +1,25 @@
 package tconstruct.tools.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import mantle.items.abstracts.CraftingItem;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
+
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder.MaterialSet;
 import tconstruct.library.util.IPattern;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class Pattern extends CraftingItem implements IPattern {
+
     public Pattern(String patternType, String folder) {
         this(patternName, getPatternNames(patternType), folder);
     }
@@ -34,34 +38,10 @@ public class Pattern extends CraftingItem implements IPattern {
         return names;
     }
 
-    private static final String[] patternName = new String[] {
-        "ingot",
-        "rod",
-        "pickaxe",
-        "shovel",
-        "axe",
-        "swordblade",
-        "largeguard",
-        "mediumguard",
-        "crossbar",
-        "binding",
-        "frypan",
-        "sign",
-        "knifeblade",
-        "chisel",
-        "largerod",
-        "toughbinding",
-        "largeplate",
-        "broadaxe",
-        "scythe",
-        "excavator",
-        "largeblade",
-        "hammerhead",
-        "fullguard",
-        "bowstring",
-        "fletching",
-        "arrowhead"
-    };
+    private static final String[] patternName = new String[] { "ingot", "rod", "pickaxe", "shovel", "axe", "swordblade",
+            "largeguard", "mediumguard", "crossbar", "binding", "frypan", "sign", "knifeblade", "chisel", "largerod",
+            "toughbinding", "largeplate", "broadaxe", "scythe", "excavator", "largeblade", "hammerhead", "fullguard",
+            "bowstring", "fletching", "arrowhead" };
 
     private static final Map<Integer, Integer> patternCosts = buildPatternCostMap();
 

@@ -6,24 +6,23 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
 import tconstruct.armor.inventory.SlotOnlyTake;
 import tconstruct.tools.TinkerTools;
 import tconstruct.tools.logic.MoldingTableLogic;
 
 public class MoldingTableContainer extends Container {
+
     public MoldingTableLogic logic;
 
     public MoldingTableContainer(InventoryPlayer inventoryplayer, MoldingTableLogic molder) {
         logic = molder;
         this.addSlotToContainer(new Slot(molder, 0, 48, 35));
         this.addSlotToContainer(new SlotOnlyTake(molder, 1, 106, 35));
-        /*for (int i = 0; i < 3; i++)
-        {
-            for (int l = 0; l < 3; l++)
-            {
-            	this.addSlotToContainer(new Slot(craftMatrix, l + i * 3, 30 + l * 18, 17 + i * 18));
-            }
-        }*/
+        /*
+         * for (int i = 0; i < 3; i++) { for (int l = 0; l < 3; l++) { this.addSlotToContainer(new Slot(craftMatrix, l +
+         * i * 3, 30 + l * 18, 17 + i * 18)); } }
+         */
 
         /* Player inventory */
         for (int column = 0; column < 3; column++) {
@@ -38,25 +37,16 @@ public class MoldingTableContainer extends Container {
         }
     }
 
-    /*public void onCraftMatrixChanged(IInventory iinventory)
-    {
-        craftResult.setInventorySloTRepos(0, CraftingManager.getInstance().findMatchingRecipe(craftMatrix, worldObj));
-    }*/
+    /*
+     * public void onCraftMatrixChanged(IInventory iinventory) { craftResult.setInventorySloTRepos(0,
+     * CraftingManager.getInstance().findMatchingRecipe(craftMatrix, worldObj)); }
+     */
 
-    /*@Override
-    public void onContainerClosed(EntityPlayer entityplayer)
-    {
-        super.onContainerClosed(entityplayer);
-        if (logic.worldObj.isRemote)
-        {
-            return;
-        }
-        ItemStack itemstack = logic.getStackInSlot(0);
-        if (itemstack != null)
-        {
-            entityplayer.dropPlayerItem(itemstack);
-        }
-    }*/
+    /*
+     * @Override public void onContainerClosed(EntityPlayer entityplayer) { super.onContainerClosed(entityplayer); if
+     * (logic.worldObj.isRemote) { return; } ItemStack itemstack = logic.getStackInSlot(0); if (itemstack != null) {
+     * entityplayer.dropPlayerItem(itemstack); } }
+     */
 
     @Override
     public boolean canInteractWith(EntityPlayer entityplayer) {
@@ -68,36 +58,13 @@ public class MoldingTableContainer extends Container {
     @Override
     public ItemStack transferStackInSlot(EntityPlayer player, int slotID) {
         return null;
-        /*ItemStack stack = null;
-        Slot slot = (Slot)this.inventorySlots.get(slotID);
-
-        if (slot != null && slot.getHasStack())
-        {
-            ItemStack slotStack = slot.getStack();
-            stack = slotStack.copy();
-
-            if (slotID < logic.getSizeInventory())
-            {
-                if (!this.mergeItemStack(slotStack, logic.getSizeInventory(), this.inventorySlots.size(), true))
-                {
-                    return null;
-                }
-            }
-            else if (!this.mergeItemStack(slotStack, 0, logic.getSizeInventory()-1, false))
-            {
-                return null;
-            }
-
-            if (slotStack.stackSize == 0)
-            {
-                slot.putStack((ItemStack)null);
-            }
-            else
-            {
-                slot.onSlotChanged();
-            }
-        }
-
-        return stack;*/
+        /*
+         * ItemStack stack = null; Slot slot = (Slot)this.inventorySlots.get(slotID); if (slot != null &&
+         * slot.getHasStack()) { ItemStack slotStack = slot.getStack(); stack = slotStack.copy(); if (slotID <
+         * logic.getSizeInventory()) { if (!this.mergeItemStack(slotStack, logic.getSizeInventory(),
+         * this.inventorySlots.size(), true)) { return null; } } else if (!this.mergeItemStack(slotStack, 0,
+         * logic.getSizeInventory()-1, false)) { return null; } if (slotStack.stackSize == 0) {
+         * slot.putStack((ItemStack)null); } else { slot.onSlotChanged(); } } return stack;
+         */
     }
 }

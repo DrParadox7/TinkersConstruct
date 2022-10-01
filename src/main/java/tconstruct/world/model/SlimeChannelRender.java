@@ -1,16 +1,18 @@
 package tconstruct.world.model;
 
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
+
 import tconstruct.util.ItemHelper;
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class SlimeChannelRender implements ISimpleBlockRenderingHandler {
+
     public static int model = RenderingRegistry.getNextAvailableRenderId();
 
     @Override
@@ -21,8 +23,8 @@ public class SlimeChannelRender implements ISimpleBlockRenderingHandler {
     }
 
     @Override
-    public boolean renderWorldBlock(
-            IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer) {
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID,
+            RenderBlocks renderer) {
         if (modelID == model) {
             renderRotatedBlock(block, x, y, z, world, renderer);
             return true;
@@ -79,13 +81,10 @@ public class SlimeChannelRender implements ISimpleBlockRenderingHandler {
         }
         renderer.renderStandardBlock(block, x, y, z);
         /*
-         * int direction = world.getBlockMetadata(x, y, z) % 4; if (direction ==
-         * 0) renderer.uvRotateTop = 2; if (direction == 1) renderer.uvRotateTop
-         * = 1; if (direction == 2) renderer.uvRotateTop = 0; if (direction ==
-         * 3) renderer.uvRotateTop = 3;
-         *
-         * boolean flag = renderer.renderStandardBlock(block, x, y, z);
-         * renderer.uvRotateTop = 0; return flag;
+         * int direction = world.getBlockMetadata(x, y, z) % 4; if (direction == 0) renderer.uvRotateTop = 2; if
+         * (direction == 1) renderer.uvRotateTop = 1; if (direction == 2) renderer.uvRotateTop = 0; if (direction == 3)
+         * renderer.uvRotateTop = 3; boolean flag = renderer.renderStandardBlock(block, x, y, z); renderer.uvRotateTop =
+         * 0; return flag;
          */
         return true;
     }

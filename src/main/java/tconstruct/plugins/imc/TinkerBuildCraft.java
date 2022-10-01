@@ -1,13 +1,15 @@
 package tconstruct.plugins.imc;
 
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
 import mantle.pulsar.pulse.Handler;
 import mantle.pulsar.pulse.Pulse;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
+
 import tconstruct.TConstruct;
 import tconstruct.smeltery.TinkerSmeltery;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 
 @Pulse(
         id = "Tinkers BuildCraft Compatibility",
@@ -15,6 +17,7 @@ import tconstruct.smeltery.TinkerSmeltery;
         modsRequired = "BuildCraft|Transport",
         forced = true)
 public class TinkerBuildCraft {
+
     @Handler
     public void init(FMLInitializationEvent event) {
         TConstruct.logger.info("BuildCraft detected. Registering facades.");

@@ -1,6 +1,7 @@
 package tconstruct.tools.logic;
 
 import mantle.blocks.abstracts.InventoryLogic;
+
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Container;
@@ -8,15 +9,18 @@ import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
 import tconstruct.library.crafting.ModifyBuilder;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.tools.inventory.ToolStationContainer;
 
-/* Simple class for storing items in the block
+/*
+ * Simple class for storing items in the block
  */
 
 public class ToolStationLogic extends InventoryLogic implements ISidedInventory {
+
     public ItemStack previousTool;
     public String toolName;
 
@@ -67,8 +71,8 @@ public class ToolStationLogic extends InventoryLogic implements ISidedInventory 
             {
                 if (inventory[2] == null && inventory[3] == null) output = inventory[1].copy();
                 else {
-                    output = ModifyBuilder.instance.modifyItem(
-                            inventory[1], new ItemStack[] {inventory[2], inventory[3]});
+                    output = ModifyBuilder.instance
+                            .modifyItem(inventory[1], new ItemStack[] { inventory[2], inventory[3] });
                 }
             } else
             // Build new item
@@ -78,14 +82,13 @@ public class ToolStationLogic extends InventoryLogic implements ISidedInventory 
                 if (inventory[0] == null) output = tool;
                 else if (tool != null) {
                     NBTTagCompound tags = tool.getTagCompound();
-                    if (!tags.getCompoundTag(((IModifyable) tool.getItem()).getBaseTagName())
-                            .hasKey("Built")) {
+                    if (!tags.getCompoundTag(((IModifyable) tool.getItem()).getBaseTagName()).hasKey("Built")) {
                         output = tool;
                     }
                 }
             }
             if (!name.equals("")) // Name item
-            output = tryRenameTool(output, name);
+                output = tryRenameTool(output, name);
         }
         inventory[0] = output;
     }

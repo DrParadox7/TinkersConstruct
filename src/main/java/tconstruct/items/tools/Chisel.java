@@ -1,7 +1,5 @@
 package tconstruct.items.tools;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
@@ -13,14 +11,18 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
+
 import tconstruct.TConstruct;
 import tconstruct.library.crafting.Detailing.DetailInput;
 import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.modifiers.tools.ModMoss;
 import tconstruct.tools.TinkerTools;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class Chisel extends ToolCore {
+
     public Chisel() {
         super(0);
         this.setUnlocalizedName("InfiTool.Chisel");
@@ -55,17 +57,8 @@ public class Chisel extends ToolCore {
     }
 
     @Override
-    public boolean onItemUse(
-            ItemStack stack,
-            EntityPlayer player,
-            World world,
-            int x,
-            int y,
-            int z,
-            int side,
-            float clickX,
-            float clickY,
-            float clickZ) {
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side,
+            float clickX, float clickY, float clickZ) {
         return false;
     }
 
@@ -197,6 +190,6 @@ public class Chisel extends ToolCore {
 
     @Override
     public String[] getTraits() {
-        return new String[] {"utility"};
+        return new String[] { "utility" };
     }
 }

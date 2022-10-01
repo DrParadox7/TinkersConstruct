@@ -5,6 +5,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class TConstructCreativeTab extends CreativeTabs {
+
     ItemStack display;
 
     public TConstructCreativeTab(String label) {

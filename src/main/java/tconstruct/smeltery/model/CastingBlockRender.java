@@ -1,12 +1,11 @@
 package tconstruct.smeltery.model;
 
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.Fluid;
+
 import tconstruct.TConstruct;
 import tconstruct.client.BlockSkinRenderHelper;
 import tconstruct.library.crafting.CastingRecipe;
@@ -15,8 +14,11 @@ import tconstruct.smeltery.logic.CastingBasinLogic;
 import tconstruct.smeltery.logic.CastingTableLogic;
 import tconstruct.smeltery.logic.FaucetLogic;
 import tconstruct.util.ItemHelper;
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class CastingBlockRender implements ISimpleBlockRenderingHandler {
+
     public static int searedModel = RenderingRegistry.getNextAvailableRenderId();
 
     @Override
@@ -59,41 +61,33 @@ public class CastingBlockRender implements ISimpleBlockRenderingHandler {
                 ItemHelper.renderStandardInvBlock(renderer, block, metadata);
 
                 // Details
-                /*renderer.setRenderBounds(0.001f, 0.1245f, 0.001f, 0.1245f, 0.999f, 0.4375f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-                renderer.setRenderBounds(0.001f, 0.1245f, 0.5625f, 0.1245f, 0.999f, 0.999f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-                renderer.setRenderBounds(0.001f, 0.8755f, 0.4375f, 0.1245f, 0.999f, 0.5625f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-                renderer.setRenderBounds(0.001f, 0.1245f, 0.4375f, 0.1245f, 0.25F, 0.5625f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-
-                renderer.setRenderBounds(0.8755f, 0.1245f, 0f, 0.999f, 0.999f, 0.4375f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-                renderer.setRenderBounds(0.8755f, 0.1245f, 0.5625f, 0.999f, 0.999f, 0.999f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-                renderer.setRenderBounds(0.8755f, 0.8755f, 0.4375f, 0.999f, 0.999f, 0.5625f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-                renderer.setRenderBounds(0.8755f, 0.1245f, 0.4375f, 0.999f, 0.25F, 0.5625f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-
-                renderer.setRenderBounds(0.1245f, 0.1245f, 0.8755f, 0.4375f, 0.999f, 0.999f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-                renderer.setRenderBounds(0.5625f, 0.1245f, 0.8755f, 0.8755f, 0.999f, 0.999f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-                renderer.setRenderBounds(0.4375f, 0.8755f, 0.8755f, 0.5625f, 0.999f, 0.999f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-                renderer.setRenderBounds(0.4375f, 0.1245f, 0.8755f, 0.5625f, 0.2495F, 0.999f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-
-                renderer.setRenderBounds(0.1245f, 0.1245f, 0.001f, 0.4375f, 0.999f, 0.1245f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-                renderer.setRenderBounds(0.5625f, 0.1245f, 0.001f, 0.8755f, 0.999f, 0.1245f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-                renderer.setRenderBounds(0.4375f, 0.8755f, 0.001f, 0.5625f, 0.999f, 0.1245f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);
-                renderer.setRenderBounds(0.4375f, 0.1245f, 0.001f, 0.5625f, 0.25F, 0.1245f);
-                ItemHelper.renderStandardInvBlock(renderer, block, metadata);*/
+                /*
+                 * renderer.setRenderBounds(0.001f, 0.1245f, 0.001f, 0.1245f, 0.999f, 0.4375f);
+                 * ItemHelper.renderStandardInvBlock(renderer, block, metadata); renderer.setRenderBounds(0.001f,
+                 * 0.1245f, 0.5625f, 0.1245f, 0.999f, 0.999f); ItemHelper.renderStandardInvBlock(renderer, block,
+                 * metadata); renderer.setRenderBounds(0.001f, 0.8755f, 0.4375f, 0.1245f, 0.999f, 0.5625f);
+                 * ItemHelper.renderStandardInvBlock(renderer, block, metadata); renderer.setRenderBounds(0.001f,
+                 * 0.1245f, 0.4375f, 0.1245f, 0.25F, 0.5625f); ItemHelper.renderStandardInvBlock(renderer, block,
+                 * metadata); renderer.setRenderBounds(0.8755f, 0.1245f, 0f, 0.999f, 0.999f, 0.4375f);
+                 * ItemHelper.renderStandardInvBlock(renderer, block, metadata); renderer.setRenderBounds(0.8755f,
+                 * 0.1245f, 0.5625f, 0.999f, 0.999f, 0.999f); ItemHelper.renderStandardInvBlock(renderer, block,
+                 * metadata); renderer.setRenderBounds(0.8755f, 0.8755f, 0.4375f, 0.999f, 0.999f, 0.5625f);
+                 * ItemHelper.renderStandardInvBlock(renderer, block, metadata); renderer.setRenderBounds(0.8755f,
+                 * 0.1245f, 0.4375f, 0.999f, 0.25F, 0.5625f); ItemHelper.renderStandardInvBlock(renderer, block,
+                 * metadata); renderer.setRenderBounds(0.1245f, 0.1245f, 0.8755f, 0.4375f, 0.999f, 0.999f);
+                 * ItemHelper.renderStandardInvBlock(renderer, block, metadata); renderer.setRenderBounds(0.5625f,
+                 * 0.1245f, 0.8755f, 0.8755f, 0.999f, 0.999f); ItemHelper.renderStandardInvBlock(renderer, block,
+                 * metadata); renderer.setRenderBounds(0.4375f, 0.8755f, 0.8755f, 0.5625f, 0.999f, 0.999f);
+                 * ItemHelper.renderStandardInvBlock(renderer, block, metadata); renderer.setRenderBounds(0.4375f,
+                 * 0.1245f, 0.8755f, 0.5625f, 0.2495F, 0.999f); ItemHelper.renderStandardInvBlock(renderer, block,
+                 * metadata); renderer.setRenderBounds(0.1245f, 0.1245f, 0.001f, 0.4375f, 0.999f, 0.1245f);
+                 * ItemHelper.renderStandardInvBlock(renderer, block, metadata); renderer.setRenderBounds(0.5625f,
+                 * 0.1245f, 0.001f, 0.8755f, 0.999f, 0.1245f); ItemHelper.renderStandardInvBlock(renderer, block,
+                 * metadata); renderer.setRenderBounds(0.4375f, 0.8755f, 0.001f, 0.5625f, 0.999f, 0.1245f);
+                 * ItemHelper.renderStandardInvBlock(renderer, block, metadata); renderer.setRenderBounds(0.4375f,
+                 * 0.1245f, 0.001f, 0.5625f, 0.25F, 0.1245f); ItemHelper.renderStandardInvBlock(renderer, block,
+                 * metadata);
+                 */
 
                 // Legs
                 renderer.setRenderBounds(0.0F, 0.0F, 0.0F, 0.3125F, 0.125, 0.3125F);
@@ -122,8 +116,8 @@ public class CastingBlockRender implements ISimpleBlockRenderingHandler {
     }
 
     @Override
-    public boolean renderWorldBlock(
-            IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer) {
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID,
+            RenderBlocks renderer) {
         if (modelID == searedModel) {
             int metadata = world.getBlockMetadata(x, y, z);
             if (metadata == 0) {
@@ -251,12 +245,13 @@ public class CastingBlockRender implements ISimpleBlockRenderingHandler {
                         yMin = -0.125F;
                     } else if ((uBlock == TinkerSmeltery.searedBlock || uBlock == TinkerSmeltery.searedBlockNether)
                             && uMeta == 2) {
-                        yMin = -0.75F;
-                    } else if (uBlock == TinkerSmeltery.lavaTank || uBlock == TinkerSmeltery.lavaTankNether) {
-                        yMin = -1F;
-                    } else if (uBlock == TinkerSmeltery.castingChannel) {
-                        yMin = -0.5F;
-                    }
+                                yMin = -0.75F;
+                            } else
+                        if (uBlock == TinkerSmeltery.lavaTank || uBlock == TinkerSmeltery.lavaTankNether) {
+                            yMin = -1F;
+                        } else if (uBlock == TinkerSmeltery.castingChannel) {
+                            yMin = -0.5F;
+                        }
 
                     if (logic.liquid != null) {
                         Fluid fluid = logic.liquid.getFluid();

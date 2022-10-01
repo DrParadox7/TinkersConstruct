@@ -1,16 +1,18 @@
 package tconstruct.world.model;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBase;
 import net.minecraft.client.renderer.entity.RenderLiving;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
+
 import tconstruct.world.entity.Crystal;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 @SideOnly(Side.CLIENT)
 public class CrystalRender extends RenderLiving {
+
     /** The creeper model. */
     private ModelBase creeperModel = new CrystalModelSmall();
 
@@ -31,17 +33,16 @@ public class CrystalRender extends RenderLiving {
     }
 
     /**
-     * Allows the render to do any OpenGL state modifications necessary before
-     * the model is rendered. Args: entityLiving, partialTickTime
+     * Allows the render to do any OpenGL state modifications necessary before the model is rendered. Args:
+     * entityLiving, partialTickTime
      */
     /*
-     * protected void preRenderCallback(EntityLiving par1EntityLiving, float
-     * par2) { this.updateCreeperScale((Skyla)par1EntityLiving, par2); }
+     * protected void preRenderCallback(EntityLiving par1EntityLiving, float par2) {
+     * this.updateCreeperScale((Skyla)par1EntityLiving, par2); }
      */
 
     /**
-     * Returns an ARGB int color back. Args: entityLiving, lightBrightness,
-     * partialTickTime
+     * Returns an ARGB int color back. Args: entityLiving, lightBrightness, partialTickTime
      */
     protected int getColorMultiplier(EntityLiving par1EntityLiving, float par2, float par3) {
         return super.getColorMultiplier(par1EntityLiving, par2, par3);

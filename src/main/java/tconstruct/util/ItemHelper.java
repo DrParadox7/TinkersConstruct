@@ -1,6 +1,7 @@
 package tconstruct.util;
 
 import java.lang.reflect.Field;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderBlocks;
@@ -11,10 +12,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
+
 import org.lwjgl.opengl.GL11;
+
 import tconstruct.TConstruct;
 
 public class ItemHelper {
+
     public static Object getStaticItem(String name, String classPackage) {
         try {
             Class clazz = Class.forName(classPackage);
@@ -48,8 +52,8 @@ public class ItemHelper {
         tessellator.draw();
         tessellator.startDrawingQuads();
         tessellator.setNormal(0.0F, 1.0F, 0.0F);
-        renderblocks.renderFaceYPos(
-                block, 0.0D, 0.0D, 0.0D, ItemHelper.getIconSafe(block.getIcon(1, meta))); // block.getIcon(1, meta));
+        renderblocks.renderFaceYPos(block, 0.0D, 0.0D, 0.0D, ItemHelper.getIconSafe(block.getIcon(1, meta))); // block.getIcon(1,
+                                                                                                              // meta));
         tessellator.draw();
         tessellator.startDrawingQuads();
         tessellator.setNormal(0.0F, 0.0F, -1F);

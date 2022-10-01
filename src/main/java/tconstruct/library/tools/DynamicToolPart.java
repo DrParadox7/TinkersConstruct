@@ -1,23 +1,27 @@
 package tconstruct.library.tools;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+
 import mantle.items.abstracts.CraftingItem;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
+
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.util.IToolPart;
 import tconstruct.library.util.TextureHelper;
 import tconstruct.util.config.PHConstruct;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class DynamicToolPart extends CraftingItem implements IToolPart {
+
     public String partName;
     public String texture;
     public IIcon defaultIcon;
@@ -37,8 +41,8 @@ public class DynamicToolPart extends CraftingItem implements IToolPart {
         this(texture, name, domain, (Class<? extends CustomMaterial>) null);
     }
 
-    public DynamicToolPart(
-            String texture, String name, String domain, Class<? extends CustomMaterial> customMaterialClass) {
+    public DynamicToolPart(String texture, String name, String domain,
+            Class<? extends CustomMaterial> customMaterialClass) {
         super(null, null, "parts/", domain, TConstructRegistry.partTab);
         this.setUnlocalizedName("tconstruct." + name);
         this.partName = name;
@@ -76,8 +80,8 @@ public class DynamicToolPart extends CraftingItem implements IToolPart {
                     : toolmat.localizationString; // :(
             matName = toolmat.prefixName();
         } else {
-            CustomMaterial customMaterial =
-                    TConstructRegistry.getCustomMaterial(getMaterialID(stack), customMaterialClass);
+            CustomMaterial customMaterial = TConstructRegistry
+                    .getCustomMaterial(getMaterialID(stack), customMaterialClass);
             if (customMaterial == null) return super.getItemStackDisplayName(stack);
 
             material = "";
@@ -116,10 +120,10 @@ public class DynamicToolPart extends CraftingItem implements IToolPart {
             tconstruct.library.tools.ToolMaterial toolmat = TConstructRegistry.getMaterial(getMaterialID(stack));
             material = toolmat.materialName;
         } else {
-            CustomMaterial customMaterial =
-                    TConstructRegistry.getCustomMaterial(getMaterialID(stack), customMaterialClass);
-            material =
-                    customMaterial.input != null ? customMaterial.input.getUnlocalizedName() : customMaterial.oredict;
+            CustomMaterial customMaterial = TConstructRegistry
+                    .getCustomMaterial(getMaterialID(stack), customMaterialClass);
+            material = customMaterial.input != null ? customMaterial.input.getUnlocalizedName()
+                    : customMaterial.oredict;
         }
 
         return "toolpart." + partName + "." + material;
@@ -147,12 +151,15 @@ public class DynamicToolPart extends CraftingItem implements IToolPart {
 
         // register icon for each material that has one
         if (!PHConstruct.minimalTextures)
-            for (Map.Entry<Integer, tconstruct.library.tools.ToolMaterial> entry :
-                    TConstructRegistry.toolMaterials.entrySet()) {
-                String tex = modTexPrefix + ":" + folder
-                        + entry.getValue().materialName.toLowerCase() + texture;
-                if (TextureHelper.itemTextureExists(tex)) this.icons[entry.getKey()] = iconRegister.registerIcon(tex);
-            }
+            for (Map.Entry<Integer, tconstruct.library.tools.ToolMaterial> entry : TConstructRegistry.toolMaterials
+                    .entrySet()) {
+                        String tex = modTexPrefix + ":"
+                                + folder
+                                + entry.getValue().materialName.toLowerCase()
+                                + texture;
+                        if (TextureHelper.itemTextureExists(tex))
+                            this.icons[entry.getKey()] = iconRegister.registerIcon(tex);
+                    }
 
         // default texture
         this.defaultIcon = iconRegister.registerIcon(modTexPrefix + ":" + folder + texture);
@@ -173,8 +180,7 @@ public class DynamicToolPart extends CraftingItem implements IToolPart {
         if (matId > icons.length) return super.getColorFromItemStack(stack, renderpass);
 
         if (matId >= 0 && icons[matId] == null) {
-            if (customMaterialClass == null)
-                return TConstructRegistry.getMaterial(getMaterialID(stack)).primaryColor();
+            if (customMaterialClass == null) return TConstructRegistry.getMaterial(getMaterialID(stack)).primaryColor();
             else return TConstructRegistry.getCustomMaterial(getMaterialID(stack), customMaterialClass).color;
         }
 

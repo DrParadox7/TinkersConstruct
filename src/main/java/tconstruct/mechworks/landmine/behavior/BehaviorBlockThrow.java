@@ -1,6 +1,7 @@
 package tconstruct.mechworks.landmine.behavior;
 
 import mantle.blocks.BlockUtils;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.item.ItemStack;
@@ -14,13 +15,7 @@ import net.minecraft.world.World;
 public class BehaviorBlockThrow extends Behavior {
 
     @Override
-    public void executeLogic(
-            World par1World,
-            int par2,
-            int par3,
-            int par4,
-            ItemStack par5ItemStack,
-            Entity triggerer,
+    public void executeLogic(World par1World, int par2, int par3, int par4, ItemStack par5ItemStack, Entity triggerer,
             boolean willBlockBeRemoved) {
         for (int i = 0; i < par5ItemStack.stackSize; i++) {
             int direction = par1World.rand.nextInt(8);

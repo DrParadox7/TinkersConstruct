@@ -5,11 +5,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
+
 import tconstruct.library.entity.ProjectileBase;
-import tconstruct.library.tools.AbilityHelper;
-import tconstruct.library.tools.ToolCore;
+import tconstruct.library.tools.*;
+import tconstruct.util.config.PHConstruct;
 
 public class DaggerEntity extends ProjectileBase {
+
     public int roll;
 
     public DaggerEntity(World world) {
@@ -26,7 +28,11 @@ public class DaggerEntity extends ProjectileBase {
         float pitch = Math.max(-90f, player.rotationPitch - 20f);
         // same as in the others, but with pitch upped
         this.setLocationAndAngles(
-                player.posX, player.posY + (double) player.getEyeHeight(), player.posZ, player.rotationYaw, pitch);
+                player.posX,
+                player.posY + (double) player.getEyeHeight(),
+                player.posZ,
+                player.rotationYaw,
+                pitch);
         this.posX -= MathHelper.cos(this.rotationYaw / 180.0F * (float) Math.PI) * 0.16F;
         this.posY -= 0.10000000149011612D;
         this.posZ -= MathHelper.sin(this.rotationYaw / 180.0F * (float) Math.PI) * 0.16F;
@@ -51,8 +57,11 @@ public class DaggerEntity extends ProjectileBase {
     @Override
     public void onHitEntity(MovingObjectPosition movingobjectposition) {
         AbilityHelper.onLeftClickEntity(
-                returnStack, (EntityPlayer) shootingEntity, movingobjectposition.entityHit, (ToolCore)
-                        returnStack.getItem());
+                returnStack,
+                (EntityPlayer) shootingEntity,
+                movingobjectposition.entityHit,
+                (ToolCore) returnStack.getItem(),
+                PHConstruct.daggerAdditionalThrowDamage);
         // super.onHitEntity(movingobjectposition);
     }
 

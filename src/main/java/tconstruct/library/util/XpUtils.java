@@ -1,6 +1,7 @@
 package tconstruct.library.util;
 
 import net.minecraft.entity.player.EntityPlayer;
+
 import tconstruct.util.config.PHConstruct;
 
 public class XpUtils {
@@ -38,8 +39,7 @@ public class XpUtils {
     }
 
     public static double xpBarCap(double experienceLevel) {
-        return experienceLevel >= 30
-                ? 62 + (experienceLevel - 30) * 7
+        return experienceLevel >= 30 ? 62 + (experienceLevel - 30) * 7
                 : (experienceLevel >= 15 ? 17 + (experienceLevel - 15) * 3 : 17);
     }
 

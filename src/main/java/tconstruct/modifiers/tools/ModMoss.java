@@ -27,9 +27,9 @@ public class ModMoss extends ModBoolean {
 
         if (!world.provider.hasNoSky && world.isDaytime()) {
 
-            int light =
-                    world.getSavedLightValue(EnumSkyBlock.Sky, (int) entity.posX, (int) entity.posY, (int) entity.posZ)
-                            - world.skylightSubtracted;
+            int light = world
+                    .getSavedLightValue(EnumSkyBlock.Sky, (int) entity.posX, (int) entity.posY, (int) entity.posZ)
+                    - world.skylightSubtracted;
 
             if (light < 1) return 0;
 

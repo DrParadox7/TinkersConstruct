@@ -8,12 +8,13 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
+
 import tconstruct.blocks.TConstructBlock;
 
 public class GlueBlock extends TConstructBlock {
 
     public GlueBlock() {
-        super(Material.ground, 4.0f, new String[] {"glue"});
+        super(Material.ground, 4.0f, new String[] { "glue" });
     }
 
     @Override

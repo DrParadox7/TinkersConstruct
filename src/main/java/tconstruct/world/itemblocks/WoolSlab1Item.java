@@ -1,6 +1,7 @@
 package tconstruct.world.itemblocks;
 
 import mantle.blocks.abstracts.MultiItemBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -10,6 +11,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
 public class WoolSlab1Item extends MultiItemBlock {
+
     Block block;
 
     public WoolSlab1Item(Block b) {
@@ -27,17 +29,8 @@ public class WoolSlab1Item extends MultiItemBlock {
     }
 
     @Override
-    public boolean onItemUse(
-            ItemStack stack,
-            EntityPlayer player,
-            World world,
-            int x,
-            int y,
-            int z,
-            int side,
-            float hitX,
-            float hitY,
-            float hitZ) {
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side,
+            float hitX, float hitY, float hitZ) {
         Block b = world.getBlock(x, y, z);
         int meta = world.getBlockMetadata(x, y, z);
         int trueMeta = meta % 8;

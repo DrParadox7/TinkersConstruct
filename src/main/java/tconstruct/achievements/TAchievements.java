@@ -1,11 +1,13 @@
 package tconstruct.achievements;
 
 import java.util.HashMap;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.AchievementPage;
+
 import tconstruct.smeltery.TinkerSmeltery;
 import tconstruct.tools.TinkerTools;
 import tconstruct.util.config.PHConstruct;
@@ -17,7 +19,8 @@ public class TAchievements {
 
     /**
      * Adds an achievement and registers it, so there is no need to call .registerStat
-     * @param name The name of the achievement
+     * 
+     * @param name        The name of the achievement
      * @param achievement The achievement
      */
     public static void addAchievement(String name, Achievement achievement) {
@@ -30,6 +33,7 @@ public class TAchievements {
 
     /**
      * Returns a registered achievement
+     * 
      * @param name The name of the achievement
      * @return The achievement
      */
@@ -39,8 +43,9 @@ public class TAchievements {
 
     /**
      * Grants the achievement
+     * 
      * @param player The player that earned the achievement
-     * @param name The name of the achievement
+     * @param name   The name of the achievement
      */
     public static void triggerAchievement(EntityPlayer player, String name) {
         if (!PHConstruct.achievementsEnabled) {
@@ -123,13 +128,12 @@ public class TAchievements {
         addAchievement(
                 "tconstruct.dualConvenience",
                 new Achievement(
-                                "tconstruct.dualConvenience",
-                                "tconstruct.dualConvenience",
-                                0,
-                                7,
-                                new ItemStack(TinkerTools.titleIcon, 1, 4100),
-                                getAchievement("tconstruct.enemySlayer"))
-                        .setSpecial());
+                        "tconstruct.dualConvenience",
+                        "tconstruct.dualConvenience",
+                        0,
+                        7,
+                        new ItemStack(TinkerTools.titleIcon, 1, 4100),
+                        getAchievement("tconstruct.enemySlayer")).setSpecial());
     }
 
     /**
@@ -143,8 +147,9 @@ public class TAchievements {
         Achievement[] achievements = new Achievement[achievementsList.size()];
 
         achievements = achievementsList.values().toArray(achievements);
-        achievementsPage =
-                new AchievementPage(StatCollector.translateToLocal("tconstruct.achievementPage.name"), achievements);
+        achievementsPage = new AchievementPage(
+                StatCollector.translateToLocal("tconstruct.achievementPage.name"),
+                achievements);
         AchievementPage.registerAchievementPage(achievementsPage);
     }
 }

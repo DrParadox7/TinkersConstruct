@@ -1,8 +1,7 @@
 package tconstruct.blocks.traps;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import mantle.blocks.MantleBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -15,10 +14,14 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.Explosion;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import tconstruct.library.TConstructRegistry;
 import tconstruct.world.model.BarricadeRender;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BarricadeBlock extends MantleBlock {
+
     Block modelBlock;
     int modelMeta;
 
@@ -75,8 +78,8 @@ public class BarricadeBlock extends MantleBlock {
     }
 
     @Override
-    public boolean onBlockActivated(
-            World world, int x, int y, int z, EntityPlayer player, int par6, float par7, float par8, float par9) {
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int par6, float par7,
+            float par8, float par9) {
         ItemStack stack = player.getCurrentEquippedItem();
         if ((stack != null) && (stack.getItem() == Item.getItemFromBlock(this)) && (!player.isSneaking())) {
             int meta = world.getBlockMetadata(x, y, z);

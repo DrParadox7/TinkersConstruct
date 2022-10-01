@@ -4,11 +4,14 @@ import static tconstruct.library.util.XpUtils.ModCost;
 
 import java.util.Arrays;
 import java.util.List;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import tconstruct.library.tools.ToolCore;
 
 public class ModWindup extends ModRedstone {
+
     public ModWindup(int effect, ItemStack[] items, int[] values) {
         super(effect, items, values);
     }
@@ -67,7 +70,7 @@ public class ModWindup extends ModRedstone {
 
             String modName = "\u00a74Redstone (" + increase + "/" + max + ")";
             int tooltipIndex = addToolTip(tool, tooltipName, modName);
-            keyPair = new int[] {increase, max, tooltipIndex};
+            keyPair = new int[] { increase, max, tooltipIndex };
             current = keyPair[0];
             tags.setIntArray(key, keyPair);
         }

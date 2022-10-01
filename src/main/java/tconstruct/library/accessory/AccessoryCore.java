@@ -1,8 +1,7 @@
 package tconstruct.library.accessory;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,11 +9,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
+
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.library.tools.ToolCore;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class AccessoryCore extends Item implements IAccessory, IModifyable {
+
     /**
      * Override getArmorModel() to have render on the player.
      */
@@ -37,24 +40,19 @@ public abstract class AccessoryCore extends Item implements IAccessory, IModifya
         return "Accessory";
     }
 
-    static final String[] traits = new String[] {"accessory"};
+    static final String[] traits = new String[] { "accessory" };
 
     @Override
     public String[] getTraits() {
         return traits;
     }
 
-    /*public void getSubItems (int id, CreativeTabs tab, List list)
-    {
-        ItemStack glove = new ItemStack(this);
-        NBTTagCompound baseTag = new NBTTagCompound();
-        NBTTagCompound tag = new NBTTagCompound();
-        tag.setBoolean("Built", true);
-        tag.setInteger("Modifiers", 5);
-        baseTag.setTag(getBaseTag(), tag);
-        glove.setTagCompound(baseTag);
-        list.add(glove);
-    }*/
+    /*
+     * public void getSubItems (int id, CreativeTabs tab, List list) { ItemStack glove = new ItemStack(this);
+     * NBTTagCompound baseTag = new NBTTagCompound(); NBTTagCompound tag = new NBTTagCompound(); tag.setBoolean("Built",
+     * true); tag.setInteger("Modifiers", 5); baseTag.setTag(getBaseTag(), tag); glove.setTagCompound(baseTag);
+     * list.add(glove); }
+     */
 
     @Override
     @SideOnly(Side.CLIENT)

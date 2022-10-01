@@ -1,14 +1,17 @@
 package tconstruct.smeltery.blocks;
 
 import java.util.List;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
 import tconstruct.blocks.TConstructBlock;
 
 public class MetalOre extends TConstructBlock {
+
     public MetalOre(Material material, float hardness, String[] tex) {
         super(material, hardness, tex);
     }

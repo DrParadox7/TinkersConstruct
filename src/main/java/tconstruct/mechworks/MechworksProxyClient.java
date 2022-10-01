@@ -1,10 +1,10 @@
 package tconstruct.mechworks;
 
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.client.renderer.entity.RenderSnowball;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.world.World;
+
 import tconstruct.client.entity.item.ExplosiveRender;
 import tconstruct.common.TProxyCommon;
 import tconstruct.mechworks.entity.item.EntityLandmineFirework;
@@ -12,16 +12,18 @@ import tconstruct.mechworks.entity.item.ExplosivePrimed;
 import tconstruct.mechworks.gui.GuiLandmine;
 import tconstruct.mechworks.inventory.ContainerLandmine;
 import tconstruct.mechworks.logic.TileEntityLandmine;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class MechworksProxyClient extends MechworksProxyCommon {
+
     public void initialize() {
         registerRenderer();
         registerGuiHandler();
     }
 
     void registerRenderer() {
-        RenderingRegistry.registerEntityRenderingHandler(
-                EntityLandmineFirework.class, new RenderSnowball(Items.fireworks));
+        RenderingRegistry
+                .registerEntityRenderingHandler(EntityLandmineFirework.class, new RenderSnowball(Items.fireworks));
         RenderingRegistry.registerEntityRenderingHandler(ExplosivePrimed.class, new ExplosiveRender());
     }
 

@@ -1,18 +1,20 @@
 package tconstruct.tools.inventory;
 
-import invtweaks.api.container.ChestContainer;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
 import tconstruct.library.util.IPattern;
 import tconstruct.tools.TinkerTools;
 import tconstruct.tools.logic.PatternChestLogic;
+import invtweaks.api.container.ChestContainer;
 
 @ChestContainer
 public class PatternChestContainer extends Container {
+
     public PatternChestLogic logic;
     public int progress = 0;
     public int fuel = 0;

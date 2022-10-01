@@ -1,9 +1,9 @@
 package tconstruct.smeltery.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mantle.blocks.iface.IServantLogic;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
@@ -22,12 +22,16 @@ import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.FluidContainerRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
+
 import tconstruct.library.TConstructRegistry;
 import tconstruct.smeltery.itemblocks.LavaTankItemBlock;
 import tconstruct.smeltery.logic.LavaTankLogic;
 import tconstruct.smeltery.model.TankRender;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class LavaTankBlock extends BlockContainer {
+
     public IIcon[] icons;
     String texturePrefix = "";
 
@@ -46,16 +50,8 @@ public class LavaTankBlock extends BlockContainer {
     }
 
     public String[] getTextureNames() {
-        String[] textureNames = {
-            "lavatank_side",
-            "lavatank_top",
-            "searedgague_top",
-            "searedgague_side",
-            "searedgague_bottom",
-            "searedwindow_top",
-            "searedwindow_side",
-            "searedwindow_bottom"
-        };
+        String[] textureNames = { "lavatank_side", "lavatank_top", "searedgague_top", "searedgague_side",
+                "searedgague_bottom", "searedwindow_top", "searedwindow_side", "searedwindow_bottom" };
 
         if (!texturePrefix.equals(""))
             for (int i = 0; i < textureNames.length; i++) textureNames[i] = texturePrefix + "_" + textureNames[i];
@@ -144,8 +140,8 @@ public class LavaTankBlock extends BlockContainer {
     }
 
     @Override
-    public boolean onBlockActivated(
-            World world, int i, int j, int k, EntityPlayer entityplayer, int par6, float par7, float par8, float par9) {
+    public boolean onBlockActivated(World world, int i, int j, int k, EntityPlayer entityplayer, int par6, float par7,
+            float par8, float par9) {
         ItemStack current = entityplayer.inventory.getCurrentItem();
         if (current != null) {
             FluidStack liquid = FluidContainerRegistry.getFluidForFilledItem(current);
@@ -155,9 +151,8 @@ public class LavaTankBlock extends BlockContainer {
                 int amount = logic.fill(ForgeDirection.UNKNOWN, liquid, false);
                 if (amount == liquid.amount) {
                     logic.fill(ForgeDirection.UNKNOWN, liquid, true);
-                    if (!entityplayer.capabilities.isCreativeMode)
-                        entityplayer.inventory.setInventorySlotContents(
-                                entityplayer.inventory.currentItem, consumeItem(current));
+                    if (!entityplayer.capabilities.isCreativeMode) entityplayer.inventory
+                            .setInventorySlotContents(entityplayer.inventory.currentItem, consumeItem(current));
 
                     // update
                     entityplayer.inventoryContainer.detectAndSendChanges();
@@ -179,11 +174,12 @@ public class LavaTankBlock extends BlockContainer {
                                 true);
                         if (!entityplayer.capabilities.isCreativeMode && !world.isRemote) {
                             if (current.stackSize == 1) {
-                                entityplayer.inventory.setInventorySlotContents(
-                                        entityplayer.inventory.currentItem, fillStack);
+                                entityplayer.inventory
+                                        .setInventorySlotContents(entityplayer.inventory.currentItem, fillStack);
                             } else {
                                 entityplayer.inventory.setInventorySlotContents(
-                                        entityplayer.inventory.currentItem, consumeItem(current));
+                                        entityplayer.inventory.currentItem,
+                                        consumeItem(current));
 
                                 if (!entityplayer.inventory.addItemStackToInventory(fillStack)) {
                                     entityplayer.dropPlayerItemWithRandomChoice(fillStack, false);

@@ -1,8 +1,7 @@
 package tconstruct.armor.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.settings.GameSettings;
@@ -12,12 +11,16 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
+
 import tconstruct.armor.ArmorProxyClient;
 import tconstruct.client.ArmorControls;
 import tconstruct.library.accessory.AccessoryCore;
 import tconstruct.library.accessory.IAccessoryModel;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class TravelBelt extends AccessoryCore implements IAccessoryModel {
+
     public TravelBelt() {
         super("travelgear/travel_belt");
     }
@@ -51,7 +54,8 @@ public class TravelBelt extends AccessoryCore implements IAccessoryModel {
         if (!stack.hasTagCompound()) return;
 
         list.add("\u00a76" + StatCollector.translateToLocal("armor.travelbelt.ability"));
-        list.add("\u00a76" + StatCollector.translateToLocal("armor.travelbelt.control")
-                + GameSettings.getKeyDisplayString(ArmorControls.beltSwap.getKeyCode()));
+        list.add(
+                "\u00a76" + StatCollector.translateToLocal("armor.travelbelt.control")
+                        + GameSettings.getKeyDisplayString(ArmorControls.beltSwap.getKeyCode()));
     }
 }

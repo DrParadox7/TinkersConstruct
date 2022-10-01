@@ -1,21 +1,23 @@
 package tconstruct.weaponry.weapons;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+
 import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.weaponry.AmmoWeapon;
 import tconstruct.tools.TinkerTools;
 import tconstruct.weaponry.TinkerWeaponry;
 import tconstruct.weaponry.client.CrosshairType;
 import tconstruct.weaponry.entity.JavelinEntity;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class Javelin extends AmmoWeapon {
+
     public Javelin() {
         super(3, "Javelin");
     }
@@ -23,7 +25,7 @@ public class Javelin extends AmmoWeapon {
     @Override
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
         // javelin is the only throwing/ammo weapon that hurts on leftclicking
-        return AbilityHelper.onLeftClickEntity(stack, player, entity, this, 0);
+        return AbilityHelper.onLeftClickEntity(stack, player, entity, this);
     }
 
     @Override
@@ -158,7 +160,7 @@ public class Javelin extends AmmoWeapon {
 
     @Override
     public String[] getTraits() {
-        return new String[] {"weapon", "thrown", "ammo", "windup"};
+        return new String[] { "weapon", "thrown", "ammo", "windup" };
     }
 
     @Override

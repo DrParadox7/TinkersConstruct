@@ -1,16 +1,19 @@
 package tconstruct.tools.logic;
 
 import mantle.blocks.abstracts.InventoryLogic;
+
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
 import tconstruct.library.crafting.MoldBuilder;
 import tconstruct.tools.inventory.MoldingTableContainer;
 
 public class MoldingTableLogic extends InventoryLogic implements ISidedInventory {
+
     private ItemStack selectedStack;
 
     public MoldingTableLogic() {
@@ -32,13 +35,10 @@ public class MoldingTableLogic extends InventoryLogic implements ISidedInventory
         return new MoldingTableContainer(inventoryplayer, this);
     }
 
-    /*@Override
-    public void onInventoryChanged()
-    {
-    	if (inventory[0] == null)
-    		inventory[1] = null;
-    	super.onInventoryChanged();
-    }*/
+    /*
+     * @Override public void onInventoryChanged() { if (inventory[0] == null) inventory[1] = null;
+     * super.onInventoryChanged(); }
+     */
 
     public void setSelectedMold(ItemStack stack) {
         selectedStack = stack;

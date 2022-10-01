@@ -1,11 +1,13 @@
 package tconstruct.library.crafting;
 
 import java.util.ArrayList;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class DryingRackRecipes {
+
     public static ArrayList<DryingRecipe> recipes = new ArrayList<DryingRecipe>();
 
     public static void addDryingRecipe(Object input, int time, Object output) {
@@ -42,6 +44,7 @@ public class DryingRackRecipes {
     }
 
     public static class DryingRecipe {
+
         public final int time;
         public final ItemStack input;
         public final ItemStack result;

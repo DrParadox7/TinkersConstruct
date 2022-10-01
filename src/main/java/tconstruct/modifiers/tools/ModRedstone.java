@@ -4,13 +4,16 @@ import static tconstruct.library.util.XpUtils.ModCost;
 
 import java.util.Arrays;
 import java.util.List;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.library.tools.ToolCore;
 
 public class ModRedstone extends ItemModTypeFilter {
+
     public String tooltipName;
     public int max = 50;
 
@@ -80,7 +83,7 @@ public class ModRedstone extends ItemModTypeFilter {
 
             String modName = "\u00a74Redstone (" + increase + "/" + max + ")";
             int tooltipIndex = addToolTip(tool, tooltipName, modName);
-            keyPair = new int[] {increase, max, tooltipIndex};
+            keyPair = new int[] { increase, max, tooltipIndex };
             current = keyPair[0];
             tags.setIntArray(key, keyPair);
         }
@@ -97,7 +100,7 @@ public class ModRedstone extends ItemModTypeFilter {
         miningSpeed += (increase * boost);
         tags.setInteger("MiningSpeed", miningSpeed);
 
-        String[] type = {"MiningSpeed2", "MiningSpeedHandle", "MiningSpeedExtra"};
+        String[] type = { "MiningSpeed2", "MiningSpeedHandle", "MiningSpeedExtra" };
 
         for (int i = 0; i < 3; i++) {
             if (tags.hasKey(type[i])) {

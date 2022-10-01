@@ -2,12 +2,14 @@ package tconstruct.plugins.gears;
 
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.util.IPattern;
 import tconstruct.util.config.PHConstruct;
 
 public class GearCast extends Item implements IPattern {
+
     public GearCast() {
         if (!PHConstruct.steelPatterns) {
             setTextureName("tinker:materials/gear_cast");

@@ -4,9 +4,11 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+
 import tconstruct.library.accessory.IAccessory;
 
 public class SlotAccessory extends Slot {
+
     private final int slotID;
     private final int slotStackLimit;
 
@@ -29,8 +31,7 @@ public class SlotAccessory extends Slot {
      */
     public boolean isItemValid(ItemStack par1ItemStack) {
         Item item = (par1ItemStack == null ? null : par1ItemStack.getItem());
-        return item != null
-                && (item instanceof IAccessory)
+        return item != null && (item instanceof IAccessory)
                 && ((IAccessory) item).canEquipAccessory(par1ItemStack, this.slotID);
     }
 }

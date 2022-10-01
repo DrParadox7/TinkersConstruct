@@ -8,6 +8,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
+
 import tconstruct.armor.player.ArmorExtended;
 import tconstruct.armor.player.TPlayerStats;
 import tconstruct.util.config.PHConstruct;

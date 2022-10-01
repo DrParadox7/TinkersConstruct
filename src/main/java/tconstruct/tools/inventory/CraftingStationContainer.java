@@ -1,7 +1,9 @@
 package tconstruct.tools.inventory;
 
 import java.lang.ref.WeakReference;
+
 import javax.annotation.Nonnull;
+
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -10,6 +12,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.world.World;
+
 import tconstruct.library.crafting.ModifyBuilder;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.tools.TinkerTools;
@@ -17,6 +20,7 @@ import tconstruct.tools.gui.ChestSlot;
 import tconstruct.tools.logic.CraftingStationLogic;
 
 public class CraftingStationContainer extends Container {
+
     private final World worldObj;
     private final int posX;
     private final int posY;
@@ -58,8 +62,14 @@ public class CraftingStationContainer extends Container {
         final int inventoryOffsetX = 8 + bothOffset;
 
         // 0 - crafting slot
-        this.addSlotToContainer(new SlotCraftingStation(
-                inventoryplayer.player, this.craftMatrix, this.craftResult, 0, craftingOffsetX + 94, 35));
+        this.addSlotToContainer(
+                new SlotCraftingStation(
+                        inventoryplayer.player,
+                        this.craftMatrix,
+                        this.craftResult,
+                        0,
+                        craftingOffsetX + 94,
+                        35));
 
         // 1 - 9 - Crafting Matrix
         for (row = 0; row < 3; ++row) {
@@ -152,7 +162,11 @@ public class CraftingStationContainer extends Container {
             // Crafting Result
             if (ret.getItem() instanceof IModifyable) {
                 nothingDone &= !this.mergeCraftedStack(
-                        itemstack, logic.getSizeInventory(), this.inventorySlots.size(), true, entityPlayer);
+                        itemstack,
+                        logic.getSizeInventory(),
+                        this.inventorySlots.size(),
+                        true,
+                        entityPlayer);
             } else {
                 // First refill the attached chests
                 nothingDone &= this.refillChest(itemstack);
@@ -225,7 +239,7 @@ public class CraftingStationContainer extends Container {
         return !this.mergeItemStack(itemstack, 1, 10, true);
     }
 
-    public boolean func_94530_a /*canMergeSlot*/(ItemStack par1ItemStack, Slot par2Slot) {
+    public boolean func_94530_a /* canMergeSlot */(ItemStack par1ItemStack, Slot par2Slot) {
         return par2Slot.inventory != this.craftResult && super.func_94530_a(par1ItemStack, par2Slot);
     }
 
@@ -247,9 +261,9 @@ public class CraftingStationContainer extends Container {
     public void onCraftMatrixChanged(IInventory par1IInventory) {
         ItemStack tool = modifyItem();
         if (tool != null) this.craftResult.setInventorySlotContents(0, tool);
-        else
-            this.craftResult.setInventorySlotContents(
-                    0, CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
+        else this.craftResult.setInventorySlotContents(
+                0,
+                CraftingManager.getInstance().findMatchingRecipe(this.craftMatrix, this.worldObj));
     }
 
     @Override
@@ -264,8 +278,8 @@ public class CraftingStationContainer extends Container {
                 <= 64.0D;
     }
 
-    protected boolean mergeCraftedStack(
-            ItemStack stack, int slotsStart, int slotsTotal, boolean playerInventory, EntityPlayer player) {
+    protected boolean mergeCraftedStack(ItemStack stack, int slotsStart, int slotsTotal, boolean playerInventory,
+            EntityPlayer player) {
         boolean failedToMerge = false;
         int slotIndex = slotsStart;
 
@@ -310,8 +324,8 @@ public class CraftingStationContainer extends Container {
     }
 
     // only refills items that are already present
-    protected boolean mergeItemStackRefill(
-            @Nonnull ItemStack stack, int startIndex, int endIndex, boolean useEndIndex) {
+    protected boolean mergeItemStackRefill(@Nonnull ItemStack stack, int startIndex, int endIndex,
+            boolean useEndIndex) {
         if (stack.stackSize <= 0) {
             return false;
         }
@@ -327,11 +341,10 @@ public class CraftingStationContainer extends Container {
                 slot = (Slot) this.inventorySlots.get(k);
                 itemstack1 = slot.getStack();
 
-                if (itemstack1 != null
-                        && itemstack1.getItem() == stack.getItem()
+                if (itemstack1 != null && itemstack1.getItem() == stack.getItem()
                         && (!stack.getHasSubtypes() || stack.getItemDamage() == itemstack1.getItemDamage())
                         && ItemStack.areItemStackTagsEqual(stack, itemstack1)
-                        && this.func_94530_a /*canMergeSlot*/(stack, slot)) {
+                        && this.func_94530_a /* canMergeSlot */(stack, slot)) {
                     int l = itemstack1.stackSize + stack.stackSize;
                     int limit = Math.min(stack.getMaxStackSize(), slot.getSlotStackLimit());
 
@@ -349,7 +362,7 @@ public class CraftingStationContainer extends Container {
                 }
 
                 if (useEndIndex) --k;
-                else ++k;
+                else++k;
             }
         }
 
@@ -369,9 +382,8 @@ public class CraftingStationContainer extends Container {
             final Slot slot = (Slot) this.inventorySlots.get(k);
             ItemStack itemstack1 = slot.getStack();
 
-            if ((itemstack1 == null || itemstack1.stackSize == 0)
-                    && slot.isItemValid(stack)
-                    && this.func_94530_a /*canMergeSlot*/(stack, slot)) {
+            if ((itemstack1 == null || itemstack1.stackSize == 0) && slot.isItemValid(stack)
+                    && this.func_94530_a /* canMergeSlot */(stack, slot)) {
                 // Forge: Make sure to respect isItemValid in the slot.
                 int limit = slot.getSlotStackLimit();
                 ItemStack stack2 = stack.copy();
@@ -391,7 +403,7 @@ public class CraftingStationContainer extends Container {
             }
 
             if (useEndIndex) --k;
-            else ++k;
+            else++k;
         }
 
         return didSomething;

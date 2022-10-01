@@ -7,10 +7,12 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
+
 import tconstruct.tools.TinkerTools;
 import tconstruct.tools.logic.FrypanLogic;
 
 public class FrypanContainer extends Container {
+
     public FrypanLogic logic;
     public int progress = 0;
     public int fuel = 0;
@@ -20,9 +22,8 @@ public class FrypanContainer extends Container {
         InventoryPlayer inventoryplayer = player.inventory;
         logic = frypan;
         this.addSlotToContainer(new Slot(frypan, 1, 26, 45));
-        for (int y = 0; y < 2; y++)
-            for (int x = 0; x < 4; x++)
-                this.addSlotToContainer(new SlotFrypan(frypan, 2 + x + y * 4, 70 + x * 18, 27 + y * 18, player));
+        for (int y = 0; y < 2; y++) for (int x = 0; x < 4; x++)
+            this.addSlotToContainer(new SlotFrypan(frypan, 2 + x + y * 4, 70 + x * 18, 27 + y * 18, player));
 
         /* Player inventory */
         for (int column = 0; column < 3; column++) {

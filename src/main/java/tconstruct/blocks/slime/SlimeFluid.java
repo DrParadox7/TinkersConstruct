@@ -1,9 +1,8 @@
 package tconstruct.blocks.slime;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -12,12 +11,16 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidClassic;
 import net.minecraftforge.fluids.Fluid;
+
 import tconstruct.world.TinkerWorld;
 import tconstruct.world.entity.BlueSlime;
 import tconstruct.world.entity.KingBlueSlime;
 import tconstruct.world.entity.SlimeBase;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class SlimeFluid extends BlockFluidClassic {
+
     IIcon stillIcon;
     IIcon flowIcon;
 
@@ -44,8 +47,7 @@ public class SlimeFluid extends BlockFluidClassic {
     @Override
     public void updateTick(World world, int x, int y, int z, Random rand) {
         super.updateTick(world, x, y, z, rand);
-        if (rand.nextInt(100) == 0
-                && world.getBlockMetadata(x, y, z) == 0
+        if (rand.nextInt(100) == 0 && world.getBlockMetadata(x, y, z) == 0
                 && world.checkNoEntityCollision(
                         AxisAlignedBB.getBoundingBox(x - 1, y - 1, z - 1, x + 2, y + 2, z + 2))) {
             SlimeBase slime;

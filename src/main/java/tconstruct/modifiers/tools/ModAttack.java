@@ -3,12 +3,15 @@ package tconstruct.modifiers.tools;
 import static tconstruct.library.util.XpUtils.ModCost;
 
 import java.util.Arrays;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.library.tools.ToolCore;
 
 public class ModAttack extends ItemModTypeFilter {
+
     String tooltipName;
     int max;
     int threshold;
@@ -39,8 +42,8 @@ public class ModAttack extends ItemModTypeFilter {
     }
 
     // gloves
-    public ModAttack(
-            String type, int effect, ItemStack[] items, int[] value, int max, int threshold, String modifierType) {
+    public ModAttack(String type, int effect, ItemStack[] items, int[] value, int max, int threshold,
+            String modifierType) {
         super(effect, "ModAttack", items, value);
         tooltipName = "\u00a7fKnuckles";
         guiType = type;
@@ -127,7 +130,7 @@ public class ModAttack extends ItemModTypeFilter {
             int increase = matchingAmount(input);
             String modName = "\u00a7f" + guiType + " (" + increase + "/" + max + ")";
             int tooltipIndex = addToolTip(tool, tooltipName, modName);
-            int[] keyPair = new int[] {increase, max, tooltipIndex};
+            int[] keyPair = new int[] { increase, max, tooltipIndex };
             tags.setIntArray(key, keyPair);
 
             int attack = tags.getInteger("Attack");

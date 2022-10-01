@@ -1,6 +1,7 @@
 package tconstruct.mechworks.landmine.behavior;
 
 import java.util.List;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;
@@ -18,13 +19,7 @@ import net.minecraft.world.World;
 public class BehaviorExplosive extends Behavior {
 
     @Override
-    public void executeLogic(
-            World par1World,
-            int par2,
-            int par3,
-            int par4,
-            ItemStack par5ItemStack,
-            Entity triggerer,
+    public void executeLogic(World par1World, int par2, int par3, int par4, ItemStack par5ItemStack, Entity triggerer,
             boolean willBlockBeRemoved) {
         float explodeStrenght = 0;
         if (par5ItemStack.getItem() == Item.getItemFromBlock(Blocks.tnt)) {

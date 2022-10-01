@@ -2,12 +2,14 @@ package tconstruct.library.util;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import net.minecraft.util.StatCollector;
 
 /**
  * Lookup for the name of each harvest level. Use this clientside only for display purposes.
  */
 public final class HarvestLevels {
+
     private HarvestLevels() {} // non-instantiable
 
     public static final Map<Integer, String> harvestLevelNames = new HashMap<Integer, String>();

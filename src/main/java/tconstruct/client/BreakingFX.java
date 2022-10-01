@@ -1,15 +1,17 @@
 package tconstruct.client;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.particle.EntityFX;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 @SideOnly(Side.CLIENT)
 public class BreakingFX extends EntityFX {
+
     public BreakingFX(World par1World, double par2, double par4, double par6, Item par8Item) {
         this(par1World, par2, par4, par6, par8Item, 0);
     }
@@ -22,16 +24,8 @@ public class BreakingFX extends EntityFX {
         this.particleScale /= 2.0F;
     }
 
-    public BreakingFX(
-            World par1World,
-            double par2,
-            double par4,
-            double par6,
-            double par8,
-            double par10,
-            double par12,
-            Item par14Item,
-            int par15) {
+    public BreakingFX(World par1World, double par2, double par4, double par6, double par8, double par10, double par12,
+            Item par14Item, int par15) {
         this(par1World, par2, par4, par6, par14Item, par15);
         this.motionX *= 0.10000000149011612D;
         this.motionY *= 0.10000000149011612D;
@@ -47,8 +41,8 @@ public class BreakingFX extends EntityFX {
     }
 
     @Override
-    public void renderParticle(
-            Tessellator par1Tessellator, float par2, float par3, float par4, float par5, float par6, float par7) {
+    public void renderParticle(Tessellator par1Tessellator, float par2, float par3, float par4, float par5, float par6,
+            float par7) {
         float f6 = ((float) this.particleTextureIndexX + this.particleTextureJitterX / 4.0F) / 16.0F;
         float f7 = f6 + 0.015609375F;
         float f8 = ((float) this.particleTextureIndexY + this.particleTextureJitterY / 4.0F) / 16.0F;

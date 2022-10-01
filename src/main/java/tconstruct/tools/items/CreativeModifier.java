@@ -1,8 +1,7 @@
 package tconstruct.tools.items;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -10,10 +9,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
+
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.crafting.ToolRecipe;
 import tconstruct.library.tools.ToolCore;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class CreativeModifier extends Item {
 
@@ -50,6 +52,9 @@ public class CreativeModifier extends Item {
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+        list.add(
+                StatCollector.translateToLocal("modifier.tooltip.Main") + " "
+                        + StatCollector.translateToLocal("modifier.tooltip.Creative"));
         if (stack.hasTagCompound()) {
             String targetLock = "None";
             targetLock = stack.getTagCompound().getString("TargetLock");

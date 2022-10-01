@@ -1,7 +1,5 @@
 package tconstruct.world;
 
-import cpw.mods.fml.common.eventhandler.Event;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
@@ -22,12 +20,16 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.event.entity.living.LivingSpawnEvent;
 import net.minecraftforge.event.entity.player.BonemealEvent;
+
 import tconstruct.TConstruct;
 import tconstruct.tools.TinkerTools;
 import tconstruct.util.ItemHelper;
 import tconstruct.util.config.PHConstruct;
+import cpw.mods.fml.common.eventhandler.Event;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class TinkerWorldEvents {
+
     @SubscribeEvent
     public void onLivingSpawn(LivingSpawnEvent.SpecialSpawn event) {
         EntityLivingBase living = event.entityLiving;
@@ -38,7 +40,11 @@ public class TinkerWorldEvents {
             else creeper.mountEntity(living);
 
             EntityXPOrb orb = new EntityXPOrb(
-                    living.worldObj, living.posX, living.posY, living.posZ, TConstruct.random.nextInt(20) + 20);
+                    living.worldObj,
+                    living.posX,
+                    living.posY,
+                    living.posZ,
+                    TConstruct.random.nextInt(20) + 20);
             orb.mountEntity(creeper);
         }
     }
@@ -56,8 +62,8 @@ public class TinkerWorldEvents {
     public void bonemealEvent(BonemealEvent event) {
         if (!event.world.isRemote) {
             if (event.block == TinkerWorld.slimeSapling) {
-                if (TinkerWorld.slimeSapling.boneFertilize(
-                        event.world, event.x, event.y, event.z, event.world.rand, event.entityPlayer))
+                if (TinkerWorld.slimeSapling
+                        .boneFertilize(event.world, event.x, event.y, event.z, event.world.rand, event.entityPlayer))
                     event.setResult(Event.Result.ALLOW);
             }
         }

@@ -1,9 +1,8 @@
 package tconstruct.world.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.BlockSand;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -12,11 +11,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+
 import tconstruct.library.TConstructRegistry;
 import tconstruct.world.TinkerWorld;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class GravelOre extends BlockSand {
-    public String[] textureNames = new String[] {"iron", "gold", "copper", "tin", "aluminum", "cobalt"};
+
+    public String[] textureNames = new String[] { "iron", "gold", "copper", "tin", "aluminum", "cobalt" };
     public IIcon[] icons;
 
     public GravelOre() {
@@ -49,15 +52,17 @@ public class GravelOre extends BlockSand {
 
     @Override
     public int damageDropped(int meta) {
-        /*if (meta == 1)
-        return 0;*/
+        /*
+         * if (meta == 1) return 0;
+         */
         return meta;
     }
 
     @Override
     public Item getItemDropped(int par1, Random par2Random, int par3) {
-        /*if (par1 == 1)
-        return Item.goldNugget.itemID;*/
+        /*
+         * if (par1 == 1) return Item.goldNugget.itemID;
+         */
         return Item.getItemFromBlock(TinkerWorld.oreGravel);
     }
 

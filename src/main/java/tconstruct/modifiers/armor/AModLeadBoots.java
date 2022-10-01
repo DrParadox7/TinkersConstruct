@@ -2,9 +2,11 @@ package tconstruct.modifiers.armor;
 
 import java.util.EnumSet;
 import java.util.UUID;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+
 import tconstruct.library.armor.ArmorPart;
 
 public class AModLeadBoots extends AModBoolean {

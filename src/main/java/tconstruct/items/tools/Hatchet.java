@@ -6,11 +6,13 @@ import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+
 import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.tools.HarvestTool;
 import tconstruct.tools.TinkerTools;
 
 public class Hatchet extends HarvestTool {
+
     public Hatchet() {
         super(3);
         this.setUnlocalizedName("InfiTool.Axe");
@@ -27,16 +29,15 @@ public class Hatchet extends HarvestTool {
     }
 
     @Override
-    public boolean onBlockDestroyed(
-            ItemStack itemstack, World world, Block block, int x, int y, int z, EntityLivingBase player) {
+    public boolean onBlockDestroyed(ItemStack itemstack, World world, Block block, int x, int y, int z,
+            EntityLivingBase player) {
         if (block != null && block.getMaterial() == Material.leaves) return false;
 
         return AbilityHelper.onBlockChanged(itemstack, world, block, x, y, z, player, random);
     }
 
-    static Material[] materials = {
-        Material.wood, Material.leaves, Material.vine, Material.circuits, Material.cactus, Material.gourd
-    };
+    static Material[] materials = { Material.wood, Material.leaves, Material.vine, Material.circuits, Material.cactus,
+            Material.gourd };
 
     @Override
     public Item getHeadItem() {

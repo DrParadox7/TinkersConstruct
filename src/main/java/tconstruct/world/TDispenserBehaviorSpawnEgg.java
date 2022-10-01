@@ -6,12 +6,13 @@ import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
+
 import tconstruct.tools.items.TitleIcon;
 
 public class TDispenserBehaviorSpawnEgg extends BehaviorDefaultDispenseItem {
+
     /**
-     * Dispense the specified stack, play the dispense sound and spawn
-     * particles.
+     * Dispense the specified stack, play the dispense sound and spawn particles.
      */
     @Override
     public ItemStack dispenseStack(IBlockSource par1IBlockSource, ItemStack par2ItemStack) {

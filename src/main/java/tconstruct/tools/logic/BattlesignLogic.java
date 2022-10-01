@@ -7,11 +7,12 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.world.World;
 
-/* Slots
- * 0: Battlesign item
+/*
+ * Slots 0: Battlesign item
  */
 
 public class BattlesignLogic extends EquipLogic {
+
     protected String[] text;
 
     public BattlesignLogic() {

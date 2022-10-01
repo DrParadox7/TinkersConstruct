@@ -1,8 +1,10 @@
 package tconstruct.library.crafting;
 
 import java.util.LinkedList;
+
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.tools.ToolCore;
 
@@ -11,6 +13,7 @@ import tconstruct.library.tools.ToolCore;
  */
 
 public class ToolRecipe {
+
     protected LinkedList<Item> headList = new LinkedList<Item>();
     protected LinkedList<Item> handleList = new LinkedList<Item>();
     protected LinkedList<Item> accessoryList = new LinkedList<Item>();
@@ -19,8 +22,7 @@ public class ToolRecipe {
     protected Item toolRod = TConstructRegistry.getItem("toolRod");
 
     /*
-     * public ToolRecipe(Item head, ToolCore tool) { this(head,
-     * TContent.toolRod, null, null, tool); }
+     * public ToolRecipe(Item head, ToolCore tool) { this(head, TContent.toolRod, null, null, tool); }
      */
 
     public ToolRecipe(Item head, Item handle, ToolCore tool) {

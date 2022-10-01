@@ -7,6 +7,7 @@ import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+
 import tconstruct.library.event.ToolCraftedEvent;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.tools.TinkerTools;
@@ -26,12 +27,8 @@ public class ToolForgeContainer extends ToolStationContainer {
 
         toolSlot = new SlotToolForge(inventoryplayer.player, logic, 0, 225, 38);
         this.addSlotToContainer(toolSlot);
-        slots = new Slot[] {
-            new Slot(logic, 1, 167, 29),
-            new Slot(logic, 2, 169, 29),
-            new Slot(logic, 3, 167, 47),
-            new Slot(logic, 4, 149, 47)
-        };
+        slots = new Slot[] { new Slot(logic, 1, 167, 29), new Slot(logic, 2, 169, 29), new Slot(logic, 3, 167, 47),
+                new Slot(logic, 4, 149, 47) };
 
         for (int iter = 0; iter < 4; iter++) this.addSlotToContainer(slots[iter]);
 
@@ -74,8 +71,7 @@ public class ToolForgeContainer extends ToolStationContainer {
     @Override
     protected void craftTool(ItemStack stack) {
         if (stack.getItem() instanceof IModifyable) {
-            Boolean full = (logic.getStackInSlot(2) != null
-                    || logic.getStackInSlot(3) != null
+            Boolean full = (logic.getStackInSlot(2) != null || logic.getStackInSlot(3) != null
                     || logic.getStackInSlot(4) != null);
             for (int i = 2; i <= 4; i++) logic.decrStackSize(i, 1);
             ItemStack compare = logic.getStackInSlot(1);
@@ -94,8 +90,7 @@ public class ToolForgeContainer extends ToolStationContainer {
 
             if (!ToolStationLogic.canRename(stack2.getTagCompound(), stack2)) {
                 for (int i = 0; i < logic.getSizeInventory(); i++) {
-                    if (logic.getStackInSlot(i) != null
-                            && logic.getStackInSlot(i).getItem() == Items.name_tag) {
+                    if (logic.getStackInSlot(i) != null && logic.getStackInSlot(i).getItem() == Items.name_tag) {
                         logic.decrStackSize(i, 1);
                         break;
                     }

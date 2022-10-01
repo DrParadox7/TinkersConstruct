@@ -1,12 +1,14 @@
 package tconstruct.tools.model;
 
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+
 public class BattlesignRender implements ISimpleBlockRenderingHandler {
+
     public static int battlesignModelID = RenderingRegistry.getNextAvailableRenderId();
 
     @Override
@@ -15,8 +17,8 @@ public class BattlesignRender implements ISimpleBlockRenderingHandler {
     }
 
     @Override
-    public boolean renderWorldBlock(
-            IBlockAccess world, int x, int y, int z, Block block, int modelID, RenderBlocks renderer) {
+    public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelID,
+            RenderBlocks renderer) {
         renderer.setRenderBounds(0.45F, 0.0F, 0.45F, 0.55F, 1.125F, 0.55F);
         renderer.renderStandardBlock(block, x, y, z);
         renderFace(world, x, y, z, block, renderer);

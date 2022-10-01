@@ -1,9 +1,8 @@
 package tconstruct.tools.entity;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Iterator;
 import java.util.List;
+
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.projectile.EntityThrowable;
 import net.minecraft.init.Items;
@@ -15,7 +14,11 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+
 public class LaunchedPotion extends EntityThrowable {
+
     /**
      * The damage value of the thrown potion that this EntityPotion represents.
      */
@@ -71,8 +74,7 @@ public class LaunchedPotion extends EntityThrowable {
     }
 
     /**
-     * Returns the damage value of the thrown potion that this EntityPotion
-     * represents.
+     * Returns the damage value of the thrown potion that this EntityPotion represents.
      */
     public int getPotionDamage() {
         if (this.potionDamage == null) {
@@ -116,13 +118,16 @@ public class LaunchedPotion extends EntityThrowable {
 
                                 if (Potion.potionTypes[i].isInstant()) {
                                     Potion.potionTypes[i].affectEntity(
-                                            this.getThrower(), entityliving, potioneffect.getAmplifier(), d1);
+                                            this.getThrower(),
+                                            entityliving,
+                                            potioneffect.getAmplifier(),
+                                            d1);
                                 } else {
                                     int j = (int) (d1 * (double) potioneffect.getDuration() + 0.5D);
 
                                     if (j > 20) {
-                                        entityliving.addPotionEffect(
-                                                new PotionEffect(i, j, potioneffect.getAmplifier()));
+                                        entityliving
+                                                .addPotionEffect(new PotionEffect(i, j, potioneffect.getAmplifier()));
                                     }
                                 }
                             }

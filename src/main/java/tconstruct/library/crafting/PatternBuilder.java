@@ -1,20 +1,23 @@
 package tconstruct.library.crafting;
 
 /** How to build tool parts? With patterns! */
-import cpw.mods.fml.common.eventhandler.Event.Result;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
+
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.event.PartBuilderEvent;
 import tconstruct.library.tools.CustomMaterial;
 import tconstruct.library.util.IPattern;
+import cpw.mods.fml.common.eventhandler.Event.Result;
 
 public class PatternBuilder {
+
     public static PatternBuilder instance = new PatternBuilder();
     // Map items to their parts with a hashmap
     public List<ItemKey> materials = new ArrayList<ItemKey>();
@@ -33,8 +36,8 @@ public class PatternBuilder {
         materials.add(new ItemKey(shard.getItem(), shard.getItemDamage(), 1, key));
     }
 
-    public void registerFullMaterial(
-            ItemStack material, int value, String key, ItemStack shard, ItemStack rod, int materialID) {
+    public void registerFullMaterial(ItemStack material, int value, String key, ItemStack shard, ItemStack rod,
+            int materialID) {
         materials.add(new ItemKey(material.getItem(), material.getItemDamage(), value, key));
         materials.add(new ItemKey(shard.getItem(), shard.getItemDamage(), 1, key));
         materialSets.put(key, new MaterialSet(shard, rod, materialID));
@@ -66,31 +69,23 @@ public class PatternBuilder {
                     int totalMaterial = key.value * material.stackSize;
 
                     if (totalMaterial < patternValue) // Not enough material
-                    return null;
+                        return null;
                     else if (patternValue == key.value) // Material only
-                    return new ItemStack[] {toolPart, null};
+                        return new ItemStack[] { toolPart, null };
                     else {
                         if (patternValue % 2 == 1 && mat.shard != null) {
-                            return new ItemStack[] {toolPart, mat.shard.copy()}; // Material
+                            return new ItemStack[] { toolPart, mat.shard.copy() }; // Material
                             // +
                             // shard
-                        } else return new ItemStack[] {toolPart, null};
+                        } else return new ItemStack[] { toolPart, null };
                     }
                     /*
-                     * if ( patternValue < totalMaterial ) { if (otherPattern !=
-                     * null) { int otherValue =
-                     * ((IPattern)otherPattern.getItem()
-                     * ).getPatternCost(otherPattern.getItemDamage()); if
-                     * (patternValue + otherValue <= key.value) { ItemStack
-                     * otherPart = getMatchingPattern(otherPattern, mat); return
-                     * new ItemStack[] { toolPart, otherPart }; //Material +
-                     * Material } } }
-                     *
-                     * else if ( patternValue == key.value ) return new
-                     * ItemStack[] { new ItemStack(toolPart, 1, mat.materialID),
-                     * null }; //Material only
-                     *
-                     * else return null; //Not a valid match
+                     * if ( patternValue < totalMaterial ) { if (otherPattern != null) { int otherValue =
+                     * ((IPattern)otherPattern.getItem() ).getPatternCost(otherPattern.getItemDamage()); if
+                     * (patternValue + otherValue <= key.value) { ItemStack otherPart = getMatchingPattern(otherPattern,
+                     * mat); return new ItemStack[] { toolPart, otherPart }; //Material + Material } } } else if (
+                     * patternValue == key.value ) return new ItemStack[] { new ItemStack(toolPart, 1, mat.materialID),
+                     * null }; //Material only else return null; //Not a valid match
                      */
                 }
             }
@@ -153,6 +148,7 @@ public class PatternBuilder {
     // Small data classes. I would prefer the struct from C#, but we do what we
     // can.
     public class ItemKey {
+
         public final Item item;
         public final int damage;
         public final int value;
@@ -167,6 +163,7 @@ public class PatternBuilder {
     }
 
     public class MaterialSet {
+
         public final ItemStack shard;
         public final ItemStack rod;
         public final int materialID;
@@ -187,27 +184,22 @@ public class PatternBuilder {
         registerMaterial(new ItemStack(material, 1, Short.MAX_VALUE), value, key);
     }
 
-    public void registerFullMaterial(
-            Block material, int value, String key, ItemStack shard, ItemStack rod, int materialID) {
+    public void registerFullMaterial(Block material, int value, String key, ItemStack shard, ItemStack rod,
+            int materialID) {
         registerFullMaterial(new ItemStack(material, 1, Short.MAX_VALUE), value, key, shard, rod, materialID);
     }
 
-    public void registerFullMaterial(
-            Item material, int value, String key, ItemStack shard, ItemStack rod, int materialID) {
+    public void registerFullMaterial(Item material, int value, String key, ItemStack shard, ItemStack rod,
+            int materialID) {
         registerFullMaterial(new ItemStack(material, 1, Short.MAX_VALUE), value, key, shard, rod, materialID);
     }
 
     /*
-     * public void registerFullMaterial (Block material, int value, String key,
-     * int materialID) { registerFullMaterial(new ItemStack(material, 1,
-     * Short.MAX_VALUE), value, key, new ItemStack(TContent.toolShard, 1,
-     * materialID), new ItemStack(TContent.toolRod, 1, materialID), materialID);
-     * }
-     *
-     * public void registerFullMaterial (Item material, int value, String key,
-     * int materialID) { registerFullMaterial(new ItemStack(material, 1,
-     * Short.MAX_VALUE), value, key, new ItemStack(TContent.toolShard, 1,
-     * materialID), new ItemStack(TContent.toolRod, 1, materialID), materialID);
-     * }
+     * public void registerFullMaterial (Block material, int value, String key, int materialID) {
+     * registerFullMaterial(new ItemStack(material, 1, Short.MAX_VALUE), value, key, new ItemStack(TContent.toolShard,
+     * 1, materialID), new ItemStack(TContent.toolRod, 1, materialID), materialID); } public void registerFullMaterial
+     * (Item material, int value, String key, int materialID) { registerFullMaterial(new ItemStack(material, 1,
+     * Short.MAX_VALUE), value, key, new ItemStack(TContent.toolShard, 1, materialID), new ItemStack(TContent.toolRod,
+     * 1, materialID), materialID); }
      */
 }

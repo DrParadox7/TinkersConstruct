@@ -4,12 +4,14 @@ import static tconstruct.library.util.XpUtils.ModCost;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import tconstruct.library.modifier.ItemModifier;
 import tconstruct.util.config.PHConstruct;
 
 /* Adds an integer NBTTag */
 
 public class ModDurability extends ItemModifier {
+
     String tooltipName;
     String color;
     int durability;

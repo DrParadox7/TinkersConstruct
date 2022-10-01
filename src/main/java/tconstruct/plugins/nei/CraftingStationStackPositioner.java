@@ -1,12 +1,14 @@
 package tconstruct.plugins.nei;
 
+import java.util.ArrayList;
+
+import net.minecraft.client.Minecraft;
+
+import tconstruct.TConstruct;
+import tconstruct.tools.gui.CraftingStationGui;
 import codechicken.nei.PositionedStack;
 import codechicken.nei.api.IStackPositioner;
 import codechicken.nei.recipe.GuiRecipe;
-import java.util.ArrayList;
-import net.minecraft.client.Minecraft;
-import tconstruct.TConstruct;
-import tconstruct.tools.gui.CraftingStationGui;
 
 public class CraftingStationStackPositioner implements IStackPositioner {
 
@@ -14,7 +16,7 @@ public class CraftingStationStackPositioner implements IStackPositioner {
     public ArrayList<PositionedStack> positionStacks(ArrayList<PositionedStack> stacks) {
 
         if (Minecraft.getMinecraft().currentScreen instanceof GuiRecipe) {
-            GuiRecipe recipeGui = (GuiRecipe) Minecraft.getMinecraft().currentScreen;
+            GuiRecipe<?> recipeGui = (GuiRecipe<?>) Minecraft.getMinecraft().currentScreen;
 
             if (!(recipeGui.firstGui instanceof CraftingStationGui)) {
                 TConstruct.logger.warn("No CraftingStationGui found!");

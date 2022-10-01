@@ -7,11 +7,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
+
 import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.tools.Weapon;
 import tconstruct.tools.TinkerTools;
 
 public class Cleaver extends Weapon {
+
     public Cleaver() {
         super(5);
         this.setUnlocalizedName("InfiTool.Cleaver");
@@ -102,10 +104,8 @@ public class Cleaver extends Weapon {
             entity.hurtResistantTime += 7;
 
             /*
-             * if (entity instanceof EntityLiving) { EntityLiving living =
-             * (EntityLiving) entity; if (living.getHealth() <= 0) {
-             *
-             * } }
+             * if (entity instanceof EntityLiving) { EntityLiving living = (EntityLiving) entity; if (living.getHealth()
+             * <= 0) { } }
              */
             // if (entity.getHealth() <= 0)
         }
@@ -125,7 +125,7 @@ public class Cleaver extends Weapon {
     }
 
     /*
-     * @Override public boolean onEntitySwing (EntityLiving entity, ItemStack
-     * stack) { entity.swingProgressInt /= 2; return false; }
+     * @Override public boolean onEntitySwing (EntityLiving entity, ItemStack stack) { entity.swingProgressInt /= 2;
+     * return false; }
      */
 }

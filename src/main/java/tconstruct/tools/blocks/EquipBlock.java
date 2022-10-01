@@ -1,9 +1,9 @@
 package tconstruct.tools.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.Random;
+
 import mantle.blocks.abstracts.InventoryBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -19,12 +19,15 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import tconstruct.TConstruct;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.tools.ToolProxyCommon;
 import tconstruct.tools.logic.EquipLogic;
 import tconstruct.tools.logic.FrypanLogic;
 import tconstruct.tools.model.FrypanRender;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class EquipBlock extends InventoryBlock {
 
@@ -37,7 +40,7 @@ public class EquipBlock extends InventoryBlock {
 
     @Override
     public String[] getTextureNames() {
-        return new String[] {"toolstation_top"};
+        return new String[] { "toolstation_top" };
     }
 
     @Override
@@ -96,12 +99,7 @@ public class EquipBlock extends InventoryBlock {
     }
 
     @Override
-    public void onBlockPlacedBy(
-            World par1World,
-            int par2,
-            int par3,
-            int par4,
-            EntityLivingBase par5EntityLivingBase,
+    public void onBlockPlacedBy(World par1World, int par2, int par3, int par4, EntityLivingBase par5EntityLivingBase,
             ItemStack par6ItemStack) {
         super.onBlockPlacedBy(par1World, par2, par3, par4, par5EntityLivingBase, par6ItemStack);
         int i3 = MathHelper.floor_double((par5EntityLivingBase.rotationYaw * 4.0F / 360.0F) + 0.5D) & 3;
@@ -155,8 +153,7 @@ public class EquipBlock extends InventoryBlock {
                                 new ItemStack(stack.getItem(), itemSize, stack.getItemDamage()));
 
                         if (stack.hasTagCompound()) {
-                            entityitem.getEntityItem().setTagCompound((NBTTagCompound)
-                                    stack.getTagCompound().copy());
+                            entityitem.getEntityItem().setTagCompound((NBTTagCompound) stack.getTagCompound().copy());
                         }
 
                         float offset = 0.05F;
@@ -195,9 +192,7 @@ public class EquipBlock extends InventoryBlock {
         if (te instanceof EquipLogic) {
             EquipLogic logic = (EquipLogic) te;
             ItemStack stack = logic.getEquipmentItem();
-            if (stack != null
-                    && stack.hasTagCompound()
-                    && stack.getTagCompound().hasKey("InfiTool")) {
+            if (stack != null && stack.hasTagCompound() && stack.getTagCompound().hasKey("InfiTool")) {
                 NBTTagCompound tag = stack.getTagCompound().getCompoundTag("InfiTool");
 
                 if (tag != null) {

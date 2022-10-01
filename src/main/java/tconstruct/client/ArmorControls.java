@@ -1,18 +1,17 @@
 package tconstruct.client;
 
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 import mantle.common.network.AbstractPacket;
 import modwarriors.notenoughkeys.api.Api;
 import modwarriors.notenoughkeys.api.KeyBindingPressedEvent;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.settings.KeyBinding;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.potion.Potion;
+
+import org.lwjgl.input.Keyboard;
+
 import tconstruct.TConstruct;
 import tconstruct.armor.ArmorProxyClient;
 import tconstruct.armor.ArmorProxyCommon;
@@ -22,16 +21,21 @@ import tconstruct.util.network.AccessoryInventoryPacket;
 import tconstruct.util.network.BeltPacket;
 import tconstruct.util.network.DoubleJumpPacket;
 import tconstruct.util.network.GogglePacket;
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 
 public class ArmorControls {
 
     public static final String keybindCategory = "tconstruct.keybindings";
-    public static final String[] keyDescs = new String[] {"key.tarmor", "key.tgoggles", "key.tbelt", "key.tzoom"};
-    public static KeyBinding armorKey = new KeyBinding(keyDescs[0], 24, keybindCategory);
-    public static KeyBinding toggleGoggles = new KeyBinding(keyDescs[1], 34, keybindCategory);
-    public static KeyBinding beltSwap = new KeyBinding(keyDescs[2], 48, keybindCategory);
-    public static KeyBinding zoomKey =
-            new KeyBinding(keyDescs[3], 44, keybindCategory); // TODO: Make this hold, not toggle
+    public static final String[] keyDescs = new String[] { "key.tarmor", "key.tgoggles", "key.tbelt", "key.tzoom" };
+    public static KeyBinding armorKey = new KeyBinding(keyDescs[0], Keyboard.KEY_NONE, keybindCategory);
+    public static KeyBinding toggleGoggles = new KeyBinding(keyDescs[1], Keyboard.KEY_NONE, keybindCategory);
+    public static KeyBinding beltSwap = new KeyBinding(keyDescs[2], Keyboard.KEY_NONE, keybindCategory);
+    // TODO: Make this hold, not toggle
+    public static KeyBinding zoomKey = new KeyBinding(keyDescs[3], Keyboard.KEY_NONE, keybindCategory);
     static KeyBinding jumpKey;
     static KeyBinding invKey;
     static Minecraft mc;
@@ -47,10 +51,11 @@ public class ArmorControls {
     // boolean onStilts = false;
 
     private final KeyBinding[] keys;
+    private boolean isNotEnoughKeysLoaded;
 
     public ArmorControls() {
         getVanillaKeyBindings();
-        keys = new KeyBinding[] {armorKey, toggleGoggles, beltSwap, zoomKey, null, null};
+        keys = new KeyBinding[] { armorKey, toggleGoggles, beltSwap, zoomKey, null, null };
     }
 
     public void registerKeys() {
@@ -60,7 +65,8 @@ public class ArmorControls {
                 ClientRegistry.registerKeyBinding(key);
             }
         }
-        if (Loader.isModLoaded("notenoughkeys")) {
+        isNotEnoughKeysLoaded = Loader.isModLoaded("notenoughkeys");
+        if (isNotEnoughKeysLoaded) {
             Api.registerMod(TConstruct.modID, keyDescs);
         }
         // Add mc keys
@@ -76,7 +82,7 @@ public class ArmorControls {
 
     @SubscribeEvent
     public void keyEvent(KeyInputEvent event) {
-        if (!Loader.isModLoaded("notenoughkeys")) {
+        if (!isNotEnoughKeysLoaded) {
             checkAndPerformKeyActions(null, false);
         }
     }
@@ -121,8 +127,8 @@ public class ArmorControls {
             mc.thePlayer.motionY = 0.42D;
             mc.thePlayer.fallDistance = 0;
             if (mc.thePlayer.isPotionActive(Potion.jump)) {
-                mc.thePlayer.motionY +=
-                        (float) (mc.thePlayer.getActivePotionEffect(Potion.jump).getAmplifier() + 1) * 0.1F;
+                mc.thePlayer.motionY += (float) (mc.thePlayer.getActivePotionEffect(Potion.jump).getAmplifier() + 1)
+                        * 0.1F;
             }
             midairJumps--;
             resetFallDamage();
@@ -130,16 +136,12 @@ public class ArmorControls {
         if (!jumping) {
             jumping = mc.thePlayer.isAirBorne;
             ItemStack shoes = mc.thePlayer.getCurrentArmor(0);
-            if (shoes != null
-                    && shoes.hasTagCompound()
-                    && shoes.getTagCompound().hasKey("TinkerArmor")) {
+            if (shoes != null && shoes.hasTagCompound() && shoes.getTagCompound().hasKey("TinkerArmor")) {
                 NBTTagCompound shoeTag = shoes.getTagCompound().getCompoundTag("TinkerArmor");
                 midairJumps += shoeTag.getInteger("Double-Jump");
             }
             ItemStack wings = mc.thePlayer.getCurrentArmor(1);
-            if (wings != null
-                    && wings.hasTagCompound()
-                    && wings.getTagCompound().hasKey("TinkerArmor")) {
+            if (wings != null && wings.hasTagCompound() && wings.getTagCompound().hasKey("TinkerArmor")) {
                 NBTTagCompound shoeTag = wings.getTagCompound().getCompoundTag("TinkerArmor");
                 midairJumps += shoeTag.getInteger("Double-Jump");
             }
@@ -149,10 +151,8 @@ public class ArmorControls {
     private void checkAndToggleNightVision() {
         ItemStack goggles = mc.thePlayer.getCurrentArmor(3);
         if (goggles != null && goggles.getItem() instanceof TravelGear) { // TODO: Genericize this
-            if (goggles.hasTagCompound()
-                    && goggles.getTagCompound()
-                            .getCompoundTag(((TravelGear) goggles.getItem()).getBaseTagName())
-                            .getBoolean("Night Vision")) {
+            if (goggles.hasTagCompound() && goggles.getTagCompound()
+                    .getCompoundTag(((TravelGear) goggles.getItem()).getBaseTagName()).getBoolean("Night Vision")) {
                 activeGoggles = !activeGoggles;
                 PlayerAbilityHelper.toggleGoggles(mc.thePlayer, activeGoggles);
                 toggleGoggles();

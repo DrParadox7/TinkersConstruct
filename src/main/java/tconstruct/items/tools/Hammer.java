@@ -1,6 +1,7 @@
 package tconstruct.items.tools;
 
 import java.util.List;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -8,11 +9,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
+
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.tools.AOEHarvestTool;
 import tconstruct.tools.TinkerTools;
 
 public class Hammer extends AOEHarvestTool {
+
     public Hammer() {
         super(2, 1, 0);
         this.setUnlocalizedName("InfiTool.Hammer");
@@ -43,9 +46,8 @@ public class Hammer extends AOEHarvestTool {
         return materials;
     }
 
-    static Material[] materials =
-            new Material[] {Material.rock, Material.iron, Material.ice, Material.glass, Material.piston, Material.anvil
-            };
+    static Material[] materials = new Material[] { Material.rock, Material.iron, Material.ice, Material.glass,
+            Material.piston, Material.anvil };
 
     @Override
     public Item getHeadItem() {
@@ -153,6 +155,6 @@ public class Hammer extends AOEHarvestTool {
 
     @Override
     public String[] getTraits() {
-        return new String[] {"weapon", "harvest", "melee", "bludgeoning"};
+        return new String[] { "weapon", "harvest", "melee", "bludgeoning" };
     }
 }

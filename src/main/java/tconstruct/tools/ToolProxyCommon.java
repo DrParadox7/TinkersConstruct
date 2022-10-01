@@ -1,13 +1,16 @@
 package tconstruct.tools;
 
-import cpw.mods.fml.common.network.IGuiHandler;
 import mantle.blocks.abstracts.InventoryLogic;
+
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
+
 import tconstruct.common.TProxyCommon;
+import cpw.mods.fml.common.network.IGuiHandler;
 
 public class ToolProxyCommon implements IGuiHandler {
+
     public static final int toolStationID = 0;
     public static final int partBuilderID = 1;
     public static final int patternChestID = 2;

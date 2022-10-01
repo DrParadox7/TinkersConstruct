@@ -1,8 +1,8 @@
 package tconstruct.world.gen;
 
-import cpw.mods.fml.common.IWorldGenerator;
 import java.awt.geom.Ellipse2D;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
@@ -12,12 +12,15 @@ import net.minecraft.world.WorldType;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderFlat;
 import net.minecraft.world.gen.feature.WorldGenerator;
+
 import tconstruct.tools.TinkerTools;
 import tconstruct.util.config.DimensionBlacklist;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.world.TinkerWorld;
+import cpw.mods.fml.common.IWorldGenerator;
 
 public class SlimeIslandGen extends WorldGenerator implements IWorldGenerator {
+
     private Block liquidBlock;
     private int gelMeta;
     int randomness = 2;
@@ -32,15 +35,10 @@ public class SlimeIslandGen extends WorldGenerator implements IWorldGenerator {
     }
 
     @Override
-    public void generate(
-            Random random,
-            int chunkX,
-            int chunkZ,
-            World world,
-            IChunkProvider chunkGenerator,
+    public void generate(Random random, int chunkX, int chunkZ, World world, IChunkProvider chunkGenerator,
             IChunkProvider chunkProvider) // IWorldGenerator
-                // version
-            {
+    // version
+    {
         // dim 0 only?
         if ((chunkGenerator instanceof ChunkProviderFlat || world.provider.terrainType == WorldType.FLAT)
                 && !PHConstruct.genIslandsFlat) {
@@ -150,14 +148,12 @@ public class SlimeIslandGen extends WorldGenerator implements IWorldGenerator {
 
     @Override
     public boolean generate(World world, Random rand, int x, int y, int z) // WorldGenerator
-                // version
-            {
+    // version
+    {
         x -= 8;
         z -= 8;
         /*
-         * for (z -= 8; y > 5 && world.isAirBlock(x, y, z); --y) { ; }
-         *
-         * if (y <= 4) { return false; } else {
+         * for (z -= 8; y > 5 && world.isAirBlock(x, y, z); --y) { ; } if (y <= 4) { return false; } else {
          */
         y -= 4;
         boolean[] validLocations = new boolean[2048];
@@ -204,15 +200,13 @@ public class SlimeIslandGen extends WorldGenerator implements IWorldGenerator {
                                     || yPos > 0 && validLocations[(xPos * 16 + zPos) * 8 + (yPos - 1)]);
 
                     if (var33) {
-                        Material var12 =
-                                world.getBlock(x + xPos, y + yPos, z + zPos).getMaterial();
+                        Material var12 = world.getBlock(x + xPos, y + yPos, z + zPos).getMaterial();
 
                         if (yPos >= 4 && var12.isLiquid()) {
                             return false;
                         }
 
-                        if (yPos < 4
-                                && !var12.isSolid()
+                        if (yPos < 4 && !var12.isSolid()
                                 && world.getBlock(x + xPos, y + yPos, z + zPos) != this.liquidBlock) {
                             return false;
                         }
@@ -256,14 +250,9 @@ public class SlimeIslandGen extends WorldGenerator implements IWorldGenerator {
                                         || yPos < 7 && validLocations[(xPos * 16 + zPos) * 8 + yPos + 1]
                                         || yPos > 0 && validLocations[(xPos * 16 + zPos) * 8 + (yPos - 1)]);
 
-                        if (var33
-                                && (yPos < 4 || rand.nextInt(2) != 0)
-                                && world.getBlock(x + xPos, y + yPos, z + zPos)
-                                        .getMaterial()
-                                        .isSolid()
-                                && world.getBlock(x + xPos, y + yPos + 1, z + zPos)
-                                                .getMaterial()
-                                        != Material.water) {
+                        if (var33 && (yPos < 4 || rand.nextInt(2) != 0)
+                                && world.getBlock(x + xPos, y + yPos, z + zPos).getMaterial().isSolid()
+                                && world.getBlock(x + xPos, y + yPos + 1, z + zPos).getMaterial() != Material.water) {
                             world.setBlock(x + xPos, y + yPos, z + zPos, TinkerWorld.slimeGel, gelMeta, 2);
                         }
                     }

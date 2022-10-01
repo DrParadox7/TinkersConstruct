@@ -8,6 +8,7 @@ import net.minecraft.nbt.NBTTagCompound;
 /* Base class for harvest tools with each head having a different purpose */
 
 public abstract class DualHarvestTool extends HarvestTool {
+
     public DualHarvestTool(int baseDamage) {
         super(baseDamage);
     }
@@ -66,7 +67,7 @@ public abstract class DualHarvestTool extends HarvestTool {
 
     @Override
     public String[] getTraits() {
-        return new String[] {"harvest", "dualharvest"};
+        return new String[] { "harvest", "dualharvest" };
     }
 
     protected abstract Material[] getEffectiveSecondaryMaterials();

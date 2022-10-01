@@ -3,9 +3,11 @@ package tconstruct.modifiers.armor;
 import static tconstruct.library.util.XpUtils.ModCost;
 
 import java.util.EnumSet;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import tconstruct.library.armor.ArmorCore;
 import tconstruct.library.armor.ArmorMod;
 import tconstruct.library.armor.ArmorPart;
@@ -13,6 +15,7 @@ import tconstruct.library.armor.ArmorPart;
 /* Adds a boolean NBTTag */
 
 public class AModBoolean extends ArmorMod {
+
     String color;
     String tooltipName;
 
@@ -29,8 +32,8 @@ public class AModBoolean extends ArmorMod {
         ArmorCore item = (ArmorCore) armor.getItem();
         if (!armorTypes.contains(item.armorPart)) return false;
         NBTTagCompound tags = getModifierTag(armor);
-        return tags.getInteger("Modifiers") > 0
-                && !tags.getBoolean(key); // Will fail if the modifier is false or the tag doesn't exist
+        return tags.getInteger("Modifiers") > 0 && !tags.getBoolean(key); // Will fail if the modifier is false or the
+                                                                          // tag doesn't exist
     }
 
     @Override

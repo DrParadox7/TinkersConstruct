@@ -2,15 +2,18 @@ package tconstruct.client.pages;
 
 import mantle.client.pages.BookPage;
 import mantle.lib.client.MantleClientRegistry;
+
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
 public class ToolPage extends BookPage {
+
     String title;
     ItemStack[] icons;
     String[] iconText;
@@ -37,8 +40,7 @@ public class ToolPage extends BookPage {
         }
 
         nodes = element.getElementsByTagName("icon");
-        if (nodes != null)
-            icons[0] = MantleClientRegistry.getManualIcon(nodes.item(0).getTextContent());
+        if (nodes != null) icons[0] = MantleClientRegistry.getManualIcon(nodes.item(0).getTextContent());
     }
 
     @Override
@@ -62,7 +64,11 @@ public class ToolPage extends BookPage {
         RenderHelper.enableGUIStandardItemLighting();
         manual.renderitem.zLevel = 100;
         manual.renderitem.renderItemAndEffectIntoGUI(
-                manual.fonts, manual.getMC().renderEngine, icons[0], localWidth + 50, localHeight + 0);
+                manual.fonts,
+                manual.getMC().renderEngine,
+                icons[0],
+                localWidth + 50,
+                localHeight + 0);
         for (int i = 1; i < icons.length; i++) {
             manual.renderitem.renderItemAndEffectIntoGUI(
                     manual.fonts,
@@ -72,7 +78,11 @@ public class ToolPage extends BookPage {
                     localHeight + 20 + 10 * size + 18 * i);
             int partOffset = iconText[i + 1].length() > 11 ? -3 : 0;
             manual.fonts.drawSplitString(
-                    iconText[i + 1], localWidth + 140, localHeight + 24 + 10 * size + 18 * i + partOffset, 44, 0);
+                    iconText[i + 1],
+                    localWidth + 140,
+                    localHeight + 24 + 10 * size + 18 * i + partOffset,
+                    44,
+                    0);
         }
         manual.renderitem.zLevel = 0;
         RenderHelper.disableStandardItemLighting();

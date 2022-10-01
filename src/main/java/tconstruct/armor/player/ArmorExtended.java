@@ -1,12 +1,9 @@
 package tconstruct.armor.player;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.network.ByteBufUtils;
-import cpw.mods.fml.relauncher.Side;
-import io.netty.buffer.ByteBuf;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.util.UUID;
+
 import net.minecraft.enchantment.Enchantment;
 import net.minecraft.entity.SharedMonsterAttributes;
 import net.minecraft.entity.ai.attributes.AttributeModifier;
@@ -16,9 +13,16 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
+
 import tconstruct.library.accessory.IHealthAccessory;
+import tconstruct.util.config.PHConstruct;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.ByteBufUtils;
+import cpw.mods.fml.relauncher.Side;
+import io.netty.buffer.ByteBuf;
 
 public class ArmorExtended implements IInventory {
+
     public ItemStack[] inventory = new ItemStack[7];
     public WeakReference<EntityPlayer> parent;
     public UUID globalID = UUID.fromString("B243BE32-DC1B-4C53-8D13-8752D5C69D5B");
@@ -105,8 +109,7 @@ public class ArmorExtended implements IInventory {
         recalculateHealth(player, stats);
 
         /*
-         * if (inventory[2] == null && stats.knapsack != null) {
-         * stats.knapsack.unequipItems(); }
+         * if (inventory[2] == null && stats.knapsack != null) { stats.knapsack.unequipItems(); }
          */
     }
 
@@ -126,14 +129,13 @@ public class ArmorExtended implements IInventory {
 
             int healthChange = bonusHP - prevHealth;
             if (healthChange != 0) {
-                IAttributeInstance attributeinstance =
-                        player.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.maxHealth);
+                IAttributeInstance attributeinstance = player.getAttributeMap()
+                        .getAttributeInstance(SharedMonsterAttributes.maxHealth);
                 try {
                     attributeinstance.removeModifier(attributeinstance.getModifier(globalID));
-                } catch (Exception e) {
-                }
-                attributeinstance.applyModifier(
-                        new AttributeModifier(globalID, "tconstruct.heartCanister", bonusHP, 0));
+                } catch (Exception e) {}
+                attributeinstance
+                        .applyModifier(new AttributeModifier(globalID, "tconstruct.heartCanister", bonusHP, 0));
             }
         } else if (parent != null && parent.get() != null) {
             int prevHealth = stats.bonusHealth;
@@ -141,12 +143,11 @@ public class ArmorExtended implements IInventory {
             stats.bonusHealth = bonusHP;
             int healthChange = bonusHP - prevHealth;
             if (healthChange != 0) {
-                IAttributeInstance attributeinstance =
-                        player.getAttributeMap().getAttributeInstance(SharedMonsterAttributes.maxHealth);
+                IAttributeInstance attributeinstance = player.getAttributeMap()
+                        .getAttributeInstance(SharedMonsterAttributes.maxHealth);
                 try {
                     attributeinstance.removeModifier(attributeinstance.getModifier(globalID));
-                } catch (Exception e) {
-                }
+                } catch (Exception e) {}
             }
         }
     }
@@ -231,9 +232,10 @@ public class ArmorExtended implements IInventory {
     // ---
 
     public void dropItems() {
+        final int dropEndSlot = PHConstruct.dropCanisters ? 7 : 4;
         EntityPlayer player = parent.get();
         if (player != null) {
-            for (int i = 0; i < 4; ++i) {
+            for (int i = 0; i < dropEndSlot; ++i) {
                 if (this.inventory[i] != null && !isSoulBounded(this.inventory[i])) {
                     player.func_146097_a(this.inventory[i], true, false);
                     this.inventory[i] = null;

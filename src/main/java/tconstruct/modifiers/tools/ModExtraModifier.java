@@ -2,9 +2,11 @@ package tconstruct.modifiers.tools;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import tconstruct.library.modifier.ItemModifier;
 
 public class ModExtraModifier extends ItemModifier {
+
     public ModExtraModifier(ItemStack[] items, String dataKey) {
         super(items, 0, dataKey);
     }
@@ -12,16 +14,16 @@ public class ModExtraModifier extends ItemModifier {
     @Override
     protected boolean canModify(ItemStack tool, ItemStack[] recipe) {
         return false;
-        //        if (tool != null && tool.getItem() instanceof IModifyable)
-        //        {
-        //            NBTTagCompound tags = this.getModifierTag(tool);
-        //            if (tags.getBoolean(key))
-        //            {
-        //                return false;
-        //            }
-        //            return true;
-        //        }
-        //        return false;
+        // if (tool != null && tool.getItem() instanceof IModifyable)
+        // {
+        // NBTTagCompound tags = this.getModifierTag(tool);
+        // if (tags.getBoolean(key))
+        // {
+        // return false;
+        // }
+        // return true;
+        // }
+        // return false;
     }
 
     @Override

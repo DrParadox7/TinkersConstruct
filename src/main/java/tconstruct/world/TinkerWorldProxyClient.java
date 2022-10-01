@@ -1,8 +1,7 @@
 package tconstruct.world;
 
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import cpw.mods.fml.common.registry.VillagerRegistry;
 import mantle.lib.client.MantleClientRegistry;
+
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelSlime;
@@ -11,14 +10,18 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
+
 import tconstruct.mechworks.model.CartRender;
 import tconstruct.tools.TinkerTools;
 import tconstruct.world.entity.BlueSlime;
 import tconstruct.world.entity.CartEntity;
 import tconstruct.world.entity.KingBlueSlime;
 import tconstruct.world.model.*;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import cpw.mods.fml.common.registry.VillagerRegistry;
 
 public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
+
     @Override
     public void initialize() {
         registerRenderer();
@@ -81,21 +84,31 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
         // Traps
         ItemStack reed = new ItemStack(Items.reeds);
         MantleClientRegistry.registerManualLargeRecipe(
-                "punji", new ItemStack(TinkerWorld.punji, 5), reed, null, reed, null, reed, null, reed, null, reed);
-        MantleClientRegistry.registerManualSmallRecipe(
-                "barricade", new ItemStack(TinkerWorld.barricadeOak), null, log, null, log);
+                "punji",
+                new ItemStack(TinkerWorld.punji, 5),
+                reed,
+                null,
+                reed,
+                null,
+                reed,
+                null,
+                reed,
+                null,
+                reed);
+        MantleClientRegistry
+                .registerManualSmallRecipe("barricade", new ItemStack(TinkerWorld.barricadeOak), null, log, null, log);
     }
 
     Minecraft mc = Minecraft.getMinecraft();
 
     @Override
-    public void spawnParticle(
-            String particle, double xPos, double yPos, double zPos, double velX, double velY, double velZ) {
+    public void spawnParticle(String particle, double xPos, double yPos, double zPos, double velX, double velY,
+            double velZ) {
         this.doSpawnParticle(particle, xPos, yPos, zPos, velX, velY, velZ);
     }
 
-    public EntityFX doSpawnParticle(
-            String par1Str, double par2, double par4, double par6, double par8, double par10, double par12) {
+    public EntityFX doSpawnParticle(String par1Str, double par2, double par4, double par6, double par8, double par10,
+            double par12) {
         if (this.mc == null) this.mc = Minecraft.getMinecraft();
 
         if (this.mc.renderViewEntity != null && this.mc.effectRenderer != null) {
@@ -116,11 +129,25 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
             } else if (par1Str.equals("largeexplode")) {
                 this.mc.effectRenderer.addEffect(
                         entityfx = new EntityLargeExplodeFX(
-                                mc.renderEngine, mc.theWorld, par2, par4, par6, par8, par10, par12));
+                                mc.renderEngine,
+                                mc.theWorld,
+                                par2,
+                                par4,
+                                par6,
+                                par8,
+                                par10,
+                                par12));
             } else if (par1Str.equals("fireworksSpark")) {
                 this.mc.effectRenderer.addEffect(
                         entityfx = new EntityFireworkSparkFX(
-                                mc.theWorld, par2, par4, par6, par8, par10, par12, this.mc.effectRenderer));
+                                mc.theWorld,
+                                par2,
+                                par4,
+                                par6,
+                                par8,
+                                par10,
+                                par12,
+                                this.mc.effectRenderer));
             }
 
             if (entityfx != null) {
@@ -167,8 +194,14 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
                     } else if (par1Str.equals("portal")) {
                         entityfx = new EntityPortalFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
                     } else if (par1Str.equals("enchantmenttable")) {
-                        entityfx =
-                                new EntityEnchantmentTableParticleFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
+                        entityfx = new EntityEnchantmentTableParticleFX(
+                                mc.theWorld,
+                                par2,
+                                par4,
+                                par6,
+                                par8,
+                                par10,
+                                par12);
                     } else if (par1Str.equals("explode")) {
                         entityfx = new EntityExplodeFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
                     } else if (par1Str.equals("flame")) {
@@ -185,7 +218,13 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
                         entityfx = new EntityCloudFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
                     } else if (par1Str.equals("reddust")) {
                         entityfx = new EntityReddustFX(
-                                mc.theWorld, par2, par4, par6, (float) par8, (float) par10, (float) par12);
+                                mc.theWorld,
+                                par2,
+                                par4,
+                                par6,
+                                (float) par8,
+                                (float) par10,
+                                (float) par12);
                     } else if (par1Str.equals("snowballpoof")) {
                         entityfx = new EntityBreakingFX(mc.theWorld, par2, par4, par6, Items.snowball);
                     } else if (par1Str.equals("dripWater")) {

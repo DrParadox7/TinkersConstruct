@@ -1,9 +1,8 @@
 package tconstruct.world.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockWood;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -13,11 +12,15 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import tconstruct.library.TConstructRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class MeatBlock extends BlockWood {
+
     public IIcon[] icons;
-    public String[] textureNames = new String[] {"ham_skin", "ham_bone"};
+    public String[] textureNames = new String[] { "ham_skin", "ham_bone" };
 
     public MeatBlock() {
         this.setHardness(1.0F);
@@ -65,8 +68,7 @@ public class MeatBlock extends BlockWood {
     }
 
     /**
-     * ejects contained items into the world, and notifies neighbours of an
-     * update, as appropriate
+     * ejects contained items into the world, and notifies neighbours of an update, as appropriate
      */
     public void breakBlock(World par1World, int par2, int par3, int par4, int par5, int par6) {
         byte b0 = 4;
@@ -88,12 +90,11 @@ public class MeatBlock extends BlockWood {
     }
 
     /**
-     * Called when a block is placed using its ItemBlock. Args: World, X, Y, Z,
-     * side, hitX, hitY, hitZ, block metadata
+     * Called when a block is placed using its ItemBlock. Args: World, X, Y, Z, side, hitX, hitY, hitZ, block metadata
      */
     @Override
-    public int onBlockPlaced(
-            World par1World, int par2, int par3, int par4, int par5, float par6, float par7, float par8, int par9) {
+    public int onBlockPlaced(World par1World, int par2, int par3, int par4, int par5, float par6, float par7,
+            float par8, int par9) {
         int j1 = par9 & 3;
         byte b0 = 0;
 
@@ -115,8 +116,7 @@ public class MeatBlock extends BlockWood {
     }
 
     /**
-     * Determines the damage on the item the block drops. Used in cloth and
-     * wood.
+     * Determines the damage on the item the block drops. Used in cloth and wood.
      */
     @Override
     public int damageDropped(int par1) {
@@ -140,9 +140,8 @@ public class MeatBlock extends BlockWood {
     }
 
     /*
-     * public void onBlockHarvested (World world, int x, int y, int z, int meta,
-     * EntityPlayer player) { if (meta % 4 == 1) { if (world.difficultySetting >
-     * 2) world.createExplosion(null, x, y, z, 1.75f, false); else
+     * public void onBlockHarvested (World world, int x, int y, int z, int meta, EntityPlayer player) { if (meta % 4 ==
+     * 1) { if (world.difficultySetting > 2) world.createExplosion(null, x, y, z, 1.75f, false); else
      * world.createExplosion(null, x, y, z, 2f, false); } }
      */
 

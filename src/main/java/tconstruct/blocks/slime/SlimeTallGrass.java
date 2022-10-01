@@ -1,10 +1,9 @@
 package tconstruct.blocks.slime;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBush;
 import net.minecraft.block.material.Material;
@@ -17,10 +16,14 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import net.minecraftforge.common.IShearable;
+
 import tconstruct.library.TConstructRegistry;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class SlimeTallGrass extends BlockBush implements IShearable {
-    private static final String[] grassTypes = new String[] {"slimegrass_blue_tall"};
+
+    private static final String[] grassTypes = new String[] { "slimegrass_blue_tall" };
 
     @SideOnly(Side.CLIENT)
     private IIcon[] iconArray;
@@ -50,8 +53,7 @@ public class SlimeTallGrass extends BlockBush implements IShearable {
     }
 
     /**
-     * Returns the usual quantity dropped by the block plus a bonus of 1 to 'i'
-     * (inclusive).
+     * Returns the usual quantity dropped by the block plus a bonus of 1 to 'i' (inclusive).
      */
     @Override
     public int quantityDroppedWithBonus(int par1, Random par2Random) {

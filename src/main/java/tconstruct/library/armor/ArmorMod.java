@@ -1,13 +1,16 @@
 package tconstruct.library.armor;
 
 import java.util.EnumSet;
+
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.library.modifier.ItemModifier;
 
 public abstract class ArmorMod extends ItemModifier {
+
     protected final EnumSet<ArmorPart> armorTypes;
 
     public ArmorMod(int effect, String dataKey, EnumSet<ArmorPart> armorTypes, ItemStack[] items) {

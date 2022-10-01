@@ -1,10 +1,8 @@
 package tconstruct.tools.entity;
 
-import cpw.mods.fml.common.network.ByteBufUtils;
-import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
-import io.netty.buffer.ByteBuf;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
@@ -22,8 +20,13 @@ import net.minecraft.network.play.server.S2BPacketChangeGameState;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.network.ByteBufUtils;
+import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
+import io.netty.buffer.ByteBuf;
+
 @Deprecated
 public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnData {
+
     public ItemStack returnStack;
     public float mass;
     public int baseDamage;
@@ -53,8 +56,8 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
     @Override
     public void onCollideWithPlayer(EntityPlayer par1EntityPlayer) {
         if (!this.worldObj.isRemote && this.inGround && this.arrowShake <= 0) {
-            boolean flag =
-                    this.canBePickedUp == 1 || this.canBePickedUp == 2 && par1EntityPlayer.capabilities.isCreativeMode;
+            boolean flag = this.canBePickedUp == 1
+                    || this.canBePickedUp == 2 && par1EntityPlayer.capabilities.isCreativeMode;
 
             if (this.canBePickedUp == 1 && !par1EntityPlayer.inventory.addItemStackToInventory(returnStack)) {
                 flag = false;
@@ -62,7 +65,9 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
 
             if (flag) {
                 this.playSound(
-                        "random.pop", 0.2F, ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
+                        "random.pop",
+                        0.2F,
+                        ((this.rand.nextFloat() - this.rand.nextFloat()) * 0.7F + 1.0F) * 2.0F);
                 par1EntityPlayer.onItemPickup(this, 1);
                 if (returnStack.stackSize <= 0 || this.canBePickedUp == 2) this.setDead();
             }
@@ -78,17 +83,20 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
 
         if (this.prevRotationPitch == 0.0F && this.prevRotationYaw == 0.0F) {
             float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
-            this.prevRotationYaw =
-                    this.rotationYaw = (float) (Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
-            this.prevRotationPitch =
-                    this.rotationPitch = (float) (Math.atan2(this.motionY, (double) f) * 180.0D / Math.PI);
+            this.prevRotationYaw = this.rotationYaw = (float) (Math.atan2(this.motionX, this.motionZ) * 180.0D
+                    / Math.PI);
+            this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(this.motionY, (double) f) * 180.0D
+                    / Math.PI);
         }
 
         Block i = this.worldObj.getBlock(this.field_145791_d, this.field_145792_e, this.field_145789_f);
 
         i.setBlockBoundsBasedOnState(this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f);
         AxisAlignedBB axisalignedbb = i.getCollisionBoundingBoxFromPool(
-                this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f);
+                this.worldObj,
+                this.field_145791_d,
+                this.field_145792_e,
+                this.field_145789_f);
 
         if (axisalignedbb != null
                 && axisalignedbb.isVecInside(Vec3.createVectorHelper(this.posX, this.posY, this.posZ))) {
@@ -122,12 +130,12 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
         } else {
             ++this.ticksInAir;
             Vec3 vec3 = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
-            Vec3 vec31 = Vec3.createVectorHelper(
-                    this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+            Vec3 vec31 = Vec3
+                    .createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
             MovingObjectPosition movingobjectposition = this.worldObj.func_147447_a(vec3, vec31, false, true, false);
             vec3 = Vec3.createVectorHelper(this.posX, this.posY, this.posZ);
-            vec31 = Vec3.createVectorHelper(
-                    this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
+            vec31 = Vec3
+                    .createVectorHelper(this.posX + this.motionX, this.posY + this.motionY, this.posZ + this.motionZ);
 
             if (movingobjectposition != null) {
                 vec31 = Vec3.createVectorHelper(
@@ -139,9 +147,7 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
             Entity entity = null;
             List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(
                     this,
-                    this.boundingBox
-                            .addCoord(this.motionX, this.motionY, this.motionZ)
-                            .expand(1.0D, 1.0D, 1.0D));
+                    this.boundingBox.addCoord(this.motionX, this.motionY, this.motionZ).expand(1.0D, 1.0D, 1.0D));
             double d0 = 0.0D;
             int l;
             float ySpeed;
@@ -151,8 +157,8 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
 
                 if (entity1.canBeCollidedWith() && (entity1 != this.shootingEntity || this.ticksInAir >= 5)) {
                     ySpeed = 0.3F;
-                    AxisAlignedBB axisalignedbb1 =
-                            entity1.boundingBox.expand((double) ySpeed, (double) ySpeed, (double) ySpeed);
+                    AxisAlignedBB axisalignedbb1 = entity1.boundingBox
+                            .expand((double) ySpeed, (double) ySpeed, (double) ySpeed);
                     MovingObjectPosition movingobjectposition1 = axisalignedbb1.calculateIntercept(vec3, vec31);
 
                     if (movingobjectposition1 != null) {
@@ -170,14 +176,12 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
                 movingobjectposition = new MovingObjectPosition(entity);
             }
 
-            if (movingobjectposition != null
-                    && movingobjectposition.entityHit != null
+            if (movingobjectposition != null && movingobjectposition.entityHit != null
                     && movingobjectposition.entityHit instanceof EntityPlayer) {
                 EntityPlayer entityplayer = (EntityPlayer) movingobjectposition.entityHit;
 
-                if (entityplayer.capabilities.disableDamage
-                        || this.shootingEntity instanceof EntityPlayer
-                                && !((EntityPlayer) this.shootingEntity).canAttackPlayer(entityplayer)) {
+                if (entityplayer.capabilities.disableDamage || this.shootingEntity instanceof EntityPlayer
+                        && !((EntityPlayer) this.shootingEntity).canAttackPlayer(entityplayer)) {
                     movingobjectposition = null;
                 }
             }
@@ -243,8 +247,7 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
                                 if (f3 > 0.0F) {
                                     float knockback = knockbackStrength + knockbackStrengthMod;
                                     movingobjectposition.entityHit.addVelocity(
-                                            this.motionX
-                                                    * (double) this.knockbackStrength
+                                            this.motionX * (double) this.knockbackStrength
                                                     * 0.6000000238418579D
                                                     / (double) f3,
                                             0.1D,
@@ -258,12 +261,11 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
                                 damagesource = DamageSource.causeArrowDamage(this, this.shootingEntity);
                             }
 
-                            if (this.shootingEntity != null
-                                    && movingobjectposition.entityHit != this.shootingEntity
+                            if (this.shootingEntity != null && movingobjectposition.entityHit != this.shootingEntity
                                     && movingobjectposition.entityHit instanceof EntityPlayer
                                     && this.shootingEntity instanceof EntityPlayerMP) {
-                                ((EntityPlayerMP) this.shootingEntity)
-                                        .playerNetServerHandler.sendPacket(new S2BPacketChangeGameState(6, 0));
+                                ((EntityPlayerMP) this.shootingEntity).playerNetServerHandler
+                                        .sendPacket(new S2BPacketChangeGameState(6, 0));
                                 // TConstruct.packetPipeline.sendTo(new
                                 // S2BPacketChangeGameState(6, 0),
                                 // (EntityPlayerMP) this.shootingEntity);
@@ -296,10 +298,10 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
                     this.field_145791_d = movingobjectposition.blockX;
                     this.field_145792_e = movingobjectposition.blockY;
                     this.field_145789_f = movingobjectposition.blockZ;
-                    this.field_145790_g =
-                            this.worldObj.getBlock(this.field_145791_d, this.field_145792_e, this.field_145789_f);
-                    this.inData = this.worldObj.getBlockMetadata(
-                            this.field_145791_d, this.field_145792_e, this.field_145789_f);
+                    this.field_145790_g = this.worldObj
+                            .getBlock(this.field_145791_d, this.field_145792_e, this.field_145789_f);
+                    this.inData = this.worldObj
+                            .getBlockMetadata(this.field_145791_d, this.field_145792_e, this.field_145789_f);
                     this.motionX = (double) ((float) (movingobjectposition.hitVec.xCoord - this.posX));
                     this.motionY = (double) ((float) (movingobjectposition.hitVec.yCoord - this.posY));
                     this.motionZ = (double) ((float) (movingobjectposition.hitVec.zCoord - this.posZ));
@@ -315,7 +317,11 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
 
                     if (this.field_145790_g != Blocks.air) {
                         this.field_145790_g.onEntityCollidedWithBlock(
-                                this.worldObj, this.field_145791_d, this.field_145792_e, this.field_145789_f, this);
+                                this.worldObj,
+                                this.field_145791_d,
+                                this.field_145792_e,
+                                this.field_145789_f,
+                                this);
                     }
                 }
             }
@@ -339,9 +345,9 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
             speed = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
             this.rotationYaw = (float) (Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
 
-            for (this.rotationPitch = (float) (Math.atan2(this.motionY, (double) speed) * 180.0D / Math.PI);
-                    this.rotationPitch - this.prevRotationPitch < -180.0F;
-                    this.prevRotationPitch -= 360.0F) {
+            for (this.rotationPitch = (float) (Math.atan2(this.motionY, (double) speed) * 180.0D
+                    / Math.PI); this.rotationPitch - this.prevRotationPitch
+                            < -180.0F; this.prevRotationPitch -= 360.0F) {
                 ;
             }
 
@@ -486,8 +492,7 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
     private int storeItemStack(ItemStack par1ItemStack, EntityLivingBase living) {
         for (int slotID = 0; slotID < 5; ++slotID) {
             ItemStack stack = living.getEquipmentInSlot(slotID);
-            if (stack != null
-                    && stack.isItemEqual(par1ItemStack)
+            if (stack != null && stack.isItemEqual(par1ItemStack)
                     && ItemStack.areItemStackTagsEqual(stack, par1ItemStack)
                     && stack.isStackable()
                     && stack.stackSize < stack.getMaxStackSize()) {

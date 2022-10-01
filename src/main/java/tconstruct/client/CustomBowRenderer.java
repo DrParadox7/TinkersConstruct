@@ -11,10 +11,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraftforge.client.IItemRenderer;
+
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
 public class CustomBowRenderer implements IItemRenderer {
+
     Minecraft mc = Minecraft.getMinecraft();
     private RenderBlocks renderBlocksInstance = new RenderBlocks();
 
@@ -42,9 +44,8 @@ public class CustomBowRenderer implements IItemRenderer {
         IIcon icon = null;
         if (living instanceof EntityPlayer) {
             EntityPlayer player = (EntityPlayer) living;
-            if (player.getItemInUse() != null)
-                icon = stack.getItem()
-                        .getIcon(stack, renderPass, player, player.getItemInUse(), player.getItemInUseCount());
+            if (player.getItemInUse() != null) icon = stack.getItem()
+                    .getIcon(stack, renderPass, player, player.getItemInUse(), player.getItemInUseCount());
             else icon = living.getItemIcon(stack, renderPass);
         } else {
             icon = living.getItemIcon(stack, renderPass);

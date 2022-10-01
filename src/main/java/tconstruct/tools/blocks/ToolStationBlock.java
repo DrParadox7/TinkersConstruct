@@ -1,9 +1,9 @@
 package tconstruct.tools.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import mantle.blocks.abstracts.InventoryBlock;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -16,12 +16,15 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
+
 import tconstruct.TConstruct;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.tools.ToolProxyCommon;
 import tconstruct.tools.logic.ToolStationLogic;
 import tconstruct.tools.model.TableRender;
 import tconstruct.world.TinkerWorld;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ToolStationBlock extends InventoryBlock {
 
@@ -31,8 +34,9 @@ public class ToolStationBlock extends InventoryBlock {
         this.setHardness(2f);
         this.setStepSound(Block.soundTypeMetal);
     }
+
     // We keep it "toolforge" for the sake of texture pack support.
-    String[] textureNames = {"toolforge_bronze", "toolforge_steel", "toolforge_alumite"};
+    String[] textureNames = { "toolforge_bronze", "toolforge_steel", "toolforge_alumite" };
 
     @Override
     public String[] getTextureNames() {

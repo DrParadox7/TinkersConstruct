@@ -1,18 +1,17 @@
 package tconstruct.tools.gui;
 
-import codechicken.nei.VisiblityData;
-import codechicken.nei.api.INEIGuiHandler;
-import codechicken.nei.api.TaggedInventoryArea;
-import cpw.mods.fml.common.Optional;
 import java.util.Collections;
 import java.util.List;
+
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
 import org.lwjgl.opengl.GL11;
+
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.tools.ToolMaterial;
@@ -20,9 +19,14 @@ import tconstruct.library.util.HarvestLevels;
 import tconstruct.smeltery.inventory.ActiveContainer;
 import tconstruct.tools.inventory.PartCrafterChestContainer;
 import tconstruct.tools.logic.PartBuilderLogic;
+import codechicken.nei.VisiblityData;
+import codechicken.nei.api.INEIGuiHandler;
+import codechicken.nei.api.TaggedInventoryArea;
+import cpw.mods.fml.common.Optional;
 
 @Optional.Interface(iface = "codechicken.nei.api.INEIGuiHandler", modid = "NotEnoughItems")
 public class PartCrafterGui extends GuiContainer implements INEIGuiHandler {
+
     PartBuilderLogic logic;
     String title, otherTitle = "";
     boolean drawChestPart;
@@ -50,8 +54,8 @@ public class PartCrafterGui extends GuiContainer implements INEIGuiHandler {
     private int chestLeft = 0;
     private int chestTop = 0;
 
-    public PartCrafterGui(
-            InventoryPlayer inventoryplayer, PartBuilderLogic partlogic, World world, int x, int y, int z) {
+    public PartCrafterGui(InventoryPlayer inventoryplayer, PartBuilderLogic partlogic, World world, int x, int y,
+            int z) {
         super((ActiveContainer) partlogic.getGuiContainer(inventoryplayer, world, x, y, z));
         logic = partlogic;
         drawChestPart = inventorySlots instanceof PartCrafterChestContainer;
@@ -93,8 +97,8 @@ public class PartCrafterGui extends GuiContainer implements INEIGuiHandler {
             this.fontRendererObj.drawString(StatCollector.translateToLocal("inventory.PatternChest"), 14, 17, 4210752);
         }
 
-        this.fontRendererObj.drawString(
-                StatCollector.translateToLocal("crafters.PartBuilder"), craftingTextLeft + 6, 6, 4210752);
+        this.fontRendererObj
+                .drawString(StatCollector.translateToLocal("crafters.PartBuilder"), craftingTextLeft + 6, 6, 4210752);
         this.fontRendererObj.drawString(
                 StatCollector.translateToLocal("container.inventory"),
                 craftingTextLeft + 8,
@@ -108,7 +112,11 @@ public class PartCrafterGui extends GuiContainer implements INEIGuiHandler {
         title = "\u00A7n" + StatCollector.translateToLocal("gui.partcrafter2");
         this.drawCenteredString(fontRendererObj, title, descTextLeft + DESC_WIDTH / 2, 8, 16777215);
         fontRendererObj.drawSplitString(
-                StatCollector.translateToLocal("gui.partcrafter3"), descTextLeft + 8, 24, 115, 16777215);
+                StatCollector.translateToLocal("gui.partcrafter3"),
+                descTextLeft + 8,
+                24,
+                115,
+                16777215);
     }
 
     void drawMaterialInformation() {
@@ -166,21 +174,18 @@ public class PartCrafterGui extends GuiContainer implements INEIGuiHandler {
                     16777215);
 
             int attack = topEnum.attack();
-            String heart = attack == 2
-                    ? StatCollector.translateToLocal("gui.partcrafter8")
+            String heart = attack == 2 ? StatCollector.translateToLocal("gui.partcrafter8")
                     : StatCollector.translateToLocal("gui.partcrafter9");
-            if (attack % 2 == 0)
-                this.fontRendererObj.drawString(
-                        StatCollector.translateToLocal("gui.partcrafter10") + attack / 2 + heart,
-                        descTextLeft + 8,
-                        offset + 60,
-                        0xffffff);
-            else
-                this.fontRendererObj.drawString(
-                        StatCollector.translateToLocal("gui.partcrafter10") + attack / 2f + heart,
-                        descTextLeft + 8,
-                        offset + 60,
-                        0xffffff);
+            if (attack % 2 == 0) this.fontRendererObj.drawString(
+                    StatCollector.translateToLocal("gui.partcrafter10") + attack / 2 + heart,
+                    descTextLeft + 8,
+                    offset + 60,
+                    0xffffff);
+            else this.fontRendererObj.drawString(
+                    StatCollector.translateToLocal("gui.partcrafter10") + attack / 2f + heart,
+                    descTextLeft + 8,
+                    offset + 60,
+                    0xffffff);
         }
 
         offset = 90;
@@ -208,29 +213,27 @@ public class PartCrafterGui extends GuiContainer implements INEIGuiHandler {
                     offset + 49,
                     16777215);
             int attack = bottomEnum.attack();
-            String heart = attack == 2
-                    ? StatCollector.translateToLocal("gui.partcrafter8")
+            String heart = attack == 2 ? StatCollector.translateToLocal("gui.partcrafter8")
                     : StatCollector.translateToLocal("gui.partcrafter9");
-            if (attack % 2 == 0)
-                this.fontRendererObj.drawString(
-                        StatCollector.translateToLocal("gui.partcrafter10") + attack / 2 + heart,
-                        descTextLeft + 8,
-                        offset + 60,
-                        0xffffff);
-            else
-                this.fontRendererObj.drawString(
-                        StatCollector.translateToLocal("gui.partcrafter10") + attack / 2f + heart,
-                        descTextLeft + 8,
-                        offset + 60,
-                        0xffffff);
+            if (attack % 2 == 0) this.fontRendererObj.drawString(
+                    StatCollector.translateToLocal("gui.partcrafter10") + attack / 2 + heart,
+                    descTextLeft + 8,
+                    offset + 60,
+                    0xffffff);
+            else this.fontRendererObj.drawString(
+                    StatCollector.translateToLocal("gui.partcrafter10") + attack / 2f + heart,
+                    descTextLeft + 8,
+                    offset + 60,
+                    0xffffff);
         }
 
         if (!hasTop && !hasBottom) drawDefaultInformation();
     }
 
     private static final ResourceLocation background = new ResourceLocation("tinker", "textures/gui/toolparts.png");
-    private static final ResourceLocation minichest =
-            new ResourceLocation("tinker", "textures/gui/patternchestmini.png");
+    private static final ResourceLocation minichest = new ResourceLocation(
+            "tinker",
+            "textures/gui/patternchestmini.png");
     private static final ResourceLocation description = new ResourceLocation("tinker", "textures/gui/description.png");
 
     @Override

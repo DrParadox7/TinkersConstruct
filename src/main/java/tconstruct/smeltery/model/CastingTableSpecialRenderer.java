@@ -1,23 +1,26 @@
 package tconstruct.smeltery.model;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.entity.RenderItem;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+
 import org.lwjgl.opengl.GL11;
+
 import tconstruct.library.ItemBlocklike;
 import tconstruct.smeltery.TinkerSmeltery;
 import tconstruct.smeltery.logic.CastingTableLogic;
 import tconstruct.tools.entity.FancyEntityItem;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /* Special renderer, only used for drawing tools */
 
 @SideOnly(Side.CLIENT)
 public class CastingTableSpecialRenderer extends TileEntitySpecialRenderer {
+
     @Override
     public void renderTileEntityAt(TileEntity logic, double var2, double var4, double var6, float var8) {
         // TConstruct.logger.info("Render!!!");

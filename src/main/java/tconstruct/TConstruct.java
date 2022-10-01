@@ -1,25 +1,19 @@
 package tconstruct;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.EventHandler;
-import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.network.NetworkCheckHandler;
-import cpw.mods.fml.common.network.NetworkRegistry;
-import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.common.registry.VillagerRegistry;
-import cpw.mods.fml.relauncher.Side;
 import java.util.Map;
 import java.util.Random;
+
 import mantle.pulsar.config.ForgeCFG;
 import mantle.pulsar.control.PulseManager;
+
+import net.minecraft.entity.item.EntityItem;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.event.entity.EntityJoinWorldEvent;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+
 import tconstruct.achievements.AchievementEvents;
 import tconstruct.achievements.TAchievements;
 import tconstruct.api.TConstructAPI;
@@ -51,7 +45,6 @@ import tconstruct.plugins.ubc.TinkerUBC;
 import tconstruct.plugins.waila.TinkerWaila;
 import tconstruct.smeltery.TinkerSmeltery;
 import tconstruct.tools.TinkerTools;
-import tconstruct.util.EnvironmentChecks;
 import tconstruct.util.IMCHandler;
 import tconstruct.util.config.DimensionBlacklist;
 import tconstruct.util.config.PHConstruct;
@@ -60,10 +53,22 @@ import tconstruct.weaponry.TinkerWeaponry;
 import tconstruct.world.TinkerWorld;
 import tconstruct.world.gen.SlimeIslandGen;
 import tconstruct.world.village.*;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.network.NetworkCheckHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.VillagerRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 /**
- * TConstruct, the tool mod. Craft your tools with style, then modify until the
- * original is gone!
+ * TConstruct, the tool mod. Craft your tools with style, then modify until the original is gone!
  *
  * @author mDiyo
  */
@@ -71,23 +76,24 @@ import tconstruct.world.village.*;
         modid = TConstruct.modID,
         name = "TConstruct",
         version = TConstruct.modVersion,
-        dependencies =
-                "required-after:Forge@[10.13.3.1384,11.14);" + "required-after:Mantle@[0.3.2,1.7.10),[1.7.10-0.3.2,);"
-                        + // make sure we still have the 0.3.2 requirement, even without the 1.7.10 prefix
-                        "after:MineFactoryReloaded@[1.7.10R2.8.0RC7,);"
-                        + "after:ThermalExpansion@[1.7.10R4.0.0RC2,);"
-                        + "after:ThermalFoundation@[1.7.10R1.0.0RC3,);"
-                        + "after:armourersWorkshop@[1.7.10-0.28.0,);"
-                        + "after:CoFHAPI|energy;"
-                        + "after:CoFHCore;"
-                        + "after:battlegear2;"
-                        + "after:ZeldaItemAPI;"
-                        + "after:DynamicSkillsAPI;"
-                        + "after:NotEnoughItems;"
-                        + "after:Waila;"
-                        + "before:GalacticraftCore;"
-                        + "before:UndergroundBiomes")
+        dependencies = "required-after:Forge@[10.13.3.1384,11.14);"
+                + "required-after:Mantle@[0.3.2,1.7.10),[1.7.10-0.3.2,);"
+                + // make sure we still have the 0.3.2 requirement, even without the 1.7.10 prefix
+                "after:MineFactoryReloaded@[1.7.10R2.8.0RC7,);"
+                + "after:ThermalExpansion@[1.7.10R4.0.0RC2,);"
+                + "after:ThermalFoundation@[1.7.10R1.0.0RC3,);"
+                + "after:armourersWorkshop@[1.7.10-0.28.0,);"
+                + "after:CoFHAPI|energy;"
+                + "after:CoFHCore;"
+                + "after:battlegear2;"
+                + "after:ZeldaItemAPI;"
+                + "after:DynamicSkillsAPI;"
+                + "after:NotEnoughItems;"
+                + "after:Waila;"
+                + "before:GalacticraftCore;"
+                + "before:UndergroundBiomes")
 public class TConstruct {
+
     public static final String modVersion = "GRADLETOKEN_VERSION";
     /** The value of one ingot in millibuckets */
     public static final int ingotLiquidValue = 144;
@@ -113,7 +119,8 @@ public class TConstruct {
 
     /* Loads modules in a way that doesn't clutter the @Mod list */
     public static PulseManager pulsar = new PulseManager(
-            modID, new ForgeCFG("TinkersModules", "Modules: Disabling these will disable a chunk of the mod"));
+            modID,
+            new ForgeCFG("TinkersModules", "Modules: Disabling these will disable a chunk of the mod"));
 
     public TConstruct() {
         if (Loader.isModLoaded("Natura")) {
@@ -122,8 +129,6 @@ public class TConstruct {
         } else {
             logger.info("Preparing to take over the world");
         }
-
-        EnvironmentChecks.verifyEnvironmentSanity();
     }
 
     // Force the client and server to have or not have this mod
@@ -157,8 +162,9 @@ public class TConstruct {
         if (PHConstruct.gearCasting) pulsar.registerPulse(new TinkerGears());
         if (PHConstruct.experimentalBackports) pulsar.registerPulse(new TinkerGadgets());
 
-        /*pulsar.registerPulse(new TinkerPrayers());
-        pulsar.registerPulse(new TinkerCropify());*/
+        /*
+         * pulsar.registerPulse(new TinkerPrayers()); pulsar.registerPulse(new TinkerCropify());
+         */
 
         TConstructRegistry.materialTab = new TConstructCreativeTab("TConstructMaterials");
         TConstructRegistry.toolTab = new TConstructCreativeTab("TConstructTools");
@@ -180,6 +186,10 @@ public class TConstruct {
         FMLCommonHandler.instance().bus().register(playerTracker);
         MinecraftForge.EVENT_BUS.register(playerTracker);
         NetworkRegistry.INSTANCE.registerGuiHandler(TConstruct.instance, proxy);
+
+        if (PHConstruct.globalDespawn != 6000 && PHConstruct.globalDespawn != 0) {
+            MinecraftForge.EVENT_BUS.register(new Spawntercepter());
+        }
 
         pulsar.preInit(event);
 
@@ -274,6 +284,19 @@ public class TConstruct {
         // this will be called because the air-block got removed
         for (FMLMissingMappingsEvent.MissingMapping mapping : event.get()) {
             if (mapping.name.equals("TConstruct:TankAir")) mapping.ignore();
+        }
+    }
+
+    public static class Spawntercepter {
+
+        @SubscribeEvent
+        public void onEntitySpawn(EntityJoinWorldEvent event) {
+            if (event.entity instanceof EntityItem) {
+                EntityItem ourGuy = (EntityItem) event.entity;
+                if (ourGuy.lifespan == 6000) {
+                    ourGuy.lifespan = PHConstruct.globalDespawn;
+                }
+            }
         }
     }
 }

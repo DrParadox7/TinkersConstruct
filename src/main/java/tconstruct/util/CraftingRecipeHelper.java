@@ -2,6 +2,7 @@ package tconstruct.util;
 
 import java.util.HashMap;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -11,6 +12,7 @@ import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.item.crafting.ShapelessRecipes;
 
 public class CraftingRecipeHelper {
+
     public static void removeShapedRecipes(List<ItemStack> removelist) {
         for (ItemStack stack : removelist) removeShapedRecipe(stack);
     }

@@ -1,9 +1,7 @@
 package tconstruct.tools.items;
 
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -18,19 +16,24 @@ import net.minecraft.util.Facing;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
 import tconstruct.client.TProxyClient;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.world.entity.BlueSlime;
 import tconstruct.world.entity.KingBlueSlime;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 // spawn egg.
 public class TitleIcon extends Item {
-    int[] primaryColor = {0x66BBE8, 0x66BBE8};
-    int[] secondaryColor = {0x1567BF, 0xFFEC6E};
-    String[] mobNames = {"TConstruct.EdibleSlime", "TConstruct.KingSlime"};
 
-    String[] achievementIconNames =
-            new String[] {"tinkerer", "preparedFight", "proTinkerer", "enemySlayer", "dualConvenience"};
+    int[] primaryColor = { 0x66BBE8, 0x66BBE8 };
+    int[] secondaryColor = { 0x1567BF, 0xFFEC6E };
+    String[] mobNames = { "TConstruct.EdibleSlime", "TConstruct.KingSlime" };
+
+    String[] achievementIconNames = new String[] { "tinkerer", "preparedFight", "proTinkerer", "enemySlayer",
+            "dualConvenience" };
     IIcon[] achievementIcons = new IIcon[achievementIconNames.length];
 
     public TitleIcon() {
@@ -106,17 +109,8 @@ public class TitleIcon extends Item {
     }
 
     @Override
-    public boolean onItemUse(
-            ItemStack stack,
-            EntityPlayer player,
-            World world,
-            int posX,
-            int posY,
-            int posZ,
-            int par7,
-            float par8,
-            float par9,
-            float par10) {
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int posX, int posY, int posZ, int par7,
+            float par8, float par9, float par10) {
         if (!world.isRemote) {
             Block b = world.getBlock(posX, posY, posZ);
             posX += Facing.offsetsXForSide[par7];
@@ -144,8 +138,8 @@ public class TitleIcon extends Item {
         return true;
     }
 
-    public static EntityLiving activateSpawnEgg(
-            ItemStack stack, World world, double posX, double posY, double posZ, int par7) {
+    public static EntityLiving activateSpawnEgg(ItemStack stack, World world, double posX, double posY, double posZ,
+            int par7) {
         Block b = world.getBlock((int) posX, (int) posY, (int) posZ);
         posX += Facing.offsetsXForSide[par7];
         posY += Facing.offsetsYForSide[par7];
@@ -189,8 +183,8 @@ public class TitleIcon extends Item {
         }
     }
 
-    public static void spawnBossSlime(
-            double x, double y, double z, KingBlueSlime entity, World world, EntityPlayer player) {
+    public static void spawnBossSlime(double x, double y, double z, KingBlueSlime entity, World world,
+            EntityPlayer player) {
         if (!world.isRemote) {
             entity.setPosition(x, y, z);
             entity.setSlimeSize(8);

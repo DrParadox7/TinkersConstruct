@@ -7,10 +7,12 @@ import net.minecraft.dispenser.IPosition;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
+
 import tconstruct.library.entity.ProjectileBase;
 import tconstruct.library.weaponry.IAmmo;
 
 public abstract class BehaviorProjectileBaseDispense extends BehaviorDefaultDispenseItem {
+
     /**
      * Dispense the specified stack, play the dispense sound and spawn particles.
      */

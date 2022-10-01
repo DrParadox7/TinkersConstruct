@@ -1,9 +1,8 @@
 package tconstruct.armor.player;
 
-import cpw.mods.fml.common.network.ByteBufUtils;
-import io.netty.buffer.ByteBuf;
 import java.io.IOException;
 import java.lang.ref.WeakReference;
+
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,7 +11,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
+import cpw.mods.fml.common.network.ByteBufUtils;
+import io.netty.buffer.ByteBuf;
+
 public class KnapsackInventory implements IInventory {
+
     public ItemStack[] inventory = new ItemStack[27];
     public WeakReference<EntityPlayer> parent;
 

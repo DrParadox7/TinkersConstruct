@@ -1,8 +1,7 @@
 package tconstruct.smeltery.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
@@ -11,13 +10,17 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
 import tconstruct.util.config.PHConstruct;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  * @author fuj1n
  *
  */
 public class GlassBlockConnectedMeta extends GlassBlockConnected {
+
     public String[] textures;
     public IIcon[][] icons;
     boolean ignoreMetaForConnectedGlass = PHConstruct.connectedTexturesMode == 2;
@@ -40,8 +43,8 @@ public class GlassBlockConnectedMeta extends GlassBlockConnected {
     }
 
     @Override
-    public boolean shouldConnectToBlock(
-            IBlockAccess par1IBlockAccess, int par2, int par3, int par4, Block par5, int par6) {
+    public boolean shouldConnectToBlock(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, Block par5,
+            int par6) {
         return par5 == this
                 && (par6 == par1IBlockAccess.getBlockMetadata(par2, par3, par4) || ignoreMetaForConnectedGlass);
     }

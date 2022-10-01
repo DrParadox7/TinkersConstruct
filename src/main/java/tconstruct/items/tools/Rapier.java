@@ -7,10 +7,12 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
 import tconstruct.library.tools.Weapon;
 import tconstruct.tools.TinkerTools;
 
 public class Rapier extends Weapon {
+
     public Rapier() {
         super(2);
         this.setUnlocalizedName("InfiTool.Rapier");

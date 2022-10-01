@@ -4,6 +4,7 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 
 public class ActiveSlot extends Slot {
+
     protected boolean active;
     public int activeSlotNumber;
 

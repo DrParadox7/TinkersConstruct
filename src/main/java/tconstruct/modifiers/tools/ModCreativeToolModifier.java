@@ -2,9 +2,11 @@ package tconstruct.modifiers.tools;
 
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
 import tconstruct.library.modifier.ItemModifier;
 
 public class ModCreativeToolModifier extends ItemModifier {
+
     public ModCreativeToolModifier(ItemStack[] items) {
         super(items, 0, "");
     }
@@ -12,21 +14,21 @@ public class ModCreativeToolModifier extends ItemModifier {
     @Override
     protected boolean canModify(ItemStack tool, ItemStack[] input) {
         return false;
-        //        if (tool.getItem() instanceof ToolCore)
-        //        {
-        //            ToolCore toolItem = (ToolCore) tool.getItem();
-        //            for (ItemStack stack : input)
-        //            {
-        //                if (stack != null && stack.hasTagCompound())
-        //                {
-        //                    String targetLock = stack.getTagCompound().getString("TargetLock");
-        //                    if (!targetLock.equals("") && !targetLock.equals(toolItem.getToolName()))
-        //                        return false;
-        //                }
-        //            }
-        //            return true;
-        //        }
-        //        return false;
+        // if (tool.getItem() instanceof ToolCore)
+        // {
+        // ToolCore toolItem = (ToolCore) tool.getItem();
+        // for (ItemStack stack : input)
+        // {
+        // if (stack != null && stack.hasTagCompound())
+        // {
+        // String targetLock = stack.getTagCompound().getString("TargetLock");
+        // if (!targetLock.equals("") && !targetLock.equals(toolItem.getToolName()))
+        // return false;
+        // }
+        // }
+        // return true;
+        // }
+        // return false;
     }
 
     @Override

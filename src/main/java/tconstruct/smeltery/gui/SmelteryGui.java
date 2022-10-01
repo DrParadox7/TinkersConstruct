@@ -1,10 +1,8 @@
 package tconstruct.smeltery.gui;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import net.minecraft.client.renderer.RenderHelper;
-import net.minecraft.client.renderer.Tessellator;
+import java.util.*;
+
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
@@ -14,16 +12,21 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.fluids.FluidStack;
+
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+
 import tconstruct.TConstruct;
 import tconstruct.smeltery.inventory.ActiveContainer;
 import tconstruct.smeltery.inventory.SmelteryContainer;
 import tconstruct.smeltery.logic.SmelteryLogic;
 import tconstruct.util.network.SmelteryPacket;
+import cpw.mods.fml.common.Loader;
 
 public class SmelteryGui extends ActiveContainerGui {
+
     public SmelteryLogic logic;
     private boolean isScrolling = false;
     private boolean wasClicking;
@@ -75,8 +78,7 @@ public class SmelteryGui extends ActiveContainerGui {
             int scrollWidth = xScroll + 14;
             int scrollHeight = yScroll + 144;
 
-            if (!this.wasClicking
-                    && mouseDown
+            if (!this.wasClicking && mouseDown
                     && mouseX >= xScroll
                     && mouseY >= yScroll
                     && mouseX < scrollWidth
@@ -116,7 +118,10 @@ public class SmelteryGui extends ActiveContainerGui {
         int baseX = 86 + (columns - 3) * 22;
         fontRendererObj.drawString(StatCollector.translateToLocal("crafters.Smeltery"), baseX, 5, 0x404040);
         fontRendererObj.drawString(
-                StatCollector.translateToLocal("container.inventory"), baseX + 4, (ySize - 96) + 2, 0x404040);
+                StatCollector.translateToLocal("container.inventory"),
+                baseX + 4,
+                (ySize - 96) + 2,
+                0x404040);
 
         int cornerX = (width - xSize) / 2 + 36 + (columns - 3) * 22;
         int cornerY = (height - ySize) / 2;
@@ -146,8 +151,9 @@ public class SmelteryGui extends ActiveContainerGui {
     }
 
     private static final ResourceLocation background = new ResourceLocation("tinker", "textures/gui/smeltery.png");
-    private static final ResourceLocation backgroundSide =
-            new ResourceLocation("tinker", "textures/gui/smelteryside.png");
+    private static final ResourceLocation backgroundSide = new ResourceLocation(
+            "tinker",
+            "textures/gui/smelteryside.png");
 
     @Override
     protected void drawGuiContainerBackgroundLayer(float f, int mouseX, int mouseY) {
@@ -340,7 +346,7 @@ public class SmelteryGui extends ActiveContainerGui {
 
     public List getLiquidTooltip(FluidStack liquid, boolean advanced, boolean fuel) {
         ArrayList list = new ArrayList();
-        if (fuel) {
+        if (fuel || Keyboard.isKeyDown(Keyboard.KEY_LSHIFT)) {
             list.add("\u00A7f" + StatCollector.translateToLocal("gui.smeltery.fuel"));
             list.add("mB: " + liquid.amount);
         } else {
@@ -358,12 +364,20 @@ public class SmelteryGui extends ActiveContainerGui {
                 int mB = (liquid.amount % 1000) % 250;
                 if (mB > 0) list.add("mB: " + mB);
             } else if (name.equals(StatCollector.translateToLocal("fluid.stone.seared"))) {
-                int blocks = liquid.amount / TConstruct.ingotLiquidValue;
-                if (blocks > 0) list.add(StatCollector.translateToLocal("gui.smeltery.glass.block") + blocks);
-                int ingots = (liquid.amount % TConstruct.ingotLiquidValue) / (TConstruct.ingotLiquidValue / 4);
-                if (ingots > 0) list.add(StatCollector.translateToLocal("gui.smeltery.metal.ingot") + ingots);
-                int mB = (liquid.amount % TConstruct.ingotLiquidValue) % (TConstruct.ingotLiquidValue / 4);
-                if (mB > 0) list.add("mB: " + mB);
+                if (Loader.isModLoaded("dreamcraft")) {
+                    int blocks = liquid.amount / 360; // in gtnh each seared stone block is 360 mb of fluid
+                    if (blocks > 0) list.add(StatCollector.translateToLocal("gui.smeltery.glass.block") + blocks);
+                    // we also have no casting recipe for seared bricks
+                    int mB = liquid.amount % 360;
+                    if (mB > 0) list.add("mB: " + mB);
+                } else {
+                    int blocks = liquid.amount / TConstruct.ingotLiquidValue;
+                    if (blocks > 0) list.add(StatCollector.translateToLocal("gui.smeltery.glass.block") + blocks);
+                    int ingots = (liquid.amount % TConstruct.ingotLiquidValue) / (TConstruct.ingotLiquidValue / 4);
+                    if (ingots > 0) list.add(StatCollector.translateToLocal("gui.smeltery.metal.ingot") + ingots);
+                    int mB = (liquid.amount % TConstruct.ingotLiquidValue) % (TConstruct.ingotLiquidValue / 4);
+                    if (mB > 0) list.add("mB: " + mB);
+                }
             } else if (isMolten(name)) {
                 int ingots = liquid.amount / TConstruct.ingotLiquidValue;
                 if (ingots > 0) list.add(StatCollector.translateToLocal("gui.smeltery.metal.ingot") + ingots);
@@ -383,8 +397,7 @@ public class SmelteryGui extends ActiveContainerGui {
 
     private boolean isMolten(String fluidName) {
         boolean molten = false;
-        String[] moltenNames =
-                StatCollector.translateToLocal("gui.smeltery.molten.check").split(",");
+        String[] moltenNames = StatCollector.translateToLocal("gui.smeltery.molten.check").split(",");
 
         for (int i = 0; i < moltenNames.length; i++) {
             if (fluidName.contains(moltenNames[i].trim())) {
@@ -494,13 +507,14 @@ public class SmelteryGui extends ActiveContainerGui {
             if (mouseX >= leftX && mouseX <= leftX + 52 && mouseY >= topY && mouseY < topY + fluidHeights[i]) {
                 fluidToBeBroughtUp = logic.moltenMetal.get(i).getFluidID();
 
-                TConstruct.packetPipeline.sendToServer(new SmelteryPacket(
-                        logic.getWorldObj().provider.dimensionId,
-                        logic.xCoord,
-                        logic.yCoord,
-                        logic.zCoord,
-                        this.isShiftKeyDown(),
-                        fluidToBeBroughtUp));
+                TConstruct.packetPipeline.sendToServer(
+                        new SmelteryPacket(
+                                logic.getWorldObj().provider.dimensionId,
+                                logic.xCoord,
+                                logic.yCoord,
+                                logic.zCoord,
+                                this.isShiftKeyDown(),
+                                fluidToBeBroughtUp));
             }
             base += fluidHeights[i];
         }

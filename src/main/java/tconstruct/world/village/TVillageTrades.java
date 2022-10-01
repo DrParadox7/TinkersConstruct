@@ -1,18 +1,20 @@
 package tconstruct.world.village;
 
-import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+
 import net.minecraft.entity.passive.EntityVillager;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
+
 import tconstruct.mechworks.TinkerMechworks;
 import tconstruct.tools.TinkerTools;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.world.TinkerWorld;
+import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
 
 public class TVillageTrades implements IVillageTradeHandler {
 
