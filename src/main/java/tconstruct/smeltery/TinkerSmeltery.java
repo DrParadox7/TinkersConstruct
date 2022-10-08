@@ -419,10 +419,25 @@ public class TinkerSmeltery
         TinkerSmeltery.clayPattern = new ClayPattern("clay_cast_", "materials/").setUnlocalizedName("tconstruct.ClayPattern");
         GameRegistry.registerItem(TinkerSmeltery.clayPattern, "clayPattern");
         TConstructRegistry.addItemToDirectory("clayPattern", TinkerSmeltery.clayPattern);
-        String[] clayPatternTypes = { "ingot", "toolRod", "pickaxeHead", "shovelHead", "hatchetHead", "swordBlade", "wideGuard", "handGuard", "crossbar", "binding", "frypanHead", "signHead", "knifeBlade", "chiselHead" };
-        for (int i = 0; i < clayPatternTypes.length; i++)
-        {
-            TConstructRegistry.addItemStackToDirectory(clayPatternTypes[i] + "clayCast", new ItemStack(TinkerSmeltery.clayPattern, 1, i));
+        String[] clayPatternTypes = {
+            "ingot",
+            "toolRod",
+            "pickaxeHead",
+            "shovelHead",
+            "hatchetHead",
+            "swordBlade",
+            "wideGuard",
+            "handGuard",
+            "crossbar",
+            "binding",
+            "frypanHead",
+            "signHead",
+            "knifeBlade",
+            "chiselHead"
+        };
+        for (int i = 0; i < clayPatternTypes.length; i++) {
+            TConstructRegistry.addItemStackToDirectory(
+                    clayPatternTypes[i] + "clayCast", new ItemStack(TinkerSmeltery.clayPattern, 1, i));
         }
 
         oreRegistry();
