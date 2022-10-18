@@ -7,6 +7,10 @@ import net.minecraft.world.World;
 import tconstruct.library.crafting.*;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.tools.inventory.ToolBenchContainer;
+import tconstruct.library.tools.ToolCore;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /* Simple class for storing items in the block
  */
@@ -58,11 +62,21 @@ public class ToolBenchLogic extends ToolStationLogic implements ISidedInventory
                     output = tool;
                 else if (tool != null)
                 {
-                    //NBTTagCompound tags = tool.getTagCompound(); 
-                    //if (!tags.getCompoundTag(((IModifyable) tool.getItem()).getBaseTagName()).hasKey("Built"))
-                    //{
-                    output = tool;
-                    //}
+                    //Whitelist tools the ToolBench can create.
+                    List<String> ValidTools = new ArrayList<String>();
+                    ValidTools.add("item.InfiTool.Shovel");
+                    ValidTools.add("item.InfiTool.Hatchet");
+                    ValidTools.add("item.InfiTool.Pickaxe");
+                    ValidTools.add("item.InfiTool.Broadsword");
+                    ValidTools.add("item.InfiTool.Mattock");
+
+                    if (ValidTools.contains(tool.getUnlocalizedName())) {
+                        //NBTTagCompound tags = tool.getTagCompound();
+                        //if (!tags.getCompoundTag(((IModifyable) tool.getItem()).getBaseTagName()).hasKey("Built"))
+                        //{
+                        output = tool;
+                        //}
+                    }
                 }
             }
             if (!name.equals("")) //Name item
