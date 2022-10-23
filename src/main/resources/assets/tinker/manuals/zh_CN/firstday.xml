@@ -369,23 +369,23 @@ By Skyla</text>
 <recipe>glovehaste</recipe>
 </page>
 
-<page type="sectionpage">
-<title>修复</title>
-<text>给护甲附上苔藓就能赋予它生命.这样一来它们就能自我修复.
+<!--<page type="sectionpage">-->
+<!--<title>修复</title>-->
+<!--<text>给护甲附上苔藓就能赋予它生命.这样一来它们就能自我修复.-->
 
-效果:
-- 工具缓慢自我修复
-- 阳光加快该过程
-- 能附在任何旅行套装上
+<!--效果:-->
+<!-- - 工具缓慢自我修复-->
+<!-- - 阳光加快该过程-->
+<!-- - 能附在任何旅行套装上-->
 
-类型: 一次性
-可叠加: 是</text>
-</page>
+<!--类型: 一次性-->
+<!--可叠加: 是</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>travelmulti</tooltype>
-<recipe>moss</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>travelmulti</tooltype>-->
+<!--<recipe>moss</recipe>-->
+<!--</page>-->
 
 <page type="sectionpage">
 <title>二段跳</title>

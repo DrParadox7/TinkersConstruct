@@ -1,6 +1,7 @@
 package tconstruct.library.entity;
 
 import tconstruct.library.weaponry.AmmoItem;
+import tconstruct.modifiers.tools.ModMoss;
 import tconstruct.util.Reference;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
@@ -289,9 +290,18 @@ public abstract class ProjectileBase extends EntityArrow implements IEntityAddit
 
         if (!(movingobjectposition.entityHit instanceof EntityEnderman))
         {
-            // reinforced helps for them to not break!
-            if(rand.nextInt(10)+1 > tags.getInteger("Reinforced"))
-                this.setDead();
+            int reinforced = 0;
+            float mossChance = 0;
+            if (tags.hasKey("Reinforced"))
+                reinforced = tags.getInteger("Reinforced");
+
+            if (tags.hasKey("Moss") && movingobjectposition.entityHit != null)
+                mossChance = ModMoss.mossChance(movingobjectposition.entityHit);
+
+                // reinforced helps for them to not break!
+            if (tags.hasKey("Moss") || tags.hasKey("Reinforced"))
+                if (rand.nextInt(10) + 1 > reinforced && rand.nextFloat() < 1 - mossChance)
+                    this.setDead();
             else
             {
                 this.motionX = Math.max(-0.1,Math.min(0.1, -motionX));

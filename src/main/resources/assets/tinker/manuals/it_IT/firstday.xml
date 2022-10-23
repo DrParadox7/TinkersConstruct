@@ -369,23 +369,23 @@ Potenziabile: Si</text>
 <recipe>glovehaste</recipe>
 </page>
 
-<page type="sectionpage">
-<title>Riparazione</title>
-<text>Attaccando muschio a un'armatura la infonde di vita.
+<!--<page type="sectionpage">-->
+<!--<title>Riparazione</title>-->
+<!--<text>Attaccando muschio a un'armatura la infonde di vita.-->
 
-Effetti:
-- L'armatura si ripara lentamente da solo
-- La luce solare velocizza il processo
-- Applicabile a tutte le parti
+<!--Effetti:-->
+<!-- - L'armatura si ripara lentamente da solo-->
+<!-- - La luce solare velocizza il processo-->
+<!-- - Applicabile a tutte le parti-->
 
-Tipo: Singolo
-Potenziabile: Si</text>
-</page>
+<!--Tipo: Singolo-->
+<!--Potenziabile: Si</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>travelmulti</tooltype>
-<recipe>moss</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>travelmulti</tooltype>-->
+<!--<recipe>moss</recipe>-->
+<!--</page>-->
 
 <page type="sectionpage">
 <title>Salto doppio</title>

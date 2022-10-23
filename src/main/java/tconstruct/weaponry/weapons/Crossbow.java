@@ -5,6 +5,7 @@ import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.init.Items;
 import tconstruct.TConstruct;
 import tconstruct.library.TConstructRegistry;
+import tconstruct.modifiers.tools.ModMoss;
 import tconstruct.weaponry.TinkerWeaponry;
 import tconstruct.weaponry.ammo.BoltAmmo;
 import tconstruct.weaponry.entity.BoltEntity;
@@ -239,11 +240,15 @@ public class Crossbow extends ProjectileWeapon {
         Entity projectile = createProjectile(ammo, world, player, projectileSpeed, accuracy, 1.0f);
 
         int reinforced = 0;
+        float mossChance = 0;
 
         if (tags.hasKey("Unbreaking"))
             reinforced = tags.getInteger("Unbreaking");
 
-        if (random.nextInt(10) < 10 - reinforced)
+        if (tags.getCompoundTag("InfiTool").hasKey("Moss"))
+            mossChance = ModMoss.mossChance(player);
+
+        if ((random.nextInt(10) < 10 - reinforced) && (random.nextFloat() < 1 - mossChance))
             AbilityHelper.damageTool(weapon, 1, player, false);
 
         playFiringSound(world, player, weapon, ammo, projectileSpeed, accuracy);

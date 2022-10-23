@@ -13,6 +13,7 @@ import net.minecraft.world.World;
 import tconstruct.TConstruct;
 import tconstruct.library.crafting.Detailing.DetailInput;
 import tconstruct.library.tools.*;
+import tconstruct.modifiers.tools.ModMoss;
 import tconstruct.tools.TinkerTools;
 
 public class Chisel extends ToolCore
@@ -102,15 +103,17 @@ public class Chisel extends ToolCore
                     if (!(entityplayer.capabilities.isCreativeMode))
                     {
                         int reinforced = 0;
+                        float mossChance = 0;
                         NBTTagCompound tags = itemstack.getTagCompound();
 
                         if (tags.getCompoundTag("InfiTool").hasKey("Unbreaking"))
                             reinforced = tags.getCompoundTag("InfiTool").getInteger("Unbreaking");
 
-                        if (random.nextInt(10) < 10 - reinforced)
-                        {
+                        if (tags.getCompoundTag("InfiTool").hasKey("Moss"))
+                            mossChance = ModMoss.mossChance(entityplayer);
+
+                        if ((random.nextInt(10) < 10 - reinforced) && (random.nextFloat() < 1 - mossChance))
                             AbilityHelper.damageTool(itemstack, 1, null, false);
-                        }
                     }
                     world.playAuxSFX(2001, x, y, z, Block.getIdFromBlock(block) + (meta << 12));
                     entityplayer.swingItem();

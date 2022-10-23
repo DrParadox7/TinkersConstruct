@@ -25,6 +25,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.stats.AchievementList;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
+import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
@@ -33,6 +34,7 @@ import tconstruct.TConstruct;
 import tconstruct.library.ActiveToolMod;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.util.PiercingEntityDamage;
+import tconstruct.modifiers.tools.ModMoss;
 
 public class AbilityHelper
 {
@@ -40,21 +42,22 @@ public class AbilityHelper
     public static boolean necroticUHS;
 
     /* Normal interactions */
-    public static boolean onBlockChanged (ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase player, Random random)
-    {
+    public static boolean onBlockChanged (ItemStack stack, World world, Block block, int x, int y, int z, EntityLivingBase player, Random random) {
         if (!stack.hasTagCompound())
             return false;
 
         int reinforced = 0;
+        float mossChance = 0;
         NBTTagCompound tags = stack.getTagCompound();
 
         if (tags.getCompoundTag("InfiTool").hasKey("Unbreaking"))
             reinforced = tags.getCompoundTag("InfiTool").getInteger("Unbreaking");
 
-        if (random.nextInt(10) < 10 - reinforced)
-        {
-            damageTool(stack, 1, tags, player, false);
-        }
+        if (tags.getCompoundTag("InfiTool").hasKey("Moss"))
+            mossChance = ModMoss.mossChance(player);
+
+        if ((random.nextInt(10) < 10 - reinforced) && (random.nextFloat() < 1 - mossChance))
+                damageTool(stack, 1, tags, player, false);
 
         return true;
     }
@@ -374,16 +377,24 @@ public class AbilityHelper
         if(tags.hasKey("InfiTool") && dam > 0) // unbreaking only affects damage, not healing
         {
             NBTTagCompound toolTags = tags.getCompoundTag("InfiTool");
-            if(toolTags.hasKey("Unbreaking"))
-            {
+            if (toolTags.hasKey("Unbreaking")) {
                 reinforced = tags.getCompoundTag("InfiTool").getInteger("Unbreaking");
                 // for each point of damage we deal, we separately decide if reinforced takes effect
-                for(int i = dam; i > 0; i--)
-                    if(random.nextInt(10) < reinforced)
+                for (int i = dam; i > 0; i--)
+                    if (random.nextInt(10) < reinforced)
                         dam--;
 
                 // we prevented all damage with reinforced
-                if(dam <= 0)
+                if (dam <= 0)
+                    return;
+            }
+            if (toolTags.hasKey("Moss") && entity != null) {
+                float mossChance = ModMoss.mossChance(entity);
+                for (int i = 0; i < dam; i++)
+                    if (random.nextFloat() < mossChance)
+                        dam--;
+
+                if (dam <= 0)
                     return;
             }
         }

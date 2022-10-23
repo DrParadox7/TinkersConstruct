@@ -181,7 +181,7 @@ public class ComponentToolWorkshop extends StructureVillagePieces.House1
 
         if (par2StructureBoundingBox.isVecInside(posX, posY, posZ) && world.getBlock(posX, posY, posZ) != Blocks.chest)
         {
-            world.setBlock(posX, posY, posZ, TinkerTools.toolStation, 5, 2);
+            world.setBlock(posX, posY, posZ, TinkerTools.toolBenchWood, 5, 2);
             PatternChestLogic logic = (PatternChestLogic) world.getTileEntity(posX, posY, posZ);
 
             if (logic != null)

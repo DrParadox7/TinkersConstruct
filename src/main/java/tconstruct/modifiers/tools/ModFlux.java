@@ -26,58 +26,59 @@ public class ModFlux extends ModBoolean
     @Override
     public boolean matches (ItemStack[] input, ItemStack tool)
     {
-        NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
-
-        // not on ammo weapons, since they don't have durability technically
-        String[] traits = ((IModifyable)tool.getItem()).getTraits();
-        for(String trait : traits)
-            if("ammo".equals(trait))
-                return false;
-
-        ItemStack foundBattery = null;
-        // try to find the battery in the input
-        for (ItemStack stack : input)
-            for (ItemStack battery : batteries)
-            {
-                if (stack == null)
-                    continue;
-                if (stack.getItem() != battery.getItem())
-                    continue;
-                if (!(stack.getItem() instanceof IEnergyContainerItem))
-                    continue;
-                // we don't allow multiple batteries to be added
-                if (foundBattery != null)
-                    return false;
-
-                // battery found, gogogo
-                foundBattery = stack;
-            }
-
-        // no battery present
-        if (foundBattery == null)
-            return false;
-
-        int maxEnergy = ((IEnergyContainerItem) foundBattery.getItem()).getMaxEnergyStored(foundBattery);
-
-        // battery too big for our tool?
-        if(PHConstruct.balancedFluxModifier && tags.getInteger("TotalDurability") < maxEnergy/1000) // durability needs to be at least 1/1000th of the charge
-            return false;
-
-        // check if we already have a flux modifier
-        if (tags.getBoolean(key))
-        {
-            // only allow if it's an upgrade
-            // remark: we use the ToolCores function here instead of accessing the tag directly, to achieve backwards compatibility with tools without tags.
-            int a = ((IEnergyContainerItem) foundBattery.getItem()).getMaxEnergyStored(foundBattery);
-            int b = ((ToolCore) tool.getItem()).getMaxEnergyStored(tool);
-            return ((IEnergyContainerItem) foundBattery.getItem()).getMaxEnergyStored(foundBattery) > ((ToolCore) tool.getItem()).getMaxEnergyStored(tool);
-        }
-        // otherwise check if we have enough modfiers
-        else if (tags.getInteger("Modifiers") < modifiersRequired)
-            return false;
-
-        // all requirements satisfied!
-        return true;
+//        NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
+//
+//        // not on ammo weapons, since they don't have durability technically
+//        String[] traits = ((IModifyable)tool.getItem()).getTraits();
+//        for(String trait : traits)
+//            if("ammo".equals(trait))
+//                return false;
+//
+//        ItemStack foundBattery = null;
+//        // try to find the battery in the input
+//        for (ItemStack stack : input)
+//            for (ItemStack battery : batteries)
+//            {
+//                if (stack == null)
+//                    continue;
+//                if (stack.getItem() != battery.getItem())
+//                    continue;
+//                if (!(stack.getItem() instanceof IEnergyContainerItem))
+//                    continue;
+//                // we don't allow multiple batteries to be added
+//                if (foundBattery != null)
+//                    return false;
+//
+//                // battery found, gogogo
+//                foundBattery = stack;
+//            }
+//
+//        // no battery present
+//        if (foundBattery == null)
+//            return false;
+//
+//        int maxEnergy = ((IEnergyContainerItem) foundBattery.getItem()).getMaxEnergyStored(foundBattery);
+//
+//        // battery too big for our tool?
+//        if(PHConstruct.balancedFluxModifier && tags.getInteger("TotalDurability") < maxEnergy/1000) // durability needs to be at least 1/1000th of the charge
+//            return false;
+//
+//        // check if we already have a flux modifier
+//        if (tags.getBoolean(key))
+//        {
+//            // only allow if it's an upgrade
+//            // remark: we use the ToolCores function here instead of accessing the tag directly, to achieve backwards compatibility with tools without tags.
+//            int a = ((IEnergyContainerItem) foundBattery.getItem()).getMaxEnergyStored(foundBattery);
+//            int b = ((ToolCore) tool.getItem()).getMaxEnergyStored(tool);
+//            return ((IEnergyContainerItem) foundBattery.getItem()).getMaxEnergyStored(foundBattery) > ((ToolCore) tool.getItem()).getMaxEnergyStored(tool);
+//        }
+//        // otherwise check if we have enough modfiers
+//        else if (tags.getInteger("Modifiers") < modifiersRequired)
+//            return false;
+//
+//        // all requirements satisfied!
+//        return true;
+        return false;
     }
 
     @Override

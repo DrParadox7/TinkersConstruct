@@ -1046,6 +1046,7 @@ modifier.tool.emerald=Durability +50%
 modifier.tool.haste=Haste
 modifier.tool.lava=Auto-Smelt
 modifier.tool.moss=Auto-Repair
+modifier.tool.mossnew=Solar Powered
 modifier.tool.necro=Life Steal
 modifier.tool.blaze=Fiery
 

@@ -150,11 +150,11 @@ public class ArmorProxyClient extends ArmorProxyCommon {
 						new ItemStack(Blocks.quartz_block, 1, Short.MAX_VALUE));
 
 		// moss
-		ItemStack moss = new ItemStack(TinkerTools.materials, 1, 6);
-		TConstructClientRegistry.registerManualModifier("mossgoggles", goggles.copy(), moss.copy());
-		TConstructClientRegistry.registerManualModifier("mossvest", vest.copy(), moss.copy());
-		TConstructClientRegistry.registerManualModifier("mosswings", wings.copy(), moss.copy());
-		TConstructClientRegistry.registerManualModifier("mossboots", boots.copy(), moss.copy());
+//		ItemStack moss = new ItemStack(TinkerTools.materials, 1, 6);
+//		TConstructClientRegistry.registerManualModifier("mossgoggles", goggles.copy(), moss.copy());
+//		TConstructClientRegistry.registerManualModifier("mossvest", vest.copy(), moss.copy());
+//		TConstructClientRegistry.registerManualModifier("mosswings", wings.copy(), moss.copy());
+//		TConstructClientRegistry.registerManualModifier("mossboots", boots.copy(), moss.copy());
 	}
 
 	@Override

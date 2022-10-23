@@ -226,7 +226,7 @@ public class TinkerArmor
         //MultiType
         ModifyBuilder.registerModifier(new TravelModDoubleJump(EnumSet.of(ArmorPart.Legs, ArmorPart.Feet), new ItemStack[] { new ItemStack(Items.ghast_tear), new ItemStack(TinkerWorld.slimeGel, 1, 0), new ItemStack(Blocks.piston) }));
         ModifyBuilder.registerModifier(new TravelModDoubleJump(EnumSet.of(ArmorPart.Legs, ArmorPart.Feet), new ItemStack[] { new ItemStack(Items.ghast_tear), new ItemStack(TinkerWorld.slimeGel, 1, 1), new ItemStack(Blocks.piston) }));
-        ModifyBuilder.registerModifier(new AModInteger(4, "Moss", EnumSet.of(ArmorPart.Legs, ArmorPart.Feet, ArmorPart.Chest, ArmorPart.Head), new ItemStack[] { new ItemStack(TinkerTools.materials, 1, 6) }, 3, "\u00a72", StatCollector.translateToLocal("modifier.tool.moss")));
+        //ModifyBuilder.registerModifier(new AModInteger(4, "Moss", EnumSet.of(ArmorPart.Legs, ArmorPart.Feet, ArmorPart.Chest, ArmorPart.Head), new ItemStack[] { new ItemStack(TinkerTools.materials, 1, 6) }, 3, "\u00a72", StatCollector.translateToLocal("modifier.tool.moss")));
         ModifyBuilder.registerModifier(new TravelModRepair());
         TConstructRegistry.registerActiveArmorMod(new ActiveTinkerArmor());
 

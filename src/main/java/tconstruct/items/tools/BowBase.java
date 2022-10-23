@@ -10,11 +10,14 @@ import net.minecraft.init.Items;
 import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.entity.player.*;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.tools.*;
+import tconstruct.modifiers.tools.ModMoss;
 import tconstruct.tools.TinkerTools;
 import tconstruct.tools.entity.ArrowEntity;
 import tconstruct.util.config.PHConstruct;
@@ -115,14 +118,18 @@ public abstract class BowBase extends ToolCore
             }
 
             int reinforced = 0;
+            float mossChance = 0;
+
 
             if (toolTag.hasKey("Unbreaking"))
                 reinforced = toolTag.getInteger("Unbreaking");
 
-            if (random.nextInt(10) < 10 - reinforced)
-            {
-                AbilityHelper.damageTool(stack, 1, player, false);
-            }
+            if (toolTag.getCompoundTag("InfiTool").hasKey("Moss"))
+                mossChance = ModMoss.mossChance(player);
+
+            if ((random.nextInt(10) < 10 - reinforced) && (random.nextFloat() < 1 - mossChance))
+                    AbilityHelper.damageTool(stack, 1, null, false);
+
             world.playSoundAtEntity(player, "random.bow", 1.0F, 1.0F / (itemRand.nextFloat() * 0.4F + 1.2F) + speedBase * 0.5F);
 
             if (creative)

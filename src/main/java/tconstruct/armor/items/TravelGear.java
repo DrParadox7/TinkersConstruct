@@ -149,19 +149,19 @@ public class TravelGear extends ArmorCore implements IRevealer, IGoggles
             modifiers[0] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "goggles" + "_" + "nightvision");
             modifiers[1] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "goggles" + "_" + "thaumic1");
             modifiers[2] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "goggles" + "_" + "thaumic2");
-            modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "goggles" + "_" + "moss");
+//            modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "goggles" + "_" + "moss");
             break;
         case 1:
             modifiers = new IIcon[5];
             modifiers[0] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "vest" + "_" + "dodge");
             modifiers[1] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "vest" + "_" + "stealth");
-            modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "vest" + "_" + "moss");
+//            modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "vest" + "_" + "moss");
             break;
         case 2:
             modifiers = new IIcon[5];
             modifiers[0] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "doublejump");
             modifiers[1] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "featherfall");
-            modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "moss");
+//            modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "moss");
             break;
         case 3:
             modifiers = new IIcon[5];
@@ -169,7 +169,7 @@ public class TravelGear extends ArmorCore implements IRevealer, IGoggles
             modifiers[1] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "boots" + "_" + "waterwalk");
             modifiers[2] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "boots" + "_" + "leadweight");
             modifiers[3] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "boots" + "_" + "slimysole");
-            modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "boots" + "_" + "moss");
+//            modifiers[4] = iconRegister.registerIcon("tinker:" + textureFolder + "/" + "boots" + "_" + "moss");
             break;
         }
     }

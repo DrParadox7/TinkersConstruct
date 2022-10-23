@@ -28,8 +28,8 @@ public class TravelWings extends TravelGear
         modifiers = new IIcon[5];
         modifiers[0] = IIconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "doublejump");
         modifiers[1] = IIconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "featherfall");
-        modifiers[4] = IIconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "moss");
-        /*modifiers = new IIcon[3];
+        /*modifiers[4] = IIconRegister.registerIcon("tinker:" + textureFolder + "/" + "wings" + "_" + "moss");
+        modifiers = new IIcon[3];
         modifiers[0] = IIconRegister.registerIcon(base + "slimewings");
         modifiers[1] = IIconRegister.registerIcon(base + "piston");
         modifiers[2] = IIconRegister.registerIcon(base + "pearl");*/

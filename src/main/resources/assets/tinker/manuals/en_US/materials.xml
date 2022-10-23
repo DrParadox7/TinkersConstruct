@@ -752,11 +752,11 @@ Stackable: Yes</text>
 
 <page type="sectionpage">
 <title>Auto-Repair</title>
-<text>Attaching moss to a tool infuses it with life. The tool appears to be capable of regenerating wear and tear.
+<text>Attaching moss to a tool infuses it with life. The tool appears to be sturdier when exposed to sunlight.
 
 Effects:
-- The tool slowly repairs itself
-- Sunlight speeds up the process
+- The tool is more durable in sunlight
+- Strongest near midday
 
 Type: Single-use
 Stackable: Yes</text>

@@ -511,7 +511,7 @@ public class TinkerTools
         ItemStack redstoneBlock = new ItemStack(Blocks.redstone_block);
         ModifyBuilder.registerModifier(new ModRedstone(2, new ItemStack[] { redstoneItem, redstoneBlock }, new int[] { 1, 9 }));
 
-        ModifyBuilder.registerModifier(new ModInteger(new ItemStack[] { new ItemStack(TinkerTools.materials, 1, 6) }, 4, "Moss", 3, "\u00a72", StatCollector.translateToLocal("modifier.tool.moss")));
+        ModifyBuilder.registerModifier(new ModMoss(new ItemStack[] { new ItemStack(TinkerTools.materials, 1, 6) }, 4, "Moss", "\u00a72", StatCollector.translateToLocal("modifier.tool.mossnew")));
         ItemStack blazePowder = new ItemStack(Items.blaze_powder);
         ModifyBuilder.registerModifier(new ModBlaze(7, new ItemStack[] { blazePowder }, new int[] { 1 }));
         ModifyBuilder.registerModifier(new ModAutoSmelt(new ItemStack[] { new ItemStack(TinkerTools.materials, 1, 7) }, 6, "Lava", "\u00a74", StatCollector.translateToLocal("modifier.tool.lava")));

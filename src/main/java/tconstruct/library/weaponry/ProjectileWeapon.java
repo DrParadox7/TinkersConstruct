@@ -24,6 +24,7 @@ import tconstruct.library.TConstructRegistry;
 import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.library.util.TextureHelper;
+import tconstruct.modifiers.tools.ModMoss;
 import tconstruct.tools.TinkerTools;
 import tconstruct.weaponry.TinkerWeaponry;
 import tconstruct.weaponry.client.CrosshairType;
@@ -165,10 +166,8 @@ public abstract class ProjectileWeapon extends ToolCore implements IBattlegearWe
     }
 
     @Override
-    public void onPlayerStoppedUsing (ItemStack weapon, World world, EntityPlayer player, int useRemaining)
-    {
-        if (!weapon.hasTagCompound())
-        {
+    public void onPlayerStoppedUsing (ItemStack weapon, World world, EntityPlayer player, int useRemaining) {
+        if (!weapon.hasTagCompound()) {
             return;
         }
 
@@ -177,8 +176,7 @@ public abstract class ProjectileWeapon extends ToolCore implements IBattlegearWe
         // we abuse the arrowLooseEvent for all projectiles
         ArrowLooseEvent event = new ArrowLooseEvent(player, weapon, time);
         MinecraftForge.EVENT_BUS.post(event);
-        if (event.isCanceled())
-        {
+        if (event.isCanceled()) {
             return;
         }
         time = event.charge;
@@ -187,7 +185,7 @@ public abstract class ProjectileWeapon extends ToolCore implements IBattlegearWe
         ItemStack ammo = searchForAmmo(player, weapon);
 
         // no ammo found. :(
-        if(ammo == null)
+        if (ammo == null)
             return;
 
         NBTTagCompound toolTag = weapon.getTagCompound().getCompoundTag("InfiTool");
@@ -196,7 +194,7 @@ public abstract class ProjectileWeapon extends ToolCore implements IBattlegearWe
         float accuracy = getAccuracy(weapon, time);
 
         // needs a minimum windup
-        if(windup < this.getMinWindupProgress(weapon))
+        if (windup < this.getMinWindupProgress(weapon))
             return;
 
         // take windup time into account
@@ -206,11 +204,14 @@ public abstract class ProjectileWeapon extends ToolCore implements IBattlegearWe
 
 
         int reinforced = 0;
+        float mossChance = 0;
         if (toolTag.hasKey("Unbreaking"))
             reinforced = toolTag.getInteger("Unbreaking");
+        if (toolTag.hasKey("Moss"))
+            mossChance = ModMoss.mossChance(player);
 
-        if (random.nextInt(10) < 10 - reinforced)
-            AbilityHelper.damageTool(weapon, 1, player, false);
+        if ((random.nextInt(10) < 10 - reinforced) && (random.nextFloat() < 1 - mossChance))
+                AbilityHelper.damageTool(weapon, 1, player, false);
 
         playFiringSound(world, player, weapon, ammo, projectileSpeed, accuracy);
 

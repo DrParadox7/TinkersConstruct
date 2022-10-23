@@ -30,26 +30,26 @@ public class TActiveOmniMod extends ActiveToolMod
     {
         if (!world.isRemote && entity instanceof EntityLivingBase && !((EntityLivingBase) entity).isSwingInProgress && stack.getTagCompound() != null)
         {
-            if(entity instanceof EntityPlayer && (((EntityPlayer) entity).isUsingItem()))
-                return;
-            NBTTagCompound tags = stack.getTagCompound().getCompoundTag("InfiTool");
-            if (tags.hasKey("Moss"))
-            {
-                int chance = tags.getInteger("Moss");
-                int check = world.canBlockSeeTheSky((int) entity.posX, (int) entity.posY, (int) entity.posZ) ? 350 : 1150;
-                // REGROWING AMMO :OOoo
-                if(tool instanceof IAmmo && random.nextInt(check*3) < chance) // ammo regenerates at a much slower rate
-                {
-                    IAmmo ammothing = (IAmmo)tool;
-                    if(ammothing.getAmmoCount(stack) > 0) // must have ammo
-                        ammothing.addAmmo(1, stack);
-                }
-                // selfrepairing tool. LAAAAAME
-                else if (random.nextInt(check) < chance)
-                {
-                    AbilityHelper.healTool(stack, 1, (EntityLivingBase) entity, true);
-                }
-            }
+//            if(entity instanceof EntityPlayer && (((EntityPlayer) entity).isUsingItem()))
+//                return;
+//            NBTTagCompound tags = stack.getTagCompound().getCompoundTag("InfiTool");
+//            if (tags.hasKey("Moss"))
+//            {
+//                int chance = tags.getInteger("Moss");
+//                int check = world.canBlockSeeTheSky((int) entity.posX, (int) entity.posY, (int) entity.posZ) ? 350 : 1150;
+//                // REGROWING AMMO :OOoo
+//                if(tool instanceof IAmmo && random.nextInt(check*3) < chance) // ammo regenerates at a much slower rate
+//                {
+//                    IAmmo ammothing = (IAmmo)tool;
+//                    if(ammothing.getAmmoCount(stack) > 0) // must have ammo
+//                        ammothing.addAmmo(1, stack);
+//                }
+//                // selfrepairing tool. LAAAAAME
+//                else if (random.nextInt(check) < chance)
+//                {
+//                    AbilityHelper.healTool(stack, 1, (EntityLivingBase) entity, true);
+//                }
+//            }
         }
     }
 
