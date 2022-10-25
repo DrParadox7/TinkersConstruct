@@ -132,17 +132,7 @@ public class TinkerToolEvents
     private void handlePaper (NBTTagCompound toolTag, ToolCore tool)
     {
         int modifiers = toolTag.getInteger("Modifiers");
-        if (toolTag.getInteger("Head") == TinkerTools.MaterialID.Paper)
-            modifiers++;
-        if (toolTag.getInteger("Handle") == TinkerTools.MaterialID.Paper)
-            modifiers++;
-        if (toolTag.getInteger("Accessory") == TinkerTools.MaterialID.Paper)
-            modifiers++;
-        if (toolTag.getInteger("Extra") == TinkerTools.MaterialID.Paper)
-            modifiers++;
-
-        // 2 part tools gain 2 modifiers for the head
-        if (tool.getPartAmount() == 2 && toolTag.getInteger("Head") == TinkerTools.MaterialID.Paper)
+        if (toolTag.getInteger("Head") == TinkerTools.MaterialID.Paper || toolTag.getInteger("Handle") == TinkerTools.MaterialID.Paper || toolTag.getInteger("Accessory") == TinkerTools.MaterialID.Paper ||toolTag.getInteger("Extra") == TinkerTools.MaterialID.Paper)
             modifiers++;
 
         toolTag.setInteger("Modifiers", modifiers);
