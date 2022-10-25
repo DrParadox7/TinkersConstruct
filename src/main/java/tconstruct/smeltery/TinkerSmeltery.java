@@ -511,7 +511,7 @@ public class TinkerSmeltery
         GameRegistry.addRecipe(new ItemStack(TinkerSmeltery.searedBlockNether, 1, 0), "bbb", "b b", "b b", 'b', searedBrick); // Table
         GameRegistry.addRecipe(new ItemStack(TinkerSmeltery.searedBlockNether, 1, 1), "b b", " b ", 'b', searedBrick); // Faucet
         GameRegistry.addRecipe(new ItemStack(TinkerSmeltery.searedBlockNether, 1, 2), "b b", "b b", "bbb", 'b', searedBrick); // Basin
-        GameRegistry.addRecipe(new ItemStack(TinkerSmeltery.castingChannel, 4, 0), "b b", "bbb", 'b', searedBrick); // Channel
+        GameRegistry.addRecipe(new ItemStack(TinkerSmeltery.castingChannel, 4, 1), "b b", "bbb", 'b', searedBrick); // Channel
 
         // Slab Smeltery Components Recipes
         for (int i = 0; i < 7; i++)
@@ -856,6 +856,9 @@ public class TinkerSmeltery
         FluidType iron = FluidType.getFluidType("Iron");
         FluidType gold = FluidType.getFluidType("Gold");
         FluidType steel = FluidType.getFluidType("Steel");
+        FluidType copper = FluidType.getFluidType("Copper");
+        FluidType tin = FluidType.getFluidType("Tin");
+        FluidType aluminum = FluidType.getFluidType("Aluminum");
 
         // Chunks
         Smeltery.addMelting(FluidType.getFluidType("Stone"), new ItemStack(TinkerTools.toolShard, 1, 1), 0, 4);
@@ -887,6 +890,7 @@ public class TinkerSmeltery
         Smeltery.addMelting(iron, new ItemStack(Items.iron_door), 0, TConstruct.ingotLiquidValue * 6);
         Smeltery.addMelting(iron, new ItemStack(Items.cauldron), 0, TConstruct.ingotLiquidValue * 7);
         Smeltery.addMelting(iron, new ItemStack(Items.shears), 0, TConstruct.ingotLiquidValue * 2);
+
         Smeltery.addMelting(FluidType.getFluidType("Emerald"), new ItemStack(Items.emerald), -50, 640);
         Smeltery.addMelting(FluidType.getFluidType("Quartz"), new ItemStack(Items.quartz), 0, 250);
 
@@ -924,6 +928,13 @@ public class TinkerSmeltery
 
         Smeltery.addMelting(TinkerSmeltery.clearGlass, 0, 500, new FluidStack(TinkerSmeltery.moltenGlassFluid, 1000));
         Smeltery.addMelting(TinkerSmeltery.glassPane, 0, 350, new FluidStack(TinkerSmeltery.moltenGlassFluid, 250));
+
+        //Ore Berries
+        Smeltery.addMelting(iron, new ItemStack(TinkerWorld.oreBerries, 1, 0), 0, TConstruct.nuggetLiquidValue);
+        Smeltery.addMelting(gold, new ItemStack(TinkerWorld.oreBerries, 1, 1), 0, TConstruct.nuggetLiquidValue);
+        Smeltery.addMelting(copper, new ItemStack(TinkerWorld.oreBerries, 1, 2), 0, TConstruct.nuggetLiquidValue);
+        Smeltery.addMelting(tin, new ItemStack(TinkerWorld.oreBerries, 1, 3), 0, TConstruct.nuggetLiquidValue);
+        Smeltery.addMelting(aluminum, new ItemStack(TinkerWorld.oreBerries, 1, 4), 0, TConstruct.nuggetLiquidValue);
 
         for (int i = 0; i < 16; i++)
         {
