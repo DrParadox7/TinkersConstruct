@@ -1,7 +1,9 @@
 package tconstruct.tools.gui;
 
+import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
+import net.minecraft.client.resources.I18n;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -15,6 +17,7 @@ import tconstruct.library.tools.DualHarvestTool;
 import tconstruct.library.tools.HarvestTool;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.library.util.HarvestLevels;
+import tconstruct.library.util.XpUtils;
 import tconstruct.library.weaponry.AmmoWeapon;
 import tconstruct.library.weaponry.IAmmo;
 import tconstruct.library.weaponry.ProjectileWeapon;
@@ -115,6 +118,12 @@ public final class ToolStationGuiHelper {
 
         // Modifiers
         drawModifiers(tags);
+
+        if(true){
+            newline();
+        drawXPCosts(tags);
+        }
+
     }
 
     private static void drawDurability(NBTTagCompound tags) {
@@ -299,6 +308,28 @@ public final class ToolStationGuiHelper {
             float mineSpeed = tags.getInteger("MiningSpeed");
             float trueSpeed = mineSpeed / (100f);
             write(StatCollector.translateToLocal("gui.toolstation16") + trueSpeed);
+        }
+    }
+
+    private static void drawXPCosts(NBTTagCompound tags)
+    {
+        if(tags.hasKey("XP_Cost")) {
+            int xpCost = tags.getInteger("XP_Cost");
+            int xpCurrent = FMLClientHandler.instance().getClient().thePlayer.experienceTotal;
+
+            double lvlCost = XpUtils.getLVLFromXP(xpCost);
+            String color = "\u00A7a"; //Green
+            String lvl = lvlCost == 1 ? " level" : " levels";
+            String missingXp = "";
+
+            if (xpCost > xpCurrent) {
+                color = "\u00A74"; //Red
+                missingXp = "\u00A78" + " (" + xpCurrent + "/" + xpCost + ")";
+            }
+            DecimalFormat decimalFormat=new DecimalFormat("#.#");
+
+            write(StatCollector.translateToLocal("gui.toolstation24"));
+            write(I18n.format(color + decimalFormat.format(lvlCost) + lvl) + missingXp);
         }
     }
 

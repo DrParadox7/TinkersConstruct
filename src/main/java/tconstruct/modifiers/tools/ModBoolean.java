@@ -4,6 +4,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.library.modifier.ItemModifier;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 /* Adds a boolean NBTTag */
 
 public class ModBoolean extends ItemModifier
@@ -35,6 +37,12 @@ public class ModBoolean extends ItemModifier
         int modifiers = tags.getInteger("Modifiers");
         modifiers -= 1;
         tags.setInteger("Modifiers", modifiers);
+
+        int upgrades = tags.getInteger("Upgrades");
+        upgrades += 1;
+        tags.setInteger("Upgrades", upgrades);
+
+        tags.setInteger("XP_Cost", ModCost());
 
         addToolTip(tool, color + tooltipName, color + key);
     }

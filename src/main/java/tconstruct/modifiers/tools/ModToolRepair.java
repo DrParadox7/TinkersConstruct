@@ -6,6 +6,7 @@ import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.library.modifier.ItemModifier;
 import tconstruct.library.tools.*;
+import tconstruct.library.util.XpUtils;
 
 public class ModToolRepair extends ItemModifier
 {
@@ -93,6 +94,7 @@ public class ModToolRepair extends ItemModifier
         increase *= repairCount;
         increase /= ((ToolCore) tool.getItem()).getRepairCost();
         return increase;
+
     }
 
     @Override
@@ -101,7 +103,7 @@ public class ModToolRepair extends ItemModifier
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
         tags.setBoolean("Broken", false);
         int damage = tags.getInteger("Damage");
-        int dur = tags.getInteger("BaseDurability");
+
         int itemsUsed = 0;
 
         int materialValue = 0;
@@ -116,6 +118,7 @@ public class ModToolRepair extends ItemModifier
 
         int increase = calculateIncrease(tool, materialValue, itemsUsed);
         int repair = tags.getInteger("RepairCount");
+        int repairValue = Math.min(increase, tags.getInteger("Damage"));
         repair += itemsUsed;
         tags.setInteger("RepairCount", repair);
 
@@ -123,6 +126,11 @@ public class ModToolRepair extends ItemModifier
         if (damage < 0)
             damage = 0;
         tags.setInteger("Damage", damage);
+
+        int upgrades = tags.getInteger("Upgrades");
+        int xpCost = XpUtils.XPRepair(repairValue, upgrades, repair);
+
+        tags.setInteger("XP_Cost", xpCost);
 
         AbilityHelper.damageTool(tool, 0, null, true);
     }

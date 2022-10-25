@@ -25,6 +25,12 @@ public class AModLeadBoots extends AModBoolean
         modifiers -= 1;
         armorTag.setInteger("Modifiers", modifiers);
 
+        int upgrades = armorTag.getInteger("Upgrades");
+        upgrades += 1;
+        armorTag.setInteger("Upgrades", upgrades);
+
+        armorTag.setInteger("XP_Cost", 17 * 10); //1 lvl = 17 xp (Up until lvl 16)
+
         addToolTip(armor, color + tooltipName, color + key);
 
         NBTTagList attributes;

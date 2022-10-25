@@ -55,6 +55,8 @@ public class GlassArrows extends ArrowAmmo {
         tags.setInteger("Unbreaking", 0); // no reinforced
         tags.setInteger("Attack", 10); // insane damage!
         tags.setInteger("Modifiers", 0);
+        tags.setInteger("Upgrades", 0);
+
 
         // now make them look like glass
         tags.setInteger("RenderHead", -1);

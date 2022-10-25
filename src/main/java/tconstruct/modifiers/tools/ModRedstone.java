@@ -6,6 +6,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.library.tools.ToolCore;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 public class ModRedstone extends ItemModTypeFilter
 {
     public String tooltipName;
@@ -63,6 +65,12 @@ public class ModRedstone extends ItemModTypeFilter
                 int modifiers = tags.getInteger("Modifiers");
                 modifiers -= 1;
                 tags.setInteger("Modifiers", modifiers);
+
+                int upgrades = tags.getInteger("Upgrades");
+                upgrades += 1;
+                tags.setInteger("Upgrades", upgrades);
+
+                tags.setInteger("XP_Cost", ModCost());
             }
             else
             {
@@ -77,6 +85,13 @@ public class ModRedstone extends ItemModTypeFilter
             int modifiers = tags.getInteger("Modifiers");
             modifiers -= 1;
             tags.setInteger("Modifiers", modifiers);
+
+            int upgrades = tags.getInteger("Upgrades");
+            upgrades += 1;
+            tags.setInteger("Upgrades", upgrades);
+
+            tags.setInteger("XP_Cost", ModCost());
+
             String modName = "\u00a74Redstone (" + increase + "/" + max + ")";
             int tooltipIndex = addToolTip(tool, tooltipName, modName);
             keyPair = new int[] { increase, max, tooltipIndex };

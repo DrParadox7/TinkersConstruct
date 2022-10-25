@@ -5,6 +5,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.library.modifier.ItemModifier;
 import tconstruct.util.config.PHConstruct;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 /* Adds an integer NBTTag */
 
 public class ModDurability extends ItemModifier
@@ -64,6 +66,12 @@ public class ModDurability extends ItemModifier
         int modifiers = tags.getInteger("Modifiers");
         modifiers -= 1;
         tags.setInteger("Modifiers", modifiers);
+
+        int upgrades = tags.getInteger("Upgrades");
+        upgrades += 1;
+        tags.setInteger("Upgrades", upgrades);
+
+        tags.setInteger("XP_Cost", ModCost());
 
         tags.setBoolean(key, true);
         String modTip = color + key;

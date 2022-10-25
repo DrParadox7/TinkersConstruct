@@ -9,8 +9,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import tconstruct.library.event.ToolCraftedEvent;
 import tconstruct.library.modifier.IModifyable;
-import tconstruct.tools.logic.ToolStationLogic;
-
+import tconstruct.library.util.XpUtils;
 public class SlotTool extends Slot
 {
     /** The player that is using the GUI where this slot resides. */
@@ -23,6 +22,23 @@ public class SlotTool extends Slot
         this.player = entityplayer;
     }
 
+    public boolean canTakeStack(EntityPlayer player) {
+
+        ItemStack stack = getStack();
+        NBTTagCompound toolTag = stack.getTagCompound().getCompoundTag("InfiTool");
+        int xpCost = toolTag.getInteger("XP_Cost");
+        if (stack.getItem() instanceof IModifyable && toolTag.hasKey("XP_Cost")) {
+            if (xpCost <= player.experienceTotal) {
+                XpUtils.deductXP(xpCost, player);
+                toolTag.removeTag("XP_Cost");
+                return true;
+            } else {
+                return false;
+            }
+        }
+        return true;
+    }
+
     /**
      * Check if the stack is a valid item for this slot. Always true beside for the armor slots.
      */
@@ -32,8 +48,10 @@ public class SlotTool extends Slot
         //return stack.getItem() instanceof ToolCore;
     }
 
-    public void onPickupFromSlot (EntityPlayer par1EntityPlayer, ItemStack stack)
-    {
+    public void onPickupFromSlot (EntityPlayer par1EntityPlayer, ItemStack stack) {
+        NBTTagCompound toolTag = stack.getTagCompound().getCompoundTag("InfiTool");
+        int xpCost = toolTag.getInteger("XP_Cost");
+
         this.onCrafting(stack);
         //stack.setUnlocalizedName("\u00A7f" + toolName);
         super.onPickupFromSlot(par1EntityPlayer, stack);

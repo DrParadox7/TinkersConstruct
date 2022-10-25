@@ -884,7 +884,9 @@ gui.toolstation19=Damage Reduction:
 gui.toolstation20=Protection: 
 gui.toolstation21=Ammo: 
 gui.toolstation22=Break Chance: 
-gui.toolstation23=Max. Attack: 
+gui.toolstation23=Max. Attack:
+gui.toolstation24=Experience Needed:
+
 
 gui.mining1=Stone
 gui.mining2=Iron

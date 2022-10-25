@@ -7,6 +7,8 @@ import tconstruct.library.tools.ToolCore;
 
 import java.util.Arrays;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 public class ModAttack extends ItemModTypeFilter
 {
     String tooltipName;
@@ -118,6 +120,12 @@ public class ModAttack extends ItemModTypeFilter
                 int modifiers = tags.getInteger("Modifiers");
                 modifiers -= 1;
                 tags.setInteger("Modifiers", modifiers);
+
+                int upgrades = tags.getInteger("Upgrades");
+                upgrades += 1;
+                tags.setInteger("Upgrades", upgrades);
+
+                tags.setInteger("XP_Cost", ModCost());
             }
             else
             {
@@ -132,6 +140,13 @@ public class ModAttack extends ItemModTypeFilter
             int modifiers = tags.getInteger("Modifiers");
             modifiers -= 1;
             tags.setInteger("Modifiers", modifiers);
+
+            int upgrades = tags.getInteger("Upgrades");
+            upgrades += 1;
+            tags.setInteger("Upgrades", upgrades);
+
+            tags.setInteger("XP_Cost", ModCost());
+
             int increase = matchingAmount(input);
             String modName = "\u00a7f" + guiType + " (" + increase + "/" + max + ")";
             int tooltipIndex = addToolTip(tool, tooltipName, modName);

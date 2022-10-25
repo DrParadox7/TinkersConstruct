@@ -158,6 +158,8 @@ public class Hammer extends AOEHarvestTool
         tags.setInteger("BaseDurability", Integer.MAX_VALUE / 100);
         tags.setInteger("MiningSpeed", Integer.MAX_VALUE / 100);
         tags.setInteger("Unbreaking", 10);
+        tags.setInteger("Upgrades", 0);
+
 
         tags.setBoolean("Built", true);
         list.add(tool);

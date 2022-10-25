@@ -3,6 +3,8 @@ package tconstruct.modifiers.tools;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 public class ModSmite extends ItemModTypeFilter
 {
     String tooltipName;
@@ -55,6 +57,12 @@ public class ModSmite extends ItemModTypeFilter
                 int modifiers = tags.getInteger("Modifiers");
                 modifiers -= 1;
                 tags.setInteger("Modifiers", modifiers);
+
+                tags.setInteger("XP_Cost", ModCost());
+
+                int upgrades = tags.getInteger("Upgrades");
+                upgrades += 1;
+                tags.setInteger("Upgrades", upgrades);
             }
             else
             {
@@ -69,6 +77,13 @@ public class ModSmite extends ItemModTypeFilter
             int modifiers = tags.getInteger("Modifiers");
             modifiers -= 1;
             tags.setInteger("Modifiers", modifiers);
+
+            int upgrades = tags.getInteger("Upgrades");
+            upgrades += 1;
+            tags.setInteger("Upgrades", upgrades);
+
+            tags.setInteger("XP_Cost", ModCost());
+
             String modName = "\u00a7e" + tagName + " (" + increase + "/" + max + ")";
             int tooltipIndex = addToolTip(tool, tooltipName, modName);
             int[] keyPair = new int[] { increase, max, tooltipIndex };

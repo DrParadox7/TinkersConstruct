@@ -5,6 +5,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.library.tools.ToolCore;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 public class ModPiston extends ItemModTypeFilter
 {
     String tooltipName;
@@ -60,6 +62,12 @@ public class ModPiston extends ItemModTypeFilter
                 int modifiers = tags.getInteger("Modifiers");
                 modifiers -= 1;
                 tags.setInteger("Modifiers", modifiers);
+
+                int upgrades = tags.getInteger("Upgrades");
+                upgrades += 1;
+                tags.setInteger("Upgrades", upgrades);
+
+                tags.setInteger("XP_Cost", ModCost());
             }
             else
             {
@@ -73,6 +81,13 @@ public class ModPiston extends ItemModTypeFilter
             int modifiers = tags.getInteger("Modifiers");
             modifiers -= 1;
             tags.setInteger("Modifiers", modifiers);
+
+            int upgrades = tags.getInteger("Upgrades");
+            upgrades += 1;
+            tags.setInteger("Upgrades", upgrades);
+
+            tags.setInteger("XP_Cost", ModCost());
+
             String modName = "\u00a74Knockback (" + increase + "/" + max + ")";
             int tooltipIndex = addToolTip(tool, tooltipName, modName);
             int[] keyPair = new int[] { increase, max, tooltipIndex };

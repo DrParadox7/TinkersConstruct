@@ -6,6 +6,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
 import tconstruct.library.tools.ToolCore;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 public class ModLapis extends ItemModTypeFilter
 {
     String tooltipName;
@@ -60,6 +62,12 @@ public class ModLapis extends ItemModTypeFilter
             int modifiers = tags.getInteger("Modifiers");
             modifiers -= 1;
             tags.setInteger("Modifiers", modifiers);
+
+            int upgrades = tags.getInteger("Upgrades");
+            upgrades += 1;
+            tags.setInteger("Upgrades", upgrades);
+
+            tags.setInteger("XP_Cost", ModCost());
         }
 
         int increase = matchingAmount(input);

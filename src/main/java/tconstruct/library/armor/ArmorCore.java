@@ -313,6 +313,7 @@ public abstract class ArmorCore extends ItemArmor implements ISpecialArmor, IMod
 
         NBTTagCompound tag = new NBTTagCompound();
         tag.setInteger("Modifiers", 3);
+        tag.setInteger("Upgrades", 0);
         double flat = getFlatDefense();
         double base = getBaseDefense();
         double max = getMaxDefense();

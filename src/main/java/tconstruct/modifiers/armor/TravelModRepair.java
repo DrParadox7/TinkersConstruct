@@ -5,6 +5,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.armor.items.TravelGear;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.library.modifier.ItemModifier;
+import tconstruct.library.util.XpUtils;
 
 public class TravelModRepair extends ItemModifier
 {
@@ -96,6 +97,7 @@ public class TravelModRepair extends ItemModifier
 
         int increase = calculateIncrease(input, tags, materialValue, itemsUsed);
         int repair = tags.getInteger("RepairCount");
+        int repairValue = Math.min(increase, tags.getInteger("Damage"));
         repair += itemsUsed;
         tags.setInteger("RepairCount", repair);
 
@@ -104,6 +106,11 @@ public class TravelModRepair extends ItemModifier
             damage = 0;
         tags.setInteger("Damage", damage);
         input.setItemDamage(damage);
+
+        int upgrades = tags.getInteger("Upgrades");
+        int xpCost = XpUtils.XPRepair(repairValue, upgrades, repair);
+
+        tags.setInteger("XP_Cost", xpCost);
     }
 
     @Override

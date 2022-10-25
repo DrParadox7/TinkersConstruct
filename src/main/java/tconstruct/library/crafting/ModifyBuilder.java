@@ -14,10 +14,12 @@ public class ModifyBuilder
 
     public ItemStack modifyItem (ItemStack input, ItemStack[] modifiers)
     {
+
         ItemStack copy = input.copy(); //Prevent modifying the original
         if (copy.getItem() instanceof IModifyable)
         {
             IModifyable item = (IModifyable) copy.getItem();
+            NBTTagCompound tags = copy.getTagCompound().getCompoundTag("InfiTool");
 
             boolean built = false;
             for (ItemModifier mod : itemModifiers)

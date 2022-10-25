@@ -4,6 +4,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.library.modifier.ItemModifier;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 /* Adds an integer NBTTag */
 
 public class ModInteger extends ItemModifier
@@ -48,6 +50,12 @@ public class ModInteger extends ItemModifier
         int modifiers = tags.getInteger("Modifiers");
         modifiers -= 1;
         tags.setInteger("Modifiers", modifiers);
+
+        tags.setInteger("XP_Cost", ModCost());
+
+        int upgrades = tags.getInteger("Upgrades");
+        upgrades += 1;
+        tags.setInteger("Upgrades", upgrades);
 
         addToolTip(tool, color + tooltipName, color + key);
     }

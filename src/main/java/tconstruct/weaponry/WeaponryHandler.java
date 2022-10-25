@@ -408,6 +408,8 @@ public class WeaponryHandler {
             tag.setFloat("Shoddy", -2.0f);
             tag.setInteger("MiningSpeed", 1);
             tag.setInteger("HarvestLevel", 0);
+            tag.setInteger("Upgrades", 0);
+
 
             tag.setInteger("Modifiers", 0);
 

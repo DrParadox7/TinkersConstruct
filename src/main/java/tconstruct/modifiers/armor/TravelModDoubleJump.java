@@ -6,6 +6,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.library.armor.*;
 import tconstruct.library.modifier.IModifyable;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 public class TravelModDoubleJump extends ArmorMod
 {
     String color = "\u00a77";
@@ -41,6 +43,12 @@ public class TravelModDoubleJump extends ArmorMod
         int modifiers = tags.getInteger("Modifiers");
         modifiers -= 1;
         tags.setInteger("Modifiers", modifiers);
+
+        int upgrades = tags.getInteger("Upgrades");
+        upgrades += 1;
+        tags.setInteger("Upgrades", upgrades);
+
+        tags.setInteger("XP_Cost", ModCost());
 
         addToolTip(input, color + tooltipName, color + key);
     }

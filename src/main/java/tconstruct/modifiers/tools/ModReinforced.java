@@ -3,6 +3,8 @@ package tconstruct.modifiers.tools;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 public class ModReinforced extends ModInteger
 {
 
@@ -30,9 +32,15 @@ public class ModReinforced extends ModInteger
         modifiers -= 1;
         tags.setInteger("Modifiers", modifiers);
 
+        tags.setInteger("XP_Cost", ModCost());
+
         int reinforced = tags.getInteger("Unbreaking");
         reinforced += 1;
         tags.setInteger("Unbreaking", reinforced);
+
+        int upgrades = tags.getInteger("Upgrades");
+        upgrades += 1;
+        tags.setInteger("Upgrades", upgrades);
 
         addToolTip(tool, color + tooltipName, color + key);
     }

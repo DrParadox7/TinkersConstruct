@@ -63,6 +63,8 @@ public class FryingPan extends Weapon
         tags.setInteger("TotalDurability", Integer.MAX_VALUE / 100);
         tags.setInteger("BaseDurability", Integer.MAX_VALUE / 100);
         tags.setInteger("MiningSpeed", Integer.MAX_VALUE / 100);
+        tags.setInteger("Upgrades", 0);
+
 
         int[] keyPair = new int[] { Integer.MAX_VALUE / 100, 0, 0 };
         tags.setIntArray("Blaze", keyPair);

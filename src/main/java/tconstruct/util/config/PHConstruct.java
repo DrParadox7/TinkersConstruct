@@ -86,6 +86,11 @@ public class PHConstruct
 
         achievementsEnabled = config.get("Achievements", "Enable Achievements", true).getBoolean(true);
 
+        repairPerXp = config.get("Balance", "Repair value provided per xp point", 20, "Set to 0 to disable").getInt(20);
+        modModifier = config.get("Balance", "Xp cost modifier per active modifier. [Formula: XP cost = (repair * (1 + Modifiers * modModifier))/repairPerXp]", 1.0, "Set to 0 to disable").getDouble(1.0);
+        modifierCost = config.get("Balance", "Flat Xp cost for applying modifier", 10, "Set to 0 to disable").getInt(10);
+        repairModifier = config.get("Balance", "Increase in XP cost per repair count", 0, "Set to 0 to disable").getInt(0);
+
         boolean ic2 = true;
         boolean xycraft = true;
         try {
@@ -328,6 +333,14 @@ public class PHConstruct
     public static boolean alphaRegen;
     public static boolean alphaHunger;
     public static boolean balancedFluxModifier;
+
+    //Balance
+    public static int repairPerXp;
+    public static double modModifier;
+    public static int modifierCost;
+    public static int repairModifier;
+
+
 
     public static boolean disableWoodTools;
     public static boolean disableStoneTools;

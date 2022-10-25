@@ -6,6 +6,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.*;
 import tconstruct.library.tools.ToolCore;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 public class ModButtertouch extends ModBoolean
 {
 
@@ -42,6 +44,12 @@ public class ModButtertouch extends ModBoolean
         int modifiers = tags.getInteger("Modifiers");
         modifiers -= 1;
         tags.setInteger("Modifiers", modifiers);
+
+        int upgrades = tags.getInteger("Upgrades");
+        upgrades += 1;
+        tags.setInteger("Upgrades", upgrades);
+
+        tags.setInteger("XP_Cost", ModCost());
 
         int attack = tags.getInteger("Attack");
         attack -= 3;
