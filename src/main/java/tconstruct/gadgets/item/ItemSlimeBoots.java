@@ -12,6 +12,7 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -59,18 +60,11 @@ public class ItemSlimeBoots extends ItemArmor implements ISpecialArmor {
 	// equipping with rightclick
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStackIn, World worldIn, EntityPlayer playerIn) {
-		int slot = 1; // 0 = current item, 1 = feet
-		ItemStack itemstack = playerIn.getEquipmentInSlot(slot);
-		if (itemstack == null) {
-			playerIn.setCurrentItemOrArmor(slot, itemStackIn.copy());
-			itemStackIn.stackSize--;
-		}
-		else {
-			itemstack = itemstack.copy();
-			playerIn.setCurrentItemOrArmor(1, itemStackIn.copy());
-			//playerIn.setCurrentItemOrArmor(0, itemstack);
-			playerIn.entityDropItem(itemstack, 0);
-			itemStackIn.stackSize--;
+		int i = EntityLiving.getArmorPosition(itemStackIn) - 1;
+		ItemStack itemstack1 = playerIn.getCurrentArmor(i);
+		if (itemstack1 == null) {
+			playerIn.setCurrentItemOrArmor(i + 1, itemStackIn.copy());
+			itemStackIn.stackSize = 0;
 		}
 		return itemStackIn;
 	}
