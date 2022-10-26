@@ -31,12 +31,12 @@ public class ToolStationBlock extends InventoryBlock
         this.setHardness(2f);
         this.setStepSound(Block.soundTypeMetal);
     }
+    //We keep it "toolforge" for the sake of texture pack support.
+    String[] textureNames = { "toolforge_bronze", "toolforge_steel", "toolforge_alumite" };
 
     @Override
     public String[] getTextureNames ()
     {
-        String[] textureNames = { "toolstationnew_top", "toolstationnew_side", "toolstationnew_bottom" };
-
         return textureNames;
     }
 
@@ -46,11 +46,35 @@ public class ToolStationBlock extends InventoryBlock
         return "tinker";
     }
 
+    IIcon textureTop;
+    @Override
+    public void registerBlockIcons (IIconRegister iconRegister)
+    {
+        super.registerBlockIcons(iconRegister);
+        textureTop = iconRegister.registerIcon("tinker:toolforge_top");
+
+    }
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon (int side, int meta)
     {
-        return icons[getTextureIndex(side)];
+        if (side == 1)
+        {
+            return textureTop;
+        }
+        if (side == 0)
+        {
+            switch (meta){
+                case 1:
+                    return TinkerWorld.metalBlock.getIcon(side, 9);
+                case 2:
+                    return TinkerWorld.metalBlock.getIcon(side, 8);
+                default:
+                    return TinkerWorld.metalBlock.getIcon(side, 4);
+            }
+        }
+
+        return this.icons[meta];
     }
 
     public int getTextureIndex (int side)
@@ -109,5 +133,14 @@ public class ToolStationBlock extends InventoryBlock
     public Object getModInstance ()
     {
         return TConstruct.instance;
+    }
+
+    @Override
+    public void getSubBlocks (Item b, CreativeTabs tab, List list)
+    {
+        for (int iter = 0; iter < textureNames.length; iter++)
+        {
+            list.add(new ItemStack(b, 1, iter));
+        }
     }
 }

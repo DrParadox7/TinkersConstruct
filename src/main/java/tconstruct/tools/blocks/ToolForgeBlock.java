@@ -32,12 +32,12 @@ public class ToolForgeBlock extends InventoryBlock
         this.setStepSound(Block.soundTypeMetal);
     }
 
-    String[] textureNames = { "toolforge_iron", "toolforge_gold", "toolforge_diamond", "toolforge_emerald", "toolforge_cobalt", "toolforge_ardite", "toolforge_manyullyn", "toolforge_copper", "toolforge_bronze", "toolforge_tin", "toolforge_aluminum", "toolforge_alubrass", "toolforge_alumite", "toolforge_steel" };
-
     /* Rendering */
     @Override
     public String[] getTextureNames ()
     {
+        String[] textureNames = { "toolforge_manyullyn_nether" };
+
         return textureNames;
     }
 
@@ -53,7 +53,8 @@ public class ToolForgeBlock extends InventoryBlock
     public void registerBlockIcons (IIconRegister iconRegister)
     {
         super.registerBlockIcons(iconRegister);
-        textureTop = iconRegister.registerIcon("tinker:toolforge_top");
+        textureTop = iconRegister.registerIcon("tinker:toolforge_top_nether");
+
     }
 
     @Override
@@ -66,22 +67,10 @@ public class ToolForgeBlock extends InventoryBlock
         }
         if (side == 0)
         {
-            switch (meta)
-            {
-            case 0:
-                return Blocks.iron_block.getIcon(side, 0);
-            case 1:
-                return Blocks.gold_block.getIcon(side, 0);
-            case 2:
-                return Blocks.diamond_block.getIcon(side, 0);
-            case 3:
-                return Blocks.emerald_block.getIcon(side, 0);
-            default:
-                return TinkerWorld.metalBlock.getIcon(side, meta - 4);
-            }
+            return TinkerWorld.metalBlock.getIcon(side, 2);
         }
 
-        return this.icons[meta];
+        return this.icons[0];
     }
 
     @Override
@@ -130,14 +119,5 @@ public class ToolForgeBlock extends InventoryBlock
     public Object getModInstance ()
     {
         return TConstruct.instance;
-    }
-
-    @Override
-    public void getSubBlocks (Item b, CreativeTabs tab, List list)
-    {
-        for (int iter = 0; iter < textureNames.length; iter++)
-        {
-            list.add(new ItemStack(b, 1, iter));
-        }
     }
 }

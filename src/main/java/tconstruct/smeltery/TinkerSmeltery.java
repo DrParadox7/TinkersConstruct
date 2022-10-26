@@ -641,7 +641,7 @@ public class TinkerSmeltery
         tableCasting.addCastingRecipe(new ItemStack(TinkerTools.materials, 1, 2), new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.ingotLiquidValue / 4), ingotclaycast, true,  80); // stone
 
 
-        // Misc
+        // Gem Casts
         tableCasting.addCastingRecipe(new ItemStack(Items.emerald), new FluidStack(TinkerSmeltery.moltenEmeraldFluid, 640), gemcast, 80);
         tableCasting.addCastingRecipe(new ItemStack(Items.quartz), new FluidStack(TinkerSmeltery.moltenQuartzFluid, 250), gemcast, 50);
         tableCasting.addCastingRecipe(new ItemStack(Items.emerald), new FluidStack(TinkerSmeltery.moltenEmeraldFluid, 640), gemclaycast, true, 80);
@@ -1023,16 +1023,15 @@ public class TinkerSmeltery
         ItemStack pattern = new ItemStack(TinkerSmeltery.metalPattern, 1, 27);
         ItemStack clay_pattern = new ItemStack(TinkerSmeltery.clayPattern, 1, 27);
         LiquidCasting tableCasting = TConstructRegistry.instance.getTableCasting();
-        for (ItemStack ore : OreDictionary.getOres(name))
-        {
+        for (ItemStack ore : OreDictionary.getOres(name)) {
             // don't do oreberries. That'd be silly.
-            if(ore.getItem() != null && ore.getItem() instanceof OreBerries) {
+            if (ore.getItem() != null && ore.getItem() instanceof OreBerries) {
                 boolean isOreberry = false;
-                for(int id : OreDictionary.getOreIDs(ore))
-                    if(OreDictionary.getOreName(id).startsWith("oreberry"))
+                for (int id : OreDictionary.getOreIDs(ore))
+                    if (OreDictionary.getOreName(id).startsWith("oreberry"))
                         isOreberry = true;
 
-                if(isOreberry)
+                if (isOreberry)
                     continue;
             }
             tableCasting.addCastingRecipe(
@@ -1041,14 +1040,14 @@ public class TinkerSmeltery
                     new ItemStack(ore.getItem(), 1, ore.getItemDamage()),
                     false,
                     50);
-                tableCasting.addCastingRecipe(
+            tableCasting.addCastingRecipe(
                     clay_pattern,
                     new FluidStack(TinkerSmeltery.moltenAlubrassFluid, TConstruct.ingotLiquidValue),
                     new ItemStack(ore.getItem(), 1, ore.getItemDamage()),
                     false,
                     50);
             if (!PHConstruct.removeGoldCastRecipes)
-            	tableCasting.addCastingRecipe(pattern, new FluidStack(TinkerSmeltery.moltenGoldFluid, TConstruct.ingotLiquidValue * 2), new ItemStack(ore.getItem(), 1, ore.getItemDamage()), false, 50);
+                tableCasting.addCastingRecipe(pattern, new FluidStack(TinkerSmeltery.moltenGoldFluid, TConstruct.ingotLiquidValue * 2), new ItemStack(ore.getItem(), 1, ore.getItemDamage()), false, 50);
 
             tableCasting.addCastingRecipe(new ItemStack(ore.getItem(), 1, ore.getItemDamage()), new FluidStack(ft.fluid, TConstruct.nuggetLiquidValue), pattern, 40);
         }
@@ -1058,7 +1057,7 @@ public class TinkerSmeltery
     {
         for (ItemStack ore : OreDictionary.getOres(name))
         {
-            TConstructRegistry.getBasinCasting().addCastingRecipe(new ItemStack(ore.getItem(), 1, ore.getItemDamage()), new FluidStack(ft.fluid, TConstruct.blockLiquidValue), 100);
+            TConstructRegistry.getBasinCasting().addCastingRecipe(new ItemStack(ore.getItem(), -1, ore.getItemDamage()), new FluidStack(ft.fluid, TConstruct.blockLiquidValue), 100);
         }
     }
 
