@@ -28,13 +28,12 @@ public class SlotTool extends Slot
             ItemStack stack = getStack();
             NBTTagCompound toolTag = stack.getTagCompound().getCompoundTag("InfiTool");
             if (stack.getItem() instanceof IModifyable && toolTag.hasKey("XP_Cost")) {
-                int xpCost = toolTag.getInteger("XP_Cost");
-                if (xpCost <= player.experienceTotal) {
+                int xpCost = player.capabilities.isCreativeMode ? 0 : toolTag.getInteger("XP_Cost");
+                if (xpCost > player.experienceTotal) {
+                    return false;
+                } else {
                     XpUtils.deductXP(xpCost, player);
                     toolTag.removeTag("XP_Cost");
-                    return true;
-                } else {
-                    return false;
                 }
             }
         }
@@ -51,9 +50,6 @@ public class SlotTool extends Slot
     }
 
     public void onPickupFromSlot (EntityPlayer par1EntityPlayer, ItemStack stack) {
-        NBTTagCompound toolTag = stack.getTagCompound().getCompoundTag("InfiTool");
-        int xpCost = toolTag.getInteger("XP_Cost");
-
         this.onCrafting(stack);
         //stack.setUnlocalizedName("\u00A7f" + toolName);
         super.onPickupFromSlot(par1EntityPlayer, stack);

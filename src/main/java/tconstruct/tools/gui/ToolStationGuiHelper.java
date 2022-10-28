@@ -4,6 +4,7 @@ import cpw.mods.fml.client.FMLClientHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.client.resources.I18n;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -313,9 +314,11 @@ public final class ToolStationGuiHelper {
 
     private static void drawXPCosts(NBTTagCompound tags)
     {
-        if(tags.hasKey("XP_Cost")) {
+        EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
+
+        if(tags.hasKey("XP_Cost") && !player.capabilities.isCreativeMode) {
             int xpCost = tags.getInteger("XP_Cost");
-            int xpCurrent = FMLClientHandler.instance().getClient().thePlayer.experienceTotal;
+            int xpCurrent = player.experienceTotal;
 
             double lvlCost = XpUtils.getLVLFromXP(xpCost);
             String color = "\u00A7a"; //Green
