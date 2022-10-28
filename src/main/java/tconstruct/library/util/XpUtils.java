@@ -65,8 +65,10 @@ public class XpUtils {
         int repairModifier = PHConstruct.repairModifier;
         double modModifier = PHConstruct.modModifier;
 
-        if (repairPerXp > 0)
-            return (int) ((repairValue * (1 + upgrades * modModifier)) / repairPerXp) * (repairCount * repairModifier);
+        if (repairPerXp > 0) {
+            int XpCost = (int) ((repairValue * (1 + upgrades * modModifier)) / repairPerXp) * (1 + repairCount * repairModifier);
+                return XpCost;
+        }
         else return 0;
     }
 
