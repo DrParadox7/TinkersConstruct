@@ -82,13 +82,13 @@ By Skyla</text>
 </recipe>
 </page>
 
-<page type="crafting">
-<text>工具装配站</text>
-<recipe>
- <name>toolforge</name>
- <size>three</size>
-</recipe>
-</page>
+<!--<page type="crafting">-->
+<!--<text>工具装配站</text>-->
+<!--<recipe>-->
+<!-- <name>toolforge</name>-->
+<!-- <size>three</size>-->
+<!--</recipe>-->
+<!--</page>-->
 
 <page type="crafting">
 <text>晾干架</text>
@@ -223,6 +223,10 @@ By Skyla</text>
  <size>two</size>
 </recipe>
 </page>
+
+ <page type="text">
+  <text></text>
+ </page>
 
 <page type="text">
 <text>护甲强化

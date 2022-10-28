@@ -1025,92 +1025,92 @@ Shift+右击：放置物品
 可叠加: 否</text>
 </page>
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>fluxmod</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>fluxmod</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>通量</title>
-<text>用强化能量管道或铅石能量管道给工具能量。工具在无电情况下也能保持正常功能
+<!--<page type="sectionpage">-->
+<!--<title>通量</title>-->
+<!--<text>用强化能量管道或铅石能量管道给工具能量。工具在无电情况下也能保持正常功能-->
 
-效果:
-- 使工具能被红石通量充能
-- 充能时使用能量而不是耐久
-- 热力膨胀3可用
+<!--效果:-->
+<!-- - 使工具能被红石通量充能-->
+<!-- - 充能时使用能量而不是耐久-->
+<!-- - 热力膨胀3可用-->
 
-类型: 一次性
-可叠加: 否</text>
-</page>
+<!--类型: 一次性-->
+<!--可叠加: 否</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>fluxmod2</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>fluxmod2</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>扩展</title>
-<text>用金块和钻石增加工具的可塑性使它能拥有更多强化
+<!--<page type="sectionpage">-->
+<!--<title>扩展</title>-->
+<!--<text>用金块和钻石增加工具的可塑性使它能拥有更多强化-->
 
-效果:
-- 给工具增加一个额外的强化槽
+<!--效果:-->
+<!-- - 给工具增加一个额外的强化槽-->
 
-类型: 一次性
-可叠加: 否</text>
-</page>
+<!--类型: 一次性-->
+<!--可叠加: 否</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>tier1free</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>tier1free</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>扩展</title>
-<text>在工具上附上金苹果和钻石块来改造它
+<!--<page type="sectionpage">-->
+<!--<title>扩展</title>-->
+<!--<text>在工具上附上金苹果和钻石块来改造它-->
 
-效果:
-- 给工具增加一个额外的强化槽
+<!--效果:-->
+<!-- - 给工具增加一个额外的强化槽-->
 
-类型: 一次性
-可叠加: 否</text>
-</page>
+<!--类型: 一次性-->
+<!--可叠加: 否</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>tier1.5free</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>tier1.5free</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>扩展</title>
-<text>用下界之星给与工具接受其他强化的能力
+<!--<page type="sectionpage">-->
+<!--<title>扩展</title>-->
+<!--<text>用下界之星给与工具接受其他强化的能力-->
 
-效果:
-- 给工具增加一个额外的强化槽
+<!--效果:-->
+<!-- - 给工具增加一个额外的强化槽-->
 
-类型: 一次性
-可叠加: 否</text>
-</page>
+<!--类型: 一次性-->
+<!--可叠加: 否</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>tier2free</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>tier2free</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>扩展</title>
-<text>对创造模式和地图制作者而言，这个物品是给你们的。
+<!--<page type="sectionpage">-->
+<!--<title>扩展</title>-->
+<!--<text>对创造模式和地图制作者而言，这个物品是给你们的。-->
 
-效果:
-- 给工具增加一个额外的强化槽
-- 如果它有一个目标锁,，它只能在那种工具上起效
+<!--效果:-->
+<!-- - 给工具增加一个额外的强化槽-->
+<!-- - 如果它有一个目标锁,，它只能在那种工具上起效-->
 
-类型: 一次性
-可叠加: 是</text>
-</page>
+<!--类型: 一次性-->
+<!--可叠加: 是</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>creativefree</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>creativefree</recipe>-->
+<!--</page>-->
 
 </book>

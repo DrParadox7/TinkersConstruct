@@ -82,13 +82,13 @@ Questi insieme fanno l'Officina degli attrezzi. E' raccomandato che li tieni tut
 </recipe>
 </page>
 
-<page type="crafting">
-<text>Forgia degli attrezzi</text>
-<recipe>
- <name>toolforge</name>
- <size>three</size>
-</recipe>
-</page>
+<!--<page type="crafting">-->
+<!--<text>Forgia degli attrezzi</text>-->
+<!--<recipe>-->
+<!-- <name>toolforge</name>-->
+<!-- <size>three</size>-->
+<!--</recipe>-->
+<!--</page>-->
 
 <page type="crafting">
 <text>Stendino</text>
@@ -223,6 +223,10 @@ Nota: La Fonderia è richiesta per lavorare i metalli, incluso il ferro.</text>
  <size>two</size>
 </recipe>
 </page>
+
+ <page type="text">
+  <text></text>
+ </page>
 
 <page type="text">
 <text>Modificatori per armatura

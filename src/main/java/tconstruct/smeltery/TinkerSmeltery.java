@@ -643,9 +643,9 @@ public class TinkerSmeltery
 
         // Gem Casts
         tableCasting.addCastingRecipe(new ItemStack(Items.emerald), new FluidStack(TinkerSmeltery.moltenEmeraldFluid, 640), gemcast, 80);
-        tableCasting.addCastingRecipe(new ItemStack(Items.quartz), new FluidStack(TinkerSmeltery.moltenQuartzFluid, 250), gemcast, 50);
+        tableCasting.addCastingRecipe(new ItemStack(Items.quartz), new FluidStack(TinkerSmeltery.moltenQuartzFluid, 160), gemcast, 50);
         tableCasting.addCastingRecipe(new ItemStack(Items.emerald), new FluidStack(TinkerSmeltery.moltenEmeraldFluid, 640), gemclaycast, true, 80);
-        tableCasting.addCastingRecipe(new ItemStack(Items.quartz), new FluidStack(TinkerSmeltery.moltenQuartzFluid, 250), gemclaycast, true, 50);
+        tableCasting.addCastingRecipe(new ItemStack(Items.quartz), new FluidStack(TinkerSmeltery.moltenQuartzFluid, 160), gemclaycast, true, 50);
 
         tableCasting.addCastingRecipe(new ItemStack(TinkerTools.materials, 1, 36), new FluidStack(TinkerSmeltery.glueFluid, TConstruct.ingotLiquidValue), null, 50);
         tableCasting.addCastingRecipe(new ItemStack(TinkerWorld.strangeFood, 1, 1), new FluidStack(TinkerSmeltery.bloodFluid, 160), null, 50);
@@ -793,7 +793,7 @@ public class TinkerSmeltery
         // stone
         basinCasting.addCastingRecipe(new ItemStack(TinkerSmeltery.smeltery, 1, 5), new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.chunkLiquidValue), new ItemStack(Blocks.cobblestone), true, 100);
         basinCasting.addCastingRecipe(new ItemStack(Blocks.emerald_block), new FluidStack(TinkerSmeltery.moltenEmeraldFluid, 640 * 9), null, true, 100); // emerald
-        basinCasting.addCastingRecipe(new ItemStack(Blocks.quartz_block), new FluidStack(TinkerSmeltery.moltenQuartzFluid, 250 * 9), null, true, 100); // quartz
+        basinCasting.addCastingRecipe(new ItemStack(Blocks.quartz_block), new FluidStack(TinkerSmeltery.moltenQuartzFluid, 160 * 9), null, true, 100); // quartz
         basinCasting.addCastingRecipe(new ItemStack(TinkerSmeltery.speedBlock, 1, 0), new FluidStack(TinkerSmeltery.moltenTinFluid, TConstruct.nuggetLiquidValue), new ItemStack(Blocks.gravel), true, 100); // brownstone
         if (PHConstruct.craftEndstone)
         {
@@ -838,7 +838,7 @@ public class TinkerSmeltery
 
         // Alloy Smelting
         Smeltery.addAlloyMixing(new FluidStack(TinkerSmeltery.moltenBronzeFluid, (int) (TConstruct.nuggetLiquidValue * PHConstruct.ingotsBronzeAlloy)), new FluidStack(TinkerSmeltery.moltenCopperFluid, TConstruct.nuggetLiquidValue * 3), new FluidStack(TinkerSmeltery.moltenTinFluid, TConstruct.nuggetLiquidValue)); // Bronze
-        Smeltery.addAlloyMixing(new FluidStack(TinkerSmeltery.moltenAlubrassFluid, (int) (TConstruct.nuggetLiquidValue * PHConstruct.ingotsAluminumBrassAlloy)), new FluidStack(TinkerSmeltery.moltenAluminumFluid, TConstruct.nuggetLiquidValue * 3), new FluidStack(TinkerSmeltery.moltenCopperFluid, TConstruct.nuggetLiquidValue * 1)); // Aluminum Brass
+        Smeltery.addAlloyMixing(new FluidStack(TinkerSmeltery.moltenAlubrassFluid, (int) (TConstruct.nuggetLiquidValue * PHConstruct.ingotsAluminumBrassAlloy)), new FluidStack(TinkerSmeltery.moltenAluminumFluid, TConstruct.nuggetLiquidValue * 3), new FluidStack(TinkerSmeltery.moltenQuartzFluid, TConstruct.nuggetLiquidValue * 1)); // Aluminum Brass
         Smeltery.addAlloyMixing(new FluidStack(TinkerSmeltery.moltenAlumiteFluid, (int) (TConstruct.nuggetLiquidValue * PHConstruct.ingotsAlumiteAlloy)), new FluidStack(TinkerSmeltery.moltenAluminumFluid, TConstruct.nuggetLiquidValue * 5), new FluidStack(TinkerSmeltery.moltenIronFluid, TConstruct.nuggetLiquidValue * 2), new FluidStack(TinkerSmeltery.moltenObsidianFluid, TConstruct.nuggetLiquidValue * 2)); // Alumite
         Smeltery.addAlloyMixing(new FluidStack(TinkerSmeltery.moltenManyullynFluid, (int) (TConstruct.nuggetLiquidValue * PHConstruct.ingotsManyullynAlloy)), new FluidStack(TinkerSmeltery.moltenCobaltFluid, TConstruct.nuggetLiquidValue), new FluidStack(TinkerSmeltery.moltenArditeFluid, TConstruct.nuggetLiquidValue)); // Manyullyn
         Smeltery.addAlloyMixing(new FluidStack(TinkerSmeltery.pigIronFluid, (int) (TConstruct.ingotLiquidValue * PHConstruct.ingotsPigironAlloy)), new FluidStack(TinkerSmeltery.moltenIronFluid, TConstruct.ingotLiquidValue), new FluidStack(TinkerSmeltery.moltenEmeraldFluid, 640), new FluidStack(TinkerSmeltery.bloodFluid, 80)); // Pigiron
@@ -892,7 +892,7 @@ public class TinkerSmeltery
         Smeltery.addMelting(iron, new ItemStack(Items.shears), 0, TConstruct.ingotLiquidValue * 2);
 
         Smeltery.addMelting(FluidType.getFluidType("Emerald"), new ItemStack(Items.emerald), -50, 640);
-        Smeltery.addMelting(FluidType.getFluidType("Quartz"), new ItemStack(Items.quartz), 0, 250);
+        Smeltery.addMelting(FluidType.getFluidType("Quartz"), new ItemStack(Items.quartz), 0, 160);
 
         Smeltery.addMelting(FluidType.getFluidType("Ardite"), new ItemStack(TinkerTools.materials, 1, 38), 0, TConstruct.ingotLiquidValue);
         Smeltery.addMelting(FluidType.getFluidType("Cobalt"), new ItemStack(TinkerTools.materials, 1, 39), 0, TConstruct.ingotLiquidValue);
@@ -921,8 +921,8 @@ public class TinkerSmeltery
         Smeltery.addMelting(Blocks.cobblestone, 0, 800, new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.stoneLiquidValue));
         Smeltery.addMelting(Blocks.emerald_block, 0, 800, new FluidStack(TinkerSmeltery.moltenEmeraldFluid, 640 * 9));
         Smeltery.addMelting(Blocks.emerald_ore, 0, 800, new FluidStack(TinkerSmeltery.moltenEmeraldFluid, 640 * 2)); // the ore also is done here
-        Smeltery.addMelting(Blocks.quartz_block, 0, 800, new FluidStack(TinkerSmeltery.moltenQuartzFluid, 250 * 9));
-        Smeltery.addMelting(Blocks.quartz_ore, 0, 800, new FluidStack(TinkerSmeltery.moltenQuartzFluid, 250 * 2));
+        Smeltery.addMelting(Blocks.quartz_block, 0, 800, new FluidStack(TinkerSmeltery.moltenQuartzFluid, 160 * 9));
+        Smeltery.addMelting(Blocks.quartz_ore, 0, 800, new FluidStack(TinkerSmeltery.moltenQuartzFluid, 160 * 2));
         Smeltery.addMelting(TinkerSmeltery.glueBlock, 0, 250, new FluidStack(TinkerSmeltery.glueFluid, TConstruct.blockLiquidValue));
         Smeltery.addMelting(TinkerTools.craftedSoil, 1, 600, new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.ingotLiquidValue / 4));
 

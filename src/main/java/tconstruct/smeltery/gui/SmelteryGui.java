@@ -372,7 +372,7 @@ public class SmelteryGui extends ActiveContainerGui
             }
             else if (name.equals(StatCollector.translateToLocal("fluid.quartz.molten")))
             {
-                list.add(StatCollector.translateToLocal("gui.smeltery.quartz") + liquid.amount / 250f);
+                list.add(StatCollector.translateToLocal("gui.smeltery.quartz") + liquid.amount / 160f);
             }
             else if (name.equals(StatCollector.translateToLocal("fluid.glass.molten")))
             {

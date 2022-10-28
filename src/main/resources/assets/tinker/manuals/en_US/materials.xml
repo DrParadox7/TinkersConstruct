@@ -1002,106 +1002,106 @@ Stackable: Yes</text>
 <recipe>consecratedsoil</recipe>
 </page>
 
-<page type="sectionpage">
-<title>Flux</title>
-<text>Adding a Hardened Flux Capacitor or Leadstone Energy Cell gives a tool energy. The tool still functions properly when the Cell/Capacitor has no charge.
+<!--<page type="sectionpage">-->
+<!--<title>Flux</title>-->
+<!--<text>Adding a Hardened Flux Capacitor or Leadstone Energy Cell gives a tool energy. The tool still functions properly when the Cell/Capacitor has no charge.-->
 
-Effects:
-- Allows the tool to be charged with Redstone Flux
-- Uses energy instead of durability while charged
-- Available from Thermal Expansion
-- Tools must have at least 1/1000th of the batteries capacity in durability
+<!--Effects:-->
+<!-- - Allows the tool to be charged with Redstone Flux-->
+<!-- - Uses energy instead of durability while charged-->
+<!-- - Available from Thermal Expansion-->
+<!-- - Tools must have at least 1/1000th of the batteries capacity in durability-->
 
-Type: Single-use
-Stackable: No</text>
-</page>
+<!--Type: Single-use-->
+<!--Stackable: No</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>fluxmod</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>fluxmod</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>Flux</title>
-<text>Adding a Hardened Flux Capacitor or Leadstone Energy Cell gives a tool energy. The tool still functions properly when the Cell/Capacitor has no charge.
+<!--<page type="sectionpage">-->
+<!--<title>Flux</title>-->
+<!--<text>Adding a Hardened Flux Capacitor or Leadstone Energy Cell gives a tool energy. The tool still functions properly when the Cell/Capacitor has no charge.-->
 
-Effects:
-- Allows the tool to be charged with Redstone Flux
-- Uses energy instead of durability while charged
-- Available from Thermal Expansion
+<!--Effects:-->
+<!-- - Allows the tool to be charged with Redstone Flux-->
+<!-- - Uses energy instead of durability while charged-->
+<!-- - Available from Thermal Expansion-->
 
-Type: Single-use
-Stackable: No</text>
-</page>
+<!--Type: Single-use-->
+<!--Stackable: No</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>fluxmod2</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>fluxmod2</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>Additional Modifiers</title>
-<text>Working the tool with a block of gold and a diamond makes the tool more malleable, allowing for more modification.
+<!--<page type="sectionpage">-->
+<!--<title>Additional Modifiers</title>-->
+<!--<text>Working the tool with a block of gold and a diamond makes the tool more malleable, allowing for more modification.-->
 
-Effects:
-- Adds an additional modifier slot to the tool
+<!--Effects:-->
+<!-- - Adds an additional modifier slot to the tool-->
 
-Type: Single-use
-Stackable: No</text>
-</page>
+<!--Type: Single-use-->
+<!--Stackable: No</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>tier1free</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>tier1free</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>Additional Modifiers</title>
-<text>Attaching a solid gold apple and encrusting the tool with a block of diamond warps the tool in places you did not notice before.
+<!--<page type="sectionpage">-->
+<!--<title>Additional Modifiers</title>-->
+<!--<text>Attaching a solid gold apple and encrusting the tool with a block of diamond warps the tool in places you did not notice before.-->
 
-Effects:
-- Adds an additional modifier slot to the tool
+<!--Effects:-->
+<!-- - Adds an additional modifier slot to the tool-->
 
-Type: Single-use
-Stackable: No</text>
-</page>
+<!--Type: Single-use-->
+<!--Stackable: No</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>tier1.5free</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>tier1.5free</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>Additional Modifiers</title>
-<text>Working the tool with a nether star gives it the ability to attach parts they would not otherwise stay.
+<!--<page type="sectionpage">-->
+<!--<title>Additional Modifiers</title>-->
+<!--<text>Working the tool with a nether star gives it the ability to attach parts they would not otherwise stay.-->
 
-Effects:
-- Adds an additional modifier slot to the tool
+<!--Effects:-->
+<!-- - Adds an additional modifier slot to the tool-->
 
-Type: Single-use
-Stackable: No</text>
-</page>
+<!--Type: Single-use-->
+<!--Stackable: No</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>tier2free</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>tier2free</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>Additional Modifiers</title>
-<text>For the creative types or the map makers in the world, this item is for you.
+<!--<page type="sectionpage">-->
+<!--<title>Additional Modifiers</title>-->
+<!--<text>For the creative types or the map makers in the world, this item is for you.-->
 
-Effects:
-- Adds an additional modifier slot to the tool
-- If it has a target lock, it will only work on that tool.
+<!--Effects:-->
+<!-- - Adds an additional modifier slot to the tool-->
+<!-- - If it has a target lock, it will only work on that tool.-->
 
-Type: Single-use
-Stackable: Yes</text>
-</page>
+<!--Type: Single-use-->
+<!--Stackable: Yes</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>creativefree</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>creativefree</recipe>-->
+<!--</page>-->
 
 </book>

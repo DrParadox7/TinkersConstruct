@@ -1016,106 +1016,106 @@ Potenziabile: Si</text>
 <recipe>consecratedsoil</recipe>
 </page>
 
-<page type="sectionpage">
-<title>Flux</title>
-<text>Aggiungendo un Capacitatore di flux o una Cella di energia da all'attrezzo energia. L'attrezzo funziona anche quando scarico. --------------------------------------
+<!--<page type="sectionpage">-->
+<!--<title>Flux</title>-->
+<!--<text>Aggiungendo un Capacitatore di flux o una Cella di energia da all'attrezzo energia. L'attrezzo funziona anche quando scarico. &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
 
-Effetti:
-- Permette all'attrezzo di essere caricato con RF
-- Usa energia invece di durabilità
-- Ottenibile con Thermal Expansion
-- L'attrezzo deve avere in durabilità almeno un millesimo della carica delle batterie.
+<!--Effetti:-->
+<!-- - Permette all'attrezzo di essere caricato con RF-->
+<!-- - Usa energia invece di durabilità-->
+<!-- - Ottenibile con Thermal Expansion-->
+<!-- - L'attrezzo deve avere in durabilità almeno un millesimo della carica delle batterie.-->
 
-Tipo: Singolo
-Potenziabile: No</text>
-</page>
+<!--Tipo: Singolo-->
+<!--Potenziabile: No</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>fluxmod</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>fluxmod</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>Flux</title>
-<text>Aggiungendo un Condensatore di flux o una Cella di energia da all'attrezzo energia. L'attrezzo funziona anche quando scarico. --------------------------------------
+<!--<page type="sectionpage">-->
+<!--<title>Flux</title>-->
+<!--<text>Aggiungendo un Condensatore di flux o una Cella di energia da all'attrezzo energia. L'attrezzo funziona anche quando scarico. &#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;&#45;-->
 
-Effetti:
-- Permette all'attrezzo di essere caricato con RF
-- Usa energia invece di durabilità
-- Ottenibile solo con Thermal Expansion
+<!--Effetti:-->
+<!-- - Permette all'attrezzo di essere caricato con RF-->
+<!-- - Usa energia invece di durabilità-->
+<!-- - Ottenibile solo con Thermal Expansion-->
 
-Tipo: Singolo
-Potenziabile: No</text>
-</page>
+<!--Tipo: Singolo-->
+<!--Potenziabile: No</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>fluxmod2</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>fluxmod2</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>Modificatori aggiuntivi</title>
-<text>Lavorando un attrezzo con un blocco d'oro e un diamante lo rende più malleabile, dando spazio a più modifiche.
+<!--<page type="sectionpage">-->
+<!--<title>Modificatori aggiuntivi</title>-->
+<!--<text>Lavorando un attrezzo con un blocco d'oro e un diamante lo rende più malleabile, dando spazio a più modifiche.-->
 
-Effetti:
-- Da la possibilità di aggiungere un altro modificatore all'attrezzo
+<!--Effetti:-->
+<!-- - Da la possibilità di aggiungere un altro modificatore all'attrezzo-->
 
-Tipo: Singolo
-Potenziabile: No</text>
-</page>
+<!--Tipo: Singolo-->
+<!--Potenziabile: No</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>tier1free</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>tier1free</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>Modificatori aggiuntivi</title>
-<text>Attacando una mela d'oro e un blocco di diamante a un attrezzo svela dei spazzi aggiuntivi per modifiche.
+<!--<page type="sectionpage">-->
+<!--<title>Modificatori aggiuntivi</title>-->
+<!--<text>Attacando una mela d'oro e un blocco di diamante a un attrezzo svela dei spazzi aggiuntivi per modifiche.-->
 
-Effetti:
-Da la possibilità di aggiungere un altro modificatore all'attrezzo
+<!--Effetti:-->
+<!--Da la possibilità di aggiungere un altro modificatore all'attrezzo-->
 
-Tipo: Singolo
-Potenziabile: No</text>
-</page>
+<!--Tipo: Singolo-->
+<!--Potenziabile: No</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>tier1.5free</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>tier1.5free</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>Modificatori aggiuntivi</title>
-<text>Aggiungendo una Stella degli Inferi a un attrezzo ti permette di fare modifiche in parti dove prima era impossibile.
+<!--<page type="sectionpage">-->
+<!--<title>Modificatori aggiuntivi</title>-->
+<!--<text>Aggiungendo una Stella degli Inferi a un attrezzo ti permette di fare modifiche in parti dove prima era impossibile.-->
 
-Effetti:
-- Da la possibilità di aggiungere un altro modificatore all'attrezzo
+<!--Effetti:-->
+<!-- - Da la possibilità di aggiungere un altro modificatore all'attrezzo-->
 
-Tipo: Singolo
-Potenziabile: No</text>
-</page>
+<!--Tipo: Singolo-->
+<!--Potenziabile: No</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>tier2free</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>tier2free</recipe>-->
+<!--</page>-->
 
-<page type="sectionpage">
-<title>Modificatori aggiuntivi</title>
-<text>Per la gente più creativa o creatori di mappe, questo è fatto apposta per voi.
+<!--<page type="sectionpage">-->
+<!--<title>Modificatori aggiuntivi</title>-->
+<!--<text>Per la gente più creativa o creatori di mappe, questo è fatto apposta per voi.-->
 
-Effetti:
-- Da la possibilità di aggiungere un altro modificatore all'attrezzo
-- Funzionerà soltanto sull'attrezzo selezionato.
+<!--Effetti:-->
+<!-- - Da la possibilità di aggiungere un altro modificatore all'attrezzo-->
+<!-- - Funzionerà soltanto sull'attrezzo selezionato.-->
 
-Tipo: Singolo
-Potenziabile: Si</text>
-</page>
+<!--Tipo: Singolo-->
+<!--Potenziabile: Si</text>-->
+<!--</page>-->
 
-<page type="modifier">
-<tooltype>tool</tooltype>
-<recipe>creativefree</recipe>
-</page>
+<!--<page type="modifier">-->
+<!--<tooltype>tool</tooltype>-->
+<!--<recipe>creativefree</recipe>-->
+<!--</page>-->
 
 </book>

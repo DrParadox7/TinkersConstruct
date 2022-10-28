@@ -82,13 +82,13 @@
 </recipe>
 </page>
 
-<page type="crafting">
-<text>Инженерная кузня</text>
-<recipe>
- <name>toolforge</name>
- <size>three</size>
-</recipe>
-</page>
+<!--<page type="crafting">-->
+<!--<text>Инженерная кузня</text>-->
+<!--<recipe>-->
+<!-- <name>toolforge</name>-->
+<!-- <size>three</size>-->
+<!--</recipe>-->
+<!--</page>-->
 
 <page type="crafting">
 <text>Доска для вяления</text>
@@ -223,6 +223,10 @@
  <size>two</size>
 </recipe>
 </page>
+
+ <page type="text">
+  <text></text>
+ </page>
 
 <page type="text">
 <text>Модификаторы брони

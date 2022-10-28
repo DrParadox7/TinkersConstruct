@@ -82,13 +82,13 @@ Together these make the Tool Workshop. It is recommended you keep all of these n
 </recipe>
 </page>
 
-<page type="crafting">
-<text>Tool Forge</text>
-<recipe>
- <name>toolforge</name>
- <size>three</size>
-</recipe>
-</page>
+<!--<page type="crafting">-->
+<!--<text>Tool Forge</text>-->
+<!--<recipe>-->
+<!-- <name>toolforge</name>-->
+<!-- <size>three</size>-->
+<!--</recipe>-->
+<!--</page>-->
 
 <page type="crafting">
 <text>Drying Rack</text>
@@ -223,6 +223,9 @@ Note: The Smeltery is required to process all metals, including iron.</text>
  <size>two</size>
 </recipe>
 </page>
+ <page type="text">
+  <text></text>
+ </page>
 
 <page type="text">
 <text>Armor Modifiers
