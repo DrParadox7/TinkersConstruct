@@ -950,7 +950,9 @@ material.steel=Steel
 material.stone=Stone
 material.stone.ability=Stonebound
 material.thaumium=Thaumium
+material.void=Void Metal
 material.thaumium.ability=Thaumic
+material.warping=Warping
 material.wood=Wood
 material.wood.display=Wooden
 

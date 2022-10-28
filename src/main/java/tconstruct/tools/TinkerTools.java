@@ -1,20 +1,29 @@
 package tconstruct.tools;
 
-import cpw.mods.fml.common.*;
-import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.registry.*;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
-import mantle.pulsar.pulse.*;
+import mantle.pulsar.pulse.Handler;
+import mantle.pulsar.pulse.Pulse;
 import mantle.utils.RecipeRemover;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.block.material.Material;
-import net.minecraft.init.*;
-import net.minecraft.item.*;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.oredict.*;
+import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tconstruct.TConstruct;
 import tconstruct.achievements.items.CraftAchievementItem;
 import tconstruct.common.itemblocks.MetadataItemBlock;
@@ -22,12 +31,14 @@ import tconstruct.items.tools.*;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.client.TConstructClientRegistry;
 import tconstruct.library.crafting.*;
-import tconstruct.library.tools.*;
+import tconstruct.library.tools.DynamicToolPart;
+import tconstruct.library.tools.ToolCore;
 import tconstruct.library.util.IPattern;
 import tconstruct.modifiers.tools.*;
 import tconstruct.smeltery.TinkerSmeltery;
 import tconstruct.tools.blocks.*;
-import tconstruct.tools.itemblocks.*;
+import tconstruct.tools.itemblocks.CraftingSlabItemBlock;
+import tconstruct.tools.itemblocks.ToolBenchItemBlock;
 import tconstruct.tools.items.*;
 import tconstruct.tools.logic.*;
 import tconstruct.util.ItemHelper;
@@ -361,6 +372,18 @@ public class TinkerTools
         OreDictionary.registerOre("dustAluminumBrass", new ItemStack(TinkerTools.materials, 1, 42));
 
         String[] matNames = { "Wood", "Stone", "Iron", "Flint", "Cactus", "Bone", "Obsidian", "Netherrack", "Slime", "Paper", "Cobalt", "Ardite", "Manyullyn", "Copper", "Bronze", "Alumite", "Steel", "Blueslime" };
+        if (ItemHelper.getStaticItem("itemResource", "thaumcraft.common.config.ConfigItems") != null) {
+            String matNamesTC4[] = { "Thaumium", "Void" };
+            String matNamesNew[] = new String[matNamesTC4.length + matNames.length];
+
+            int i;
+            for(i = 0; i < matNames.length; i++) {
+                matNamesNew[i] = matNames[i];
+            }
+            for(i = 0; i < matNamesTC4.length; i++) {
+                matNamesNew[matNames.length + i] = matNamesTC4[i];
+            }
+        }
         for (int i = 0; i < matNames.length; i++)
         {
             //TODO 1.8 remove this ore dict entry as it's outdated(use materialRod instead)
@@ -797,24 +820,6 @@ public class TinkerTools
 
     private void modIntegration ()
     {
-        /* TE3 Flux */
-        ItemStack batHardened = GameRegistry.findItemStack("ThermalExpansion", "capacitorHardened", 1);
-        if (batHardened != null)
-        {
-            TinkerTools.modFlux.batteries.add(batHardened);
-        }
-        ItemStack basicCell = GameRegistry.findItemStack("ThermalExpansion", "cellBasic", 1);
-        if (basicCell != null)
-        {
-            TinkerTools.modFlux.batteries.add(basicCell);
-        }
-
-        ItemStack ironpick = ToolBuilder.instance.buildTool(new ItemStack(TinkerTools.pickaxeHead, 1, 6), new ItemStack(TinkerTools.toolRod, 1, 2), new ItemStack(TinkerTools.binding, 1, 6), "");
-        if (batHardened != null)
-            TConstructClientRegistry.registerManualModifier("fluxmod", ironpick.copy(), (ItemStack) batHardened);
-        if (basicCell != null)
-            TConstructClientRegistry.registerManualModifier("fluxmod2", ironpick.copy(), (ItemStack) basicCell);
-
         /* Thaumcraft */
         Object obj = ItemHelper.getStaticItem("itemResource", "thaumcraft.common.config.ConfigItems");
         if (obj != null)
@@ -822,34 +827,24 @@ public class TinkerTools
             TConstruct.logger.info("Thaumcraft detected. Adding thaumium tools.");
             TinkerTools.thaumcraftAvailable = true;
             TConstructClientRegistry.addMaterialRenderMapping(MaterialID.Thaumium, "tinker", "thaumium", true);
+            TConstructClientRegistry.addMaterialRenderMapping(MaterialID.Void, "tinker", "void", true);
+
             TConstructRegistry.addToolMaterial(MaterialID.Thaumium, "Thaumium", 3, 400, 700, 2, 1.3F, 0, 0f, "\u00A75", 0x51437c);
-            PatternBuilder.instance.registerFullMaterial(new ItemStack((Item) obj, 1, 2), 2, "Thaumium", new ItemStack(TinkerTools.toolShard, 1, 31), new ItemStack(TinkerTools.toolRod, 1, 31), 31);
-            for (int meta = 0; meta < TinkerTools.patternOutputs.length; meta++)
-            {
-                if (TinkerTools.patternOutputs[meta] != null)
-                    TConstructRegistry.addPartMapping(TinkerTools.woodPattern, meta + 1, 31, new ItemStack(TinkerTools.patternOutputs[meta], 1, 31));
-            }
+            TConstructRegistry.addToolMaterial(MaterialID.Void, "Void", 3, 150, 1400, 3, 0.8F, 0, 0f, "\u00A75", 0x210c35);
 
             // Thaumium weaponry toolparts
-            if(TConstruct.pulsar.isPulseLoaded("Tinkers' Weaponry"))
-            {
-                for (int m = 0; m < TinkerWeaponry.patternOutputs.length; m++)
-                    TConstructRegistry.addPartMapping(TinkerWeaponry.woodPattern, m, MaterialID.Thaumium, new ItemStack(TinkerWeaponry.patternOutputs[m], 1, MaterialID.Thaumium));
+            if (TConstruct.pulsar.isPulseLoaded("Tinkers' Weaponry")) {
+                TConstructRegistry.addBowMaterial(MaterialID.Thaumium, 35, 4.75f);
+                TConstructRegistry.addArrowMaterial(MaterialID.Thaumium, 1.8F, 0.5F);
 
-                TConstructRegistry.addPartMapping(TinkerTools.woodPattern, 25, MaterialID.Thaumium, new ItemStack(TinkerWeaponry.arrowhead, 1, MaterialID.Thaumium));
-
-                TConstructRegistry.addBowstringMaterial(1, 2, new ItemStack((Item) obj, 1, 7), new ItemStack(TinkerWeaponry.bowstring, 1, 1), 1F, 0.8F, 0.9f, 0x63bcd9);
-                TConstructRegistry.addBowMaterial(31, 35, 4.75f);
-                TConstructRegistry.addArrowMaterial(31, 1.8F, 0.5F);
+                TConstructRegistry.addBowMaterial(MaterialID.Void, 45, 8.0f);
+                TConstructRegistry.addArrowMaterial(MaterialID.Void, 3.0F, 0.5F);
             }
 
             TConstructRegistry.addDefaultToolPartMaterial(MaterialID.Thaumium);
-            TConstructRegistry.addDefaultShardMaterial(MaterialID.Thaumium);
-        }
-        else
-        {
-            TConstruct.logger.warn("Thaumcraft not detected.");
-        }
+            TConstructRegistry.addDefaultToolPartMaterial(MaterialID.Void);
+        }else TConstruct.logger.warn("Thaumcraft not detected.");
+
 
         if (Loader.isModLoaded("Natura"))
         {
@@ -1047,5 +1042,6 @@ public class TinkerTools
         public static final int PigIron = 18;
 
         public static final int Thaumium = 31;
+        public static final int Void = 32;
     }
 }

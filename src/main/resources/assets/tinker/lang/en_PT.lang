@@ -562,6 +562,7 @@ parttype.alumite=Privateer's Metal
 parttype.steel=Steel
 parttype.blueslime=Slime
 parttype.thaumium=Thaumium
+parttype.void=Void Metal
 parttype.pigiron=Pig Iron
 
 toolpart.ToolRod=%%material Tool Rod
@@ -781,6 +782,7 @@ material.alumite=Alumite
 material.steel=Steel
 material.pigiron=Pigiron
 material.thaumium=Thaumium
+material.void=Void Metal
 
 gui.modifier.blaze=Blaze
 gui.modifier.silk=Silk Touch
@@ -821,6 +823,7 @@ materialtraits.jagged=Jagged
 materialtraits.writable=Writable
 materialtraits.tasty=Tasty
 materialtraits.thaumic=Thaumic
+materialtraits.warping=Warping
 
 creativeModLock.tooltip=Target Lock: 
 
