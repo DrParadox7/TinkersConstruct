@@ -24,16 +24,18 @@ public class SlotTool extends Slot
 
     public boolean canTakeStack(EntityPlayer player) {
 
-        ItemStack stack = getStack();
-        NBTTagCompound toolTag = stack.getTagCompound().getCompoundTag("InfiTool");
-        int xpCost = toolTag.getInteger("XP_Cost");
-        if (stack.getItem() instanceof IModifyable && toolTag.hasKey("XP_Cost")) {
-            if (xpCost <= player.experienceTotal) {
-                XpUtils.deductXP(xpCost, player);
-                toolTag.removeTag("XP_Cost");
-                return true;
-            } else {
-                return false;
+        if (getStack() != null ) {
+            ItemStack stack = getStack();
+            NBTTagCompound toolTag = stack.getTagCompound().getCompoundTag("InfiTool");
+            if (stack.getItem() instanceof IModifyable && toolTag.hasKey("XP_Cost")) {
+                int xpCost = toolTag.getInteger("XP_Cost");
+                if (xpCost <= player.experienceTotal) {
+                    XpUtils.deductXP(xpCost, player);
+                    toolTag.removeTag("XP_Cost");
+                    return true;
+                } else {
+                    return false;
+                }
             }
         }
         return true;
