@@ -1,7 +1,6 @@
 package tconstruct.items.tools;
 
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
 import net.minecraft.util.MathHelper;
@@ -35,17 +34,6 @@ public class Rapier extends Weapon
             player.motionZ = (double) (-MathHelper.cos(player.rotationYaw / 180.0F * (float) Math.PI) * MathHelper.cos(player.rotationPitch / 180.0F * (float) Math.PI) * f);
         }
         return stack;
-    }
-
-    @Override
-    public boolean hitEntity (ItemStack stack, EntityLivingBase mob, EntityLivingBase player)
-    {
-        // AbilityHelper.hitEntity(stack, mob, player, damageVsEntity);
-        // AbilityHelper.knockbackEntity(mob, 0.8f);
-        mob.motionY *= 0.8;
-        if (mob.hurtResistantTime > 18)
-            mob.hurtResistantTime -= 5;
-        return true;
     }
 
     @Override

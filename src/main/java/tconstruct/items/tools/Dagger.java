@@ -1,5 +1,6 @@
 package tconstruct.items.tools;
 
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.*;
 import net.minecraft.world.World;
@@ -29,6 +30,17 @@ public class Dagger extends Weapon
         }
         itemstack.stackSize--;
         return itemstack;
+    }
+
+    @Override
+    public boolean hitEntity (ItemStack stack, EntityLivingBase mob, EntityLivingBase player)
+    {
+        // AbilityHelper.hitEntity(stack, mob, player, damageVsEntity);
+        // AbilityHelper.knockbackEntity(mob, 0.8f);
+        mob.motionY *= 0.8;
+        if (mob.hurtResistantTime > 18)
+            mob.hurtResistantTime -= 5;
+        return true;
     }
 
     @Override
