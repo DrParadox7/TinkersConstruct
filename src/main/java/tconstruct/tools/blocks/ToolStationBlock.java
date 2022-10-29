@@ -73,8 +73,10 @@ public class ToolStationBlock extends InventoryBlock
                     return TinkerWorld.metalBlock.getIcon(side, 4);
             }
         }
+        if (meta <= textureNames.length-1)
+                return this.icons[meta];
 
-        return this.icons[meta];
+        return this.icons[0];
     }
 
     public int getTextureIndex (int side)

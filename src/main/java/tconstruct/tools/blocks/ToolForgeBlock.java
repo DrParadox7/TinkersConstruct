@@ -70,6 +70,9 @@ public class ToolForgeBlock extends InventoryBlock
             return TinkerWorld.metalBlock.getIcon(side, 2);
         }
 
+        if (meta <= getTextureNames().length-1)
+            return this.icons[meta];
+
         return this.icons[0];
     }
 
