@@ -8,10 +8,10 @@ import tconstruct.tools.items.Pattern;
 
 import java.util.List;
 
-public class WeaponryPatternClay extends Pattern {
+public class WeaponryPatternCeramic extends Pattern {
     private static final String[] patternName = new String[] { "shuriken", "crossbowlimb", "crossbowbody", "bowlimb" };
 
-    public WeaponryPatternClay(String patternType, String name) {
+    public WeaponryPatternCeramic(String patternType, String name) {
         super(patternName, getPatternNames(patternName, patternType), "patterns/");
 
         this.setUnlocalizedName(Reference.prefix(name));

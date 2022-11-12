@@ -1,11 +1,9 @@
 package tconstruct.tools.entity;
 
-import net.minecraft.entity.EntityLiving;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.*;
 import net.minecraft.world.World;
-import tconstruct.items.tools.Dagger;
 import tconstruct.library.entity.ProjectileBase;
 import tconstruct.library.tools.*;
 
