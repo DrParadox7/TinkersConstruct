@@ -44,10 +44,7 @@ import tconstruct.weaponry.ammo.ArrowAmmo;
 import tconstruct.weaponry.ammo.BoltAmmo;
 import tconstruct.library.tools.DualMaterialToolPart;
 import tconstruct.weaponry.entity.*;
-import tconstruct.weaponry.items.Boneana;
-import tconstruct.weaponry.items.GlassArrows;
-import tconstruct.weaponry.items.WeaponryPattern;
-import tconstruct.weaponry.items.WeaponryPatternClay;
+import tconstruct.weaponry.items.*;
 import tconstruct.library.weaponry.AmmoItem;
 import tconstruct.library.weaponry.AmmoWeapon;
 import tconstruct.library.weaponry.ArrowShaftMaterial;
@@ -95,6 +92,7 @@ public class TinkerWeaponry {
     public static Pattern woodPattern;
     public static Pattern metalPattern;
     public static Pattern clayPattern;
+    public static Pattern ceramicPattern;
 
 
     // legendary weapons?
@@ -192,8 +190,8 @@ public class TinkerWeaponry {
 
         woodPattern = new WeaponryPattern("pattern_", "Pattern");
         metalPattern = new WeaponryPattern("cast_", "MetalPattern");
-        clayPattern = new WeaponryPatternClay("clay_cast_", "ClayPattern");
-
+        clayPattern = new WeaponryPatternClay("template_", "ClayPattern");
+        ceramicPattern = new WeaponryPatternCeramic("mold_", "CeramicPattern");
 
         // register tool parts
         GameRegistry.registerItem(bowstring, "bowstring"); // 1.8 todo: rename properly?
@@ -218,8 +216,8 @@ public class TinkerWeaponry {
         // register patterns/casts
         GameRegistry.registerItem(woodPattern, "Pattern");
         GameRegistry.registerItem(metalPattern, "Cast");
-        GameRegistry.registerItem(clayPattern, "Clay Cast");
-
+        GameRegistry.registerItem(clayPattern, "Template");
+        GameRegistry.registerItem(ceramicPattern, "Mold");
     }
 
     private void addPartRecipies()
@@ -263,8 +261,8 @@ public class TinkerWeaponry {
             LiquidCasting tableCasting = TConstructRegistry.getTableCasting();
             for (int i = 0; i < patternOutputs.length; i++) {
                 ItemStack cast = new ItemStack(metalPattern, 1, i);
-                ItemStack clayCast = new ItemStack(clayPattern, 1, i);
-                
+                ItemStack castCeramic = new ItemStack(ceramicPattern, 1, i);
+
                 tableCasting.addCastingRecipe(cast, new FluidStack(TinkerSmeltery.moltenAlubrassFluid, TConstruct.ingotLiquidValue), new ItemStack(patternOutputs[i], 1, Short.MAX_VALUE), false, 50);
                if (!PHConstruct.removeGoldCastRecipes)
 					tableCasting.addCastingRecipe(cast, new FluidStack(TinkerSmeltery.moltenGoldFluid, TConstruct.ingotLiquidValue * 2), new ItemStack(patternOutputs[i], 1, Short.MAX_VALUE), false, 50);
@@ -274,16 +272,14 @@ public class TinkerWeaponry {
                     int fluidAmount = metalPattern.getPatternCost(cast) * TConstruct.ingotLiquidValue / 2;
                     ItemStack metalCast = new ItemStack(patternOutputs[i], 1, liquidDamage[iterTwo]);
                     tableCasting.addCastingRecipe(metalCast, new FluidStack(fs, fluidAmount), cast, 50);
-                    if (i == 3) {
-                        tableCasting.addCastingRecipe(metalCast, new FluidStack(fs, fluidAmount), clayCast, true, 50);
-                    }
+                    tableCasting.addCastingRecipe(metalCast, new FluidStack(fs, fluidAmount), castCeramic, true, 50);
                     Smeltery.addMelting(FluidType.getFluidType(fs), metalCast, 0, fluidAmount);
                 }
             }
 
             ItemStack cast = new ItemStack(TinkerSmeltery.metalPattern, 1, 25);
-            ItemStack clayCast = new ItemStack(TinkerSmeltery.clayPattern, 1, 25);
-            
+            ItemStack castCeramic = new ItemStack(TinkerSmeltery.ceramicPattern, 1, 25);
+
             tableCasting.addCastingRecipe(cast, new FluidStack(TinkerSmeltery.moltenAlubrassFluid, TConstruct.ingotLiquidValue), new ItemStack(arrowhead, 1, Short.MAX_VALUE), false, 50);
             if (!PHConstruct.removeGoldCastRecipes)
             	tableCasting.addCastingRecipe(cast, new FluidStack(TinkerSmeltery.moltenGoldFluid, TConstruct.ingotLiquidValue * 2), new ItemStack(arrowhead, 1, Short.MAX_VALUE), false, 50);
@@ -293,7 +289,7 @@ public class TinkerWeaponry {
                 int fluidAmount = ((IPattern) TinkerSmeltery.metalPattern).getPatternCost(cast) * TConstruct.ingotLiquidValue / 2;
                 ItemStack metalCast = new ItemStack(arrowhead, 1, liquidDamage[iterTwo]);
                 tableCasting.addCastingRecipe(metalCast, new FluidStack(fs, fluidAmount), cast, 50);
-                tableCasting.addCastingRecipe(metalCast, new FluidStack(fs, fluidAmount), clayCast, true, 50);
+                tableCasting.addCastingRecipe(metalCast, new FluidStack(fs, fluidAmount), castCeramic, true, 50);
                 Smeltery.addMelting(FluidType.getFluidType(fs), metalCast, 0, fluidAmount);
             }
 

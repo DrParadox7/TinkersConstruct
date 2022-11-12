@@ -5,10 +5,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.*;
 import tconstruct.tools.items.Pattern;
 
-public class ClayPattern extends Pattern
+public class CeramicPattern extends Pattern
 {
 
-    public ClayPattern(String patternType, String folder)
+    public CeramicPattern(String patternType, String folder)
     {
         super(patternName, getPatternNames(patternType), folder);
     }
