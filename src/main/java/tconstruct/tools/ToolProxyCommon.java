@@ -20,6 +20,8 @@ public class ToolProxyCommon implements IGuiHandler
     public static final int craftingStationID = 11;
     public static final int battlesignTextID = 12;
     public static final int toolBenchID = 13;
+    public static final int moldingTableID = 14;
+
 
     public ToolProxyCommon()
     {
@@ -41,6 +43,7 @@ public class ToolProxyCommon implements IGuiHandler
         TProxyCommon.registerServerGuiHandler(furnaceID, this);
         TProxyCommon.registerServerGuiHandler(craftingStationID, this);
         TProxyCommon.registerServerGuiHandler(toolBenchID, this);
+        TProxyCommon.registerServerGuiHandler(moldingTableID, this);
     }
 
     @Override

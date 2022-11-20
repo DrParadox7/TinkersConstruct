@@ -38,7 +38,6 @@ import tconstruct.smeltery.itemblocks.*;
 import tconstruct.smeltery.items.CeramicPattern;
 import tconstruct.smeltery.items.FilledBucket;
 import tconstruct.smeltery.items.MetalPattern;
-import tconstruct.smeltery.items.ClayPattern;
 import tconstruct.smeltery.logic.*;
 import tconstruct.tools.TinkerTools;
 import tconstruct.util.config.PHConstruct;
@@ -55,7 +54,6 @@ public class TinkerSmeltery
     public static SmelteryProxyCommon proxy;
 
     public static Item metalPattern;
-    public static Item clayPattern;
     public static Item ceramicPattern;
     // public static Item armorPattern;
     public static Item buckets;
@@ -413,14 +411,6 @@ public class TinkerSmeltery
         for (int i = 0; i < patternTypes.length; i++)
         {
             TConstructRegistry.addItemStackToDirectory(patternTypes[i] + "Cast", new ItemStack(TinkerSmeltery.metalPattern, 1, i));
-        }
-
-        TinkerSmeltery.clayPattern = new ClayPattern("template_", "materials/").setUnlocalizedName("tconstruct.ClayPattern");
-        GameRegistry.registerItem(TinkerSmeltery.clayPattern, "clayPattern");
-        TConstructRegistry.addItemToDirectory("clayPattern", TinkerSmeltery.clayPattern);
-        for (int i = 0; i < patternTypes.length; i++)
-        {
-            TConstructRegistry.addItemStackToDirectory(patternTypes[i] + "Cast", new ItemStack(TinkerSmeltery.clayPattern, 1, i));
         }
 
         TinkerSmeltery.ceramicPattern = new CeramicPattern("mold_", "materials/").setUnlocalizedName("tconstruct.CeramicPattern");
@@ -1054,7 +1044,7 @@ public class TinkerSmeltery
         //Ceramic Patterns
         for (int iter = 0; iter < TinkerTools.patternOutputs.length; iter++) {
             if (TinkerTools.patternOutputs[iter] != null) {
-                FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerSmeltery.clayPattern, 1, iter + 1), new ItemStack(TinkerSmeltery.ceramicPattern, 1, iter + 1), 0.0f);
+                FurnaceRecipes.smelting().func_151394_a(new ItemStack(TinkerTools.clayPattern, 1, iter + 1), new ItemStack(TinkerSmeltery.ceramicPattern, 1, iter + 1), 0.0f);
             }
         }
     }

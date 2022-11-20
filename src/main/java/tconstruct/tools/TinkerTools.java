@@ -36,6 +36,7 @@ import tconstruct.library.tools.ToolCore;
 import tconstruct.library.util.IPattern;
 import tconstruct.modifiers.tools.*;
 import tconstruct.smeltery.TinkerSmeltery;
+import tconstruct.tools.items.ClayPattern;
 import tconstruct.tools.blocks.*;
 import tconstruct.tools.itemblocks.CraftingSlabItemBlock;
 import tconstruct.tools.itemblocks.ToolBenchItemBlock;
@@ -141,6 +142,8 @@ public class TinkerTools
     public static ModAttack modAttack;
     public static Item[] patternOutputs;
     public static Item woodPattern;
+    public static Item clayPattern;
+
     public static Item manualBook;
     public static ToolCore excavator;
     public static Item creativeModifier;
@@ -191,13 +194,14 @@ public class TinkerTools
         GameRegistry.registerTileEntity(ToolStationLogic.class, "ToolStation");
         GameRegistry.registerBlock(TinkerTools.toolForge, MetadataItemBlock.class, "ToolForgeBlock");
         GameRegistry.registerTileEntity(ToolForgeLogic.class, "ToolForge");
+        GameRegistry.registerTileEntity(MoldingTableLogic.class, "MoldingTable");
 
         GameRegistry.registerBlock(TinkerTools.craftedSoil, CraftedSoilItemBlock.class, "CraftedSoil");
 
         //Items
         TinkerTools.titleIcon = new TitleIcon().setUnlocalizedName("tconstruct.titleicon");
         GameRegistry.registerItem(TinkerTools.titleIcon, "titleIcon");
-        String[] blanks = new String[] { "blank_pattern", "blank_cast", "blank_cast" };
+        String[] blanks = new String[] { "blank_pattern", "blank_cast", "blank_cast", "blank_template" };
         TinkerTools.blankPattern = new CraftAchievementItem(blanks, blanks, "materials/", "tinker", TConstructRegistry.materialTab, "tconstruct.pattern").setUnlocalizedName("tconstruct.Pattern");
         GameRegistry.registerItem(TinkerTools.blankPattern, "blankPattern");
 
@@ -210,11 +214,16 @@ public class TinkerTools
         TConstructRegistry.addItemToDirectory("blankPattern", TinkerTools.blankPattern);
         TConstructRegistry.addItemToDirectory("woodPattern", TinkerTools.woodPattern);
 
+        TinkerTools.clayPattern = new ClayPattern("template_", "materials/").setUnlocalizedName("tconstruct.ClayPattern");
+        GameRegistry.registerItem(TinkerTools.clayPattern, "clayPattern");
+        TConstructRegistry.addItemToDirectory("clayPattern", TinkerTools.clayPattern);
+
         String[] patternTypes = { "ingot", "toolRod", "pickaxeHead", "shovelHead", "hatchetHead", "swordBlade", "wideGuard", "handGuard", "crossbar", "binding", "frypanHead", "signHead", "knifeBlade", "chiselHead", "toughRod", "toughBinding", "largePlate", "broadAxeHead", "scytheHead", "excavatorHead", "largeBlade", "hammerHead", "fullGuard", "bowString", "fletching", "arrowHead" };
 
         for (int i = 1; i < patternTypes.length; i++)
         {
             TConstructRegistry.addItemStackToDirectory(patternTypes[i] + "Pattern", new ItemStack(TinkerTools.woodPattern, 1, i));
+            TConstructRegistry.addItemStackToDirectory(patternTypes[i] + "Pattern", new ItemStack(TinkerTools.clayPattern, 1, i));
         }
 
         TinkerTools.manualBook = new Manual();
@@ -370,6 +379,11 @@ public class TinkerTools
         OreDictionary.registerOre("dustManyullyn", new ItemStack(TinkerTools.materials, 1, 41));
         OreDictionary.registerOre("dustAluminiumBrass", new ItemStack(TinkerTools.materials, 1, 42));
         OreDictionary.registerOre("dustAluminumBrass", new ItemStack(TinkerTools.materials, 1, 42));
+
+        OreDictionary.registerOre("stencilTable", new ItemStack(TinkerTools.toolBenchWood, 1, 10));
+        OreDictionary.registerOre("stencilTable", new ItemStack(TinkerTools.toolBenchWood, 1, 11));
+        OreDictionary.registerOre("stencilTable", new ItemStack(TinkerTools.toolBenchWood, 1, 12));
+        OreDictionary.registerOre("stencilTable", new ItemStack(TinkerTools.toolBenchWood, 1, 13));
 
         String[] matNames = { "Wood", "Stone", "Iron", "Flint", "Cactus", "Bone", "Obsidian", "Netherrack", "Slime", "Paper", "Cobalt", "Ardite", "Manyullyn", "Copper", "Bronze", "Alumite", "Steel", "Blueslime" };
         if (ItemHelper.getStaticItem("itemResource", "thaumcraft.common.config.ConfigItems") != null) {
@@ -753,11 +767,14 @@ public class TinkerTools
         GameRegistry.addRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 11), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.planks, 1, 1));
         GameRegistry.addRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 12), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.planks, 1, 2));
         GameRegistry.addRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 13), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', new ItemStack(Blocks.planks, 1, 3));
+        GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 14), "sss", "btb", "b b", 's', new ItemStack(Blocks.stonebrick, 1, 0), 'b', new ItemStack(Blocks.brick_block,1, 0), 't', "stencilTable"));
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.toolBenchWood, 1, 10), "p", "w", 'p', new ItemStack(TinkerTools.blankPattern, 1, 0), 'w', "plankWood"));
         GameRegistry.addRecipe(new ItemStack(TinkerTools.furnaceSlab, 1, 0), "###", "# #", "###", '#', new ItemStack(Blocks.stone_slab, 1, 3));
 
         // Blank Pattern Recipe
         GameRegistry.addRecipe(new ShapedOreRecipe(new ItemStack(TinkerTools.blankPattern, 4, 0), "ps", "sp", 'p', "plankWood", 's', "stickWood"));
+        //Blank Template
+        GameRegistry.addRecipe(new ItemStack(TinkerTools.blankPattern, 16, 3), "cc", "cc", 'c', new ItemStack(Blocks.clay));
         // Manual Book Recipes
         GameRegistry.addRecipe(new ItemStack(TinkerTools.manualBook), "wp", 'w', new ItemStack(TinkerTools.blankPattern, 1, 0), 'p', Items.paper);
         GameRegistry.addShapelessRecipe(new ItemStack(TinkerTools.manualBook, 2, 0), new ItemStack(TinkerTools.manualBook, 1, 0), Items.book);
@@ -988,35 +1005,82 @@ public class TinkerTools
 
     private void registerStencils ()
     {
-        StencilBuilder.registerBlankStencil(new ItemStack(TinkerTools.blankPattern));
+        StencilBuilder.registerBlankStencil(new ItemStack(TinkerTools.blankPattern, 1, 0));
+
+        if (PHConstruct.balancedPartCrafting){
+            StencilBuilder.registerStencil(0, TinkerTools.woodPattern, 1); // tool rod
+            StencilBuilder.registerStencil(1, TinkerTools.woodPattern, 9); // binding
+            StencilBuilder.registerStencil(2, TinkerTools.woodPattern, 6); // wide guard
+
+            StencilBuilder.registerStencil(3, TinkerTools.woodPattern, 2); // pickaxe head
+            StencilBuilder.registerStencil(4, TinkerTools.woodPattern, 3); // shovel head
+            StencilBuilder.registerStencil(5, TinkerTools.woodPattern, 4); // hatchet head
+
+            StencilBuilder.registerStencil(6, TinkerTools.woodPattern, 12); // knifeblade
+            StencilBuilder.registerStencil(7, TinkerTools.woodPattern, 5); // swordblade
+            StencilBuilder.registerStencil(8, TinkerTools.woodPattern, 10); // frying pan
+
+            StencilBuilder.registerStencil(9, TinkerTools.woodPattern, 11); // battlesign
+            StencilBuilder.registerStencil(10, TinkerTools.woodPattern, 13); // chisel
+        } else {
+            // we register this manually because we want that specific order
+            StencilBuilder.registerStencil(0, TinkerTools.woodPattern, 1); // tool rod
+            StencilBuilder.registerStencil(1, TinkerTools.woodPattern, 9); // binding
+            StencilBuilder.registerStencil(2, TinkerTools.woodPattern, 14); // large tool rod
+            StencilBuilder.registerStencil(3, TinkerTools.woodPattern, 15); // large binding
+
+            StencilBuilder.registerStencil(4, TinkerTools.woodPattern, 2); // pickaxe head
+            StencilBuilder.registerStencil(5, TinkerTools.woodPattern, 3); // shovel head
+            StencilBuilder.registerStencil(6, TinkerTools.woodPattern, 4); // hatchet head
+            StencilBuilder.registerStencil(7, TinkerTools.woodPattern, 18); // scythe
+
+            StencilBuilder.registerStencil(8, TinkerTools.woodPattern, 21); // hammer head
+            StencilBuilder.registerStencil(9, TinkerTools.woodPattern, 19); // excavator head
+            StencilBuilder.registerStencil(10, TinkerTools.woodPattern, 17); // lumberaxe head
+            StencilBuilder.registerStencil(11, TinkerTools.woodPattern, 16); // large plate
+
+            StencilBuilder.registerStencil(12, TinkerTools.woodPattern, 10); // frying pan
+            StencilBuilder.registerStencil(13, TinkerTools.woodPattern, 11); // battlesign
+            StencilBuilder.registerStencil(14, TinkerTools.woodPattern, 13); // chisel
+
+            StencilBuilder.registerStencil(15, TinkerTools.woodPattern, 12); // knifeblade
+            StencilBuilder.registerStencil(16, TinkerTools.woodPattern, 5); // swordblade
+            StencilBuilder.registerStencil(17, TinkerTools.woodPattern, 20); // cleaver blade
+
+            StencilBuilder.registerStencil(18, TinkerTools.woodPattern, 8); // crossbar
+            StencilBuilder.registerStencil(19, TinkerTools.woodPattern, 7); // small guard
+            StencilBuilder.registerStencil(20, TinkerTools.woodPattern, 6); // wide guard
+        }
+        //Moulds
+        MoldBuilder.registerBlankMold(new ItemStack(TinkerTools.blankPattern, 1, 3));
 
         // we register this manually because we want that specific order
-        StencilBuilder.registerStencil(0, TinkerTools.woodPattern, 1); // tool rod
-        StencilBuilder.registerStencil(1, TinkerTools.woodPattern, 9); // binding
-        StencilBuilder.registerStencil(2, TinkerTools.woodPattern, 14); // large tool rod
-        StencilBuilder.registerStencil(3, TinkerTools.woodPattern, 15); // large binding
+        MoldBuilder.registerMold(0, TinkerTools.clayPattern, 1); // tool rod
+        MoldBuilder.registerMold(1, TinkerTools.clayPattern, 9); // binding
+        MoldBuilder.registerMold(2, TinkerTools.clayPattern, 14); // large tool rod
+        MoldBuilder.registerMold(3, TinkerTools.clayPattern, 15); // large binding
 
-        StencilBuilder.registerStencil(4, TinkerTools.woodPattern, 2); // pickaxe head
-        StencilBuilder.registerStencil(5, TinkerTools.woodPattern, 3); // shovel head
-        StencilBuilder.registerStencil(6, TinkerTools.woodPattern, 4); // hatchet head
-        StencilBuilder.registerStencil(7, TinkerTools.woodPattern, 18); // scythe
+        MoldBuilder.registerMold(4, TinkerTools.clayPattern, 2); // pickaxe head
+        MoldBuilder.registerMold(5, TinkerTools.clayPattern, 3); // shovel head
+        MoldBuilder.registerMold(6, TinkerTools.clayPattern, 4); // hatchet head
+        MoldBuilder.registerMold(7, TinkerTools.clayPattern, 18); // scythe
 
-        StencilBuilder.registerStencil(8, TinkerTools.woodPattern, 21); // hammer head
-        StencilBuilder.registerStencil(9, TinkerTools.woodPattern, 19); // excavator head
-        StencilBuilder.registerStencil(10, TinkerTools.woodPattern, 17); // lumberaxe head
-        StencilBuilder.registerStencil(11, TinkerTools.woodPattern, 16); // large plate
+        MoldBuilder.registerMold(8, TinkerTools.clayPattern, 21); // hammer head
+        MoldBuilder.registerMold(9, TinkerTools.clayPattern, 19); // excavator head
+        MoldBuilder.registerMold(10, TinkerTools.clayPattern, 17); // lumberaxe head
+        MoldBuilder.registerMold(11, TinkerTools.clayPattern, 16); // large plate
 
-        StencilBuilder.registerStencil(12, TinkerTools.woodPattern, 10); // frying pan
-        StencilBuilder.registerStencil(13, TinkerTools.woodPattern, 11); // battlesign
-        StencilBuilder.registerStencil(14, TinkerTools.woodPattern, 13); // chisel
+        MoldBuilder.registerMold(12, TinkerTools.clayPattern, 10); // frying pan
+        MoldBuilder.registerMold(13, TinkerTools.clayPattern, 11); // battlesign
+        MoldBuilder.registerMold(14, TinkerTools.clayPattern, 13); // chisel
 
-        StencilBuilder.registerStencil(15, TinkerTools.woodPattern, 12); // knifeblade
-        StencilBuilder.registerStencil(16, TinkerTools.woodPattern, 5); // swordblade
-        StencilBuilder.registerStencil(17, TinkerTools.woodPattern, 20); // cleaver blade
+        MoldBuilder.registerMold(15, TinkerTools.clayPattern, 12); // knifeblade
+        MoldBuilder.registerMold(16, TinkerTools.clayPattern, 5); // swordblade
+        MoldBuilder.registerMold(17, TinkerTools.clayPattern, 20); // cleaver blade
 
-        StencilBuilder.registerStencil(18, TinkerTools.woodPattern, 8); // crossbar
-        StencilBuilder.registerStencil(19, TinkerTools.woodPattern, 7); // small guard
-        StencilBuilder.registerStencil(20, TinkerTools.woodPattern, 6); // wide guard
+        MoldBuilder.registerMold(18, TinkerTools.clayPattern, 8); // crossbar
+        MoldBuilder.registerMold(19, TinkerTools.clayPattern, 7); // small guard
+        MoldBuilder.registerMold(20, TinkerTools.clayPattern, 6); // wide guard
     }
 
     public static final class MaterialID

@@ -29,6 +29,7 @@ import tconstruct.tools.entity.*;
 import tconstruct.tools.gui.*;
 import tconstruct.tools.logic.*;
 import tconstruct.tools.model.*;
+import tconstruct.util.config.PHConstruct;
 import tconstruct.weaponry.TinkerWeaponry;
 
 import static tconstruct.tools.TinkerTools.*;
@@ -45,6 +46,7 @@ public class ToolProxyClient extends ToolProxyCommon
         registerManualRecipes();
         addToolRenderMappings();
         addStencilButtons();
+        addMoldButtons();
         addToolButtons();
     }
 
@@ -265,6 +267,7 @@ public class ToolProxyClient extends ToolProxyCommon
         TProxyCommon.registerClientGuiHandler(craftingStationID, this);
         TProxyCommon.registerClientGuiHandler(battlesignTextID, this);
         TProxyCommon.registerClientGuiHandler(toolBenchID, this);
+        TProxyCommon.registerClientGuiHandler(moldingTableID, this);
     }
 
     @Override
@@ -294,6 +297,8 @@ public class ToolProxyClient extends ToolProxyCommon
         if (ID == ToolProxyCommon.toolBenchID)
             return new ToolBenchGui(player.inventory, (ToolBenchLogic) world.getTileEntity(x, y, z), world, x, y, z);
 
+        if (ID == ToolProxyCommon.moldingTableID)
+            return new MoldingTableGui(player.inventory, (MoldingTableLogic) world.getTileEntity(x, y, z), world, x, y, z);
 
         return null;
     }
@@ -320,6 +325,71 @@ public class ToolProxyClient extends ToolProxyCommon
     }
 
     void addStencilButtons ()
+    {
+        int[][] icons = new int[0][];
+
+        if (PHConstruct.balancedPartCrafting){
+            icons = new int[][]{
+                    {0, 3}, // tool rod
+                    {1, 3}, // binding
+                    {2, 3}, // wide guard
+
+                    {0, 2}, // pickaxe head
+                    {3, 2}, // shovel head
+                    {2, 2}, // hatchet head
+
+                    {7, 2}, // knifeblade
+                    {1, 2}, // swordblade
+                    {4, 2}, // frying pan
+
+                    {},{5, 2}, // battlesign
+                    {7, 3}, // chisel
+            };
+        }else {
+            icons = new int[][]{
+                    {0, 3}, // tool rod
+                    {1, 3}, // binding
+                    {8, 3}, // large tool rod
+                    {9, 3}, // large binding
+
+                    {0, 2}, // pickaxe head
+                    {3, 2}, // shovel head
+                    {2, 2}, // hatchet head
+                    {8, 2}, // scythe
+
+                    {11, 2}, // hammer head
+                    {10, 2}, // excavator head
+                    {6, 2}, // lumberaxe head
+                    {9, 2}, // large plate
+
+                    {}, {4, 2}, // frying pan
+                    {5, 2}, // battlesign
+                    {7, 3}, // chisel
+
+                    {}, {7, 2}, // knifeblade
+                    {1, 2}, // swordblade
+                    {6, 3}, // cleaver blade
+
+                    {}, {4, 3}, // crossbar
+                    {3, 3}, // small guard
+                    {2, 3}, // wide guard
+            };
+        }
+
+        int i = 0;
+        for (int[] icon : icons)
+        {
+            // spacer
+            if(icon.length == 0)
+            {
+                addStencilButton(0, 0, -1);
+            }
+            else
+                addStencilButton(icon[0], icon[1], i++);
+        }
+    }
+
+    void addMoldButtons ()
     {
         int[][] icons = { { 0, 3 }, // tool rod
                 { 1, 3 }, // binding
@@ -355,16 +425,21 @@ public class ToolProxyClient extends ToolProxyCommon
             // spacer
             if(icon.length == 0)
             {
-                addStencilButton(0, 0, -1);
+                addMoldButton(0, 0, -1);
             }
             else
-                addStencilButton(icon[0], icon[1], i++);
+                addMoldButton(icon[0], icon[1], i++);
         }
     }
 
     void addStencilButton (int xButton, int yButton, int index)
     {
         TConstructClientRegistry.addStencilButton(xButton, yButton, index, "tinker", "textures/gui/icons.png");
+    }
+
+    void addMoldButton (int xButton, int yButton, int index)
+    {
+        TConstructClientRegistry.addMoldButton(xButton, yButton, index, "tinker", "textures/gui/icons.png");
     }
 
     static int[][] itemIconsT1 = {

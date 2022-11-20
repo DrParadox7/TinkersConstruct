@@ -12,6 +12,8 @@ public class TConstructClientRegistry
 {
     public static ArrayList<StencilGuiElement> stencilButtons = new ArrayList<StencilGuiElement>();
     public static ArrayList<StencilGuiElement> stencilButtons2 = new ArrayList<StencilGuiElement>();
+    public static ArrayList<MoldGuiElement> moldButtons = new ArrayList<MoldGuiElement>();
+    public static ArrayList<MoldGuiElement> moldButtons2 = new ArrayList<MoldGuiElement>();
     public static ArrayList<ToolGuiElement> toolButtons = new ArrayList<ToolGuiElement>(20);
     public static ArrayList<ToolGuiElement> tierTwoButtons = new ArrayList<ToolGuiElement>();
     public static Map<String, ItemStack> manualIcons = new HashMap<String, ItemStack>();
@@ -123,9 +125,19 @@ public class TConstructClientRegistry
         stencilButtons.add(element);
     }
 
+    public static void addMoldButton (MoldGuiElement element)
+    {
+        moldButtons.add(element);
+    }
+
     public static void addStencilButton (int xButton, int yButton, int index, String domain, String texture)
     {
         stencilButtons.add(new StencilGuiElement(xButton, yButton, index, domain, texture));
+    }
+
+    public static void addMoldButton (int xButton, int yButton, int index, String domain, String texture)
+    {
+        moldButtons.add(new MoldGuiElement(xButton, yButton, index, domain, texture));
     }
 
     public static void addStencilButton2 (StencilGuiElement element)
@@ -137,6 +149,17 @@ public class TConstructClientRegistry
     public static void addStencilButton2 (int xButton, int yButton, int index, String domain, String texture)
     {
         stencilButtons2.add(new StencilGuiElement(xButton, yButton, index, domain, texture));
+    }
+
+    public static void addMoldButton2 (MoldGuiElement element)
+{
+    moldButtons.add(element);
+}
+
+    // adds a button to the right side of the molding table
+    public static void addMoldButton2 (int xButton, int yButton, int index, String domain, String texture)
+    {
+        moldButtons2.add(new MoldGuiElement(xButton, yButton, index, domain, texture));
     }
 
     public static void addToolButton (ToolGuiElement element)

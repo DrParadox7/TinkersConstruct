@@ -15,13 +15,11 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.CraftingManager;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
-import net.minecraftforge.oredict.OreDictionary;
 import tconstruct.TConstruct;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.*;
@@ -117,7 +115,7 @@ public class TinkerWeaponry {
     @Handler
     public void init(FMLInitializationEvent event)
     {
-        addPartRecipies();
+        addPartRecipes();
         addWeaponRecipies();
         setupCreativeTab();
 
@@ -220,18 +218,34 @@ public class TinkerWeaponry {
         GameRegistry.registerItem(ceramicPattern, "Mold");
     }
 
-    private void addPartRecipies()
+    private void addPartRecipes()
     {
-        StencilBuilder.registerStencil(21, TinkerTools.woodPattern, 25); // arrow head
-        StencilBuilder.registerStencil(22, TinkerTools.woodPattern, 24); // fletchling
-        StencilBuilder.registerStencil(23, TinkerTools.woodPattern, 23); // bowstring
+        StencilBuilder.registerStencil(11, TinkerTools.woodPattern, 25); // arrow head
+        StencilBuilder.registerStencil(12, TinkerTools.woodPattern, 24); // fletchling
 
-        StencilBuilder.registerStencil(24, woodPattern, 0);
-        StencilBuilder.registerStencil(25, woodPattern, 1);
-        StencilBuilder.registerStencil(26, woodPattern, 2);
-        StencilBuilder.registerStencil(27, woodPattern, 3);
+        StencilBuilder.registerStencil(13, woodPattern, 3); // bow limb
+        StencilBuilder.registerStencil(14, TinkerTools.woodPattern, 23); // bowstring
+        StencilBuilder.registerStencil(15, woodPattern, 1); // crossbow limb
+
+        StencilBuilder.registerStencil(16, woodPattern, 0); // shuriken
+
+        if(!PHConstruct.balancedPartCrafting)
+            StencilBuilder.registerStencil(17, woodPattern, 2); // crossbow body
+
 
         PatternBuilder.instance.addToolPattern(woodPattern);
+
+        MoldBuilder.registerMold(21, TinkerTools.clayPattern, 25); // arrow head
+
+        MoldBuilder.registerMold(22, clayPattern, 3); // bow limb
+        MoldBuilder.registerMold(23, clayPattern, 1); // crossbow limb
+        MoldBuilder.registerMold(24, clayPattern, 2); // crossbow body
+
+        MoldBuilder.registerMold(25, clayPattern, 0); // shuriken
+
+
+        PatternBuilder.instance.addToolPattern(clayPattern);
+
 
         // todo: integrate into tcon
         int[] nonMetals = { 0, 1, 3, 4, 5, 6, 7, 8, 9, 17 };

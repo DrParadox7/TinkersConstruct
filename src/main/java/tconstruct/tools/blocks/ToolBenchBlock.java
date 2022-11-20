@@ -39,7 +39,7 @@ public class ToolBenchBlock extends InventoryBlock
     @Override
     public String[] getTextureNames ()
     {
-        String[] textureNames = { "toolstation_top", "toolstation_side", "toolstation_bottom", "partbuilder_oak_top", "partbuilder_oak_side", "partbuilder_oak_bottom", "partbuilder_spruce_top", "partbuilder_spruce_side", "partbuilder_spruce_bottom", "partbuilder_birch_top", "partbuilder_birch_side", "partbuilder_birch_bottom", "partbuilder_jungle_top", "partbuilder_jungle_side", "partbuilder_jungle_bottom", "patternchest_top", "patternchest_side", "patternchest_bottom", "stenciltable_oak_top", "stenciltable_oak_side", "stenciltable_oak_bottom", "stenciltable_spruce_top", "stenciltable_spruce_side", "stenciltable_spruce_bottom", "stenciltable_birch_top", "stenciltable_birch_side", "stenciltable_birch_bottom", "stenciltable_jungle_top", "stenciltable_jungle_side", "stenciltable_jungle_bottom" };
+        String[] textureNames = { "toolstation_top", "toolstation_side", "toolstation_bottom", "partbuilder_oak_top", "partbuilder_oak_side", "partbuilder_oak_bottom", "partbuilder_spruce_top", "partbuilder_spruce_side", "partbuilder_spruce_bottom", "partbuilder_birch_top", "partbuilder_birch_side", "partbuilder_birch_bottom", "partbuilder_jungle_top", "partbuilder_jungle_side", "partbuilder_jungle_bottom", "patternchest_top", "patternchest_side", "patternchest_bottom", "stenciltable_oak_top", "stenciltable_oak_side", "stenciltable_oak_bottom", "stenciltable_spruce_top", "stenciltable_spruce_side", "stenciltable_spruce_bottom", "stenciltable_birch_top", "stenciltable_birch_side", "stenciltable_birch_bottom", "stenciltable_jungle_top", "stenciltable_jungle_side", "stenciltable_jungle_bottom", "moldingtable_top", "moldingtable_side", "moldingtable_bottom" };
 
         return textureNames;
     }        //We keep it "toolstation" for the sake of texture pack support.
@@ -56,8 +56,11 @@ public class ToolBenchBlock extends InventoryBlock
         {
             return icons[15 + getTextureIndex(side)];
         }
-        else
+        else if (meta == 14)
         {
+        return icons[30 + getTextureIndex(side)];
+        }
+        else{
             return icons[meta * 3 + getTextureIndex(side) - 12];
         }
     }
@@ -144,8 +147,8 @@ public class ToolBenchBlock extends InventoryBlock
             return new StencilTableLogic();
         case 13:
             return new StencilTableLogic();
-            /*case 14:
-            	return new CastingTableLogic();*/
+        case 14:
+            return new MoldingTableLogic();
         default:
             return null;
         }
@@ -161,6 +164,8 @@ public class ToolBenchBlock extends InventoryBlock
             return ToolProxyCommon.partBuilderID;
         else if (md < 10)
             return ToolProxyCommon.patternChestID;
+        else if (md == 14)
+            return ToolProxyCommon.moldingTableID;
         else
             return ToolProxyCommon.stencilTableID;
 
@@ -181,7 +186,7 @@ public class ToolBenchBlock extends InventoryBlock
             list.add(new ItemStack(id, 1, iter));
         }
 
-        for (int iter = 10; iter < 14; iter++)
+        for (int iter = 10; iter < 15; iter++)
         {
             list.add(new ItemStack(id, 1, iter));
         }

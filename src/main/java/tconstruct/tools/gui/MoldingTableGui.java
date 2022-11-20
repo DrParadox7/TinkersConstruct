@@ -8,32 +8,33 @@ import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import org.lwjgl.opengl.GL11;
 import tconstruct.TConstruct;
-import tconstruct.library.client.*;
-import tconstruct.library.crafting.StencilBuilder;
-import tconstruct.tools.inventory.PatternShaperContainer;
-import tconstruct.tools.logic.StencilTableLogic;
-import tconstruct.util.config.PHConstruct;
-import tconstruct.util.network.PatternTablePacket;
+import tconstruct.library.client.MoldGuiElement;
+import tconstruct.library.client.TConstructClientRegistry;
+import tconstruct.library.crafting.MoldBuilder;
+import tconstruct.tools.inventory.MoldingTableContainer;
+import tconstruct.tools.logic.MoldingTableLogic;
+import tconstruct.util.network.MoldingTablePacket;
 
 import java.util.Collections;
 import java.util.List;
 
 @Optional.Interface(iface = "codechicken.nei.api.INEIGuiHandler", modid = "NotEnoughItems")
-public class StencilTableGui extends GuiContainer implements INEIGuiHandler
+public class MoldingTableGui extends GuiContainer implements INEIGuiHandler
 {
     int[] buttonsLeftRect = new int[]{ Integer.MAX_VALUE, Integer.MIN_VALUE };
     int[] buttonsRightRect = new int[]{ Integer.MIN_VALUE, Integer.MIN_VALUE };
-    StencilTableLogic logic;
+    MoldingTableLogic logic;
     int activeButton;
 
-    public StencilTableGui(InventoryPlayer inventoryplayer, StencilTableLogic shaper, World world, int x, int y, int z)
+    public MoldingTableGui(InventoryPlayer inventoryplayer, MoldingTableLogic molder, World world, int x, int y, int z)
     {
-        super(new PatternShaperContainer(inventoryplayer, shaper));
-        logic = shaper;
+        super(new MoldingTableContainer(inventoryplayer, molder));
+        logic = molder;
         activeButton = 0;
     }
 
@@ -46,7 +47,7 @@ public class StencilTableGui extends GuiContainer implements INEIGuiHandler
     @Override
     protected void drawGuiContainerForegroundLayer (int par1, int par2)
     {
-        fontRendererObj.drawString(StatCollector.translateToLocal("crafters.PatternShaper"), 50, 6, 0x404040);
+        fontRendererObj.drawString(StatCollector.translateToLocal("crafters.MoldingTable"), 50, 6, 0x404040);
         fontRendererObj.drawString(StatCollector.translateToLocal("container.inventory"), 8, (ySize - 96) + 2, 0x404040);
     }
 
@@ -71,7 +72,7 @@ public class StencilTableGui extends GuiContainer implements INEIGuiHandler
     {
         super.initGui();
 
-        int bpr = PHConstruct.balancedPartCrafting ? 3 : 4; // buttons per row!
+        int bpr = 4; // buttons per row!
         int cornerX = this.guiLeft - 22 * bpr;
         int cornerY = this.guiTop + 2;
 
@@ -80,12 +81,12 @@ public class StencilTableGui extends GuiContainer implements INEIGuiHandler
         this.buttonsRightRect = new int[]{ Integer.MIN_VALUE, Integer.MIN_VALUE };
 
         int id = 0;
-        for (int iter = 0; iter < TConstructClientRegistry.stencilButtons.size(); iter++)
+        for (int iter = 0; iter < TConstructClientRegistry.moldButtons.size(); iter++)
         {
-            StencilGuiElement element = TConstructClientRegistry.stencilButtons.get(iter);
-            if (element.stencilIndex == -1)
+            MoldGuiElement element = TConstructClientRegistry.moldButtons.get(iter);
+            if (element.moldIndex == -1)
                 continue;
-            GuiButtonStencil button = new GuiButtonStencil(id++, cornerX + 22 * (iter % bpr), cornerY + 22 * (iter / bpr), element.buttonIconX, element.buttonIconY, element.domain, element.texture, element);
+            GuiButtonMold button = new GuiButtonMold(id++, cornerX + 22 * (iter % bpr), cornerY + 22 * (iter / bpr), element.buttonIconX, element.buttonIconY, element.domain, element.texture, element);
             this.buttonList.add(button);
             this.buttonsLeftRect[0] = Math.min(button.xPosition, this.buttonsLeftRect[0]);
             this.buttonsLeftRect[1] = Math.max(button.yPosition + button.height, this.buttonsLeftRect[1]);
@@ -94,12 +95,12 @@ public class StencilTableGui extends GuiContainer implements INEIGuiHandler
         // secondary buttons, yay!
         // these are to use for other mods :I
         cornerX = this.guiLeft + this.xSize + 4;
-        for (int iter = 0; iter < TConstructClientRegistry.stencilButtons2.size(); iter++)
+        for (int iter = 0; iter < TConstructClientRegistry.moldButtons2.size(); iter++)
         {
-            StencilGuiElement element = TConstructClientRegistry.stencilButtons2.get(iter);
-            if (element.stencilIndex == -1)
+            MoldGuiElement element = TConstructClientRegistry.moldButtons2.get(iter);
+            if (element.moldIndex == -1)
                 continue;
-            GuiButtonStencil button = new GuiButtonStencil(id++, cornerX + 22 * (iter % bpr), cornerY + 22 * (iter / bpr), element.buttonIconX, element.buttonIconY, element.domain, element.texture, element);
+            GuiButtonMold button = new GuiButtonMold(id++, cornerX + 22 * (iter % bpr), cornerY + 22 * (iter / bpr), element.buttonIconX, element.buttonIconY, element.domain, element.texture, element);
             this.buttonList.add(button);
             this.buttonsRightRect[0] = Math.max(button.xPosition + button.width, this.buttonsRightRect[0]);
             this.buttonsRightRect[1] = Math.max(button.yPosition + button.height, this.buttonsRightRect[1]);
@@ -109,28 +110,28 @@ public class StencilTableGui extends GuiContainer implements INEIGuiHandler
         ItemStack stack;
         if (logic.getStackInSlot(1) != null)
         {
-            activeButton = StencilBuilder.getId(logic.getStackInSlot(1));
+            activeButton = MoldBuilder.getId(logic.getStackInSlot(1));
             setActiveButton(activeButton);
-            stack = StencilBuilder.getStencil(((GuiButtonStencil) this.buttonList.get(activeButton)).element.stencilIndex);
+            stack = MoldBuilder.getMold(((GuiButtonMold) this.buttonList.get(activeButton)).element.moldIndex);
         }
         else
             stack = null;
 
-        logic.setSelectedPattern(stack);
+        logic.setSelectedMold(stack);
         updateServer(stack);
     }
 
     @Override
     protected void actionPerformed (GuiButton button)
     {
-        ItemStack pattern = logic.getStackInSlot(0);
-        if (pattern != null && StencilBuilder.isBlank(pattern))
+        ItemStack mold = logic.getStackInSlot(0);
+        if (mold != null && MoldBuilder.isBlank(mold))
         {
-            int id = ((GuiButtonStencil) button).element.stencilIndex;
-            ItemStack stack = StencilBuilder.getStencil(id);
+            int id = ((GuiButtonMold) button).element.moldIndex;
+            ItemStack stack = MoldBuilder.getMold(id);
             if (stack != null)
             {
-                logic.setSelectedPattern(stack);
+                logic.setSelectedMold(stack);
                 updateServer(stack);
             }
         }
@@ -150,7 +151,7 @@ public class StencilTableGui extends GuiContainer implements INEIGuiHandler
 
     void updateServer (ItemStack stack)
     {
-        TConstruct.packetPipeline.sendToServer(new PatternTablePacket(logic.xCoord, logic.yCoord, logic.zCoord, stack));
+        TConstruct.packetPipeline.sendToServer(new MoldingTablePacket(logic.xCoord, logic.yCoord, logic.zCoord, stack));
     }
 
     @Override

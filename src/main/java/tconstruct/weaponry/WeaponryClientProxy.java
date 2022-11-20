@@ -5,6 +5,7 @@ import net.minecraft.init.Items;
 import tconstruct.client.AmmoItemRenderer;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.entity.ProjectileBase;
+import tconstruct.util.config.PHConstruct;
 import tconstruct.weaponry.client.AmmoSlotHandler;
 import tconstruct.weaponry.client.CrosshairHandler;
 import tconstruct.weaponry.client.RenderEventHandler;
@@ -109,19 +110,46 @@ public class WeaponryClientProxy extends WeaponryCommonProxy {
         final String tex = "textures/gui/icons.png";
 
         // Stencil Table
-        TConstructClientRegistry.addStencilButton2(11, 3, 21, Reference.RESOURCE, tex); // arrow head
-        TConstructClientRegistry.addStencilButton2(12, 3, 22, Reference.RESOURCE, tex); // fletchling
-        TConstructClientRegistry.addStencilButton2(0,0, -1, null, null);
-        TConstructClientRegistry.addStencilButton2(0,0, -1, null, null);
+        if (PHConstruct.balancedPartCrafting) {
+            TConstructClientRegistry.addStencilButton2(11, 3, 11, Reference.RESOURCE, tex); // arrow head
+            TConstructClientRegistry.addStencilButton2(12, 3, 12, Reference.RESOURCE, tex); // fletchling
+            TConstructClientRegistry.addStencilButton2(0, 0, -1, null, null);
 
-        TConstructClientRegistry.addStencilButton2(3, 4, 27, Reference.RESOURCE, tex); // bow limb
-        TConstructClientRegistry.addStencilButton2(10, 3, 23, Reference.RESOURCE, tex); // bowstring
-        TConstructClientRegistry.addStencilButton2(1, 4, 25, Reference.RESOURCE, tex); // crossbow limb
-        TConstructClientRegistry.addStencilButton2(2, 4, 26, Reference.RESOURCE, tex); // crossbow body
+            TConstructClientRegistry.addStencilButton2(3, 4, 13, Reference.RESOURCE, tex); // bow limb
+            TConstructClientRegistry.addStencilButton2(10, 3, 14, Reference.RESOURCE, tex); // bowstring
+            TConstructClientRegistry.addStencilButton2(1, 4, 15, Reference.RESOURCE, tex); // crossbow limb
 
-        TConstructClientRegistry.addStencilButton2(0, 4, 24, Reference.RESOURCE, tex); // shuriken
-        //TConstructClientRegistry.addStencilButton2(4, 4, index, Reference.RESOURCE, "textures/gui/icons.png"); // bolt
+            TConstructClientRegistry.addStencilButton2(0, 4, 16, Reference.RESOURCE, tex); // shuriken
+            //TConstructClientRegistry.addStencilButton2(4, 4, index, Reference.RESOURCE, "textures/gui/icons.png"); // bolt
 
+        } else {
+            TConstructClientRegistry.addStencilButton2(11, 3, 11, Reference.RESOURCE, tex); // arrow head
+            TConstructClientRegistry.addStencilButton2(12, 3, 12, Reference.RESOURCE, tex); // fletchling
+            TConstructClientRegistry.addStencilButton2(0, 0, -1, null, null);
+
+            TConstructClientRegistry.addStencilButton2(3, 4, 13, Reference.RESOURCE, tex); // bow limb
+            TConstructClientRegistry.addStencilButton2(10, 3, 14, Reference.RESOURCE, tex); // bowstring
+            TConstructClientRegistry.addStencilButton2(1, 4, 15, Reference.RESOURCE, tex); // crossbow limb
+            TConstructClientRegistry.addStencilButton2(2, 4, 17, Reference.RESOURCE, tex); // crossbow body
+            TConstructClientRegistry.addStencilButton2(0, 0, -1, null, null);
+            TConstructClientRegistry.addStencilButton2(0, 4, 16, Reference.RESOURCE, tex); // shuriken
+            //TConstructClientRegistry.addStencilButton2(4, 4, index, Reference.RESOURCE, "textures/gui/icons.png"); // bolt
+
+        }
+
+
+        // Molding Table
+        TConstructClientRegistry.addMoldButton2(11, 3, 21, Reference.RESOURCE, tex); // arrow head
+        TConstructClientRegistry.addMoldButton2(0,0, -1, null, null);
+        TConstructClientRegistry.addMoldButton2(0,0, -1, null, null);
+        TConstructClientRegistry.addMoldButton2(0,0, -1, null, null);
+
+        TConstructClientRegistry.addMoldButton2(3, 4, 22, Reference.RESOURCE, tex); // bow limb
+        TConstructClientRegistry.addMoldButton2(1, 4, 23, Reference.RESOURCE, tex); // crossbow limb
+        TConstructClientRegistry.addMoldButton2(2, 4, 24, Reference.RESOURCE, tex); // crossbow body
+        TConstructClientRegistry.addMoldButton2(0,0, -1, null, null);
+
+        TConstructClientRegistry.addMoldButton2(0, 4, 25, Reference.RESOURCE, tex); // shuriken
 
         // Tool Station
         ToolCore[] tools = {shortbow, arrowAmmo, throwingknife, javelin};

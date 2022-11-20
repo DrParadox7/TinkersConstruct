@@ -1,4 +1,4 @@
-package tconstruct.smeltery.items;
+package tconstruct.tools.items;
 
 import java.util.List;
 import net.minecraft.creativetab.CreativeTabs;
