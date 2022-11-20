@@ -90,6 +90,7 @@ public class PHConstruct
         modModifier = config.get("Balance", "Xp cost modifier per active modifier. [Formula: XP cost = (repair * (1 + Modifiers * modModifier))/repairPerXp]", 1.0, "Set to 0 to disable").getDouble(1.0);
         modifierCost = config.get("Balance", "Flat Xp cost for applying modifier", 10, "Set to 0 to disable").getInt(10);
         repairModifier = config.get("Balance", "Increase in XP cost per repair count", 0, "Set to 0 to disable").getInt(0);
+        balancedPartCrafting = config.get("Balance", "Limits Stencils to only early game tool parts", true, "Set to 0 to disable").getBoolean(true);
 
         boolean ic2 = true;
         boolean xycraft = true;
@@ -339,6 +340,7 @@ public class PHConstruct
     public static double modModifier;
     public static int modifierCost;
     public static int repairModifier;
+    public static boolean balancedPartCrafting;
 
 
 
