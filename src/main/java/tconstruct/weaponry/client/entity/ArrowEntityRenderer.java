@@ -1,7 +1,7 @@
 package tconstruct.weaponry.client.entity;
 
-import tconstruct.weaponry.entity.ArrowEntity;
 import org.lwjgl.opengl.GL11;
+import tconstruct.weaponry.entity.ArrowEntity;
 
 public class ArrowEntityRenderer extends ProjectileBaseRenderer<ArrowEntity> {
     private int count = 0;

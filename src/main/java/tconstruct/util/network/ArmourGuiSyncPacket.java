@@ -1,14 +1,13 @@
 package tconstruct.util.network;
 
-import tconstruct.TConstruct;
-import tconstruct.armor.TinkerArmor;
-import tconstruct.armor.player.TPlayerStats;
 import cpw.mods.fml.common.network.ByteBufUtils;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.nbt.NBTTagCompound;
 import io.netty.buffer.ByteBuf;
 import io.netty.channel.ChannelHandlerContext;
 import mantle.common.network.AbstractPacket;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.nbt.NBTTagCompound;
+import tconstruct.armor.TinkerArmor;
+import tconstruct.armor.player.TPlayerStats;
 /**
  * This Packet is for sending the players TPlayerStats from the server to the client.
  * 

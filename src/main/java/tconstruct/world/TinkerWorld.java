@@ -1,46 +1,70 @@
 package tconstruct.world;
 
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.*;
-import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.registry.*;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.EntityRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
-import mantle.pulsar.pulse.*;
+import mantle.pulsar.pulse.Handler;
+import mantle.pulsar.pulse.Pulse;
 import mantle.utils.RecipeRemover;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
 import net.minecraft.block.Block.SoundType;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.EnumCreatureType;
-import net.minecraft.init.*;
-import net.minecraft.item.*;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.potion.Potion;
 import net.minecraft.util.WeightedRandomChestContent;
-import net.minecraftforge.common.*;
-import net.minecraftforge.fluids.*;
-import net.minecraftforge.oredict.*;
+import net.minecraftforge.common.BiomeDictionary;
+import net.minecraftforge.common.ChestGenHooks;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidRegistry;
+import net.minecraftforge.oredict.OreDictionary;
+import net.minecraftforge.oredict.ShapedOreRecipe;
+import net.minecraftforge.oredict.ShapelessOreRecipe;
 import tconstruct.TConstruct;
 import tconstruct.armor.TinkerArmor;
 import tconstruct.blocks.SlabBase;
 import tconstruct.blocks.slime.*;
-import tconstruct.blocks.traps.*;
+import tconstruct.blocks.traps.BarricadeBlock;
+import tconstruct.blocks.traps.Punji;
 import tconstruct.client.StepSoundSlime;
 import tconstruct.common.itemblocks.MetadataItemBlock;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.FluidType;
 import tconstruct.smeltery.blocks.MetalOre;
 import tconstruct.smeltery.itemblocks.MetalItemBlock;
-import tconstruct.tools.*;
-import tconstruct.tools.blocks.*;
-import tconstruct.tools.entity.*;
-import tconstruct.tools.itemblocks.*;
+import tconstruct.tools.TinkerTools;
+import tconstruct.tools.blocks.MultiBrick;
+import tconstruct.tools.blocks.MultiBrickFancy;
+import tconstruct.tools.blocks.MultiBrickMetal;
+import tconstruct.tools.entity.ArrowEntity;
+import tconstruct.tools.entity.DaggerEntity;
+import tconstruct.tools.entity.FancyEntityItem;
+import tconstruct.tools.entity.LaunchedPotion;
+import tconstruct.tools.itemblocks.MultiBrickFancyItem;
+import tconstruct.tools.itemblocks.MultiBrickItem;
+import tconstruct.tools.itemblocks.MultiBrickMetalItem;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.world.blocks.*;
-import tconstruct.world.entity.*;
-import tconstruct.world.gen.*;
+import tconstruct.world.entity.BlueSlime;
+import tconstruct.world.entity.Crystal;
+import tconstruct.world.entity.KingBlueSlime;
+import tconstruct.world.gen.TBaseWorldGenerator;
+import tconstruct.world.gen.TerrainGenEventHandler;
 import tconstruct.world.itemblocks.*;
-import tconstruct.world.items.*;
+import tconstruct.world.items.GoldenHead;
+import tconstruct.world.items.OreBerries;
+import tconstruct.world.items.StrangeFood;
 
 @ObjectHolder(TConstruct.modID)
 @Pulse(id = "Tinkers' World", description = "Ores, slime islands, essence berries, and the like.", forced = true)
@@ -566,9 +590,23 @@ public class TinkerWorld
         }
 
         TinkerWorld.tinkerHousePatterns = new ChestGenHooks("TinkerPatterns", new WeightedRandomChestContent[0], 5, 30);
-        for (int i = 0; i < 13; i++)
-        {
-            TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, i + 1), 1, 3, 20));
+
+        if (PHConstruct.balancedPartCrafting){
+            TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, 1), 1, 3, 20));
+            TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, 2), 1, 3, 20));
+            TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, 3), 1, 3, 20));
+            TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, 4), 1, 3, 20));
+            TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, 5), 1, 3, 20));
+            TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, 6), 1, 3, 20));
+            TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, 9), 1, 3, 20));
+            TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, 10), 1, 3, 20));
+            TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, 11), 1, 3, 20));
+            TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, 12), 1, 3, 20));
+            TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, 13), 1, 3, 20));
+        }else {
+            for (int i = 0; i < 13; i++) {
+                TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, i + 1), 1, 3, 20));
+            }
         }
         TinkerWorld.tinkerHousePatterns.addItem(new WeightedRandomChestContent(new ItemStack(TinkerTools.woodPattern, 1, 22), 1, 3, 40));
     }

@@ -1,11 +1,13 @@
 package tconstruct.mechworks.logic;
 
-import java.util.*;
 import mantle.world.WorldHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import tconstruct.mechworks.landmine.behavior.Behavior;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * This logic is designed only for blocks having TileEntityLandmine as their

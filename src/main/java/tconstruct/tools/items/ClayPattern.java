@@ -1,9 +1,10 @@
 package tconstruct.tools.items;
 
-import java.util.List;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.*;
-import tconstruct.tools.items.Pattern;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+
+import java.util.List;
 
 public class ClayPattern extends Pattern
 {

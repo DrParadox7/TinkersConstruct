@@ -1,13 +1,16 @@
 package tconstruct.mechworks.itemblocks;
 
-import java.util.*;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import tconstruct.mechworks.TinkerMechworks;
 import tconstruct.mechworks.logic.TileEntityLandmine;
+
+import java.util.List;
+import java.util.Random;
 
 /**
  * 

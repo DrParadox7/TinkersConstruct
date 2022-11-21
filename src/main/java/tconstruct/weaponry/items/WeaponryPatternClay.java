@@ -1,10 +1,10 @@
 package tconstruct.weaponry.items;
 
-import tconstruct.util.Reference;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import tconstruct.tools.items.Pattern;
+import tconstruct.util.Reference;
 
 import java.util.List;
 

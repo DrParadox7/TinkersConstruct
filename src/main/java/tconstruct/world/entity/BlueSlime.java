@@ -1,7 +1,7 @@
 package tconstruct.world.entity;
 
 import net.minecraft.item.Item;
-import net.minecraft.world.*;
+import net.minecraft.world.World;
 import tconstruct.world.TinkerWorld;
 
 public class BlueSlime extends SlimeBase

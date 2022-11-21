@@ -1,7 +1,9 @@
 package tconstruct.plugins.waila;
 
-import java.util.List;
-import mcp.mobius.waila.api.*;
+import mcp.mobius.waila.api.IWailaConfigHandler;
+import mcp.mobius.waila.api.IWailaDataAccessor;
+import mcp.mobius.waila.api.IWailaDataProvider;
+import mcp.mobius.waila.api.SpecialChars;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -9,8 +11,11 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
-import net.minecraftforge.fluids.*;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTankInfo;
 import tconstruct.smeltery.logic.CastingChannelLogic;
+
+import java.util.List;
 
 public class CastingChannelDataProvider implements IWailaDataProvider
 {

@@ -8,7 +8,6 @@ import net.minecraftforge.fluids.Fluid;
 import tconstruct.world.TinkerWorld;
 
 import static tconstruct.smeltery.TinkerSmeltery.*;
-import static tconstruct.smeltery.TinkerSmeltery.moltenEnderiumFluid;
 
 @Pulse(id = "Tinkers RF-Tools Compatibility", forced = true, modsRequired = TinkerRfTools.modid)
 public class TinkerRfTools {

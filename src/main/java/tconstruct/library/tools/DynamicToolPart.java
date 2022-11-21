@@ -8,14 +8,10 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
-import tconstruct.TConstruct;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.util.IToolPart;
 import tconstruct.library.util.TextureHelper;
-import tconstruct.library.tools.CustomMaterial;
-import tconstruct.tools.TinkerTools;
 import tconstruct.util.config.PHConstruct;
 
 import java.util.List;

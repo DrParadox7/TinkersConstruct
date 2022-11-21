@@ -1,7 +1,5 @@
 package tconstruct.armor.player;
 
-import java.lang.ref.WeakReference;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
@@ -9,6 +7,8 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IExtendedEntityProperties;
 import tconstruct.api.IPlayerExtendedInventoryWrapper;
+
+import java.lang.ref.WeakReference;
 
 public class TPlayerStats implements IExtendedEntityProperties, IPlayerExtendedInventoryWrapper //TODO: IExtendedEntityProperties is not appropriate!
 {

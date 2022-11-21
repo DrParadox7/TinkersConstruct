@@ -8,7 +8,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import tconstruct.library.crafting.MoldBuilder;
-import tconstruct.tools.TinkerTools;
 import tconstruct.tools.inventory.MoldingTableContainer;
 
 public class MoldingTableLogic extends InventoryLogic implements ISidedInventory

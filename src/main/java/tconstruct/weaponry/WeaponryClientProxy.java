@@ -1,10 +1,18 @@
 package tconstruct.weaponry;
 
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import mantle.lib.client.MantleClientRegistry;
 import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.client.MinecraftForgeClient;
+import net.minecraftforge.common.MinecraftForge;
 import tconstruct.client.AmmoItemRenderer;
+import tconstruct.library.client.TConstructClientRegistry;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.entity.ProjectileBase;
+import tconstruct.library.tools.ToolCore;
+import tconstruct.tools.TinkerTools;
+import tconstruct.util.Reference;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.weaponry.client.AmmoSlotHandler;
 import tconstruct.weaponry.client.CrosshairHandler;
@@ -13,17 +21,11 @@ import tconstruct.weaponry.client.entity.ArrowEntityRenderer;
 import tconstruct.weaponry.client.entity.JavelinEntityRenderer;
 import tconstruct.weaponry.client.entity.ProjectileBaseRenderer;
 import tconstruct.weaponry.client.entity.ShurikenEntityRenderer;
-import tconstruct.weaponry.client.item.*;
+import tconstruct.weaponry.client.item.BowRenderer;
+import tconstruct.weaponry.client.item.CrossbowRenderer;
+import tconstruct.weaponry.client.item.JavelinRenderer;
+import tconstruct.weaponry.client.item.ThrowingKnifeRenderer;
 import tconstruct.weaponry.entity.*;
-import tconstruct.util.Reference;
-import cpw.mods.fml.client.registry.RenderingRegistry;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.client.MinecraftForgeClient;
-import net.minecraftforge.common.MinecraftForge;
-import tconstruct.library.client.TConstructClientRegistry;
-import tconstruct.library.crafting.StencilBuilder;
-import tconstruct.library.tools.ToolCore;
-import tconstruct.tools.TinkerTools;
 
 import static tconstruct.weaponry.TinkerWeaponry.*;
 

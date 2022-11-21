@@ -1,7 +1,5 @@
 package tconstruct.weaponry.client.entity;
 
-import tconstruct.client.FlexibleToolRenderer;
-import tconstruct.library.entity.ProjectileBase;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
@@ -10,6 +8,8 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+import tconstruct.client.FlexibleToolRenderer;
+import tconstruct.library.entity.ProjectileBase;
 
 public class ProjectileBaseRenderer<T extends ProjectileBase> extends Render {
     protected static FlexibleToolRenderer toolCoreRenderer = new FlexibleToolRenderer();

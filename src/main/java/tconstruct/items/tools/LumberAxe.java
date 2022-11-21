@@ -1,31 +1,30 @@
 package tconstruct.items.tools;
 
-import java.util.Queue;
-import java.util.Set;
-import java.util.Stack;
-import java.lang.LinkageError;
-
 import com.google.common.collect.Lists;
-
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
-import cpw.mods.fml.relauncher.*;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
 import gnu.trove.set.hash.THashSet;
 import mantle.player.PlayerUtils;
-import mantle.world.WorldHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
-import tconstruct.library.*;
-import tconstruct.library.tools.*;
+import tconstruct.library.ActiveToolMod;
+import tconstruct.library.TConstructRegistry;
+import tconstruct.library.tools.AOEHarvestTool;
+import tconstruct.library.tools.AbilityHelper;
 import tconstruct.tools.TinkerTools;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
+
+import java.util.Queue;
+import java.util.Set;
+import java.util.Stack;
 
 public class LumberAxe extends AOEHarvestTool
 {

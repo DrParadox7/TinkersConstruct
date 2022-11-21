@@ -1,9 +1,5 @@
 package tconstruct.gadgets.item;
 
-import java.util.List;
-
-import javax.vecmath.Vector3d;
-
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -30,6 +26,9 @@ import tconstruct.library.SlimeBounceHandler;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.armor.ArmorPart;
 import tconstruct.tools.entity.FancyEntityItem;
+
+import javax.vecmath.Vector3d;
+import java.util.List;
 
 public class ItemSlimeBoots extends ItemArmor implements ISpecialArmor {
 

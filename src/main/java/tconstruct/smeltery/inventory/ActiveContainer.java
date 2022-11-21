@@ -1,8 +1,10 @@
 package tconstruct.smeltery.inventory;
 
-import java.util.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Container;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ActiveContainer extends Container
 {

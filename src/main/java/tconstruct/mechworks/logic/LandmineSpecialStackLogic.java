@@ -1,10 +1,12 @@
 package tconstruct.mechworks.logic;
 
-import java.util.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import tconstruct.mechworks.landmine.behavior.stackCombo.SpecialStackHandler;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class LandmineSpecialStackLogic
 {

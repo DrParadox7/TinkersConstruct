@@ -1,8 +1,11 @@
 package tconstruct.library.crafting;
 
-import java.util.*;
 import net.minecraft.block.Block;
 import net.minecraftforge.fluids.Fluid;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class FluidType
 {

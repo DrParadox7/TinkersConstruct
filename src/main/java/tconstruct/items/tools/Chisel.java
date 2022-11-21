@@ -1,18 +1,22 @@
 package tconstruct.items.tools;
 
-import cpw.mods.fml.relauncher.*;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.MovingObjectPosition.MovingObjectType;
 import net.minecraft.world.World;
 import tconstruct.TConstruct;
 import tconstruct.library.crafting.Detailing.DetailInput;
-import tconstruct.library.tools.*;
+import tconstruct.library.tools.AbilityHelper;
+import tconstruct.library.tools.ToolCore;
 import tconstruct.modifiers.tools.ModMoss;
 import tconstruct.tools.TinkerTools;
 

@@ -1,28 +1,22 @@
 package tconstruct.plugins.te4;
 
 import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
 import mantle.pulsar.pulse.Handler;
 import mantle.pulsar.pulse.Pulse;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidRegistry;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.oredict.OreDictionary;
 import tconstruct.TConstruct;
-import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.FluidType;
-import tconstruct.library.crafting.LiquidCasting;
 import tconstruct.library.crafting.Smeltery;
 import tconstruct.smeltery.TinkerSmeltery;
 import tconstruct.world.TinkerWorld;
-
-import java.util.ArrayList;
 
 @GameRegistry.ObjectHolder(TinkersThermalFoundation.TF_MOD_ID)
 @Pulse(id = "Tinkers Thermal Foundation Compatibility", description = "Tinkers Construct compatibility for Thermal Foundation", modsRequired = TinkersThermalFoundation.TF_MOD_ID, forced = true)

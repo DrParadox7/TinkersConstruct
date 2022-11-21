@@ -1,14 +1,18 @@
 package tconstruct.world.blocks;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.Random;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import mantle.blocks.MantleBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.util.*;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.MovingObjectPosition;
+import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 import static net.minecraftforge.common.util.ForgeDirection.*;
 
@@ -135,33 +139,33 @@ public class StoneTorch extends MantleBlock
     }
 
     // JAVADOC METHOD $$ func_149726_b
-    public void onBlockAdded (World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_)
+    public void onBlockAdded (World worldIn, int x, int y, int z)
     {
-        if (p_149726_1_.getBlockMetadata(p_149726_2_, p_149726_3_, p_149726_4_) == 0)
+        if (worldIn.getBlockMetadata(x, y, z) == 0)
         {
-            if (p_149726_1_.isSideSolid(p_149726_2_ - 1, p_149726_3_, p_149726_4_, EAST, true))
+            if (worldIn.isSideSolid(x - 1, y, z, EAST, true))
             {
-                p_149726_1_.setBlockMetadataWithNotify(p_149726_2_, p_149726_3_, p_149726_4_, 1, 2);
+                worldIn.setBlockMetadataWithNotify(x, y, z, 1, 2);
             }
-            else if (p_149726_1_.isSideSolid(p_149726_2_ + 1, p_149726_3_, p_149726_4_, WEST, true))
+            else if (worldIn.isSideSolid(x + 1, y, z, WEST, true))
             {
-                p_149726_1_.setBlockMetadataWithNotify(p_149726_2_, p_149726_3_, p_149726_4_, 2, 2);
+                worldIn.setBlockMetadataWithNotify(x, y, z, 2, 2);
             }
-            else if (p_149726_1_.isSideSolid(p_149726_2_, p_149726_3_, p_149726_4_ - 1, SOUTH, true))
+            else if (worldIn.isSideSolid(x, y, z - 1, SOUTH, true))
             {
-                p_149726_1_.setBlockMetadataWithNotify(p_149726_2_, p_149726_3_, p_149726_4_, 3, 2);
+                worldIn.setBlockMetadataWithNotify(x, y, z, 3, 2);
             }
-            else if (p_149726_1_.isSideSolid(p_149726_2_, p_149726_3_, p_149726_4_ + 1, NORTH, true))
+            else if (worldIn.isSideSolid(x, y, z + 1, NORTH, true))
             {
-                p_149726_1_.setBlockMetadataWithNotify(p_149726_2_, p_149726_3_, p_149726_4_, 4, 2);
+                worldIn.setBlockMetadataWithNotify(x, y, z, 4, 2);
             }
-            else if (this.canPlaceTorchOn(p_149726_1_, p_149726_2_, p_149726_3_ - 1, p_149726_4_))
+            else if (this.canPlaceTorchOn(worldIn, x, y - 1, z))
             {
-                p_149726_1_.setBlockMetadataWithNotify(p_149726_2_, p_149726_3_, p_149726_4_, 5, 2);
+                worldIn.setBlockMetadataWithNotify(x, y, z, 5, 2);
             }
         }
 
-        this.dropTorchIfCantStay(p_149726_1_, p_149726_2_, p_149726_3_, p_149726_4_);
+        this.dropTorchIfCantStay(worldIn, x, y, z);
     }
 
     @Override

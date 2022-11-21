@@ -1,10 +1,5 @@
 package tconstruct.weaponry.weapons;
 
-import tconstruct.weaponry.TinkerWeaponry;
-import tconstruct.weaponry.client.CrosshairType;
-import tconstruct.client.IconFlipped;
-import tconstruct.weaponry.entity.ShurikenEntity;
-import tconstruct.library.weaponry.AmmoWeapon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -15,6 +10,11 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import tconstruct.client.IconFlipped;
+import tconstruct.library.weaponry.AmmoWeapon;
+import tconstruct.weaponry.TinkerWeaponry;
+import tconstruct.weaponry.client.CrosshairType;
+import tconstruct.weaponry.entity.ShurikenEntity;
 
 import java.util.Iterator;
 import java.util.Map;

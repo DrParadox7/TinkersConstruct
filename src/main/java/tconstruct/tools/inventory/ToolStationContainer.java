@@ -1,8 +1,8 @@
 package tconstruct.tools.inventory;
 
-import java.util.Random;
 import net.minecraft.block.Block;
-import net.minecraft.entity.player.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
@@ -13,6 +13,8 @@ import tconstruct.library.modifier.IModifyable;
 import tconstruct.smeltery.inventory.ActiveContainer;
 import tconstruct.tools.TinkerTools;
 import tconstruct.tools.logic.ToolStationLogic;
+
+import java.util.Random;
 
 public class ToolStationContainer extends ActiveContainer
 {

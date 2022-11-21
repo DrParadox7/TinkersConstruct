@@ -1,12 +1,21 @@
 package tconstruct.library.component;
 
-import java.util.*;
-import mantle.blocks.iface.*;
-import mantle.world.*;
+import mantle.blocks.iface.IFacingLogic;
+import mantle.blocks.iface.IMasterLogic;
+import mantle.blocks.iface.IServantLogic;
+import mantle.world.CoordTuple;
+import mantle.world.CoordTupleSort;
 import net.minecraft.block.Block;
-import net.minecraft.nbt.*;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagIntArray;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import tconstruct.TConstruct;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Iterator;
 
 public class TankLayerScan extends LogicComponent
 {

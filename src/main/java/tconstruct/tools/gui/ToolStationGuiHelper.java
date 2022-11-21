@@ -14,8 +14,6 @@ import tconstruct.library.accessory.AccessoryCore;
 import tconstruct.library.armor.ArmorCore;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.library.tools.AbilityHelper;
-import tconstruct.library.tools.DualHarvestTool;
-import tconstruct.library.tools.HarvestTool;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.library.util.HarvestLevels;
 import tconstruct.library.util.XpUtils;
@@ -23,12 +21,10 @@ import tconstruct.library.weaponry.AmmoWeapon;
 import tconstruct.library.weaponry.IAmmo;
 import tconstruct.library.weaponry.ProjectileWeapon;
 
-import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.LinkedList;
-import java.util.List;
 
 public final class ToolStationGuiHelper {
     // non-instantiable
@@ -340,8 +336,8 @@ public final class ToolStationGuiHelper {
      * Renders the specified text to the screen, center-aligned.
      * Copied out of GUI
      */
-    public static void drawCenteredString(FontRenderer p_73732_1_, String p_73732_2_, int p_73732_3_, int p_73732_4_, int p_73732_5_)
+    public static void drawCenteredString(FontRenderer fontRendererIn, String text, int x, int y, int color)
     {
-        p_73732_1_.drawStringWithShadow(p_73732_2_, p_73732_3_ - p_73732_1_.getStringWidth(p_73732_2_) / 2, p_73732_4_, p_73732_5_);
+        fontRendererIn.drawStringWithShadow(text, x - fontRendererIn.getStringWidth(text) / 2, y, color);
     }
 }

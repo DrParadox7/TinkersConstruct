@@ -1,11 +1,5 @@
 package tconstruct.weaponry.client.item;
 
-import tconstruct.client.FlexibleToolRenderer;
-import tconstruct.weaponry.TinkerWeaponry;
-import tconstruct.weaponry.ammo.ArrowAmmo;
-import tconstruct.weaponry.entity.ArrowEntity;
-import tconstruct.library.weaponry.ProjectileWeapon;
-import tconstruct.library.weaponry.IWindup;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.client.renderer.entity.RenderManager;
@@ -13,7 +7,12 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
-import tconstruct.weaponry.entity.BoltEntity;
+import tconstruct.client.FlexibleToolRenderer;
+import tconstruct.library.weaponry.IWindup;
+import tconstruct.library.weaponry.ProjectileWeapon;
+import tconstruct.weaponry.TinkerWeaponry;
+import tconstruct.weaponry.ammo.ArrowAmmo;
+import tconstruct.weaponry.entity.ArrowEntity;
 
 public class BowRenderer extends FlexibleToolRenderer {
     private static final ArrowEntity dummy = new ArrowEntity(null);

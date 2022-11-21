@@ -1,18 +1,22 @@
 package tconstruct.armor.items;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.List;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.settings.GameSettings;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StatCollector;
 import tconstruct.armor.ArmorProxyClient;
 import tconstruct.client.ArmorControls;
-import tconstruct.library.accessory.*;
+import tconstruct.library.accessory.AccessoryCore;
+import tconstruct.library.accessory.IAccessoryModel;
+
+import java.util.List;
 
 public class TravelBelt extends AccessoryCore implements IAccessoryModel
 {

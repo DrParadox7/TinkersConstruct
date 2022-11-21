@@ -48,7 +48,6 @@ import tconstruct.common.TProxyCommon;
 import tconstruct.library.accessory.IAccessoryModel;
 import tconstruct.library.client.TConstructClientRegistry;
 import tconstruct.library.crafting.ModifyBuilder;
-import tconstruct.tools.TinkerTools;
 import tconstruct.world.TinkerWorld;
 
 import java.util.Random;

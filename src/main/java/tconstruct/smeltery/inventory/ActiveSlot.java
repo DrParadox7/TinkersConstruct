@@ -1,6 +1,7 @@
 package tconstruct.smeltery.inventory;
 
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 
 public class ActiveSlot extends Slot
 {

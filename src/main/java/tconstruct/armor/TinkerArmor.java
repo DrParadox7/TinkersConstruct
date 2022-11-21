@@ -1,19 +1,21 @@
 package tconstruct.armor;
 
-import cpw.mods.fml.common.*;
-import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.registry.*;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
-import cpw.mods.fml.relauncher.Side;
-
-import java.util.EnumSet;
-
-import mantle.pulsar.pulse.*;
+import mantle.pulsar.pulse.Handler;
+import mantle.pulsar.pulse.Pulse;
 import net.minecraft.block.Block;
-import net.minecraft.init.*;
-import net.minecraft.item.*;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraft.util.StatCollector;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import net.minecraftforge.oredict.ShapedOreRecipe;
@@ -21,18 +23,19 @@ import tconstruct.TConstruct;
 import tconstruct.armor.blocks.DryingRack;
 import tconstruct.armor.items.*;
 import tconstruct.blocks.logic.DryingRackLogic;
-import tconstruct.client.ArmorControls;
-import tconstruct.client.tabs.TabRegistry;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.accessory.AccessoryCore;
 import tconstruct.library.armor.ArmorPart;
-import tconstruct.library.crafting.*;
+import tconstruct.library.crafting.DryingRackRecipes;
+import tconstruct.library.crafting.LiquidCasting;
+import tconstruct.library.crafting.ModifyBuilder;
 import tconstruct.modifiers.accessory.GloveSpeed;
 import tconstruct.modifiers.armor.*;
 import tconstruct.modifiers.tools.ModAttack;
-import tconstruct.modifiers.tools.ModInteger;
 import tconstruct.tools.TinkerTools;
 import tconstruct.world.TinkerWorld;
+
+import java.util.EnumSet;
 
 @ObjectHolder(TConstruct.modID)
 @Pulse(id = "Tinkers' Armory", description = "Modifyable armors, such as the traveller's gear.")

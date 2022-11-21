@@ -1,7 +1,6 @@
 package tconstruct.plugins.ubc;
 
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
 import exterminatorJeff.undergroundBiomes.api.UBAPIHook;
 import exterminatorJeff.undergroundBiomes.api.UBOreTexturizer.BlocksAreAlreadySet;
 import mantle.pulsar.pulse.Handler;

@@ -1,19 +1,14 @@
 package tconstruct.weaponry.items;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.nbt.NBTTagString;
-import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
-import tconstruct.library.client.TConstructClientRegistry;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.util.Reference;
-import tconstruct.weaponry.TinkerWeaponry;
 import tconstruct.weaponry.ammo.ArrowAmmo;
 
 import java.util.List;

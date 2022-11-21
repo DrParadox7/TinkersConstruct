@@ -9,7 +9,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import tconstruct.library.TConstructRegistry;
-import tconstruct.library.tools.DynamicToolPart;
 import tconstruct.library.util.TextureHelper;
 import tconstruct.tools.TinkerTools;
 import tconstruct.util.config.PHConstruct;

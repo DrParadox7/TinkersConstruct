@@ -1,13 +1,15 @@
 package tconstruct.armor.items;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.List;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import mantle.items.abstracts.CraftingItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.accessory.IAccessory;
+
+import java.util.List;
 
 public class Knapsack extends CraftingItem implements IAccessory
 {

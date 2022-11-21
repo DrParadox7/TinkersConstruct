@@ -1,11 +1,12 @@
 package tconstruct.world.itemblocks;
 
-import java.util.List;
 import mantle.blocks.abstracts.MultiItemBlock;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.List;
 
 public class MetalOreItemBlock extends MultiItemBlock
 {

@@ -1,19 +1,18 @@
 package tconstruct.weaponry.ammo;
 
-import net.minecraft.util.StatCollector;
-import tconstruct.TConstruct;
-import tconstruct.library.TConstructRegistry;
-import tconstruct.library.tools.ArrowMaterial;
-import tconstruct.library.tools.CustomMaterial;
-import tconstruct.library.tools.FletchingMaterial;
-import tconstruct.library.tools.FletchlingLeafMaterial;
-import tconstruct.weaponry.TinkerWeaponry;
-import tconstruct.library.weaponry.AmmoItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
+import tconstruct.TConstruct;
+import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.ToolBuilder;
+import tconstruct.library.tools.CustomMaterial;
+import tconstruct.library.tools.FletchingMaterial;
+import tconstruct.library.tools.FletchlingLeafMaterial;
+import tconstruct.library.weaponry.AmmoItem;
 import tconstruct.tools.TinkerTools;
+import tconstruct.weaponry.TinkerWeaponry;
 
 import java.util.List;
 

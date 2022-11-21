@@ -1,7 +1,9 @@
 package tconstruct.library.util;
 
-import java.util.*;
 import net.minecraft.util.StatCollector;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Lookup for the name of each harvest level. Use this clientside only for display purposes.

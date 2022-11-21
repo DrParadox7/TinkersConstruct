@@ -1,7 +1,7 @@
 package tconstruct.weaponry.client.entity;
 
-import tconstruct.weaponry.entity.ShurikenEntity;
 import org.lwjgl.opengl.GL11;
+import tconstruct.weaponry.entity.ShurikenEntity;
 
 public class ShurikenEntityRenderer extends ProjectileBaseRenderer<ShurikenEntity> {
 

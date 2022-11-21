@@ -1,6 +1,5 @@
 package tconstruct.mechworks.landmine.behavior.stackCombo;
 
-import java.util.ArrayList;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
@@ -9,6 +8,8 @@ import net.minecraftforge.common.util.ForgeDirection;
 import tconstruct.mechworks.landmine.Helper;
 import tconstruct.mechworks.landmine.behavior.Behavior;
 import tconstruct.mechworks.logic.TileEntityLandmine;
+
+import java.util.ArrayList;
 
 /**
  * 

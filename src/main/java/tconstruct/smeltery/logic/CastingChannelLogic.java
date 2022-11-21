@@ -1,15 +1,20 @@
 package tconstruct.smeltery.logic;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.*;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.network.*;
+import net.minecraft.network.NetworkManager;
+import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.*;
 import tconstruct.TConstruct;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Set;
 
 /**
  * @author BluSunrize

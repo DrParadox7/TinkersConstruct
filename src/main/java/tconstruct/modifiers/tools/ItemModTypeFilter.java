@@ -1,8 +1,10 @@
 package tconstruct.modifiers.tools;
 
-import java.util.*;
 import net.minecraft.item.ItemStack;
 import tconstruct.library.modifier.ItemModifier;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class ItemModTypeFilter extends ItemModifier
 {

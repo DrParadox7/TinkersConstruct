@@ -1,13 +1,15 @@
 package tconstruct.mechworks.landmine.behavior;
 
-import java.util.Random;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.projectile.EntitySmallFireball;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
 import tconstruct.mechworks.itemblocks.ItemBlockLandmine;
+
+import java.util.Random;
 
 /**
  * 

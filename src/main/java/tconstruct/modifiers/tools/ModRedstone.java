@@ -1,10 +1,13 @@
 package tconstruct.modifiers.tools;
 
-import java.util.*;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.library.tools.ToolCore;
+
+import java.util.Arrays;
+import java.util.List;
 
 import static tconstruct.library.util.XpUtils.ModCost;
 

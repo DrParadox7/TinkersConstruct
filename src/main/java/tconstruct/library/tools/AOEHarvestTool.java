@@ -1,18 +1,10 @@
 package tconstruct.library.tools;
 
 import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.multiplayer.PlayerControllerMP;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.server.management.ItemInWorldManager;
 import net.minecraft.util.MovingObjectPosition;
-
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 
 public abstract class AOEHarvestTool extends HarvestTool {
     public int breakRadius;

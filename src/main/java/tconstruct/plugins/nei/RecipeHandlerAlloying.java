@@ -1,20 +1,17 @@
 package tconstruct.plugins.nei;
 
-import java.awt.Rectangle;
+import codechicken.lib.gui.GuiDraw;
+import codechicken.nei.PositionedStack;
+import net.minecraft.util.StatCollector;
+import net.minecraftforge.fluids.FluidStack;
+import org.lwjgl.opengl.GL11;
+import tconstruct.library.crafting.AlloyMix;
+import tconstruct.library.crafting.Smeltery;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
-
-import net.minecraft.util.StatCollector;
-
-import net.minecraftforge.fluids.FluidStack;
-
-import org.lwjgl.opengl.GL11;
-
-import tconstruct.library.crafting.AlloyMix;
-import tconstruct.library.crafting.Smeltery;
-import codechicken.lib.gui.GuiDraw;
-import codechicken.nei.PositionedStack;
 
 public class RecipeHandlerAlloying extends RecipeHandlerBase
 {

@@ -1,14 +1,18 @@
 package tconstruct.smeltery.blocks;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.List;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.*;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import tconstruct.util.config.PHConstruct;
+
+import java.util.List;
 
 /**
  * @author fuj1n

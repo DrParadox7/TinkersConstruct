@@ -16,10 +16,8 @@ import mantle.pulsar.config.ForgeCFG;
 import mantle.pulsar.control.PulseManager;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
-
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
-
 import tconstruct.achievements.AchievementEvents;
 import tconstruct.achievements.TAchievements;
 import tconstruct.api.TConstructAPI;
@@ -36,13 +34,13 @@ import tconstruct.library.crafting.LiquidCasting;
 import tconstruct.mechworks.TinkerMechworks;
 import tconstruct.mechworks.landmine.behavior.Behavior;
 import tconstruct.mechworks.landmine.behavior.stackCombo.SpecialStackHandler;
-import tconstruct.plugins.gears.TinkerGears;
+import tconstruct.plugins.TinkerThaumcraft;
 import tconstruct.plugins.fmp.TinkerFMP;
+import tconstruct.plugins.gears.TinkerGears;
 import tconstruct.plugins.ic2.TinkerIC2;
 import tconstruct.plugins.imc.TinkerAE2;
 import tconstruct.plugins.imc.TinkerBuildCraft;
 import tconstruct.plugins.imc.TinkerMystcraft;
-import tconstruct.plugins.TinkerThaumcraft;
 import tconstruct.plugins.imc.TinkerRfTools;
 import tconstruct.plugins.mfr.TinkerMFR;
 import tconstruct.plugins.te4.TinkerTE4;

@@ -3,15 +3,18 @@ package tconstruct.achievements;
 import com.mojang.realmsclient.gui.ChatFormatting;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemFood;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
-import net.minecraftforge.event.entity.living.*;
+import net.minecraftforge.event.entity.living.LivingDeathEvent;
+import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 import tconstruct.items.tools.FryingPan;
 import tconstruct.library.event.ToolCraftedEvent;
-import tconstruct.library.tools.*;
+import tconstruct.library.tools.ToolCore;
+import tconstruct.library.tools.Weapon;
 import tconstruct.tools.logic.ToolForgeLogic;
 
 public class AchievementEvents

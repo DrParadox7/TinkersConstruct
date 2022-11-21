@@ -1,16 +1,20 @@
 package tconstruct.smeltery.blocks;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.List;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.Entity;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.*;
-import net.minecraft.world.*;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 import tconstruct.smeltery.model.PaneConnectedRender;
 import tconstruct.util.config.PHConstruct;
+
+import java.util.List;
 
 public class GlassPaneConnected extends GlassBlockConnected
 {

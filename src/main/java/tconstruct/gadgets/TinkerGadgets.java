@@ -1,10 +1,5 @@
 package tconstruct.gadgets;
 
-import java.util.Locale;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -16,11 +11,15 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.oredict.ShapedOreRecipe;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import tconstruct.TConstruct;
 import tconstruct.gadgets.item.ItemSlimeBoots;
 import tconstruct.gadgets.item.ItemSlimeSling;
 import tconstruct.library.SlimeBounceHandler;
 import tconstruct.library.TConstructRegistry;
+
+import java.util.Locale;
 
 @Pulse(id = "Tinkers' Gadgets", description = "All the fun toys.")
 public class TinkerGadgets {

@@ -1,8 +1,5 @@
 package tconstruct.library.entity;
 
-import tconstruct.library.weaponry.AmmoItem;
-import tconstruct.modifiers.tools.ModMoss;
-import tconstruct.util.Reference;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import io.netty.buffer.ByteBuf;
@@ -15,7 +12,6 @@ import net.minecraft.entity.monster.EntityEnderman;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.entity.projectile.EntityArrow;
-import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.play.server.S2BPacketChangeGameState;
@@ -25,6 +21,9 @@ import tconstruct.library.ActiveToolMod;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.tools.ToolCore;
+import tconstruct.library.weaponry.AmmoItem;
+import tconstruct.modifiers.tools.ModMoss;
+import tconstruct.util.Reference;
 import tconstruct.weaponry.entity.ArrowEntity;
 
 import java.util.List;
@@ -334,7 +333,7 @@ public abstract class ProjectileBase extends EntityArrow implements IEntityAddit
     }
 
     @Override
-    public void setVelocity(double p_70016_1_, double p_70016_3_, double p_70016_5_) {
+    public void setVelocity(double x, double y, double z) {
         // don't do anything, we set it ourselves at spawn
         // Mojangs code has a hard cap of 3.9 speed, but our projectiles can go faster, which desyncs client and server speeds
         // Packet that's causing it: S12PacketEntityVelocity

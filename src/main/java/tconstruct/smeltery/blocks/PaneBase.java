@@ -1,14 +1,17 @@
 package tconstruct.smeltery.blocks;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.List;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockStainedGlassPane;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import tconstruct.smeltery.model.PaneRender;
+
+import java.util.List;
 
 public class PaneBase extends BlockStainedGlassPane
 {
@@ -40,9 +43,9 @@ public class PaneBase extends BlockStainedGlassPane
 
     @Override
     @SideOnly(Side.CLIENT)
-    public IIcon func_149735_b (int p_149735_1_, int p_149735_2_)
+    public IIcon func_149735_b (int side, int meta)
     {
-        return icons[p_149735_2_];
+        return icons[meta];
     }
 
     @Override
@@ -53,9 +56,9 @@ public class PaneBase extends BlockStainedGlassPane
     }
 
     @Override
-    public IIcon getIcon (int p_149691_1_, int p_149691_2_)
+    public IIcon getIcon (int side, int meta)
     {
-        return icons[p_149691_2_];
+        return icons[meta];
     }
 
     @Override

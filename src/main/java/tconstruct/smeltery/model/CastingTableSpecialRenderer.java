@@ -1,13 +1,14 @@
 package tconstruct.smeltery.model;
 
-import cpw.mods.fml.relauncher.*;
-import net.minecraft.client.renderer.entity.*;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.renderer.entity.RenderItem;
+import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.item.*;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-
 import org.lwjgl.opengl.GL11;
-
 import tconstruct.library.ItemBlocklike;
 import tconstruct.smeltery.TinkerSmeltery;
 import tconstruct.smeltery.logic.CastingTableLogic;

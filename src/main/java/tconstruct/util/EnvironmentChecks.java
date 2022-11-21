@@ -1,11 +1,14 @@
 package tconstruct.util;
 
-import cpw.mods.fml.common.*;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.ICrashCallable;
 import cpw.mods.fml.relauncher.Side;
-import java.util.*;
-import mantle.crash.*;
+import mantle.crash.CallableSuppConfig;
+import mantle.crash.CallableUnsuppConfig;
 import net.minecraftforge.common.MinecraftForge;
-import tconstruct.TConstruct;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class EnvironmentChecks
 {

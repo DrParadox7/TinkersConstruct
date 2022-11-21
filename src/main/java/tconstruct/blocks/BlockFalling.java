@@ -1,12 +1,13 @@
 package tconstruct.blocks;
 
-import java.util.Random;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityFallingBlock;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
+
+import java.util.Random;
 
 public class BlockFalling extends Block
 {
@@ -24,23 +25,23 @@ public class BlockFalling extends Block
     }
 
     @Override
-    public void onBlockAdded (World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_)
+    public void onBlockAdded (World worldIn, int x, int y, int z)
     {
-        p_149726_1_.scheduleBlockUpdate(p_149726_2_, p_149726_3_, p_149726_4_, this, this.tickRate(p_149726_1_));
+        worldIn.scheduleBlockUpdate(x, y, z, this, this.tickRate(worldIn));
     }
 
     @Override
-    public void onNeighborBlockChange (World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_)
+    public void onNeighborBlockChange (World worldIn, int x, int y, int z, Block neighbor)
     {
-        p_149695_1_.scheduleBlockUpdate(p_149695_2_, p_149695_3_, p_149695_4_, this, this.tickRate(p_149695_1_));
+        worldIn.scheduleBlockUpdate(x, y, z, this, this.tickRate(worldIn));
     }
 
     @Override
-    public void updateTick (World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_)
+    public void updateTick (World worldIn, int x, int y, int z, Random random)
     {
-        if (!p_149674_1_.isRemote)
+        if (!worldIn.isRemote)
         {
-            this.func_149830_m(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_);
+            this.func_149830_m(worldIn, x, y, z);
         }
     }
 
@@ -87,7 +88,7 @@ public class BlockFalling extends Block
     }
 
     @Override
-    public int tickRate (World p_149738_1_)
+    public int tickRate (World worldIn)
     {
         return 2;
     }

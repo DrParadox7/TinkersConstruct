@@ -1,9 +1,5 @@
 package tconstruct.library;
 
-import java.util.IdentityHashMap;
-
-import javax.vecmath.Vector3d;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.EntityLivingBase;
@@ -13,6 +9,9 @@ import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingUpdateEvent;
 import tconstruct.gadgets.TinkerGadgets;
 import tconstruct.gadgets.item.ItemSlimeBoots;
+
+import javax.vecmath.Vector3d;
+import java.util.IdentityHashMap;
 
 /** Logic for entities bouncing */
 public class SlimeBounceHandler {

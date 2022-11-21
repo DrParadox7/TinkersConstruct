@@ -1,16 +1,21 @@
 package tconstruct.blocks.slime;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.*;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockLeaves;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.*;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.world.TinkerWorld;
+
+import java.util.List;
+import java.util.Random;
 
 public class SlimeLeaves extends BlockLeaves
 {
@@ -97,7 +102,7 @@ public class SlimeLeaves extends BlockLeaves
      * Returns the ID of the items to drop on destruction.
      */
     @Override
-    public Item getItemDropped (int p_149650_1_, Random p_149650_2_, int p_149650_3_)
+    public Item getItemDropped (int meta, Random random, int fortune)
     {
         return Item.getItemFromBlock(TinkerWorld.slimeSapling);
     }

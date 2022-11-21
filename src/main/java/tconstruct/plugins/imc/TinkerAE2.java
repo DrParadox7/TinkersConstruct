@@ -1,10 +1,14 @@
 package tconstruct.plugins.imc;
 
-import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
-import java.util.*;
-import mantle.pulsar.pulse.*;
+import mantle.pulsar.pulse.Handler;
+import mantle.pulsar.pulse.Pulse;
 import tconstruct.TConstruct;
+
+import java.util.Arrays;
+import java.util.List;
 
 @ObjectHolder(TConstruct.modID)
 @Pulse(id = "Tinkers AE2 Compatibility", description = "Tinkers Construct compatibility for Applied Energistics 2", modsRequired = "appliedenergistics2", forced = true)

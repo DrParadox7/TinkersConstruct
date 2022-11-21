@@ -1,26 +1,33 @@
 package tconstruct.items.tools;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.*;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.enchantment.*;
-import net.minecraft.entity.player.*;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
-import net.minecraft.item.*;
+import net.minecraft.item.EnumAction;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
-import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.entity.player.*;
+import net.minecraftforge.event.entity.player.ArrowLooseEvent;
+import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import tconstruct.library.crafting.ToolBuilder;
-import tconstruct.library.tools.*;
+import tconstruct.library.tools.AbilityHelper;
+import tconstruct.library.tools.ToolCore;
 import tconstruct.modifiers.tools.ModMoss;
 import tconstruct.tools.TinkerTools;
 import tconstruct.tools.entity.ArrowEntity;
 import tconstruct.util.config.PHConstruct;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
 
 @Deprecated
 public abstract class BowBase extends ToolCore

@@ -1,5 +1,8 @@
 package tconstruct.items.tools;
 
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import mods.battlegear2.api.PlayerEventChild;
 import mods.battlegear2.api.weapons.IBattlegearWeapon;
 import net.minecraft.block.Block;
@@ -19,9 +22,6 @@ import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import tconstruct.library.tools.AOEHarvestTool;
 import tconstruct.library.tools.AbilityHelper;
 import tconstruct.tools.TinkerTools;
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @Optional.InterfaceList({ @Optional.Interface(modid = "battlegear2", iface = "mods.battlegear2.api.weapons.IBattlegearWeapon"),
         @Optional.Interface(modid = "ZeldaItemAPI", iface = "zeldaswordskills.api.item.ISword") })

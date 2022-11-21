@@ -1,20 +1,16 @@
 package tconstruct.plugins;
 
-import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
-import mantle.pulsar.pulse.*;
-import net.minecraft.init.Items;
+import mantle.pulsar.pulse.Handler;
+import mantle.pulsar.pulse.Pulse;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.EnumChatFormatting;
 import tconstruct.TConstruct;
-import tconstruct.library.armor.ArmorPart;
 import tconstruct.library.crafting.ModifyBuilder;
-import tconstruct.modifiers.armor.AModBoolean;
 import tconstruct.modifiers.armor.AModThaumicVision;
 import tconstruct.world.TinkerWorld;
 import thaumcraft.api.ItemApi;
-
-import java.util.EnumSet;
 
 @ObjectHolder(TConstruct.modID)
 @Pulse(id = "Tinkers Thaumcraft Compatibility", description = "Tinkers Construct compatibility for Thaumcraft", modsRequired = "Thaumcraft", pulsesRequired = "Tinkers' World", forced = true)

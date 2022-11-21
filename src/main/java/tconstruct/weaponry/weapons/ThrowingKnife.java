@@ -1,18 +1,18 @@
 package tconstruct.weaponry.weapons;
 
-import net.minecraft.client.entity.EntityPlayerSP;
-import tconstruct.library.entity.ProjectileBase;
-import tconstruct.weaponry.client.CrosshairType;
-import tconstruct.weaponry.entity.ThrowingKnifeEntity;
-import tconstruct.library.weaponry.AmmoWeapon;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import net.minecraft.client.entity.EntityPlayerSP;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import tconstruct.library.entity.ProjectileBase;
+import tconstruct.library.weaponry.AmmoWeapon;
 import tconstruct.tools.TinkerTools;
+import tconstruct.weaponry.client.CrosshairType;
+import tconstruct.weaponry.entity.ThrowingKnifeEntity;
 
 public class ThrowingKnife extends AmmoWeapon {
     public ThrowingKnife() {

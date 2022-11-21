@@ -1,9 +1,9 @@
 package tconstruct.armor.model;
 
-import java.util.*;
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.texture.TextureManager;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
@@ -11,6 +11,9 @@ import net.minecraftforge.client.IItemRenderer;
 import net.minecraftforge.common.util.ForgeDirection;
 import org.lwjgl.opengl.GL11;
 import tconstruct.armor.items.ArmorPattern;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RenderArmorCast implements IItemRenderer
 {

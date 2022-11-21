@@ -1,12 +1,16 @@
 package tconstruct.world.village;
 
-import java.util.*;
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.structure.*;
+import net.minecraft.world.gen.structure.StructureBoundingBox;
+import net.minecraft.world.gen.structure.StructureComponent;
+import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 import tconstruct.smeltery.TinkerSmeltery;
+
+import java.util.List;
+import java.util.Random;
 
 public class ComponentSmeltery extends StructureVillagePieces.House1
 {

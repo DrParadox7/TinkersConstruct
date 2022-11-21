@@ -1,14 +1,14 @@
 package tconstruct.plugins.nei;
 
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.List;
-
+import codechicken.nei.NEIServerUtils;
+import codechicken.nei.PositionedStack;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
 import tconstruct.library.crafting.CastingRecipe;
-import codechicken.nei.NEIServerUtils;
-import codechicken.nei.PositionedStack;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public abstract class RecipeHandlerCastingBase extends RecipeHandlerBase
 {

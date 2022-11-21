@@ -1,9 +1,7 @@
 package tconstruct.weaponry.entity;
 
-import net.minecraft.entity.EntityLivingBase;
-import tconstruct.library.entity.ProjectileBase;
-import tconstruct.library.util.PiercingArrowDamage;
 import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -11,7 +9,9 @@ import net.minecraft.util.DamageSource;
 import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import tconstruct.TConstruct;
+import tconstruct.library.entity.ProjectileBase;
 import tconstruct.library.tools.ToolCore;
+import tconstruct.library.util.PiercingArrowDamage;
 
 public class ArrowEntity extends ProjectileBase {
     public ArrowEntity(World world) {
