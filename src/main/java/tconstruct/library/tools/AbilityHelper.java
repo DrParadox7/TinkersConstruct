@@ -25,7 +25,6 @@ import net.minecraft.potion.Potion;
 import net.minecraft.stats.AchievementList;
 import net.minecraft.stats.StatList;
 import net.minecraft.util.*;
-import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.FakePlayer;
@@ -124,8 +123,11 @@ public class AbilityHelper
                     }
                     boolean causedDamage = false;
                     boolean isAlive = entity.isEntityAlive();
-                    if (tool.pierceArmor() && !broken)
+                    if (tool.pierceArmor() && !broken && entity instanceof EntityLivingBase)
                     {
+                            int armorValue = Math.min(20, ((EntityLivingBase) entity).getTotalArmorValue());
+                            damage = (int) (damage / (1 -(0.04*armorValue)));
+
                         if (player instanceof EntityPlayer)
                             causedDamage = entity.attackEntityFrom(causePlayerPiercingDamage((EntityPlayer) player), damage);
                         else
