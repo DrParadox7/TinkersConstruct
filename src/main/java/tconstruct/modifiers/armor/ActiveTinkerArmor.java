@@ -3,12 +3,15 @@ package tconstruct.modifiers.armor;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.*;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
 import net.minecraft.world.World;
 import tconstruct.TConstruct;
 import tconstruct.armor.player.TPlayerStats;
-import tconstruct.library.armor.*;
-import tconstruct.library.modifier.*;
+import tconstruct.library.armor.ArmorCore;
+import tconstruct.library.armor.ArmorPart;
+import tconstruct.library.modifier.ActiveArmorMod;
+import tconstruct.library.modifier.IModifyable;
 
 public class ActiveTinkerArmor extends ActiveArmorMod
 {

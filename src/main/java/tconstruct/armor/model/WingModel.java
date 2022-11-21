@@ -1,6 +1,7 @@
 package tconstruct.armor.model;
 
-import net.minecraft.client.model.*;
+import net.minecraft.client.model.ModelBiped;
+import net.minecraft.client.model.ModelRenderer;
 import net.minecraft.entity.Entity;
 import net.minecraft.util.MathHelper;
 

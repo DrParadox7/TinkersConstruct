@@ -1,20 +1,25 @@
 package tconstruct.world.blocks;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.List;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import mantle.world.WorldHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
 import net.minecraft.init.Items;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.*;
+import net.minecraft.world.Explosion;
+import net.minecraft.world.World;
 import tconstruct.blocks.TConstructBlock;
 import tconstruct.mechworks.entity.item.ExplosivePrimed;
+
+import java.util.List;
 
 public class SlimeExplosive extends TConstructBlock
 {

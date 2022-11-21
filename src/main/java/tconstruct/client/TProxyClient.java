@@ -1,22 +1,25 @@
 package tconstruct.client;
 
-import java.io.InputStream;
-import java.text.DecimalFormat;
-import javax.xml.parsers.*;
-
 import mantle.client.SmallFontRenderer;
 import mantle.lib.client.MantleClientRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderItem;
-import net.minecraft.init.*;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.ResourceLocation;
 import org.w3c.dom.Document;
 import tconstruct.TConstruct;
 import tconstruct.armor.ArmorProxyClient;
 import tconstruct.armor.player.TPlayerStats;
 import tconstruct.common.TProxyCommon;
 import tconstruct.tools.items.ManualInfo;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.io.InputStream;
+import java.text.DecimalFormat;
 
 public class TProxyClient extends TProxyCommon {
     public static DecimalFormat df = new DecimalFormat("##.#");

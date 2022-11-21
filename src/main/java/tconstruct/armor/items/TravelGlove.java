@@ -1,13 +1,17 @@
 package tconstruct.armor.items;
 
-import cpw.mods.fml.relauncher.*;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.ResourceLocation;
 import tconstruct.armor.ArmorProxyClient;
-import tconstruct.library.accessory.*;
+import tconstruct.library.accessory.AccessoryCore;
+import tconstruct.library.accessory.IAccessoryModel;
 
 public class TravelGlove extends AccessoryCore implements IAccessoryModel
 {

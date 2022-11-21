@@ -1,18 +1,7 @@
 package tconstruct.weaponry.weapons;
 
-import net.minecraft.enchantment.Enchantment;
-import net.minecraft.enchantment.EnchantmentHelper;
-import net.minecraft.init.Items;
-import tconstruct.TConstruct;
-import tconstruct.library.TConstructRegistry;
-import tconstruct.modifiers.tools.ModMoss;
-import tconstruct.weaponry.TinkerWeaponry;
-import tconstruct.weaponry.ammo.BoltAmmo;
-import tconstruct.weaponry.entity.BoltEntity;
-import tconstruct.library.weaponry.AmmoItem;
-import tconstruct.library.weaponry.ProjectileWeapon;
-import tconstruct.util.Reference;
-import tconstruct.library.weaponry.IAmmo;
+import cpw.mods.fml.common.Loader;
+import mods.battlegear2.api.core.InventoryPlayerBattle;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.projectile.EntityArrow;
@@ -21,11 +10,18 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
+import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.tools.AbilityHelper;
+import tconstruct.library.weaponry.AmmoItem;
+import tconstruct.library.weaponry.IAmmo;
+import tconstruct.library.weaponry.ProjectileWeapon;
+import tconstruct.modifiers.tools.ModMoss;
 import tconstruct.tools.TinkerTools;
-import cpw.mods.fml.common.Loader;
-import mods.battlegear2.api.core.InventoryPlayerBattle;
+import tconstruct.util.Reference;
+import tconstruct.weaponry.TinkerWeaponry;
+import tconstruct.weaponry.ammo.BoltAmmo;
+import tconstruct.weaponry.entity.BoltEntity;
 
 import java.util.List;
 

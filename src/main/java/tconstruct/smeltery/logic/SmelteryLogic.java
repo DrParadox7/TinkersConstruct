@@ -1,9 +1,5 @@
 package tconstruct.smeltery.logic;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mantle.blocks.abstracts.InventoryLogic;
@@ -32,7 +28,6 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.Chunk;
@@ -44,6 +39,10 @@ import tconstruct.smeltery.SmelteryDamageSource;
 import tconstruct.smeltery.TinkerSmeltery;
 import tconstruct.smeltery.inventory.SmelteryContainer;
 import tconstruct.util.config.PHConstruct;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 /* Simple class for storing items in the block
  */

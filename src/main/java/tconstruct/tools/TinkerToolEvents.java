@@ -1,7 +1,5 @@
 package tconstruct.tools;
 
-import java.util.List;
-
 import cpw.mods.fml.common.eventhandler.Event.Result;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
@@ -35,6 +33,8 @@ import tconstruct.library.tools.*;
 import tconstruct.util.ItemHelper;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.util.network.MovementUpdatePacket;
+
+import java.util.List;
 
 public class TinkerToolEvents
 {

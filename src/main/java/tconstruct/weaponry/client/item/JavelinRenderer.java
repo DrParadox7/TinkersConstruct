@@ -1,10 +1,10 @@
 package tconstruct.weaponry.client.item;
 
-import tconstruct.client.AmmoItemRenderer;
-import tconstruct.library.weaponry.IWindup;
 import net.minecraft.client.Minecraft;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
+import tconstruct.client.AmmoItemRenderer;
+import tconstruct.library.weaponry.IWindup;
 
 public class JavelinRenderer extends AmmoItemRenderer {
 

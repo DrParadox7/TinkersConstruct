@@ -1,14 +1,19 @@
 package tconstruct.world.village;
 
-import java.util.*;
 import net.minecraft.init.Blocks;
 import net.minecraft.util.WeightedRandomChestContent;
 import net.minecraft.world.World;
-import net.minecraft.world.gen.structure.*;
+import net.minecraft.world.gen.structure.StructureBoundingBox;
+import net.minecraft.world.gen.structure.StructureComponent;
+import net.minecraft.world.gen.structure.StructureVillagePieces;
 import net.minecraft.world.gen.structure.StructureVillagePieces.Start;
 import tconstruct.tools.TinkerTools;
-import tconstruct.tools.logic.*;
+import tconstruct.tools.logic.CraftingStationLogic;
+import tconstruct.tools.logic.PatternChestLogic;
 import tconstruct.world.TinkerWorld;
+
+import java.util.List;
+import java.util.Random;
 
 public class ComponentToolWorkshop extends StructureVillagePieces.House1
 {

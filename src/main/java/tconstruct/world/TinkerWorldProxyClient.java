@@ -7,12 +7,15 @@ import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.ModelSlime;
 import net.minecraft.client.particle.*;
-import net.minecraft.init.*;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import tconstruct.mechworks.model.CartRender;
 import tconstruct.tools.TinkerTools;
-import tconstruct.world.entity.*;
+import tconstruct.world.entity.BlueSlime;
+import tconstruct.world.entity.CartEntity;
+import tconstruct.world.entity.KingBlueSlime;
 import tconstruct.world.model.*;
 
 public class TinkerWorldProxyClient extends TinkerWorldProxyCommon

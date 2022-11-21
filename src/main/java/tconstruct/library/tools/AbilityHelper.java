@@ -1,9 +1,5 @@
 package tconstruct.library.tools;
 
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
-
 import cofh.api.energy.IEnergyContainerItem;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.Event.Result;
@@ -34,6 +30,10 @@ import tconstruct.library.ActiveToolMod;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.util.PiercingEntityDamage;
 import tconstruct.modifiers.tools.ModMoss;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
 public class AbilityHelper
 {

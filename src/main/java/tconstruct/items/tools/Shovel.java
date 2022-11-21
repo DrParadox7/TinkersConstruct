@@ -1,6 +1,5 @@
 package tconstruct.items.tools;
 
-import cpw.mods.fml.relauncher.*;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
 import tconstruct.library.tools.HarvestTool;

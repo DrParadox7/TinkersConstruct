@@ -1,23 +1,28 @@
 package tconstruct.smeltery.blocks;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.List;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import mantle.blocks.abstracts.InventoryBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraft.util.*;
-import net.minecraft.world.*;
-import net.minecraftforge.common.MinecraftForge;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import tconstruct.TConstruct;
 import tconstruct.library.TConstructRegistry;
-import tconstruct.library.event.SmelteryEvent;
-import tconstruct.library.tools.AbilityHelper;
-import tconstruct.smeltery.logic.*;
+import tconstruct.smeltery.logic.CastingBasinLogic;
+import tconstruct.smeltery.logic.CastingBlockLogic;
+import tconstruct.smeltery.logic.CastingTableLogic;
+import tconstruct.smeltery.logic.FaucetLogic;
 import tconstruct.smeltery.model.CastingBlockRender;
+
+import java.util.List;
 
 public class SearedBlock extends InventoryBlock
 {

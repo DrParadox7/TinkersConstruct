@@ -8,9 +8,7 @@ import tconstruct.armor.TinkerArmor;
 import tconstruct.library.armor.ArmorMod;
 import tconstruct.library.armor.ArmorPart;
 
-import java.util.ArrayList;
 import java.util.EnumSet;
-import java.util.Iterator;
 
 public class AModThaumicVision extends ArmorMod {
     private final AModBoolean thaumicSensesMod;

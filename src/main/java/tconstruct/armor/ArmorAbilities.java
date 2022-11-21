@@ -1,8 +1,8 @@
 package tconstruct.armor;
 
-import java.util.ArrayList;
-import java.util.List;
-
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.PlayerEvent;
+import cpw.mods.fml.common.gameevent.TickEvent;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
 import net.minecraft.item.ItemStack;
@@ -12,9 +12,9 @@ import tconstruct.armor.items.TravelGear;
 import tconstruct.armor.player.TPlayerStats;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.util.network.HealthUpdatePacket;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
-import cpw.mods.fml.common.gameevent.PlayerEvent;
-import cpw.mods.fml.common.gameevent.TickEvent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArmorAbilities
 {

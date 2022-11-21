@@ -1,8 +1,9 @@
 package tconstruct.plugins.imc;
 
-import cpw.mods.fml.common.event.*;
-import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
-import mantle.pulsar.pulse.*;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
+import mantle.pulsar.pulse.Handler;
+import mantle.pulsar.pulse.Pulse;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 import tconstruct.TConstruct;

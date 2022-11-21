@@ -4,7 +4,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.modifier.ItemModifier;
-import tconstruct.library.tools.*;
+import tconstruct.library.tools.AbilityHelper;
+import tconstruct.library.tools.ToolCore;
 
 /* Little mod for actually adding the lapis modifier */
 

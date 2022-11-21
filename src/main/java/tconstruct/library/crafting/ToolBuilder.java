@@ -1,19 +1,24 @@
 package tconstruct.library.crafting;
 
 /** Once upon a time, too many tools to count. Let's put them together automatically */
+
 import cpw.mods.fml.common.eventhandler.Event.Result;
-
-import java.util.*;
-
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraftforge.common.MinecraftForge;
 import tconstruct.library.TConstructRegistry;
-import tconstruct.library.event.*;
+import tconstruct.library.event.ToolBuildEvent;
+import tconstruct.library.event.ToolCraftEvent;
 import tconstruct.library.modifier.ItemModifier;
-import tconstruct.library.tools.*;
+import tconstruct.library.tools.ToolCore;
+import tconstruct.library.tools.ToolMaterial;
 import tconstruct.library.util.IToolPart;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class ToolBuilder
 {

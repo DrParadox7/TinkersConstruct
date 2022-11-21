@@ -1,13 +1,18 @@
 package tconstruct.library;
 
-import java.lang.reflect.Method;
-import java.util.*;
-import net.minecraft.item.*;
-import org.apache.logging.log4j.*;
-import tconstruct.library.crafting.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import tconstruct.library.crafting.Detailing;
+import tconstruct.library.crafting.LiquidCasting;
+import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.modifier.ActiveArmorMod;
 import tconstruct.library.tools.*;
 import tconstruct.tools.TinkerTools;
+
+import java.lang.reflect.Method;
+import java.util.*;
 
 /**
  * A registry to store any relevant API work

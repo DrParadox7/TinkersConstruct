@@ -1,9 +1,13 @@
 package tconstruct.modifiers.armor;
 
-import java.util.EnumSet;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import tconstruct.library.armor.*;
+import tconstruct.library.armor.ArmorCore;
+import tconstruct.library.armor.ArmorMod;
+import tconstruct.library.armor.ArmorPart;
+
+import java.util.EnumSet;
 
 import static tconstruct.library.util.XpUtils.ModCost;
 

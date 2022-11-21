@@ -1,9 +1,14 @@
 package tconstruct.library.component;
 
-import java.util.*;
-import net.minecraft.nbt.*;
-import net.minecraftforge.fluids.*;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraftforge.fluids.FluidStack;
+import net.minecraftforge.fluids.FluidTankInfo;
+import net.minecraftforge.fluids.IFluidTank;
 import tconstruct.library.crafting.Smeltery;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MultiFluidTank extends LogicComponent implements IFluidTank
 {

@@ -1,13 +1,15 @@
 package tconstruct.smeltery.model;
 
-import cpw.mods.fml.client.registry.*;
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import mantle.world.CoordTuple;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
-import net.minecraftforge.fluids.*;
+import net.minecraftforge.fluids.Fluid;
+import net.minecraftforge.fluids.FluidStack;
 import tconstruct.client.BlockSkinRenderHelper;
 import tconstruct.library.crafting.Smeltery;
 import tconstruct.smeltery.logic.SmelteryLogic;

@@ -1,16 +1,17 @@
 package tconstruct.tools.inventory;
 
 import net.minecraft.block.Block;
-import net.minecraft.entity.player.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import tconstruct.library.event.ToolCraftedEvent;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.tools.TinkerTools;
-import tconstruct.tools.logic.*;
+import tconstruct.tools.logic.ToolForgeLogic;
+import tconstruct.tools.logic.ToolStationLogic;
 
 public class ToolForgeContainer extends ToolStationContainer
 {

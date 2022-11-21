@@ -1,17 +1,17 @@
 package tconstruct.items.tools;
 
 import cpw.mods.fml.client.FMLClientHandler;
-import cpw.mods.fml.relauncher.*;
-import java.util.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.network.NetHandlerPlayClient;
-import net.minecraft.enchantment.*;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.INetHandler;
 import net.minecraft.network.play.client.C07PacketPlayerDigging;
@@ -19,9 +19,15 @@ import net.minecraft.stats.StatList;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
-import tconstruct.library.*;
-import tconstruct.library.tools.*;
+import tconstruct.library.ActiveToolMod;
+import tconstruct.library.TConstructRegistry;
+import tconstruct.library.tools.AbilityHelper;
+import tconstruct.library.tools.Weapon;
 import tconstruct.tools.TinkerTools;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
 
 public class Scythe extends Weapon
 {

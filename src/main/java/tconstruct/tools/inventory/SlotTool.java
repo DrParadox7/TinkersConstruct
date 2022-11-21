@@ -1,15 +1,17 @@
 package tconstruct.tools.inventory;
 
-import java.util.Random;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
-import net.minecraft.inventory.*;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import tconstruct.library.event.ToolCraftedEvent;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.library.util.XpUtils;
+
+import java.util.Random;
 public class SlotTool extends Slot
 {
     /** The player that is using the GUI where this slot resides. */

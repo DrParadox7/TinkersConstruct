@@ -1,14 +1,20 @@
 package tconstruct.mechworks.landmine.behavior;
 
-import java.util.*;
-import net.minecraft.enchantment.*;
-import net.minecraft.entity.*;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 import tconstruct.mechworks.itemblocks.ItemBlockLandmine;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
 //TODO Add a block that is similar to landmine, but only triggers by redstone, does not hurt the player, and does not disappear when used(also does not do anything that can deal damage)
 

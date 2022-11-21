@@ -1,8 +1,9 @@
 package tconstruct.library.modifier;
 
-import java.util.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+
+import java.util.*;
 
 public abstract class ItemModifier
 {

@@ -16,12 +16,9 @@ import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.FluidType;
 import tconstruct.library.crafting.Smeltery;
 import tconstruct.smeltery.TinkerSmeltery;
-import tconstruct.tools.items.Pattern;
 import tconstruct.util.config.PHConstruct;
 
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Map;
 
 @Pulse(id = "Tinkers Gears", description = "Adds a gear cast if other mods provide gears", pulsesRequired = "Tinkers' Smeltery")
 public class TinkerGears {

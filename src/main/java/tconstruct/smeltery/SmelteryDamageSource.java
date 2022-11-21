@@ -1,7 +1,10 @@
 package tconstruct.smeltery;
 
 import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.util.*;
+import net.minecraft.util.ChatComponentTranslation;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.IChatComponent;
+import net.minecraft.util.StatCollector;
 import tconstruct.library.tools.AbilityHelper;
 
 public class SmelteryDamageSource extends DamageSource

@@ -1,12 +1,12 @@
 package tconstruct.weaponry.client;
 
-import tconstruct.weaponry.TinkerWeaponry;
-import tconstruct.library.weaponry.BowBaseAmmo;
-import tconstruct.library.weaponry.IWindup;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
+import tconstruct.library.weaponry.BowBaseAmmo;
+import tconstruct.library.weaponry.IWindup;
+import tconstruct.weaponry.TinkerWeaponry;
 
 public class RenderEventHandler {
     @SubscribeEvent

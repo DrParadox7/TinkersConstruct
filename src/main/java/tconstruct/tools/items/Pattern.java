@@ -1,19 +1,20 @@
 package tconstruct.tools.items;
 
-import cpw.mods.fml.relauncher.*;
-
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import mantle.items.abstracts.CraftingItem;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder.MaterialSet;
 import tconstruct.library.util.IPattern;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Pattern extends CraftingItem implements IPattern
 {

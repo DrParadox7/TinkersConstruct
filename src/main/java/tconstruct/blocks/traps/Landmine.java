@@ -1,17 +1,26 @@
 package tconstruct.blocks.traps;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.*;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import mantle.blocks.MantleBlock;
 import mantle.world.WorldHelper;
-import net.minecraft.block.*;
+import net.minecraft.block.Block;
+import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.*;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLiving;
+import net.minecraft.entity.EnumCreatureType;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.*;
-import net.minecraft.world.*;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
 import tconstruct.library.TConstructRegistry;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
 
 public class Landmine extends MantleBlock
 {

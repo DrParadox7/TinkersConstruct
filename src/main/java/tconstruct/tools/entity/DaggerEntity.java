@@ -2,10 +2,12 @@ package tconstruct.tools.entity;
 
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.*;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.world.World;
 import tconstruct.library.entity.ProjectileBase;
-import tconstruct.library.tools.*;
+import tconstruct.library.tools.AbilityHelper;
+import tconstruct.library.tools.ToolCore;
 
 public class DaggerEntity extends ProjectileBase
 {

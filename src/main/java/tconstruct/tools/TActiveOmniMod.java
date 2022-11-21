@@ -1,24 +1,32 @@
 package tconstruct.tools;
 
-import java.util.Random;
 import net.minecraft.block.Block;
-import net.minecraft.enchantment.*;
-import net.minecraft.entity.*;
-import net.minecraft.entity.item.*;
+import net.minecraft.enchantment.Enchantment;
+import net.minecraft.enchantment.EnchantmentHelper;
+import net.minecraft.entity.Entity;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.EnumCreatureAttribute;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.item.EntityXPOrb;
 import net.minecraft.entity.monster.EntitySlime;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
+import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ForgeHooks;
 import tconstruct.library.ActiveToolMod;
-import tconstruct.library.tools.*;
-import tconstruct.library.weaponry.IAmmo;
+import tconstruct.library.tools.AbilityHelper;
+import tconstruct.library.tools.HarvestTool;
+import tconstruct.library.tools.ToolCore;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.world.TinkerWorld;
 import tconstruct.world.entity.BlueSlime;
+
+import java.util.Random;
 
 public class TActiveOmniMod extends ActiveToolMod
 {

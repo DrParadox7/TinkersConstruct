@@ -1,9 +1,12 @@
 package tconstruct.world.model;
 
-import cpw.mods.fml.client.registry.*;
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import net.minecraft.block.Block;
-import net.minecraft.client.renderer.*;
-import net.minecraft.util.*;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import tconstruct.util.ItemHelper;
 

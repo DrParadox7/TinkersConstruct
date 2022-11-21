@@ -1,22 +1,19 @@
 package tconstruct.plugins.nei;
 
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map.Entry;
-
-import mantle.utils.ItemMetaWrapper;
-import net.minecraft.item.ItemStack;
-import net.minecraftforge.fluids.FluidStack;
-
-import org.lwjgl.opengl.GL11;
-
-import net.minecraft.util.StatCollector;
-
-import tconstruct.library.crafting.Smeltery;
 import codechicken.lib.gui.GuiDraw;
 import codechicken.nei.NEIServerUtils;
 import codechicken.nei.PositionedStack;
+import mantle.utils.ItemMetaWrapper;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.StatCollector;
+import net.minecraftforge.fluids.FluidStack;
+import org.lwjgl.opengl.GL11;
+import tconstruct.library.crafting.Smeltery;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map.Entry;
 
 public class RecipeHandlerMelting extends RecipeHandlerBase
 {

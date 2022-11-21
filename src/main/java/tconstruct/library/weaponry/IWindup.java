@@ -1,8 +1,8 @@
 package tconstruct.library.weaponry;
 
-import tconstruct.weaponry.client.CrosshairType;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
+import tconstruct.weaponry.client.CrosshairType;
 
 /**
  * This class has a windup time, meaning it takes some time to reach full potency.

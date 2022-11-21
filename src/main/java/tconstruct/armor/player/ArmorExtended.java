@@ -1,9 +1,5 @@
 package tconstruct.armor.player;
 
-import java.io.IOException;
-import java.lang.ref.WeakReference;
-import java.util.UUID;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.relauncher.Side;
@@ -18,6 +14,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import tconstruct.library.accessory.IHealthAccessory;
+
+import java.io.IOException;
+import java.lang.ref.WeakReference;
+import java.util.UUID;
 
 public class ArmorExtended implements IInventory
 {

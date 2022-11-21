@@ -1,7 +1,7 @@
 package tconstruct.weaponry.client.entity;
 
-import tconstruct.weaponry.entity.JavelinEntity;
 import org.lwjgl.opengl.GL11;
+import tconstruct.weaponry.entity.JavelinEntity;
 
 public class JavelinEntityRenderer extends ProjectileBaseRenderer<JavelinEntity> {
     @Override

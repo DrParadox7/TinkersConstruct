@@ -1,8 +1,10 @@
 package tconstruct.library.crafting;
 
-import java.util.*;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.*;
 
 public class StencilBuilder
 {

@@ -1,11 +1,13 @@
 package tconstruct.tools.gui;
 
-import cpw.mods.fml.relauncher.*;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
-import tconstruct.library.client.*;
+import tconstruct.library.client.TConstructClientRegistry;
+import tconstruct.library.client.ToolGuiElement;
 import tconstruct.tools.logic.ToolForgeLogic;
 
 @SideOnly(Side.CLIENT)

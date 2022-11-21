@@ -1,8 +1,8 @@
 package tconstruct.modifiers.accessory;
 
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.StatCollector;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.util.StatCollector;
 import tconstruct.library.accessory.AccessoryCore;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.modifiers.tools.ItemModTypeFilter;

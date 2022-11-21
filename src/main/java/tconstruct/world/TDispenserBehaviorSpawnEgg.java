@@ -1,7 +1,8 @@
 package tconstruct.world;
 
 import net.minecraft.block.BlockDispenser;
-import net.minecraft.dispenser.*;
+import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
+import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;

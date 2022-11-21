@@ -1,15 +1,15 @@
 package tconstruct.weaponry.weapons;
 
-import tconstruct.weaponry.TinkerWeaponry;
-import tconstruct.weaponry.ammo.ArrowAmmo;
-import tconstruct.library.weaponry.BowBaseAmmo;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import tconstruct.library.weaponry.BowBaseAmmo;
 import tconstruct.tools.TinkerTools;
+import tconstruct.weaponry.TinkerWeaponry;
+import tconstruct.weaponry.ammo.ArrowAmmo;
 
 public class LongBow extends BowBaseAmmo {
     public LongBow() {

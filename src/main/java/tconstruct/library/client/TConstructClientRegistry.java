@@ -1,12 +1,15 @@
 package tconstruct.library.client;
 
-import java.util.*;
 import mantle.lib.client.MantleClientRegistry;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.ModifyBuilder;
 import tconstruct.library.tools.ToolCore;
+
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class TConstructClientRegistry
 {

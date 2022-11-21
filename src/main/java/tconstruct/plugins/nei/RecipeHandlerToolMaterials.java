@@ -1,15 +1,11 @@
 package tconstruct.plugins.nei;
 
-import java.awt.Rectangle;
-import java.util.ArrayList;
-import java.util.List;
-
+import codechicken.lib.gui.GuiDraw;
+import codechicken.nei.PositionedStack;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
-
 import org.lwjgl.opengl.GL11;
-
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.CastingRecipe;
 import tconstruct.library.crafting.PatternBuilder;
@@ -23,8 +19,10 @@ import tconstruct.library.util.HarvestLevels;
 import tconstruct.library.util.IToolPart;
 import tconstruct.tools.items.ToolPart;
 import tconstruct.util.config.PHConstruct;
-import codechicken.lib.gui.GuiDraw;
-import codechicken.nei.PositionedStack;
+
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecipeHandlerToolMaterials extends RecipeHandlerBase
 {

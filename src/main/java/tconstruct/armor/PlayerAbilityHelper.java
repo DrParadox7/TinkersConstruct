@@ -1,11 +1,15 @@
 package tconstruct.armor;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.player.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.*;
-import net.minecraft.potion.*;
-import tconstruct.armor.player.*;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagList;
+import net.minecraft.potion.Potion;
+import net.minecraft.potion.PotionEffect;
+import tconstruct.armor.player.ArmorExtended;
+import tconstruct.armor.player.TPlayerStats;
 import tconstruct.util.config.PHConstruct;
 
 public class PlayerAbilityHelper

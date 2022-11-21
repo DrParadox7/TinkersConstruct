@@ -1,6 +1,5 @@
 package tconstruct.achievements;
 
-import java.util.HashMap;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.stats.Achievement;
@@ -9,6 +8,8 @@ import net.minecraftforge.common.AchievementPage;
 import tconstruct.smeltery.TinkerSmeltery;
 import tconstruct.tools.TinkerTools;
 import tconstruct.util.config.PHConstruct;
+
+import java.util.HashMap;
 
 public class TAchievements
 {

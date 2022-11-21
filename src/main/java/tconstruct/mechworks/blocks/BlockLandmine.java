@@ -1,11 +1,5 @@
 package tconstruct.mechworks.blocks;
 
-import static net.minecraftforge.common.util.ForgeDirection.*;
-
-import java.util.Iterator;
-import java.util.List;
-import java.util.Random;
-
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import mantle.blocks.BlockUtils;
@@ -39,6 +33,12 @@ import tconstruct.mechworks.landmine.Helper;
 import tconstruct.mechworks.logic.LandmineExplodeLogic;
 import tconstruct.mechworks.logic.TileEntityLandmine;
 import tconstruct.world.model.RenderLandmine;
+
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+
+import static net.minecraftforge.common.util.ForgeDirection.*;
 
 /**
  * 

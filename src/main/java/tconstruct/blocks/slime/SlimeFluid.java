@@ -1,17 +1,22 @@
 package tconstruct.blocks.slime;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.*;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.util.*;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
-import net.minecraftforge.fluids.*;
+import net.minecraftforge.fluids.BlockFluidClassic;
+import net.minecraftforge.fluids.Fluid;
 import tconstruct.world.TinkerWorld;
 import tconstruct.world.entity.BlueSlime;
 import tconstruct.world.entity.KingBlueSlime;
 import tconstruct.world.entity.SlimeBase;
+
+import java.util.List;
+import java.util.Random;
 
 public class SlimeFluid extends BlockFluidClassic
 {

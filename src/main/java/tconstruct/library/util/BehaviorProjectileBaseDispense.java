@@ -4,8 +4,6 @@ import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
 import net.minecraft.dispenser.IBlockSource;
 import net.minecraft.dispenser.IPosition;
-import net.minecraft.entity.Entity;
-import net.minecraft.entity.IProjectile;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.EnumFacing;
 import net.minecraft.world.World;
@@ -50,9 +48,9 @@ public abstract class BehaviorProjectileBaseDispense extends BehaviorDefaultDisp
     /**
      * Play the dispense sound from the specified block.
      */
-    protected void playDispenseSound(IBlockSource p_82485_1_)
+    protected void playDispenseSound(IBlockSource source)
     {
-        p_82485_1_.getWorld().playAuxSFX(1002, p_82485_1_.getXInt(), p_82485_1_.getYInt(), p_82485_1_.getZInt(), 0);
+        source.getWorld().playAuxSFX(1002, source.getXInt(), source.getYInt(), source.getZInt(), 0);
     }
 
     /**

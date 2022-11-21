@@ -3,15 +3,15 @@ package tconstruct.weaponry.weapons;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.client.entity.EntityPlayerSP;
-import tconstruct.weaponry.TinkerWeaponry;
-import tconstruct.weaponry.ammo.ArrowAmmo;
-import tconstruct.library.weaponry.BowBaseAmmo;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
+import tconstruct.library.weaponry.BowBaseAmmo;
+import tconstruct.weaponry.TinkerWeaponry;
+import tconstruct.weaponry.ammo.ArrowAmmo;
 
 public class ShortBow extends BowBaseAmmo {
     public ShortBow() {

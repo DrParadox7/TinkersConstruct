@@ -8,7 +8,6 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import tconstruct.items.tools.Broadsword;
-import tconstruct.library.tools.AbilityHelper;
 import tconstruct.util.Reference;
 
 import java.util.List;

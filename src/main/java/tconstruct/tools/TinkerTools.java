@@ -36,7 +36,6 @@ import tconstruct.library.tools.ToolCore;
 import tconstruct.library.util.IPattern;
 import tconstruct.modifiers.tools.*;
 import tconstruct.smeltery.TinkerSmeltery;
-import tconstruct.tools.items.ClayPattern;
 import tconstruct.tools.blocks.*;
 import tconstruct.tools.itemblocks.CraftingSlabItemBlock;
 import tconstruct.tools.itemblocks.ToolBenchItemBlock;
@@ -74,7 +73,6 @@ public class TinkerTools
 
     // Crafting blocks
     public static Block toolBenchWood;
-    public static Block toolStationStone;
     public static Block craftingStationWood;
     public static Block craftingSlabWood;
     public static Block furnaceSlab;

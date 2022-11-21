@@ -1,16 +1,16 @@
 package tconstruct.weaponry.client;
 
-import net.minecraft.client.gui.Gui;
-import tconstruct.util.Reference;
-import tconstruct.library.weaponry.IWindup;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
 import net.minecraft.client.renderer.OpenGlHelper;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.event.RenderGameOverlayEvent;
 import org.lwjgl.opengl.GL11;
+import tconstruct.library.weaponry.IWindup;
+import tconstruct.util.Reference;
 
 public class CrosshairHandler {
     private static Minecraft mc = Minecraft.getMinecraft();

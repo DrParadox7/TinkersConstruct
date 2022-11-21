@@ -5,7 +5,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import tconstruct.TConstruct;
-import tconstruct.armor.inventory.*;
+import tconstruct.armor.inventory.ArmorExtendedContainer;
+import tconstruct.armor.inventory.KnapsackContainer;
 import tconstruct.armor.player.TPlayerStats;
 import tconstruct.common.TProxyCommon;
 

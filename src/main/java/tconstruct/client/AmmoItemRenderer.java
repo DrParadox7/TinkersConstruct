@@ -1,10 +1,10 @@
 package tconstruct.client;
 
-import tconstruct.library.weaponry.IAmmo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
+import tconstruct.library.weaponry.IAmmo;
 
 public class AmmoItemRenderer extends FlexibleToolRenderer {
     //public static FontRenderer fontRenderer;

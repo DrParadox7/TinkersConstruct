@@ -1,7 +1,8 @@
 package tconstruct.library;
 
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 
 public class TConstructCreativeTab extends CreativeTabs
 {

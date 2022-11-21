@@ -2,10 +2,6 @@ package tconstruct.weaponry.weapons;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import tconstruct.weaponry.TinkerWeaponry;
-import tconstruct.weaponry.client.CrosshairType;
-import tconstruct.weaponry.entity.JavelinEntity;
-import tconstruct.library.weaponry.AmmoWeapon;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
@@ -13,7 +9,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import tconstruct.library.tools.AbilityHelper;
+import tconstruct.library.weaponry.AmmoWeapon;
 import tconstruct.tools.TinkerTools;
+import tconstruct.weaponry.TinkerWeaponry;
+import tconstruct.weaponry.client.CrosshairType;
+import tconstruct.weaponry.entity.JavelinEntity;
 
 public class Javelin extends AmmoWeapon {
     public Javelin() {

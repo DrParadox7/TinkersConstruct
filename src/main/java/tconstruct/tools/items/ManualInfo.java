@@ -2,8 +2,10 @@ package tconstruct.tools.items;
 
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.relauncher.Side;
-import mantle.books.*;
-import net.minecraft.util.*;
+import mantle.books.BookData;
+import mantle.books.BookDataStore;
+import net.minecraft.util.ResourceLocation;
+import net.minecraft.util.StatCollector;
 import org.w3c.dom.Document;
 import tconstruct.client.TProxyClient;
 

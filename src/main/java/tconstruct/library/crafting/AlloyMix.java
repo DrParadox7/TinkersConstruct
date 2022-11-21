@@ -1,7 +1,10 @@
 package tconstruct.library.crafting;
 
-import java.util.*;
 import net.minecraftforge.fluids.FluidStack;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
 public class AlloyMix
 {

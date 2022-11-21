@@ -1,16 +1,14 @@
 package tconstruct.plugins.nei;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.lwjgl.opengl.GL11;
-
+import codechicken.lib.gui.GuiDraw;
 import net.minecraft.util.StatCollector;
-
+import org.lwjgl.opengl.GL11;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.CastingRecipe;
 import tconstruct.library.crafting.LiquidCasting;
-import codechicken.lib.gui.GuiDraw;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class RecipeHandlerCastingBasin extends RecipeHandlerCastingBase
 {

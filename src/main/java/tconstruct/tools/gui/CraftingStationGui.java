@@ -22,7 +22,7 @@ import tconstruct.library.tools.ToolMaterial;
 import tconstruct.library.util.HarvestLevels;
 import tconstruct.tools.logic.CraftingStationLogic;
 
-import java.awt.Rectangle;
+import java.awt.*;
 import java.util.Collections;
 import java.util.List;
 

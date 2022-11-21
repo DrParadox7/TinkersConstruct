@@ -1,14 +1,9 @@
 package tconstruct.tools.inventory;
 
-import com.google.common.primitives.Ints;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.inventory.Container;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.inventory.InventoryCrafting;
-import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.*;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.CraftingManager;
@@ -21,8 +16,6 @@ import tconstruct.tools.logic.CraftingStationLogic;
 
 import javax.annotation.Nonnull;
 import java.lang.ref.WeakReference;
-import java.util.HashSet;
-import java.util.Set;
 
 public class CraftingStationContainer extends Container {
     private final World worldObj;

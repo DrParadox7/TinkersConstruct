@@ -1,11 +1,14 @@
 package tconstruct.library.crafting;
 
-import java.util.*;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
 import tconstruct.library.event.ModifyEvent;
-import tconstruct.library.modifier.*;
+import tconstruct.library.modifier.IModifyable;
+import tconstruct.library.modifier.ItemModifier;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ModifyBuilder
 {

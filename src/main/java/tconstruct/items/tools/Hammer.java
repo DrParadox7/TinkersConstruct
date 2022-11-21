@@ -1,25 +1,17 @@
 package tconstruct.items.tools;
 
-import cpw.mods.fml.relauncher.*;
-import java.util.List;
-import mantle.world.WorldHelper;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.client.Minecraft;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.*;
-import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.world.BlockEvent;
-import tconstruct.library.*;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.StatCollector;
 import tconstruct.library.crafting.ToolBuilder;
-import tconstruct.library.tools.*;
+import tconstruct.library.tools.AOEHarvestTool;
 import tconstruct.tools.TinkerTools;
+
+import java.util.List;
 
 public class Hammer extends AOEHarvestTool
 {

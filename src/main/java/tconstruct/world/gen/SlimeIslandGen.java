@@ -1,22 +1,22 @@
 package tconstruct.world.gen;
 
-import com.google.common.collect.Sets;
 import cpw.mods.fml.common.IWorldGenerator;
-import java.awt.geom.Ellipse2D;
-import java.util.Random;
-import java.util.Set;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
-import net.minecraft.world.*;
-import net.minecraft.world.chunk.Chunk;
+import net.minecraft.world.EnumSkyBlock;
+import net.minecraft.world.World;
+import net.minecraft.world.WorldType;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderFlat;
 import net.minecraft.world.gen.feature.WorldGenerator;
 import tconstruct.tools.TinkerTools;
-import tconstruct.util.config.*;
+import tconstruct.util.config.DimensionBlacklist;
+import tconstruct.util.config.PHConstruct;
 import tconstruct.world.TinkerWorld;
+
+import java.awt.geom.Ellipse2D;
+import java.util.Random;
 
 public class SlimeIslandGen extends WorldGenerator implements IWorldGenerator
 {

@@ -1,7 +1,5 @@
 package tconstruct.weaponry.client.item;
 
-import tconstruct.client.AmmoItemRenderer;
-import tconstruct.library.weaponry.IWindup;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.entity.RenderManager;
 import net.minecraft.client.renderer.entity.RenderPlayer;
@@ -9,6 +7,8 @@ import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.item.ItemStack;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
+import tconstruct.client.AmmoItemRenderer;
+import tconstruct.library.weaponry.IWindup;
 
 public class ThrowingKnifeRenderer extends AmmoItemRenderer {
     private static Minecraft mc = Minecraft.getMinecraft();

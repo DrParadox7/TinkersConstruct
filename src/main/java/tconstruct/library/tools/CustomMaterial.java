@@ -1,8 +1,9 @@
 package tconstruct.library.tools;
 
-import java.util.List;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
+
+import java.util.List;
 
 public abstract class CustomMaterial
 {

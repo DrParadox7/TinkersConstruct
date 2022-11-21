@@ -1,9 +1,9 @@
 package tconstruct.library.weaponry;
 
-import tconstruct.weaponry.TinkerWeaponry;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import tconstruct.library.tools.CustomMaterial;
+import tconstruct.weaponry.TinkerWeaponry;
 
 public class ArrowShaftMaterial extends CustomMaterial {
     public final float durabilityModifier; // like the durability modifier of handles, but for arrows!

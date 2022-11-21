@@ -1,18 +1,8 @@
 package tconstruct.items.tools;
 
-import cpw.mods.fml.relauncher.*;
-import mantle.world.WorldHelper;
-import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.MovingObjectPosition;
-import net.minecraft.world.World;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.event.world.BlockEvent;
-import tconstruct.library.*;
-import tconstruct.library.tools.*;
+import net.minecraft.item.Item;
+import tconstruct.library.tools.AOEHarvestTool;
 import tconstruct.tools.TinkerTools;
 
 public class Excavator extends AOEHarvestTool

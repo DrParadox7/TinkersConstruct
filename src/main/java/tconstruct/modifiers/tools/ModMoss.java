@@ -7,9 +7,6 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
-import tconstruct.library.crafting.ModifyBuilder;
-import tconstruct.library.tools.ToolCore;
-import tconstruct.tools.TinkerTools;
 
 public class ModMoss extends ModBoolean {
 
