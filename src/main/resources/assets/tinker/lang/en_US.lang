@@ -32,6 +32,7 @@ ToolBench.Parts.name=Part Builder
 ToolBench.PatternChest.name=Pattern Chest
 ToolBench.PatternShaper.name=Stencil Table
 ToolBench.CastingTable.name=Casting Table
+ToolBench.MoldingTable.name=Molding Table
 tile.FurnaceSlab.name=Slab Furnace
 
 tile.ToolStation.name=Tool Station

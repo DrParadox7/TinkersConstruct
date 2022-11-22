@@ -19,6 +19,7 @@ public class ToolBenchItemBlock extends MultiItemBlock {
         "PatternShaper",
         "PatternShaper",
         "PatternShaper",
+        "MoldingTable",
         "CastingTable"
     };
 

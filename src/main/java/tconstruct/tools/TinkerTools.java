@@ -179,10 +179,11 @@ public class TinkerTools {
         TinkerTools.craftedSoil.stepSound = Block.soundTypeGravel;
 
         GameRegistry.registerBlock(TinkerTools.toolBenchWood, ToolBenchItemBlock.class, "ToolBenchBlock");
-        GameRegistry.registerTileEntity(ToolBenchLogic.class, "toolBench");
+        GameRegistry.registerTileEntity(ToolBenchLogic.class, "ToolBench");
         GameRegistry.registerTileEntity(PartBuilderLogic.class, "PartCrafter");
         GameRegistry.registerTileEntity(PatternChestLogic.class, "PatternHolder");
         GameRegistry.registerTileEntity(StencilTableLogic.class, "PatternShaper");
+        GameRegistry.registerTileEntity(MoldingTableLogic.class, "MoldingTable");
         GameRegistry.registerBlock(TinkerTools.craftingStationWood, "CraftingStation");
         GameRegistry.registerTileEntity(CraftingStationLogic.class, "CraftingStation");
         GameRegistry.registerBlock(TinkerTools.craftingSlabWood, CraftingSlabItemBlock.class, "CraftingSlab");
@@ -196,7 +197,6 @@ public class TinkerTools {
         GameRegistry.registerTileEntity(ToolStationLogic.class, "ToolStation");
         GameRegistry.registerBlock(TinkerTools.toolForge, MetadataItemBlock.class, "ToolForgeBlock");
         GameRegistry.registerTileEntity(ToolForgeLogic.class, "ToolForge");
-        GameRegistry.registerTileEntity(MoldingTableLogic.class, "MoldingTable");
 
         GameRegistry.registerBlock(TinkerTools.craftedSoil, CraftedSoilItemBlock.class, "CraftedSoil");
 
