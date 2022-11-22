@@ -1893,12 +1893,12 @@ public class TinkerSmeltery {
                         0.2f);
 
         // Ceramic Patterns
-        for (int iter = 0; iter < TinkerTools.patternOutputs.length; iter++) {
-            if (TinkerTools.patternOutputs[iter] != null) {
+        for (int iter = 0; iter <= 27; iter++) {
+            if (iter <= 22 || iter >= 25) {
                 FurnaceRecipes.smelting()
                         .func_151394_a(
-                                new ItemStack(TinkerTools.clayPattern, 1, iter + 1),
-                                new ItemStack(TinkerSmeltery.ceramicPattern, 1, iter + 1),
+                                new ItemStack(TinkerTools.clayPattern, 1, iter),
+                                new ItemStack(TinkerSmeltery.ceramicPattern, 1, iter),
                                 0.0f);
             }
         }

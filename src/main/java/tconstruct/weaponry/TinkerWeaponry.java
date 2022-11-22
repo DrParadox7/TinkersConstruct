@@ -18,6 +18,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import net.minecraftforge.common.MinecraftForge;
@@ -330,6 +331,12 @@ public class TinkerWeaponry {
                     int amount = (8 * woodPattern.getPatternCost(new ItemStack(woodPattern, 1, sc))) / 2;
                     Smeltery.addMelting(stone, item, 1, amount);
                 }
+            }
+            // Ceramic Stencils
+            for (int iter = 0; iter <= 3; iter++) {
+                FurnaceRecipes.smelting()
+                        .func_151394_a(
+                                new ItemStack(clayPattern, 1, iter), new ItemStack(ceramicPattern, 1, iter), 0.0f);
             }
         }
     }
