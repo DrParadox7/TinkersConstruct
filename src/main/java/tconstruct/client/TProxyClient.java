@@ -1,5 +1,9 @@
 package tconstruct.client;
 
+import java.io.InputStream;
+import java.text.DecimalFormat;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
 import mantle.client.SmallFontRenderer;
 import mantle.lib.client.MantleClientRegistry;
 import net.minecraft.client.Minecraft;
@@ -15,11 +19,6 @@ import tconstruct.armor.ArmorProxyClient;
 import tconstruct.armor.player.TPlayerStats;
 import tconstruct.common.TProxyCommon;
 import tconstruct.tools.items.ManualInfo;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import java.io.InputStream;
-import java.text.DecimalFormat;
 
 public class TProxyClient extends TProxyCommon {
     public static DecimalFormat df = new DecimalFormat("##.#");
@@ -38,7 +37,8 @@ public class TProxyClient extends TProxyCommon {
     /* Registers any rendering code. */
     public void registerRenderer() {
         Minecraft mc = Minecraft.getMinecraft();
-        smallFontRenderer = new SmallFontRenderer(mc.gameSettings, new ResourceLocation("textures/font/ascii.png"), mc.renderEngine, false);
+        smallFontRenderer = new SmallFontRenderer(
+                mc.gameSettings, new ResourceLocation("textures/font/ascii.png"), mc.renderEngine, false);
     }
 
     public static Document diary;
@@ -50,7 +50,10 @@ public class TProxyClient extends TProxyCommon {
 
     public void readManuals() {
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-        String CurrentLanguage = Minecraft.getMinecraft().getLanguageManager().getCurrentLanguage().getLanguageCode();
+        String CurrentLanguage = Minecraft.getMinecraft()
+                .getLanguageManager()
+                .getCurrentLanguage()
+                .getLanguageCode();
 
         Document diary_cl = readManual("/assets/tinker/manuals/" + CurrentLanguage + "/diary.xml", dbFactory);
         Document volume1_cl = readManual("/assets/tinker/manuals/" + CurrentLanguage + "/firstday.xml", dbFactory);
@@ -62,7 +65,8 @@ public class TProxyClient extends TProxyCommon {
         volume1 = volume1_cl != null ? volume1_cl : readManual("/assets/tinker/manuals/en_US/firstday.xml", dbFactory);
         volume2 = volume2_cl != null ? volume2_cl : readManual("/assets/tinker/manuals/en_US/materials.xml", dbFactory);
         smelter = smelter_cl != null ? smelter_cl : readManual("/assets/tinker/manuals/en_US/smeltery.xml", dbFactory);
-        weaponry = weaponry_cl != null ? weaponry_cl : readManual("/assets/tinker/manuals/en_US/weaponry.xml", dbFactory);
+        weaponry =
+                weaponry_cl != null ? weaponry_cl : readManual("/assets/tinker/manuals/en_US/weaponry.xml", dbFactory);
 
         initManualIcons();
         initManualRecipes();
@@ -99,12 +103,9 @@ public class TProxyClient extends TProxyCommon {
         MantleClientRegistry.registerManualIcon("netherrack", new ItemStack(Blocks.netherrack));
     }
 
-    public void initManualRecipes() {
-    }
+    public void initManualRecipes() {}
 
-    void initManualPages() {
-
-    }
+    void initManualPages() {}
 
     public static Document getManualFromStack(ItemStack stack) {
         switch (stack.getItemDamage()) {
@@ -124,5 +125,4 @@ public class TProxyClient extends TProxyCommon {
     public void recalculateHealth() {
         ArmorProxyClient.armorExtended.recalculateHealth(mc.thePlayer, TPlayerStats.get(mc.thePlayer));
     }
-
 }

@@ -26,8 +26,7 @@ public class ThrowingKnife extends AmmoWeapon {
 
     @Override
     public String getIconSuffix(int partType) {
-        switch (partType)
-        {
+        switch (partType) {
             case 0:
                 return "_knife_blade";
             case 1:
@@ -60,7 +59,9 @@ public class ThrowingKnife extends AmmoWeapon {
     }
 
     @Override
-    public int getWindupTime(ItemStack itemStack) { return 15; } // 1 1/2 seconds
+    public int getWindupTime(ItemStack itemStack) {
+        return 15;
+    } // 1 1/2 seconds
 
     @Override
     public float getMinWindupProgress(ItemStack itemStack) {
@@ -81,8 +82,7 @@ public class ThrowingKnife extends AmmoWeapon {
     protected Entity createProjectile(ItemStack reference, World world, EntityPlayer player, float accuracy, int time) {
         ProjectileBase knife = new ThrowingKnifeEntity(world, player, getProjectileSpeed(), accuracy, reference);
         // if you aim long enough, it's a crit!
-        if(time >= this.getWindupTime(reference)*1.5f)
-            knife.setIsCritical(true);
+        if (time >= this.getWindupTime(reference) * 1.5f) knife.setIsCritical(true);
 
         return knife;
     }
@@ -100,16 +100,13 @@ public class ThrowingKnife extends AmmoWeapon {
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void onUpdate (ItemStack stack, World world, Entity entity, int par4, boolean par5)
-    {
+    public void onUpdate(ItemStack stack, World world, Entity entity, int par4, boolean par5) {
         // aiming with throwing knives slows down much less than with a bow
         super.onUpdate(stack, world, entity, par4, par5);
-        if (entity instanceof EntityPlayerSP)
-        {
+        if (entity instanceof EntityPlayerSP) {
             EntityPlayerSP player = (EntityPlayerSP) entity;
             ItemStack usingItem = player.getItemInUse();
-            if (usingItem != null && usingItem.getItem() == this)
-            {
+            if (usingItem != null && usingItem.getItem() == this) {
                 player.movementInput.moveForward *= 3.0F;
                 player.movementInput.moveStrafe *= 3.0F;
             }

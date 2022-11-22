@@ -1,35 +1,32 @@
 package tconstruct.modifiers.tools;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.library.modifier.ItemModifier;
 
-import static tconstruct.library.util.XpUtils.ModCost;
-
 /* Adds a boolean NBTTag */
 
-public class ModBoolean extends ItemModifier
-{
+public class ModBoolean extends ItemModifier {
     String color;
     String tooltipName;
 
-    public ModBoolean(ItemStack[] items, int effect, String tag, String c, String tip)
-    {
+    public ModBoolean(ItemStack[] items, int effect, String tag, String c, String tip) {
         super(items, effect, tag);
         color = c;
         tooltipName = tip;
     }
 
     @Override
-    protected boolean canModify (ItemStack tool, ItemStack[] input)
-    {
+    protected boolean canModify(ItemStack tool, ItemStack[] input) {
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
-        return tags.getInteger("Modifiers") > 0 && !tags.getBoolean(key); //Will fail if the modifier is false or the tag doesn't exist
+        return tags.getInteger("Modifiers") > 0
+                && !tags.getBoolean(key); // Will fail if the modifier is false or the tag doesn't exist
     }
 
     @Override
-    public void modify (ItemStack[] input, ItemStack tool)
-    {
+    public void modify(ItemStack[] input, ItemStack tool) {
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
 
         tags.setBoolean(key, true);

@@ -2,6 +2,7 @@ package tconstruct.armor.items;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import java.util.List;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.client.settings.GameSettings;
@@ -16,31 +17,23 @@ import tconstruct.client.ArmorControls;
 import tconstruct.library.accessory.AccessoryCore;
 import tconstruct.library.accessory.IAccessoryModel;
 
-import java.util.List;
-
-public class TravelBelt extends AccessoryCore implements IAccessoryModel
-{
-    public TravelBelt()
-    {
+public class TravelBelt extends AccessoryCore implements IAccessoryModel {
+    public TravelBelt() {
         super("travelgear/travel_belt");
     }
 
     @Override
-    public boolean canEquipAccessory (ItemStack item, int slot)
-    {
+    public boolean canEquipAccessory(ItemStack item, int slot) {
         return slot == 3;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    protected void registerModifiers (IIconRegister iconRegister)
-    {
-    }
+    protected void registerModifiers(IIconRegister iconRegister) {}
 
     @Override
     @SideOnly(Side.CLIENT)
-    public ModelBiped getArmorModel (EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot)
-    {
+    public ModelBiped getArmorModel(EntityLivingBase entityLiving, ItemStack itemStack, int armorSlot) {
         return ArmorProxyClient.belt;
     }
 
@@ -48,19 +41,17 @@ public class TravelBelt extends AccessoryCore implements IAccessoryModel
 
     @Override
     @SideOnly(Side.CLIENT)
-    public ResourceLocation getWearbleTexture (Entity entity, ItemStack stack, int slot)
-    {
+    public ResourceLocation getWearbleTexture(Entity entity, ItemStack stack, int slot) {
         return texture;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public void addInformation (ItemStack stack, EntityPlayer player, List list, boolean par4)
-    {
-        if (!stack.hasTagCompound())
-            return;
+    public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
+        if (!stack.hasTagCompound()) return;
 
         list.add("\u00a76" + StatCollector.translateToLocal("armor.travelbelt.ability"));
-        list.add("\u00a76" + StatCollector.translateToLocal("armor.travelbelt.control") + GameSettings.getKeyDisplayString(ArmorControls.beltSwap.getKeyCode()));
+        list.add("\u00a76" + StatCollector.translateToLocal("armor.travelbelt.control")
+                + GameSettings.getKeyDisplayString(ArmorControls.beltSwap.getKeyCode()));
     }
 }

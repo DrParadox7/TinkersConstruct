@@ -1,5 +1,6 @@
 package tconstruct.items.tools;
 
+import java.util.List;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -11,136 +12,120 @@ import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.tools.AOEHarvestTool;
 import tconstruct.tools.TinkerTools;
 
-import java.util.List;
-
-public class Hammer extends AOEHarvestTool
-{
-    public Hammer()
-    {
+public class Hammer extends AOEHarvestTool {
+    public Hammer() {
         super(2, 1, 0);
         this.setUnlocalizedName("InfiTool.Hammer");
     }
 
     @Override
-    public int getPartAmount ()
-    {
+    public int getPartAmount() {
         return 4;
     }
 
     @Override
-    public int durabilityTypeAccessory ()
-    {
+    public int durabilityTypeAccessory() {
         return 2;
     }
 
     @Override
-    public int durabilityTypeExtra ()
-    {
+    public int durabilityTypeExtra() {
         return 2;
     }
 
     @Override
-    protected String getHarvestType ()
-    {
+    protected String getHarvestType() {
         return "pickaxe";
     }
 
     @Override
-    protected Material[] getEffectiveMaterials ()
-    {
+    protected Material[] getEffectiveMaterials() {
         return materials;
     }
 
-    static Material[] materials = new Material[] { Material.rock, Material.iron, Material.ice, Material.glass, Material.piston, Material.anvil };
+    static Material[] materials =
+            new Material[] {Material.rock, Material.iron, Material.ice, Material.glass, Material.piston, Material.anvil
+            };
 
     @Override
-    public Item getHeadItem ()
-    {
+    public Item getHeadItem() {
         return TinkerTools.hammerHead;
     }
 
     @Override
-    public Item getHandleItem ()
-    {
+    public Item getHandleItem() {
         return TinkerTools.toughRod;
     }
 
     @Override
-    public Item getAccessoryItem ()
-    {
+    public Item getAccessoryItem() {
         return TinkerTools.largePlate;
     }
 
     @Override
-    public Item getExtraItem ()
-    {
+    public Item getExtraItem() {
         return TinkerTools.largePlate;
     }
 
     @Override
-    public float getDurabilityModifier ()
-    {
+    public float getDurabilityModifier() {
         return 4.5f;
     }
 
     @Override
-    public String getIconSuffix (int partType)
-    {
-        switch (partType)
-        {
-        case 0:
-            return "_hammer_head";
-        case 1:
-            return "_hammer_handle_broken";
-        case 2:
-            return "_hammer_handle";
-        case 3:
-            return "_hammer_front";
-        case 4:
-            return "_hammer_back";
-        default:
-            return "";
+    public String getIconSuffix(int partType) {
+        switch (partType) {
+            case 0:
+                return "_hammer_head";
+            case 1:
+                return "_hammer_handle_broken";
+            case 2:
+                return "_hammer_handle";
+            case 3:
+                return "_hammer_front";
+            case 4:
+                return "_hammer_back";
+            default:
+                return "";
         }
     }
 
     @Override
-    public String getEffectSuffix ()
-    {
+    public String getEffectSuffix() {
         return "_hammer_effect";
     }
 
     @Override
-    public String getDefaultFolder ()
-    {
+    public String getDefaultFolder() {
         return "hammer";
     }
 
     @Override
-    public IIcon getIcon (ItemStack stack, int renderPass)
-    {
+    public IIcon getIcon(ItemStack stack, int renderPass) {
         NBTTagCompound tags = stack.getTagCompound();
 
         if (tags != null) {
             tags = stack.getTagCompound().getCompoundTag("InfiTool");
             if (renderPass == 0) // Handle
             {
-                if (tags.getBoolean("Broken"))
-                    return getCorrectIcon(brokenIcons, tags.getInteger("RenderHandle"));
+                if (tags.getBoolean("Broken")) return getCorrectIcon(brokenIcons, tags.getInteger("RenderHandle"));
                 return getCorrectIcon(handleIcons, tags.getInteger("RenderHandle"));
-            }
-            else if(renderPass == 1)
-                return getCorrectIcon(headIcons, tags.getInteger("RenderHead"));
+            } else if (renderPass == 1) return getCorrectIcon(headIcons, tags.getInteger("RenderHead"));
         }
 
         return super.getIcon(stack, renderPass);
     }
 
     @Override
-    public void getSubItems (Item id, CreativeTabs tab, List list)
-    {
+    public void getSubItems(Item id, CreativeTabs tab, List list) {
         super.getSubItems(id, tab, list);
 
-        ItemStack tool = ToolBuilder.instance.buildTool(new ItemStack(getHeadItem(), 1, 10), new ItemStack(getHandleItem(), 1, 8), new ItemStack(getAccessoryItem(), 1, 11), new ItemStack(getExtraItem(), 1, 11), StatCollector.translateToLocal("tool.infiminer"));
+        ItemStack tool = ToolBuilder.instance.buildTool(
+                new ItemStack(getHeadItem(), 1, 10),
+                new ItemStack(getHandleItem(), 1, 8),
+                new ItemStack(getAccessoryItem(), 1, 11),
+                new ItemStack(getExtraItem(), 1, 11),
+                StatCollector.translateToLocal("tool.infiminer"));
 
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
         tags.setBoolean("Special", true);
@@ -152,29 +137,22 @@ public class Hammer extends AOEHarvestTool
         tags.setInteger("Unbreaking", 10);
         tags.setInteger("Upgrades", 0);
 
-
         tags.setBoolean("Built", true);
         list.add(tool);
     }
 
-
-
     @Override
-    public float breakSpeedModifier ()
-    {
+    public float breakSpeedModifier() {
         return 0.4f;
     }
 
     @Override
-    public float stoneboundModifier ()
-    {
+    public float stoneboundModifier() {
         return 216f;
     }
 
     @Override
-    public String[] getTraits ()
-    {
-        return new String[] { "weapon", "harvest", "melee", "bludgeoning" };
+    public String[] getTraits() {
+        return new String[] {"weapon", "harvest", "melee", "bludgeoning"};
     }
-
 }

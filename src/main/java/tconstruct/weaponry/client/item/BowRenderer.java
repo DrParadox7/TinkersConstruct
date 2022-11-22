@@ -24,41 +24,35 @@ public class BowRenderer extends FlexibleToolRenderer {
         GL11.glTranslatef(0.5f, 0.5f, 0);
         GL11.glScalef(0.5f, 0.5f, 0.5f);
 
-        if(type == ItemRenderType.EQUIPPED)
-        {
-            //GL11.glTranslatef(0.0F, 0.125F, 0.3125F);
+        if (type == ItemRenderType.EQUIPPED) {
+            // GL11.glTranslatef(0.0F, 0.125F, 0.3125F);
             GL11.glTranslatef(0.2F, -0.4F, 0.2f);
             GL11.glRotatef(-20.0F, 0.0F, 1.0F, 0.0F);
-            //GL11.glScalef(f1, -f1, f1);
-            //GL11.glRotatef(-100.0F, 1.0F, 0.0F, 0.0F);
+            // GL11.glScalef(f1, -f1, f1);
+            // GL11.glRotatef(-100.0F, 1.0F, 0.0F, 0.0F);
             GL11.glRotatef(45.0F, 0.0F, 1.0F, 0.0F);
         }
 
         // windup animation
-        if(type == ItemRenderType.EQUIPPED_FIRST_PERSON && player.isUsingItem())
-        {
+        if (type == ItemRenderType.EQUIPPED_FIRST_PERSON && player.isUsingItem()) {
             float progress = ((IWindup) item.getItem()).getWindupProgress(item, player);
 
-            //GL11.glScalef(1.2f, 1.2f, 1.2f);
-            //float progress = ((IWindup) item.getItem()).getWindupProgress(item, Minecraft.getMinecraft().thePlayer);;
+            // GL11.glScalef(1.2f, 1.2f, 1.2f);
+            // float progress = ((IWindup) item.getItem()).getWindupProgress(item, Minecraft.getMinecraft().thePlayer);;
             GL11.glRotatef(-18.0F, 0.0F, 0.0F, 1.0F); // tilts the bow forward a bit
             GL11.glRotatef(-6.0F, 0.0F, 1.0F, 0.0F); // rotates the bow so it faces more forward
             GL11.glRotatef(8.0F, 1.0F, 0.0F, 0.0F); // rotates the bow forward
             GL11.glTranslatef(-0.9F, 0.2F, -1.0F);
 
-
             // this does the "zoom closer to the bow" thing
             GL11.glTranslatef(progress * -0.1f, progress * -0.125f, 0.0F);
 
-
-
             // we're crazy, so.. render the arrow =D
-            ItemStack ammo = ((ProjectileWeapon) item.getItem()).searchForAmmo(player, item); // we know it's a projectile weapon, it's a bow!
-            if(ammo != null) {
-                if(ammo.getItem() == Items.arrow)
-                    dummy.returnStack = ArrowAmmo.vanillaArrow;
-                else
-                    dummy.returnStack = ammo;
+            ItemStack ammo = ((ProjectileWeapon) item.getItem())
+                    .searchForAmmo(player, item); // we know it's a projectile weapon, it's a bow!
+            if (ammo != null) {
+                if (ammo.getItem() == Items.arrow) dummy.returnStack = ArrowAmmo.vanillaArrow;
+                else dummy.returnStack = ammo;
                 Render renderer = RenderManager.instance.getEntityClassRenderObject(ArrowEntity.class);
 
                 GL11.glPushMatrix();
@@ -78,16 +72,14 @@ public class BowRenderer extends FlexibleToolRenderer {
                 renderer.doRender(dummy, 0, 0, 0, 0, 0);
                 GL11.glPopMatrix();
             }
-        }
-        else if(type == ItemRenderType.EQUIPPED && player.isUsingItem())
-        {
+        } else if (type == ItemRenderType.EQUIPPED && player.isUsingItem()) {
             // we're crazy, so.. render the arrow =D
-            ItemStack ammo = ((ProjectileWeapon) item.getItem()).searchForAmmo(player, item); // we know it's a projectile weapon, it's a bow!
-            if(ammo != null) {
-                if(ammo.getItem() == Items.arrow || !(ammo.getItem() instanceof ArrowAmmo))
+            ItemStack ammo = ((ProjectileWeapon) item.getItem())
+                    .searchForAmmo(player, item); // we know it's a projectile weapon, it's a bow!
+            if (ammo != null) {
+                if (ammo.getItem() == Items.arrow || !(ammo.getItem() instanceof ArrowAmmo))
                     dummy.returnStack = ArrowAmmo.vanillaArrow;
-                else
-                    dummy.returnStack = ammo;
+                else dummy.returnStack = ammo;
                 Render renderer = RenderManager.instance.getEntityClassRenderObject(ArrowEntity.class);
 
                 GL11.glPushMatrix();
@@ -109,11 +101,8 @@ public class BowRenderer extends FlexibleToolRenderer {
             }
         }
 
-
-        if(item.getItem() == TinkerWeaponry.longbow)
-            GL11.glScalef(2.3f, 2.3f, 1.0f);
-        else if(item.getItem() == TinkerWeaponry.shortbow)
-            GL11.glScalef(1.7f, 1.7f, 1.0f);
+        if (item.getItem() == TinkerWeaponry.longbow) GL11.glScalef(2.3f, 2.3f, 1.0f);
+        else if (item.getItem() == TinkerWeaponry.shortbow) GL11.glScalef(1.7f, 1.7f, 1.0f);
 
         GL11.glTranslatef(-0.5f, -0.5f, 0f);
     }

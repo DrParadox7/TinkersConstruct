@@ -1,5 +1,6 @@
 package tconstruct.mechworks.landmine.behavior;
 
+import java.util.List;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;
@@ -9,42 +10,44 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-import java.util.List;
-
 /**
- * 
+ *
  * @author fuj1n
- * 
+ *
  */
-public class BehaviorExplosive extends Behavior
-{
+public class BehaviorExplosive extends Behavior {
 
     @Override
-    public void executeLogic (World par1World, int par2, int par3, int par4, ItemStack par5ItemStack, Entity triggerer, boolean willBlockBeRemoved)
-    {
+    public void executeLogic(
+            World par1World,
+            int par2,
+            int par3,
+            int par4,
+            ItemStack par5ItemStack,
+            Entity triggerer,
+            boolean willBlockBeRemoved) {
         float explodeStrenght = 0;
-        if (par5ItemStack.getItem() == Item.getItemFromBlock(Blocks.tnt))
-        {
+        if (par5ItemStack.getItem() == Item.getItemFromBlock(Blocks.tnt)) {
             explodeStrenght = 4.0F * par5ItemStack.stackSize;
-        }
-        else if (par5ItemStack.getItem() == Items.gunpowder)
-        {
+        } else if (par5ItemStack.getItem() == Items.gunpowder) {
             explodeStrenght = 0.8F * par5ItemStack.stackSize;
         }
 
-        par1World.createExplosion(new EntityTNTPrimed(par1World, par2, par3, par4, (EntityLivingBase) null), par2, par3, par4, explodeStrenght, true);
+        par1World.createExplosion(
+                new EntityTNTPrimed(par1World, par2, par3, par4, (EntityLivingBase) null),
+                par2,
+                par3,
+                par4,
+                explodeStrenght,
+                true);
     }
 
     @Override
-    public void getInformation (ItemStack par1ItemStack, List par2List)
-    {
+    public void getInformation(ItemStack par1ItemStack, List par2List) {
         String str = "UNDEFINED";
-        if (par1ItemStack.getItem() == Item.getItemFromBlock(Blocks.tnt))
-        {
+        if (par1ItemStack.getItem() == Item.getItemFromBlock(Blocks.tnt)) {
             str = "medium";
-        }
-        else if (par1ItemStack.getItem() == Items.gunpowder)
-        {
+        } else if (par1ItemStack.getItem() == Items.gunpowder) {
             str = "small";
         }
 
@@ -53,8 +56,7 @@ public class BehaviorExplosive extends Behavior
     }
 
     @Override
-    public boolean isOffensive (ItemStack par1ItemStack)
-    {
+    public boolean isOffensive(ItemStack par1ItemStack) {
         return true;
     }
 
@@ -62,9 +64,7 @@ public class BehaviorExplosive extends Behavior
     // Change this to false to greatly decrease the maximum potential of
     // explosions but at the same time, make them launch the player much
     // higher(I mean the explosions with 2 or more TNT
-    public boolean effectStacks ()
-    {
+    public boolean effectStacks() {
         return true;
     }
-
 }

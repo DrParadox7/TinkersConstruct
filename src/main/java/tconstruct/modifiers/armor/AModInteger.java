@@ -1,33 +1,44 @@
 package tconstruct.modifiers.armor;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
+import java.util.EnumSet;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.library.armor.ArmorMod;
 import tconstruct.library.armor.ArmorPart;
 
-import java.util.EnumSet;
-
-import static tconstruct.library.util.XpUtils.ModCost;
-
 /* Adds an integer NBTTag */
 
-public class AModInteger extends ArmorMod
-{
+public class AModInteger extends ArmorMod {
     String color;
     String tooltipName;
     int initialIncrease;
     int secondaryIncrease;
 
-    public AModInteger(int effect, String dataKey, EnumSet<ArmorPart> armorTypes, ItemStack[] items, int increase, String c, String tip)
-    {
+    public AModInteger(
+            int effect,
+            String dataKey,
+            EnumSet<ArmorPart> armorTypes,
+            ItemStack[] items,
+            int increase,
+            String c,
+            String tip) {
         super(effect, dataKey, armorTypes, items);
         initialIncrease = secondaryIncrease = increase;
         color = c;
         tooltipName = tip;
     }
 
-    public AModInteger(int effect, String dataKey, EnumSet<ArmorPart> armorTypes, ItemStack[] items, int increase1, int increase2, String c, String tip)
-    {
+    public AModInteger(
+            int effect,
+            String dataKey,
+            EnumSet<ArmorPart> armorTypes,
+            ItemStack[] items,
+            int increase1,
+            int increase2,
+            String c,
+            String tip) {
         super(effect, dataKey, armorTypes, items);
         initialIncrease = increase1;
         secondaryIncrease = increase2;
@@ -36,17 +47,13 @@ public class AModInteger extends ArmorMod
     }
 
     @Override
-    public void modify (ItemStack[] recipe, ItemStack input)
-    {
+    public void modify(ItemStack[] recipe, ItemStack input) {
         NBTTagCompound tags = getModifierTag(input);
-        if (tags.hasKey(key))
-        {
+        if (tags.hasKey(key)) {
             int increase = tags.getInteger(key);
             increase += secondaryIncrease;
             tags.setInteger(key, increase);
-        }
-        else
-        {
+        } else {
             tags.setInteger(key, initialIncrease);
         }
 
@@ -62,5 +69,4 @@ public class AModInteger extends ArmorMod
 
         addToolTip(input, color + tooltipName, color + key);
     }
-
 }

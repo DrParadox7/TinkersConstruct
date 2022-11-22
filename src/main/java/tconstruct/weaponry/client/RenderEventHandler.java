@@ -10,32 +10,27 @@ import tconstruct.weaponry.TinkerWeaponry;
 
 public class RenderEventHandler {
     @SubscribeEvent
-    public void onAimZoom(FOVUpdateEvent event)
-    {
-        if(!event.entity.isUsingItem())
-            return;
+    public void onAimZoom(FOVUpdateEvent event) {
+        if (!event.entity.isUsingItem()) return;
 
-        if(!(event.entity.getItemInUse().getItem() instanceof IWindup))
-            return;
+        if (!(event.entity.getItemInUse().getItem() instanceof IWindup)) return;
 
         ItemStack weapon = event.entity.getItemInUse();
         IWindup item = (IWindup) weapon.getItem();
 
-        if(item.zoomOnWindup(weapon))
-            event.newfov = event.fov / (event.fov + (item.getZoom(weapon)-1.0f) * item.getWindupProgress(weapon, event.entity));
+        if (item.zoomOnWindup(weapon))
+            event.newfov = event.fov
+                    / (event.fov + (item.getZoom(weapon) - 1.0f) * item.getWindupProgress(weapon, event.entity));
     }
 
     @SubscribeEvent
-    public void onRenderPlayer(RenderPlayerEvent.Pre event)
-    {
-        if(event.entityPlayer.getCurrentEquippedItem() != null && event.entityPlayer.getCurrentEquippedItem().getItem() == TinkerWeaponry.javelin) {
+    public void onRenderPlayer(RenderPlayerEvent.Pre event) {
+        if (event.entityPlayer.getCurrentEquippedItem() != null
+                && event.entityPlayer.getCurrentEquippedItem().getItem() == TinkerWeaponry.javelin) {}
 
-        }
+        if (event.entityPlayer.getItemInUse() == null) return;
 
-        if(event.entityPlayer.getItemInUse() == null)
-            return;
-
-        if(event.entityPlayer.getItemInUse().getItem() instanceof BowBaseAmmo) {
+        if (event.entityPlayer.getItemInUse().getItem() instanceof BowBaseAmmo) {
             event.renderer.modelBipedMain.aimedBow = true;
             event.renderer.modelArmor.aimedBow = true;
             event.renderer.modelArmorChestplate.aimedBow = true;

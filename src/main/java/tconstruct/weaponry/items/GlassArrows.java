@@ -1,5 +1,6 @@
 package tconstruct.weaponry.items;
 
+import java.util.List;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -10,8 +11,6 @@ import net.minecraft.util.StatCollector;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.util.Reference;
 import tconstruct.weaponry.ammo.ArrowAmmo;
-
-import java.util.List;
 
 public class GlassArrows extends ArrowAmmo {
     public GlassArrows() {
@@ -30,13 +29,11 @@ public class GlassArrows extends ArrowAmmo {
         ItemStack handleStack = new ItemStack(getHandleItem(), 1, 0); // wooden shaft
         ItemStack accessoryStack = new ItemStack(getAccessoryItem(), 1, 0); // feather fletchling
 
-        ItemStack tool = ToolBuilder.instance.buildTool(headStack, handleStack, accessoryStack, null, this.getLocalizedToolName());
-        if (tool != null)
-        {
+        ItemStack tool = ToolBuilder.instance.buildTool(
+                headStack, handleStack, accessoryStack, null, this.getLocalizedToolName());
+        if (tool != null) {
             tool.getTagCompound().getCompoundTag("InfiTool").setBoolean("Built", true);
-        }
-        else
-            return;
+        } else return;
 
         // now turn it into legendary glass arrows!
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
@@ -51,7 +48,6 @@ public class GlassArrows extends ArrowAmmo {
         tags.setInteger("Attack", 10); // insane damage!
         tags.setInteger("Modifiers", 0);
         tags.setInteger("Upgrades", 0);
-
 
         // now make them look like glass
         tags.setInteger("RenderHead", -1);

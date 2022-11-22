@@ -1,25 +1,23 @@
 package tconstruct.client;
 
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Gui;
-import net.minecraft.client.renderer.Tessellator;
-import org.lwjgl.opengl.GL11;
-
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.InputStream;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.Gui;
+import net.minecraft.client.renderer.Tessellator;
+import org.lwjgl.opengl.GL11;
 
 /**
- * 
+ *
  * @author TheObliterator
- * 
+ *
  *         A class to create and draw true type fonts onto the Minecraft game
  *         engine.
  */
-public class CustomFont
-{
+public class CustomFont {
     private int texID;
     private int[] xPos;
     private int[] yPos;
@@ -30,9 +28,9 @@ public class CustomFont
     /**
      * Instantiates the font, filling in default start and end character
      * parameters.
-     * 
+     *
      * 'new CustomFont(ModLoader.getMinecraftInstance(), "Arial", 12);
-     * 
+     *
      * @param mc
      *            The Minecraft instance for the font to be bound to.
      * @param fontName
@@ -40,8 +38,7 @@ public class CustomFont
      * @param size
      *            The size of the font to be drawn.
      */
-    public CustomFont(Minecraft mc, Object font, int size)
-    {
+    public CustomFont(Minecraft mc, Object font, int size) {
         this(mc, font, size, 0, 4000);
     }
 
@@ -49,9 +46,9 @@ public class CustomFont
      * Instantiates the font, pre-rendering a sprite font image by using a true
      * type font on a bitmap. Then allocating that bitmap to the Minecraft
      * rendering engine for later use.
-     * 
+     *
      * 'new CustomFont(ModLoader.getMinecraftInstance(), "Arial", 12, 32, 126);'
-     * 
+     *
      * @param mc
      *            The Minecraft instance for the font to be bound to.
      * @param fontName
@@ -63,8 +60,7 @@ public class CustomFont
      * @param endChar
      *            The ending ASCII character id to be drawable. (Default 126)
      */
-    public CustomFont(Minecraft mc, Object font, int size, int startChar, int endChar)
-    {
+    public CustomFont(Minecraft mc, Object font, int size, int startChar, int endChar) {
         this.startChar = startChar;
         this.endChar = endChar;
         xPos = new int[endChar - startChar];
@@ -76,27 +72,20 @@ public class CustomFont
         // it is not the Minecraft engine will not draw it properly.
         BufferedImage img = new BufferedImage(256, 256, BufferedImage.TYPE_INT_ARGB);
         Graphics g = img.getGraphics();
-        try
-        {
-            if (font instanceof String)
-            {
+        try {
+            if (font instanceof String) {
                 String fontName = (String) font;
                 if (fontName.contains("/"))
-                    g.setFont(Font.createFont(Font.TRUETYPE_FONT, new File(fontName)).deriveFont((float) size));
-                else
-                    g.setFont(new Font(fontName, 0, size));
-            }
-            else if (font instanceof InputStream)
-            {
-                g.setFont(Font.createFont(Font.TRUETYPE_FONT, (InputStream) font).deriveFont((float) size));
-            }
-            else if (font instanceof File)
-            {
+                    g.setFont(Font.createFont(Font.TRUETYPE_FONT, new File(fontName))
+                            .deriveFont((float) size));
+                else g.setFont(new Font(fontName, 0, size));
+            } else if (font instanceof InputStream) {
+                g.setFont(
+                        Font.createFont(Font.TRUETYPE_FONT, (InputStream) font).deriveFont((float) size));
+            } else if (font instanceof File) {
                 g.setFont(Font.createFont(Font.TRUETYPE_FONT, (File) font).deriveFont((float) size));
             }
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -112,14 +101,12 @@ public class CustomFont
         // later when drawing.
         int x = 2;
         int y = 2;
-        for (int i = startChar; i < endChar; i++)
-        {
+        for (int i = startChar; i < endChar; i++) {
             g.drawString("" + ((char) i), x, y + g.getFontMetrics().getAscent());
             xPos[i - startChar] = x;
             yPos[i - startChar] = y - metrics.getMaxDescent();
             x += metrics.stringWidth("" + (char) i) + 2;
-            if (x >= 250 - metrics.getMaxAdvance())
-            {
+            if (x >= 250 - metrics.getMaxAdvance()) {
                 x = 2;
                 y += metrics.getMaxAscent() + metrics.getMaxDescent() + size / 2;
             }
@@ -133,7 +120,7 @@ public class CustomFont
 
     /**
      * Draws a given string with an automatically calculated shadow below it.
-     * 
+     *
      * @param gui
      *            The gui/subclass to be drawn on
      * @param text
@@ -145,8 +132,7 @@ public class CustomFont
      * @param color
      *            The color of the non-shadowed text (Hex)
      */
-    public void drawStringS (Gui gui, String text, int x, int y, int color)
-    {
+    public void drawStringS(Gui gui, String text, int x, int y, int color) {
         int l = color & 0xff000000;
         int shade = (color & 0xfcfcfc) >> 2;
         shade += l;
@@ -156,7 +142,7 @@ public class CustomFont
 
     /**
      * Draws a given string onto a gui/subclass.
-     * 
+     *
      * @param gui
      *            The gui/subclass to be drawn on
      * @param text
@@ -168,8 +154,7 @@ public class CustomFont
      * @param color
      *            The color of the non-shadowed text (Hex)
      */
-    public void drawString (Gui gui, String text, int x, int y, int color)
-    {
+    public void drawString(Gui gui, String text, int x, int y, int color) {
         GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         GL11.glEnable(3553 /* GL_TEXTURE_2D */);
         GL11.glBindTexture(3553 /* GL_TEXTURE_2D */, texID);
@@ -179,14 +164,11 @@ public class CustomFont
         float alpha = (float) (color >> 24 & 0xff) / 255F;
         GL11.glColor4f(red, green, blue, alpha);
         int startX = x;
-        for (int i = 0; i < text.length(); i++)
-        {
+        for (int i = 0; i < text.length(); i++) {
             char c = text.charAt(i);
-            if (c == '\\')
-            {
+            if (c == '\\') {
                 char type = text.charAt(i + 1);
-                if (type == 'n')
-                {
+                if (type == 'n') {
                     y += metrics.getAscent() + 2;
                     x = startX;
                 }
@@ -201,64 +183,56 @@ public class CustomFont
     /**
      * Returns the created FontMetrics which is used to retrive various
      * information about the True Type Font
-     * 
+     *
      * @return FontMetrics of the created font.
      */
-    public FontMetrics getMetrics ()
-    {
+    public FontMetrics getMetrics() {
         return metrics;
     }
 
     /**
      * Gets the drawing width of a given string of string.
-     * 
+     *
      * @param text
      *            The string to be measured
      * @return The width of the given string.
      */
-    public int getStringWidth (String text)
-    {
+    public int getStringWidth(String text) {
         return (int) getBounds(text).getWidth();
     }
 
     /**
      * Gets the drawing height of a given string of string.
-     * 
+     *
      * @param text
      *            The string to be measured
      * @return The height of the given string.
      */
-    public int getStringHeight (String text)
-    {
+    public int getStringHeight(String text) {
         return (int) getBounds(text).getHeight();
     }
 
     /**
      * A method that returns a Rectangle that contains the width and height
      * demensions of the given string.
-     * 
+     *
      * @param text
      *            The string to be measured
      * @return Rectangle containing width and height that the text will consume
      *         when drawn.
      */
-    private Rectangle getBounds (String text)
-    {
+    private Rectangle getBounds(String text) {
         int w = 0;
         int h = 0;
         int tw = 0;
-        for (int i = 0; i < text.length(); i++)
-        {
+        for (int i = 0; i < text.length(); i++) {
             char c = text.charAt(i);
-            if (c == '\\')
-            {
+            if (c == '\\') {
                 char type = text.charAt(i + 1);
 
-                if (type == 'n')
-                {
+                if (type == 'n') {
                     h += metrics.getAscent() + 2;
-                    if (tw > w)
-                        w = tw;
+                    if (tw > w) w = tw;
                     tw = 0;
                 }
                 i++;
@@ -266,8 +240,7 @@ public class CustomFont
             }
             tw += metrics.stringWidth("" + c);
         }
-        if (tw > w)
-            w = tw;
+        if (tw > w) w = tw;
         h += metrics.getAscent();
         return new Rectangle(0, 0, w, h);
     }
@@ -275,20 +248,25 @@ public class CustomFont
     /**
      * Private drawing method used within other drawing methods.
      */
-    private void drawChar (Gui gui, char c, int x, int y)
-    {
+    private void drawChar(Gui gui, char c, int x, int y) {
         Rectangle2D bounds = metrics.getStringBounds("" + c, null);
-        drawTexturedModalRect(x, y, xPos[(byte) c - startChar], yPos[(byte) c - startChar], (int) bounds.getWidth(), (int) bounds.getHeight() + metrics.getMaxDescent());
+        drawTexturedModalRect(
+                x,
+                y,
+                xPos[(byte) c - startChar],
+                yPos[(byte) c - startChar],
+                (int) bounds.getWidth(),
+                (int) bounds.getHeight() + metrics.getMaxDescent());
     }
 
-    public void drawTexturedModalRect (int x, int y, int u, int v, int width, int height)
-    {
+    public void drawTexturedModalRect(int x, int y, int u, int v, int width, int height) {
         float offsetWidth = 0.00390625F;
         float offsetHeight = 0.00390625F;
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV((x + 0), (y + height), 0, ((u + 0) * offsetWidth), ((v + height) * offsetHeight));
-        tessellator.addVertexWithUV((x + width), (y + height), 0, ((u + width) * offsetWidth), ((v + height) * offsetHeight));
+        tessellator.addVertexWithUV(
+                (x + width), (y + height), 0, ((u + width) * offsetWidth), ((v + height) * offsetHeight));
         tessellator.addVertexWithUV((x + width), (y + 0), 0, ((u + width) * offsetWidth), ((v + 0) * offsetHeight));
         tessellator.addVertexWithUV((x + 0), (y + 0), 0, ((u + 0) * offsetWidth), ((v + 0) * offsetHeight));
         tessellator.draw();

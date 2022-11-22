@@ -34,8 +34,7 @@ public class ArrowEntityRenderer extends ProjectileBaseRenderer<ArrowEntity> {
         GL11.glRotatef(-entity.rotationPitch, 1f, 0f, 0f);
 
         // rotate it so it's "upright"
-        if(count == 0)
-            GL11.glRotatef(90, 0f, 0f, 1f);
+        if (count == 0) GL11.glRotatef(90, 0f, 0f, 1f);
 
         GL11.glRotatef(45, 0f, 0f, 1f);
 
@@ -46,6 +45,6 @@ public class ArrowEntityRenderer extends ProjectileBaseRenderer<ArrowEntity> {
         GL11.glRotatef(-45, 0f, 0f, 1f);
 
         // thinner arrows
-        toolCoreRenderer.setDepth(1/64f);
+        toolCoreRenderer.setDepth(1 / 64f);
     }
 }

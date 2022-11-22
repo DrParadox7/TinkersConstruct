@@ -9,60 +9,48 @@ import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.library.util.XpUtils;
 
-public class ModToolRepair extends ItemModifier
-{
+public class ModToolRepair extends ItemModifier {
 
-    public ModToolRepair()
-    {
+    public ModToolRepair() {
         super(new ItemStack[0], 0, "");
     }
 
     @Override
-    public boolean matches (ItemStack[] input, ItemStack tool)
-    {
+    public boolean matches(ItemStack[] input, ItemStack tool) {
         return canModify(tool, input);
     }
 
     @Override
-    protected boolean canModify (ItemStack tool, ItemStack[] input)
-    {
+    protected boolean canModify(ItemStack tool, ItemStack[] input) {
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
-        if (tags.getInteger("Damage") > 0)
-        {
+        if (tags.getInteger("Damage") > 0) {
             int headID = tags.getInteger("Head");
             boolean areInputsValid = true;
-            for (ItemStack curInput : input)
-            {
-                if (curInput != null && headID != PatternBuilder.instance.getPartID(curInput))
-                {
+            for (ItemStack curInput : input) {
+                if (curInput != null && headID != PatternBuilder.instance.getPartID(curInput)) {
                     areInputsValid = false;
                     break;
                 }
             }
-            if (areInputsValid)
-            {
+            if (areInputsValid) {
                 return calculateIfNecessary(tool, input);
             }
         }
         return false;
     }
 
-    private boolean calculateIfNecessary (ItemStack tool, ItemStack[] input)
-    {
+    private boolean calculateIfNecessary(ItemStack tool, ItemStack[] input) {
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
         int damage = tags.getInteger("Damage");
         int numInputs = 0;
         int materialValue = 0;
-        for (ItemStack curInput : input)
-        {
-            if (curInput != null)
-            {
+        for (ItemStack curInput : input) {
+            if (curInput != null) {
                 materialValue += PatternBuilder.instance.getPartValue(curInput);
                 numInputs++;
             }
         }
-        if (numInputs == 0)
-            return false;
+        if (numInputs == 0) return false;
 
         int totalRepairValue = calculateIncrease(tool, materialValue, numInputs);
         float averageRepairValue = totalRepairValue / numInputs;
@@ -70,8 +58,7 @@ public class ModToolRepair extends ItemModifier
         return numInputs == 1 || (damage - totalRepairValue >= -averageRepairValue);
     }
 
-    private int calculateIncrease (ItemStack tool, int materialValue, int itemsUsed)
-    {
+    private int calculateIncrease(ItemStack tool, int materialValue, int itemsUsed) {
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
         int damage = tags.getInteger("Damage");
         int dur = tags.getInteger("BaseDurability");
@@ -79,28 +66,22 @@ public class ModToolRepair extends ItemModifier
 
         int modifiers = tags.getInteger("Modifiers");
         float mods = 1.0f;
-        if (modifiers == 2)
-            mods = 0.9f;
-        else if (modifiers == 1)
-            mods = 0.8f;
-        else if (modifiers == 0)
-            mods = 0.7f;
+        if (modifiers == 2) mods = 0.9f;
+        else if (modifiers == 1) mods = 0.8f;
+        else if (modifiers == 0) mods = 0.7f;
 
         increase *= mods;
 
         int repair = tags.getInteger("RepairCount");
         float repairCount = (100 - repair) / 100f;
-        if (repairCount < 0.5f)
-            repairCount = 0.5f;
+        if (repairCount < 0.5f) repairCount = 0.5f;
         increase *= repairCount;
         increase /= ((ToolCore) tool.getItem()).getRepairCost();
         return increase;
-
     }
 
     @Override
-    public void modify (ItemStack[] input, ItemStack tool)
-    {
+    public void modify(ItemStack[] input, ItemStack tool) {
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
         tags.setBoolean("Broken", false);
         int damage = tags.getInteger("Damage");
@@ -108,10 +89,8 @@ public class ModToolRepair extends ItemModifier
         int itemsUsed = 0;
 
         int materialValue = 0;
-        for (ItemStack curInput : input)
-        {
-            if (curInput != null)
-            {
+        for (ItemStack curInput : input) {
+            if (curInput != null) {
                 materialValue += PatternBuilder.instance.getPartValue(curInput);
                 itemsUsed++;
             }
@@ -124,8 +103,7 @@ public class ModToolRepair extends ItemModifier
         tags.setInteger("RepairCount", repair);
 
         damage -= increase;
-        if (damage < 0)
-            damage = 0;
+        if (damage < 0) damage = 0;
         tags.setInteger("Damage", damage);
 
         int upgrades = tags.getInteger("Upgrades");
@@ -137,12 +115,9 @@ public class ModToolRepair extends ItemModifier
     }
 
     @Override
-    public void addMatchingEffect (ItemStack tool)
-    {
-    }
+    public void addMatchingEffect(ItemStack tool) {}
 
-    public boolean validType (IModifyable input)
-    {
+    public boolean validType(IModifyable input) {
         return input.getModifyType().equals("Tool") || input.getModifyType().equals("Armor");
     }
 }

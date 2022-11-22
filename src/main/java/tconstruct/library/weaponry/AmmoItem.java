@@ -24,14 +24,14 @@ public abstract class AmmoItem extends ToolCore implements IBattlegearWeapon, IA
 
     @Override
     public int getAmmoCount(ItemStack stack) {
-        if(!stack.hasTagCompound()) return 0;
+        if (!stack.hasTagCompound()) return 0;
         NBTTagCompound tags = stack.getTagCompound().getCompoundTag("InfiTool");
         return tags.getInteger("Ammo");
     }
 
     @Override
     public int getMaxAmmo(ItemStack stack) {
-        if(!stack.hasTagCompound()) return 0;
+        if (!stack.hasTagCompound()) return 0;
         NBTTagCompound tags = stack.getTagCompound().getCompoundTag("InfiTool");
         return getMaxAmmo(tags);
     }
@@ -44,7 +44,7 @@ public abstract class AmmoItem extends ToolCore implements IBattlegearWeapon, IA
 
     @Override
     public int addAmmo(int toAdd, ItemStack stack) {
-        if(!stack.hasTagCompound()) return toAdd;
+        if (!stack.hasTagCompound()) return toAdd;
         NBTTagCompound tags = stack.getTagCompound().getCompoundTag("InfiTool");
         int oldCount = tags.getInteger("Ammo");
         int newCount = Math.min(oldCount + toAdd, getMaxAmmo(stack));
@@ -54,7 +54,7 @@ public abstract class AmmoItem extends ToolCore implements IBattlegearWeapon, IA
 
     @Override
     public int consumeAmmo(int toUse, ItemStack stack) {
-        if(!stack.hasTagCompound()) return toUse;
+        if (!stack.hasTagCompound()) return toUse;
         NBTTagCompound tags = stack.getTagCompound().getCompoundTag("InfiTool");
         int oldCount = tags.getInteger("Ammo");
         int newCount = Math.max(oldCount - toUse, 0);
@@ -64,42 +64,39 @@ public abstract class AmmoItem extends ToolCore implements IBattlegearWeapon, IA
 
     @Override
     public void setAmmo(int count, ItemStack stack) {
-        if(!stack.hasTagCompound()) return;
+        if (!stack.hasTagCompound()) return;
 
         NBTTagCompound tags = stack.getTagCompound().getCompoundTag("InfiTool");
         tags.setInteger("Ammo", count);
     }
 
-    public float getAmmoModifier() { return 0.1f; }
+    public float getAmmoModifier() {
+        return 0.1f;
+    }
 
-    public boolean pickupAmmo(ItemStack stack, ItemStack candidate, EntityPlayer player)
-    {
-        if(stack.getItem() == null || !stack.hasTagCompound() || !(stack.getItem() instanceof IAmmo))
-            return false;
+    public boolean pickupAmmo(ItemStack stack, ItemStack candidate, EntityPlayer player) {
+        if (stack.getItem() == null || !stack.hasTagCompound() || !(stack.getItem() instanceof IAmmo)) return false;
 
         // check if our candidate fits
-        if(candidate != null)
-        {
+        if (candidate != null) {
             // same item
-            if(testIfAmmoMatches(stack, candidate)) {
+            if (testIfAmmoMatches(stack, candidate)) {
                 IAmmo pickedup = ((IAmmo) stack.getItem());
                 IAmmo ininventory = ((IAmmo) candidate.getItem());
                 // we can be sure that it's ammo, since stack is ammo and they're equal
                 int count = pickedup.getAmmoCount(stack);
-                if(count != ininventory.addAmmo(count, candidate))
-                    return true;
+                if (count != ininventory.addAmmo(count, candidate)) return true;
             }
         }
 
         // search the players inventory
-        for(ItemStack invItem : player.inventory.mainInventory) {
+        for (ItemStack invItem : player.inventory.mainInventory) {
             if (testIfAmmoMatches(stack, invItem)) {
                 IAmmo pickedup = ((IAmmo) stack.getItem());
                 IAmmo ininventory = ((IAmmo) invItem.getItem());
                 // we can be sure that it's ammo, since stack is ammo and they're equal
                 int count = pickedup.getAmmoCount(stack);
-                if(count != ininventory.addAmmo(count, invItem))
-                    return true;
+                if (count != ininventory.addAmmo(count, invItem)) return true;
             }
         }
 
@@ -107,15 +104,11 @@ public abstract class AmmoItem extends ToolCore implements IBattlegearWeapon, IA
         return false;
     }
 
-    private boolean testIfAmmoMatches(ItemStack reference, ItemStack candidate)
-    {
-        if(candidate == null)
-            return false;
-        if(!candidate.hasTagCompound() || !candidate.getTagCompound().hasKey("InfiTool"))
-            return false;
+    private boolean testIfAmmoMatches(ItemStack reference, ItemStack candidate) {
+        if (candidate == null) return false;
+        if (!candidate.hasTagCompound() || !candidate.getTagCompound().hasKey("InfiTool")) return false;
 
-        if(reference.getItem() != candidate.getItem())
-            return false;
+        if (reference.getItem() != candidate.getItem()) return false;
 
         NBTTagCompound referenceTags = getComparisonTags(reference);
         NBTTagCompound testTags = getComparisonTags(candidate);
@@ -145,22 +138,18 @@ public abstract class AmmoItem extends ToolCore implements IBattlegearWeapon, IA
     }
 
     private void copyTag(NBTTagCompound out, NBTTagCompound in, String tag) {
-        if(in.hasKey(tag))
-            out.setInteger(tag, in.getInteger(tag));
+        if (in.hasKey(tag)) out.setInteger(tag, in.getInteger(tag));
     }
 
-
     @Override
-    public boolean onLeftClickEntity (ItemStack stack, EntityPlayer player, Entity entity)
-    {
+    public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
         // ammo doesn't hurt on smacking stuff with it
         return false;
     }
 
     @Override
     @Optional.Method(modid = "battlegear2")
-    public boolean sheatheOnBack(ItemStack item)
-    {
+    public boolean sheatheOnBack(ItemStack item) {
         return true;
     }
 
@@ -172,7 +161,8 @@ public abstract class AmmoItem extends ToolCore implements IBattlegearWeapon, IA
 
     @Override
     @Optional.Method(modid = "battlegear2")
-    public boolean offhandAttackEntity(PlayerEventChild.OffhandAttackEvent event, ItemStack mainhandItem, ItemStack offhandItem) {
+    public boolean offhandAttackEntity(
+            PlayerEventChild.OffhandAttackEvent event, ItemStack mainhandItem, ItemStack offhandItem) {
         event.cancelParent = false;
         event.swingOffhand = false;
         event.shouldAttack = false;
@@ -189,7 +179,7 @@ public abstract class AmmoItem extends ToolCore implements IBattlegearWeapon, IA
     @Override
     @Optional.Method(modid = "battlegear2")
     public boolean offhandClickBlock(PlayerInteractEvent event, ItemStack mainhandItem, ItemStack offhandItem) {
-		event.setCanceled(false);
+        event.setCanceled(false);
         return false;
     }
 
@@ -202,9 +192,10 @@ public abstract class AmmoItem extends ToolCore implements IBattlegearWeapon, IA
     @Override
     @Optional.Method(modid = "battlegear2")
     public boolean allowOffhand(ItemStack mainhand, ItemStack offhand) {
-        if(offhand == null)
-            return true;
-        return (mainhand != null && mainhand.getItem() != TinkerTools.cleaver && mainhand.getItem() != TinkerTools.battleaxe)
+        if (offhand == null) return true;
+        return (mainhand != null
+                        && mainhand.getItem() != TinkerTools.cleaver
+                        && mainhand.getItem() != TinkerTools.battleaxe)
                 && (offhand.getItem() != TinkerTools.cleaver && offhand.getItem() != TinkerTools.battleaxe);
     }
 }

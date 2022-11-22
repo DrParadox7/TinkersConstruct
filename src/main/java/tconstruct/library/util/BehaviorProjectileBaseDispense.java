@@ -15,29 +15,29 @@ public abstract class BehaviorProjectileBaseDispense extends BehaviorDefaultDisp
      * Dispense the specified stack, play the dispense sound and spawn particles.
      */
     @Override
-    public ItemStack dispenseStack(IBlockSource blockSource, ItemStack stack)
-    {
+    public ItemStack dispenseStack(IBlockSource blockSource, ItemStack stack) {
         World world = blockSource.getWorld();
         IPosition iposition = BlockDispenser.func_149939_a(blockSource);
         EnumFacing enumfacing = BlockDispenser.func_149937_b(blockSource.getBlockMetadata());
 
         ItemStack reference;
 
-        if(stack.getItem() instanceof IAmmo)
-        {
+        if (stack.getItem() instanceof IAmmo) {
             IAmmo ammo = (IAmmo) stack.getItem();
             // needs ammo to shoot
-            if(ammo.getAmmoCount(stack) <= 0)
-                return stack;
+            if (ammo.getAmmoCount(stack) <= 0) return stack;
             ammo.consumeAmmo(1, stack);
             reference = stack.copy();
-            ((IAmmo)reference.getItem()).setAmmo(1, reference);
-        }
-        else
-            reference = stack.splitStack(1);
+            ((IAmmo) reference.getItem()).setAmmo(1, reference);
+        } else reference = stack.splitStack(1);
 
         ProjectileBase projectile = this.getProjectileEntity(world, iposition, reference);
-        projectile.setThrowableHeading((double)enumfacing.getFrontOffsetX(), (double)((float)enumfacing.getFrontOffsetY() + ballistic()), (double)enumfacing.getFrontOffsetZ(), this.accuraccy(), this.speed());
+        projectile.setThrowableHeading(
+                (double) enumfacing.getFrontOffsetX(),
+                (double) ((float) enumfacing.getFrontOffsetY() + ballistic()),
+                (double) enumfacing.getFrontOffsetZ(),
+                this.accuraccy(),
+                this.speed());
         projectile.returnStack = reference;
         projectile.canBePickedUp = 1;
         world.spawnEntityInWorld(projectile);
@@ -48,8 +48,7 @@ public abstract class BehaviorProjectileBaseDispense extends BehaviorDefaultDisp
     /**
      * Play the dispense sound from the specified block.
      */
-    protected void playDispenseSound(IBlockSource source)
-    {
+    protected void playDispenseSound(IBlockSource source) {
         source.getWorld().playAuxSFX(1002, source.getXInt(), source.getYInt(), source.getZInt(), 0);
     }
 
@@ -58,15 +57,15 @@ public abstract class BehaviorProjectileBaseDispense extends BehaviorDefaultDisp
      */
     protected abstract ProjectileBase getProjectileEntity(World world, IPosition position, ItemStack stack);
 
-    protected float speed()
-    {
+    protected float speed() {
         return 6.0F;
     }
 
-    protected float accuraccy()
-    {
+    protected float accuraccy() {
         return 1.1F;
     }
 
-    protected float ballistic() { return 0.1f; }
+    protected float ballistic() {
+        return 0.1f;
+    }
 }

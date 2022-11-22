@@ -9,18 +9,19 @@ import net.minecraft.item.ItemStack;
 import tconstruct.TConstruct;
 import tconstruct.smeltery.TinkerSmeltery;
 
-@Pulse(id = "Tinkers BuildCraft Compatibility", description = "Tinkers Construct compatibility for BC Transport", modsRequired = "BuildCraft|Transport", forced = true)
-public class TinkerBuildCraft
-{
+@Pulse(
+        id = "Tinkers BuildCraft Compatibility",
+        description = "Tinkers Construct compatibility for BC Transport",
+        modsRequired = "BuildCraft|Transport",
+        forced = true)
+public class TinkerBuildCraft {
     @Handler
-    public void init (FMLInitializationEvent event)
-    {
+    public void init(FMLInitializationEvent event) {
         TConstruct.logger.info("BuildCraft detected. Registering facades.");
         // Smeltery Blocks
         addFacade(TinkerSmeltery.smeltery, 2);
         addFacade(TinkerSmeltery.smelteryNether, 2);
-        for (int sc = 4; sc < 11; sc++)
-        {
+        for (int sc = 4; sc < 11; sc++) {
             addFacade(TinkerSmeltery.smeltery, sc);
             addFacade(TinkerSmeltery.smelteryNether, sc);
         }
@@ -29,8 +30,7 @@ public class TinkerBuildCraft
         addFacade(TinkerSmeltery.searedBlockNether, 0);
     }
 
-    private void addFacade (Block b, int meta)
-    {
+    private void addFacade(Block b, int meta) {
         FMLInterModComms.sendMessage("BuildCraft|Transport", "add-facade", new ItemStack(b, 1, meta));
     }
 }

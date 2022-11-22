@@ -19,11 +19,9 @@ import tconstruct.tools.logic.ToolForgeLogic;
 import tconstruct.tools.model.TableRender;
 import tconstruct.world.TinkerWorld;
 
-public class ToolForgeBlock extends InventoryBlock
-{
+public class ToolForgeBlock extends InventoryBlock {
 
-    public ToolForgeBlock(Material material)
-    {
+    public ToolForgeBlock(Material material) {
         super(material);
         this.setCreativeTab(TConstructRegistry.blockTab);
         this.setHardness(2f);
@@ -32,93 +30,77 @@ public class ToolForgeBlock extends InventoryBlock
 
     /* Rendering */
     @Override
-    public String[] getTextureNames ()
-    {
-        String[] textureNames = { "toolforge_manyullyn_nether" };
+    public String[] getTextureNames() {
+        String[] textureNames = {"toolforge_manyullyn_nether"};
 
         return textureNames;
     }
 
     @Override
-    public String getTextureDomain (int textureNameIndex)
-    {
+    public String getTextureDomain(int textureNameIndex) {
         return "tinker";
     }
 
     IIcon textureTop;
 
     @Override
-    public void registerBlockIcons (IIconRegister iconRegister)
-    {
+    public void registerBlockIcons(IIconRegister iconRegister) {
         super.registerBlockIcons(iconRegister);
         textureTop = iconRegister.registerIcon("tinker:toolforge_top_nether");
-
     }
 
     @Override
     @SideOnly(Side.CLIENT)
-    public IIcon getIcon (int side, int meta)
-    {
-        if (side == 1)
-        {
+    public IIcon getIcon(int side, int meta) {
+        if (side == 1) {
             return textureTop;
         }
-        if (side == 0)
-        {
+        if (side == 0) {
             return TinkerWorld.metalBlock.getIcon(side, 2);
         }
 
-        if (meta <= getTextureNames().length-1)
-            return this.icons[meta];
+        if (meta <= getTextureNames().length - 1) return this.icons[meta];
 
         return this.icons[0];
     }
 
     @Override
-    public boolean renderAsNormalBlock ()
-    {
+    public boolean renderAsNormalBlock() {
         return false;
     }
 
     @Override
-    public boolean isOpaqueCube ()
-    {
+    public boolean isOpaqueCube() {
         return false;
     }
 
     @Override
-    public boolean isSideSolid (IBlockAccess world, int x, int y, int z, ForgeDirection side)
-    {
+    public boolean isSideSolid(IBlockAccess world, int x, int y, int z, ForgeDirection side) {
         return side == ForgeDirection.UP;
     }
 
     @Override
-    public int getRenderType ()
-    {
+    public int getRenderType() {
         return TableRender.model;
     }
 
     @Override
-    public boolean shouldSideBeRendered (IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5)
-    {
+    public boolean shouldSideBeRendered(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
         return true;
     }
 
     @Override
-    public TileEntity createNewTileEntity (World world, int metadata)
-    {
+    public TileEntity createNewTileEntity(World world, int metadata) {
         return new ToolForgeLogic();
     }
 
     @Override
-    public Integer getGui (World world, int x, int y, int z, EntityPlayer entityplayer)
-    {
+    public Integer getGui(World world, int x, int y, int z, EntityPlayer entityplayer) {
         return ToolProxyCommon.toolForgeID;
     }
 
     @Override
-    public Object getModInstance ()
-    {
+    public Object getModInstance() {
         return TConstruct.instance;
     }
 }

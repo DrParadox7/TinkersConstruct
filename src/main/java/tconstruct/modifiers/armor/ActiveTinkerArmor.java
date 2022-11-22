@@ -13,22 +13,17 @@ import tconstruct.library.armor.ArmorPart;
 import tconstruct.library.modifier.ActiveArmorMod;
 import tconstruct.library.modifier.IModifyable;
 
-public class ActiveTinkerArmor extends ActiveArmorMod
-{
+public class ActiveTinkerArmor extends ActiveArmorMod {
     @Override
-    public void onArmorTick (World world, EntityPlayer player, ItemStack itemStack, ArmorCore armor, ArmorPart type)
-    {
-        if(!itemStack.hasTagCompound())
-            return;
-        NBTTagCompound tag = itemStack.getTagCompound().getCompoundTag(((IModifyable) itemStack.getItem()).getBaseTagName());
-        if(tag == null)
-            return;
-        if (tag.hasKey("Moss"))
-        {
+    public void onArmorTick(World world, EntityPlayer player, ItemStack itemStack, ArmorCore armor, ArmorPart type) {
+        if (!itemStack.hasTagCompound()) return;
+        NBTTagCompound tag =
+                itemStack.getTagCompound().getCompoundTag(((IModifyable) itemStack.getItem()).getBaseTagName());
+        if (tag == null) return;
+        if (tag.hasKey("Moss")) {
             int chance = tag.getInteger("Moss");
             int check = world.canBlockSeeTheSky((int) player.posX, (int) player.posY, (int) player.posZ) ? 350 : 1150;
-            if (TConstruct.random.nextInt(check) < chance)
-            {
+            if (TConstruct.random.nextInt(check) < chance) {
                 int current = tag.getInteger("Damage");
                 if (current > 0) {
                     current--;
@@ -37,11 +32,9 @@ public class ActiveTinkerArmor extends ActiveArmorMod
                 }
             }
         }
-        if (type == ArmorPart.Head)
-        {
+        if (type == ArmorPart.Head) {
             TPlayerStats stats = TPlayerStats.get(player);
-            if (stats.activeGoggles)
-            {
+            if (stats.activeGoggles) {
                 if (tag.getBoolean("Night Vision"))
                     player.addPotionEffect(new PotionEffect(Potion.nightVision.id, 15 * 20, 0, true));
             }
@@ -53,8 +46,7 @@ public class ActiveTinkerArmor extends ActiveArmorMod
                 entity.onCollideWithPlayer(player);
             }*/
         }
-        if (type == ArmorPart.Chest)
-        {
+        if (type == ArmorPart.Chest) {
             if (player.isSneaking() && tag.getBoolean("Stealth"))
                 player.addPotionEffect(new PotionEffect(Potion.invisibility.id, 2, 0, true));
 
@@ -62,20 +54,14 @@ public class ActiveTinkerArmor extends ActiveArmorMod
             if (player.isSprinting() && sprintboost > 0)
                 player.moveEntityWithHeading(-player.moveStrafing * 0.1f * sprintboost, player.moveForward * 0.2F * sprintboost); //Max of 0-1*/
         }
-        if (type == ArmorPart.Feet)
-        {
-            if (player.isInWater())
-            {
-                if (!player.isSneaking() && tag.getBoolean("WaterWalk") && player.motionY <= 0)
-                {
+        if (type == ArmorPart.Feet) {
+            if (player.isInWater()) {
+                if (!player.isSneaking() && tag.getBoolean("WaterWalk") && player.motionY <= 0) {
                     player.motionY = 0;
                 }
-                if (tag.getBoolean("LeadBoots"))
-                {
-                    if (player.motionY > 0)
-                        player.motionY *= 0.5f;
-                    else if (player.motionY < 0)
-                        player.motionY *= 1.5f;
+                if (tag.getBoolean("LeadBoots")) {
+                    if (player.motionY > 0) player.motionY *= 0.5f;
+                    else if (player.motionY < 0) player.motionY *= 1.5f;
                 }
             }
         }

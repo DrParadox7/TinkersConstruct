@@ -1,22 +1,16 @@
 package tconstruct.tools.items;
 
+import java.util.List;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 
-import java.util.List;
-
 @Deprecated
-public class ToolPartHidden extends ToolPart
-{
+public class ToolPartHidden extends ToolPart {
 
-    public ToolPartHidden(String textureType, String name)
-    {
+    public ToolPartHidden(String textureType, String name) {
         super(textureType, name);
     }
 
     @Override
-    public void getSubItems (Item id, CreativeTabs tab, List list)
-    {
-
-    }
+    public void getSubItems(Item id, CreativeTabs tab, List list) {}
 }

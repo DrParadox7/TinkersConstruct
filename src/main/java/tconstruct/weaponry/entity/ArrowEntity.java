@@ -34,17 +34,18 @@ public class ArrowEntity extends ProjectileBase {
     @Override
     protected double getSlowdown() {
         // we could use the fletchling material for the slowdown, hm
-        // note: not done because fletchlings also balance amount you get now. Rather use slowdown for different projectile types
+        // note: not done because fletchlings also balance amount you get now. Rather use slowdown for different
+        // projectile types
         return super.getSlowdown();
     }
 
     @Override
     protected double getGravity() {
-        if(returnStack == null || !returnStack.hasTagCompound())
-            return super.getGravity();
+        if (returnStack == null || !returnStack.hasTagCompound()) return super.getGravity();
 
         float mass = returnStack.getTagCompound().getCompoundTag("InfiTool").getFloat("Mass");
-        mass /= 36f; // why 36? simple because it's roughly 0.05 with flint head and wooden arrow shaft! Yes, that's the only reason.
+        mass /= 36f; // why 36? simple because it's roughly 0.05 with flint head and wooden arrow shaft! Yes, that's the
+        // only reason.
         return mass;
     }
 
@@ -52,15 +53,13 @@ public class ArrowEntity extends ProjectileBase {
     public void onHitBlock(MovingObjectPosition movingobjectposition) {
         super.onHitBlock(movingobjectposition);
 
-        if(defused)
-            return;
+        if (defused) return;
 
-        if(returnStack == null || !returnStack.hasTagCompound())
-            return;
+        if (returnStack == null || !returnStack.hasTagCompound()) return;
 
         // we might break! oh noez!
         float chance = returnStack.getTagCompound().getCompoundTag("InfiTool").getFloat("BreakChance");
-        if(chance > TConstruct.random.nextFloat()) {
+        if (chance > TConstruct.random.nextFloat()) {
             this.setDead();
             this.playSound("random.break", 1.0F, 1.5F / (this.rand.nextFloat() * 0.2F + 0.9F));
         }
@@ -78,28 +77,25 @@ public class ArrowEntity extends ProjectileBase {
 
     // returns true if it was successful
     @Override
-    public boolean dealDamage(float damage, ToolCore ammo, NBTTagCompound tags, Entity entityHit)
-    {
+    public boolean dealDamage(float damage, ToolCore ammo, NBTTagCompound tags, Entity entityHit) {
         boolean dealtDamage = false;
 
-        //Minecraft.getMinecraft().thePlayer.sendChatMessage("Damage/Weight: " + damage + "  -  " + tags.getFloat("Mass"));
+        // Minecraft.getMinecraft().thePlayer.sendChatMessage("Damage/Weight: " + damage + "  -  " +
+        // tags.getFloat("Mass"));
 
         // we take the weight, and shift the damage done towards armor piercing, the more weight the arrow/bolt has!
-        float shift = (tags.getFloat("Mass") - 0.7f)*armorPenetrationModifier();
+        float shift = (tags.getFloat("Mass") - 0.7f) * armorPenetrationModifier();
 
-        if(shift < 0)
-            shift = 0;
-        if(shift > damage)
-            shift = damage;
+        if (shift < 0) shift = 0;
+        if (shift > damage) shift = damage;
 
         damage -= shift;
 
         // deal regular damage
-        if(damage > 0)
-            dealtDamage = super.dealDamage(damage, ammo, tags, entityHit);
+        if (damage > 0) dealtDamage = super.dealDamage(damage, ammo, tags, entityHit);
 
         // deal armor piercing damage
-        if(shift > 0) {
+        if (shift > 0) {
 
             if (entityHit instanceof EntityLivingBase) {
                 int armorValue = Math.min(20, ((EntityLivingBase) entityHit).getTotalArmorValue());
@@ -107,19 +103,20 @@ public class ArrowEntity extends ProjectileBase {
             }
 
             DamageSource damagesource;
-            if (this.shootingEntity == null)
-                damagesource = new PiercingArrowDamage("arrow", this, this);
-            else
-                damagesource = new PiercingArrowDamage("arrow", this, this.shootingEntity);
+            if (this.shootingEntity == null) damagesource = new PiercingArrowDamage("arrow", this, this);
+            else damagesource = new PiercingArrowDamage("arrow", this, this.shootingEntity);
 
-            //Minecraft.getMinecraft().thePlayer.sendChatMessage("Piercing Damage: " + shift);
+            // Minecraft.getMinecraft().thePlayer.sendChatMessage("Piercing Damage: " + shift);
 
-            // piercing damage does not affect wether the entity was hit (return value), since it should go through always
+            // piercing damage does not affect wether the entity was hit (return value), since it should go through
+            // always
             entityHit.attackEntityFrom(damagesource, shift);
         }
 
         return dealtDamage;
     }
 
-    protected float armorPenetrationModifier() { return 1.0f; }
+    protected float armorPenetrationModifier() {
+        return 1.0f;
+    }
 }

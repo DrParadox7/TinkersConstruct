@@ -1,30 +1,24 @@
 package tconstruct.modifiers.tools;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import static tconstruct.library.util.XpUtils.ModCost;
+public class ModReinforced extends ModInteger {
 
-public class ModReinforced extends ModInteger
-{
-
-    public ModReinforced(ItemStack[] items, int effect, int increase)
-    {
+    public ModReinforced(ItemStack[] items, int effect, int increase) {
         super(items, effect, "Reinforced", 1, "\u00a75", "Reinforced");
     }
 
     @Override
-    public void modify (ItemStack[] input, ItemStack tool)
-    {
+    public void modify(ItemStack[] input, ItemStack tool) {
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
-        if (tags.hasKey(key))
-        {
+        if (tags.hasKey(key)) {
             int increase = tags.getInteger(key);
             increase += secondaryIncrease;
             tags.setInteger(key, increase);
-        }
-        else
-        {
+        } else {
             tags.setInteger(key, initialIncrease);
         }
 
@@ -45,28 +39,22 @@ public class ModReinforced extends ModInteger
         addToolTip(tool, color + tooltipName, color + key);
     }
 
-    protected int addToolTip (ItemStack tool, String tooltip, String modifierTip)
-    {
+    protected int addToolTip(ItemStack tool, String tooltip, String modifierTip) {
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
         int tipNum = 0;
-        while (true)
-        {
+        while (true) {
             tipNum++;
             String tip = "Tooltip" + tipNum;
-            if (!tags.hasKey(tip))
-            {
+            if (!tags.hasKey(tip)) {
                 tags.setString(tip, "");
                 String modTip = "ModifierTip" + tipNum;
                 String tag = tags.getString(modTip);
                 tags.setString(modTip, getProperName(modifierTip, tag));
                 return tipNum;
-            }
-            else
-            {
+            } else {
                 String modTip = "ModifierTip" + tipNum;
                 String tag = tags.getString(modTip);
-                if (tag.contains(modifierTip))
-                {
+                if (tag.contains(modifierTip)) {
                     tags.setString(tip, "");
                     tag = tags.getString(modTip);
                     tags.setString(modTip, getProperName(modifierTip, tag));

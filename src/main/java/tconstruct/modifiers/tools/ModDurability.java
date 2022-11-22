@@ -1,24 +1,22 @@
 package tconstruct.modifiers.tools;
 
+import static tconstruct.library.util.XpUtils.ModCost;
+
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.library.modifier.ItemModifier;
 import tconstruct.util.config.PHConstruct;
 
-import static tconstruct.library.util.XpUtils.ModCost;
-
 /* Adds an integer NBTTag */
 
-public class ModDurability extends ItemModifier
-{
+public class ModDurability extends ItemModifier {
     String tooltipName;
     String color;
     int durability;
     float modifier;
     int miningLevel;
 
-    public ModDurability(ItemStack[] items, int effect, int dur, float mod, int level, String k, String tip, String c)
-    {
+    public ModDurability(ItemStack[] items, int effect, int dur, float mod, int level, String k, String tip, String c) {
         super(items, effect, k);
         durability = dur;
         modifier = mod;
@@ -28,17 +26,14 @@ public class ModDurability extends ItemModifier
     }
 
     @Override
-    protected boolean canModify (ItemStack tool, ItemStack[] input)
-    {
+    protected boolean canModify(ItemStack tool, ItemStack[] input) {
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
-        if (tags.hasKey(key))
-            return false;
+        if (tags.hasKey(key)) return false;
         return super.canModify(tool, input);
     }
 
     @Override
-    public void modify (ItemStack[] input, ItemStack tool)
-    {
+    public void modify(ItemStack[] input, ItemStack tool) {
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
 
         int base = tags.getInteger("BaseDurability");
@@ -49,18 +44,15 @@ public class ModDurability extends ItemModifier
         modDur += modifier;
 
         int total = (int) ((base + bonus) * (modDur + 1f));
-        if (total <= 0)
-            total = 1;
+        if (total <= 0) total = 1;
 
         tags.setInteger("TotalDurability", total);
         tags.setInteger("BonusDurability", bonus);
         tags.setFloat("ModDurability", modDur);
 
-        if (PHConstruct.miningLevelIncrease)
-        {
+        if (PHConstruct.miningLevelIncrease) {
             int mLevel = tags.getInteger("HarvestLevel");
-            if (mLevel < miningLevel)
-                tags.setInteger("HarvestLevel", miningLevel);
+            if (mLevel < miningLevel) tags.setInteger("HarvestLevel", miningLevel);
         }
 
         int modifiers = tags.getInteger("Modifiers");
@@ -77,5 +69,4 @@ public class ModDurability extends ItemModifier
         String modTip = color + key;
         addToolTip(tool, tooltipName, modTip);
     }
-
 }

@@ -9,10 +9,10 @@ import net.minecraft.util.StatCollector;
 import org.w3c.dom.Document;
 import tconstruct.client.TProxyClient;
 
-public class ManualInfo
-{
+public class ManualInfo {
     //    static String[] name = new String[] { "beginner", "toolstation", "smeltery", "diary" };
-    //    static String[] textureName = new String[] { "tinkerbook_diary", "tinkerbook_toolstation", "tinkerbook_smeltery", "tinkerbook_blue" };
+    //    static String[] textureName = new String[] { "tinkerbook_diary", "tinkerbook_toolstation",
+    // "tinkerbook_smeltery", "tinkerbook_blue" };
 
     BookData beginner = new BookData();
     BookData toolStation = new BookData();
@@ -25,19 +25,42 @@ public class ManualInfo
     volume2 = readManual("/assets/tinker/manuals/materials.xml", dbFactory);
     smelter = readManual("/assets/tinker/manuals/smeltery.xml", dbFactory);*/
 
-    public ManualInfo()
-    {
+    public ManualInfo() {
         Side side = FMLCommonHandler.instance().getEffectiveSide();
-        beginner = initManual(beginner, "tconstruct.manual.beginner", "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"), side == Side.CLIENT ? TProxyClient.volume1 : null, "tinker:tinkerbook_diary");
-        toolStation = initManual(toolStation, "tconstruct.manual.toolstation", "\u00a7o" + StatCollector.translateToLocal("manual2.tooltip"), side == Side.CLIENT ? TProxyClient.volume2 : null, "tinker:tinkerbook_toolstation");
-        smeltery = initManual(smeltery, "tconstruct.manual.smeltery", "\u00a7o" + StatCollector.translateToLocal("manual3.tooltip"), side == Side.CLIENT ? TProxyClient.smelter : null, "tinker:tinkerbook_smeltery");
-        diary = initManual(diary, "tconstruct.manual.diary", "\u00a7o" + StatCollector.translateToLocal("manual4.tooltip"), side == Side.CLIENT ? TProxyClient.diary : null, "tinker:tinkerbook_blue");
-        weaponry = initManual(weaponry, "tconstruct.manual.weaponry", "\u00a7o" + StatCollector.translateToLocal("manual5.tooltip"), side == Side.CLIENT ? TProxyClient.weaponry : null, "tinker:tinkerbook_green");
+        beginner = initManual(
+                beginner,
+                "tconstruct.manual.beginner",
+                "\u00a7o" + StatCollector.translateToLocal("manual1.tooltip"),
+                side == Side.CLIENT ? TProxyClient.volume1 : null,
+                "tinker:tinkerbook_diary");
+        toolStation = initManual(
+                toolStation,
+                "tconstruct.manual.toolstation",
+                "\u00a7o" + StatCollector.translateToLocal("manual2.tooltip"),
+                side == Side.CLIENT ? TProxyClient.volume2 : null,
+                "tinker:tinkerbook_toolstation");
+        smeltery = initManual(
+                smeltery,
+                "tconstruct.manual.smeltery",
+                "\u00a7o" + StatCollector.translateToLocal("manual3.tooltip"),
+                side == Side.CLIENT ? TProxyClient.smelter : null,
+                "tinker:tinkerbook_smeltery");
+        diary = initManual(
+                diary,
+                "tconstruct.manual.diary",
+                "\u00a7o" + StatCollector.translateToLocal("manual4.tooltip"),
+                side == Side.CLIENT ? TProxyClient.diary : null,
+                "tinker:tinkerbook_blue");
+        weaponry = initManual(
+                weaponry,
+                "tconstruct.manual.weaponry",
+                "\u00a7o" + StatCollector.translateToLocal("manual5.tooltip"),
+                side == Side.CLIENT ? TProxyClient.weaponry : null,
+                "tinker:tinkerbook_green");
     }
 
-    public BookData initManual (BookData data, String unlocName, String toolTip, Document xmlDoc, String itemImage)
-    {
-        //proxy.readManuals();
+    public BookData initManual(BookData data, String unlocName, String toolTip, Document xmlDoc, String itemImage) {
+        // proxy.readManuals();
         data.unlocalizedName = unlocName;
         data.toolTip = unlocName;
         data.modID = "TConstruct";
@@ -46,5 +69,4 @@ public class ManualInfo
         BookDataStore.addBook(data);
         return data;
     }
-
 }

@@ -14,8 +14,7 @@ public class MovementUpdatePacket extends AbstractPacket {
     public float yaw;
     public float pitch;
 
-    public MovementUpdatePacket() {
-    }
+    public MovementUpdatePacket() {}
 
     public MovementUpdatePacket(Entity entity) {
         this.entityID = entity.getEntityId();
@@ -49,7 +48,7 @@ public class MovementUpdatePacket extends AbstractPacket {
     @Override
     public void handleClientSide(EntityPlayer player) {
         Entity entity = player.worldObj.getEntityByID(entityID);
-        if(entity != null) {
+        if (entity != null) {
             entity.motionX = x;
             entity.motionY = y;
             entity.motionZ = z;

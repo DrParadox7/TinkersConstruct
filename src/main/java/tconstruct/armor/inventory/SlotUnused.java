@@ -4,10 +4,8 @@ import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class SlotUnused extends Slot
-{
-    public SlotUnused(IInventory par2IInventory, int par3, int par4, int par5)
-    {
+public class SlotUnused extends Slot {
+    public SlotUnused(IInventory par2IInventory, int par3, int par4, int par5) {
         super(par2IInventory, par3, par4, par5);
     }
 
@@ -16,8 +14,7 @@ public class SlotUnused extends Slot
      * getInventoryStackLimit(), but 1 in the case of armor slots)
      */
     @Override
-    public int getSlotStackLimit ()
-    {
+    public int getSlotStackLimit() {
         return 0;
     }
 
@@ -26,8 +23,7 @@ public class SlotUnused extends Slot
      * the armor slots.
      */
     @Override
-    public boolean isItemValid (ItemStack par1ItemStack)
-    {
+    public boolean isItemValid(ItemStack par1ItemStack) {
         return false;
     }
 }
