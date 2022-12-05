@@ -1853,22 +1853,23 @@ public class TinkerSmeltery {
     private void registerIngotCasting(FluidType ft, String name) {
         ItemStack pattern = new ItemStack(TinkerSmeltery.metalPattern, 1, 0);
         LiquidCasting tableCasting = TConstructRegistry.instance.getTableCasting();
-        Fluid castMaterial = PHConstruct.steelPatterns ? TinkerSmeltery.moltenSteelFluid : TinkerSmeltery.moltenAlubrassFluid;
+        Fluid castMaterial =
+                PHConstruct.steelPatterns ? TinkerSmeltery.moltenSteelFluid : TinkerSmeltery.moltenAlubrassFluid;
 
         for (ItemStack ore : OreDictionary.getOres(name)) {
+            tableCasting.addCastingRecipe(
+                    pattern,
+                    new FluidStack(castMaterial, TConstruct.ingotLiquidValue),
+                    new ItemStack(ore.getItem(), 1, ore.getItemDamage()),
+                    false,
+                    50);
+            if (!PHConstruct.removeGoldCastRecipes && !PHConstruct.steelPatterns)
                 tableCasting.addCastingRecipe(
                         pattern,
-                        new FluidStack(castMaterial, TConstruct.ingotLiquidValue),
+                        new FluidStack(TinkerSmeltery.moltenGoldFluid, TConstruct.ingotLiquidValue * 2),
                         new ItemStack(ore.getItem(), 1, ore.getItemDamage()),
                         false,
                         50);
-                if (!PHConstruct.removeGoldCastRecipes && !PHConstruct.steelPatterns)
-                    tableCasting.addCastingRecipe(
-                            pattern,
-                            new FluidStack(TinkerSmeltery.moltenGoldFluid, TConstruct.ingotLiquidValue * 2),
-                            new ItemStack(ore.getItem(), 1, ore.getItemDamage()),
-                            false,
-                            50);
             tableCasting.addCastingRecipe(
                     new ItemStack(ore.getItem(), 1, ore.getItemDamage()),
                     new FluidStack(ft.fluid, TConstruct.ingotLiquidValue),
@@ -1880,7 +1881,8 @@ public class TinkerSmeltery {
     private void registerNuggetCasting(FluidType ft, String name) {
         ItemStack pattern = new ItemStack(TinkerSmeltery.metalPattern, 1, 27);
         ItemStack patternCeramic = new ItemStack(TinkerSmeltery.ceramicPattern, 1, 27);
-        Fluid castMaterial = PHConstruct.steelPatterns ? TinkerSmeltery.moltenSteelFluid : TinkerSmeltery.moltenAlubrassFluid;
+        Fluid castMaterial =
+                PHConstruct.steelPatterns ? TinkerSmeltery.moltenSteelFluid : TinkerSmeltery.moltenAlubrassFluid;
 
         LiquidCasting tableCasting = TConstructRegistry.instance.getTableCasting();
         for (ItemStack ore : OreDictionary.getOres(name)) {
