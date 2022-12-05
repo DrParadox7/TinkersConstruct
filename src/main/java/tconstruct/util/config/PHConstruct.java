@@ -83,6 +83,8 @@ public class PHConstruct {
                 .getBoolean(true);
         denyMattock = config.get("Difficulty Changes", "Deny creation of non-metal mattocks", false)
                 .getBoolean(false);
+        steelPatterns = config.get("Difficulty Changes", "Replace Aluminium Brass Pattern with Steel ones", false)
+                .getBoolean(true);
         craftEndstone = config.get("Difficulty Changes", "Allow creation of endstone", true)
                 .getBoolean(true);
         alternativeBoltRecipe = config.get(
@@ -514,6 +516,7 @@ public class PHConstruct {
     public static double ingotsAlumiteAlloy;
     public static double ingotsManyullynAlloy;
     public static double ingotsPigironAlloy;
+    public static boolean steelPatterns;
 
     public static boolean craftEndstone;
     // Ultra Hardcore modifiers

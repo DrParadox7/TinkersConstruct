@@ -5,10 +5,15 @@ import net.minecraft.item.ItemStack;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.util.IPattern;
+import tconstruct.util.config.PHConstruct;
 
 public class GearCast extends Item implements IPattern {
     public GearCast() {
-        setTextureName("tinker:materials/gear_cast");
+        if (!PHConstruct.steelPatterns) {
+            setTextureName("tinker:materials/gear_cast");
+        } else {
+            setTextureName("tinker:materials/gear_cast_steel");
+        }
         setUnlocalizedName("tconstruct.GearPattern");
     }
 

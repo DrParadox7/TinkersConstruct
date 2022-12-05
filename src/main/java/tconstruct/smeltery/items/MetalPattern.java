@@ -5,6 +5,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import tconstruct.tools.items.Pattern;
+import tconstruct.util.config.PHConstruct;
 
 public class MetalPattern extends Pattern {
 
@@ -15,8 +16,10 @@ public class MetalPattern extends Pattern {
     protected static String[] getPatternNames(String partType) {
         String[] names = new String[patternName.length];
         for (int i = 0; i < patternName.length; i++)
-            if (!(patternName[i].equals(""))) names[i] = partType + patternName[i];
-            else names[i] = "";
+            if (!(patternName[i].equals(""))) {
+                names[i] = partType + patternName[i];
+                if (PHConstruct.steelPatterns) names[i] = names[i] + "_steel";
+            } else names[i] = "";
         return names;
     }
 

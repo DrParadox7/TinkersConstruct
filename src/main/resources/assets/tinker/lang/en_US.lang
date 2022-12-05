@@ -248,6 +248,7 @@ item.tconstruct.Pattern.crossbowbody.name=Crossbow Body Pattern
 item.tconstruct.Pattern.bowlimb.name=Bow Limb Pattern
 
 item.tconstruct.Pattern.blank_cast.name=Blank Cast
+item.tconstruct.Pattern.blank_cast_steel.name=Blank Cast
 item.tconstruct.MetalPattern.rod.name=Tool Rod Cast
 item.tconstruct.MetalPattern.pickaxe.name=Pickaxe Head Cast
 item.tconstruct.MetalPattern.shovel.name=Shovel Head Cast
@@ -606,6 +607,7 @@ tile.fluid.molten.pigiron.name=Molten Pig Iron
 tile.fluid.molten.glass.name=Molten Glass
 tile.molten.stone.name=Seared Stone
 tile.molten.emerald.name=Liquified Emerald
+tile.molten.quartz.name=Liquified Quartz
 tile.liquid.blood.name=Blood
 tile.fluid.molten.nickel.name=Molten Nickel
 tile.fluid.molten.silver.name=Molten Silver
@@ -617,7 +619,7 @@ tile.fluid.molten.lumium.name=Molten Lumium
 tile.fluid.molten.signalum.name=Molten Signalum
 tile.fluid.molten.mithril.name=Molten Mana Infused Metal
 tile.fluid.molten.enderium.name=Molten Enderium
-tile.fluid.molten.quartz.name=Molten Quartz
+tile.fluid.molten.quartz.name=Liquified Quartz
 tile.fluid.ender.name=Liquified Ender
 tile.liquid.slime.name=Liquified Slime
 

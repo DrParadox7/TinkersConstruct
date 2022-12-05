@@ -37,7 +37,9 @@ public class TinkerGears {
     @Handler
     public void postInit(FMLPostInitializationEvent event) {
         ItemStack cast = new ItemStack(gearCast);
-        FluidStack aluCastLiquid = new FluidStack(TinkerSmeltery.moltenAlubrassFluid, TConstruct.ingotLiquidValue);
+        FluidStack CastLiquid = PHConstruct.steelPatterns
+                ? new FluidStack(TinkerSmeltery.moltenSteelFluid, TConstruct.ingotLiquidValue)
+                : new FluidStack(TinkerSmeltery.moltenAlubrassFluid, TConstruct.ingotLiquidValue);
         FluidStack goldCastLiquid = null;
         if (!PHConstruct.removeGoldCastRecipes) {
             goldCastLiquid = new FluidStack(TinkerSmeltery.moltenGoldFluid, TConstruct.ingotLiquidValue * 2);
@@ -52,7 +54,7 @@ public class TinkerGears {
             // register every gear besides wooden gear for creating a gear cast
             if (!oreName.equals("gearWood")) {
                 for (ItemStack g : gears) {
-                    TConstructRegistry.getTableCasting().addCastingRecipe(cast, aluCastLiquid, g, false, 50);
+                    TConstructRegistry.getTableCasting().addCastingRecipe(cast, CastLiquid, g, false, 50);
                     if (!PHConstruct.removeGoldCastRecipes)
                         TConstructRegistry.getTableCasting().addCastingRecipe(cast, goldCastLiquid, g, false, 50);
                 }

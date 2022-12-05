@@ -6,6 +6,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import tconstruct.tools.items.Pattern;
 import tconstruct.util.Reference;
+import tconstruct.util.config.PHConstruct;
 
 public class WeaponryPattern extends Pattern {
     private static final String[] patternName = new String[] {"shuriken", "crossbowlimb", "crossbowbody", "bowlimb"};
@@ -18,7 +19,11 @@ public class WeaponryPattern extends Pattern {
 
     public static String[] getPatternNames(String[] patternName, String partType) {
         String[] names = new String[patternName.length];
-        for (int i = 0; i < patternName.length; i++) names[i] = partType + patternName[i];
+        for (int i = 0; i < patternName.length; i++) {
+            names[i] = partType + patternName[i];
+
+            if (PHConstruct.steelPatterns && partType == "cast_") names[i] = names[i] + "_steel";
+        }
         return names;
     }
 
