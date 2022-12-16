@@ -119,7 +119,7 @@ public class ComponentToolWorkshop extends StructureVillagePieces.House1 {
         this.placeBlockAtCurrentPosition(world, Blocks.ladder, i, 3, 3, 5, sbb);
         this.placeBlockAtCurrentPosition(world, Blocks.ladder, i, 3, 4, 5, sbb);
 
-        this.placeBlockAtCurrentPosition(world, TinkerTools.toolStation, 0, 1, 1, 1, sbb); // Inside
+        this.placeBlockAtCurrentPosition(world, TinkerTools.toolBenchWood, 0, 1, 1, 1, sbb); // Inside
         this.generateStructurePatternChestContents(
                 world,
                 sbb,
@@ -131,7 +131,7 @@ public class ComponentToolWorkshop extends StructureVillagePieces.House1 {
                 TinkerWorld.tinkerHousePatterns.getCount(random));
         // this.placeBlockAtCurrentPosition(world, TRepo.toolStation, 5, 1,
         // 1, 2, sbb);
-        this.placeBlockAtCurrentPosition(world, TinkerTools.toolStation, 1, 1, 1, 3, sbb);
+        this.placeBlockAtCurrentPosition(world, TinkerTools.toolBenchWood, 1, 1, 1, 3, sbb);
         this.generateStructureCraftingStationContents(
                 world,
                 sbb,
@@ -143,7 +143,7 @@ public class ComponentToolWorkshop extends StructureVillagePieces.House1 {
                 TinkerWorld.tinkerHouseChest.getCount(random));
         // this.placeBlockAtCurrentPosition(world, TRepo.craftingStationWood, 0,
         // 1, 1, 4, sbb);
-        this.placeBlockAtCurrentPosition(world, TinkerTools.toolStation, 10, 1, 1, 5, sbb);
+        this.placeBlockAtCurrentPosition(world, TinkerTools.toolBenchWood, 10, 1, 1, 5, sbb);
 
         // ChestGenHooks info = ChestGenHooks.getInfo("TinkerHouse");
 
