@@ -297,6 +297,7 @@ public class ToolBenchBlock extends InventoryBlock {
             if (meta == 5) {
                 PatternChestLogic logic = (PatternChestLogic) world.getTileEntity(x, y, z);
                 for (int i = 1; i <= 13; i++) {
+                    if (i == 7 || i == 8) continue;
                     logic.setInventorySlotContents(i - 1, new ItemStack(TinkerTools.woodPattern, 1, i));
                 }
                 logic.setInventorySlotContents(13, new ItemStack(TinkerTools.woodPattern, 1, 22));
