@@ -70,6 +70,7 @@ public class CraftingSlab extends InventorySlab {
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int meta) {
+        meta = (meta <= 6) ? meta : 1;
         return icons[(meta % 10) * 3 + getTextureIndex(side)];
     }
 
