@@ -914,9 +914,6 @@ public class TinkerSmeltery {
         ItemStack ingotcast = new ItemStack(TinkerSmeltery.metalPattern, 1, 0);
         ItemStack gemcast = new ItemStack(TinkerSmeltery.metalPattern, 1, 26);
 
-        ItemStack ingotcastCeramic = new ItemStack(TinkerSmeltery.ceramicPattern, 1, 0);
-        ItemStack gemcastCeramic = new ItemStack(TinkerSmeltery.ceramicPattern, 1, 26);
-
         LiquidCasting tableCasting = TConstructRegistry.instance.getTableCasting();
         // Blank
         tableCasting.addCastingRecipe(
@@ -958,30 +955,12 @@ public class TinkerSmeltery {
                 new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.ingotLiquidValue / 4),
                 ingotcast,
                 80); // stone
-        tableCasting.addCastingRecipe(
-                new ItemStack(TinkerTools.materials, 1, 2),
-                new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.ingotLiquidValue / 4),
-                ingotcastCeramic,
-                true,
-                80); // stone
 
         // Gem Casts
         tableCasting.addCastingRecipe(
                 new ItemStack(Items.emerald), new FluidStack(TinkerSmeltery.moltenEmeraldFluid, 640), gemcast, 80);
         tableCasting.addCastingRecipe(
                 new ItemStack(Items.quartz), new FluidStack(TinkerSmeltery.moltenQuartzFluid, 160), gemcast, 50);
-        tableCasting.addCastingRecipe(
-                new ItemStack(Items.emerald),
-                new FluidStack(TinkerSmeltery.moltenEmeraldFluid, 640),
-                gemcastCeramic,
-                true,
-                80);
-        tableCasting.addCastingRecipe(
-                new ItemStack(Items.quartz),
-                new FluidStack(TinkerSmeltery.moltenQuartzFluid, 160),
-                gemcastCeramic,
-                true,
-                50);
 
         tableCasting.addCastingRecipe(
                 new ItemStack(TinkerTools.materials, 1, 36),
@@ -1060,7 +1039,6 @@ public class TinkerSmeltery {
         for (int iter = 0; iter < TinkerTools.patternOutputs.length; iter++) {
             if (TinkerTools.patternOutputs[iter] != null) {
                 ItemStack cast = new ItemStack(TinkerSmeltery.metalPattern, 1, iter + 1);
-                ItemStack castCeramic = new ItemStack(TinkerSmeltery.ceramicPattern, 1, iter + 1);
                 if (!PHConstruct.steelPatterns) {
                     tableCasting.addCastingRecipe(
                             cast,
@@ -1090,7 +1068,6 @@ public class TinkerSmeltery {
                             / 2;
                     ItemStack metalCast = new ItemStack(TinkerTools.patternOutputs[iter], 1, liquidDamage[iterTwo]);
                     tableCasting.addCastingRecipe(metalCast, new FluidStack(fs, fluidAmount), cast, 50);
-                    tableCasting.addCastingRecipe(metalCast, new FluidStack(fs, fluidAmount), castCeramic, true, 50);
                     Smeltery.addMelting(FluidType.getFluidType(fs), metalCast, 0, fluidAmount);
                 }
             }
@@ -1105,19 +1082,6 @@ public class TinkerSmeltery {
                 new ItemStack(Items.ender_pearl),
                 new FluidStack(TinkerSmeltery.moltenEnderFluid, 250),
                 new ItemStack(TinkerSmeltery.metalPattern, 1, 26),
-                50);
-
-        tableCasting.addCastingRecipe(
-                new ItemStack(Items.ender_pearl),
-                new FluidStack(TinkerSmeltery.moltenEnderFluid, 250),
-                new ItemStack(TinkerSmeltery.ceramicPattern, 1, 10),
-                true,
-                50);
-        tableCasting.addCastingRecipe(
-                new ItemStack(Items.ender_pearl),
-                new FluidStack(TinkerSmeltery.moltenEnderFluid, 250),
-                new ItemStack(TinkerSmeltery.ceramicPattern, 1, 26),
-                true,
                 50);
 
         ItemStack[] ingotShapes = {
@@ -1257,68 +1221,6 @@ public class TinkerSmeltery {
                     new FluidStack(moltenSteelFluid, TConstruct.ingotLiquidValue),
                     ingotcast,
                     false,
-                    50); // Steel
-
-            // Ceramic Casting
-            tableCasting.addCastingRecipe(
-                    new ItemStack(TinkerTools.materials, 1, 9),
-                    new FluidStack(moltenCopperFluid, TConstruct.ingotLiquidValue),
-                    ingotcastCeramic,
-                    true,
-                    50); // Copper
-            tableCasting.addCastingRecipe(
-                    new ItemStack(TinkerTools.materials, 1, 10),
-                    new FluidStack(moltenTinFluid, TConstruct.ingotLiquidValue),
-                    ingotcastCeramic,
-                    true,
-                    50); // Tin
-            tableCasting.addCastingRecipe(
-                    new ItemStack(TinkerTools.materials, 1, 11),
-                    new FluidStack(moltenAluminumFluid, TConstruct.ingotLiquidValue),
-                    ingotcastCeramic,
-                    true,
-                    50); // Aluminum
-            tableCasting.addCastingRecipe(
-                    new ItemStack(TinkerTools.materials, 1, 3),
-                    new FluidStack(moltenCobaltFluid, TConstruct.ingotLiquidValue),
-                    ingotcastCeramic,
-                    true,
-                    50); // Cobalt
-            tableCasting.addCastingRecipe(
-                    new ItemStack(TinkerTools.materials, 1, 4),
-                    new FluidStack(moltenArditeFluid, TConstruct.ingotLiquidValue),
-                    ingotcastCeramic,
-                    true,
-                    50); // Ardite
-            tableCasting.addCastingRecipe(
-                    new ItemStack(TinkerTools.materials, 1, 5),
-                    new FluidStack(moltenManyullynFluid, TConstruct.ingotLiquidValue),
-                    ingotcastCeramic,
-                    true,
-                    50); // Manyullyn
-            tableCasting.addCastingRecipe(
-                    new ItemStack(TinkerTools.materials, 1, 13),
-                    new FluidStack(moltenBronzeFluid, TConstruct.ingotLiquidValue),
-                    ingotcastCeramic,
-                    true,
-                    50); // Bronze
-            tableCasting.addCastingRecipe(
-                    new ItemStack(TinkerTools.materials, 1, 14),
-                    new FluidStack(moltenAlubrassFluid, TConstruct.ingotLiquidValue),
-                    ingotcastCeramic,
-                    true,
-                    50); // Alubrass
-            tableCasting.addCastingRecipe(
-                    new ItemStack(TinkerTools.materials, 1, 15),
-                    new FluidStack(moltenAlumiteFluid, TConstruct.ingotLiquidValue),
-                    ingotcastCeramic,
-                    true,
-                    50); // Alumite
-            tableCasting.addCastingRecipe(
-                    new ItemStack(TinkerTools.materials, 1, 16),
-                    new FluidStack(moltenSteelFluid, TConstruct.ingotLiquidValue),
-                    ingotcastCeramic,
-                    true,
                     50); // Steel
         }
     }
@@ -1880,7 +1782,6 @@ public class TinkerSmeltery {
 
     private void registerNuggetCasting(FluidType ft, String name) {
         ItemStack pattern = new ItemStack(TinkerSmeltery.metalPattern, 1, 27);
-        ItemStack patternCeramic = new ItemStack(TinkerSmeltery.ceramicPattern, 1, 27);
         Fluid castMaterial =
                 PHConstruct.steelPatterns ? TinkerSmeltery.moltenSteelFluid : TinkerSmeltery.moltenAlubrassFluid;
 
@@ -1899,12 +1800,6 @@ public class TinkerSmeltery {
                     new FluidStack(castMaterial, TConstruct.ingotLiquidValue),
                     new ItemStack(ore.getItem(), 1, ore.getItemDamage()),
                     false,
-                    50);
-            tableCasting.addCastingRecipe(
-                    patternCeramic,
-                    new FluidStack(castMaterial, TConstruct.ingotLiquidValue),
-                    new ItemStack(ore.getItem(), 1, ore.getItemDamage()),
-                    true,
                     50);
             if (!PHConstruct.removeGoldCastRecipes && !PHConstruct.steelPatterns)
                 tableCasting.addCastingRecipe(
