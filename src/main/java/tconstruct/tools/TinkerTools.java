@@ -908,6 +908,14 @@ public class TinkerTools {
             chiseling.addDetailing(TinkerSmeltery.smeltery, 2, TinkerSmeltery.smeltery, 8, TinkerTools.chisel);
             chiseling.addDetailing(TinkerSmeltery.smeltery, 8, TinkerSmeltery.smeltery, 9, TinkerTools.chisel);
             chiseling.addDetailing(TinkerSmeltery.smeltery, 9, TinkerSmeltery.smeltery, 10, TinkerTools.chisel);
+
+            chiseling.addDetailing(TinkerSmeltery.smelteryNether, 4, TinkerSmeltery.smelteryNether, 6, TinkerTools.chisel);
+            chiseling.addDetailing(TinkerSmeltery.smelteryNether, 6, TinkerSmeltery.smelteryNether, 11, TinkerTools.chisel);
+            chiseling.addDetailing(TinkerSmeltery.smelteryNether, 11, TinkerSmeltery.smelteryNether, 2, TinkerTools.chisel);
+            chiseling.addDetailing(TinkerSmeltery.smelteryNether, 2, TinkerSmeltery.smelteryNether, 8, TinkerTools.chisel);
+            chiseling.addDetailing(TinkerSmeltery.smelteryNether, 8, TinkerSmeltery.smelteryNether, 9, TinkerTools.chisel);
+            chiseling.addDetailing(TinkerSmeltery.smelteryNether, 9, TinkerSmeltery.smelteryNether, 10, TinkerTools.chisel);
+
         }
 
         if (TinkerWorld.metalBlock != null) {
@@ -1423,6 +1431,32 @@ public class TinkerTools {
                 "dustAluminium",
                 "dustAluminium",
                 "dustCopper"));
+        //Ingot Template
+        GameRegistry.addShapelessRecipe(
+                new ItemStack(TinkerTools.clayPattern, 1, 0),
+                Items.iron_ingot.setContainerItem(Items.iron_ingot),
+                new ItemStack(TinkerTools.blankPattern, 1, 3));// Iron Ingot
+
+        GameRegistry.addShapelessRecipe(
+                new ItemStack(TinkerTools.clayPattern, 1, 0),
+                Items.gold_ingot.setContainerItem(Items.gold_ingot),
+                new ItemStack(TinkerTools.blankPattern, 1, 3));// Gold Ingot
+
+        GameRegistry.addShapelessRecipe(
+                new ItemStack(TinkerTools.clayPattern, 1, 0),
+                Items.brick.setContainerItem(Items.brick),
+                new ItemStack(TinkerTools.blankPattern, 1, 3));// Brick
+
+        GameRegistry.addShapelessRecipe(
+                new ItemStack(TinkerTools.clayPattern, 1, 0),
+                Items.netherbrick.setContainerItem(Items.netherbrick),
+                new ItemStack(TinkerTools.blankPattern, 1, 3));// Nether Brick
+
+        //Nugget Template
+        GameRegistry.addShapelessRecipe(
+                new ItemStack(TinkerTools.clayPattern, 1, 27),
+                Items.gold_nugget.setContainerItem(Items.gold_nugget),
+                new ItemStack(TinkerTools.blankPattern, 1, 3));
     }
 
     private void modIntegration() {
