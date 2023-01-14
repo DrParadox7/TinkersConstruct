@@ -95,6 +95,7 @@ public class TinkerSmeltery {
     public static Fluid moltenSteelFluid;
     public static Fluid moltenGlassFluid;
     public static Fluid moltenStoneFluid;
+    public static  Fluid moltenNetherrackFluid;
     public static Fluid moltenEmeraldFluid;
     public static Fluid moltenQuartzFluid;
     public static Fluid moltenNickelFluid;
@@ -123,6 +124,7 @@ public class TinkerSmeltery {
     public static Block moltenSteel;
     public static Block moltenGlass;
     public static Block moltenStone;
+    public static Block moltenNetherrack;
     public static Block moltenEmerald;
     public static Block moltenQuartz;
     public static Block moltenNickel;
@@ -238,6 +240,11 @@ public class TinkerSmeltery {
         TinkerSmeltery.moltenStoneFluid =
                 registerFluid("stone", "stone.seared", "molten.stone", "liquid_stone", 3000, 6000, 1300, Material.lava);
         TinkerSmeltery.moltenStone = TinkerSmeltery.moltenStoneFluid.getBlock();
+
+        TinkerSmeltery.moltenNetherrackFluid = registerFluid(
+                "netherrack", "netherrack.seared", "molten.netherrack", "liquid_netherrack", 3000, 6000, 1300, Material.lava);
+
+        TinkerSmeltery.moltenNetherrack = TinkerSmeltery.moltenNetherrackFluid.getBlock();
 
         TinkerSmeltery.moltenEmeraldFluid = registerFluid(
                 "emerald", "emerald.liquid", "molten.emerald", "liquid_villager", 3000, 6000, 1300, Material.lava);
@@ -391,7 +398,8 @@ public class TinkerSmeltery {
             TinkerWorld.blueSlimeFluid,
             TinkerSmeltery.glueFluid,
             TinkerSmeltery.pigIronFluid,
-            TinkerSmeltery.moltenQuartzFluid
+            TinkerSmeltery.moltenQuartzFluid,
+            TinkerSmeltery.moltenNetherrackFluid,
         };
         TinkerSmeltery.fluidBlocks = new Block[] {
             TinkerSmeltery.moltenIron,
@@ -425,7 +433,9 @@ public class TinkerSmeltery {
             TinkerSmeltery.moltenSignalum,
             TinkerSmeltery.moltenMithril,
             TinkerSmeltery.moltenEnderium,
-            TinkerSmeltery.moltenQuartz
+            TinkerSmeltery.moltenQuartz,
+            TinkerSmeltery.moltenNetherrack
+
         };
 
         FluidType.registerFluidType("Water", Blocks.snow, 0, 20, FluidRegistry.getFluid("water"), false);
@@ -449,11 +459,15 @@ public class TinkerSmeltery {
         FluidType.registerFluidType("Obsidian", Blocks.obsidian, 0, 750, TinkerSmeltery.moltenObsidianFluid, true);
         FluidType.registerFluidType("Ender", TinkerWorld.metalBlock, 10, 500, TinkerSmeltery.moltenEnderFluid, false);
         FluidType.registerFluidType("Glass", Blocks.sand, 0, 625, TinkerSmeltery.moltenGlassFluid, false);
-        FluidType.registerFluidType("Stone", Blocks.stone, 0, 800, TinkerSmeltery.moltenStoneFluid, true);
         FluidType.registerFluidType("Emerald", Blocks.emerald_block, 0, 575, TinkerSmeltery.moltenEmeraldFluid, false);
         FluidType.registerFluidType("Quartz", Blocks.quartz_block, 0, 575, TinkerSmeltery.moltenQuartzFluid, false);
         FluidType.registerFluidType("PigIron", TinkerWorld.meatBlock, 0, 610, TinkerSmeltery.pigIronFluid, true);
         FluidType.registerFluidType("Glue", TinkerSmeltery.glueBlock, 0, 125, TinkerSmeltery.glueFluid, false);
+        FluidType.registerFluidType("Netherrack", TinkerTools.craftedSoil, 6, 800, TinkerSmeltery.moltenNetherrackFluid, true);
+        if (PHConstruct.moltenStone)
+            FluidType.registerFluidType("Stone", Blocks.stone, 0, 800, TinkerSmeltery.moltenStoneFluid, true);
+        else
+            FluidType.registerFluidType("Stone", TinkerTools.craftedSoil, 1, 800, TinkerSmeltery.moltenStoneFluid, true);
 
         TinkerSmeltery.speedBlock = new SpeedBlock().setBlockName("SpeedBlock");
 
@@ -896,12 +910,14 @@ public class TinkerSmeltery {
         }
 
         // Compressed materials. max 4x because it's too much otherwise.
-        for (int i = 1; i <= 4; i++) {
-            Smeltery.addDictionaryMelting(
-                    "compressedCobblestone" + i + "x",
-                    FluidType.getFluidType("Stone"),
-                    0,
-                    TConstruct.stoneLiquidValue * (int) Math.pow(9, i));
+        if (PHConstruct.moltenStone) {
+            for (int i = 1; i <= 4; i++) {
+                Smeltery.addDictionaryMelting(
+                        "compressedCobblestone" + i + "x",
+                        FluidType.getFluidType("Stone"),
+                        0,
+                        TConstruct.stoneLiquidValue * (int) Math.pow(9, i));
+            }
         }
         Smeltery.addDictionaryMelting(
                 "compressedSand1x", FluidType.getFluidType("Glass"), 175, FluidContainerRegistry.BUCKET_VOLUME * 9);
@@ -955,6 +971,11 @@ public class TinkerSmeltery {
                 new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.ingotLiquidValue / 4),
                 ingotcast,
                 80); // stone
+        tableCasting.addCastingRecipe(
+                new ItemStack(TinkerTools.materials, 1, 37),
+                new FluidStack(TinkerSmeltery.moltenNetherrackFluid, TConstruct.ingotLiquidValue / 4),
+                ingotcast,
+                80); // netherrack
 
         // Gem Casts
         tableCasting.addCastingRecipe(
@@ -1328,6 +1349,19 @@ public class TinkerSmeltery {
                 true,
                 100);
         basinCasting.addCastingRecipe(
+                new ItemStack(TinkerSmeltery.smelteryNether, 1, 4),
+                new FluidStack(TinkerSmeltery.moltenNetherrackFluid, TConstruct.ingotLiquidValue),
+                null,
+                true,
+                100); // searedNether
+        // NetherCobblestone
+        basinCasting.addCastingRecipe(
+                new ItemStack(TinkerSmeltery.smelteryNether, 1, 5),
+                new FluidStack(TinkerSmeltery.moltenNetherrackFluid, TConstruct.chunkLiquidValue),
+                new ItemStack(Blocks.cobblestone),
+                true,
+                100);
+        basinCasting.addCastingRecipe(
                 new ItemStack(Blocks.emerald_block),
                 new FluidStack(TinkerSmeltery.moltenEmeraldFluid, 640 * 9),
                 null,
@@ -1442,17 +1476,19 @@ public class TinkerSmeltery {
                 new FluidStack(FluidRegistry.LAVA, 1000),
                 new FluidStack(FluidRegistry.WATER, 1000)); // Obsidian
         // Stone parts
-        FluidType stone = FluidType.getFluidType("Stone");
-        for (int sc = 0; sc < TinkerTools.patternOutputs.length; sc++) {
-            if (TinkerTools.patternOutputs[sc] != null) {
-                Smeltery.addMelting(
-                        stone,
-                        new ItemStack(TinkerTools.patternOutputs[sc], 1, 1),
-                        1,
-                        (8
-                                        * ((IPattern) TinkerTools.woodPattern)
-                                                .getPatternCost(new ItemStack(TinkerTools.woodPattern, 1, sc + 1)))
-                                / 2);
+        if (PHConstruct.moltenStone) {
+            FluidType stone = FluidType.getFluidType("Stone");
+            for (int sc = 0; sc < TinkerTools.patternOutputs.length; sc++) {
+                if (TinkerTools.patternOutputs[sc] != null) {
+                    Smeltery.addMelting(
+                            stone,
+                            new ItemStack(TinkerTools.patternOutputs[sc], 1, 1),
+                            1,
+                            (8
+                                    * ((IPattern) TinkerTools.woodPattern)
+                                    .getPatternCost(new ItemStack(TinkerTools.woodPattern, 1, sc + 1)))
+                                    / 2);
+                }
             }
         }
 
@@ -1619,13 +1655,15 @@ public class TinkerSmeltery {
                 625,
                 new FluidStack(TinkerSmeltery.moltenGlassFluid, FluidContainerRegistry.BUCKET_VOLUME));
         Smeltery.addMelting(Blocks.glass_pane, 0, 625, new FluidStack(TinkerSmeltery.moltenGlassFluid, 250));
-        Smeltery.addMelting(
-                Blocks.stone, 0, 800, new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.stoneLiquidValue));
-        Smeltery.addMelting(
-                Blocks.cobblestone,
-                0,
-                800,
-                new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.stoneLiquidValue));
+        if (PHConstruct.moltenStone) {
+            Smeltery.addMelting(
+                    Blocks.stone, 0, 800, new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.stoneLiquidValue));
+            Smeltery.addMelting(
+                    Blocks.cobblestone,
+                    0,
+                    800,
+                    new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.stoneLiquidValue));
+        }
         Smeltery.addMelting(Blocks.emerald_block, 0, 800, new FluidStack(TinkerSmeltery.moltenEmeraldFluid, 640 * 9));
         Smeltery.addMelting(
                 Blocks.emerald_ore,
@@ -1644,7 +1682,11 @@ public class TinkerSmeltery {
                 1,
                 600,
                 new FluidStack(TinkerSmeltery.moltenStoneFluid, TConstruct.ingotLiquidValue / 4));
-
+        Smeltery.addMelting(
+                TinkerTools.craftedSoil,
+                6,
+                600,
+                new FluidStack(TinkerSmeltery.moltenNetherrackFluid, TConstruct.ingotLiquidValue / 4));
         Smeltery.addMelting(TinkerSmeltery.clearGlass, 0, 500, new FluidStack(TinkerSmeltery.moltenGlassFluid, 1000));
         Smeltery.addMelting(TinkerSmeltery.glassPane, 0, 350, new FluidStack(TinkerSmeltery.moltenGlassFluid, 250));
 

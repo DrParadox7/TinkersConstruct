@@ -151,8 +151,12 @@ public class PHConstruct {
         repairModifier = config.get("Balance", "Increase in XP cost per repair count", 0, "Set to 0 to disable")
                 .getInt(0);
         balancedPartCrafting = config.get(
-                        "Balance", "Limits Stencils to only early game tool parts", true, "Set to 0 to disable")
+                        "Balance", "Limits Stencils to only early game tool parts", true, "Set to false to disable")
                 .getBoolean(true);
+        moltenStone = config.get(
+                        "Balance", "Allow Stone to be molted into smeltery blocks", true, "Set to false to disable")
+                .getBoolean(true);
+
 
         boolean ic2 = true;
         boolean xycraft = true;
@@ -483,6 +487,8 @@ public class PHConstruct {
     public static int modifierCost;
     public static int repairModifier;
     public static boolean balancedPartCrafting;
+    public static boolean moltenStone;
+
 
     public static boolean disableWoodTools;
     public static boolean disableStoneTools;
