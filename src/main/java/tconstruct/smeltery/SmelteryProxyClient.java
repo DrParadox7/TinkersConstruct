@@ -78,7 +78,6 @@ public class SmelteryProxyClient extends SmelteryProxyCommon {
         MantleClientRegistry.registerManualIcon("quartzbucket", new ItemStack(TinkerSmeltery.buckets, 1, 26));
         MantleClientRegistry.registerManualIcon("netherrackbucket", new ItemStack(TinkerSmeltery.buckets, 1, 27));
 
-
         MProxyClient.registerManualPage("blockcast", BlockCastPage.class);
     }
 

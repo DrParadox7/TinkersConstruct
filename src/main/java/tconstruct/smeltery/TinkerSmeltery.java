@@ -95,7 +95,7 @@ public class TinkerSmeltery {
     public static Fluid moltenSteelFluid;
     public static Fluid moltenGlassFluid;
     public static Fluid moltenStoneFluid;
-    public static  Fluid moltenNetherrackFluid;
+    public static Fluid moltenNetherrackFluid;
     public static Fluid moltenEmeraldFluid;
     public static Fluid moltenQuartzFluid;
     public static Fluid moltenNickelFluid;
@@ -242,7 +242,14 @@ public class TinkerSmeltery {
         TinkerSmeltery.moltenStone = TinkerSmeltery.moltenStoneFluid.getBlock();
 
         TinkerSmeltery.moltenNetherrackFluid = registerFluid(
-                "netherrack", "netherrack.seared", "molten.netherrack", "liquid_netherrack", 3000, 6000, 1300, Material.lava);
+                "netherrack",
+                "netherrack.seared",
+                "molten.netherrack",
+                "liquid_netherrack",
+                3000,
+                6000,
+                1300,
+                Material.lava);
 
         TinkerSmeltery.moltenNetherrack = TinkerSmeltery.moltenNetherrackFluid.getBlock();
 
@@ -435,7 +442,6 @@ public class TinkerSmeltery {
             TinkerSmeltery.moltenEnderium,
             TinkerSmeltery.moltenQuartz,
             TinkerSmeltery.moltenNetherrack
-
         };
 
         FluidType.registerFluidType("Water", Blocks.snow, 0, 20, FluidRegistry.getFluid("water"), false);
@@ -463,11 +469,13 @@ public class TinkerSmeltery {
         FluidType.registerFluidType("Quartz", Blocks.quartz_block, 0, 575, TinkerSmeltery.moltenQuartzFluid, false);
         FluidType.registerFluidType("PigIron", TinkerWorld.meatBlock, 0, 610, TinkerSmeltery.pigIronFluid, true);
         FluidType.registerFluidType("Glue", TinkerSmeltery.glueBlock, 0, 125, TinkerSmeltery.glueFluid, false);
-        FluidType.registerFluidType("Netherrack", TinkerTools.craftedSoil, 6, 800, TinkerSmeltery.moltenNetherrackFluid, true);
+        FluidType.registerFluidType(
+                "Netherrack", TinkerTools.craftedSoil, 6, 800, TinkerSmeltery.moltenNetherrackFluid, true);
         if (PHConstruct.moltenStone)
             FluidType.registerFluidType("Stone", Blocks.stone, 0, 800, TinkerSmeltery.moltenStoneFluid, true);
         else
-            FluidType.registerFluidType("Stone", TinkerTools.craftedSoil, 1, 800, TinkerSmeltery.moltenStoneFluid, true);
+            FluidType.registerFluidType(
+                    "Stone", TinkerTools.craftedSoil, 1, 800, TinkerSmeltery.moltenStoneFluid, true);
 
         TinkerSmeltery.speedBlock = new SpeedBlock().setBlockName("SpeedBlock");
 
@@ -1485,8 +1493,8 @@ public class TinkerSmeltery {
                             new ItemStack(TinkerTools.patternOutputs[sc], 1, 1),
                             1,
                             (8
-                                    * ((IPattern) TinkerTools.woodPattern)
-                                    .getPatternCost(new ItemStack(TinkerTools.woodPattern, 1, sc + 1)))
+                                            * ((IPattern) TinkerTools.woodPattern)
+                                                    .getPatternCost(new ItemStack(TinkerTools.woodPattern, 1, sc + 1)))
                                     / 2);
                 }
             }
