@@ -157,7 +157,6 @@ public class PHConstruct {
                         "Balance", "Allow Stone to be molted into smeltery blocks", true, "Set to false to disable")
                 .getBoolean(true);
 
-
         boolean ic2 = true;
         boolean xycraft = true;
         try {
@@ -488,7 +487,6 @@ public class PHConstruct {
     public static int repairModifier;
     public static boolean balancedPartCrafting;
     public static boolean moltenStone;
-
 
     public static boolean disableWoodTools;
     public static boolean disableStoneTools;

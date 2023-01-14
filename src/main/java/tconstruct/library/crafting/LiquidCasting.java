@@ -44,8 +44,8 @@ public class LiquidCasting {
             FluidRenderProperties props) {
         CastingRecipe cr = new CastingRecipe(output, metal, cast, consume, delay, props);
         if (!contains(cr)) casts.add(cr);
-        //Ceramic Cast Mirror
-        if (cast != null && cast.getItem() == TinkerSmeltery.metalPattern){
+        // Ceramic Cast Mirror
+        if (cast != null && cast.getItem() == TinkerSmeltery.metalPattern) {
             ItemStack ceramic_cast = new ItemStack(TinkerSmeltery.ceramicPattern, 1, cast.getItemDamage());
             CastingRecipe ccr = new CastingRecipe(output, metal, ceramic_cast, true, delay, props);
             if (!contains(ccr)) casts.add(ccr);
