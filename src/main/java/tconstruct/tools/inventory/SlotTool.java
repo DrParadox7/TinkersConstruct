@@ -72,9 +72,9 @@ public class SlotTool extends Slot {
      */
     protected void onCrafting(ItemStack stack) {
         if (stack.getItem() instanceof IModifyable) {
-            NBTTagCompound tags = stack.getTagCompound()
-                    .getCompoundTag(((IModifyable) stack.getItem()).getBaseTagName());
-            Boolean full = (inventory.getStackInSlot(2) != null || inventory.getStackInSlot(3) != null);
+            NBTTagCompound tags =
+                    stack.getTagCompound().getCompoundTag(((IModifyable) stack.getItem()).getBaseTagName());
+            boolean full = (inventory.getStackInSlot(2) != null || inventory.getStackInSlot(3) != null);
             for (int i = 2; i <= 3; i++) inventory.decrStackSize(i, 1);
             ItemStack compare = inventory.getStackInSlot(1);
             int amount = compare.getItem() instanceof IModifyable ? compare.stackSize : 1;

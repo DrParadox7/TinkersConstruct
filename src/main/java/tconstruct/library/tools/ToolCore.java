@@ -591,7 +591,7 @@ public abstract class ToolCore extends Item implements IEnergyContainerItem, IEq
         if (tags.hasKey(key + "Color")) return tags.getInteger(key + "Color");
 
         // custom texture?
-        Integer matId = tags.getInteger("Render" + key);
+        int matId = tags.getInteger("Render" + key);
         if (map.containsKey(matId)) return super.getColorFromItemStack(stack, renderPass);
 
         // color default texture with material color

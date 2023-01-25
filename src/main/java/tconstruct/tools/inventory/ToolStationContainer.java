@@ -1,16 +1,13 @@
 package tconstruct.tools.inventory;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.entity.player.*;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraftforge.common.MinecraftForge;
-
 import tconstruct.library.event.ToolCraftedEvent;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.smeltery.inventory.ActiveContainer;
@@ -18,7 +15,6 @@ import tconstruct.tools.TinkerTools;
 import tconstruct.tools.logic.ToolStationLogic;
 
 public class ToolStationContainer extends ActiveContainer {
-
     public InventoryPlayer invPlayer;
     public ToolStationLogic logic;
     public Slot[] slots;
@@ -35,8 +31,9 @@ public class ToolStationContainer extends ActiveContainer {
 
         toolSlot = new SlotTool(inventoryplayer.player, builderlogic, 0, 225, 38);
         this.addSlotToContainer(toolSlot);
-        slots = new Slot[] { new Slot(builderlogic, 1, 167, 29), new Slot(builderlogic, 2, 149, 38),
-                new Slot(builderlogic, 3, 167, 47) };
+        slots = new Slot[] {
+            new Slot(builderlogic, 1, 167, 29), new Slot(builderlogic, 2, 149, 38), new Slot(builderlogic, 3, 167, 47)
+        };
 
         for (int iter = 0; iter < 3; iter++) this.addSlotToContainer(slots[iter]);
 
@@ -80,7 +77,7 @@ public class ToolStationContainer extends ActiveContainer {
     @Override
     public boolean canInteractWith(EntityPlayer entityplayer) {
         Block block = logic.getWorldObj().getBlock(logic.xCoord, logic.yCoord, logic.zCoord);
-        if (block != TinkerTools.toolStation && block != TinkerTools.craftingSlabWood) return false;
+        if (block != TinkerTools.toolStationWood && block != TinkerTools.craftingSlabWood) return false;
         return logic.isUseableByPlayer(entityplayer);
     }
 
@@ -95,17 +92,13 @@ public class ToolStationContainer extends ActiveContainer {
             if (slotID < logic.getSizeInventory()) {
                 if (slotID == 0) {
                     if (!this.mergeCraftedStack(
-                            slotStack,
-                            logic.getSizeInventory(),
-                            this.inventorySlots.size(),
-                            true,
-                            player)) {
+                            slotStack, logic.getSizeInventory(), this.inventorySlots.size(), true, player)) {
                         return null;
                     }
-                } else
-                    if (!this.mergeItemStack(slotStack, logic.getSizeInventory(), this.inventorySlots.size(), true)) {
-                        return null;
-                    }
+                } else if (!this.mergeItemStack(
+                        slotStack, logic.getSizeInventory(), this.inventorySlots.size(), true)) {
+                    return null;
+                }
             } else if (!this.mergeItemStack(slotStack, 1, logic.getSizeInventory(), false)) {
                 return null;
             }
@@ -122,21 +115,22 @@ public class ToolStationContainer extends ActiveContainer {
 
     protected void craftTool(ItemStack stack) {
         if (stack.getItem() instanceof IModifyable) {
-            NBTTagCompound tags = stack.getTagCompound()
-                    .getCompoundTag(((IModifyable) stack.getItem()).getBaseTagName());
-            Boolean full = (logic.getStackInSlot(2) != null || logic.getStackInSlot(3) != null);
+            NBTTagCompound tags =
+                    stack.getTagCompound().getCompoundTag(((IModifyable) stack.getItem()).getBaseTagName());
+            boolean full = (logic.getStackInSlot(2) != null || logic.getStackInSlot(3) != null);
             for (int i = 2; i <= 3; i++) logic.decrStackSize(i, 1);
             ItemStack compare = logic.getStackInSlot(1);
             int amount = compare.getItem() instanceof IModifyable ? compare.stackSize : 1;
             logic.decrStackSize(1, amount);
             EntityPlayer player = invPlayer.player;
-            if (!player.worldObj.isRemote && full) player.worldObj.playSoundEffect(
-                    logic.xCoord,
-                    logic.yCoord,
-                    logic.zCoord,
-                    "tinker:little_saw",
-                    1.0F,
-                    (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
+            if (!player.worldObj.isRemote && full)
+                player.worldObj.playSoundEffect(
+                        logic.xCoord,
+                        logic.yCoord,
+                        logic.zCoord,
+                        "tinker:little_saw",
+                        1.0F,
+                        (random.nextFloat() - random.nextFloat()) * 0.2F + 1.0F);
             MinecraftForge.EVENT_BUS.post(new ToolCraftedEvent(this.logic, player, stack));
         } else
         // Simply naming items
@@ -147,7 +141,8 @@ public class ToolStationContainer extends ActiveContainer {
 
             if (!ToolStationLogic.canRename(stack2.getTagCompound(), stack2)) {
                 for (int i = 0; i < logic.getSizeInventory(); i++) {
-                    if (logic.getStackInSlot(i) != null && logic.getStackInSlot(i).getItem() == Items.name_tag) {
+                    if (logic.getStackInSlot(i) != null
+                            && logic.getStackInSlot(i).getItem() == Items.name_tag) {
                         logic.decrStackSize(i, 1);
                         break;
                     }
@@ -156,8 +151,8 @@ public class ToolStationContainer extends ActiveContainer {
         }
     }
 
-    protected boolean mergeCraftedStack(ItemStack stack, int slotsStart, int slotsTotal, boolean playerInventory,
-            EntityPlayer player) {
+    protected boolean mergeCraftedStack(
+            ItemStack stack, int slotsStart, int slotsTotal, boolean playerInventory, EntityPlayer player) {
         boolean failedToMerge = false;
         int slotIndex = slotsStart;
 
