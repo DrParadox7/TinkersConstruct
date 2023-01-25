@@ -123,7 +123,7 @@ public class ModRedstone extends ItemModTypeFilter {
     }
 
     public boolean validType(ToolCore tool) {
-        List list = Arrays.asList(tool.getTraits());
+        List<String> list = Arrays.asList(tool.getTraits());
 
         // handled by the windup modifier
         if (list.contains("windup")) return false;

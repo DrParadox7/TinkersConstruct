@@ -141,12 +141,12 @@ public class PHConstruct {
         boolean ic2 = true;
         boolean xycraft = true;
         try {
-            Class c = Class.forName("ic2.core.IC2");
+            Class<?> c = Class.forName("ic2.core.IC2");
             ic2 = false;
         } catch (Exception ignored) {}
 
         try {
-            Class c = Class.forName("soaryn.xycraft.core.XyCraft");
+            Class<?> c = Class.forName("soaryn.xycraft.core.XyCraft");
             xycraft = false;
         } catch (Exception ignored) {}
 
