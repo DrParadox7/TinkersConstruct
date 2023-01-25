@@ -152,8 +152,8 @@ public class TankLayerScan extends LogicComponent {
 
     // @SuppressWarnings({ "unchecked" })
     protected void finalizeStructure() {
-        Collections.sort(blockCoords, new CoordTupleSort());
-        Collections.sort(airCoords, new CoordTupleSort());
+        blockCoords.sort(new CoordTupleSort());
+        airCoords.sort(new CoordTupleSort());
 
         for (CoordTuple coord : blockCoords) {
             TileEntity servant = world.getTileEntity(coord.x, coord.y, coord.z);
