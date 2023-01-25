@@ -120,7 +120,7 @@ public class Pattern extends CraftingItem implements IPattern {
 
     @Override
     public int getPatternCost(ItemStack pattern) {
-        return patternCosts.containsKey(pattern.getItemDamage()) ? patternCosts.get(pattern.getItemDamage()) : 0;
+        return patternCosts.getOrDefault(pattern.getItemDamage(), 0);
     }
 
     @Override
