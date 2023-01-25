@@ -27,10 +27,8 @@ public class Knapsack extends CraftingItem implements IAccessory {
     @Override
     @SideOnly(Side.CLIENT)
     public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean par4) {
-        switch (stack.getItemDamage()) {
-            case 0:
-                list.add(StatCollector.translateToLocal("knapsack.tooltip"));
-                break;
+        if (stack.getItemDamage() == 0) {
+            list.add(StatCollector.translateToLocal("knapsack.tooltip"));
         }
     }
 
