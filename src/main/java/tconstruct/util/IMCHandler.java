@@ -37,291 +37,292 @@ public final class IMCHandler {
             if (type == null || type.isEmpty()) continue;
 
             // process materials added from mods
-            if (type.equals("addMaterial")) {
-                if (!message.isNBTMessage()) {
-                    logInvalidMessage(message);
-                    continue;
-                }
-
-                NBTTagCompound tag = message.getNBTValue();
-                int id = tag.getInteger("Id");
-                ToolMaterial mat = scanMaterial(tag);
-                if (mat != null) {
-                    TConstructRegistry.addtoolMaterial(id, mat);
-                    TConstructRegistry.addDefaultToolPartMaterial(id);
-                    TConstruct.logger.debug("IMC: Added material " + mat.materialName);
-
-                    // bow stats
-                    if (tag.hasKey("Bow_DrawSpeed") && tag.hasKey("Bow_ProjectileSpeed")) {
-                        int drawspeed = tag.getInteger("Bow_DrawSpeed");
-                        float flightspeed = tag.getFloat("Bow_ProjectileSpeed");
-
-                        TConstructRegistry.addBowMaterial(id, drawspeed, flightspeed);
-                        TConstruct.logger.debug("IMC: Added Bow stats for material " + mat.materialName);
-                    }
-                    // arrow stats
-                    if (tag.hasKey("Projectile_Mass") && tag.hasKey("Projectile_Fragility")) {
-                        float mass = tag.getFloat("Projectile_Mass");
-                        float breakchance = tag.getFloat("Projectile_Fragility");
-
-                        TConstructRegistry.addArrowMaterial(id, mass, breakchance);
-                        TConstruct.logger.debug("IMC: Added Projectile stats for material " + mat.materialName);
-                    }
-
-                    // add additional render mapping so resource packs or the mods themselves can have custom textures
-                    // for the tools
-                    if (FMLCommonHandler.instance().getSide().isClient())
-                        TConstructClientRegistry.addMaterialRenderMapping(id, "tinker", mat.name().toLowerCase(), true);
-                }
-            } else if (type.equals("addPartBuilderMaterial")) {
-                if (!message.isNBTMessage()) {
-                    logInvalidMessage(message);
-                    continue;
-                }
-                NBTTagCompound tag = message.getNBTValue();
-
-                if (!checkRequiredTags("PartBuilder", tag, "MaterialId", "Item", "Value")) continue;
-
-                int matID = tag.getInteger("MaterialId");
-                int value = tag.getInteger("Value");
-
-                if (TConstructRegistry.getMaterial(matID) == null) {
-                    FMLLog.bigWarning("PartBuilder IMC: Unknown Material ID " + matID);
-                    continue;
-                }
-
-                ItemStack item = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("Item"));
-                ItemStack shard = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("Shard")); // optional
-                ItemStack rod = new ItemStack(TinkerTools.toolRod, 1, matID);
-
-                // default shard if none present. Has to exist because old code.
-                if (shard == null) {
-                    TConstructRegistry.addDefaultShardMaterial(matID);
-                    shard = new ItemStack(TinkerTools.toolShard, 1, matID);
-                }
-
-                // register the material
-                PatternBuilder.instance.registerFullMaterial(
-                        item,
-                        value,
-                        TConstructRegistry.getMaterial(matID).materialName,
-                        shard,
-                        rod,
-                        matID);
-
-                List<Item> addItems = new LinkedList<>();
-                List<Integer> addMetas = new LinkedList<>();
-                List<ItemStack> addOUtputs = new LinkedList<>();
-
-                // add mappings for everything that has stone tool mappings
-                for (Map.Entry<List, ItemStack> mappingEntry : TConstructRegistry.patternPartMapping.entrySet()) {
-                    List mapping = mappingEntry.getKey();
-                    // only stone mappings
-                    if ((Integer) mapping.get(2) != TinkerTools.MaterialID.Stone) continue;
-
-                    // only if the output is a dynamic part
-                    if (!(mappingEntry.getValue().getItem() instanceof DynamicToolPart)) continue;
-
-                    Item woodPattern = (Item) mapping.get(0);
-                    Integer meta = (Integer) mapping.get(1);
-
-                    ItemStack output = mappingEntry.getValue().copy();
-                    output.setItemDamage(matID);
-
-                    // save data, concurrent modification exception and i'm lazy
-                    addItems.add(woodPattern);
-                    addMetas.add(meta);
-                    addOUtputs.add(output);
-                }
-
-                // add a part mapping for it
-                for (int i = 0; i < addItems.size(); i++)
-                    TConstructRegistry.addPartMapping(addItems.get(i), addMetas.get(i), matID, addOUtputs.get(i));
-
-                TConstruct.logger.debug(
-                        "PartBuilder IMC: Added Part builder mapping for "
-                                + TConstructRegistry.getMaterial(matID).materialName);
-            } else if (type.equals("addPartCastingMaterial")) {
-                if (!message.isNBTMessage()) {
-                    logInvalidMessage(message);
-                    continue;
-                }
-
-                NBTTagCompound tag = message.getNBTValue();
-
-                if (!checkRequiredTags("Casting", tag, "MaterialId", "FluidName")) continue;
-
-                if (!tag.hasKey("MaterialId")) {
-                    FMLLog.bigWarning("Casting IMC: Not material ID for the result present");
-                    continue;
-                }
-
-                int matID = tag.getInteger("MaterialId");
-                FluidStack liquid = FluidStack.loadFluidStackFromNBT(tag);
-                if (liquid == null) {
-                    FMLLog.bigWarning("Casting IMC: No fluid found");
-                    continue;
-                }
-
-                if (TConstructRegistry.getMaterial(matID) == null) {
-                    FMLLog.bigWarning("Casting IMC: Unknown Material ID " + matID);
-                    continue;
-                }
-
-                // we add the toolpart to all smeltery recipies that use iron and create a toolpart
-                List<CastingRecipe> newRecipies = new LinkedList<>();
-                for (CastingRecipe recipe : TConstructRegistry.getTableCasting().getCastingRecipes()) {
-                    if (recipe.castingMetal.getFluid() != TinkerSmeltery.moltenIronFluid) continue;
-                    if (recipe.cast == null || !(recipe.cast.getItem() instanceof IPattern)) continue;
-                    if (!(recipe.getResult().getItem() instanceof DynamicToolPart)) // has to be dynamic toolpart to
-                                                                                    // support automatic addition
+            switch (type) {
+                case "addMaterial": {
+                    if (!message.isNBTMessage()) {
+                        logInvalidMessage(message);
                         continue;
+                    }
 
-                    newRecipies.add(recipe);
+                    NBTTagCompound tag = message.getNBTValue();
+                    int id = tag.getInteger("Id");
+                    ToolMaterial mat = scanMaterial(tag);
+                    if (mat != null) {
+                        TConstructRegistry.addtoolMaterial(id, mat);
+                        TConstructRegistry.addDefaultToolPartMaterial(id);
+                        TConstruct.logger.debug("IMC: Added material " + mat.materialName);
+
+                        // bow stats
+                        if (tag.hasKey("Bow_DrawSpeed") && tag.hasKey("Bow_ProjectileSpeed")) {
+                            int drawspeed = tag.getInteger("Bow_DrawSpeed");
+                            float flightspeed = tag.getFloat("Bow_ProjectileSpeed");
+
+                            TConstructRegistry.addBowMaterial(id, drawspeed, flightspeed);
+                            TConstruct.logger.debug("IMC: Added Bow stats for material " + mat.materialName);
+                        }
+                        // arrow stats
+                        if (tag.hasKey("Projectile_Mass") && tag.hasKey("Projectile_Fragility")) {
+                            float mass = tag.getFloat("Projectile_Mass");
+                            float breakchance = tag.getFloat("Projectile_Fragility");
+
+                            TConstructRegistry.addArrowMaterial(id, mass, breakchance);
+                            TConstruct.logger.debug("IMC: Added Projectile stats for material " + mat.materialName);
+                        }
+
+                        // add additional render mapping so resource packs or the mods themselves can have custom textures
+                        // for the tools
+                        if (FMLCommonHandler.instance().getSide().isClient())
+                            TConstructClientRegistry.addMaterialRenderMapping(
+                                    id, "tinker", mat.name().toLowerCase(), true);
+                    }
+                    break;
                 }
+                case "addPartBuilderMaterial": {
+                    if (!message.isNBTMessage()) {
+                        logInvalidMessage(message);
+                        continue;
+                    }
+                    NBTTagCompound tag = message.getNBTValue();
 
-                FluidType ft = FluidType.getFluidType(liquid.getFluid());
-                if (ft == null) {
-                    ft = new FluidType(TinkerSmeltery.glueBlock, 0, 500, liquid.getFluid(), true);
-                    FluidType.registerFluidType(liquid.getFluid().getName(), ft);
-                }
+                    if (!checkRequiredTags("PartBuilder", tag, "MaterialId", "Item", "Value")) continue;
 
-                // has to be done separately so we have all checks and no concurrent modification exception
-                for (CastingRecipe recipe : newRecipies) {
-                    ItemStack output = recipe.getResult().copy();
-                    output.setItemDamage(matID);
+                    int matID = tag.getInteger("MaterialId");
+                    int value = tag.getInteger("Value");
 
-                    FluidStack liquid2 = new FluidStack(liquid, recipe.castingMetal.amount);
+                    if (TConstructRegistry.getMaterial(matID) == null) {
+                        FMLLog.bigWarning("PartBuilder IMC: Unknown Material ID " + matID);
+                        continue;
+                    }
 
-                    // ok, this recipe creates a toolpart and uses iron for it. add a new one for the IMC stuff!
-                    TConstructRegistry.getTableCasting()
-                            .addCastingRecipe(output, liquid2, recipe.cast, recipe.consumeCast, recipe.coolTime);
-                    // and make it melt!
-                    Smeltery.addMelting(ft, output, 0, liquid2.amount);
-                }
+                    ItemStack item = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("Item"));
+                    ItemStack shard = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("Shard")); // optional
 
-                TConstruct.logger.debug("Casting IMC: Added fluid " + tag.getString("FluidName") + " to part casting");
-            } else if (type.equals("addMaterialItem")) {
-                if (!message.isNBTMessage()) {
-                    logInvalidMessage(message);
-                    continue;
-                }
+                    ItemStack rod = new ItemStack(TinkerTools.toolRod, 1, matID);
 
-                NBTTagCompound tag = message.getNBTValue();
-
-                if (!checkRequiredTags("Material Item", tag, "MaterialId", "Value", "Item")) continue;
-
-                int id = tag.getInteger("MaterialId");
-                int value = tag.getInteger("Value");
-                ItemStack stack = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("Item"));
-
-                if (stack == null) {
-                    FMLLog.bigWarning("Material Item IMC: Item for Material %d is null", id);
-                    continue;
-                }
-
-                if (TConstructRegistry.getMaterial(id) == null) {
-                    FMLLog.bigWarning("Material Item IMC: Material with ID %d does not exist", id);
-                    continue;
-                }
-
-                ToolMaterial mat = TConstructRegistry.getMaterial(id);
-
-                // we already have the material registered in there
-                if (PatternBuilder.instance.materialSets.containsKey(mat.materialName)) {
-                    PatternBuilder.instance.registerMaterial(stack, value, mat.materialName);
-                } else {
-                    TConstructRegistry.addDefaultShardMaterial(id);
-                    ItemStack shard = new ItemStack(TinkerTools.toolShard, 1, id);
-                    ItemStack rod = new ItemStack(TinkerTools.toolRod, 1, id);
+                    // default shard if none present. Has to exist because old code.
+                    if (shard == null) {
+                        TConstructRegistry.addDefaultShardMaterial(matID);
+                        shard = new ItemStack(TinkerTools.toolShard, 1, matID);
+                    }
 
                     // register the material
                     PatternBuilder.instance.registerFullMaterial(
-                            stack,
-                            value,
-                            TConstructRegistry.getMaterial(id).materialName,
-                            shard,
-                            rod,
-                            id);
+                            item, value, TConstructRegistry.getMaterial(matID).materialName, shard, rod, matID);
+
+                    List<Item> addItems = new LinkedList<>();
+                    List<Integer> addMetas = new LinkedList<>();
+                    List<ItemStack> addOUtputs = new LinkedList<>();
+
+                    // add mappings for everything that has stone tool mappings
+                    for (Map.Entry<List, ItemStack> mappingEntry : TConstructRegistry.patternPartMapping.entrySet()) {
+                        List mapping = mappingEntry.getKey();
+                        // only stone mappings
+                        if ((Integer) mapping.get(2) != TinkerTools.MaterialID.Stone) continue;
+
+                        // only if the output is a dynamic part
+                        if (!(mappingEntry.getValue().getItem() instanceof DynamicToolPart)) continue;
+
+                        Item woodPattern = (Item) mapping.get(0);
+                        Integer meta = (Integer) mapping.get(1);
+
+                        ItemStack output = mappingEntry.getValue().copy();
+                        output.setItemDamage(matID);
+
+                        // save data, concurrent modification exception and i'm lazy
+                        addItems.add(woodPattern);
+                        addMetas.add(meta);
+                        addOUtputs.add(output);
+                    }
+
+                    // add a part mapping for it
+                    for (int i = 0; i < addItems.size(); i++)
+                        TConstructRegistry.addPartMapping(addItems.get(i), addMetas.get(i), matID, addOUtputs.get(i));
+
+                    TConstruct.logger.debug("PartBuilder IMC: Added Part builder mapping for "
+                            + TConstructRegistry.getMaterial(matID).materialName);
+                    break;
                 }
-            } else if (type.equals("addSmelteryMelting")) {
-                if (!message.isNBTMessage()) {
-                    logInvalidMessage(message);
-                    continue;
+                case "addPartCastingMaterial": {
+                    if (!message.isNBTMessage()) {
+                        logInvalidMessage(message);
+                        continue;
+                    }
+
+                    NBTTagCompound tag = message.getNBTValue();
+
+                    if (!checkRequiredTags("Casting", tag, "MaterialId", "FluidName")) continue;
+
+                    if (!tag.hasKey("MaterialId")) {
+                        FMLLog.bigWarning("Casting IMC: Not material ID for the result present");
+                        continue;
+                    }
+
+                    int matID = tag.getInteger("MaterialId");
+                    FluidStack liquid = FluidStack.loadFluidStackFromNBT(tag);
+                    if (liquid == null) {
+                        FMLLog.bigWarning("Casting IMC: No fluid found");
+                        continue;
+                    }
+
+                    if (TConstructRegistry.getMaterial(matID) == null) {
+                        FMLLog.bigWarning("Casting IMC: Unknown Material ID " + matID);
+                        continue;
+                    }
+
+                    // we add the toolpart to all smeltery recipies that use iron and create a toolpart
+                    List<CastingRecipe> newRecipies = new LinkedList<>();
+                    for (CastingRecipe recipe : TConstructRegistry.getTableCasting().getCastingRecipes()) {
+                        if (recipe.castingMetal.getFluid() != TinkerSmeltery.moltenIronFluid) continue;
+                        if (recipe.cast == null || !(recipe.cast.getItem() instanceof IPattern)) continue;
+                        if (!(recipe.getResult().getItem()
+                                instanceof DynamicToolPart)) // has to be dynamic toolpart to support automatic addition
+                            continue;
+
+                        newRecipies.add(recipe);
+                    }
+
+                    FluidType ft = FluidType.getFluidType(liquid.getFluid());
+                    if (ft == null) {
+                        ft = new FluidType(TinkerSmeltery.glueBlock, 0, 500, liquid.getFluid(), true);
+                        FluidType.registerFluidType(liquid.getFluid().getName(), ft);
+                    }
+
+                    // has to be done separately so we have all checks and no concurrent modification exception
+                    for (CastingRecipe recipe : newRecipies) {
+                        ItemStack output = recipe.getResult().copy();
+                        output.setItemDamage(matID);
+
+                        FluidStack liquid2 = new FluidStack(liquid, recipe.castingMetal.amount);
+
+                        // ok, this recipe creates a toolpart and uses iron for it. add a new one for the IMC stuff!
+                        TConstructRegistry.getTableCasting()
+                                .addCastingRecipe(output, liquid2, recipe.cast, recipe.consumeCast, recipe.coolTime);
+                        // and make it melt!
+                        Smeltery.addMelting(ft, output, 0, liquid2.amount);
+                    }
+
+                    TConstruct.logger.debug("Casting IMC: Added fluid " + tag.getString("FluidName") + " to part casting");
+                    break;
                 }
-                NBTTagCompound tag = message.getNBTValue();
+                case "addMaterialItem": {
+                    if (!message.isNBTMessage()) {
+                        logInvalidMessage(message);
+                        continue;
+                    }
 
-                if (!checkRequiredTags("Smeltery", tag, "FluidName", "Temperature", "Item", "Block")) continue;
+                    NBTTagCompound tag = message.getNBTValue();
 
-                FluidStack liquid = FluidStack.loadFluidStackFromNBT(tag);
-                if (liquid == null) {
-                    FMLLog.bigWarning("Smeltery IMC: No fluid found");
-                    continue;
+                    if (!checkRequiredTags("Material Item", tag, "MaterialId", "Value", "Item")) continue;
+
+                    int id = tag.getInteger("MaterialId");
+                    int value = tag.getInteger("Value");
+                    ItemStack stack = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("Item"));
+
+                    if (stack == null) {
+                        FMLLog.bigWarning("Material Item IMC: Item for Material %d is null", id);
+                        continue;
+                    }
+
+                    if (TConstructRegistry.getMaterial(id) == null) {
+                        FMLLog.bigWarning("Material Item IMC: Material with ID %d does not exist", id);
+                        continue;
+                    }
+
+                    ToolMaterial mat = TConstructRegistry.getMaterial(id);
+
+                    // we already have the material registered in there
+                    if (PatternBuilder.instance.materialSets.containsKey(mat.materialName)) {
+                        PatternBuilder.instance.registerMaterial(stack, value, mat.materialName);
+                    } else {
+                        TConstructRegistry.addDefaultShardMaterial(id);
+                        ItemStack shard = new ItemStack(TinkerTools.toolShard, 1, id);
+                        ItemStack rod = new ItemStack(TinkerTools.toolRod, 1, id);
+
+                        // register the material
+                        PatternBuilder.instance.registerFullMaterial(
+                                stack, value, TConstructRegistry.getMaterial(id).materialName, shard, rod, id);
+                    }
+                    break;
                 }
-                if (liquid.amount <= 0) {
-                    FMLLog.bigWarning("Smeltery IMC: Liquid has to have an amount greater than zero");
-                    continue;
+                case "addSmelteryMelting": {
+                    if (!message.isNBTMessage()) {
+                        logInvalidMessage(message);
+                        continue;
+                    }
+                    NBTTagCompound tag = message.getNBTValue();
+
+                    if (!checkRequiredTags("Smeltery", tag, "FluidName", "Temperature", "Item", "Block")) continue;
+
+                    FluidStack liquid = FluidStack.loadFluidStackFromNBT(tag);
+                    if (liquid == null) {
+                        FMLLog.bigWarning("Smeltery IMC: No fluid found");
+                        continue;
+                    }
+                    if (liquid.amount <= 0) {
+                        FMLLog.bigWarning("Smeltery IMC: Liquid has to have an amount greater than zero");
+                        continue;
+                    }
+
+                    ItemStack item = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("Item"));
+                    ItemStack block = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("Block"));
+                    int temperature = tag.getInteger("Temperature");
+
+                    if (FluidType.getFluidType(liquid.getFluid()) == null)
+                        FluidType.registerFluidType(
+                                liquid.getFluid().getName(),
+                                Block.getBlockFromItem(block.getItem()),
+                                block.getItemDamage(),
+                                temperature,
+                                liquid.getFluid(),
+                                false);
+
+                    Smeltery.addMelting(
+                            item, Block.getBlockFromItem(block.getItem()), block.getItemDamage(), temperature, liquid);
+                    TConstruct.logger.debug("Smeltery IMC: Added melting: " + item.getDisplayName() + " to " + liquid.amount
+                            + "mb " + liquid.getLocalizedName());
+                    break;
                 }
+                case "addSmelteryFuel": {
+                    if (!message.isNBTMessage()) {
+                        logInvalidMessage(message);
+                        continue;
+                    }
+                    NBTTagCompound tag = message.getNBTValue();
 
-                ItemStack item = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("Item"));
-                ItemStack block = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("Block"));
-                int temperature = tag.getInteger("Temperature");
+                    if (!checkRequiredTags("Smeltery", tag, "FluidName", "Temperature", "Duration")) continue;
 
-                if (FluidType.getFluidType(liquid.getFluid()) == null) FluidType.registerFluidType(
-                        liquid.getFluid().getName(),
-                        Block.getBlockFromItem(block.getItem()),
-                        block.getItemDamage(),
-                        temperature,
-                        liquid.getFluid(),
-                        false);
+                    FluidStack liquid = FluidStack.loadFluidStackFromNBT(tag);
+                    if (liquid == null) {
+                        FMLLog.bigWarning("Smeltery IMC: No fluid found");
+                        continue;
+                    }
 
-                Smeltery.addMelting(
-                        item,
-                        Block.getBlockFromItem(block.getItem()),
-                        block.getItemDamage(),
-                        temperature,
-                        liquid);
-                TConstruct.logger.debug(
-                        "Smeltery IMC: Added melting: " + item
-                                .getDisplayName() + " to " + liquid.amount + "mb " + liquid.getLocalizedName());
-            } else if (type.equals("addSmelteryFuel")) {
-                if (!message.isNBTMessage()) {
-                    logInvalidMessage(message);
-                    continue;
+                    int temperature = tag.getInteger("Temperature");
+                    int duration = tag.getInteger("Duration");
+
+                    Smeltery.addSmelteryFuel(liquid.getFluid(), temperature, duration);
+
+                    TConstruct.logger.debug("Smeltery IMC: Added fuel: " + liquid.getLocalizedName() + " (" + temperature
+                            + ", " + duration + ")");
+                    break;
                 }
-                NBTTagCompound tag = message.getNBTValue();
+                case "addFluxBattery":
+                    if (!message.isItemStackMessage()) {
+                        logInvalidMessage(message, "ItemStack");
+                        continue;
+                    }
+                    ItemStack battery = message.getItemStackValue();
+                    battery.stackSize = 1; // avoid getting a stack size of 0 or larger than 1
 
-                if (!checkRequiredTags("Smeltery", tag, "FluidName", "Temperature", "Duration")) continue;
 
-                FluidStack liquid = FluidStack.loadFluidStackFromNBT(tag);
-                if (liquid == null) {
-                    FMLLog.bigWarning("Smeltery IMC: No fluid found");
-                    continue;
-                }
+                    if (!(battery.getItem() instanceof IEnergyContainerItem)) {
+                        FMLLog.bigWarning("Flux Battery IMC: ItemStack is no instance of IEnergyContainerItem");
+                    }
 
-                int temperature = tag.getInteger("Temperature");
-                int duration = tag.getInteger("Duration");
-
-                Smeltery.addSmelteryFuel(liquid.getFluid(), temperature, duration);
-
-                TConstruct.logger.debug(
-                        "Smeltery IMC: Added fuel: " + liquid
-                                .getLocalizedName() + " (" + temperature + ", " + duration + ")");
-            } else if (type.equals("addFluxBattery")) {
-                if (!message.isItemStackMessage()) {
-                    logInvalidMessage(message, "ItemStack");
-                    continue;
-                }
-                ItemStack battery = message.getItemStackValue();
-                battery.stackSize = 1; // avoid getting a stack size of 0 or larger than 1
-
-                if (!(battery.getItem() instanceof IEnergyContainerItem)) {
-                    FMLLog.bigWarning("Flux Battery IMC: ItemStack is no instance of IEnergyContainerItem");
-                }
-
-                if (TinkerTools.modFlux != null) {
-                    TinkerTools.modFlux.batteries.add(battery);
-                }
+                    if (TinkerTools.modFlux != null) {
+                        TinkerTools.modFlux.batteries.add(battery);
+                    }
+                    break;
             }
         }
     }
