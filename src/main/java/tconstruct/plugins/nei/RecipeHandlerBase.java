@@ -263,21 +263,12 @@ public abstract class RecipeHandlerBase extends TemplateRecipeHandler {
                     double maxV = fluidIcon.getMaxV();
 
                     Tessellator tessellator = Tessellator.instance;
+                    final double u = minU + (maxU - minU) * drawWidth / 16F;
+                    final double v = minV + (maxV - minV) * drawHeight / 16F;
                     tessellator.startDrawingQuads();
-                    tessellator.addVertexWithUV(
-                            drawX,
-                            drawY + drawHeight,
-                            0,
-                            minU,
-                            minV + (maxV - minV) * drawHeight / 16F);
-                    tessellator.addVertexWithUV(
-                            drawX + drawWidth,
-                            drawY + drawHeight,
-                            0,
-                            minU + (maxU - minU) * drawWidth / 16F,
-                            minV + (maxV - minV) * drawHeight / 16F);
-                    tessellator
-                            .addVertexWithUV(drawX + drawWidth, drawY, 0, minU + (maxU - minU) * drawWidth / 16F, minV);
+                    tessellator.addVertexWithUV(drawX, drawY + drawHeight, 0, minU, v);
+                    tessellator.addVertexWithUV(drawX + drawWidth, drawY + drawHeight, 0, u, v);
+                    tessellator.addVertexWithUV(drawX + drawWidth, drawY, 0, u, minV);
                     tessellator.addVertexWithUV(drawX, drawY, 0, minU, minV);
                     tessellator.draw();
                 }
