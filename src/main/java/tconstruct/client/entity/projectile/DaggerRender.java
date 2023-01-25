@@ -279,7 +279,7 @@ public class DaggerRender extends Render {
             boolean renderEffect) {
         Item k = par3ItemStack.getItem();
         int l = par3ItemStack.getItemDamage();
-        Object object = par3ItemStack.getIconIndex();
+        IIcon iIcon = par3ItemStack.getIconIndex();
         float f;
         int i1;
         float f1;
@@ -343,8 +343,8 @@ public class DaggerRender extends Render {
                     par2TextureManager.getResourceLocation(par3ItemStack.getItemSpriteNumber());
             par2TextureManager.bindTexture(resourcelocation);
 
-            if (object == null) {
-                object = ((TextureMap)
+            if (iIcon == null) {
+                iIcon = ((TextureMap)
                                 Minecraft.getMinecraft().getTextureManager().getTexture(resourcelocation))
                         .getAtlasSprite("missingno");
             }
@@ -358,7 +358,7 @@ public class DaggerRender extends Render {
                 GL11.glColor4f(f, f1, f2, 1.0F);
             }
 
-            this.renderIcon(par4, par5, (IIcon) object, 16, 16);
+            this.renderIcon(par4, par5, iIcon, 16, 16);
             GL11.glEnable(GL11.GL_LIGHTING);
 
             if (par3ItemStack.hasEffect(0)) {

@@ -301,7 +301,7 @@ public class FancyItemRender extends Render {
             boolean renderEffect) {
         Item k = par3ItemStack.getItem();
         int l = par3ItemStack.getItemDamage();
-        Object object = par3ItemStack.getIconIndex();
+        IIcon object = par3ItemStack.getIconIndex();
         float f;
         int i1;
         float f1;
@@ -380,7 +380,7 @@ public class FancyItemRender extends Render {
                 GL11.glColor4f(f, f1, f2, 1.0F);
             }
 
-            this.renderIcon(par4, par5, (IIcon) object, 16, 16);
+            this.renderIcon(par4, par5, object, 16, 16);
             GL11.glEnable(GL11.GL_LIGHTING);
 
             if (par3ItemStack.hasEffect(0)) {
