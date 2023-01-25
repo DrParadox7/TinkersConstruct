@@ -438,11 +438,9 @@ public abstract class ToolCore extends Item implements IEnergyContainerItem, IEq
 
     @Override
     public void getSubItems(Item id, CreativeTabs tab, List list) {
-        Iterator iter = TConstructRegistry.toolMaterials.entrySet().iterator();
-        while (iter.hasNext()) {
-            Map.Entry pairs = (Map.Entry) iter.next();
-            tconstruct.library.tools.ToolMaterial material = (tconstruct.library.tools.ToolMaterial) pairs.getValue();
-            buildTool((Integer) pairs.getKey(), ToolBuilder.defaultToolName(material, this), list);
+        for (Map.Entry<Integer, tconstruct.library.tools.ToolMaterial> integerToolMaterialEntry : TConstructRegistry.toolMaterials.entrySet()) {
+            tconstruct.library.tools.ToolMaterial material = integerToolMaterialEntry.getValue();
+            buildTool(integerToolMaterialEntry.getKey(), ToolBuilder.defaultToolName(material, this), list);
         }
     }
 

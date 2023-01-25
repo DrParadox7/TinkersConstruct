@@ -870,17 +870,20 @@ public class TinkerSmeltery {
     }
 
     public void addOreDictionarySmelteryRecipes() {
-        List<FluidType> exceptions = Arrays.asList(
-                new FluidType[] { FluidType.getFluidType("Water"), FluidType.getFluidType("Stone"),
-                        FluidType.getFluidType("Emerald"), FluidType.getFluidType("Quartz"),
-                        FluidType.getFluidType("Ender"), FluidType.getFluidType("Glass"),
-                        FluidType.getFluidType("Slime"), FluidType.getFluidType("Obsidian") });
-        Iterator iter = FluidType.fluidTypes.entrySet().iterator();
-        while (iter.hasNext()) {
-            Map.Entry pairs = (Map.Entry) iter.next();
-            FluidType ft = (FluidType) pairs.getValue();
+        List<FluidType> exceptions = Arrays.asList(new FluidType[] {
+            FluidType.getFluidType("Water"),
+            FluidType.getFluidType("Stone"),
+            FluidType.getFluidType("Emerald"),
+            FluidType.getFluidType("Quartz"),
+            FluidType.getFluidType("Ender"),
+            FluidType.getFluidType("Glass"),
+            FluidType.getFluidType("Slime"),
+            FluidType.getFluidType("Obsidian")
+        });
+        for (Map.Entry<String, FluidType> stringFluidTypeEntry : FluidType.fluidTypes.entrySet()) {
+            FluidType ft = stringFluidTypeEntry.getValue();
             if (exceptions.contains(ft)) continue;
-            String fluidTypeName = (String) pairs.getKey();
+            String fluidTypeName = stringFluidTypeEntry.getKey();
 
             // Nuggets
             Smeltery.addDictionaryMelting("nugget" + fluidTypeName, ft, -100, TConstruct.nuggetLiquidValue);

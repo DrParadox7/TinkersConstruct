@@ -442,7 +442,7 @@ public class BlockLandmine extends BlockContainer {
         }
 
         if (triggerType != null) {
-            List list = null;
+            List<Entity> list = null;
 
             if (triggerType == Sensitivity.everything) {
                 list = par1World.getEntitiesWithinAABBExcludingEntity(
@@ -461,11 +461,7 @@ public class BlockLandmine extends BlockContainer {
             }
 
             if (list != null && !list.isEmpty()) {
-                Iterator iterator = list.iterator();
-
-                while (iterator.hasNext()) {
-                    Entity entity = (Entity) iterator.next();
-
+                for (Entity entity : list) {
                     if (!entity.doesEntityNotTriggerPressurePlate()) {
                         return 1;
                     }
@@ -535,7 +531,7 @@ public class BlockLandmine extends BlockContainer {
         }
 
         if (triggerType != null) {
-            List list = null;
+            List<Entity> list = null;
 
             if (triggerType == Sensitivity.everything) {
                 list = par1World.getEntitiesWithinAABBExcludingEntity(
@@ -556,11 +552,7 @@ public class BlockLandmine extends BlockContainer {
             }
 
             if (list != null && !list.isEmpty()) {
-                Iterator iterator = list.iterator();
-
-                while (iterator.hasNext()) {
-                    Entity entity = (Entity) iterator.next();
-
+                for (Entity entity : list) {
                     if (!entity.doesEntityNotTriggerPressurePlate()) {
                         return entity;
                     }

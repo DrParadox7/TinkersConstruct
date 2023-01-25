@@ -403,11 +403,9 @@ public class TankLayerScan extends LogicComponent {
 
     /** Do any necessary cleanup here. Remove air blocks, invalidate servants, etc */
     public void cleanup() {
-        Iterator i = blockCoords.iterator();
-        while (i.hasNext()) {
-            CoordTuple coord = (CoordTuple) i.next();
+        for (CoordTuple coord : blockCoords) {
             TileEntity te = world.getTileEntity(coord.x, coord.y, coord.z);
-            if (te != null && te instanceof IServantLogic) {
+            if (te instanceof IServantLogic) {
                 ((IServantLogic) te).invalidateMaster(imaster, world, master.xCoord, master.yCoord, master.zCoord);
             }
         }

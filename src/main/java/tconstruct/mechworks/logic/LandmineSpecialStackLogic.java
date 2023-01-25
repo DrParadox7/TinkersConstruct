@@ -31,10 +31,7 @@ public class LandmineSpecialStackLogic {
     }
 
     public void handleSpecialStacks() {
-        Iterator<SpecialStackHandler> i1 = SpecialStackHandler.handlers.iterator();
-
-        while (i1.hasNext()) {
-            SpecialStackHandler h = i1.next();
+        for (SpecialStackHandler h : SpecialStackHandler.handlers) {
             if (isOffensive || !h.isOffensive(stackEffects)) {
                 h.checkStack(worldObj, x, y, z, triggerer, stackEffects);
             }

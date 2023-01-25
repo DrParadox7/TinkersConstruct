@@ -24,11 +24,8 @@ public class AlloyMix {
         ArrayList<FluidStack> copyMix = new ArrayList(mixers);
         ArrayList effectiveAmount = new ArrayList();
 
-        for (int i = 0; i < liquids.size(); i++) {
-            FluidStack liquid = liquids.get(i);
-            Iterator iter = copyMix.iterator();
-            while (iter.hasNext()) {
-                FluidStack mixer = (FluidStack) iter.next();
+        for (FluidStack liquid : liquids) {
+            for (FluidStack mixer : copyMix) {
                 if (mixer.isFluidEqual(liquid)) {
                     // do we actually have enough of that liquid?
                     if (liquid.amount < mixer.amount) break;
@@ -49,9 +46,7 @@ public class AlloyMix {
 
         for (int i = 0; i < liquids.size(); i++) {
             FluidStack liquid = liquids.get(i);
-            Iterator iter = copyMix2.iterator();
-            while (iter.hasNext()) {
-                FluidStack mixer = (FluidStack) iter.next();
+            for (FluidStack mixer : copyMix2) {
                 // if (mixer.itemID == liquid.itemID && mixer.itemMeta ==
                 // liquid.itemMeta)
                 if (mixer.isFluidEqual(liquid)) {

@@ -419,10 +419,9 @@ public class SmelteryGui extends ActiveContainerGui {
             GL11.glDisable(GL11.GL_LIGHTING);
             GL11.glDisable(GL11.GL_DEPTH_TEST);
             int k = 0;
-            Iterator iterator = par1List.iterator();
 
-            while (iterator.hasNext()) {
-                String s = (String) iterator.next();
+            for (Object o : par1List) {
+                String s = (String) o;
                 int l = this.fontRendererObj.getStringWidth(s);
 
                 if (l > k) {

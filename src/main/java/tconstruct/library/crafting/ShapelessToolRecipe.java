@@ -30,7 +30,7 @@ public class ShapelessToolRecipe extends ShapelessRecipes {
 
     @Override
     public boolean matches(InventoryCrafting par1InventoryCrafting, World par2World) {
-        ArrayList arraylist = new ArrayList(this.recipeItems);
+        ArrayList<ItemStack> arraylist = new ArrayList<>(this.recipeItems);
 
         for (int i = 0; i < 3; ++i) {
             for (int j = 0; j < 3; ++j) {
@@ -38,11 +38,8 @@ public class ShapelessToolRecipe extends ShapelessRecipes {
 
                 if (itemstack != null) {
                     boolean flag = false;
-                    Iterator iterator = arraylist.iterator();
 
-                    while (iterator.hasNext()) {
-                        ItemStack itemstack1 = (ItemStack) iterator.next();
-
+                    for (ItemStack itemstack1 : arraylist) {
                         // TConstruct.logger.info("Rawr! "+itemstack1.getItemDamage());
                         if (itemstack.getItem() == itemstack1.getItem()) {
                             if (itemstack.getItem() instanceof ToolCore) {

@@ -86,9 +86,7 @@ public class LandmineExplodeLogic {
                 stacks);
         specialStacks.handleSpecialStacks();
 
-        Iterator<ItemStack> i1 = stacks.iterator();
-        while (i1.hasNext()) {
-            ItemStack currentStack = i1.next();
+        for (ItemStack currentStack : stacks) {
             Behavior b = Behavior.getBehaviorFromStack(currentStack);
             if (b != null) {
                 if (isOffensive || !b.isOffensive(currentStack)) {

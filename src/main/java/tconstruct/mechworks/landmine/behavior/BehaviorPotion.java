@@ -45,13 +45,9 @@ public class BehaviorPotion extends Behavior {
                 Items.potionitem.onEaten(par5ItemStack, par1World, (EntityPlayer) triggerer);
             } else if (triggerer instanceof EntityLivingBase) {
                 if (!par1World.isRemote) {
-                    List list = Items.potionitem.getEffects(par5ItemStack);
-
+                    List<PotionEffect> list = Items.potionitem.getEffects(par5ItemStack);
                     if (list != null) {
-                        Iterator iterator = list.iterator();
-
-                        while (iterator.hasNext()) {
-                            PotionEffect potioneffect = (PotionEffect) iterator.next();
+                        for (PotionEffect potioneffect : list) {
                             ((EntityLivingBase) triggerer).addPotionEffect(new PotionEffect(potioneffect));
                         }
                     }

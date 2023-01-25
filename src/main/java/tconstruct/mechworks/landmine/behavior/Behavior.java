@@ -60,10 +60,8 @@ public abstract class Behavior {
 
         // Make sure the part below this comment is executed last(to avoid
         // conflicts)
-        Iterator i1 = Block.blockRegistry.iterator();
-        while (i1.hasNext()) {
-            Object ob = i1.next();
-            if (ob != null && ob instanceof Block) {
+        for (Object ob : Block.blockRegistry) {
+            if (ob instanceof Block) {
                 Block b = (Block) ob;
                 if (b.getMaterial().isOpaque() && b.renderAsNormalBlock()
                         && !b.canProvidePower()
@@ -191,15 +189,11 @@ public abstract class Behavior {
     }
 
     public static final boolean arrayContainsEqualStack(ArrayList<ItemStack> stacks, ItemStack item) {
-        Iterator<ItemStack> i1 = stacks.iterator();
-
-        while (i1.hasNext()) {
-            ItemStack stack = i1.next();
+        for (ItemStack stack : stacks) {
             if (stack.isItemEqual(item)) {
                 return true;
             }
         }
-
         return false;
     }
 

@@ -39,21 +39,18 @@ public abstract class ItemModifier {
     public boolean matches(ItemStack[] recipe, ItemStack input) {
         if (!canModify(input, recipe)) return false;
 
-        ArrayList list = new ArrayList(this.stacks);
+        ArrayList<ItemStack> list = new ArrayList<>(this.stacks);
 
         for (int iter = 0; iter < recipe.length; ++iter) {
             ItemStack craftingStack = recipe[iter];
 
             if (craftingStack != null) {
                 boolean canCraft = false;
-                Iterator iterate = list.iterator();
 
-                while (iterate.hasNext()) {
-                    ItemStack removeStack = (ItemStack) iterate.next();
-
+                for (ItemStack removeStack : list) {
                     if (craftingStack.getItem() == removeStack.getItem()
                             && (removeStack.getItemDamage() == Short.MAX_VALUE
-                                    || craftingStack.getItemDamage() == removeStack.getItemDamage())) {
+                            || craftingStack.getItemDamage() == removeStack.getItemDamage())) {
                         canCraft = true;
                         list.remove(removeStack);
                         break;
