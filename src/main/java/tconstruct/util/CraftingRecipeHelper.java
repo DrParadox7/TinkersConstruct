@@ -59,7 +59,7 @@ public class CraftingRecipeHelper {
     }
 
     public static void addShapedRecipeFirst(List recipeList, ItemStack itemstack, Object... objArray) {
-        String var3 = "";
+        StringBuilder var3 = new StringBuilder();
         int var4 = 0;
         int var5 = 0;
         int var6 = 0;
@@ -71,14 +71,14 @@ public class CraftingRecipeHelper {
                 String var9 = var7[var8];
                 ++var6;
                 var5 = var9.length();
-                var3 = var3 + var9;
+                var3.append(var9);
             }
         } else {
             while (objArray[var4] instanceof String) {
                 String var11 = (String) objArray[var4++];
                 ++var6;
                 var5 = var11.length();
-                var3 = var3 + var11;
+                var3.append(var11);
             }
         }
 
