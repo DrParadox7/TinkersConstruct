@@ -329,14 +329,26 @@ public class ArmorProxyClient extends ArmorProxyCommon {
                 else if (i * 2 + 1 == healthLast) drawTexturedModalRect(x, y, MARGIN + 63, TOP, 9, 9); // 7
             }
 
-            if (absorbRemaining > 0.0F) {
-                if (absorbRemaining == absorb && absorb % 2.0F == 1.0F)
-                    drawTexturedModalRect(x, y, MARGIN + 153, TOP, 9, 9); // 17
-                else drawTexturedModalRect(x, y, MARGIN + 144, TOP, 9, 9); // 16
-                absorbRemaining -= 2.0F;
-            } else {
-                if (i * 2 + 1 < health) drawTexturedModalRect(x, y, MARGIN + 36, TOP, 9, 9); // 4
-                else if (i * 2 + 1 == health) drawTexturedModalRect(x, y, MARGIN + 45, TOP, 9, 9); // 5
+                int hp = MathHelper.ceiling_float_int(this.mc.thePlayer.getHealth());
+                for (int iter = 0; iter < hp / 20; iter++) {
+                    int renderHearts = (hp - 20 * (iter + 1)) / 2;
+                    if (renderHearts > 10) renderHearts = 10;
+                    for (int i = 0; i < renderHearts; i++) {
+                        int y = 0;
+                        if (i == regen) y -= 2;
+                        this.drawTexturedModalRect(xBasePos + 8 * i, yBasePos + y, 0 + 18 * iter, potionOffset, 9, 9);
+                    }
+                    if (hp % 2 == 1 && renderHearts < 10) {
+                        this.drawTexturedModalRect(
+                                xBasePos + 8 * renderHearts, yBasePos, 9 + 18 * iter, potionOffset, 9, 9);
+                    }
+                }
+
+                this.mc.getTextureManager().bindTexture(icons);
+                GuiIngameForge.left_height += 10;
+                if (absorb > 0) GuiIngameForge.left_height += 10;
+
+                event.setCanceled(true);
             }
         }
 
