@@ -509,14 +509,13 @@ public class SmelteryGui extends ActiveContainerGui {
             if (mouseX >= leftX && mouseX <= leftX + 52 && mouseY >= topY && mouseY < topY + fluidHeights[i]) {
                 fluidToBeBroughtUp = logic.moltenMetal.get(i).getFluidID();
 
-                TConstruct.packetPipeline.sendToServer(
-                        new SmelteryPacket(
-                                logic.getWorldObj().provider.dimensionId,
-                                logic.xCoord,
-                                logic.yCoord,
-                                logic.zCoord,
-                                this.isShiftKeyDown(),
-                                fluidToBeBroughtUp));
+                TConstruct.packetPipeline.sendToServer(new SmelteryPacket(
+                        logic.getWorldObj().provider.dimensionId,
+                        logic.xCoord,
+                        logic.yCoord,
+                        logic.zCoord,
+                        isShiftKeyDown(),
+                        fluidToBeBroughtUp));
             }
             base += fluidHeights[i];
         }

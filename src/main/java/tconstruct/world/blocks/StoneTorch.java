@@ -66,7 +66,7 @@ public class StoneTorch extends MantleBlock {
      * Gets if we can place a torch on a block.
      */
     private boolean canPlaceTorchOn(World par1World, int par2, int par3, int par4) {
-        if (par1World.doesBlockHaveSolidTopSurface(par1World, par2, par3, par4)) {
+        if (World.doesBlockHaveSolidTopSurface(par1World, par2, par3, par4)) {
             return true;
         } else {
             Block b = par1World.getBlock(par2, par3, par4);

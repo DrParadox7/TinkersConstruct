@@ -139,7 +139,7 @@ public class Smeltery {
      * @return The result ItemStack
      */
     public static Integer getLiquifyTemperature(Block block, int metadata) {
-        return instance.getLiquifyTemperature(new ItemStack(block, 1, metadata));
+        return getLiquifyTemperature(new ItemStack(block, 1, metadata));
     }
 
     /**
@@ -163,7 +163,7 @@ public class Smeltery {
      * @return The result ItemStack
      */
     public static FluidStack getSmelteryResult(Block block, int metadata) {
-        return instance.getSmelteryResult(new ItemStack(block, 1, metadata));
+        return getSmelteryResult(new ItemStack(block, 1, metadata));
     }
 
     public static ItemStack getRenderIndex(ItemStack input) {

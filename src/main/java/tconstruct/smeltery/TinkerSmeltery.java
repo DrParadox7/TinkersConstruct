@@ -1900,7 +1900,7 @@ public class TinkerSmeltery {
 
     private void registerIngotCasting(FluidType ft, String name) {
         ItemStack pattern = new ItemStack(TinkerSmeltery.metalPattern, 1, 0);
-        LiquidCasting tableCasting = TConstructRegistry.instance.getTableCasting();
+        LiquidCasting tableCasting = TConstructRegistry.getTableCasting();
         Fluid castMaterial = PHConstruct.steelPatterns ? TinkerSmeltery.moltenSteelFluid
                 : TinkerSmeltery.moltenAlubrassFluid;
 
@@ -1930,7 +1930,7 @@ public class TinkerSmeltery {
         Fluid castMaterial = PHConstruct.steelPatterns ? TinkerSmeltery.moltenSteelFluid
                 : TinkerSmeltery.moltenAlubrassFluid;
 
-        LiquidCasting tableCasting = TConstructRegistry.instance.getTableCasting();
+        LiquidCasting tableCasting = TConstructRegistry.getTableCasting();
         for (ItemStack ore : OreDictionary.getOres(name)) {
             // don't do oreberries. That'd be silly.
             if (ore.getItem() != null && ore.getItem() instanceof OreBerries) {

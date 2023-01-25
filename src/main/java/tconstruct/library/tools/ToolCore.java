@@ -614,7 +614,7 @@ public abstract class ToolCore extends Item implements IEnergyContainerItem, IEq
             nearbyStack = player.inventory.getStackInSlot(itemSlot);
             if (nearbyStack != null) {
                 Item item = nearbyStack.getItem();
-                if (item instanceof ItemPotion && ((ItemPotion) item).isSplash(nearbyStack.getItemDamage())) {
+                if (item instanceof ItemPotion && ItemPotion.isSplash(nearbyStack.getItemDamage())) {
                     nearbyStack = item.onItemRightClick(nearbyStack, world, player);
                     if (nearbyStack.stackSize < 1) {
                         nearbyStack = null;

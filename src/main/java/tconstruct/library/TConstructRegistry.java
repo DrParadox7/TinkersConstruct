@@ -190,7 +190,7 @@ public class TConstructRegistry {
         ToolBuilder tb = ToolBuilder.instance;
         if (parts.length < 2 || parts.length > 4) logger.warn("Wrong amount of items to craft into a tool");
 
-        tb.addToolRecipe(output, parts);
+        ToolBuilder.addToolRecipe(output, parts);
     }
 
     // Materials
