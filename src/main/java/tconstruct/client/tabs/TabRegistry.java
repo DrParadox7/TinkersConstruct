@@ -78,7 +78,7 @@ public class TabRegistry {
                     Class<?> c = Class.forName("codechicken.nei.NEIClientConfig");
                     Object hidden = c.getMethod("isHidden").invoke(null);
                     Object enabled = c.getMethod("isEnabled").invoke(null);
-                    if (hidden != null && hidden instanceof Boolean && enabled != null && enabled instanceof Boolean) {
+                    if (hidden instanceof Boolean && enabled instanceof Boolean) {
                         if ((Boolean) hidden || !((Boolean) enabled)) {
                             // If NEI is disabled or hidden, offset the tabs by 60
                             return 60;

@@ -232,24 +232,21 @@ public class Scythe extends Weapon {
                                                 if (world.isRemote) {
                                                     INetHandler handler = FMLClientHandler.instance()
                                                             .getClientPlayHandler();
-                                                    if (handler != null && handler instanceof NetHandlerPlayClient) {
-                                                        NetHandlerPlayClient handlerClient = (NetHandlerPlayClient) handler;
-                                                        handlerClient.addToSendQueue(
-                                                                new C07PacketPlayerDigging(
-                                                                        0,
-                                                                        x,
-                                                                        y,
-                                                                        z,
-                                                                        Minecraft
-                                                                                .getMinecraft().objectMouseOver.sideHit));
-                                                        handlerClient.addToSendQueue(
-                                                                new C07PacketPlayerDigging(
-                                                                        2,
-                                                                        x,
-                                                                        y,
-                                                                        z,
-                                                                        Minecraft
-                                                                                .getMinecraft().objectMouseOver.sideHit));
+                                                    if (handler instanceof NetHandlerPlayClient) {
+                                                        NetHandlerPlayClient handlerClient =
+                                                                (NetHandlerPlayClient) handler;
+                                                        handlerClient.addToSendQueue(new C07PacketPlayerDigging(
+                                                                0,
+                                                                x,
+                                                                y,
+                                                                z,
+                                                                Minecraft.getMinecraft().objectMouseOver.sideHit));
+                                                        handlerClient.addToSendQueue(new C07PacketPlayerDigging(
+                                                                2,
+                                                                x,
+                                                                y,
+                                                                z,
+                                                                Minecraft.getMinecraft().objectMouseOver.sideHit));
                                                     }
                                                 }
 

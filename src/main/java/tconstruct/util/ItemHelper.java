@@ -24,7 +24,7 @@ public class ItemHelper {
             Class<?> clazz = Class.forName(classPackage);
             Field field = clazz.getDeclaredField(name);
             Object ret = field.get(null);
-            if (ret != null && (ret instanceof ItemStack || ret instanceof Item)) return ret;
+            if ((ret instanceof ItemStack || ret instanceof Item)) return ret;
             return null;
         } catch (Exception e) {
             TConstruct.logger.warn("Could not find " + name + "from " + classPackage);

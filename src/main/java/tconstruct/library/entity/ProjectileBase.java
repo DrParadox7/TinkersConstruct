@@ -472,7 +472,7 @@ public abstract class ProjectileBase extends EntityArrow implements IEntityAddit
             if (entity != null) movingobjectposition = new MovingObjectPosition(entity);
 
             // did we hit a player?
-            if (movingobjectposition != null && movingobjectposition.entityHit != null
+            if (movingobjectposition != null
                     && movingobjectposition.entityHit instanceof EntityPlayer) {
                 EntityPlayer entityplayer = (EntityPlayer) movingobjectposition.entityHit;
 

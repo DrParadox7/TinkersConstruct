@@ -31,7 +31,7 @@ public class SlotCanister extends Slot {
     @Override
     public boolean isItemValid(ItemStack par1ItemStack) {
         Item item = (par1ItemStack == null ? null : par1ItemStack.getItem());
-        return item != null && (item instanceof IHealthAccessory)
+        return (item instanceof IHealthAccessory)
                 && ((IHealthAccessory) item).canEquipAccessory(par1ItemStack, this.slotID);
     }
 }

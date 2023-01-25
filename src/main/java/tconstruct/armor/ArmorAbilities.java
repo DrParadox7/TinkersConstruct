@@ -74,7 +74,7 @@ public class ArmorAbilities {
 
     @SubscribeEvent
     public void dimensionChanged(PlayerEvent.PlayerChangedDimensionEvent event) {
-        if (event.player == null || !(event.player instanceof EntityPlayerMP)) return;
+        if (!(event.player instanceof EntityPlayerMP)) return;
 
         // this callback is only called serverside
         float oldHealth = event.player.getHealth();

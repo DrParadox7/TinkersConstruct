@@ -45,7 +45,7 @@ public class ToolProxyCommon implements IGuiHandler {
     @Override
     public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         TileEntity tile = world.getTileEntity(x, y, z);
-        if (tile != null && tile instanceof InventoryLogic) {
+        if (tile instanceof InventoryLogic) {
             return ((InventoryLogic) tile).getGuiContainer(player.inventory, world, x, y, z);
         }
         return null;

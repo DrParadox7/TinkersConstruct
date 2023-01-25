@@ -126,7 +126,7 @@ public class EquipBlock extends InventoryBlock {
     public void breakBlock(World par1World, int x, int y, int z, Block par5, int meta) {
         TileEntity te = par1World.getTileEntity(x, y, z);
 
-        if (te != null && te instanceof EquipLogic) {
+        if (te instanceof EquipLogic) {
             EquipLogic logic = (EquipLogic) te;
             for (int iter = 0; iter < logic.getSizeInventory(); ++iter) {
                 ItemStack stack = iter == 0 ? logic.getEquipmentItem() : logic.getStackInSlot(iter);

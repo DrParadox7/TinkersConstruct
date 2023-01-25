@@ -60,7 +60,7 @@ public class CastingChannelLogic extends TileEntity implements IFluidHandler {
         boolean flagActiveFaucet = false;
 
         TileEntity possibleFaucet = worldObj.getTileEntity(xCoord, yCoord + 1, zCoord);
-        if (possibleFaucet != null && possibleFaucet instanceof FaucetLogic)
+        if (possibleFaucet instanceof FaucetLogic)
             flagActiveFaucet = ((FaucetLogic) possibleFaucet).active;
 
         if (ticks == 6) // && !flagActiveFaucet)
@@ -279,8 +279,7 @@ public class CastingChannelLogic extends TileEntity implements IFluidHandler {
             int tY = this.yCoord + fd.offsetY;
             int tZ = this.zCoord + fd.offsetZ;
             TileEntity tile = this.worldObj.getTileEntity(tX, tY, tZ);
-
-            if (tile != null && tile instanceof IFluidHandler) map.put(fd, tile);
+            if (tile instanceof IFluidHandler) map.put(fd, tile);
         }
         return map;
     }
