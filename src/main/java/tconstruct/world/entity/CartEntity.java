@@ -345,11 +345,10 @@ public class CartEntity extends Entity implements IInventory, IEntityAdditionalS
                         + (this.minecartPitch - (double) this.rotationPitch) / (double) this.turnProgress);
                 --this.turnProgress;
                 this.setPosition(var46, var48, var5);
-                this.setRotation(this.rotationYaw, this.rotationPitch);
             } else {
                 this.setPosition(this.posX, this.posY, this.posZ);
-                this.setRotation(this.rotationYaw, this.rotationPitch);
             }
+            this.setRotation(this.rotationYaw, this.rotationPitch);
         } else {
             this.prevPosX = this.posX;
             this.prevPosY = this.posY;
@@ -737,20 +736,16 @@ public class CartEntity extends Entity implements IInventory, IEntityAdditionalS
     public ItemStack decrStackSize(int par1, int par2) {
         if (this.cargoItems[par1] != null) {
             ItemStack var3;
-
             if (this.cargoItems[par1].stackSize <= par2) {
                 var3 = this.cargoItems[par1];
                 this.cargoItems[par1] = null;
-                return var3;
             } else {
                 var3 = this.cargoItems[par1].splitStack(par2);
-
                 if (this.cargoItems[par1].stackSize == 0) {
                     this.cargoItems[par1] = null;
                 }
-
-                return var3;
             }
+            return var3;
         } else {
             return null;
         }

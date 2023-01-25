@@ -44,9 +44,7 @@ public class FilledBucket extends ItemBucket {
         boolean wannabeFull = false;
         MovingObjectPosition position = this.getMovingObjectPositionFromPlayer(world, player, wannabeFull);
 
-        if (position == null) {
-            return stack;
-        } else {
+        if (position != null) {
             /*
              * FillBucketEvent event = new FillBucketEvent(player, stack, world, position); if
              * (MinecraftForge.EVENT_BUS.post(event)) { return stack; } if (event.getResult() == Event.Result.ALLOW) {
@@ -98,8 +96,8 @@ public class FilledBucket extends ItemBucket {
                 }
             }
 
-            return stack;
         }
+        return stack;
     }
 
     public boolean tryPlaceContainedLiquid(World world, int clickX, int clickY, int clickZ, int type) {

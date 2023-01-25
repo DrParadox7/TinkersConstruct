@@ -477,17 +477,15 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
                         l = 64 - stack.stackSize;
                     }
 
-                    if (l == 0) {
-                        return stackSize;
-                    } else {
+                    if (l != 0) {
                         stackSize -= l;
                         stack.stackSize += l;
                         living.setCurrentItemOrArmor(slotID, stack);
-                        if (living instanceof EntityLiving)
+                        if (living instanceof EntityLiving) {
                             ((EntityLiving) living).setEquipmentDropChance(slotID, 2.0f);
-
-                        return stackSize;
+                        }
                     }
+                    return stackSize;
                 }
             }
         }

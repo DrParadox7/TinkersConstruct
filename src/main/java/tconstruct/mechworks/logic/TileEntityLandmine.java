@@ -112,7 +112,6 @@ public class TileEntityLandmine extends TileEntity implements IInventory {
                 if (inventory[par1].stackSize <= par2) {
                     itemstack = inventory[par1];
                     inventory[par1] = null;
-                    return itemstack;
                 } else {
                     itemstack = inventory[par1].splitStack(par2);
 
@@ -120,8 +119,8 @@ public class TileEntityLandmine extends TileEntity implements IInventory {
                         inventory[par1] = null;
                     }
 
-                    return itemstack;
                 }
+                return itemstack;
             } else {
                 return null;
             }
@@ -190,15 +189,16 @@ public class TileEntityLandmine extends TileEntity implements IInventory {
 
     @Override
     public boolean isItemValidForSlot(int i, ItemStack itemstack) {
-        // Should automatic camo insertion be allowed.
-        if (i == 3) {
-            return false;
-        } else {
-            // Here for mDiyo to decide if he wants automation for
-            // insertion/extraction of the items to be an option.
-            // Would be useful for building automated mine laying machines.
-            return false;
-        }
+        //// Should automatic camo insertion be allowed.
+        //if (i == 3) {
+        //    return false;
+        //} else {
+        //    // Here for mDiyo to decide if he wants automation for
+        //    // insertion/extraction of the items to be an option.
+        //    // Would be useful for building automated mine laying machines.
+        //    return false;
+        //}
+        return false;
     }
 
     public void setSoundPlayed() {

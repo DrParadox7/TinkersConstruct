@@ -67,6 +67,7 @@ public class ItemSlimeBoots extends ItemArmor implements ISpecialArmor {
             playerIn.setCurrentItemOrArmor(i + 1, itemStackIn.copy());
             itemStackIn.stackSize = 0;
         }
+        itemStackIn.stackSize--;
         return itemStackIn;
     }
 

@@ -177,15 +177,12 @@ public class FrypanLogic extends EquipLogic implements IActiveLogic {
     }
 
     public ItemStack getResultFor(ItemStack stack) {
-        if (stack == null) {
-            return null;
-        } else {
+        if (stack != null) {
             ItemStack result = FurnaceRecipes.smelting().getSmeltingResult(stack);
             if (result != null && result.getItem() instanceof ItemFood) // Only valid for food
                 return result.copy();
-
-            return null;
         }
+        return null;
     }
 
     public static int getItemBurnTime(ItemStack stack) {

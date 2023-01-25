@@ -70,10 +70,8 @@ public class BarricadeBlock extends MantleBlock {
     public void harvestBlock(World world, EntityPlayer player, int x, int y, int z, int meta) {
         if (meta % 4 > 0) {
             world.setBlock(x, y, z, this, meta - 1, 3);
-            dropBlockAsItem(world, x, y, z, new ItemStack(this));
-        } else {
-            dropBlockAsItem(world, x, y, z, new ItemStack(this));
         }
+        dropBlockAsItem(world, x, y, z, new ItemStack(this));
     }
 
     @Override

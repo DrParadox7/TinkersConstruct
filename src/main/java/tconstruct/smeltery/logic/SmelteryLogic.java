@@ -456,7 +456,6 @@ public class SmelteryLogic extends InventoryLogic implements IActiveLogic, IFaci
 
             moltenMetal.add(liquid.copy());
             updateCurrentLiquid();
-            return true;
         } else {
             // update liquid amount..
             updateCurrentLiquid();
@@ -484,8 +483,8 @@ public class SmelteryLogic extends InventoryLogic implements IActiveLogic, IFaci
                 if (first) moltenMetal.add(0, liquid.copy());
                 else moltenMetal.add(liquid.copy());
             }
-            return true;
         }
+        return true;
     }
 
     private void updateCurrentLiquid() {

@@ -63,7 +63,6 @@ public class BlockRenderCastingChannel implements ISimpleBlockRenderingHandler {
             if (!outputs.contains(ForgeDirection.DOWN)) // CentrePiece, floor is removed if tank below is found
             {
                 renderer.setRenderBounds(0.3125D, 0.375D, 0.3125D, 0.6875D, 0.5D, 0.6875D);
-                renderer.renderStandardBlock(block, x, y, z);
             } else
             // "Guiding Borders" when tank below is found
             {
@@ -74,8 +73,8 @@ public class BlockRenderCastingChannel implements ISimpleBlockRenderingHandler {
                 renderer.setRenderBounds(0.3125D, 0.125D, 0.3125D, 0.375D, 0.5D, 0.6875D);
                 renderer.renderStandardBlock(block, x, y, z);
                 renderer.setRenderBounds(0.625D, 0.125D, 0.3125D, 0.6875D, 0.5D, 0.6875D);
-                renderer.renderStandardBlock(block, x, y, z);
             }
+            renderer.renderStandardBlock(block, x, y, z);
             if (outputs.contains(ForgeDirection.NORTH)) // Channel to Z-
             {
                 renderer.setRenderBounds(0.3125D, 0.375D, 0D, 0.6875D, 0.5D, 0.3125D);
@@ -83,13 +82,12 @@ public class BlockRenderCastingChannel implements ISimpleBlockRenderingHandler {
                 renderer.setRenderBounds(0.3125D, 0.5D, 0D, 0.375D, 0.625D, 0.3125D);
                 renderer.renderStandardBlock(block, x, y, z);
                 renderer.setRenderBounds(0.625D, 0.5D, 0D, 0.6875D, 0.625D, 0.3125D);
-                renderer.renderStandardBlock(block, x, y, z);
             } else
             // Wall to Z-
             {
                 renderer.setRenderBounds(0.375D, 0.5D, 0.3125D, 0.625D, 0.625D, 0.375D);
-                renderer.renderStandardBlock(block, x, y, z);
             }
+            renderer.renderStandardBlock(block, x, y, z);
 
             if (outputs.contains(ForgeDirection.SOUTH)) // Channel to Z+
             {
@@ -98,13 +96,12 @@ public class BlockRenderCastingChannel implements ISimpleBlockRenderingHandler {
                 renderer.setRenderBounds(0.3125D, 0.5D, 0.6875D, 0.375D, 0.625D, 1D);
                 renderer.renderStandardBlock(block, x, y, z);
                 renderer.setRenderBounds(0.625D, 0.5D, 0.6875D, 0.6875D, 0.625D, 1D);
-                renderer.renderStandardBlock(block, x, y, z);
             } else
             // Wall to Z+
             {
                 renderer.setRenderBounds(0.375D, 0.5D, 0.625D, 0.625D, 0.625D, 0.6875D);
-                renderer.renderStandardBlock(block, x, y, z);
             }
+            renderer.renderStandardBlock(block, x, y, z);
 
             if (outputs.contains(ForgeDirection.WEST)) // Channel to X-
             {
@@ -113,13 +110,12 @@ public class BlockRenderCastingChannel implements ISimpleBlockRenderingHandler {
                 renderer.setRenderBounds(0D, 0.5D, 0.3125D, 0.375D, 0.625D, 0.375D);
                 renderer.renderStandardBlock(block, x, y, z);
                 renderer.setRenderBounds(0D, 0.5D, 0.625D, 0.375D, 0.625D, 0.6875D);
-                renderer.renderStandardBlock(block, x, y, z);
             } else
             // Wall to X-
             {
                 renderer.setRenderBounds(0.3125D, 0.5D, 0.3125D, 0.375D, 0.625D, 0.6875D);
-                renderer.renderStandardBlock(block, x, y, z);
             }
+            renderer.renderStandardBlock(block, x, y, z);
 
             if (outputs.contains(ForgeDirection.EAST)) // Channel to X+
             {
@@ -128,13 +124,12 @@ public class BlockRenderCastingChannel implements ISimpleBlockRenderingHandler {
                 renderer.setRenderBounds(0.625D, 0.5D, 0.3125D, 1D, 0.625D, 0.375D);
                 renderer.renderStandardBlock(block, x, y, z);
                 renderer.setRenderBounds(0.625D, 0.5D, 0.625D, 1D, 0.625D, 0.6875D);
-                renderer.renderStandardBlock(block, x, y, z);
             } else
             // Wall to X+
             {
                 renderer.setRenderBounds(0.625D, 0.5D, 0.3125D, 0.6875D, 0.625D, 0.6875D);
-                renderer.renderStandardBlock(block, x, y, z);
             }
+            renderer.renderStandardBlock(block, x, y, z);
             FluidTankInfo tankMain = tile.getTankInfo(null)[0];
             if (tankMain.fluid != null) {
                 float liquidAmount = (float) tankMain.fluid.amount / (float) tankMain.capacity * 0.125f;

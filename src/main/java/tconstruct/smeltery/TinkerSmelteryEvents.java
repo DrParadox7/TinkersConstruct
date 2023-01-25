@@ -56,12 +56,7 @@ public class TinkerSmelteryEvents {
                     if (evt.entityPlayer.capabilities.isCreativeMode) {
                         WorldHelper.setBlockToAir(evt.world, hitX, hitY, hitZ);
                     } else {
-                        if (TinkerSmeltery.fluidBlocks[id] instanceof LiquidMetalFinite) {
-                            WorldHelper.setBlockToAir(evt.world, hitX, hitY, hitZ);
-                        } else {
-                            WorldHelper.setBlockToAir(evt.world, hitX, hitY, hitZ);
-                        }
-
+                        WorldHelper.setBlockToAir(evt.world, hitX, hitY, hitZ);
                         evt.setResult(Result.ALLOW);
                         evt.result = new ItemStack(TinkerSmeltery.buckets, 1, id);
                     }

@@ -559,13 +559,11 @@ public class AbilityHelper {
                         (block1.stepSound.getVolume() + 1.0F) / 2.0F,
                         block1.stepSound.getPitch() * 0.8F);
 
-                if (world.isRemote) {
-                    return true;
-                } else {
+                if (!world.isRemote) {
                     world.setBlock(x, y, z, block1);
                     damageTool(stack, 1, player, false);
-                    return true;
                 }
+                return true;
             } else {
                 return false;
             }

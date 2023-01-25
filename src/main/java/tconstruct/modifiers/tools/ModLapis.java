@@ -152,10 +152,10 @@ public class ModLapis extends ItemModTypeFilter {
             if (index == enchant.effectId) {
                 hasEnchant = true;
                 enchantTag.setShort("id", (short) index);
-                enchantTag.setShort("lvl", (byte) level);
+                enchantTag.setShort("lvl", (short) ((byte) level));
             } else {
                 enchantTag.setShort("id", (short) index);
-                enchantTag.setShort("lvl", (byte) lvl);
+                enchantTag.setShort("lvl", (short) ((byte) lvl));
             }
             tags.appendTag(enchantTag);
         }

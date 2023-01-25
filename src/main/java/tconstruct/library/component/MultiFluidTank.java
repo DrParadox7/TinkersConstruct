@@ -78,7 +78,6 @@ public class MultiFluidTank extends LogicComponent implements IFluidTank {
         if (fluidlist.size() == 0) {
             fluidlist.add(liquid.copy());
             currentLiquid += liquid.amount;
-            return true;
         } else {
             if (liquid.amount + currentLiquid > maxLiquid) return false;
 
@@ -99,8 +98,8 @@ public class MultiFluidTank extends LogicComponent implements IFluidTank {
                 if (first) fluidlist.add(0, liquid.copy());
                 else fluidlist.add(liquid.copy());
             }
-            return true;
         }
+        return true;
     }
 
     @Override
