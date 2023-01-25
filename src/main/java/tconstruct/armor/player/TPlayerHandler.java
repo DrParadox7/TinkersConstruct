@@ -81,7 +81,7 @@ public class TPlayerHandler {
                 }
             }
 
-            if (player.getDisplayName().toLowerCase().equals("fractuality")) {
+            if (player.getDisplayName().equalsIgnoreCase("fractuality")) {
                 ItemStack pattern = new ItemStack(TinkerTools.woodPattern, 1, 22);
 
                 NBTTagCompound compound = new NBTTagCompound();
@@ -96,7 +96,7 @@ public class TPlayerHandler {
                 AbilityHelper.spawnItemAtPlayer(player, pattern);
             }
 
-            if (player.getDisplayName().toLowerCase().equals("zerokyuuni")) {
+            if (player.getDisplayName().equalsIgnoreCase("zerokyuuni")) {
                 ItemStack pattern = new ItemStack(Items.stick);
 
                 NBTTagCompound compound = new NBTTagCompound();
@@ -109,7 +109,7 @@ public class TPlayerHandler {
 
                 AbilityHelper.spawnItemAtPlayer(player, pattern);
             }
-            if (player.getDisplayName().toLowerCase().equals("zisteau")) {
+            if (player.getDisplayName().equalsIgnoreCase("zisteau")) {
                 spawnPigmanModifier(player);
             }
 
@@ -150,7 +150,7 @@ public class TPlayerHandler {
 
                 AbilityHelper.spawnItemAtPlayer(player, modifier);
 
-                if (player.getDisplayName().toLowerCase().equals("zisteau")) {
+                if (player.getDisplayName().equalsIgnoreCase("zisteau")) {
                     spawnPigmanModifier(player);
                 }
             }
