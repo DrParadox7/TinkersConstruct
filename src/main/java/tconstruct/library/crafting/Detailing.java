@@ -12,7 +12,6 @@ public class Detailing {
 
     public void addDetailing(Object input, int inputMeta, Object output, int outputMeta, ToolCore tool) {
         ItemStack iID, oID;
-        int iMeta = inputMeta, oMeta = outputMeta;
 
         if (input instanceof Block) iID = new ItemStack(((Block) input));
         else if (input instanceof Item) iID = new ItemStack(((Item) input));
@@ -24,7 +23,7 @@ public class Detailing {
         else if (output instanceof ItemStack) oID = (ItemStack) output;
         else throw new RuntimeException("Invalid detail output!");
 
-        this.addDetailing(new DetailInput(iID, iMeta, oID, oMeta), tool);
+        this.addDetailing(new DetailInput(iID, inputMeta, oID, outputMeta), tool);
     }
 
     public void addDetailing(DetailInput details, ToolCore tool) {
@@ -48,11 +47,10 @@ public class Detailing {
 
     public void addShapelessToolRecipe(ItemStack par1ItemStack, Object... par2ArrayOfObj) {
         ArrayList arraylist = new ArrayList();
-        Object[] aobject = par2ArrayOfObj;
         int i = par2ArrayOfObj.length;
 
         for (int j = 0; j < i; ++j) {
-            Object object1 = aobject[j];
+            Object object1 = par2ArrayOfObj[j];
 
             if (object1 instanceof ItemStack) {
                 arraylist.add(((ItemStack) object1).copy());

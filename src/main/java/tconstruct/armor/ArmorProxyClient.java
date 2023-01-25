@@ -197,8 +197,7 @@ public class ArmorProxyClient extends ArmorProxyCommon {
     @Override
     public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
         if (ID == ArmorProxyCommon.inventoryGui) {
-            GuiInventory inventory = new GuiInventory(player);
-            return inventory;
+            return new GuiInventory(player);
         }
         if (ID == ArmorProxyCommon.armorGuiID) {
             ArmorProxyClient.armorExtended.init(Minecraft.getMinecraft().thePlayer);

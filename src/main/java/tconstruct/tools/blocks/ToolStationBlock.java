@@ -34,13 +34,15 @@ public class ToolStationBlock extends InventoryBlock {
         this.setStepSound(Block.soundTypeMetal);
     }
 
-    // We keep it "toolforge" for the sake of texture pack support.
-    String[] textureNames = { "toolforge_bronze", "toolforge_steel", "toolforge_alumite" };
-
     @Override
     public String[] getTextureNames() {
-        return textureNames;
-    }
+        return new String[]{
+            "toolforge_bronze",
+            "toolforge_steel",
+            "toolforge_alumite"
+        };
+    }     // We keep it "toolforge" for the sake of texture pack support.
+
 
     @Override
     public String getTextureDomain(int textureNameIndex) {

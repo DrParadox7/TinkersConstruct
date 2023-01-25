@@ -191,9 +191,7 @@ public abstract class ArmorCore extends ItemArmor implements ISpecialArmor, IMod
         float ratio = currentDurability / maxDurability;
         double base = tags.getDouble("BaseDefense");
         double max = tags.getDouble("MaxDefense");
-        double current = (max - base) * ratio + base;
-
-        return current;
+        return (max - base) * ratio + base;
     }
 
     @Override

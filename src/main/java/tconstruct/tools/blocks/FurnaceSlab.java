@@ -49,9 +49,7 @@ public class FurnaceSlab extends InventorySlab {
 
     @Override
     public String[] getTextureNames() {
-        String[] textureNames = { "furnaceslab_front", "furnaceslab_front_active", "furnaceslab_side", "furnace_top" };
-
-        return textureNames;
+        return new String[]{"furnaceslab_front", "furnaceslab_front_active", "furnaceslab_side", "furnace_top"};
     }
 
     @Override

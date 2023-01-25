@@ -53,9 +53,8 @@ public class InventoryCraftingStationResult extends InventoryCraftResult {
     public ItemStack decrStackSize(int par1, int par2) {
         ItemStack stack = logic.getStackInSlot(0);
         if (stack != null) {
-            ItemStack itemstack = stack;
             logic.setInventorySlotContents(0, null);
-            return itemstack;
+            return stack;
         } else {
             return null;
         }

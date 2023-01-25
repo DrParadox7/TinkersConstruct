@@ -105,9 +105,7 @@ public class DryingRackLogic extends InventoryLogic {
     @Override
     @SideOnly(Side.CLIENT)
     public AxisAlignedBB getRenderBoundingBox() {
-        AxisAlignedBB cbb = AxisAlignedBB
-                .getBoundingBox(xCoord, yCoord - 1, zCoord, xCoord + 1, yCoord + 1, zCoord + 1);
-        return cbb;
+        return AxisAlignedBB.getBoundingBox(xCoord, yCoord - 1, zCoord, xCoord + 1, yCoord + 1, zCoord + 1);
     }
 
     @Override
