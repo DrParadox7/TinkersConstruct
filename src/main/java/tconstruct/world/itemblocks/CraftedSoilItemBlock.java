@@ -27,10 +27,7 @@ public class CraftedSoilItemBlock extends MultiItemBlock {
     public String getUnlocalizedName(ItemStack itemstack) {
         int pos = MathHelper.clamp_int(itemstack.getItemDamage(), 0, blockTypes.length - 1);
         if (pos <= 4) return super.getUnlocalizedName(itemstack);
-        return (new StringBuilder())
-                .append("block.slime.soil.")
-                .append(blockTypes[pos])
-                .toString();
+        return "block.slime.soil." + blockTypes[pos];
     }
 
     @Override

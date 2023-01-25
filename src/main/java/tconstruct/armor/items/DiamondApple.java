@@ -68,10 +68,10 @@ public class DiamondApple extends ItemFood {
     /* Name override */
     @Override
     public String getUnlocalizedName(ItemStack itemstack) {
-        return (new StringBuilder()).append("item.food.")
-                .append(
-                        itemNames[(itemstack.getItemDamage() >= itemNames.length || itemstack.getItemDamage() < 0) ? (0)
-                                : (itemstack.getItemDamage())])
-                .toString();
+        return "item.food." +
+                itemNames[
+                        (itemstack.getItemDamage() >= itemNames.length || itemstack.getItemDamage() < 0)
+                                ? (0)
+                                : (itemstack.getItemDamage())];
     }
 }
