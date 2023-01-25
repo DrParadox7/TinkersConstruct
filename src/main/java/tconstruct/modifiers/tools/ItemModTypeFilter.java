@@ -14,7 +14,7 @@ public abstract class ItemModTypeFilter extends ItemModifier {
     public ItemModTypeFilter(int effect, String dataKey, ItemStack[] items, int[] values) {
         super(items, effect, dataKey);
         assert items.length == values.length : "Itemstacks and their values for tool modifiers must be the same length";
-        this.increase = new ArrayList<Integer>();
+        this.increase = new ArrayList<>();
         for (int i = 0; i < values.length; i++) {
             increase.add(values[i]);
         }

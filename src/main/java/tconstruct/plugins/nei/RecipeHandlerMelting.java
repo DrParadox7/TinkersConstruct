@@ -46,7 +46,7 @@ public class RecipeHandlerMelting extends RecipeHandlerBase {
 
         @Override
         public List<FluidTankElement> getFluidTanks() {
-            List<FluidTankElement> tanks = new ArrayList<FluidTankElement>();
+            List<FluidTankElement> tanks = new ArrayList<>();
             tanks.add(this.output);
             return tanks;
         }

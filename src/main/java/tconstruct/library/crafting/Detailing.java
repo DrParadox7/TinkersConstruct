@@ -1,19 +1,14 @@
 package tconstruct.library.crafting;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-
 import cpw.mods.fml.common.registry.GameRegistry;
+import java.util.*;
+import net.minecraft.block.Block;
+import net.minecraft.item.*;
+import net.minecraft.nbt.NBTTagCompound;
 import tconstruct.library.tools.ToolCore;
 
 public class Detailing {
-
-    public List<DetailInput> detailing = new ArrayList<DetailInput>();
+    public List<DetailInput> detailing = new ArrayList<>();
 
     public void addDetailing(Object input, int inputMeta, Object output, int outputMeta, ToolCore tool) {
         ItemStack iID, oID;

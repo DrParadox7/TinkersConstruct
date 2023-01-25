@@ -19,7 +19,7 @@ import tconstruct.mechworks.logic.TileEntityLandmine;
  */
 public abstract class SpecialStackHandler {
 
-    public static ArrayList<SpecialStackHandler> handlers = new ArrayList<SpecialStackHandler>();
+    public static ArrayList<SpecialStackHandler> handlers = new ArrayList<>();
 
     public static void registerBuiltInStackHandlers() {
         addSpecialBehavior(new SpecialStackHandlerRocketFireball());

@@ -25,8 +25,8 @@ public class TProxyCommon implements IGuiHandler {
         return null;
     }
 
-    private static HashMap<Integer, IGuiHandler> serverGuiHandlers = new HashMap<Integer, IGuiHandler>();
-    private static HashMap<Integer, IGuiHandler> clientGuiHandlers = new HashMap<Integer, IGuiHandler>();
+    private static HashMap<Integer, IGuiHandler> serverGuiHandlers = new HashMap<>();
+    private static HashMap<Integer, IGuiHandler> clientGuiHandlers = new HashMap<>();
 
     public static void registerServerGuiHandler(int gui, IGuiHandler handler) {
         serverGuiHandlers.put(gui, handler);

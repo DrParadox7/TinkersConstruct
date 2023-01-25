@@ -42,7 +42,7 @@ public class LandmineExplodeLogic {
         boolean isOffensive = true;
         boolean cancelDefault = false;
 
-        ArrayList<ItemStack> stacks = new ArrayList<ItemStack>();
+        ArrayList<ItemStack> stacks = new ArrayList<>();
         boolean hasExploded = false;
 
         if (tileEntity == null) {

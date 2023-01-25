@@ -13,11 +13,10 @@ import tconstruct.library.tools.ToolCore;
  */
 
 public class ToolRecipe {
-
-    protected LinkedList<Item> headList = new LinkedList<Item>();
-    protected LinkedList<Item> handleList = new LinkedList<Item>();
-    protected LinkedList<Item> accessoryList = new LinkedList<Item>();
-    protected LinkedList<Item> extraList = new LinkedList<Item>();
+    protected LinkedList<Item> headList = new LinkedList<>();
+    protected LinkedList<Item> handleList = new LinkedList<>();
+    protected LinkedList<Item> accessoryList = new LinkedList<>();
+    protected LinkedList<Item> extraList = new LinkedList<>();
     protected ToolCore result;
     protected Item toolRod = TConstructRegistry.getItem("toolRod");
 

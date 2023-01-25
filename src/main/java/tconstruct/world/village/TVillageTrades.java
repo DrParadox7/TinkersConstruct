@@ -18,7 +18,7 @@ import tconstruct.world.TinkerWorld;
 
 public class TVillageTrades implements IVillageTradeHandler {
 
-    private final List<ItemStack> allowedIngredients = new ArrayList<ItemStack>();
+    private final List<ItemStack> allowedIngredients = new ArrayList<>();
     private final int max = 17;
     private final int min = 7;
 

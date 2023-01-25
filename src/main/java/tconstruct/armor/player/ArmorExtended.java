@@ -28,7 +28,7 @@ public class ArmorExtended implements IInventory {
     public UUID globalID = UUID.fromString("B243BE32-DC1B-4C53-8D13-8752D5C69D5B");
 
     public void init(EntityPlayer player) {
-        parent = new WeakReference<EntityPlayer>(player);
+        parent = new WeakReference<>(player);
     }
 
     @Override

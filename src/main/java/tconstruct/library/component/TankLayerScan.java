@@ -30,12 +30,12 @@ public class TankLayerScan extends LogicComponent {
     protected int bricks = 0;
     protected int airBlocks = 0;
     protected int structureTop = 0;
-    protected HashSet<CoordTuple> layerBlockCoords = new HashSet<CoordTuple>();
-    protected HashSet<CoordTuple> layerAirCoords = new HashSet<CoordTuple>();
+    protected HashSet<CoordTuple> layerBlockCoords = new HashSet<>();
+    protected HashSet<CoordTuple> layerAirCoords = new HashSet<>();
 
-    public ArrayList<CoordTuple> blockCoords = new ArrayList<CoordTuple>();
-    public ArrayList<CoordTuple> airCoords = new ArrayList<CoordTuple>();
-    protected ArrayList<int[]> validAirCoords = new ArrayList<int[]>();
+    public ArrayList<CoordTuple> blockCoords = new ArrayList<>();
+    public ArrayList<CoordTuple> airCoords = new ArrayList<>();
+    protected ArrayList<int[]> validAirCoords = new ArrayList<>();
     protected CoordTuple returnStone;
 
     private static boolean debug = System.getenv("DBG_MANTLE_TankLayerScan") != null;
@@ -132,8 +132,8 @@ public class TankLayerScan extends LogicComponent {
 
             if (sealed) {
                 blockCoords.add(new CoordTuple(master.xCoord, master.yCoord, master.zCoord)); // Don't forget me!
-                layerAirCoords = new HashSet<CoordTuple>(airCoords);
-                layerBlockCoords = new HashSet<CoordTuple>(blockCoords);
+                layerAirCoords = new HashSet<>(airCoords);
+                layerBlockCoords = new HashSet<>(blockCoords);
 
                 int lowY = recurseStructureDown(master.yCoord - 1);
                 if (lowY != -1) {

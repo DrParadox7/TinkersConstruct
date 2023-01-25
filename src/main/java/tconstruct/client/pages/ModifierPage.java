@@ -37,9 +37,9 @@ public class ModifierPage extends BookPage {
             icons = MantleClientRegistry.getRecipeIcons(recipe);
 
             if (type.equals("travelmulti")) {
-                List<ItemStack[]> stacks = new LinkedList<ItemStack[]>();
-                List<String> tools = new LinkedList<String>();
-                String[] suffixes = new String[] { "goggles", "vest", "wings", "boots", "glove", "belt" };
+                List<ItemStack[]> stacks = new LinkedList<>();
+                List<String> tools = new LinkedList<>();
+                String[] suffixes = new String[] {"goggles", "vest", "wings", "boots", "glove", "belt"};
                 for (String suffix : suffixes) {
                     ItemStack[] icons2 = MantleClientRegistry.getRecipeIcons(nodes.item(0).getTextContent() + suffix);
                     if (icons2 != null) {

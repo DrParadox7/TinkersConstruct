@@ -19,11 +19,11 @@ public class Smeltery {
 
     public static Smeltery instance = new Smeltery();
 
-    private final Map<ItemMetaWrapper, FluidStack> smeltingList = new HashMap<ItemMetaWrapper, FluidStack>();
-    private final Map<ItemMetaWrapper, Integer> temperatureList = new HashMap<ItemMetaWrapper, Integer>();
-    private final Map<ItemMetaWrapper, ItemStack> renderIndex = new HashMap<ItemMetaWrapper, ItemStack>();
-    private final List<AlloyMix> alloys = new ArrayList<AlloyMix>();
-    private final Map<Fluid, Integer[]> smelteryFuels = new HashMap<Fluid, Integer[]>(); // fluid -> [power, duration]
+    private final Map<ItemMetaWrapper, FluidStack> smeltingList = new HashMap<>();
+    private final Map<ItemMetaWrapper, Integer> temperatureList = new HashMap<>();
+    private final Map<ItemMetaWrapper, ItemStack> renderIndex = new HashMap<>();
+    private final List<AlloyMix> alloys = new ArrayList<>();
+    private final Map<Fluid, Integer[]> smelteryFuels = new HashMap<>(); // fluid -> [power, duration]
 
     /**
      * Add a new fluid as a valid Smeltery fuel.

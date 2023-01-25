@@ -25,9 +25,9 @@ public class ToolBuilder {
 
     public static ToolBuilder instance = new ToolBuilder();
 
-    public HashMap<String, ToolRecipe> recipeList = new HashMap<String, ToolRecipe>();
-    public List<ToolRecipe> combos = new ArrayList<ToolRecipe>();
-    public HashMap<String, String> modifiers = new HashMap<String, String>();
+    public HashMap<String, ToolRecipe> recipeList = new HashMap<>();
+    public List<ToolRecipe> combos = new ArrayList<>();
+    public HashMap<String, String> modifiers = new HashMap<>();
 
     /* Build tools */
     public static void addNormalToolRecipe(ToolCore output, Item head, Item handle) {

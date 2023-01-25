@@ -54,7 +54,7 @@ public class Pattern extends CraftingItem implements IPattern {
 
     // 2 for full material, 1 for half.
     private static Map<Integer, Integer> buildPatternCostMap() {
-        Map<Integer, Integer> map = new HashMap<Integer, Integer>();
+        Map<Integer, Integer> map = new HashMap<>();
 
         map.put(0, 2);
         map.put(1, 1);

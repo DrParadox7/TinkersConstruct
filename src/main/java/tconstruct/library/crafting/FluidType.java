@@ -15,7 +15,7 @@ public class FluidType {
     public final Fluid fluid;
     public final boolean isToolpart;
 
-    public static HashMap<String, FluidType> fluidTypes = new HashMap<String, FluidType>();
+    public static HashMap<String, FluidType> fluidTypes = new HashMap<>();
 
     public FluidType(Block block, int meta, int baseTemperature, Fluid fluid, boolean isToolpart) {
         this.renderBlock = block;

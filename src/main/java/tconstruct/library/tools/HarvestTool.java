@@ -96,7 +96,7 @@ public abstract class HarvestTool extends ToolCore {
 
     @Override
     public Set<String> getToolClasses(ItemStack stack) {
-        Set<String> set = new HashSet<String>();
+        Set<String> set = new HashSet<>();
 
         if (stack != null && stack.getItem() instanceof HarvestTool) {
             set.add(((HarvestTool) stack.getItem()).getHarvestType());

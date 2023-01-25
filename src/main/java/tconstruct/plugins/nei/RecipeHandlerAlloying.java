@@ -25,7 +25,7 @@ public class RecipeHandlerAlloying extends RecipeHandlerBase {
         private int minAmount;
 
         public CachedAlloyingRecipe(AlloyMix recipe) {
-            this.fluidTanks = new ArrayList<FluidTankElement>();
+            this.fluidTanks = new ArrayList<>();
 
             int maxAmount = recipe.mixers.get(0).amount;
             int mult = 1;

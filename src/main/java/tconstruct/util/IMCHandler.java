@@ -109,9 +109,9 @@ public final class IMCHandler {
                         rod,
                         matID);
 
-                List<Item> addItems = new LinkedList<Item>();
-                List<Integer> addMetas = new LinkedList<Integer>();
-                List<ItemStack> addOUtputs = new LinkedList<ItemStack>();
+                List<Item> addItems = new LinkedList<>();
+                List<Integer> addMetas = new LinkedList<>();
+                List<ItemStack> addOUtputs = new LinkedList<>();
 
                 // add mappings for everything that has stone tool mappings
                 for (Map.Entry<List, ItemStack> mappingEntry : TConstructRegistry.patternPartMapping.entrySet()) {
@@ -169,7 +169,7 @@ public final class IMCHandler {
                 }
 
                 // we add the toolpart to all smeltery recipies that use iron and create a toolpart
-                List<CastingRecipe> newRecipies = new LinkedList<CastingRecipe>();
+                List<CastingRecipe> newRecipies = new LinkedList<>();
                 for (CastingRecipe recipe : TConstructRegistry.getTableCasting().getCastingRecipes()) {
                     if (recipe.castingMetal.getFluid() != TinkerSmeltery.moltenIronFluid) continue;
                     if (recipe.cast == null || !(recipe.cast.getItem() instanceof IPattern)) continue;

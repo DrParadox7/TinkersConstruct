@@ -26,8 +26,8 @@ import tconstruct.mechworks.landmine.LandmineStack;
  */
 public abstract class Behavior {
 
-    public static HashMap<LandmineStack, Behavior> behaviorsListItems = new HashMap<LandmineStack, Behavior>();
-    public static HashMap<LandmineStack, Behavior> behaviorsListBlocks = new HashMap<LandmineStack, Behavior>();
+    public static HashMap<LandmineStack, Behavior> behaviorsListItems = new HashMap<>();
+    public static HashMap<LandmineStack, Behavior> behaviorsListBlocks = new HashMap<>();
     protected static Behavior defaultBehavior;
 
     public static Behavior dummy = new BehaviorDummy();

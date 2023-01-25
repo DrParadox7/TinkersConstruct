@@ -82,7 +82,7 @@ public class SmelteryLogic extends InventoryLogic implements IActiveLogic, IFaci
     public int[] meltingTemps; // values are multiplied by 10
     private int tick;
 
-    public ArrayList<FluidStack> moltenMetal = new ArrayList<FluidStack>();
+    public ArrayList<FluidStack> moltenMetal = new ArrayList<>();
     public int maxLiquid;
     public int currentLiquid;
 

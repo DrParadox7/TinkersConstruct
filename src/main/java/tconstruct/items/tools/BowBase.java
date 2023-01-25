@@ -443,23 +443,23 @@ public abstract class BowBase extends ToolCore {
     public IIcon arrow2;
     public IIcon arrow3;
 
-    public HashMap<Integer, IIcon> headIcons1 = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> handleIcons1 = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> accessoryIcons1 = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> extraIcons1 = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> effectIcons1 = new HashMap<Integer, IIcon>();
+    public HashMap<Integer, IIcon> headIcons1 = new HashMap<>();
+    public HashMap<Integer, IIcon> handleIcons1 = new HashMap<>();
+    public HashMap<Integer, IIcon> accessoryIcons1 = new HashMap<>();
+    public HashMap<Integer, IIcon> extraIcons1 = new HashMap<>();
+    public HashMap<Integer, IIcon> effectIcons1 = new HashMap<>();
 
-    public HashMap<Integer, IIcon> headIcons2 = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> handleIcons2 = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> accessoryIcons2 = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> extraIcons2 = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> effectIcons2 = new HashMap<Integer, IIcon>();
+    public HashMap<Integer, IIcon> headIcons2 = new HashMap<>();
+    public HashMap<Integer, IIcon> handleIcons2 = new HashMap<>();
+    public HashMap<Integer, IIcon> accessoryIcons2 = new HashMap<>();
+    public HashMap<Integer, IIcon> extraIcons2 = new HashMap<>();
+    public HashMap<Integer, IIcon> effectIcons2 = new HashMap<>();
 
-    public HashMap<Integer, IIcon> headIcons3 = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> handleIcons3 = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> accessoryIcons3 = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> extraIcons3 = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> effectIcons3 = new HashMap<Integer, IIcon>();
+    public HashMap<Integer, IIcon> headIcons3 = new HashMap<>();
+    public HashMap<Integer, IIcon> handleIcons3 = new HashMap<>();
+    public HashMap<Integer, IIcon> accessoryIcons3 = new HashMap<>();
+    public HashMap<Integer, IIcon> extraIcons3 = new HashMap<>();
+    public HashMap<Integer, IIcon> effectIcons3 = new HashMap<>();
 
     @Override
     public IIcon getIcon(ItemStack stack, int renderPass, EntityPlayer player, ItemStack usingItem, int useRemaining) {

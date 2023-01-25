@@ -37,7 +37,7 @@ public class ModAmmoRestock extends ItemModifier {
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
         // correct material?
 
-        Set<Integer> materials = new HashSet<Integer>();
+        Set<Integer> materials = new HashSet<>();
         materials.add(tags.getInteger("Head"));
         // shuriken allow all their components
         if (tool.getItem() instanceof Shuriken) {

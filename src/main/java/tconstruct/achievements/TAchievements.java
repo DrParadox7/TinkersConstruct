@@ -15,7 +15,7 @@ import tconstruct.util.config.PHConstruct;
 public class TAchievements {
 
     private static AchievementPage achievementsPage;
-    private static HashMap<String, Achievement> achievementsList = new HashMap<String, Achievement>();
+    private static HashMap<String, Achievement> achievementsList = new HashMap<>();
 
     /**
      * Adds an achievement and registers it, so there is no need to call .registerStat

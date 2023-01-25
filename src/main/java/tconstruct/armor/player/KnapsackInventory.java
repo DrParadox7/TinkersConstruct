@@ -20,7 +20,7 @@ public class KnapsackInventory implements IInventory {
     public WeakReference<EntityPlayer> parent;
 
     public void init(EntityPlayer player) {
-        parent = new WeakReference<EntityPlayer>(player);
+        parent = new WeakReference<>(player);
     }
 
     @Override

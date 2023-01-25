@@ -22,7 +22,7 @@ public class GrindableHorse implements IFactoryGrindable {
 
     @Override
     public List<MobDrop> grind(World world, EntityLivingBase entity, Random random) {
-        List<MobDrop> drops = new ArrayList<MobDrop>();
+        List<MobDrop> drops = new ArrayList<>();
 
         drops.add(new MobDrop(10, new ItemStack(TinkerTools.materials, random.nextInt(4) + 1, 36)));
 

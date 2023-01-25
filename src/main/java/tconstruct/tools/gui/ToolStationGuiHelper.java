@@ -51,7 +51,7 @@ public final class ToolStationGuiHelper {
                 : stack.getDisplayName();
         Item item = stack.getItem();
         NBTTagCompound tags = stack.getTagCompound();
-        Collection<String> categories = new LinkedList<String>();
+        Collection<String> categories = new LinkedList<>();
 
         // initialize drawing variables
         xPos = x;

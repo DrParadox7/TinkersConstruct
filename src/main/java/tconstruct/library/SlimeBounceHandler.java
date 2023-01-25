@@ -21,7 +21,8 @@ public class SlimeBounceHandler {
     private static final double FRAC_BIAS;
     private static final double[] ASINE_TAB;
     private static final double[] COS_TAB;
-    public static final IdentityHashMap<EntityLivingBase, BounceInfo> BOUNCING_ENTITIES = new IdentityHashMap<EntityLivingBase, BounceInfo>();
+    public static final IdentityHashMap<EntityLivingBase, BounceInfo> BOUNCING_ENTITIES =
+            new IdentityHashMap<>();
 
     static {
         FRAC_BIAS = Double.longBitsToDouble(4805340802404319232L);

@@ -118,20 +118,20 @@ public abstract class ToolCore extends Item implements IEnergyContainerItem, IEq
 
     /* Rendering */
 
-    public HashMap<Integer, IIcon> headIcons = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> brokenIcons = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> handleIcons = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> accessoryIcons = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> effectIcons = new HashMap<Integer, IIcon>();
-    public HashMap<Integer, IIcon> extraIcons = new HashMap<Integer, IIcon>();
+    public HashMap<Integer, IIcon> headIcons = new HashMap<>();
+    public HashMap<Integer, IIcon> brokenIcons = new HashMap<>();
+    public HashMap<Integer, IIcon> handleIcons = new HashMap<>();
+    public HashMap<Integer, IIcon> accessoryIcons = new HashMap<>();
+    public HashMap<Integer, IIcon> effectIcons = new HashMap<>();
+    public HashMap<Integer, IIcon> extraIcons = new HashMap<>();
 
     // Not liking this
-    public HashMap<Integer, String> headStrings = new HashMap<Integer, String>();
-    public HashMap<Integer, String> brokenPartStrings = new HashMap<Integer, String>();
-    public HashMap<Integer, String> handleStrings = new HashMap<Integer, String>();
-    public HashMap<Integer, String> accessoryStrings = new HashMap<Integer, String>();
-    public HashMap<Integer, String> effectStrings = new HashMap<Integer, String>();
-    public HashMap<Integer, String> extraStrings = new HashMap<Integer, String>();
+    public HashMap<Integer, String> headStrings = new HashMap<>();
+    public HashMap<Integer, String> brokenPartStrings = new HashMap<>();
+    public HashMap<Integer, String> handleStrings = new HashMap<>();
+    public HashMap<Integer, String> accessoryStrings = new HashMap<>();
+    public HashMap<Integer, String> effectStrings = new HashMap<>();
+    public HashMap<Integer, String> extraStrings = new HashMap<>();
 
     @SideOnly(Side.CLIENT)
     @Override

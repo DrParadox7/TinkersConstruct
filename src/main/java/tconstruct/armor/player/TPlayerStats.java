@@ -47,7 +47,7 @@ public class TPlayerStats implements IExtendedEntityProperties, IPlayerExtendedI
     }
 
     public TPlayerStats(EntityPlayer entityplayer) {
-        this.player = new WeakReference<EntityPlayer>(entityplayer);
+        this.player = new WeakReference<>(entityplayer);
         this.armor = new ArmorExtended();
         this.armor.init(entityplayer);
 
@@ -88,7 +88,7 @@ public class TPlayerStats implements IExtendedEntityProperties, IPlayerExtendedI
 
     @Override
     public void init(Entity entity, World world) {
-        this.player = new WeakReference<EntityPlayer>((EntityPlayer) entity);
+        this.player = new WeakReference<>((EntityPlayer) entity);
         this.armor.init((EntityPlayer) entity);
         this.knapsack.init((EntityPlayer) entity);
     }

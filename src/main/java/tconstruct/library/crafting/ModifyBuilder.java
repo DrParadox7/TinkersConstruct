@@ -14,7 +14,7 @@ import tconstruct.library.modifier.ItemModifier;
 public class ModifyBuilder {
 
     public static ModifyBuilder instance = new ModifyBuilder();
-    public List<ItemModifier> itemModifiers = new ArrayList<ItemModifier>();
+    public List<ItemModifier> itemModifiers = new ArrayList<>();
 
     public ItemStack modifyItem(ItemStack input, ItemStack[] modifiers) {
 

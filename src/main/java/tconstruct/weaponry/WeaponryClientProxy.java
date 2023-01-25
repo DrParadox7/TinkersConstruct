@@ -78,7 +78,7 @@ public class WeaponryClientProxy extends WeaponryCommonProxy {
     }
 
     private void registerEntityRendering() {
-        ProjectileBaseRenderer defaultRenderer = new ProjectileBaseRenderer<ProjectileBase>();
+        ProjectileBaseRenderer defaultRenderer = new ProjectileBaseRenderer<>();
         RenderingRegistry.registerEntityRenderingHandler(ShurikenEntity.class, new ShurikenEntityRenderer());
         RenderingRegistry.registerEntityRenderingHandler(ThrowingKnifeEntity.class, defaultRenderer);
         RenderingRegistry.registerEntityRenderingHandler(JavelinEntity.class, new JavelinEntityRenderer());

@@ -1,22 +1,19 @@
 package tconstruct.client.tabs;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.inventory.GuiInventory;
-import net.minecraft.network.play.client.C0DPacketCloseWindow;
-import net.minecraftforge.client.event.GuiScreenEvent;
-
 import cpw.mods.fml.client.FMLClientHandler;
 import cpw.mods.fml.common.Loader;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import java.lang.reflect.*;
+import java.util.*;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.inventory.GuiInventory;
+import net.minecraft.network.play.client.C0DPacketCloseWindow;
+import net.minecraftforge.client.event.GuiScreenEvent;
 
 public class TabRegistry {
-
-    private static ArrayList<AbstractTab> tabList = new ArrayList<AbstractTab>();
+    private static ArrayList<AbstractTab> tabList = new ArrayList<>();
 
     public static void registerTab(AbstractTab tab) {
         tabList.add(tab);
@@ -87,7 +84,8 @@ public class TabRegistry {
                             return 60;
                         }
                     }
-                } catch (Exception e) {}
+                } catch (Exception e) {
+                }
             } else {
                 // If NEI is not installed, offset the tabs
                 return 60;

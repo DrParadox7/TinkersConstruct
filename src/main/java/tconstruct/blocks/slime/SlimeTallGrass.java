@@ -94,7 +94,7 @@ public class SlimeTallGrass extends BlockBush implements IShearable {
 
     @Override
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int meta, int fortune) {
-        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+        ArrayList<ItemStack> ret = new ArrayList<>();
         if (world.rand.nextInt(8) != 0) {
             return ret;
         }
@@ -113,7 +113,7 @@ public class SlimeTallGrass extends BlockBush implements IShearable {
 
     @Override
     public ArrayList<ItemStack> onSheared(ItemStack item, IBlockAccess world, int x, int y, int z, int fortune) {
-        ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
+        ArrayList<ItemStack> ret = new ArrayList<>();
         ret.add(new ItemStack(this, 1, world.getBlockMetadata(x, y, z)));
         return ret;
     }

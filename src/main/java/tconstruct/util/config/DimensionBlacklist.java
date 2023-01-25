@@ -1,17 +1,14 @@
 package tconstruct.util.config;
 
+import cpw.mods.fml.common.Loader;
 import java.io.File;
 import java.util.ArrayList;
-
 import net.minecraftforge.common.config.Configuration;
-
-import cpw.mods.fml.common.Loader;
 import tconstruct.TConstruct;
 
 public class DimensionBlacklist {
-
-    public static ArrayList<Integer> blacklistedDims = new ArrayList<Integer>();
-    public static ArrayList<Integer> noPoolDims = new ArrayList<Integer>();
+    public static ArrayList<Integer> blacklistedDims = new ArrayList<>();
+    public static ArrayList<Integer> noPoolDims = new ArrayList<>();
 
     public static int promisedLandDimensionID = -100;
     public static int twilightForestDimensionID = -100;
@@ -62,7 +59,8 @@ public class DimensionBlacklist {
 
             config.load();
 
-            twilightForestDimensionID = config.get("dimension", "dimensionID", -100).getInt();
+            twilightForestDimensionID =
+                    config.get("dimension", "dimensionID", -100).getInt();
             TConstruct.logger.trace("Twilight Forest Dim ID: " + twilightForestDimensionID);
         } else twilightForestDimensionID = -100;
     }
@@ -75,7 +73,8 @@ public class DimensionBlacklist {
 
             config.load();
 
-            promisedLandDimensionID = config.get("dimension settings", "Promised Land Dimension ID", -200).getInt();
+            promisedLandDimensionID = config.get("dimension settings", "Promised Land Dimension ID", -200)
+                    .getInt();
             TConstruct.logger.trace("Promised Lands Dim ID: " + promisedLandDimensionID);
         } else promisedLandDimensionID = -100;
     }

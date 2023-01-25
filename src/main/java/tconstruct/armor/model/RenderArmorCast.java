@@ -70,7 +70,7 @@ public class RenderArmorCast implements IItemRenderer {
         renderer.setRenderBounds(0.1F, 0.1F, 0.1F, 0.9F, 0.83F, 0.9F);
         renderCube(tessellator, renderer, baseIcon);
         renderer.setRenderBounds(0.1F, 0.1F, 0.1F, 0.9F, 1.0F, 0.9F);
-        ArrayList<ForgeDirection> sides = new ArrayList<ForgeDirection>();
+        ArrayList<ForgeDirection> sides = new ArrayList<>();
         sides.add(ForgeDirection.NORTH);
         sides.add(ForgeDirection.SOUTH);
         sides.add(ForgeDirection.EAST);

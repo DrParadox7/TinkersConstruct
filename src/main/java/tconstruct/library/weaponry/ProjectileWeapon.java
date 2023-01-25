@@ -214,11 +214,11 @@ public abstract class ProjectileWeapon extends ToolCore implements IBattlegearWe
     public abstract void playFiringSound(World world, EntityPlayer player, ItemStack weapon, ItemStack ammo,
             float speed, float accuracy);
 
-    public HashMap<Integer, IIcon[]> animationHeadIcons = new HashMap<Integer, IIcon[]>();
-    public HashMap<Integer, IIcon[]> animationHandleIcons = new HashMap<Integer, IIcon[]>();
-    public HashMap<Integer, IIcon[]> animationAccessoryIcons = new HashMap<Integer, IIcon[]>();
-    public HashMap<Integer, IIcon[]> animationExtraIcons = new HashMap<Integer, IIcon[]>();
-    public HashMap<Integer, IIcon[]> animationEffectIcons = new HashMap<Integer, IIcon[]>();
+    public HashMap<Integer, IIcon[]> animationHeadIcons = new HashMap<>();
+    public HashMap<Integer, IIcon[]> animationHandleIcons = new HashMap<>();
+    public HashMap<Integer, IIcon[]> animationAccessoryIcons = new HashMap<>();
+    public HashMap<Integer, IIcon[]> animationExtraIcons = new HashMap<>();
+    public HashMap<Integer, IIcon[]> animationEffectIcons = new HashMap<>();
 
     /**
      * return true if the current renderpass should use animations. 0 == handle 1 == head 2 == accessory 3 == extra
