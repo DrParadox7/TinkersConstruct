@@ -60,12 +60,8 @@ public class SmelteryContainer extends ActiveContainer {
             int basePos = invRow * columns;
             for (int iter = 0; iter < activeInventorySlots.size(); iter++) {
                 ActiveSlot slot = (ActiveSlot) activeInventorySlots.get(iter);
-                if (slot.activeSlotNumber >= basePos
-                        && slot.activeSlotNumber < basePos + columns * SmelteryGui.maxRows) {
-                    slot.setActive(true);
-                } else {
-                    slot.setActive(false);
-                }
+                slot.setActive(slot.activeSlotNumber >= basePos
+                        && slot.activeSlotNumber < basePos + columns * SmelteryGui.maxRows);
 
                 int xPos = (iter - basePos) % columns;
                 int yPos = (iter - basePos) / columns;

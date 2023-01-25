@@ -267,16 +267,10 @@ public class ToolStationGui extends GuiContainer implements INEIGuiHandler {
 
     @Override
     public VisiblityData modifyVisiblity(GuiContainer gui, VisiblityData currentVisibility) {
-        if (width - xSize < 107) {
-            currentVisibility.showWidgets = false;
-        } else {
-            currentVisibility.showWidgets = true;
-        }
-
+        currentVisibility.showWidgets = width - xSize >= 107;
         if (guiLeft < 58) {
             currentVisibility.showStateButtons = false;
         }
-
         return currentVisibility;
     }
 
@@ -298,9 +292,6 @@ public class ToolStationGui extends GuiContainer implements INEIGuiHandler {
     @Override
     public boolean hideItemPanelSlot(GuiContainer gui, int x, int y, int w, int h) {
         if (y + h - 4 < guiTop || y + 4 > guiTop + ySize) return false;
-
-        if (x - w - 4 < guiLeft - 40 || x + 4 > guiLeft + xSize + 126) return false;
-
-        return true;
+        return x - w - 4 >= guiLeft - 40 && x + 4 <= guiLeft + xSize + 126;
     }
 }

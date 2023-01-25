@@ -100,10 +100,7 @@ public class TinkerArmor {
         GameRegistry.registerTileEntity(DryingRackLogic.class, "Armor.DryingRack");
         TinkerArmor.diamondApple = new DiamondApple().setUnlocalizedName("tconstruct.apple.diamond");
         GameRegistry.registerItem(TinkerArmor.diamondApple, "diamondApple");
-        boolean foodOverhaul = false;
-        if (Loader.isModLoaded("HungerOverhaul") || Loader.isModLoaded("fc_food")) {
-            foodOverhaul = true;
-        }
+        boolean foodOverhaul = Loader.isModLoaded("HungerOverhaul") || Loader.isModLoaded("fc_food");
 
         TinkerArmor.jerky = new Jerky(foodOverhaul).setUnlocalizedName("tconstruct.jerky");
         GameRegistry.registerItem(TinkerArmor.jerky, "jerky");

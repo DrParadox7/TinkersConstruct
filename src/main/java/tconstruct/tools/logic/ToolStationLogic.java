@@ -35,8 +35,7 @@ public class ToolStationLogic extends InventoryLogic implements ISidedInventory 
 
     @Override
     public boolean canDropInventorySlot(int slot) {
-        if (slot == 0) return false;
-        return true;
+        return slot != 0;
     }
 
     @Override

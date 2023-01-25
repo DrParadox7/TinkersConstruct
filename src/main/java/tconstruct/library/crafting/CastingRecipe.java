@@ -39,9 +39,7 @@ public class CastingRecipe {
                 return true;
             } else if (!ignoreNBT && ItemStack.areItemStacksEqual(cast, inputCast)) {
                 return true;
-            } else if (ignoreNBT && cast != null && inputCast != null && cast.isItemEqual(inputCast)) {
-                return true;
-            }
+            } else return ignoreNBT && cast != null && inputCast != null && cast.isItemEqual(inputCast);
         }
         return false;
     }

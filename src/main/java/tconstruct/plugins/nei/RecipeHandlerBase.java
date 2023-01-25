@@ -150,15 +150,10 @@ public abstract class RecipeHandlerBase extends TemplateRecipeHandler {
                 if (tank.position.contains(relMouse)) {
                     if ((tank.fluid != null) && tank.fluid.amount > 0) {
                         if (usage) {
-                            if (!GuiUsageRecipe.openRecipeGui("liquid", new Object[] { tank.fluid })) {
-                                return false;
-                            }
+                            return GuiUsageRecipe.openRecipeGui("liquid", new Object[]{tank.fluid});
                         } else {
-                            if (!GuiCraftingRecipe.openRecipeGui("liquid", new Object[] { tank.fluid })) {
-                                return false;
-                            }
+                            return GuiCraftingRecipe.openRecipeGui("liquid", new Object[]{tank.fluid});
                         }
-                        return true;
                     }
                 }
             }

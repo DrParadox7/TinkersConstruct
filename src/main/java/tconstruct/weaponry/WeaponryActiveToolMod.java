@@ -17,7 +17,7 @@ public class WeaponryActiveToolMod extends ActiveToolMod {
             IAmmo ammo = (IAmmo) stack.getItem();
             if (tags.getInteger("Damage") == 0) {
                 int rem = ammo.consumeAmmo(1, stack);
-                if (rem > 0) return true;
+                return rem > 0;
             } else if (ammo.getAmmoCount(stack) > 0) {
                 int d = tags.getInteger("Damage") + damage;
                 int max = tags.getInteger("TotalDurability");
@@ -28,7 +28,9 @@ public class WeaponryActiveToolMod extends ActiveToolMod {
             }
         }
         // all other ammo items can't be damaged
-        else if (stack.getItem() instanceof IAmmo) return true;
+        else {
+            return stack.getItem() instanceof IAmmo;
+        }
 
         return false;
     }

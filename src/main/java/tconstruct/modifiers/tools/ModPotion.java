@@ -15,9 +15,7 @@ public class ModPotion extends ItemModifier {
     protected boolean canModify(ItemStack tool, ItemStack[] input) {
         NBTTagCompound tags = tool.getTagCompound().getCompoundTag("InfiTool");
         NBTTagCompound potion = tool.getTagCompound().getCompoundTag("Potion");
-        if (potion == null) return true;
-
-        return false;
+        return potion == null;
     }
 
     @Override

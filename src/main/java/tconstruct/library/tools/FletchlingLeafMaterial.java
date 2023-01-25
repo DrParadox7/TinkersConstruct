@@ -23,7 +23,7 @@ public class FletchlingLeafMaterial extends FletchingMaterial {
         if (stack != null) {
             Block block = BlockUtils.getBlockFromItemStack(stack);
             if (block != null) {
-                if (block.isLeaves(null, 0, 0, 0)) return true;
+                return block.isLeaves(null, 0, 0, 0);
             }
         }
         return false;

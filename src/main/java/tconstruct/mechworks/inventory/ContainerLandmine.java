@@ -219,11 +219,7 @@ public class ContainerLandmine extends Container {
 
                     slot2 = (Slot) this.inventorySlots.get(par1);
 
-                    boolean shouldDoStuff = true;
-
-                    if ((!(slot2 instanceof SlotBehavedOnly))) {
-                        shouldDoStuff = false;
-                    }
+                    boolean shouldDoStuff = slot2 instanceof SlotBehavedOnly;
 
                     if (slot2 != null) {
                         itemstack1 = slot2.getStack();

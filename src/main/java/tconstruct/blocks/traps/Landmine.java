@@ -109,12 +109,8 @@ public class Landmine extends MantleBlock {
      * neighbor blockID
      */
     public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {
-        boolean var6 = false;
-
-        if (!World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4)
-                && !BlockFence.func_149825_a(par1World.getBlock(par2, par3 - 1, par4))) {
-            var6 = true;
-        }
+        boolean var6 = !World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4)
+                && !BlockFence.func_149825_a(par1World.getBlock(par2, par3 - 1, par4));
 
         if (var6) {
             this.dropBlockAsItem(par1World, par2, par3, par4, par1World.getBlockMetadata(par2, par3, par4), 0);

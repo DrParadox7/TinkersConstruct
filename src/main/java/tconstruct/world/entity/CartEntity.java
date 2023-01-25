@@ -999,10 +999,7 @@ public class CartEntity extends Entity implements IInventory, IEntityAdditionalS
      * @return True if this cart can be ridden.
      */
     public boolean canBeRidden() {
-        if (pullcartType == 0 && getClass() == CartEntity.class) {
-            return true;
-        }
-        return false;
+        return pullcartType == 0 && getClass() == CartEntity.class;
     }
 
     /**

@@ -99,19 +99,15 @@ public abstract class BowBaseAmmo extends ProjectileWeapon {
         // no tinker arrow
         if (!(stack.getItem() instanceof ArrowAmmo)) return false;
         // no ammo left
-        if (((IAmmo) stack.getItem()).getAmmoCount(stack) <= 0) return false;
-
-        return true;
+        return ((IAmmo) stack.getItem()).getAmmoCount(stack) > 0;
     }
 
     private boolean checkVanillaArrow(ItemStack stack) {
         // null
         if (stack == null) return false;
         // no arrow
-        if (!(stack.getItem() == Items.arrow)) return false;
+        return stack.getItem() == Items.arrow;
         // inventory shouldn't contain stacksize 0 items so we don't have to check that.
-
-        return true;
     }
 
     @Override
