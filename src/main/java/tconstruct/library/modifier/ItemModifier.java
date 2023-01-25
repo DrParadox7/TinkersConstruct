@@ -24,9 +24,7 @@ public abstract class ItemModifier {
      * @param dataKey NBT string to put on the item
      */
     public ItemModifier(ItemStack[] recipe, int effect, String dataKey) {
-        List<ItemStack> itemstacks = new ArrayList<ItemStack>();
-        for (int iter = 0; iter < recipe.length; iter++) itemstacks.add(recipe[iter]);
-        stacks = itemstacks;
+        stacks = new ArrayList<>(Arrays.asList(recipe));
         effectIndex = effect;
         key = dataKey;
     }

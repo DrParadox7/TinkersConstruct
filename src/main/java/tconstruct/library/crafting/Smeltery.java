@@ -114,9 +114,7 @@ public class Smeltery {
      * @param mixers the liquids to be mixed. Quantities are used as ratios
      */
     public static void addAlloyMixing(FluidStack result, FluidStack... mixers) {
-        ArrayList inputs = new ArrayList();
-        for (FluidStack liquid : mixers) inputs.add(liquid);
-
+        final ArrayList<FluidStack> inputs = new ArrayList<>(Arrays.asList(mixers));
         instance.alloys.add(new AlloyMix(result, inputs));
     }
 
