@@ -84,7 +84,7 @@ public class TabRegistry {
                             return 60;
                         }
                     }
-                } catch (Exception e) {
+                } catch (Exception ignored) {
                 }
             } else {
                 // If NEI is not installed, offset the tabs

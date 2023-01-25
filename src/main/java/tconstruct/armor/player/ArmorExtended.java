@@ -133,9 +133,10 @@ public class ArmorExtended implements IInventory {
                         .getAttributeInstance(SharedMonsterAttributes.maxHealth);
                 try {
                     attributeinstance.removeModifier(attributeinstance.getModifier(globalID));
-                } catch (Exception e) {}
-                attributeinstance
-                        .applyModifier(new AttributeModifier(globalID, "tconstruct.heartCanister", bonusHP, 0));
+                } catch (Exception ignored) {
+                }
+                attributeinstance.applyModifier(
+                        new AttributeModifier(globalID, "tconstruct.heartCanister", bonusHP, 0));
             }
         } else if (parent != null && parent.get() != null) {
             int prevHealth = stats.bonusHealth;
@@ -147,7 +148,8 @@ public class ArmorExtended implements IInventory {
                         .getAttributeInstance(SharedMonsterAttributes.maxHealth);
                 try {
                     attributeinstance.removeModifier(attributeinstance.getModifier(globalID));
-                } catch (Exception e) {}
+                } catch (Exception ignored) {
+                }
             }
         }
     }
