@@ -277,9 +277,7 @@ public class ArmorProxyClient extends ArmorProxyCommon {
 
         boolean highlight = mc.thePlayer.hurtResistantTime / 3 % 2 == 1;
 
-        if (mc.thePlayer.hurtResistantTime < 10) {
-            highlight = false;
-        }
+        this.rand.setSeed(updateCounter * 312871L);
 
         IAttributeInstance attrMaxHealth = this.mc.thePlayer.getEntityAttribute(SharedMonsterAttributes.maxHealth);
         int health = MathHelper.ceiling_float_int(mc.thePlayer.getHealth());
