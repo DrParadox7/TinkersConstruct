@@ -405,9 +405,9 @@ public class AbilityHelper {
                 tags.getCompoundTag("InfiTool").setInteger("Damage", damage + dam);
                 int toolDamage = (damage * 100 / maxDamage) + 1;
                 int stackDamage = stack.getItemDamage();
-                if (toolDamage != stackDamage) {
-                    // stack.setItemDamage((damage * 100 / maxDamage) + 1);
-                }
+                //if (toolDamage != stackDamage) {
+                //    // stack.setItemDamage((damage * 100 / maxDamage) + 1);
+                //}
             }
         }
     }

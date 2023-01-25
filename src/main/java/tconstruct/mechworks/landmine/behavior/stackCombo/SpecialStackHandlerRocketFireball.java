@@ -43,11 +43,11 @@ public class SpecialStackHandlerRocketFireball extends SpecialStackHandler {
                     boolean shouldRun = true;
                     if (triggerer instanceof EntityPlayer) {
                         EntityPlayer player = (EntityPlayer) triggerer;
-                        if (player.capabilities.isCreativeMode) {
+                        //if (player.capabilities.isCreativeMode) {
                             // Remove the bellow comment to make the player in
                             // creative mode not get launched
                             // shouldRun = false;
-                        }
+                        //}
                     }
 
                     if (shouldRun) {

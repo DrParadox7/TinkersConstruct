@@ -1,7 +1,6 @@
 package tconstruct.blocks;
 
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
@@ -10,7 +9,6 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 
 public class BlockFalling extends Block {
-
     public static boolean fallInstantly;
 
     public BlockFalling() {
@@ -23,19 +21,20 @@ public class BlockFalling extends Block {
     }
 
     @Override
-    public void onBlockAdded(World worldIn, int x, int y, int z) {
-        worldIn.scheduleBlockUpdate(x, y, z, this, this.tickRate(worldIn));
+    public void onBlockAdded(World p_149726_1_, int p_149726_2_, int p_149726_3_, int p_149726_4_) {
+        p_149726_1_.scheduleBlockUpdate(p_149726_2_, p_149726_3_, p_149726_4_, this, this.tickRate(p_149726_1_));
     }
 
     @Override
-    public void onNeighborBlockChange(World worldIn, int x, int y, int z, Block neighbor) {
-        worldIn.scheduleBlockUpdate(x, y, z, this, this.tickRate(worldIn));
+    public void onNeighborBlockChange(
+            World p_149695_1_, int p_149695_2_, int p_149695_3_, int p_149695_4_, Block p_149695_5_) {
+        p_149695_1_.scheduleBlockUpdate(p_149695_2_, p_149695_3_, p_149695_4_, this, this.tickRate(p_149695_1_));
     }
 
     @Override
-    public void updateTick(World worldIn, int x, int y, int z, Random random) {
-        if (!worldIn.isRemote) {
-            this.func_149830_m(worldIn, x, y, z);
+    public void updateTick(World p_149674_1_, int p_149674_2_, int p_149674_3_, int p_149674_4_, Random p_149674_5_) {
+        if (!p_149674_1_.isRemote) {
+            this.func_149830_m(p_149674_1_, p_149674_2_, p_149674_3_, p_149674_4_);
         }
     }
 
@@ -43,14 +42,15 @@ public class BlockFalling extends Block {
         if (func_149831_e(p_149830_1_, p_149830_2_, p_149830_3_ - 1, p_149830_4_) && p_149830_3_ >= 0) {
             byte b0 = 32;
 
-            if (!fallInstantly && p_149830_1_.checkChunksExist(
-                    p_149830_2_ - b0,
-                    p_149830_3_ - b0,
-                    p_149830_4_ - b0,
-                    p_149830_2_ + b0,
-                    p_149830_3_ + b0,
-                    p_149830_4_ + b0)) {
-                if (!p_149830_1_.isRemote) {
+            if (!fallInstantly
+                    && p_149830_1_.checkChunksExist(
+                            p_149830_2_ - b0,
+                            p_149830_3_ - b0,
+                            p_149830_4_ - b0,
+                            p_149830_2_ + b0,
+                            p_149830_3_ + b0,
+                            p_149830_4_ + b0)) {
+                //if (!p_149830_1_.isRemote) {
                     // EntityFallingBlock entityfallingblock = new
                     // EntityFallingBlock(p_149830_1_,
                     // (double)((float)p_149830_2_ + 0.5F),
@@ -60,7 +60,7 @@ public class BlockFalling extends Block {
                     // p_149830_4_));
                     // this.func_149829_a(entityfallingblock);
                     // p_149830_1_.spawnEntityInWorld(entityfallingblock);
-                }
+                //}
             } else {
                 p_149830_1_.setBlockToAir(p_149830_2_, p_149830_3_, p_149830_4_);
 
@@ -78,7 +78,7 @@ public class BlockFalling extends Block {
     protected void func_149829_a(EntityFallingBlock p_149829_1_) {}
 
     @Override
-    public int tickRate(World worldIn) {
+    public int tickRate(World p_149738_1_) {
         return 2;
     }
 
