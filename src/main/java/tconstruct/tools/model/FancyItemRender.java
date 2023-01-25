@@ -1,36 +1,24 @@
 package tconstruct.tools.model;
 
+import cpw.mods.fml.relauncher.*;
 import java.util.Random;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.ItemRenderer;
-import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.client.renderer.Tessellator;
+import net.minecraft.client.renderer.*;
 import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.texture.TextureManager;
-import net.minecraft.client.renderer.texture.TextureMap;
+import net.minecraft.client.renderer.texture.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.MathHelper;
-import net.minecraft.util.ResourceLocation;
+import net.minecraft.item.*;
+import net.minecraft.util.*;
 import net.minecraftforge.client.ForgeHooksClient;
-
-import org.lwjgl.opengl.GL11;
-import org.lwjgl.opengl.GL12;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
+import org.lwjgl.opengl.*;
 
 @SideOnly(Side.CLIENT)
 public class FancyItemRender extends Render {
-
-    private static final ResourceLocation field_110798_h = new ResourceLocation(
-            "textures/misc/enchanted_item_glint.png");
+    private static final ResourceLocation field_110798_h =
+            new ResourceLocation("textures/misc/enchanted_item_glint.png");
     private RenderBlocks itemRenderBlocks = new RenderBlocks();
 
     /** The RNG used in RenderItem (for bobbing itemstacks on the ground) */
@@ -78,106 +66,91 @@ public class FancyItemRender extends Render {
             block = Block.getBlockFromItem(itemstack.getItem());
 
             if (ForgeHooksClient.renderEntityItem(
-                    par1EntityItem,
-                    itemstack,
-                    f2,
-                    f3,
-                    random,
-                    renderManager.renderEngine,
-                    field_147909_c,
-                    1)) {
-                ;
-            } else if (itemstack.getItemSpriteNumber() == 0 && block != null
-                    && RenderBlocks.renderItemIn3d(Block.getBlockFromItem(itemstack.getItem()).getRenderType())) {
-                        GL11.glRotatef(f3, 0.0F, 1.0F, 0.0F);
+                    par1EntityItem, itemstack, f2, f3, random, renderManager.renderEngine, field_147909_c, 1)) {
+            } else if (itemstack.getItemSpriteNumber() == 0
+                    && block != null
+                    && RenderBlocks.renderItemIn3d(
+                            Block.getBlockFromItem(itemstack.getItem()).getRenderType())) {
+                GL11.glRotatef(f3, 0.0F, 1.0F, 0.0F);
 
-                        if (renderInFrame) {
-                            GL11.glScalef(1.25F, 1.25F, 1.25F);
-                            GL11.glTranslatef(0.0F, 0.05F, 0.0F);
-                            GL11.glRotatef(-90.0F, 0.0F, 1.0F, 0.0F);
-                        }
+                if (renderInFrame) {
+                    GL11.glScalef(1.25F, 1.25F, 1.25F);
+                    GL11.glTranslatef(0.0F, 0.05F, 0.0F);
+                    GL11.glRotatef(-90.0F, 0.0F, 1.0F, 0.0F);
+                }
 
-                        float f7 = 0.25F;
-                        int j = block.getRenderType();
+                float f7 = 0.25F;
+                int j = block.getRenderType();
 
-                        if (j == 1 || j == 19 || j == 12 || j == 2) {
-                            f7 = 0.5F;
-                        }
+                if (j == 1 || j == 19 || j == 12 || j == 2) {
+                    f7 = 0.5F;
+                }
 
-                        GL11.glScalef(f7, f7, f7);
+                GL11.glScalef(f7, f7, f7);
 
-                        for (i = 0; i < b0; ++i) {
-                            GL11.glPushMatrix();
+                for (i = 0; i < b0; ++i) {
+                    GL11.glPushMatrix();
 
-                            if (i > 0) {
-                                f5 = (this.random.nextFloat() * 2.0F - 1.0F) * 0.2F / f7;
-                                f4 = (this.random.nextFloat() * 2.0F - 1.0F) * 0.2F / f7;
-                                f6 = (this.random.nextFloat() * 2.0F - 1.0F) * 0.2F / f7;
-                                GL11.glTranslatef(f5, f4, f6);
-                            }
+                    if (i > 0) {
+                        f5 = (this.random.nextFloat() * 2.0F - 1.0F) * 0.2F / f7;
+                        f4 = (this.random.nextFloat() * 2.0F - 1.0F) * 0.2F / f7;
+                        f6 = (this.random.nextFloat() * 2.0F - 1.0F) * 0.2F / f7;
+                        GL11.glTranslatef(f5, f4, f6);
+                    }
 
-                            f5 = 1.0F;
-                            this.itemRenderBlocks.renderBlockAsItem(block, itemstack.getItemDamage(), f5);
-                            GL11.glPopMatrix();
-                        }
+                    f5 = 1.0F;
+                    this.itemRenderBlocks.renderBlockAsItem(block, itemstack.getItemDamage(), f5);
+                    GL11.glPopMatrix();
+                }
+            } else {
+                float f8;
+
+                if (itemstack.getItemSpriteNumber() == 1 && itemstack.getItem().requiresMultipleRenderPasses()) {
+                    if (renderInFrame) {
+                        GL11.glScalef(0.5128205F, 0.5128205F, 0.5128205F);
+                        GL11.glTranslatef(0.0F, -0.05F, 0.0F);
                     } else {
-                        float f8;
+                        GL11.glScalef(0.5F, 0.5F, 0.5F);
+                    }
 
-                        if (itemstack.getItemSpriteNumber() == 1
-                                && itemstack.getItem().requiresMultipleRenderPasses()) {
-                            if (renderInFrame) {
-                                GL11.glScalef(0.5128205F, 0.5128205F, 0.5128205F);
-                                GL11.glTranslatef(0.0F, -0.05F, 0.0F);
-                            } else {
-                                GL11.glScalef(0.5F, 0.5F, 0.5F);
-                            }
+                    for (int k = 0; k < itemstack.getItem().getRenderPasses(itemstack.getItemDamage()); ++k) {
+                        this.random.setSeed(187L);
+                        IIcon icon = itemstack.getItem().getIcon(itemstack, k);
+                        f8 = 1.0F;
 
-                            for (int k = 0; k < itemstack.getItem().getRenderPasses(itemstack.getItemDamage()); ++k) {
-                                this.random.setSeed(187L);
-                                IIcon icon = itemstack.getItem().getIcon(itemstack, k);
-                                f8 = 1.0F;
-
-                                if (this.renderWithColor) {
-                                    i = itemstack.getItem().getColorFromItemStack(itemstack, k);
-                                    f5 = (float) (i >> 16 & 255) / 255.0F;
-                                    f4 = (float) (i >> 8 & 255) / 255.0F;
-                                    f6 = (float) (i & 255) / 255.0F;
-                                    GL11.glColor4f(f5 * f8, f4 * f8, f6 * f8, 1.0F);
-                                    this.renderDroppedItem(
-                                            par1EntityItem,
-                                            icon,
-                                            b0,
-                                            par9,
-                                            f5 * f8,
-                                            f4 * f8,
-                                            f6 * f8,
-                                            k);
-                                } else {
-                                    this.renderDroppedItem(par1EntityItem, icon, b0, par9, 1.0F, 1.0F, 1.0F, k);
-                                }
-                            }
+                        if (this.renderWithColor) {
+                            i = itemstack.getItem().getColorFromItemStack(itemstack, k);
+                            f5 = (float) (i >> 16 & 255) / 255.0F;
+                            f4 = (float) (i >> 8 & 255) / 255.0F;
+                            f6 = (float) (i & 255) / 255.0F;
+                            GL11.glColor4f(f5 * f8, f4 * f8, f6 * f8, 1.0F);
+                            this.renderDroppedItem(par1EntityItem, icon, b0, par9, f5 * f8, f4 * f8, f6 * f8, k);
                         } else {
-                            if (renderInFrame) {
-                                GL11.glScalef(0.5128205F, 0.5128205F, 0.5128205F);
-                                GL11.glTranslatef(0.0F, -0.05F, 0.0F);
-                            } else {
-                                GL11.glScalef(0.5F, 0.5F, 0.5F);
-                            }
-
-                            IIcon icon1 = itemstack.getIconIndex();
-
-                            if (this.renderWithColor) {
-                                int l = itemstack.getItem().getColorFromItemStack(itemstack, 0);
-                                f8 = (float) (l >> 16 & 255) / 255.0F;
-                                float f9 = (float) (l >> 8 & 255) / 255.0F;
-                                f5 = (float) (l & 255) / 255.0F;
-                                f4 = 1.0F;
-                                this.renderDroppedItem(par1EntityItem, icon1, b0, par9, f8 * f4, f9 * f4, f5 * f4);
-                            } else {
-                                this.renderDroppedItem(par1EntityItem, icon1, b0, par9, 1.0F, 1.0F, 1.0F);
-                            }
+                            this.renderDroppedItem(par1EntityItem, icon, b0, par9, 1.0F, 1.0F, 1.0F, k);
                         }
                     }
+                } else {
+                    if (renderInFrame) {
+                        GL11.glScalef(0.5128205F, 0.5128205F, 0.5128205F);
+                        GL11.glTranslatef(0.0F, -0.05F, 0.0F);
+                    } else {
+                        GL11.glScalef(0.5F, 0.5F, 0.5F);
+                    }
+
+                    IIcon icon1 = itemstack.getIconIndex();
+
+                    if (this.renderWithColor) {
+                        int l = itemstack.getItem().getColorFromItemStack(itemstack, 0);
+                        f8 = (float) (l >> 16 & 255) / 255.0F;
+                        float f9 = (float) (l >> 8 & 255) / 255.0F;
+                        f5 = (float) (l & 255) / 255.0F;
+                        f4 = 1.0F;
+                        this.renderDroppedItem(par1EntityItem, icon1, b0, par9, f8 * f4, f9 * f4, f5 * f4);
+                    } else {
+                        this.renderDroppedItem(par1EntityItem, icon1, b0, par9, 1.0F, 1.0F, 1.0F);
+                    }
+                }
+            }
 
             GL11.glDisable(GL12.GL_RESCALE_NORMAL);
             GL11.glPopMatrix();
@@ -185,26 +158,33 @@ public class FancyItemRender extends Render {
     }
 
     protected ResourceLocation func_110796_a(EntityItem par1EntityItem) {
-        return this.renderManager.renderEngine
-                .getResourceLocation(par1EntityItem.getEntityItem().getItemSpriteNumber());
+        return this.renderManager.renderEngine.getResourceLocation(
+                par1EntityItem.getEntityItem().getItemSpriteNumber());
     }
 
     /**
      * Renders a dropped item
      */
-    private void renderDroppedItem(EntityItem par1EntityItem, IIcon par2Icon, int par3, float par4, float par5,
-            float par6, float par7) {
+    private void renderDroppedItem(
+            EntityItem par1EntityItem, IIcon par2Icon, int par3, float par4, float par5, float par6, float par7) {
         renderDroppedItem(par1EntityItem, par2Icon, par3, par4, par5, par6, par7, 0);
     }
 
-    private void renderDroppedItem(EntityItem par1EntityItem, IIcon par2Icon, int par3, float par4, float par5,
-            float par6, float par7, int pass) {
+    private void renderDroppedItem(
+            EntityItem par1EntityItem,
+            IIcon par2Icon,
+            int par3,
+            float par4,
+            float par5,
+            float par6,
+            float par7,
+            int pass) {
         Tessellator tessellator = Tessellator.instance;
 
         if (par2Icon == null) {
             TextureManager texturemanager = Minecraft.getMinecraft().getTextureManager();
-            ResourceLocation resourcelocation = texturemanager
-                    .getResourceLocation(par1EntityItem.getEntityItem().getItemSpriteNumber());
+            ResourceLocation resourcelocation = texturemanager.getResourceLocation(
+                    par1EntityItem.getEntityItem().getItemSpriteNumber());
             par2Icon = ((TextureMap) texturemanager.getTexture(resourcelocation)).getAtlasSprite("missingno");
         }
 
@@ -303,13 +283,22 @@ public class FancyItemRender extends Render {
     /**
      * Renders the item's icon or block into the UI at the specified position.
      */
-    public void renderItemIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager,
-            ItemStack par3ItemStack, int par4, int par5) {
+    public void renderItemIntoGUI(
+            FontRenderer par1FontRenderer,
+            TextureManager par2TextureManager,
+            ItemStack par3ItemStack,
+            int par4,
+            int par5) {
         renderItemIntoGUI(par1FontRenderer, par2TextureManager, par3ItemStack, par4, par5, false);
     }
 
-    public void renderItemIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager,
-            ItemStack par3ItemStack, int par4, int par5, boolean renderEffect) {
+    public void renderItemIntoGUI(
+            FontRenderer par1FontRenderer,
+            TextureManager par2TextureManager,
+            ItemStack par3ItemStack,
+            int par4,
+            int par5,
+            boolean renderEffect) {
         Item k = par3ItemStack.getItem();
         int l = par3ItemStack.getItemDamage();
         Object object = par3ItemStack.getIconIndex();
@@ -319,7 +308,8 @@ public class FancyItemRender extends Render {
         float f2;
 
         Block block = Block.getBlockFromItem(k); // (k < Block.blocksList.length ? Block.blocksList[k] : null);
-        if (par3ItemStack.getItemSpriteNumber() == 0 && block != null
+        if (par3ItemStack.getItemSpriteNumber() == 0
+                && block != null
                 && RenderBlocks.renderItemIn3d(block.getRenderType())) {
             par2TextureManager.bindTexture(TextureMap.locationBlocksTexture);
             GL11.glPushMatrix();
@@ -348,7 +338,8 @@ public class FancyItemRender extends Render {
 
             for (int j1 = 0; j1 < k.getRenderPasses(l); ++j1) {
                 par2TextureManager.bindTexture(
-                        par3ItemStack.getItemSpriteNumber() == 0 ? TextureMap.locationBlocksTexture
+                        par3ItemStack.getItemSpriteNumber() == 0
+                                ? TextureMap.locationBlocksTexture
                                 : TextureMap.locationItemsTexture);
                 IIcon icon = k.getIcon(par3ItemStack, j1);
                 int k1 = k.getColorFromItemStack(par3ItemStack, j1);
@@ -370,12 +361,13 @@ public class FancyItemRender extends Render {
             GL11.glEnable(GL11.GL_LIGHTING);
         } else {
             GL11.glDisable(GL11.GL_LIGHTING);
-            ResourceLocation resourcelocation = par2TextureManager
-                    .getResourceLocation(par3ItemStack.getItemSpriteNumber());
+            ResourceLocation resourcelocation =
+                    par2TextureManager.getResourceLocation(par3ItemStack.getItemSpriteNumber());
             par2TextureManager.bindTexture(resourcelocation);
 
             if (object == null) {
-                object = ((TextureMap) Minecraft.getMinecraft().getTextureManager().getTexture(resourcelocation))
+                object = ((TextureMap)
+                                Minecraft.getMinecraft().getTextureManager().getTexture(resourcelocation))
                         .getAtlasSprite("missingno");
             }
 
@@ -419,29 +411,38 @@ public class FancyItemRender extends Render {
     /**
      * Render the item's icon or block into the GUI, including the glint effect.
      */
-    public void renderItemAndEffectIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager,
-            ItemStack par3ItemStack, int par4, int par5) {
+    public void renderItemAndEffectIntoGUI(
+            FontRenderer par1FontRenderer,
+            TextureManager par2TextureManager,
+            ItemStack par3ItemStack,
+            int par4,
+            int par5) {
         if (par3ItemStack != null) {
             if (!ForgeHooksClient.renderInventoryItem(
-                    field_147909_c,
-                    par2TextureManager,
-                    par3ItemStack,
-                    renderWithColor,
-                    zLevel,
-                    (float) par4,
-                    (float) par5)) {
+                    field_147909_c, par2TextureManager, par3ItemStack, renderWithColor, zLevel, (float) par4, (float)
+                            par5)) {
                 this.renderItemIntoGUI(par1FontRenderer, par2TextureManager, par3ItemStack, par4, par5, true);
             }
 
-            /*
-             * Modders must handle this themselves if they use custom renderers! if (par3ItemStack.hasEffect()) {
-             * GL11.glDepthFunc(GL11.GL_GREATER); GL11.glDisable(GL11.GL_LIGHTING); GL11.glDepthMask(false);
-             * par2TextureManager.bindTexture(field_110798_h); this.zLevel -= 50.0F; GL11.glEnable(GL11.GL_BLEND);
-             * GL11.glBlendFunc(GL11.GL_DST_COLOR, GL11.GL_DST_COLOR); GL11.glColor4f(0.5F, 0.25F, 0.8F, 1.0F);
-             * this.renderGlint(par4 * 431278612 + par5 * 32178161, par4 - 2, par5 - 2, 20, 20);
-             * GL11.glDisable(GL11.GL_BLEND); GL11.glDepthMask(true); this.zLevel += 50.0F;
-             * GL11.glEnable(GL11.GL_LIGHTING); GL11.glDepthFunc(GL11.GL_LEQUAL); }
-             */
+            /* Modders must handle this themselves if they use custom renderers!
+            if (par3ItemStack.hasEffect())
+            {
+                GL11.glDepthFunc(GL11.GL_GREATER);
+                GL11.glDisable(GL11.GL_LIGHTING);
+                GL11.glDepthMask(false);
+                par2TextureManager.bindTexture(field_110798_h);
+                this.zLevel -= 50.0F;
+                GL11.glEnable(GL11.GL_BLEND);
+                GL11.glBlendFunc(GL11.GL_DST_COLOR, GL11.GL_DST_COLOR);
+                GL11.glColor4f(0.5F, 0.25F, 0.8F, 1.0F);
+                this.renderGlint(par4 * 431278612 + par5 * 32178161, par4 - 2, par5 - 2, 20, 20);
+                GL11.glDisable(GL11.GL_BLEND);
+                GL11.glDepthMask(true);
+                this.zLevel += 50.0F;
+                GL11.glEnable(GL11.GL_LIGHTING);
+                GL11.glDepthFunc(GL11.GL_LEQUAL);
+            }
+            */
         }
     }
 
@@ -457,7 +458,8 @@ public class FancyItemRender extends Render {
 
             float f = 0.00390625F;
             float f1 = 0.00390625F;
-            float f2 = (float) (Minecraft.getSystemTime() % (long) (3000 + j1 * 1873)) / (3000.0F + (float) (j1 * 1873))
+            float f2 = (float) (Minecraft.getSystemTime() % (long) (3000 + j1 * 1873))
+                    / (3000.0F + (float) (j1 * 1873))
                     * 256.0F;
             float f3 = 0.0F;
             Tessellator tessellator = Tessellator.instance;
@@ -487,11 +489,8 @@ public class FancyItemRender extends Render {
                     (double) ((f2 + (float) par4) * f),
                     (double) ((f3 + 0.0F) * f1));
             tessellator.addVertexWithUV(
-                    (double) (par2 + 0),
-                    (double) (par3 + 0),
-                    (double) this.zLevel,
-                    (double) ((f2 + 0.0F) * f),
-                    (double) ((f3 + 0.0F) * f1));
+                    (double) (par2 + 0), (double) (par3 + 0), (double) this.zLevel, (double) ((f2 + 0.0F) * f), (double)
+                            ((f3 + 0.0F) * f1));
             tessellator.draw();
         }
     }
@@ -500,33 +499,41 @@ public class FancyItemRender extends Render {
      * Renders the item's overlay information. Examples being stack count or damage on top of the item's image at the
      * specified position.
      */
-    public void renderItemOverlayIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager,
-            ItemStack par3ItemStack, int par4, int par5) {
+    public void renderItemOverlayIntoGUI(
+            FontRenderer par1FontRenderer,
+            TextureManager par2TextureManager,
+            ItemStack par3ItemStack,
+            int par4,
+            int par5) {
         this.renderItemOverlayIntoGUI(par1FontRenderer, par2TextureManager, par3ItemStack, par4, par5, (String) null);
     }
 
-    public void renderItemOverlayIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager,
-            ItemStack par3ItemStack, int par4, int par5, String par6Str) {
+    public void renderItemOverlayIntoGUI(
+            FontRenderer par1FontRenderer,
+            TextureManager par2TextureManager,
+            ItemStack par3ItemStack,
+            int par4,
+            int par5,
+            String par6Str) {
         if (par3ItemStack != null) {
             if (par3ItemStack.stackSize > 1 || par6Str != null) {
                 String s1 = par6Str == null ? String.valueOf(par3ItemStack.stackSize) : par6Str;
                 GL11.glDisable(GL11.GL_LIGHTING);
                 GL11.glDisable(GL11.GL_DEPTH_TEST);
                 par1FontRenderer.drawStringWithShadow(
-                        s1,
-                        par4 + 19 - 2 - par1FontRenderer.getStringWidth(s1),
-                        par5 + 6 + 3,
-                        16777215);
+                        s1, par4 + 19 - 2 - par1FontRenderer.getStringWidth(s1), par5 + 6 + 3, 16777215);
                 GL11.glEnable(GL11.GL_LIGHTING);
                 GL11.glEnable(GL11.GL_DEPTH_TEST);
             }
 
             if (par3ItemStack.isItemDamaged()) {
-                int k = (int) Math.round(
-                        13.0D - (double) par3ItemStack.getItemDamageForDisplay() * 13.0D
+                int k = (int) Math.round(13.0D
+                        - (double) par3ItemStack.getItemDamageForDisplay()
+                                * 13.0D
                                 / (double) par3ItemStack.getMaxDamage());
-                int l = (int) Math.round(
-                        255.0D - (double) par3ItemStack.getItemDamageForDisplay() * 255.0D
+                int l = (int) Math.round(255.0D
+                        - (double) par3ItemStack.getItemDamageForDisplay()
+                                * 255.0D
                                 / (double) par3ItemStack.getMaxDamage());
                 GL11.glDisable(GL11.GL_LIGHTING);
                 GL11.glDisable(GL11.GL_DEPTH_TEST);
@@ -546,7 +553,7 @@ public class FancyItemRender extends Render {
     }
 
     /**
-     * Adds a quad to the tesselator at the specified position with the set width and height and color. Args:
+     * Adds a quad to the tesselator at the specified position with the set width and height and color.  Args:
      * tessellator, x, y, width, height, color
      */
     private void renderQuad(Tessellator par1Tessellator, int par2, int par3, int par4, int par5, int par6) {
@@ -563,11 +570,8 @@ public class FancyItemRender extends Render {
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV(
-                (double) (par1 + 0),
-                (double) (par2 + par5),
-                (double) this.zLevel,
-                (double) par3Icon.getMinU(),
-                (double) par3Icon.getMaxV());
+                (double) (par1 + 0), (double) (par2 + par5), (double) this.zLevel, (double) par3Icon.getMinU(), (double)
+                        par3Icon.getMaxV());
         tessellator.addVertexWithUV(
                 (double) (par1 + par4),
                 (double) (par2 + par5),
@@ -575,17 +579,11 @@ public class FancyItemRender extends Render {
                 (double) par3Icon.getMaxU(),
                 (double) par3Icon.getMaxV());
         tessellator.addVertexWithUV(
-                (double) (par1 + par4),
-                (double) (par2 + 0),
-                (double) this.zLevel,
-                (double) par3Icon.getMaxU(),
-                (double) par3Icon.getMinV());
+                (double) (par1 + par4), (double) (par2 + 0), (double) this.zLevel, (double) par3Icon.getMaxU(), (double)
+                        par3Icon.getMinV());
         tessellator.addVertexWithUV(
-                (double) (par1 + 0),
-                (double) (par2 + 0),
-                (double) this.zLevel,
-                (double) par3Icon.getMinU(),
-                (double) par3Icon.getMinV());
+                (double) (par1 + 0), (double) (par2 + 0), (double) this.zLevel, (double) par3Icon.getMinU(), (double)
+                        par3Icon.getMinV());
         tessellator.draw();
     }
 
@@ -607,7 +605,6 @@ public class FancyItemRender extends Render {
 
     /**
      * Items should spread out when rendered in 3d?
-     * 
      * @return
      */
     public boolean shouldSpreadItems() {
@@ -616,7 +613,6 @@ public class FancyItemRender extends Render {
 
     /**
      * Items should have a bob effect
-     * 
      * @return
      */
     public boolean shouldBob() {
@@ -633,8 +629,8 @@ public class FancyItemRender extends Render {
     }
 
     /**
-     * Allows for a subclass to override how many rendered items appear in a "mini item 3d stack"
-     * 
+     * Allows for a subclass to override how many rendered items appear in a
+     * "mini item 3d stack"
      * @param stack
      * @return
      */

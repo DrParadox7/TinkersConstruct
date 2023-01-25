@@ -546,7 +546,6 @@ public class ArmorProxyClient extends ArmorProxyCommon {
         float f3;
 
         for (f3 = par2 - par1; f3 < -180.0F; f3 += 360.0F) {
-            ;
         }
 
         while (f3 >= 180.0F) {

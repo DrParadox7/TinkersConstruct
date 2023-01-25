@@ -83,7 +83,6 @@ public class SlimeIslandGen extends WorldGenerator implements IWorldGenerator {
                             && world.getBlock(xPos, yPos + 1, zPos - 1) == base
                             && world.getBlock(xPos - 1, yPos + 1, zPos + 1) == base
                             && random.nextInt(100) > randomness) {
-                        ;
                     } else {
                         world.setBlock(xPos, yPos, zPos, Blocks.air, 0, 2);
                     }
@@ -103,7 +102,6 @@ public class SlimeIslandGen extends WorldGenerator implements IWorldGenerator {
                             && world.getBlock(xPos + 1, yPos - 1, zPos) == base
                             && world.getBlock(xPos, yPos - 1, zPos - 1) == base
                             && world.getBlock(xPos - 1, yPos - 1, zPos + 1) == base) {
-                        ;
                     } else {
                         world.setBlock(xPos, yPos, zPos, Blocks.air, 0, 2);
                     }
