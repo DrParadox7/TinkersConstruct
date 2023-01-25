@@ -175,7 +175,7 @@ public class SmelteryGui extends ActiveContainerGui {
             int fuel = logic.getScaledFuelGague(52);
             int count = 0;
             while (fuel > 0) {
-                int size = fuel >= 16 ? 16 : fuel;
+                int size = Math.min(fuel, 16);
                 fuel -= size;
                 drawLiquidRect(
                         cornerX + 117,

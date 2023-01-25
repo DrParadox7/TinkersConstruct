@@ -467,11 +467,7 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
                     return 0;
                 } else {
 
-                    int l = stackSize;
-
-                    if (stackSize > stack.getMaxStackSize() - stack.stackSize) {
-                        l = stack.getMaxStackSize() - stack.stackSize;
-                    }
+                    int l = Math.min(stackSize, stack.getMaxStackSize() - stack.stackSize);
 
                     if (l > 64 - stack.stackSize) {
                         l = 64 - stack.stackSize;

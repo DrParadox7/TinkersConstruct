@@ -122,17 +122,17 @@ public class SmelteryLogic extends InventoryLogic implements IActiveLogic, IFaci
 
             int[] tempActive = activeTemps;
             activeTemps = new int[maxBlockCapacity];
-            int activeLength = tempActive.length > activeTemps.length ? activeTemps.length : tempActive.length;
+            int activeLength = Math.min(tempActive.length, activeTemps.length);
             System.arraycopy(tempActive, 0, activeTemps, 0, activeLength);
 
             int[] tempMelting = meltingTemps;
             meltingTemps = new int[maxBlockCapacity];
-            int meltingLength = tempMelting.length > meltingTemps.length ? meltingTemps.length : tempMelting.length;
+            int meltingLength = Math.min(tempMelting.length, meltingTemps.length);
             System.arraycopy(tempMelting, 0, meltingTemps, 0, meltingLength);
 
             ItemStack[] tempInv = inventory;
             inventory = new ItemStack[maxBlockCapacity];
-            int invLength = tempInv.length > inventory.length ? inventory.length : tempInv.length;
+            int invLength = Math.min(tempInv.length, inventory.length);
             System.arraycopy(tempInv, 0, inventory, 0, invLength);
 
             if (activeTemps.length > 0 && activeTemps.length > tempActive.length) {
