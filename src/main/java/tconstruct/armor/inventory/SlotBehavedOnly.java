@@ -22,7 +22,8 @@ public class SlotBehavedOnly extends Slot {
 
         int stackL = b.getStackLimit(par1ItemStack);
 
-        if (this.inventory.getStackInSlot(this.slotNumber) != null && !this.inventory.getStackInSlot(this.slotNumber).isItemEqual(par1ItemStack)) {
+        if (this.inventory.getStackInSlot(this.slotNumber) != null
+                && !this.inventory.getStackInSlot(this.slotNumber).isItemEqual(par1ItemStack)) {
             ItemStack is = this.inventory.getStackInSlot(this.slotNumber);
             return is.stackSize + par1ItemStack.stackSize <= stackL;
         } else {

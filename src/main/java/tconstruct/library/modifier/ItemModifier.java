@@ -50,7 +50,7 @@ public abstract class ItemModifier {
                 for (ItemStack removeStack : list) {
                     if (craftingStack.getItem() == removeStack.getItem()
                             && (removeStack.getItemDamage() == Short.MAX_VALUE
-                            || craftingStack.getItemDamage() == removeStack.getItemDamage())) {
+                                    || craftingStack.getItemDamage() == removeStack.getItemDamage())) {
                         canCraft = true;
                         list.remove(removeStack);
                         break;

@@ -95,7 +95,6 @@ public class FilledBucket extends ItemBucket {
                     return new ItemStack(Items.bucket);
                 }
             }
-
         }
         return stack;
     }

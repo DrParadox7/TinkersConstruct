@@ -226,8 +226,8 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
                             entityfx = new EntityPortalFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
                             break;
                         case "enchantmenttable":
-                            entityfx =
-                                    new EntityEnchantmentTableParticleFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
+                            entityfx = new EntityEnchantmentTableParticleFX(
+                                    mc.theWorld, par2, par4, par6, par8, par10, par12);
                             break;
                         case "explode":
                             entityfx = new EntityExplodeFX(mc.theWorld, par2, par4, par6, par8, par10, par12);

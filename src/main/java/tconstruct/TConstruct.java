@@ -226,9 +226,9 @@ public class TConstruct {
     @EventHandler
     public void init(FMLInitializationEvent event) {
         packetPipeline.initalise();
-        //if (event.getSide() == Side.CLIENT) {
-            // MinecraftForge.EVENT_BUS.register(new EventCloakRender());
-        //}
+        // if (event.getSide() == Side.CLIENT) {
+        // MinecraftForge.EVENT_BUS.register(new EventCloakRender());
+        // }
 
         DimensionBlacklist.getBadBimensions();
         GameRegistry.registerWorldGenerator(new SlimeIslandGen(TinkerWorld.slimePool, 2), 2);

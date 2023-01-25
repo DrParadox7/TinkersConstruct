@@ -358,8 +358,7 @@ public abstract class ProjectileBase extends EntityArrow implements IEntityAddit
             float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
             this.prevRotationYaw =
                     this.rotationYaw = (float) (Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
-            this.prevRotationPitch =
-                    this.rotationPitch = (float) (Math.atan2(this.motionY, f) * 180.0D / Math.PI);
+            this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(this.motionY, f) * 180.0D / Math.PI);
         }
 
         // we previously hit something. Check if the block is still there.
@@ -462,8 +461,7 @@ public abstract class ProjectileBase extends EntityArrow implements IEntityAddit
             if (entity != null) movingobjectposition = new MovingObjectPosition(entity);
 
             // did we hit a player?
-            if (movingobjectposition != null
-                    && movingobjectposition.entityHit instanceof EntityPlayer) {
+            if (movingobjectposition != null && movingobjectposition.entityHit instanceof EntityPlayer) {
                 EntityPlayer entityplayer = (EntityPlayer) movingobjectposition.entityHit;
 
                 // can we attack said player?

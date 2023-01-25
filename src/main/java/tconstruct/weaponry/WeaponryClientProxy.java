@@ -19,7 +19,6 @@ import mantle.lib.client.MantleClientRegistry;
 import tconstruct.client.AmmoItemRenderer;
 import tconstruct.library.client.TConstructClientRegistry;
 import tconstruct.library.crafting.ToolBuilder;
-import tconstruct.library.entity.ProjectileBase;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.tools.TinkerTools;
 import tconstruct.util.Reference;

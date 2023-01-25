@@ -184,8 +184,7 @@ public class ItemSlimeBoots extends ItemArmor implements ISpecialArmor {
     }
 
     @Override
-    public void damageArmor(EntityLivingBase entity, ItemStack armor, DamageSource source, int damage, int slot) {
-    }
+    public void damageArmor(EntityLivingBase entity, ItemStack armor, DamageSource source, int damage, int slot) {}
 
     @Override
     @SideOnly(Side.CLIENT)

@@ -92,8 +92,7 @@ public class LumberAxe extends AOEHarvestTool {
 
         if (wood.isWood(world, x, y, z) || wood.getMaterial() == Material.sponge)
             if (detectTree(world, x, y, z)) {
-                TreeChopTask chopper =
-                        new TreeChopTask(this, stack, new ChunkPosition(x, y, z), player, 128);
+                TreeChopTask chopper = new TreeChopTask(this, stack, new ChunkPosition(x, y, z), player, 128);
                 try {
                     FMLCommonHandler.instance().bus().register(chopper);
                 } catch (LinkageError l) {

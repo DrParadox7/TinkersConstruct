@@ -31,7 +31,6 @@ public class SlotAccessory extends Slot {
      */
     public boolean isItemValid(ItemStack par1ItemStack) {
         Item item = (par1ItemStack == null ? null : par1ItemStack.getItem());
-        return (item instanceof IAccessory)
-                && ((IAccessory) item).canEquipAccessory(par1ItemStack, this.slotID);
+        return (item instanceof IAccessory) && ((IAccessory) item).canEquipAccessory(par1ItemStack, this.slotID);
     }
 }

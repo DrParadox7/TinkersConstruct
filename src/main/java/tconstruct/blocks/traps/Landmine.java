@@ -2,6 +2,8 @@ package tconstruct.blocks.traps;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import java.util.List;
+import java.util.Random;
 import mantle.blocks.MantleBlock;
 import mantle.world.WorldHelper;
 import net.minecraft.block.Block;
@@ -17,9 +19,6 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import tconstruct.library.TConstructRegistry;
-
-import java.util.List;
-import java.util.Random;
 
 public class Landmine extends MantleBlock {
     /** The mob type that can trigger this pressure plate. */

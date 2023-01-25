@@ -85,11 +85,7 @@ public class BattlesignGui extends GuiScreen {
                     chatFormatting
                             + (i == currentLine ? "> " : "")
                             + text[i]
-                            + (i == currentLine
-                            ? " " + EnumChatFormatting.RESET
-                            + chatFormatting
-                            + "<"
-                            : ""),
+                            + (i == currentLine ? " " + EnumChatFormatting.RESET + chatFormatting + "<" : ""),
                     k
                             - fontRendererObj.getStringWidth(
                                             (i == currentLine ? "> " : "") + text[i] + (i == currentLine ? " <" : ""))

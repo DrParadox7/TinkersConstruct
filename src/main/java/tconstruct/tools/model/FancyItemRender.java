@@ -237,14 +237,7 @@ public class FancyItemRender extends Render {
 
             GL11.glColor4f(par5, par6, par7, 1.0F);
             ItemRenderer.renderItemIn2D(
-                    tessellator,
-                    f5,
-                    f6,
-                    f4,
-                    f7,
-                    par2Icon.getIconWidth(),
-                    par2Icon.getIconHeight(),
-                    f12);
+                    tessellator, f5, f6, f4, f7, par2Icon.getIconWidth(), par2Icon.getIconHeight(), f12);
 
             if (itemstack.hasEffect(pass)) {
                 GL11.glDepthFunc(GL11.GL_EQUAL);
@@ -471,25 +464,15 @@ public class FancyItemRender extends Render {
 
             tessellator.startDrawingQuads();
             tessellator.addVertexWithUV(
-                    par2 + 0,
-                    par3 + par5,
-                    this.zLevel,
-                    (f2 + (float) par5 * f4) * f,
-                    (f3 + (float) par5) * f1);
+                    par2 + 0, par3 + par5, this.zLevel, (f2 + (float) par5 * f4) * f, (f3 + (float) par5) * f1);
             tessellator.addVertexWithUV(
                     par2 + par4,
                     par3 + par5,
                     this.zLevel,
                     (f2 + (float) par4 + (float) par5 * f4) * f,
                     (f3 + (float) par5) * f1);
-            tessellator.addVertexWithUV(
-                    par2 + par4,
-                    par3 + 0,
-                    this.zLevel,
-                    (f2 + (float) par4) * f,
-                    (f3 + 0.0F) * f1);
-            tessellator.addVertexWithUV(
-                    par2 + 0, par3 + 0, this.zLevel, (f2 + 0.0F) * f, (f3 + 0.0F) * f1);
+            tessellator.addVertexWithUV(par2 + par4, par3 + 0, this.zLevel, (f2 + (float) par4) * f, (f3 + 0.0F) * f1);
+            tessellator.addVertexWithUV(par2 + 0, par3 + 0, this.zLevel, (f2 + 0.0F) * f, (f3 + 0.0F) * f1);
             tessellator.draw();
         }
     }
@@ -568,18 +551,10 @@ public class FancyItemRender extends Render {
     public void renderIcon(int par1, int par2, IIcon par3Icon, int par4, int par5) {
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
-        tessellator.addVertexWithUV(
-                par1 + 0, par2 + par5, this.zLevel, par3Icon.getMinU(), par3Icon.getMaxV());
-        tessellator.addVertexWithUV(
-                par1 + par4,
-                par2 + par5,
-                this.zLevel,
-                par3Icon.getMaxU(),
-                par3Icon.getMaxV());
-        tessellator.addVertexWithUV(
-                par1 + par4, par2 + 0, this.zLevel, par3Icon.getMaxU(), par3Icon.getMinV());
-        tessellator.addVertexWithUV(
-                par1 + 0, par2 + 0, this.zLevel, par3Icon.getMinU(), par3Icon.getMinV());
+        tessellator.addVertexWithUV(par1 + 0, par2 + par5, this.zLevel, par3Icon.getMinU(), par3Icon.getMaxV());
+        tessellator.addVertexWithUV(par1 + par4, par2 + par5, this.zLevel, par3Icon.getMaxU(), par3Icon.getMaxV());
+        tessellator.addVertexWithUV(par1 + par4, par2 + 0, this.zLevel, par3Icon.getMaxU(), par3Icon.getMinV());
+        tessellator.addVertexWithUV(par1 + 0, par2 + 0, this.zLevel, par3Icon.getMinU(), par3Icon.getMinV());
         tessellator.draw();
     }
 

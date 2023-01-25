@@ -95,8 +95,7 @@ public class RecipeHandlerAlloying extends RecipeHandlerBase {
 
     @Override
     public void loadTransferRects() {
-        this.transferRects.add(
-                new RecipeTransferRect(new Rectangle(76, 21, 22, 15), this.getRecipeID()));
+        this.transferRects.add(new RecipeTransferRect(new Rectangle(76, 21, 22, 15), this.getRecipeID()));
     }
 
     @Override

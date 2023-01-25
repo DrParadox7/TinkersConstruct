@@ -1,5 +1,9 @@
 package tconstruct.library.tools;
 
+import cofh.api.energy.IEnergyContainerItem;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.eventhandler.Event.Result;
+
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -148,13 +152,9 @@ public class AbilityHelper {
 
                         if (knockback > 0) {
                             entity.addVelocity(
-                                    -MathHelper.sin(player.rotationYaw * (float) Math.PI / 180.0F)
-                                            * knockback
-                                            * 0.5F,
+                                    -MathHelper.sin(player.rotationYaw * (float) Math.PI / 180.0F) * knockback * 0.5F,
                                     0.1D,
-                                    MathHelper.cos(player.rotationYaw * (float) Math.PI / 180.0F)
-                                            * knockback
-                                            * 0.5F);
+                                    MathHelper.cos(player.rotationYaw * (float) Math.PI / 180.0F) * knockback * 0.5F);
                             player.motionX *= 0.6D;
                             player.motionZ *= 0.6D;
                             player.setSprinting(false);
@@ -405,9 +405,9 @@ public class AbilityHelper {
                 tags.getCompoundTag("InfiTool").setInteger("Damage", damage + dam);
                 int toolDamage = (damage * 100 / maxDamage) + 1;
                 int stackDamage = stack.getItemDamage();
-                //if (toolDamage != stackDamage) {
+                // if (toolDamage != stackDamage) {
                 //    // stack.setItemDamage((damage * 100 / maxDamage) + 1);
-                //}
+                // }
             }
         }
     }

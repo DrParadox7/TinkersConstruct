@@ -50,17 +50,17 @@ public class BlockFalling extends Block {
                             p_149830_2_ + b0,
                             p_149830_3_ + b0,
                             p_149830_4_ + b0)) {
-                //if (!p_149830_1_.isRemote) {
-                    // EntityFallingBlock entityfallingblock = new
-                    // EntityFallingBlock(p_149830_1_,
-                    // (double)((float)p_149830_2_ + 0.5F),
-                    // (double)((float)p_149830_3_ + 0.5F),
-                    // (double)((float)p_149830_4_ + 0.5F), this,
-                    // p_149830_1_.getBlockMetadata(p_149830_2_, p_149830_3_,
-                    // p_149830_4_));
-                    // this.func_149829_a(entityfallingblock);
-                    // p_149830_1_.spawnEntityInWorld(entityfallingblock);
-                //}
+                // if (!p_149830_1_.isRemote) {
+                // EntityFallingBlock entityfallingblock = new
+                // EntityFallingBlock(p_149830_1_,
+                // (double)((float)p_149830_2_ + 0.5F),
+                // (double)((float)p_149830_3_ + 0.5F),
+                // (double)((float)p_149830_4_ + 0.5F), this,
+                // p_149830_1_.getBlockMetadata(p_149830_2_, p_149830_3_,
+                // p_149830_4_));
+                // this.func_149829_a(entityfallingblock);
+                // p_149830_1_.spawnEntityInWorld(entityfallingblock);
+                // }
             } else {
                 p_149830_1_.setBlockToAir(p_149830_2_, p_149830_3_, p_149830_4_);
 

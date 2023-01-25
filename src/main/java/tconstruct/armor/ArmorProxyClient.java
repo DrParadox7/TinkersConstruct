@@ -386,29 +386,12 @@ public class ArmorProxyClient extends ArmorProxyCommon {
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV(
-                par1 + 0,
-                par2 + par6,
-                this.zLevel,
-                (float) (par3 + 0) * f,
-                (float) (par4 + par6) * f1);
+                par1 + 0, par2 + par6, this.zLevel, (float) (par3 + 0) * f, (float) (par4 + par6) * f1);
         tessellator.addVertexWithUV(
-                par1 + par5,
-                par2 + par6,
-                this.zLevel,
-                (float) (par3 + par5) * f,
-                (float) (par4 + par6) * f1);
+                par1 + par5, par2 + par6, this.zLevel, (float) (par3 + par5) * f, (float) (par4 + par6) * f1);
         tessellator.addVertexWithUV(
-                par1 + par5,
-                par2 + 0,
-                this.zLevel,
-                (float) (par3 + par5) * f,
-                (float) (par4 + 0) * f1);
-        tessellator.addVertexWithUV(
-                par1 + 0,
-                par2 + 0,
-                this.zLevel,
-                (float) (par3 + 0) * f,
-                (float) (par4 + 0) * f1);
+                par1 + par5, par2 + 0, this.zLevel, (float) (par3 + par5) * f, (float) (par4 + 0) * f1);
+        tessellator.addVertexWithUV(par1 + 0, par2 + 0, this.zLevel, (float) (par3 + 0) * f, (float) (par4 + 0) * f1);
         tessellator.draw();
     }
 

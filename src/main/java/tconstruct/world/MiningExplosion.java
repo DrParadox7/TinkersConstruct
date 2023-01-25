@@ -91,9 +91,7 @@ public class MiningExplosion extends Explosion {
         int i2 = MathHelper.floor_double(this.explosionZ - (double) this.explosionSize - 1.0D);
         int j2 = MathHelper.floor_double(this.explosionZ + (double) this.explosionSize + 1.0D);
         List list = this.world.getEntitiesWithinAABBExcludingEntity(
-                this.exploder,
-                AxisAlignedBB.getBoundingBox(
-                        i, k, i2, j, l1, j2));
+                this.exploder, AxisAlignedBB.getBoundingBox(i, k, i2, j, l1, j2));
         Vec3 vec3 = Vec3.createVectorHelper(this.explosionX, this.explosionY, this.explosionZ);
 
         for (int k2 = 0; k2 < list.size(); ++k2) {
@@ -122,8 +120,7 @@ public class MiningExplosion extends Explosion {
                     entity.motionZ += d2 * d11;
 
                     if (entity instanceof EntityPlayer) {
-                        this.field_77288_k.put(
-                                entity, Vec3.createVectorHelper(d0 * d10, d1 * d10, d2 * d10));
+                        this.field_77288_k.put(entity, Vec3.createVectorHelper(d0 * d10, d1 * d10, d2 * d10));
                     }
                 }
             }
@@ -196,8 +193,7 @@ public class MiningExplosion extends Explosion {
 
                 if (l != Blocks.air) {
                     if (l.canDropFromExplosion(this)) {
-                        l.dropBlockAsItemWithChance(
-                                this.world, i, j, k, this.world.getBlockMetadata(i, j, k), 1.0F, 0);
+                        l.dropBlockAsItemWithChance(this.world, i, j, k, this.world.getBlockMetadata(i, j, k), 1.0F, 0);
                     }
                     l.onBlockExploded(this.world, i, j, k, this);
                 }

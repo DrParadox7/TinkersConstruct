@@ -69,7 +69,8 @@ public final class IMCHandler {
                             TConstruct.logger.debug("IMC: Added Projectile stats for material " + mat.materialName);
                         }
 
-                        // add additional render mapping so resource packs or the mods themselves can have custom textures
+                        // add additional render mapping so resource packs or the mods themselves can have custom
+                        // textures
                         // for the tools
                         if (FMLCommonHandler.instance().getSide().isClient())
                             TConstructClientRegistry.addMaterialRenderMapping(
@@ -171,12 +172,13 @@ public final class IMCHandler {
 
                     // we add the toolpart to all smeltery recipies that use iron and create a toolpart
                     List<CastingRecipe> newRecipies = new LinkedList<>();
-                    for (CastingRecipe recipe : TConstructRegistry.getTableCasting().getCastingRecipes()) {
+                    for (CastingRecipe recipe :
+                            TConstructRegistry.getTableCasting().getCastingRecipes()) {
                         if (recipe.castingMetal.getFluid() != TinkerSmeltery.moltenIronFluid) continue;
                         if (recipe.cast == null || !(recipe.cast.getItem() instanceof IPattern)) continue;
                         if (!(recipe.getResult().getItem()
                                 instanceof DynamicToolPart)) // has to be dynamic toolpart to support automatic addition
-                            continue;
+                        continue;
 
                         newRecipies.add(recipe);
                     }
@@ -201,7 +203,8 @@ public final class IMCHandler {
                         Smeltery.addMelting(ft, output, 0, liquid2.amount);
                     }
 
-                    TConstruct.logger.debug("Casting IMC: Added fluid " + tag.getString("FluidName") + " to part casting");
+                    TConstruct.logger.debug(
+                            "Casting IMC: Added fluid " + tag.getString("FluidName") + " to part casting");
                     break;
                 }
                 case "addMaterialItem": {
@@ -278,8 +281,8 @@ public final class IMCHandler {
 
                     Smeltery.addMelting(
                             item, Block.getBlockFromItem(block.getItem()), block.getItemDamage(), temperature, liquid);
-                    TConstruct.logger.debug("Smeltery IMC: Added melting: " + item.getDisplayName() + " to " + liquid.amount
-                            + "mb " + liquid.getLocalizedName());
+                    TConstruct.logger.debug("Smeltery IMC: Added melting: " + item.getDisplayName() + " to "
+                            + liquid.amount + "mb " + liquid.getLocalizedName());
                     break;
                 }
                 case "addSmelteryFuel": {
@@ -302,8 +305,8 @@ public final class IMCHandler {
 
                     Smeltery.addSmelteryFuel(liquid.getFluid(), temperature, duration);
 
-                    TConstruct.logger.debug("Smeltery IMC: Added fuel: " + liquid.getLocalizedName() + " (" + temperature
-                            + ", " + duration + ")");
+                    TConstruct.logger.debug("Smeltery IMC: Added fuel: " + liquid.getLocalizedName() + " ("
+                            + temperature + ", " + duration + ")");
                     break;
                 }
                 case "addFluxBattery":
@@ -313,7 +316,6 @@ public final class IMCHandler {
                     }
                     ItemStack battery = message.getItemStackValue();
                     battery.stackSize = 1; // avoid getting a stack size of 0 or larger than 1
-
 
                     if (!(battery.getItem() instanceof IEnergyContainerItem)) {
                         FMLLog.bigWarning("Flux Battery IMC: ItemStack is no instance of IEnergyContainerItem");

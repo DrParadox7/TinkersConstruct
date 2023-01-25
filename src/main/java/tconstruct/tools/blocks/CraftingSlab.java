@@ -44,7 +44,7 @@ public class CraftingSlab extends InventorySlab {
     /* Rendering */
     @Override
     public String[] getTextureNames() {
-        return new String[]{
+        return new String[] {
             "craftingstation_top",
             "craftingstation_slab_side",
             "craftingstation_bottom",

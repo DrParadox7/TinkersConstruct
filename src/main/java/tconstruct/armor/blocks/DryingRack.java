@@ -196,7 +196,7 @@ public class DryingRack extends InventoryBlock {
 
     @Override
     public String[] getTextureNames() {
-        return new String[]{
+        return new String[] {
             "castingtable_top",
             "castingtable_side",
             "castingtable_bottom",

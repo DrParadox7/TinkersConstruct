@@ -1,6 +1,10 @@
 package tconstruct.armor.player;
 
 import java.io.IOException;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.network.ByteBufUtils;
+import cpw.mods.fml.relauncher.Side;
+import io.netty.buffer.ByteBuf;
 import java.lang.ref.WeakReference;
 import java.util.UUID;
 

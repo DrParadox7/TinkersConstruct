@@ -36,7 +36,7 @@ public class CraftingStationBlock extends InventoryBlock {
     /* Rendering */
     @Override
     public String[] getTextureNames() {
-        return new String[]{"craftingstation_top", "craftingstation_side", "craftingstation_bottom"};
+        return new String[] {"craftingstation_top", "craftingstation_side", "craftingstation_bottom"};
     }
 
     @Override

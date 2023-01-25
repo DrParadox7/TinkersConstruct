@@ -220,14 +220,7 @@ public class ArrowRender extends Render {
             GL11.glColor4f(par5, par6, par7, 1.0F);
 
             ItemRenderer.renderItemIn2D(
-                    tessellator,
-                    f5,
-                    f6,
-                    f4,
-                    f7,
-                    par2Icon.getIconWidth(),
-                    par2Icon.getIconHeight(),
-                    f12);
+                    tessellator, f5, f6, f4, f7, par2Icon.getIconWidth(), par2Icon.getIconHeight(), f12);
 
             if (itemstack.hasEffect(pass)) {
                 GL11.glDepthFunc(GL11.GL_EQUAL);

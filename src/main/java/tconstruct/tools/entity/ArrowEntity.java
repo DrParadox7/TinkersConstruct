@@ -75,8 +75,7 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
             float f = MathHelper.sqrt_double(this.motionX * this.motionX + this.motionZ * this.motionZ);
             this.prevRotationYaw =
                     this.rotationYaw = (float) (Math.atan2(this.motionX, this.motionZ) * 180.0D / Math.PI);
-            this.prevRotationPitch =
-                    this.rotationPitch = (float) (Math.atan2(this.motionY, f) * 180.0D / Math.PI);
+            this.prevRotationPitch = this.rotationPitch = (float) (Math.atan2(this.motionY, f) * 180.0D / Math.PI);
         }
 
         Block i = this.worldObj.getBlock(this.field_145791_d, this.field_145792_e, this.field_145789_f);
@@ -146,8 +145,7 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
 
                 if (entity1.canBeCollidedWith() && (entity1 != this.shootingEntity || this.ticksInAir >= 5)) {
                     ySpeed = 0.3F;
-                    AxisAlignedBB axisalignedbb1 =
-                            entity1.boundingBox.expand(ySpeed, ySpeed, ySpeed);
+                    AxisAlignedBB axisalignedbb1 = entity1.boundingBox.expand(ySpeed, ySpeed, ySpeed);
                     MovingObjectPosition movingobjectposition1 = axisalignedbb1.calculateIntercept(vec3, vec31);
 
                     if (movingobjectposition1 != null) {
@@ -165,8 +163,7 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
                 movingobjectposition = new MovingObjectPosition(entity);
             }
 
-            if (movingobjectposition != null
-                    && movingobjectposition.entityHit instanceof EntityPlayer) {
+            if (movingobjectposition != null && movingobjectposition.entityHit instanceof EntityPlayer) {
                 EntityPlayer entityplayer = (EntityPlayer) movingobjectposition.entityHit;
 
                 if (entityplayer.capabilities.disableDamage

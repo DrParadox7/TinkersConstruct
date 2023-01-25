@@ -314,7 +314,7 @@ public class CartEntity extends Entity implements IInventory, IEntityAdditionalS
             MinecraftServer var1 = ((WorldServer) this.worldObj).func_73046_m();
             var2 = this.getMaxInPortalTime();
 
-            //if (this.inPortal) {
+            // if (this.inPortal) {
             //    if (var1.getAllowNether()) {
             //        /*
             //         * if (this.ridingEntity == null && this.timeInPortal++ >=
@@ -329,13 +329,13 @@ public class CartEntity extends Entity implements IInventory, IEntityAdditionalS
             //         * this.inPortal = false;
             //         */
             //    }
-            //} else {
+            // } else {
             //    /*
             //     * if (this.timeInPortal > 0) { this.timeInPortal -= 4; }
             //     *
             //     * if (this.timeInPortal < 0) { this.timeInPortal = 0; }
             //     */
-            //}
+            // }
 
             if (this.timeUntilPortal > 0) {
                 --this.timeUntilPortal;

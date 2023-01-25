@@ -249,7 +249,8 @@ public abstract class BowBase extends ToolCore {
             accessoryIcons1.clear();
             extraIcons1.clear();
             effectIcons1.clear();
-            Iterator<Map.Entry<Integer, String>> iterOne = headStrings.entrySet().iterator();
+            Iterator<Map.Entry<Integer, String>> iterOne =
+                    headStrings.entrySet().iterator();
             while (iterOne.hasNext()) {
                 Map.Entry<Integer, String> pairs = iterOne.next();
                 headIcons1.put(pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_1"));
@@ -265,8 +266,7 @@ public abstract class BowBase extends ToolCore {
                 iterOne = accessoryStrings.entrySet().iterator();
                 while (iterOne.hasNext()) {
                     Map.Entry<Integer, String> pairs = iterOne.next();
-                    accessoryIcons1.put(
-                            pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_1"));
+                    accessoryIcons1.put(pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_1"));
                 }
             }
 
@@ -274,8 +274,7 @@ public abstract class BowBase extends ToolCore {
                 iterOne = extraStrings.entrySet().iterator();
                 while (iterOne.hasNext()) {
                     Map.Entry<Integer, String> pairs = iterOne.next();
-                    extraIcons1.put(
-                            pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_1"));
+                    extraIcons1.put(pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_1"));
                 }
             }
 
@@ -290,7 +289,8 @@ public abstract class BowBase extends ToolCore {
             accessoryIcons2.clear();
             extraIcons2.clear();
             effectIcons2.clear();
-            Iterator<Map.Entry<Integer, String>> iterTwo = headStrings.entrySet().iterator();
+            Iterator<Map.Entry<Integer, String>> iterTwo =
+                    headStrings.entrySet().iterator();
             while (iterTwo.hasNext()) {
                 Map.Entry<Integer, String> pairs = iterTwo.next();
                 headIcons2.put(pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_2"));
@@ -306,8 +306,7 @@ public abstract class BowBase extends ToolCore {
                 iterTwo = accessoryStrings.entrySet().iterator();
                 while (iterTwo.hasNext()) {
                     Map.Entry<Integer, String> pairs = iterTwo.next();
-                    accessoryIcons2.put(
-                            pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_2"));
+                    accessoryIcons2.put(pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_2"));
                 }
             }
 
@@ -315,8 +314,7 @@ public abstract class BowBase extends ToolCore {
                 iterTwo = extraStrings.entrySet().iterator();
                 while (iterTwo.hasNext()) {
                     Map.Entry<Integer, String> pairs = iterTwo.next();
-                    extraIcons2.put(
-                            pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_2"));
+                    extraIcons2.put(pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_2"));
                 }
             }
 
@@ -331,7 +329,8 @@ public abstract class BowBase extends ToolCore {
             accessoryIcons3.clear();
             extraIcons3.clear();
             effectIcons3.clear();
-            Iterator<Map.Entry<Integer, String>> iterThree = headStrings.entrySet().iterator();
+            Iterator<Map.Entry<Integer, String>> iterThree =
+                    headStrings.entrySet().iterator();
             while (iterThree.hasNext()) {
                 Map.Entry<Integer, String> pairs = iterThree.next();
                 headIcons3.put(pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_3"));
@@ -347,8 +346,7 @@ public abstract class BowBase extends ToolCore {
                 iterThree = accessoryStrings.entrySet().iterator();
                 while (iterThree.hasNext()) {
                     Map.Entry<Integer, String> pairs = iterThree.next();
-                    accessoryIcons3.put(
-                            pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_3"));
+                    accessoryIcons3.put(pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_3"));
                 }
             }
 
@@ -356,8 +354,7 @@ public abstract class BowBase extends ToolCore {
                 iterThree = extraStrings.entrySet().iterator();
                 while (iterThree.hasNext()) {
                     Map.Entry<Integer, String> pairs = iterThree.next();
-                    extraIcons3.put(
-                            pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_3"));
+                    extraIcons3.put(pairs.getKey(), iconRegister.registerIcon(pairs.getValue() + "_3"));
                 }
             }
 

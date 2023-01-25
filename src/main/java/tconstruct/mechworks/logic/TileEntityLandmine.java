@@ -118,7 +118,6 @@ public class TileEntityLandmine extends TileEntity implements IInventory {
                     if (inventory[par1].stackSize == 0) {
                         inventory[par1] = null;
                     }
-
                 }
                 return itemstack;
             } else {
@@ -190,14 +189,14 @@ public class TileEntityLandmine extends TileEntity implements IInventory {
     @Override
     public boolean isItemValidForSlot(int i, ItemStack itemstack) {
         //// Should automatic camo insertion be allowed.
-        //if (i == 3) {
+        // if (i == 3) {
         //    return false;
-        //} else {
+        // } else {
         //    // Here for mDiyo to decide if he wants automation for
         //    // insertion/extraction of the items to be an option.
         //    // Would be useful for building automated mine laying machines.
         //    return false;
-        //}
+        // }
         return false;
     }
 
