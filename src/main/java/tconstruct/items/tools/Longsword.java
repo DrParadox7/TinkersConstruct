@@ -61,12 +61,12 @@ public class Longsword extends Weapon {
 
             float speed = 0.05F * time;
             if (speed > 0.925f) speed = 0.925f;
-            player.motionX = (double) (-MathHelper.sin(player.rotationYaw / 180.0F * (float) Math.PI)
+            player.motionX = -MathHelper.sin(player.rotationYaw / 180.0F * (float) Math.PI)
                     * MathHelper.cos(player.rotationPitch / 180.0F * (float) Math.PI)
-                    * speed);
-            player.motionZ = (double) (MathHelper.cos(player.rotationYaw / 180.0F * (float) Math.PI)
+                    * speed;
+            player.motionZ = MathHelper.cos(player.rotationYaw / 180.0F * (float) Math.PI)
                     * MathHelper.cos(player.rotationPitch / 180.0F * (float) Math.PI)
-                    * speed);
+                    * speed;
         }
     }
 

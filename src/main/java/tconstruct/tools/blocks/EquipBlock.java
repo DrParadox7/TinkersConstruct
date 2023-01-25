@@ -146,9 +146,9 @@ public class EquipBlock extends InventoryBlock {
                         stack.stackSize -= itemSize;
                         EntityItem entityitem = new EntityItem(
                                 par1World,
-                                (double) ((float) x + jumpX),
-                                (double) ((float) y + jumpY),
-                                (double) ((float) z + jumpZ),
+                                (float) x + jumpX,
+                                (float) y + jumpY,
+                                (float) z + jumpZ,
                                 new ItemStack(stack.getItem(), itemSize, stack.getItemDamage()));
 
                         if (stack.hasTagCompound()) {
@@ -156,9 +156,9 @@ public class EquipBlock extends InventoryBlock {
                         }
 
                         float offset = 0.05F;
-                        entityitem.motionX = (double) ((float) rand.nextGaussian() * offset);
-                        entityitem.motionY = (double) ((float) rand.nextGaussian() * offset + 0.2F);
-                        entityitem.motionZ = (double) ((float) rand.nextGaussian() * offset);
+                        entityitem.motionX = (float) rand.nextGaussian() * offset;
+                        entityitem.motionY = (float) rand.nextGaussian() * offset + 0.2F;
+                        entityitem.motionZ = (float) rand.nextGaussian() * offset;
                         par1World.spawnEntityInWorld(entityitem);
                     }
                 }

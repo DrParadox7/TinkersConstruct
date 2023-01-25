@@ -29,7 +29,7 @@ public class BehaviorExplosive extends Behavior {
         }
 
         par1World.createExplosion(
-                new EntityTNTPrimed(par1World, par2, par3, par4, (EntityLivingBase) null),
+                new EntityTNTPrimed(par1World, par2, par3, par4, null),
                 par2,
                 par3,
                 par4,

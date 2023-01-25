@@ -1,22 +1,18 @@
 package tconstruct.library.armor;
 
 import java.util.List;
-
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.command.IEntitySelector;
-import net.minecraft.dispenser.BehaviorDefaultDispenseItem;
-import net.minecraft.dispenser.IBlockSource;
-import net.minecraft.entity.EntityLiving;
-import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.dispenser.*;
+import net.minecraft.entity.*;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.AxisAlignedBB;
-import net.minecraft.util.EnumFacing;
+import net.minecraft.util.*;
 
 final class BehaviorDispenseArmorCopy extends BehaviorDefaultDispenseItem {
-
     /**
-     * Dispense the specified stack, play the dispense sound and spawn particles.
+     * Dispense the specified stack, play the dispense sound and spawn
+     * particles.
      */
     @Override
     protected ItemStack dispenseStack(IBlockSource par1IBlockSource, ItemStack par2ItemStack) {
@@ -25,16 +21,11 @@ final class BehaviorDispenseArmorCopy extends BehaviorDefaultDispenseItem {
         int j = par1IBlockSource.getYInt() + enumfacing.getFrontOffsetY();
         int k = par1IBlockSource.getZInt() + enumfacing.getFrontOffsetZ();
         AxisAlignedBB axisalignedbb = AxisAlignedBB.getBoundingBox(
-                (double) i,
-                (double) j,
-                (double) k,
-                (double) (i + 1),
-                (double) (j + 1),
-                (double) (k + 1));
-        List list = par1IBlockSource.getWorld().selectEntitiesWithinAABB(
-                EntityLivingBase.class,
-                axisalignedbb,
-                new IEntitySelector.ArmoredMob(par2ItemStack));
+                i, j, k, i + 1, j + 1, k + 1);
+        List list = par1IBlockSource
+                .getWorld()
+                .selectEntitiesWithinAABB(
+                        EntityLivingBase.class, axisalignedbb, new IEntitySelector.ArmoredMob(par2ItemStack));
 
         if (list.size() > 0) {
             EntityLivingBase entitylivingbase = (EntityLivingBase) list.get(0);

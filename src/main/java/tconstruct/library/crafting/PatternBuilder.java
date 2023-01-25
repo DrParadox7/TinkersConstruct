@@ -62,7 +62,7 @@ public class PatternBuilder {
 
             ItemKey key = getItemKey(material);
             if (key != null) {
-                MaterialSet mat = (MaterialSet) materialSets.get(key.key);
+                MaterialSet mat = materialSets.get(key.key);
                 ItemStack toolPart = getMatchingPattern(pattern, material, mat);
 
                 if (toolPart != null) {
@@ -98,7 +98,7 @@ public class PatternBuilder {
         if (material != null) {
             ItemKey key = getItemKey(material);
             if (key != null) {
-                MaterialSet set = (MaterialSet) materialSets.get(key.key);
+                MaterialSet set = materialSets.get(key.key);
                 return set.materialID;
             }
         }
@@ -135,13 +135,13 @@ public class PatternBuilder {
     }
 
     public ItemStack getShardFromSet(String materialset) {
-        MaterialSet set = (MaterialSet) materialSets.get(materialset);
+        MaterialSet set = materialSets.get(materialset);
         if (set != null && set.shard != null) return set.shard.copy();
         return null;
     }
 
     public ItemStack getRodFromSet(String materialset) {
-        MaterialSet set = (MaterialSet) materialSets.get(materialset);
+        MaterialSet set = materialSets.get(materialset);
         if (set != null) return set.rod.copy();
         return null;
     }

@@ -189,7 +189,7 @@ public class ArmorExtended implements IInventory {
         if (tagCompound != null) {
             NBTTagList tagList = tagCompound.getTagList("Inventory", 10);
             for (int i = 0; i < tagList.tagCount(); ++i) {
-                NBTTagCompound nbttagcompound = (NBTTagCompound) tagList.getCompoundTagAt(i);
+                NBTTagCompound nbttagcompound = tagList.getCompoundTagAt(i);
                 int j = nbttagcompound.getByte("Slot") & 255;
                 ItemStack itemstack = ItemStack.loadItemStackFromNBT(nbttagcompound);
 

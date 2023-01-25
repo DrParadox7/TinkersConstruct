@@ -38,7 +38,7 @@ public class AModLeadBoots extends AModBoolean {
         if (baseTag.hasKey("AttributeModifiers")) {
             attributes = baseTag.getTagList("AttributeModifiers", 0);
             for (int iter = 0; iter < attributes.tagCount(); iter++) {
-                NBTTagCompound tag = (NBTTagCompound) attributes.getCompoundTagAt(iter);
+                NBTTagCompound tag = attributes.getCompoundTagAt(iter);
                 if (tag.getString("AttributeName").equals("generic.knockbackResistance")) attributes.removeTag(iter);
             }
         } else {

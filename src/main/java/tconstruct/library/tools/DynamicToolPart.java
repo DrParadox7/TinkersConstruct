@@ -37,7 +37,7 @@ public class DynamicToolPart extends CraftingItem implements IToolPart {
     }
 
     public DynamicToolPart(String texture, String name, String domain) {
-        this(texture, name, domain, (Class<? extends CustomMaterial>) null);
+        this(texture, name, domain, null);
     }
 
     public DynamicToolPart(String texture, String name, String domain,

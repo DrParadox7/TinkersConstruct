@@ -52,7 +52,7 @@ public class TinkerWorldEvents {
     public static void spawnEntityLiving(double x, double y, double z, EntityLiving entity, World world) {
         if (!world.isRemote) {
             entity.setPosition(x, y, z);
-            entity.onSpawnWithEgg((IEntityLivingData) null);
+            entity.onSpawnWithEgg(null);
             world.spawnEntityInWorld(entity);
         }
     }

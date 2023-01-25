@@ -155,26 +155,26 @@ public class Landmine extends MantleBlock {
 
         if (this.triggerMobType == EnumCreatureType.creature) {
             var8 = world.getEntitiesWithinAABBExcludingEntity(
-                    (Entity) null,
+                    null,
                     AxisAlignedBB.getBoundingBox(
-                            (double) ((float) posX + var7),
-                            (double) posY,
-                            (double) ((float) posZ + var7),
-                            (double) ((float) (posX + 1) - var7),
+                            (float) posX + var7,
+                            posY,
+                            (float) posZ + var7,
+                            (float) (posX + 1) - var7,
                             (double) posY + 0.25D,
-                            (double) ((float) (posZ + 1) - var7)));
+                            (float) (posZ + 1) - var7));
         }
 
         if (this.triggerMobType == EnumCreatureType.monster) {
             var8 = world.getEntitiesWithinAABB(
                     EntityLiving.class,
                     AxisAlignedBB.getBoundingBox(
-                            (double) ((float) posX + var7),
-                            (double) posY,
-                            (double) ((float) posZ + var7),
-                            (double) ((float) (posX + 1) - var7),
+                            (float) posX + var7,
+                            posY,
+                            (float) posZ + var7,
+                            (float) (posX + 1) - var7,
                             (double) posY + 0.25D,
-                            (double) ((float) (posZ + 1) - var7)));
+                            (float) (posZ + 1) - var7));
         }
 
         /*
@@ -197,7 +197,7 @@ public class Landmine extends MantleBlock {
 
         if (var6 && !var5) {
             WorldHelper.setBlockToAir(world, posX, posY, posZ);
-            world.createExplosion((Entity) null, posX, posY, posZ, 2.0F, true);
+            world.createExplosion(null, posX, posY, posZ, 2.0F, true);
             /*
              * par1World.setBlockMetadataWithNotify(posX, posY, posZ, 1);
              * par1World.notifyBlocksOfNeighborChange(posX, posY, posZ,

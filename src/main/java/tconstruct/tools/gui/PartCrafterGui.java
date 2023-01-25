@@ -54,9 +54,9 @@ public class PartCrafterGui extends GuiContainer implements INEIGuiHandler {
     private int chestLeft = 0;
     private int chestTop = 0;
 
-    public PartCrafterGui(InventoryPlayer inventoryplayer, PartBuilderLogic partlogic, World world, int x, int y,
-            int z) {
-        super((ActiveContainer) partlogic.getGuiContainer(inventoryplayer, world, x, y, z));
+    public PartCrafterGui(
+            InventoryPlayer inventoryplayer, PartBuilderLogic partlogic, World world, int x, int y, int z) {
+        super(partlogic.getGuiContainer(inventoryplayer, world, x, y, z));
         logic = partlogic;
         drawChestPart = inventorySlots instanceof PartCrafterChestContainer;
 

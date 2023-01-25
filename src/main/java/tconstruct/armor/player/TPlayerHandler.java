@@ -225,7 +225,7 @@ public class TPlayerHandler {
         if (!event.entity.worldObj.isRemote) {
             TPlayerStats properties = (TPlayerStats) event.entity.getExtendedProperties(TPlayerStats.PROP_NAME);
             properties.hunger = ((EntityPlayer) event.entity).getFoodStats().getFoodLevel();
-            playerStats.put(((EntityPlayer) event.entity).getPersistentID(), properties);
+            playerStats.put(event.entity.getPersistentID(), properties);
         }
     }
 

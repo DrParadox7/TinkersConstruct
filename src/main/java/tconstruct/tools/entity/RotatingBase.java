@@ -270,7 +270,7 @@ public class RotatingBase extends Entity implements IEntityAdditionalSpawnData {
         tags.setShort("xTile", (short) xTile);
         tags.setShort("yTile", (short) yTile);
         tags.setShort("zTile", (short) zTile);
-        tags.setString("inTile", (String) inTile.getUnlocalizedName());
+        tags.setString("inTile", inTile.getUnlocalizedName());
         tags.setByte("shake", (byte) arrowShake);
         tags.setByte("onGround", (byte) (onGround ? 1 : 0));
         tags.setBoolean("Retrieval", doNotRetrieve);

@@ -233,12 +233,12 @@ public class SearedBlock extends InventoryBlock {
                 }
 
                 return AxisAlignedBB.getBoundingBox(
-                        (double) ((float) x + xMin),
+                        (float) x + xMin,
                         (double) y + 0.25,
-                        (double) ((float) z + zMin),
-                        (double) ((float) x + xMax),
+                        (float) z + zMin,
+                        (float) x + xMax,
                         (double) y + 0.625,
-                        (double) ((float) z + zMax));
+                        (float) z + zMax);
             }
         }
 

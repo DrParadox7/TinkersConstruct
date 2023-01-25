@@ -1,35 +1,29 @@
 package tconstruct.items.tools;
 
-import java.util.Queue;
-import java.util.Set;
-import java.util.Stack;
-
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.entity.EntityLivingBase;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.world.ChunkPosition;
-import net.minecraft.world.World;
-
 import com.google.common.collect.Lists;
-
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
+import cpw.mods.fml.relauncher.*;
 import gnu.trove.set.hash.THashSet;
+import java.util.Queue;
+import java.util.Set;
+import java.util.Stack;
 import mantle.player.PlayerUtils;
-import tconstruct.library.ActiveToolMod;
-import tconstruct.library.TConstructRegistry;
-import tconstruct.library.tools.AOEHarvestTool;
-import tconstruct.library.tools.AbilityHelper;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.*;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.ChunkPosition;
+import net.minecraft.world.World;
+import tconstruct.library.*;
+import tconstruct.library.tools.*;
 import tconstruct.tools.TinkerTools;
 
 public class LumberAxe extends AOEHarvestTool {
-
     public LumberAxe() {
         super(0, 1, 1);
         this.setUnlocalizedName("InfiTool.LumberAxe");
@@ -56,22 +50,25 @@ public class LumberAxe extends AOEHarvestTool {
     }
 
     @Override
-    public boolean onBlockDestroyed(ItemStack itemstack, World world, Block block, int x, int y, int z,
-            EntityLivingBase player) {
+    public boolean onBlockDestroyed(
+            ItemStack itemstack, World world, Block block, int x, int y, int z, EntityLivingBase player) {
         if (block != null && block.getMaterial() == Material.leaves) return false;
 
         return AbilityHelper.onBlockChanged(itemstack, world, block, x, y, z, player, random);
     }
 
-    static Material[] materials = { Material.wood, Material.vine, Material.circuits, Material.cactus, Material.gourd };
+    static Material[] materials = {Material.wood, Material.vine, Material.circuits, Material.cactus, Material.gourd};
 
     /* Lumber axe specific */
 
     /*
-     * @Override public void onUpdate (ItemStack stack, World world, Entity entity, int par4, boolean par5) {
-     * super.onUpdate(stack, world, entity, par4, par5); if (entity instanceof EntityPlayer) { EntityPlayer player =
-     * (EntityPlayer) entity; ItemStack equipped = player.getCurrentEquippedItem(); if (equipped == stack) {
-     * player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 1, 1)); } } }
+     * @Override public void onUpdate (ItemStack stack, World world, Entity
+     * entity, int par4, boolean par5) { super.onUpdate(stack, world, entity,
+     * par4, par5); if (entity instanceof EntityPlayer) { EntityPlayer player =
+     * (EntityPlayer) entity; ItemStack equipped =
+     * player.getCurrentEquippedItem(); if (equipped == stack) {
+     * player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, 1, 1)); }
+     * } }
      */
 
     @Override
@@ -93,22 +90,19 @@ public class LumberAxe extends AOEHarvestTool {
 
         if (wood == null) return super.onBlockStartBreak(stack, x, y, z, player);
 
-        if (wood.isWood(world, x, y, z) || wood.getMaterial() == Material.sponge) if (detectTree(world, x, y, z)) {
-            TreeChopTask chopper = new TreeChopTask(
-                    (AOEHarvestTool) this,
-                    stack,
-                    new ChunkPosition(x, y, z),
-                    player,
-                    128);
-            try {
-                FMLCommonHandler.instance().bus().register(chopper);
-            } catch (LinkageError l) {
-                PlayerUtils.sendChatMessage(player, "Well, that's embarrassing, you missed!");
-                FMLLog.warning("Unable to spawn TreeChopTask due to LinkageError");
+        if (wood.isWood(world, x, y, z) || wood.getMaterial() == Material.sponge)
+            if (detectTree(world, x, y, z)) {
+                TreeChopTask chopper =
+                        new TreeChopTask(this, stack, new ChunkPosition(x, y, z), player, 128);
+                try {
+                    FMLCommonHandler.instance().bus().register(chopper);
+                } catch (LinkageError l) {
+                    PlayerUtils.sendChatMessage(player, "Well, that's embarrassing, you missed!");
+                    FMLLog.warning("Unable to spawn TreeChopTask due to LinkageError");
+                }
+                // custom block breaking code, don't call vanilla code
+                return true;
             }
-            // custom block breaking code, don't call vanilla code
-            return true;
-        }
 
         return super.onBlockStartBreak(stack, x, y, z, player);
     }
@@ -150,7 +144,8 @@ public class LumberAxe extends AOEHarvestTool {
         for (int offX = 0; offX < d; offX++) {
             for (int offY = 0; offY < d; offY++) {
                 for (int offZ = 0; offZ < d; offZ++) {
-                    int xPos = pos.chunkPosX - 1 + offX, yPos = pos.chunkPosY - 1 + offY,
+                    int xPos = pos.chunkPosX - 1 + offX,
+                            yPos = pos.chunkPosY - 1 + offY,
                             zPos = pos.chunkPosZ - 1 + offZ;
                     Block leaf = world.getBlock(xPos, yPos, zPos);
                     if (leaf != null && leaf.isLeaves(world, xPos, yPos, zPos)) {
@@ -177,8 +172,8 @@ public class LumberAxe extends AOEHarvestTool {
         public Queue<ChunkPosition> blocks = Lists.newLinkedList();
         public Set<ChunkPosition> visited = new THashSet<>();
 
-        public TreeChopTask(AOEHarvestTool tool, ItemStack stack, ChunkPosition start, EntityPlayer player,
-                int blocksPerTick) {
+        public TreeChopTask(
+                AOEHarvestTool tool, ItemStack stack, ChunkPosition start, EntityPlayer player, int blocksPerTick) {
             this.world = player.getEntityWorld();
             this.player = player;
             this.tool = tool;

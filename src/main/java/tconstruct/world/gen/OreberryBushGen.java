@@ -20,7 +20,7 @@ public class OreberryBushGen extends WorldGenerator {
                 meta,
                 chance,
                 Blocks.stone,
-                (Block) Blocks.grass,
+                Blocks.grass,
                 Blocks.dirt,
                 Blocks.water,
                 Blocks.sand,

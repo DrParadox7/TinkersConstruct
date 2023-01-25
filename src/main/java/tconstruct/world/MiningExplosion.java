@@ -41,9 +41,9 @@ public class MiningExplosion extends Explosion {
                             || j == this.field_77289_h - 1
                             || k == 0
                             || k == this.field_77289_h - 1) {
-                        double d3 = (double) ((float) i / ((float) this.field_77289_h - 1.0F) * 2.0F - 1.0F);
-                        double d4 = (double) ((float) j / ((float) this.field_77289_h - 1.0F) * 2.0F - 1.0F);
-                        double d5 = (double) ((float) k / ((float) this.field_77289_h - 1.0F) * 2.0F - 1.0F);
+                        double d3 = (float) i / ((float) this.field_77289_h - 1.0F) * 2.0F - 1.0F;
+                        double d4 = (float) j / ((float) this.field_77289_h - 1.0F) * 2.0F - 1.0F;
+                        double d5 = (float) k / ((float) this.field_77289_h - 1.0F) * 2.0F - 1.0F;
                         double d6 = Math.sqrt(d3 * d3 + d4 * d4 + d5 * d5);
                         d3 /= d6;
                         d4 /= d6;
@@ -93,7 +93,7 @@ public class MiningExplosion extends Explosion {
         List list = this.world.getEntitiesWithinAABBExcludingEntity(
                 this.exploder,
                 AxisAlignedBB.getBoundingBox(
-                        (double) i, (double) k, (double) i2, (double) j, (double) l1, (double) j2));
+                        i, k, i2, j, l1, j2));
         Vec3 vec3 = Vec3.createVectorHelper(this.explosionX, this.explosionY, this.explosionZ);
 
         for (int k2 = 0; k2 < list.size(); ++k2) {
@@ -105,13 +105,13 @@ public class MiningExplosion extends Explosion {
                 d0 = entity.posX - this.explosionX;
                 d1 = entity.posY + (double) entity.getEyeHeight() - this.explosionY;
                 d2 = entity.posZ - this.explosionZ;
-                double d8 = (double) MathHelper.sqrt_double(d0 * d0 + d1 * d1 + d2 * d2);
+                double d8 = MathHelper.sqrt_double(d0 * d0 + d1 * d1 + d2 * d2);
 
                 if (d8 != 0.0D) {
                     d0 /= d8;
                     d1 /= d8;
                     d2 /= d8;
-                    double d9 = (double) this.world.getBlockDensity(vec3, entity.boundingBox);
+                    double d9 = this.world.getBlockDensity(vec3, entity.boundingBox);
                     double d10 = (1.0D - d7) * d9;
                     if (!(entity instanceof EntityItem))
                         entity.attackEntityFrom(DamageSource.setExplosionSource(this), (float)
@@ -123,7 +123,7 @@ public class MiningExplosion extends Explosion {
 
                     if (entity instanceof EntityPlayer) {
                         this.field_77288_k.put(
-                                (EntityPlayer) entity, Vec3.createVectorHelper(d0 * d10, d1 * d10, d2 * d10));
+                                entity, Vec3.createVectorHelper(d0 * d10, d1 * d10, d2 * d10));
                     }
                 }
             }
@@ -168,18 +168,18 @@ public class MiningExplosion extends Explosion {
                 l = this.world.getBlock(i, j, k);
 
                 if (par1) {
-                    double d0 = (double) ((float) i + this.world.rand.nextFloat());
-                    double d1 = (double) ((float) j + this.world.rand.nextFloat());
-                    double d2 = (double) ((float) k + this.world.rand.nextFloat());
+                    double d0 = (float) i + this.world.rand.nextFloat();
+                    double d1 = (float) j + this.world.rand.nextFloat();
+                    double d2 = (float) k + this.world.rand.nextFloat();
                     double d3 = d0 - this.explosionX;
                     double d4 = d1 - this.explosionY;
                     double d5 = d2 - this.explosionZ;
-                    double d6 = (double) MathHelper.sqrt_double(d3 * d3 + d4 * d4 + d5 * d5);
+                    double d6 = MathHelper.sqrt_double(d3 * d3 + d4 * d4 + d5 * d5);
                     d3 /= d6;
                     d4 /= d6;
                     d5 /= d6;
                     double d7 = 0.5D / (d6 / (double) this.explosionSize + 0.1D);
-                    d7 *= (double) (this.world.rand.nextFloat() * this.world.rand.nextFloat() + 0.3F);
+                    d7 *= this.world.rand.nextFloat() * this.world.rand.nextFloat() + 0.3F;
                     d3 *= d7;
                     d4 *= d7;
                     d5 *= d7;

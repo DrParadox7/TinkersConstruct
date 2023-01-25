@@ -125,6 +125,6 @@ public class Pattern extends CraftingItem implements IPattern {
 
     @Override
     public ItemStack getPatternOutput(ItemStack stack, ItemStack input, MaterialSet set) {
-        return TConstructRegistry.getPartMapping((Item) this, stack.getItemDamage(), set.materialID);
+        return TConstructRegistry.getPartMapping(this, stack.getItemDamage(), set.materialID);
     }
 }

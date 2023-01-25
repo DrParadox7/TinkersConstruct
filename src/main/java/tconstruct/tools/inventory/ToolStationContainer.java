@@ -104,7 +104,7 @@ public class ToolStationContainer extends ActiveContainer {
             }
 
             if (slotStack.stackSize == 0) {
-                slot.putStack((ItemStack) null);
+                slot.putStack(null);
             } else {
                 slot.onSlotChanged();
             }

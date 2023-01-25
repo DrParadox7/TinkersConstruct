@@ -35,9 +35,9 @@ public abstract class BehaviorProjectileBaseDispense extends BehaviorDefaultDisp
 
         ProjectileBase projectile = this.getProjectileEntity(world, iposition, reference);
         projectile.setThrowableHeading(
-                (double) enumfacing.getFrontOffsetX(),
-                (double) ((float) enumfacing.getFrontOffsetY() + ballistic()),
-                (double) enumfacing.getFrontOffsetZ(),
+                enumfacing.getFrontOffsetX(),
+                (float) enumfacing.getFrontOffsetY() + ballistic(),
+                enumfacing.getFrontOffsetZ(),
                 this.accuraccy(),
                 this.speed());
         projectile.returnStack = reference;

@@ -70,7 +70,7 @@ public class Detailing {
 
     public DetailInput getDetailing(Block block, int inputMeta) {
         for (int i = 0; i < detailing.size(); i++) {
-            DetailInput detail = (DetailInput) detailing.get(i);
+            DetailInput detail = detailing.get(i);
             if (Item.getItemFromBlock(block) == detail.input.getItem() && inputMeta == detail.inputMeta) {
                 return detail;
             }

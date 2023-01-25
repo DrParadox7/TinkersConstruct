@@ -180,12 +180,12 @@ public class Battleaxe extends AOEHarvestTool implements IBattlegearWeapon {
                 if (increase > 0.56f) increase = 0.56f;
                 player.motionY += increase;
 
-                player.motionX = (double) (-MathHelper.sin(player.rotationYaw / 180.0F * (float) Math.PI)
+                player.motionX = -MathHelper.sin(player.rotationYaw / 180.0F * (float) Math.PI)
                         * MathHelper.cos(player.rotationPitch / 180.0F * (float) Math.PI)
-                        * speed);
-                player.motionZ = (double) (MathHelper.cos(player.rotationYaw / 180.0F * (float) Math.PI)
+                        * speed;
+                player.motionZ = MathHelper.cos(player.rotationYaw / 180.0F * (float) Math.PI)
                         * MathHelper.cos(player.rotationPitch / 180.0F * (float) Math.PI)
-                        * speed);
+                        * speed;
             }
         }
     }

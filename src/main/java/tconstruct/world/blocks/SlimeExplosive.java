@@ -75,9 +75,9 @@ public class SlimeExplosive extends TConstructBlock {
         if (!par1World.isRemote) {
             ExplosivePrimed entitytntprimed = new ExplosivePrimed(
                     par1World,
-                    (double) ((float) par2 + 0.5F),
-                    (double) ((float) par3 + 0.5F),
-                    (double) ((float) par4 + 0.5F),
+                    (float) par2 + 0.5F,
+                    (float) par3 + 0.5F,
+                    (float) par4 + 0.5F,
                     par5Explosion.getExplosivePlacedBy());
             entitytntprimed.fuse = par1World.rand.nextInt(entitytntprimed.fuse / 4) + entitytntprimed.fuse / 8;
             par1World.spawnEntityInWorld(entitytntprimed);
@@ -86,7 +86,7 @@ public class SlimeExplosive extends TConstructBlock {
 
     @Override
     public void onBlockDestroyedByPlayer(World par1World, int par2, int par3, int par4, int par5) {
-        this.primeTnt(par1World, par2, par3, par4, par5, (EntityLivingBase) null);
+        this.primeTnt(par1World, par2, par3, par4, par5, null);
     }
 
     public void primeTnt(World par1World, int par2, int par3, int par4, int par5,
@@ -95,9 +95,9 @@ public class SlimeExplosive extends TConstructBlock {
             if ((par5 % 2) == 1) {
                 ExplosivePrimed entitytntprimed = new ExplosivePrimed(
                         par1World,
-                        (double) ((float) par2 + 0.5F),
-                        (double) ((float) par3 + 0.5F),
-                        (double) ((float) par4 + 0.5F),
+                        (float) par2 + 0.5F,
+                        (float) par3 + 0.5F,
+                        (float) par4 + 0.5F,
                         par6EntityLivingBase);
                 par1World.spawnEntityInWorld(entitytntprimed);
                 par1World.playSoundAtEntity(entitytntprimed, "random.fuse", 1.0F, 1.0F);

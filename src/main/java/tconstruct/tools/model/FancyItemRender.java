@@ -188,10 +188,10 @@ public class FancyItemRender extends Render {
             par2Icon = ((TextureMap) texturemanager.getTexture(resourcelocation)).getAtlasSprite("missingno");
         }
 
-        float f4 = ((IIcon) par2Icon).getMinU();
-        float f5 = ((IIcon) par2Icon).getMaxU();
-        float f6 = ((IIcon) par2Icon).getMinV();
-        float f7 = ((IIcon) par2Icon).getMaxV();
+        float f4 = par2Icon.getMinU();
+        float f5 = par2Icon.getMaxU();
+        float f6 = par2Icon.getMinV();
+        float f7 = par2Icon.getMaxV();
         float f8 = 1.0F;
         float f9 = 0.5F;
         float f10 = 0.25F;
@@ -242,8 +242,8 @@ public class FancyItemRender extends Render {
                     f6,
                     f4,
                     f7,
-                    ((IIcon) par2Icon).getIconWidth(),
-                    ((IIcon) par2Icon).getIconHeight(),
+                    par2Icon.getIconWidth(),
+                    par2Icon.getIconHeight(),
                     f12);
 
             if (itemstack.hasEffect(pass)) {
@@ -471,26 +471,25 @@ public class FancyItemRender extends Render {
 
             tessellator.startDrawingQuads();
             tessellator.addVertexWithUV(
-                    (double) (par2 + 0),
-                    (double) (par3 + par5),
-                    (double) this.zLevel,
-                    (double) ((f2 + (float) par5 * f4) * f),
-                    (double) ((f3 + (float) par5) * f1));
+                    par2 + 0,
+                    par3 + par5,
+                    this.zLevel,
+                    (f2 + (float) par5 * f4) * f,
+                    (f3 + (float) par5) * f1);
             tessellator.addVertexWithUV(
-                    (double) (par2 + par4),
-                    (double) (par3 + par5),
-                    (double) this.zLevel,
-                    (double) ((f2 + (float) par4 + (float) par5 * f4) * f),
-                    (double) ((f3 + (float) par5) * f1));
+                    par2 + par4,
+                    par3 + par5,
+                    this.zLevel,
+                    (f2 + (float) par4 + (float) par5 * f4) * f,
+                    (f3 + (float) par5) * f1);
             tessellator.addVertexWithUV(
-                    (double) (par2 + par4),
-                    (double) (par3 + 0),
-                    (double) this.zLevel,
-                    (double) ((f2 + (float) par4) * f),
-                    (double) ((f3 + 0.0F) * f1));
+                    par2 + par4,
+                    par3 + 0,
+                    this.zLevel,
+                    (f2 + (float) par4) * f,
+                    (f3 + 0.0F) * f1);
             tessellator.addVertexWithUV(
-                    (double) (par2 + 0), (double) (par3 + 0), (double) this.zLevel, (double) ((f2 + 0.0F) * f), (double)
-                            ((f3 + 0.0F) * f1));
+                    par2 + 0, par3 + 0, this.zLevel, (f2 + 0.0F) * f, (f3 + 0.0F) * f1);
             tessellator.draw();
         }
     }
@@ -505,7 +504,7 @@ public class FancyItemRender extends Render {
             ItemStack par3ItemStack,
             int par4,
             int par5) {
-        this.renderItemOverlayIntoGUI(par1FontRenderer, par2TextureManager, par3ItemStack, par4, par5, (String) null);
+        this.renderItemOverlayIntoGUI(par1FontRenderer, par2TextureManager, par3ItemStack, par4, par5, null);
     }
 
     public void renderItemOverlayIntoGUI(
@@ -559,10 +558,10 @@ public class FancyItemRender extends Render {
     private void renderQuad(Tessellator par1Tessellator, int par2, int par3, int par4, int par5, int par6) {
         par1Tessellator.startDrawingQuads();
         par1Tessellator.setColorOpaque_I(par6);
-        par1Tessellator.addVertex((double) (par2 + 0), (double) (par3 + 0), 0.0D);
-        par1Tessellator.addVertex((double) (par2 + 0), (double) (par3 + par5), 0.0D);
-        par1Tessellator.addVertex((double) (par2 + par4), (double) (par3 + par5), 0.0D);
-        par1Tessellator.addVertex((double) (par2 + par4), (double) (par3 + 0), 0.0D);
+        par1Tessellator.addVertex(par2 + 0, par3 + 0, 0.0D);
+        par1Tessellator.addVertex(par2 + 0, par3 + par5, 0.0D);
+        par1Tessellator.addVertex(par2 + par4, par3 + par5, 0.0D);
+        par1Tessellator.addVertex(par2 + par4, par3 + 0, 0.0D);
         par1Tessellator.draw();
     }
 
@@ -570,20 +569,17 @@ public class FancyItemRender extends Render {
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV(
-                (double) (par1 + 0), (double) (par2 + par5), (double) this.zLevel, (double) par3Icon.getMinU(), (double)
-                        par3Icon.getMaxV());
+                par1 + 0, par2 + par5, this.zLevel, par3Icon.getMinU(), par3Icon.getMaxV());
         tessellator.addVertexWithUV(
-                (double) (par1 + par4),
-                (double) (par2 + par5),
-                (double) this.zLevel,
-                (double) par3Icon.getMaxU(),
-                (double) par3Icon.getMaxV());
+                par1 + par4,
+                par2 + par5,
+                this.zLevel,
+                par3Icon.getMaxU(),
+                par3Icon.getMaxV());
         tessellator.addVertexWithUV(
-                (double) (par1 + par4), (double) (par2 + 0), (double) this.zLevel, (double) par3Icon.getMaxU(), (double)
-                        par3Icon.getMinV());
+                par1 + par4, par2 + 0, this.zLevel, par3Icon.getMaxU(), par3Icon.getMinV());
         tessellator.addVertexWithUV(
-                (double) (par1 + 0), (double) (par2 + 0), (double) this.zLevel, (double) par3Icon.getMinU(), (double)
-                        par3Icon.getMinV());
+                par1 + 0, par2 + 0, this.zLevel, par3Icon.getMinU(), par3Icon.getMinV());
         tessellator.draw();
     }
 

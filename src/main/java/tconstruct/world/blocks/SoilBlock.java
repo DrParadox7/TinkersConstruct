@@ -31,8 +31,8 @@ public class SoilBlock extends TConstructBlock {
                 if (metadata == 3) {
                     ((EntityLivingBase) entity).heal(1);
                 } else if (metadata == 4) {
-                    ((EntityLivingBase) entity).attackEntityFrom(DamageSource.magic, 1);
-                    ((EntityLivingBase) entity).setFire(1);
+                    entity.attackEntityFrom(DamageSource.magic, 1);
+                    entity.setFire(1);
                 }
             }
         }

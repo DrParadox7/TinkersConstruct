@@ -148,13 +148,13 @@ public class AbilityHelper {
 
                         if (knockback > 0) {
                             entity.addVelocity(
-                                    (double) (-MathHelper.sin(player.rotationYaw * (float) Math.PI / 180.0F)
-                                            * (float) knockback
-                                            * 0.5F),
+                                    -MathHelper.sin(player.rotationYaw * (float) Math.PI / 180.0F)
+                                            * knockback
+                                            * 0.5F,
                                     0.1D,
-                                    (double) (MathHelper.cos(player.rotationYaw * (float) Math.PI / 180.0F)
-                                            * (float) knockback
-                                            * 0.5F));
+                                    MathHelper.cos(player.rotationYaw * (float) Math.PI / 180.0F)
+                                            * knockback
+                                            * 0.5F);
                             player.motionX *= 0.6D;
                             player.motionZ *= 0.6D;
                             player.setSprinting(false);
@@ -552,9 +552,9 @@ public class AbilityHelper {
                     && (block == Blocks.grass || block == Blocks.dirt)) {
                 Block block1 = Blocks.farmland;
                 world.playSoundEffect(
-                        (double) ((float) x + 0.5F),
-                        (double) ((float) y + 0.5F),
-                        (double) ((float) z + 0.5F),
+                        (float) x + 0.5F,
+                        (float) y + 0.5F,
+                        (float) z + 0.5F,
                         block1.stepSound.getStepResourcePath(),
                         (block1.stepSound.getVolume() + 1.0F) / 2.0F,
                         block1.stepSound.getPitch() * 0.8F);

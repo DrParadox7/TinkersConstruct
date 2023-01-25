@@ -124,7 +124,7 @@ public class KnapsackInventory implements IInventory {
 
         NBTTagList tagList = tagCompound.getTagList("Knapsack", 10);
         for (int i = 0; i < tagList.tagCount(); ++i) {
-            NBTTagCompound nbttagcompound = (NBTTagCompound) tagList.getCompoundTagAt(i);
+            NBTTagCompound nbttagcompound = tagList.getCompoundTagAt(i);
             int j = nbttagcompound.getByte("Slot") & 255;
             ItemStack itemstack = ItemStack.loadItemStackFromNBT(nbttagcompound);
 

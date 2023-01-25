@@ -581,7 +581,7 @@ public class GlassPaneConnected extends GlassBlockConnected {
     }
 
     public final boolean canThisPaneConnectToThisBlock(Block b) {
-        return b.isOpaqueCube() || b == (Block) this || b == Blocks.glass;
+        return b.isOpaqueCube() || b == this || b == Blocks.glass;
     }
 
     @Override

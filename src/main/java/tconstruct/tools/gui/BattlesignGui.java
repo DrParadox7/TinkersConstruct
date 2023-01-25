@@ -171,7 +171,7 @@ public class BattlesignGui extends GuiScreen {
     @Override
     protected void actionPerformed(GuiButton button) {
         if (button.id == 0) {
-            this.mc.displayGuiScreen((GuiScreen) null);
+            this.mc.displayGuiScreen(null);
             this.mc.setIngameFocus();
         }
     }

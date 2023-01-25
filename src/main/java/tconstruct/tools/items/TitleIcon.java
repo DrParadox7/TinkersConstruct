@@ -168,7 +168,7 @@ public class TitleIcon extends Item {
     public static void spawnEntity(double x, double y, double z, Entity entity, World world) {
         if (!world.isRemote) {
             entity.setPosition(x, y, z);
-            ((EntityLiving) entity).onSpawnWithEgg((IEntityLivingData) null);
+            ((EntityLiving) entity).onSpawnWithEgg(null);
             world.spawnEntityInWorld(entity);
         }
     }
@@ -178,7 +178,7 @@ public class TitleIcon extends Item {
             entity.setPosition(x, y, z);
             if (FMLCommonHandler.instance().getEffectiveSide() == Side.CLIENT)
                 entity.setAngles(player.cameraYaw, player.cameraYaw);
-            ((EntityLiving) entity).onSpawnWithEgg((IEntityLivingData) null);
+            ((EntityLiving) entity).onSpawnWithEgg(null);
             world.spawnEntityInWorld(entity);
         }
     }
@@ -188,7 +188,7 @@ public class TitleIcon extends Item {
         if (!world.isRemote) {
             entity.setPosition(x, y, z);
             entity.setSlimeSize(8);
-            entity.onSpawnWithEgg((IEntityLivingData) null);
+            entity.onSpawnWithEgg(null);
             world.spawnEntityInWorld(entity);
         }
     }
@@ -197,7 +197,7 @@ public class TitleIcon extends Item {
         if (!world.isRemote) {
             entity.setPosition(x, y, z);
             entity.setSlimeSize(8);
-            entity.onSpawnWithEgg((IEntityLivingData) null);
+            entity.onSpawnWithEgg(null);
             world.spawnEntityInWorld(entity);
         }
     }

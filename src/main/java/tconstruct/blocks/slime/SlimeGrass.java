@@ -108,12 +108,12 @@ public class SlimeGrass extends MantleBlock {
                             && blockAbove != this) {
                         Block block = world.getBlock(posX, posY, posZ);
                         if (block == Blocks.dirt) {
-                            world.setBlock(posX, posY, posZ, (Block) this, 1, 3);
+                            world.setBlock(posX, posY, posZ, this, 1, 3);
                             return;
                         }
                         int blockMeta = world.getBlockMetadata(posX, posY, posZ);
                         if (block == TinkerTools.craftedSoil) {
-                            if (blockMeta == 5) world.setBlock(posX, posY, posZ, (Block) this, 0, 3);
+                            if (blockMeta == 5) world.setBlock(posX, posY, posZ, this, 0, 3);
                         }
                     }
                 }

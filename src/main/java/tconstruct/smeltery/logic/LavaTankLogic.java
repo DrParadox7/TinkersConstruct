@@ -81,7 +81,7 @@ public class LavaTankLogic extends MultiServantLogic implements IFluidHandler {
      */
 
     public float getFluidAmountScaled() {
-        return (float) (tank.getFluid().amount - renderOffset) / (float) (tank.getCapacity() * 1.01F);
+        return (float) (tank.getFluid().amount - renderOffset) / (tank.getCapacity() * 1.01F);
     }
 
     public boolean containsFluid() {

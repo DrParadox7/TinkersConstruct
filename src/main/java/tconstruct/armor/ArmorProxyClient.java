@@ -386,29 +386,29 @@ public class ArmorProxyClient extends ArmorProxyCommon {
         Tessellator tessellator = Tessellator.instance;
         tessellator.startDrawingQuads();
         tessellator.addVertexWithUV(
-                (double) (par1 + 0),
-                (double) (par2 + par6),
-                (double) this.zLevel,
-                (double) ((float) (par3 + 0) * f),
-                (double) ((float) (par4 + par6) * f1));
+                par1 + 0,
+                par2 + par6,
+                this.zLevel,
+                (float) (par3 + 0) * f,
+                (float) (par4 + par6) * f1);
         tessellator.addVertexWithUV(
-                (double) (par1 + par5),
-                (double) (par2 + par6),
-                (double) this.zLevel,
-                (double) ((float) (par3 + par5) * f),
-                (double) ((float) (par4 + par6) * f1));
+                par1 + par5,
+                par2 + par6,
+                this.zLevel,
+                (float) (par3 + par5) * f,
+                (float) (par4 + par6) * f1);
         tessellator.addVertexWithUV(
-                (double) (par1 + par5),
-                (double) (par2 + 0),
-                (double) this.zLevel,
-                (double) ((float) (par3 + par5) * f),
-                (double) ((float) (par4 + 0) * f1));
+                par1 + par5,
+                par2 + 0,
+                this.zLevel,
+                (float) (par3 + par5) * f,
+                (float) (par4 + 0) * f1);
         tessellator.addVertexWithUV(
-                (double) (par1 + 0),
-                (double) (par2 + 0),
-                (double) this.zLevel,
-                (double) ((float) (par3 + 0) * f),
-                (double) ((float) (par4 + 0) * f1));
+                par1 + 0,
+                par2 + 0,
+                this.zLevel,
+                (float) (par3 + 0) * f,
+                (float) (par4 + 0) * f1);
         tessellator.draw();
     }
 

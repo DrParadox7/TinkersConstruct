@@ -50,10 +50,10 @@ public class BreakingFX extends EntityFX {
         float f10 = 0.1F * this.particleScale;
 
         if (this.particleIcon != null) {
-            f6 = this.particleIcon.getInterpolatedU((double) (this.particleTextureJitterX / 4.0F * 16.0F));
-            f7 = this.particleIcon.getInterpolatedU((double) ((this.particleTextureJitterX + 1.0F) / 4.0F * 16.0F));
-            f8 = this.particleIcon.getInterpolatedV((double) (this.particleTextureJitterY / 4.0F * 16.0F));
-            f9 = this.particleIcon.getInterpolatedV((double) ((this.particleTextureJitterY + 1.0F) / 4.0F * 16.0F));
+            f6 = this.particleIcon.getInterpolatedU(this.particleTextureJitterX / 4.0F * 16.0F);
+            f7 = this.particleIcon.getInterpolatedU((this.particleTextureJitterX + 1.0F) / 4.0F * 16.0F);
+            f8 = this.particleIcon.getInterpolatedV(this.particleTextureJitterY / 4.0F * 16.0F);
+            f9 = this.particleIcon.getInterpolatedV((this.particleTextureJitterY + 1.0F) / 4.0F * 16.0F);
         }
 
         float f11 = (float) (this.prevPosX + (this.posX - this.prevPosX) * (double) par2 - interpPosX);
@@ -62,28 +62,28 @@ public class BreakingFX extends EntityFX {
         float f14 = 1.0F;
         par1Tessellator.setColorOpaque_F(f14 * this.particleRed, f14 * this.particleGreen, f14 * this.particleBlue);
         par1Tessellator.addVertexWithUV(
-                (double) (f11 - par3 * f10 - par6 * f10),
-                (double) (f12 - par4 * f10),
-                (double) (f13 - par5 * f10 - par7 * f10),
-                (double) f6,
-                (double) f9);
+                f11 - par3 * f10 - par6 * f10,
+                f12 - par4 * f10,
+                f13 - par5 * f10 - par7 * f10,
+                f6,
+                f9);
         par1Tessellator.addVertexWithUV(
-                (double) (f11 - par3 * f10 + par6 * f10),
-                (double) (f12 + par4 * f10),
-                (double) (f13 - par5 * f10 + par7 * f10),
-                (double) f6,
-                (double) f8);
+                f11 - par3 * f10 + par6 * f10,
+                f12 + par4 * f10,
+                f13 - par5 * f10 + par7 * f10,
+                f6,
+                f8);
         par1Tessellator.addVertexWithUV(
-                (double) (f11 + par3 * f10 + par6 * f10),
-                (double) (f12 + par4 * f10),
-                (double) (f13 + par5 * f10 + par7 * f10),
-                (double) f7,
-                (double) f8);
+                f11 + par3 * f10 + par6 * f10,
+                f12 + par4 * f10,
+                f13 + par5 * f10 + par7 * f10,
+                f7,
+                f8);
         par1Tessellator.addVertexWithUV(
-                (double) (f11 + par3 * f10 - par6 * f10),
-                (double) (f12 - par4 * f10),
-                (double) (f13 + par5 * f10 - par7 * f10),
-                (double) f7,
-                (double) f9);
+                f11 + par3 * f10 - par6 * f10,
+                f12 - par4 * f10,
+                f13 + par5 * f10 - par7 * f10,
+                f7,
+                f9);
     }
 }

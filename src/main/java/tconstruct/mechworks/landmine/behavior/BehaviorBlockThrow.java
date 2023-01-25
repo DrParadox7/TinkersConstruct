@@ -63,9 +63,9 @@ public class BehaviorBlockThrow extends Behavior {
 
             EntityFallingBlock entityfallingsand = new EntityFallingBlock(
                     par1World,
-                    (double) ((float) par2 + 0.5F),
-                    (double) ((float) par3 + 2F),
-                    (double) ((float) par4 + 0.5F),
+                    (float) par2 + 0.5F,
+                    (float) par3 + 2F,
+                    (float) par4 + 0.5F,
                     BlockUtils.getBlockFromItemStack(par5ItemStack),
                     par5ItemStack.getItemDamage());
             entityfallingsand.preventEntitySpawning = false;

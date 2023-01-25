@@ -169,7 +169,7 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
             }
 
             if (entityfx != null) {
-                return (EntityFX) entityfx;
+                return entityfx;
             } else {
                 double d9 = 16.0D;
 
@@ -285,10 +285,10 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
                     }
 
                     if (entityfx != null) {
-                        this.mc.effectRenderer.addEffect((EntityFX) entityfx);
+                        this.mc.effectRenderer.addEffect(entityfx);
                     }
 
-                    return (EntityFX) entityfx;
+                    return entityfx;
                 }
             }
         } else {

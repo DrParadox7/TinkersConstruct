@@ -30,7 +30,7 @@ public class SurfaceOreGen extends WorldGenerator {
                 number,
                 changeSize,
                 Blocks.stone,
-                (Block) Blocks.grass,
+                Blocks.grass,
                 Blocks.dirt,
                 Blocks.water,
                 Blocks.sand,
@@ -79,12 +79,12 @@ public class SurfaceOreGen extends WorldGenerator {
         float f = random.nextFloat() * (float) Math.PI;
         int blockNumber = numberOfBlocks;
         if (alterSize) blockNumber = numberOfBlocks * 2 / 5 + random.nextInt(numberOfBlocks * 3 / 5);
-        double d0 = (double) ((float) (startX + 8) + MathHelper.sin(f) * (float) blockNumber / 8.0F);
-        double d1 = (double) ((float) (startX + 8) - MathHelper.sin(f) * (float) blockNumber / 8.0F);
-        double d2 = (double) ((float) (startZ + 8) + MathHelper.cos(f) * (float) blockNumber / 8.0F);
-        double d3 = (double) ((float) (startZ + 8) - MathHelper.cos(f) * (float) blockNumber / 8.0F);
-        double d4 = (double) (startY + random.nextInt(3) - 2);
-        double d5 = (double) (startY + random.nextInt(3) - 2);
+        double d0 = (float) (startX + 8) + MathHelper.sin(f) * (float) blockNumber / 8.0F;
+        double d1 = (float) (startX + 8) - MathHelper.sin(f) * (float) blockNumber / 8.0F;
+        double d2 = (float) (startZ + 8) + MathHelper.cos(f) * (float) blockNumber / 8.0F;
+        double d3 = (float) (startZ + 8) - MathHelper.cos(f) * (float) blockNumber / 8.0F;
+        double d4 = startY + random.nextInt(3) - 2;
+        double d5 = startY + random.nextInt(3) - 2;
 
         for (int l = 0; l <= blockNumber; ++l) {
             double d6 = d0 + (d1 - d0) * (double) l / (double) blockNumber;

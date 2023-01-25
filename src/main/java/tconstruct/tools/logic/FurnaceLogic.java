@@ -87,7 +87,7 @@ public class FurnaceLogic extends InventoryLogic implements IActiveLogic, IFacin
         boolean burning = isBurning();
         boolean updateInventory = false;
         if (fuel <= 0 && canSmelt()) {
-            fuel = fuelGague = (int) (getItemBurnTime(inventory[1]));
+            fuel = fuelGague = getItemBurnTime(inventory[1]);
             if (fuel > 0) {
                 if (inventory[1].getItem().hasContainerItem()) // Fuel slot
                 {
