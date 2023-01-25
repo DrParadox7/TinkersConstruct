@@ -50,8 +50,8 @@ public class RecipeHandlerDryingRack extends RecipeHandlerBase {
 
     @Override
     public void loadTransferRects() {
-        this.transferRects
-                .add(new RecipeTransferRect(new Rectangle(68, 20, 22, 15), this.getRecipeID(), new Object[0]));
+        this.transferRects.add(
+                new RecipeTransferRect(new Rectangle(68, 20, 22, 15), this.getRecipeID()));
     }
 
     @Override

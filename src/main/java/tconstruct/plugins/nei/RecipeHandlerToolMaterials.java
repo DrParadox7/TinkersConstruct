@@ -92,8 +92,8 @@ public class RecipeHandlerToolMaterials extends RecipeHandlerBase {
 
     @Override
     public void loadTransferRects() {
-        this.transferRects
-                .add(new RecipeTransferRect(new Rectangle(10, 30, 16, 16), this.getRecipeID(), new Object[0]));
+        this.transferRects.add(
+                new RecipeTransferRect(new Rectangle(10, 30, 16, 16), this.getRecipeID()));
     }
 
     @Override
