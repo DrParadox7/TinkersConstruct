@@ -18,5 +18,5 @@ public interface IAccessoryModel {
      * @return Resource location of the texture. Return null for none
      */
     @SideOnly(Side.CLIENT)
-    public ResourceLocation getWearbleTexture(Entity entity, ItemStack stack, int slot);
+    ResourceLocation getWearbleTexture(Entity entity, ItemStack stack, int slot);
 }

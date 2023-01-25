@@ -5,8 +5,7 @@ import net.minecraft.item.ItemStack;
 import tconstruct.library.crafting.PatternBuilder.MaterialSet;
 
 public interface IPattern {
+    int getPatternCost(ItemStack pattern);
 
-    public int getPatternCost(ItemStack pattern);
-
-    public ItemStack getPatternOutput(ItemStack pattern, ItemStack input, MaterialSet set);
+    ItemStack getPatternOutput(ItemStack pattern, ItemStack input, MaterialSet set);
 }
