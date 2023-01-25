@@ -40,11 +40,8 @@ public class DualMaterialToolPart extends DynamicToolPart {
 
     public int getMaterialID2(ItemStack stack) {
         if (!stack.hasTagCompound()) return -1;
-
         int id = stack.getTagCompound().getCompoundTag("DualMat").getInteger("Material2");
-
-        if (TConstructRegistry.toolMaterials.keySet().contains(id)) return id;
-
+        if (TConstructRegistry.toolMaterials.containsKey(id)) return id;
         return -1;
     }
 
