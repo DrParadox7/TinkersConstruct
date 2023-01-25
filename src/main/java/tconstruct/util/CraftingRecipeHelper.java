@@ -104,8 +104,8 @@ public class CraftingRecipeHelper {
         for (int var16 = 0; var16 < var5 * var6; ++var16) {
             char var10 = var3.charAt(var16);
 
-            if (var12.containsKey(Character.valueOf(var10))) {
-                var15[var16] = ((ItemStack) var12.get(Character.valueOf(var10))).copy();
+            if (var12.containsKey(var10)) {
+                var15[var16] = ((ItemStack) var12.get(var10)).copy();
             } else {
                 var15[var16] = null;
             }
