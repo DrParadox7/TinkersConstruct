@@ -85,8 +85,7 @@ public class Detailing {
         return null;
     }
 
-    public class DetailInput {
-
+    public static class DetailInput {
         public ItemStack input;
         public int inputMeta;
         public ItemStack output;
