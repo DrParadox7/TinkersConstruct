@@ -13,9 +13,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 import mantle.blocks.abstracts.MultiItemBlock;
 
 public class CraftedSoilItemBlock extends MultiItemBlock {
-
-    public static final String blockTypes[] = { "Slime", "Grout", "BlueSlime", "GraveyardSoil", "ConsecratedSoil",
-            "blue", "dirt", "Grout" };
+    public static final String[] blockTypes = {
+        "Slime", "Grout", "BlueSlime", "GraveyardSoil", "ConsecratedSoil", "blue", "dirt", "Grout"
+    };
 
     public CraftedSoilItemBlock(Block b) {
         super(b, "CraftedSoil", blockTypes);

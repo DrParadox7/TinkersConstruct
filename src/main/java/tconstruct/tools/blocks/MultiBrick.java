@@ -14,10 +14,22 @@ import cpw.mods.fml.relauncher.SideOnly;
 import tconstruct.blocks.TConstructBlock;
 
 public class MultiBrick extends TConstructBlock {
-
-    static String blockTextures[] = { "brick_obsidian", "brick_sandstone", "brick_netherrack", "brick_stone_refined",
-            "brick_iron", "brick_gold", "brick_lapis", "brick_diamond", "brick_redstone", "brick_bone", "brick_slime",
-            "brick_blueslime", "brick_endstone", "brick_obsidian_ingot" };
+    static String[] blockTextures = {
+        "brick_obsidian",
+        "brick_sandstone",
+        "brick_netherrack",
+        "brick_stone_refined",
+        "brick_iron",
+        "brick_gold",
+        "brick_lapis",
+        "brick_diamond",
+        "brick_redstone",
+        "brick_bone",
+        "brick_slime",
+        "brick_blueslime",
+        "brick_endstone",
+        "brick_obsidian_ingot"
+    };
 
     public MultiBrick() {
         super(Material.rock, 3f, blockTextures);

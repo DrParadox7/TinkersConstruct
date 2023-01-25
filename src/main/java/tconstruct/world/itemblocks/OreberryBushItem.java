@@ -1,7 +1,9 @@
 package tconstruct.world.itemblocks;
 
+import cpw.mods.fml.relauncher.*;
 import java.util.List;
-
+import mantle.blocks.abstracts.MultiItemBlock;
+import mantle.world.WorldHelper;
 import net.minecraft.block.Block;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
@@ -9,18 +11,14 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import mantle.blocks.abstracts.MultiItemBlock;
-import mantle.world.WorldHelper;
 import tconstruct.world.TinkerWorld;
 
 public class OreberryBushItem extends MultiItemBlock {
-
     public Block blockB;
-    public static final String blockTypes[] = { "iron", "gold", "copper", "tin", "iron", "gold", "copper", "tin",
-            "iron", "gold", "copper", "tin", "iron", "gold", "copper", "tin" };
+    public static final String[] blockTypes = {
+        "iron", "gold", "copper", "tin", "iron", "gold", "copper", "tin", "iron", "gold", "copper", "tin", "iron",
+        "gold", "copper", "tin"
+    };
 
     public OreberryBushItem(Block b) {
         super(b, "block.oreberry", blockTypes);
@@ -35,8 +33,17 @@ public class OreberryBushItem extends MultiItemBlock {
 
     /* Place bushes on dirt, grass, or other bushes only */
     @Override
-    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side,
-            float par8, float par9, float par10) {
+    public boolean onItemUse(
+            ItemStack stack,
+            EntityPlayer player,
+            World world,
+            int x,
+            int y,
+            int z,
+            int side,
+            float par8,
+            float par9,
+            float par10) {
         if (side != 1) return false;
         else if (player.canPlayerEdit(x, y, z, side, stack) && player.canPlayerEdit(x, y + 1, z, side, stack)) {
             Block block = world.getBlock(x, y, z);

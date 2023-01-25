@@ -10,8 +10,7 @@ import net.minecraft.util.StatCollector;
 import mantle.blocks.abstracts.MultiItemBlock;
 
 public class SearedTableItemBlock extends MultiItemBlock {
-
-    public static final String blockTypes[] = { "Table", "Faucet", "Basin" };
+    public static final String[] blockTypes = {"Table", "Faucet", "Basin"};
 
     public SearedTableItemBlock(Block b) {
         super(b, "SearedBlock", blockTypes);

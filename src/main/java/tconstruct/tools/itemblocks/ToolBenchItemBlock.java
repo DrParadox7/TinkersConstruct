@@ -6,7 +6,7 @@ import mantle.blocks.abstracts.MultiItemBlock;
 
 public class ToolBenchItemBlock extends MultiItemBlock {
 
-    public static final String blockTypes[] = { "Bench", "Parts", "Parts", "Parts", "Parts", "PatternChest",
+    public static final String[] blockTypes = { "Bench", "Parts", "Parts", "Parts", "Parts", "PatternChest",
             "PatternChest", "PatternChest", "PatternChest", "PatternChest", "PatternShaper", "PatternShaper",
             "PatternShaper", "PatternShaper", "MoldingTable", "CastingTable" };
 

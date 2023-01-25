@@ -5,8 +5,7 @@ import net.minecraft.block.Block;
 import mantle.blocks.abstracts.MultiItemBlock;
 
 public class CastingChannelItem extends MultiItemBlock {
-
-    public static final String blockTypes[] = { "Channel" };
+    public static final String[] blockTypes = {"Channel"};
 
     public CastingChannelItem(Block b) {
         super(b, "Smeltery", blockTypes);

@@ -10,8 +10,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import mantle.blocks.abstracts.MultiItemBlock;
 
 public class GlassBlockItem extends MultiItemBlock {
-
-    public static final String blockTypes[] = { "pure" }; // , "soul",
+    public static final String[] blockTypes = {"pure"}; // , "soul",
     // "soul.pure" };
 
     public GlassBlockItem(Block b) {

@@ -40,7 +40,7 @@ public class ModLapis extends ItemModTypeFilter {
             if (!tags.hasKey(key)) return tags.getInteger("Modifiers") > 0 && matchingAmount(input) <= max;
 
             int[] keyPair = tags.getIntArray(key);
-            return keyPair[0] + matchingAmount(input) <= max;
+            if (keyPair[0] + matchingAmount(input) <= max) return true;
         }
         return false;
     }

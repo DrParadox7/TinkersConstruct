@@ -41,7 +41,7 @@ public class BattlesignTesr extends TileEntitySpecialRenderer {
                 break;
         }
 
-        String strings[] = te.getText();
+        String[] strings = te.getText();
 
         if (strings != null && strings.length > 0) {
             float lum = calcLuminance(

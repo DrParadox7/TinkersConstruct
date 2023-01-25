@@ -14,11 +14,24 @@ import cpw.mods.fml.relauncher.SideOnly;
 import tconstruct.blocks.TConstructBlock;
 
 public class MultiBrickFancy extends TConstructBlock {
-
-    static String blockTextures[] = { "fancybrick_obsidian", "fancybrick_sandstone", "fancybrick_netherrack",
-            "fancybrick_stone_refined", "fancybrick_iron", "fancybrick_gold", "fancybrick_lapis", "fancybrick_diamond",
-            "fancybrick_redstone", "fancybrick_bone", "fancybrick_slime", "fancybrick_blueslime", "fancybrick_endstone",
-            "fancybrick_obsidian_ingot", "fancybrick_stone", "road_stone" };
+    static String[] blockTextures = {
+        "fancybrick_obsidian",
+        "fancybrick_sandstone",
+        "fancybrick_netherrack",
+        "fancybrick_stone_refined",
+        "fancybrick_iron",
+        "fancybrick_gold",
+        "fancybrick_lapis",
+        "fancybrick_diamond",
+        "fancybrick_redstone",
+        "fancybrick_bone",
+        "fancybrick_slime",
+        "fancybrick_blueslime",
+        "fancybrick_endstone",
+        "fancybrick_obsidian_ingot",
+        "fancybrick_stone",
+        "road_stone"
+    };
 
     public MultiBrickFancy() {
         super(Material.rock, 3f, blockTextures);

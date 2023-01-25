@@ -304,7 +304,7 @@ public class SmelteryGui extends ActiveContainerGui {
     }
 
     protected int[] calcLiquidHeights() {
-        int fluidHeights[] = new int[logic.moltenMetal.size()];
+        int[] fluidHeights = new int[logic.moltenMetal.size()];
         int cap = logic.getCapacity();
         if (logic.getTotalLiquid() > cap) cap = logic.getTotalLiquid();
         for (int i = 0; i < logic.moltenMetal.size(); i++) {

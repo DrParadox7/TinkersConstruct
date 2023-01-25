@@ -14,8 +14,7 @@ import mantle.blocks.abstracts.MultiItemBlock;
 import tconstruct.smeltery.logic.LavaTankLogic;
 
 public class LavaTankItemBlock extends MultiItemBlock implements IFluidContainerItem {
-
-    public static final String blockTypes[] = { "Tank", "Gague", "Window" };
+    public static final String[] blockTypes = {"Tank", "Gague", "Window"};
 
     public LavaTankItemBlock(Block b) {
         super(b, "LavaTank", blockTypes);

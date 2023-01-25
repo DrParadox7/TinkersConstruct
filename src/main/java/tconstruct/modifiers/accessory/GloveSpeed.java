@@ -31,7 +31,7 @@ public class GloveSpeed extends ItemModTypeFilter {
                                                                                                                 // line
                                                                                                                 // fails?
 
-            int keyPair[] = tags.getIntArray(key);
+            int[] keyPair = tags.getIntArray(key);
             if (keyPair[0] + matchingAmount(modifiers) <= keyPair[1]) return true;
             else if (keyPair[0] == keyPair[1]) return tags.getInteger("Modifiers") > 0;
         }
