@@ -56,7 +56,7 @@ public class TBaseWorldGenerator implements IWorldGenerator {
 
         generateUndergroundOres(random, xChunk, zChunk, world);
 
-        if (biomeName == "Extreme Hills Edge" || biomeName == "Extreme Hills") {
+        if ("Extreme Hills Edge".equals(biomeName) || "Extreme Hills".equals(biomeName)) {
             generateUndergroundOres(random, xChunk, zChunk, world);
         }
     }

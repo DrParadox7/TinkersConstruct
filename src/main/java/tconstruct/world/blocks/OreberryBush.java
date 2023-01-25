@@ -62,7 +62,7 @@ public class OreberryBush extends BlockLeavesBase implements IPlantable {
         this.fancyIcons = new IIcon[textureNames.length];
 
         for (int i = 0; i < this.fastIcons.length; i++) {
-            if (textureNames[i] != "") {
+            if (!"".equals(textureNames[i])) {
                 this.fastIcons[i] = iconRegister.registerIcon("tinker:crops/" + textureNames[i] + "_fast");
                 this.fancyIcons[i] = iconRegister.registerIcon("tinker:crops/" + textureNames[i] + "_fancy");
             }
