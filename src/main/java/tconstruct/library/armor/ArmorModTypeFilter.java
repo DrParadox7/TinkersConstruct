@@ -55,8 +55,7 @@ public abstract class ArmorModTypeFilter extends ArmorMod {
     public int matchingAmount(ItemStack[] input) {
         int amount = 0;
         for (ItemStack inputStack : input) {
-            if (inputStack == null) continue;
-            else {
+            if (inputStack != null) {
                 for (int iter = 0; iter < stacks.size(); iter++) {
                     ItemStack stack = (ItemStack) stacks.get(iter);
                     if (stack.getItemDamage() == Short.MAX_VALUE) {
