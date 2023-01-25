@@ -111,11 +111,11 @@ public class TPlayerStats implements IExtendedEntityProperties, IPlayerExtendedI
         }
     }
 
-    public static final void register(EntityPlayer player) {
+    public static void register(EntityPlayer player) {
         player.registerExtendedProperties(TPlayerStats.PROP_NAME, new TPlayerStats(player));
     }
 
-    public static final TPlayerStats get(EntityPlayer player) {
+    public static TPlayerStats get(EntityPlayer player) {
         return (TPlayerStats) player.getExtendedProperties(PROP_NAME);
     }
 

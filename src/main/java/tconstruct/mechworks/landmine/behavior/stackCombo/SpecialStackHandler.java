@@ -79,11 +79,11 @@ public abstract class SpecialStackHandler {
         }
     }
 
-    public static final int arrayIndexOfStack(ArrayList<ItemStack> stacks, ItemStack item) {
+    public static int arrayIndexOfStack(ArrayList<ItemStack> stacks, ItemStack item) {
         return Behavior.arrayIndexOfStack(stacks, item);
     }
 
-    public static final boolean arrayContainsEqualStack(ArrayList<ItemStack> stacks, ItemStack item) {
+    public static boolean arrayContainsEqualStack(ArrayList<ItemStack> stacks, ItemStack item) {
         return Behavior.arrayContainsEqualStack(stacks, item);
     }
 

@@ -172,7 +172,7 @@ public abstract class Behavior {
         return true;
     }
 
-    public static final int arrayIndexOfStack(ArrayList<ItemStack> stacks, ItemStack item) {
+    public static int arrayIndexOfStack(ArrayList<ItemStack> stacks, ItemStack item) {
         Iterator<ItemStack> i1 = stacks.iterator();
 
         int index = 0;
@@ -188,7 +188,7 @@ public abstract class Behavior {
         return -1;
     }
 
-    public static final boolean arrayContainsEqualStack(ArrayList<ItemStack> stacks, ItemStack item) {
+    public static boolean arrayContainsEqualStack(ArrayList<ItemStack> stacks, ItemStack item) {
         for (ItemStack stack : stacks) {
             if (stack.isItemEqual(item)) {
                 return true;
