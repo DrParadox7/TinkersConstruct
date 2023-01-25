@@ -43,6 +43,7 @@ public class MultiBrickFancy extends TConstructBlock {
         int meta = world.getBlockMetadata(x, y, z);
         switch (meta) {
             case 0:
+            case 13:
                 return Blocks.obsidian.getBlockHardness(world, x, y, z);
             case 1:
                 return Blocks.sandstone.getBlockHardness(world, x, y, z);
@@ -61,13 +62,10 @@ public class MultiBrickFancy extends TConstructBlock {
             case 9:
                 return 1.0F;
             case 10:
-                return 1.5F;
             case 11:
                 return 1.5F;
             case 12:
                 return Blocks.end_stone.getBlockHardness(world, x, y, z);
-            case 13:
-                return Blocks.obsidian.getBlockHardness(world, x, y, z);
             case 3:
             case 14:
             case 15:
@@ -83,8 +81,9 @@ public class MultiBrickFancy extends TConstructBlock {
         int meta = world.getBlockMetadata(x, y, z);
         switch (meta) {
             case 0:
-                return Blocks.obsidian
-                        .getExplosionResistance(entity, world, meta, meta, meta, explosionZ, explosionZ, explosionZ);
+            case 13:
+                return Blocks.obsidian.getExplosionResistance(
+                        entity, world, meta, meta, meta, explosionZ, explosionZ, explosionZ);
             case 1:
                 return Blocks.sandstone
                         .getExplosionResistance(entity, world, meta, meta, meta, explosionZ, explosionZ, explosionZ);
@@ -109,15 +108,11 @@ public class MultiBrickFancy extends TConstructBlock {
             case 9:
                 return 1.0F;
             case 10:
-                return 1.5F;
             case 11:
                 return 1.5F;
             case 12:
-                return Blocks.end_stone
-                        .getExplosionResistance(entity, world, meta, meta, meta, explosionZ, explosionZ, explosionZ);
-            case 13:
-                return Blocks.obsidian
-                        .getExplosionResistance(entity, world, meta, meta, meta, explosionZ, explosionZ, explosionZ);
+                return Blocks.end_stone.getExplosionResistance(
+                        entity, world, meta, meta, meta, explosionZ, explosionZ, explosionZ);
             case 3:
             case 14:
             case 15:

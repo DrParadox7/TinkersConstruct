@@ -134,8 +134,6 @@ public abstract class Behavior {
         ForgeDirection dir = Helper.convertMetaToForgeOrientation(par1World.getBlockMetadata(par2, par3, par4));
 
         switch (dir) {
-            case DOWN:
-                return EnumFacing.UP;
             case UP:
                 return EnumFacing.DOWN;
             case WEST:
@@ -146,6 +144,7 @@ public abstract class Behavior {
                 return EnumFacing.NORTH;
             case NORTH:
                 return EnumFacing.SOUTH;
+            case DOWN:
             default:
                 return EnumFacing.UP;
         }

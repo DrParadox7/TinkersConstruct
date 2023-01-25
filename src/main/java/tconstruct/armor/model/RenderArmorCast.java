@@ -28,13 +28,9 @@ public class RenderArmorCast implements IItemRenderer {
     public boolean shouldUseRenderHelper(ItemRenderType type, ItemStack item, ItemRendererHelper helper) {
         switch (helper) {
             case BLOCK_3D:
-                return true;
             case ENTITY_BOBBING:
-                return true;
             case ENTITY_ROTATION:
-                return true;
             case EQUIPPED_BLOCK:
-                return true;
             case INVENTORY_BLOCK:
                 return true;
             default:
@@ -59,8 +55,6 @@ public class RenderArmorCast implements IItemRenderer {
                 GL11.glTranslatef(0F, -0.1F, 0F);
                 break;
             case EQUIPPED:
-                GL11.glScalef(1F, 0.6F, 1F);
-                break;
             case EQUIPPED_FIRST_PERSON:
                 GL11.glScalef(1F, 0.6F, 1F);
                 break;

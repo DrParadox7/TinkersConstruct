@@ -55,15 +55,12 @@ public class Shuriken extends AmmoWeapon {
     public String getIconSuffix(int partType) {
         switch (partType) {
             case 0:
+            case 2:
+            case 3:
+            case 4:
                 return "_shuriken";
             case 1:
                 return ""; // no broken, since it runs out of ammo
-            case 2:
-                return "_shuriken";
-            case 3:
-                return "_shuriken";
-            case 4:
-                return "_shuriken";
             default:
                 return "";
         }

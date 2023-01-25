@@ -119,13 +119,11 @@ public class BattlesignGui extends GuiScreen {
 
                     break;
                 case 28:
+                case 208:
                     moveLine(1);
                     break;
                 case 200:
                     moveLine(-1);
-                    break;
-                case 208:
-                    moveLine(1);
                     break;
             }
         }

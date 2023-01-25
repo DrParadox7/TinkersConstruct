@@ -171,10 +171,9 @@ public class Shortbow extends BowBase {
 
     public String getBowstringName(int type) {
         switch (type) {
-            case 0:
-                return "";
             case 1:
                 return "\u00A7bEnchanted";
+            case 0:
             default:
                 return "";
         }

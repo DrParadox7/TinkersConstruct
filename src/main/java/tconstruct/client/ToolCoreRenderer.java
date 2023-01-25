@@ -37,13 +37,12 @@ public class ToolCoreRenderer implements IItemRenderer {
 
         switch (type) {
             case ENTITY:
+            case INVENTORY:
                 return true;
             case EQUIPPED:
                 GL11.glTranslatef(0.03f, 0F, -0.09375F);
             case EQUIPPED_FIRST_PERSON:
                 return !isEntity;
-            case INVENTORY:
-                return true;
             default:
                 TConstruct.logger.warn("[TCon] Unhandled render case!");
             case FIRST_PERSON_MAP:

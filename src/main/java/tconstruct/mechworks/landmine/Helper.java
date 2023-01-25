@@ -15,8 +15,10 @@ public class Helper {
     public static ForgeDirection convertMetaToForgeOrientation(int metadata) {
         switch (metadata) {
             case 6:
+            case 5:
                 return ForgeDirection.DOWN;
             case 7:
+            case 0:
                 return ForgeDirection.UP;
             case 1:
                 return ForgeDirection.WEST;
@@ -26,10 +28,6 @@ public class Helper {
                 return ForgeDirection.EAST;
             case 4:
                 return ForgeDirection.SOUTH;
-            case 5:
-                return ForgeDirection.DOWN;
-            case 0:
-                return ForgeDirection.UP;
         }
 
         return ForgeDirection.UNKNOWN;
