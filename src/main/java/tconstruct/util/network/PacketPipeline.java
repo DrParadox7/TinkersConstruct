@@ -69,7 +69,7 @@ public class PacketPipeline extends MessageToMessageCodec<FMLProxyPacket, Abstra
 
     // In line encoding of the packet, including discriminator setting
     @Override
-    protected void encode(ChannelHandlerContext ctx, AbstractPacket msg, List<Object> out) throws Exception {
+    protected void encode(ChannelHandlerContext ctx, AbstractPacket msg, List<Object> out) {
         ByteBuf buffer = Unpooled.buffer();
         Class<? extends AbstractPacket> clazz = msg.getClass();
         if (!this.packets.contains(msg.getClass())) {

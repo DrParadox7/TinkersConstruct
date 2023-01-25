@@ -252,11 +252,11 @@ public class ArmorExtended implements IInventory {
     @Override
     public void closeInventory() {}
 
-    public void writeInventoryToStream(ByteBuf os) throws IOException {
+    public void writeInventoryToStream(ByteBuf os) {
         for (int i = 0; i < inventory.length; i++) ByteBufUtils.writeItemStack(os, inventory[i]);
     }
 
-    public void readInventoryFromStream(ByteBuf is) throws IOException {
+    public void readInventoryFromStream(ByteBuf is) {
         for (int i = 0; i < inventory.length; i++) inventory[i] = ByteBufUtils.readItemStack(is);
     }
 }

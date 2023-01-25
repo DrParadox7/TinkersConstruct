@@ -174,11 +174,11 @@ public class KnapsackInventory implements IInventory {
     @Override
     public void closeInventory() {}
 
-    public void writeInventoryToStream(ByteBuf os) throws IOException {
+    public void writeInventoryToStream(ByteBuf os) {
         for (int i = 0; i < 27; i++) ByteBufUtils.writeItemStack(os, inventory[i]);
     }
 
-    public void readInventoryFromStream(ByteBuf is) throws IOException {
+    public void readInventoryFromStream(ByteBuf is) {
         for (int i = 0; i < 27; i++) inventory[i] = ByteBufUtils.readItemStack(is);
     }
 }
