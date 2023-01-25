@@ -31,9 +31,7 @@ public abstract class EquipLogic extends InventoryLogic {
 
     @Override
     public void setInventorySlotContents(int slot, ItemStack stack) {
-        if (slot == 0) {
-            return;
-        } else {
+        if (slot != 0) {
             super.setInventorySlotContents(slot, stack);
         }
     }
