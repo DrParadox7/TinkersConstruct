@@ -81,8 +81,9 @@ public class ModButtertouch extends ModBoolean {
         boolean hasEnchant = false;
         while (iterator.hasNext()) {
             NBTTagCompound enchantTag = new NBTTagCompound();
-            index = (Integer) iterator.next();
-            lvl = (Integer) enchantMap.get(index);
+            final Map.Entry<Integer, Integer> next = iterator.next();
+            index = next.getKey();
+            lvl = next.getValue();
             if (index == enchant.effectId) {
                 hasEnchant = true;
                 enchantTag.setShort("id", (short) index);
