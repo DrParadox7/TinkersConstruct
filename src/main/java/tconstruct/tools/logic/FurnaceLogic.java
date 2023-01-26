@@ -312,7 +312,7 @@ public class FurnaceLogic extends InventoryLogic implements IActiveLogic, IFacin
 
     @Override
     public boolean isItemValidForSlot(int par1, ItemStack par2ItemStack) {
-        return par1 == 2 ? false : (par1 == 1 ? isItemFuel(par2ItemStack) : true);
+        return par1 != 2 && (par1 != 1 || isItemFuel(par2ItemStack));
     }
 
     @Override

@@ -50,7 +50,7 @@ public class GlassBlockStained extends TConstructBlock {
     @SideOnly(Side.CLIENT)
     public boolean shouldSideBeRendered(IBlockAccess world, int x, int y, int z, int side) {
         Block block = world.getBlock(x, y, z);
-        return block == this ? false : super.shouldSideBeRendered(world, x, y, z, side);
+        return block != this && super.shouldSideBeRendered(world, x, y, z, side);
     }
 
     @Override

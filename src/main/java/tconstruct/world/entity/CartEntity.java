@@ -902,7 +902,7 @@ public class CartEntity extends Entity implements IInventory, IEntityAdditionalS
      */
     @Override
     public boolean isUseableByPlayer(EntityPlayer par1EntityPlayer) {
-        return this.isDead ? false : par1EntityPlayer.getDistanceSqToEntity(this) <= 64.0D;
+        return !this.isDead && par1EntityPlayer.getDistanceSqToEntity(this) <= 64.0D;
     }
 
     /**
