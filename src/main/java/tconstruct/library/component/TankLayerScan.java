@@ -236,14 +236,14 @@ public class TankLayerScan extends LogicComponent {
     public int recurseStructureDown(int y) {
         Iterator<CoordTuple> i = layerAirCoords.iterator();
         if (i.hasNext()) {
-            CoordTuple coord = (CoordTuple) i.next();
+            CoordTuple coord = i.next();
             if (checkAir(coord.x, y, coord.z)) {
                 boolean valid = true;
                 addAirBlock(coord.x, y, coord.z); // Don't skip first one
 
                 // Air blocks
                 while (i.hasNext()) {
-                    coord = (CoordTuple) i.next();
+                    coord = i.next();
                     if (checkAir(coord.x, y, coord.z)) {
                         addAirBlock(coord.x, y, coord.z);
                     } else {
@@ -255,7 +255,7 @@ public class TankLayerScan extends LogicComponent {
                 // Bricks
                 i = layerBlockCoords.iterator();
                 while (i.hasNext()) {
-                    coord = (CoordTuple) i.next();
+                    coord = i.next();
                     if (checkServant(coord.x, y, coord.z)) blockCoords.add(new CoordTuple(coord.x, y, coord.z));
                     else {
                         valid = false;
@@ -268,7 +268,7 @@ public class TankLayerScan extends LogicComponent {
                 // Bottom floor. All blocks, please vacate the elevator
                 boolean valid = true;
                 while (i.hasNext()) {
-                    coord = (CoordTuple) i.next();
+                    coord = i.next();
 
                     if (checkServant(coord.x, y, coord.z)) blockCoords.add(new CoordTuple(coord.x, y, coord.z));
                     else {
@@ -286,13 +286,13 @@ public class TankLayerScan extends LogicComponent {
     public int recurseStructureUp(int y) {
         Iterator<CoordTuple> i = layerBlockCoords.iterator();
         if (i.hasNext()) {
-            CoordTuple coord = (CoordTuple) i.next();
+            CoordTuple coord = i.next();
             if (checkServant(coord.x, y, coord.z)) {
                 boolean valid = true;
 
                 // Bricks
                 while (i.hasNext()) {
-                    coord = (CoordTuple) i.next();
+                    coord = i.next();
                     if (checkServant(coord.x, y, coord.z)) blockCoords.add(new CoordTuple(coord.x, y, coord.z));
                     else {
                         valid = false;
@@ -304,7 +304,7 @@ public class TankLayerScan extends LogicComponent {
                 if (valid) {
                     i = layerAirCoords.iterator();
                     while (i.hasNext()) {
-                        coord = (CoordTuple) i.next();
+                        coord = i.next();
                         if (checkAir(coord.x, y, coord.z)) {
                             addAirBlock(coord.x, y, coord.z);
                         } else {

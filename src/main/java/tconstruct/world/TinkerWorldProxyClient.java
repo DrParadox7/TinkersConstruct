@@ -197,12 +197,12 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
                             break;
                         case "mobSpell":
                             entityfx = new EntitySpellParticleFX(mc.theWorld, par2, par4, par6, 0.0D, 0.0D, 0.0D);
-                            ((EntityFX) entityfx).setRBGColorF((float) par8, (float) par10, (float) par12);
+                            entityfx.setRBGColorF((float) par8, (float) par10, (float) par12);
                             break;
                         case "mobSpellAmbient":
                             entityfx = new EntitySpellParticleFX(mc.theWorld, par2, par4, par6, 0.0D, 0.0D, 0.0D);
-                            ((EntityFX) entityfx).setAlphaF(0.15F);
-                            ((EntityFX) entityfx).setRBGColorF((float) par8, (float) par10, (float) par12);
+                            entityfx.setAlphaF(0.15F);
+                            entityfx.setRBGColorF((float) par8, (float) par10, (float) par12);
                             break;
                         case "spell":
                             entityfx = new EntitySpellParticleFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
@@ -215,7 +215,7 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
                             entityfx = new EntitySpellParticleFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
                             ((EntitySpellParticleFX) entityfx).setBaseSpellTextureIndex(144);
                             float f = mc.theWorld.rand.nextFloat() * 0.5F + 0.35F;
-                            ((EntityFX) entityfx).setRBGColorF(1.0F * f, 0.0F * f, 1.0F * f);
+                            entityfx.setRBGColorF(1.0F * f, 0.0F * f, 1.0F * f);
                             break;
                         case "note":
                             entityfx = new EntityNoteFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
@@ -272,13 +272,13 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
                             break;
                         case "angryVillager":
                             entityfx = new EntityHeartFX(mc.theWorld, par2, par4 + 0.5D, par6, par8, par10, par12);
-                            ((EntityFX) entityfx).setParticleTextureIndex(81);
-                            ((EntityFX) entityfx).setRBGColorF(1.0F, 1.0F, 1.0F);
+                            entityfx.setParticleTextureIndex(81);
+                            entityfx.setRBGColorF(1.0F, 1.0F, 1.0F);
                             break;
                         case "happyVillager":
                             entityfx = new EntityAuraFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
-                            ((EntityFX) entityfx).setParticleTextureIndex(82);
-                            ((EntityFX) entityfx).setRBGColorF(1.0F, 1.0F, 1.0F);
+                            entityfx.setParticleTextureIndex(82);
+                            entityfx.setRBGColorF(1.0F, 1.0F, 1.0F);
                             break;
                     }
 

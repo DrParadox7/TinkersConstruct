@@ -136,8 +136,8 @@ public class CrosshairHandler {
     }
 
     private void drawAlternateCrosshairPart(float width, float height, int part) {
-        double w = (double) width;
-        double h = (double) height;
+        double w = width;
+        double h = height;
 
         final double s = 8d;
         final double z = -90;
