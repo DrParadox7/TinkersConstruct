@@ -141,14 +141,12 @@ public class BlockLandmine extends BlockContainer {
                 && (!explodeOnBroken || !hasItems(par1World, par2, par3, par4))
                 && par6 != 193
                 && !tileentity.isExploding) {
-            if (this != null) {
-                ItemStack is = new ItemStack(this, 1, damageDropped(tileentity.triggerType));
-                if (tileentity.hasCustomInventoryName()) {
-                    is.setStackDisplayName(tileentity.getInventoryName());
-                }
-                dropBlockAsItem(
-                        par1World, par2, par3, par4, new ItemStack(this, 1, damageDropped(tileentity.triggerType)));
+            ItemStack is = new ItemStack(this, 1, damageDropped(tileentity.triggerType));
+            if (tileentity.hasCustomInventoryName()) {
+                is.setStackDisplayName(tileentity.getInventoryName());
             }
+            dropBlockAsItem(
+                    par1World, par2, par3, par4, new ItemStack(this, 1, damageDropped(tileentity.triggerType)));
 
             for (int j1 = 0; j1 < tileentity.getSizeInventory(); ++j1) {
                 ItemStack itemstack = tileentity.getStackInSlot(j1);

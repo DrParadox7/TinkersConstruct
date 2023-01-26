@@ -646,13 +646,7 @@ public class CartEntity extends Entity implements IInventory, IEntityAdditionalS
     public void applyEntityCollision(Entity par1Entity) {
         if (!this.worldObj.isRemote) {
             if (par1Entity != this.riddenByEntity) {
-                if (par1Entity instanceof EntityLiving
-                        && !(par1Entity instanceof EntityPlayer)
-                        && !(par1Entity instanceof EntityIronGolem)
-                        && canBeRidden()
-                        && this.motionX * this.motionX + this.motionZ * this.motionZ > 0.01D
-                        && this.riddenByEntity == null
-                        && par1Entity.ridingEntity == null) {
+                if (par1Entity instanceof EntityLiving && !(par1Entity instanceof EntityIronGolem) && canBeRidden() && this.motionX * this.motionX + this.motionZ * this.motionZ > 0.01D && this.riddenByEntity == null && par1Entity.ridingEntity == null) {
                     par1Entity.mountEntity(this);
                 }
 

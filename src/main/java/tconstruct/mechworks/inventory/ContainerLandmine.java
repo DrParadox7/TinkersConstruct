@@ -174,7 +174,7 @@ public class ContainerLandmine extends Container {
 
             if ((par3 == 0 || par3 == 1) && (par2 == 0 || par2 == 1)) {
                 if (par1 == -999) {
-                    if (inventoryplayer.getItemStack() != null && par1 == -999) {
+                    if (inventoryplayer.getItemStack() != null) {
                         if (par2 == 0) {
                             par4EntityPlayer.dropPlayerItemWithRandomChoice(inventoryplayer.getItemStack(), false);
                             inventoryplayer.setItemStack(null);
@@ -205,9 +205,7 @@ public class ContainerLandmine extends Container {
                             localObject2 = itemstack1.getItem();
                             itemstack = itemstack1.copy();
 
-                            if (slot2 != null
-                                    && slot2.getStack() != null
-                                    && slot2.getStack().getItem() == localObject2) {
+                            if (slot2.getStack() != null && slot2.getStack().getItem() == localObject2) {
                                 this.retrySlotClick(par1, par2, true, par4EntityPlayer);
                             }
                         }
@@ -244,11 +242,8 @@ public class ContainerLandmine extends Container {
                                 if (itemstack4.stackSize == 0) {
                                     inventoryplayer.setItemStack(null);
                                 }
-                            } else if (shouldDoStuff
-                                    && slot2 instanceof SlotBehavedOnly
-                                    && itemstack4 != null
-                                    && slot2.isItemValid(
-                                            new ItemStack(itemstack4.getItem(), 1, itemstack4.getItemDamage()))) {
+                            } else if (shouldDoStuff && itemstack4 != null && slot2.isItemValid(
+                                    new ItemStack(itemstack4.getItem(), 1, itemstack4.getItemDamage()))) {
                                 k1 = par2 == 0 ? 1 : 1;
 
                                 if (k1 > slot2.getSlotStackLimit()) {
