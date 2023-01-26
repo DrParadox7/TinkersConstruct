@@ -18,8 +18,7 @@ import tconstruct.library.modifier.IModifyable;
 import tconstruct.util.network.HealthUpdatePacket;
 
 public class ArmorAbilities {
-
-    public static List<String> stepBoostedPlayers = new ArrayList();
+    public static List<String> stepBoostedPlayers = new ArrayList<>();
     // ItemStack prevFeet;
     double prevMotionY;
 

@@ -131,7 +131,7 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
             }
 
             Entity entity = null;
-            List list = this.worldObj.getEntitiesWithinAABBExcludingEntity(
+            List<Entity> list = this.worldObj.getEntitiesWithinAABBExcludingEntity(
                     this,
                     this.boundingBox
                             .addCoord(this.motionX, this.motionY, this.motionZ)
@@ -141,7 +141,7 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
             float ySpeed;
 
             for (l = 0; l < list.size(); ++l) {
-                Entity entity1 = (Entity) list.get(l);
+                Entity entity1 = list.get(l);
 
                 if (entity1.canBeCollidedWith() && (entity1 != this.shootingEntity || this.ticksInAir >= 5)) {
                     ySpeed = 0.3F;

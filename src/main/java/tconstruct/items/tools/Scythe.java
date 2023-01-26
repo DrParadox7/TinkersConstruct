@@ -265,9 +265,9 @@ public class Scythe extends Weapon {
                         entity.posY + 1.0D,
                         entity.posZ + 1.0D)
                 .expand(1.0D, 1.0D, 1.0D);
-        List list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, box);
-        for (Object o : list) {
-            AbilityHelper.onLeftClickEntity(stack, player, (Entity) o, this);
+        List<Entity> list = player.worldObj.getEntitiesWithinAABBExcludingEntity(player, box);
+        for (Entity e : list) {
+            AbilityHelper.onLeftClickEntity(stack, player, e, this);
         }
         return true;
     }

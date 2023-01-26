@@ -21,8 +21,8 @@ public class AlloyMix {
      */
 
     public FluidStack mix(ArrayList<FluidStack> liquids) {
-        ArrayList<FluidStack> copyMix = new ArrayList(mixers);
-        ArrayList effectiveAmount = new ArrayList();
+        ArrayList<FluidStack> copyMix = new ArrayList<>(mixers);
+        ArrayList<Integer> effectiveAmount = new ArrayList<>();
 
         for (FluidStack liquid : liquids) {
             for (FluidStack mixer : copyMix) {
@@ -42,7 +42,7 @@ public class AlloyMix {
 
         // Remove old liquids
         int low = getLowestAmount(effectiveAmount);
-        ArrayList<FluidStack> copyMix2 = new ArrayList(mixers);
+        ArrayList<FluidStack> copyMix2 = new ArrayList<>(mixers);
 
         for (int i = 0; i < liquids.size(); i++) {
             FluidStack liquid = liquids.get(i);
@@ -67,12 +67,14 @@ public class AlloyMix {
         return ret;
     }
 
-    int getLowestAmount(ArrayList list) {
-        int frist = (Integer) list.get(0); // FRIST!!!
+    int getLowestAmount(ArrayList<Integer> list) {
+        int first = list.get(0);
         for (int i = 1; i < list.size(); i++) {
-            int compare = (Integer) list.get(i);
-            if (frist > compare) frist = compare;
+            int compare = list.get(i);
+            if (first > compare) {
+                first = compare;
+            }
         }
-        return frist;
+        return first;
     }
 }

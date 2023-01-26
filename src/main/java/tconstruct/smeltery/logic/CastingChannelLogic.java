@@ -29,9 +29,9 @@ public class CastingChannelLogic extends TileEntity implements IFluidHandler {
     public static final int fillMax = TConstruct.ingotLiquidValue * 3;
     public static final int outputMax = TConstruct.ingotLiquidValue;
     FluidTank internalTank = new FluidTank(fillMax);
-    HashMap<ForgeDirection, FluidTank> subTanks = new HashMap();
+    HashMap<ForgeDirection, FluidTank> subTanks = new HashMap<>();
     public ForgeDirection lastProvider;
-    public ArrayList<ForgeDirection> validOutputs = new ArrayList();
+    public ArrayList<ForgeDirection> validOutputs = new ArrayList<>();
     public int ticks = 0;
     public int recentlyFilledDelay;
 
@@ -274,7 +274,7 @@ public class CastingChannelLogic extends TileEntity implements IFluidHandler {
     }
 
     public HashMap<ForgeDirection, TileEntity> getOutputs() {
-        HashMap<ForgeDirection, TileEntity> map = new HashMap();
+        HashMap<ForgeDirection, TileEntity> map = new HashMap<>();
         for (ForgeDirection fd : this.validOutputs) {
             int tX = this.xCoord + fd.offsetX;
             int tY = this.yCoord + fd.offsetY;
@@ -369,7 +369,7 @@ public class CastingChannelLogic extends TileEntity implements IFluidHandler {
 
         int[] validFDs = tags.getIntArray("validOutputs");
         if (validFDs != null) {
-            validOutputs = new ArrayList();
+            validOutputs = new ArrayList<>();
             for (int i : validFDs) validOutputs.add(convertIntToFD(i));
         }
         /*

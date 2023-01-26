@@ -14,7 +14,7 @@ public class MiningExplosion extends Explosion {
     World world;
     private final Random random = new Random();
     private final int field_77289_h = 16;
-    private final Map field_77288_k = new HashMap();
+    private final Map<Entity, Vec3> field_77288_k = new HashMap<>();
 
     public MiningExplosion(World par1World, Entity par2Entity, double par3, double par5, double par7, float par9) {
         super(par1World, par2Entity, par3, par5, par7, par9);
@@ -24,7 +24,7 @@ public class MiningExplosion extends Explosion {
     @Override
     public void doExplosionA() {
         float f = this.explosionSize;
-        HashSet hashset = new HashSet();
+        HashSet<ChunkPosition> hashset = new HashSet<>();
         int i;
         int j;
         int k;
@@ -146,7 +146,7 @@ public class MiningExplosion extends Explosion {
                     "largeexplode", this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D);
         }
 
-        Iterator iterator;
+        Iterator<ChunkPosition> iterator;
         ChunkPosition chunkposition;
         int i;
         int j;
@@ -157,7 +157,7 @@ public class MiningExplosion extends Explosion {
             iterator = this.affectedBlockPositions.iterator();
 
             while (iterator.hasNext()) {
-                chunkposition = (ChunkPosition) iterator.next();
+                chunkposition = iterator.next();
                 i = chunkposition.chunkPosX;
                 j = chunkposition.chunkPosY;
                 k = chunkposition.chunkPosZ;

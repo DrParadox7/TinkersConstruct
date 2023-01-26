@@ -12,7 +12,7 @@ import net.minecraft.nbt.NBTTagCompound;
 public abstract class ItemModifier {
 
     public final String key;
-    public final List stacks;
+    public final List<ItemStack> stacks;
     public final int effectIndex;
     public static Random random = new Random();
 
