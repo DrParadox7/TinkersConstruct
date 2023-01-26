@@ -1,23 +1,15 @@
 package tconstruct.plugins.mfr;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
-
+import java.util.*;
 import net.minecraft.block.Block;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.world.World;
-
-import powercrystals.minefactoryreloaded.api.HarvestType;
-import powercrystals.minefactoryreloaded.api.IFactoryHarvestable;
+import powercrystals.minefactoryreloaded.api.*;
 
 public class HarvestableOreBerry implements IFactoryHarvestable {
-
-    private Block _sourceBlock;
-    private Item _berryItem;
-    private int _metaOffset;
+    private final Block _sourceBlock;
+    private final Item _berryItem;
+    private final int _metaOffset;
 
     public HarvestableOreBerry(Block sourceBlock, Item berryItem, int metaOffset) {
         _sourceBlock = sourceBlock;
@@ -46,9 +38,9 @@ public class HarvestableOreBerry implements IFactoryHarvestable {
     }
 
     @Override
-    public List<ItemStack> getDrops(World world, Random rand, Map<String, Boolean> harvesterSettings, int x, int y,
-            int z) {
-        ItemStack[] returnItems = { new ItemStack(_berryItem, 1, world.getBlockMetadata(x, y, z) % 4 + _metaOffset) };
+    public List<ItemStack> getDrops(
+            World world, Random rand, Map<String, Boolean> harvesterSettings, int x, int y, int z) {
+        ItemStack[] returnItems = {new ItemStack(_berryItem, 1, world.getBlockMetadata(x, y, z) % 4 + _metaOffset)};
         return Arrays.asList(returnItems);
     }
 

@@ -10,9 +10,9 @@ import net.minecraft.world.gen.feature.WorldGenerator;
 public class OreberryBushGen extends WorldGenerator {
 
     private Block blockB;
-    private int metadata;
+    private final int metadata;
     int chance;
-    private Block[] replaceBlocks;
+    private final Block[] replaceBlocks;
 
     public OreberryBushGen(Block block, int meta, int chance) {
         this(

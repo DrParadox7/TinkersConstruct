@@ -10,14 +10,14 @@ import mantle.blocks.abstracts.InventoryLogic;
 public class InventoryCraftingStation extends InventoryCrafting {
 
     /** the width of the crafting inventory */
-    private int inventoryWidth;
+    private final int inventoryWidth;
 
     /**
      * Class containing the callbacks for the events on_GUIClosed and on_CraftMaxtrixChanged.
      */
-    private Container eventHandler;
+    private final Container eventHandler;
 
-    private InventoryLogic logic;
+    private final InventoryLogic logic;
 
     public InventoryCraftingStation(Container par1Container, int size, int height, InventoryLogic logic) {
         super(par1Container, size, height);

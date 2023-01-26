@@ -1,13 +1,9 @@
 package tconstruct.plugins.imc;
 
-import java.util.Arrays;
-import java.util.List;
-
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.event.*;
 import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
-import mantle.pulsar.pulse.Handler;
-import mantle.pulsar.pulse.Pulse;
+import java.util.*;
+import mantle.pulsar.pulse.*;
 import tconstruct.TConstruct;
 
 @ObjectHolder(TConstruct.modID)
@@ -17,13 +13,12 @@ import tconstruct.TConstruct;
         modsRequired = "appliedenergistics2",
         forced = true)
 public class TinkerAE2 {
-
-    private static List<String> spatialIOLogics = Arrays.asList(
+    private static final List<String> spatialIOLogics = Arrays.asList(
             "EssenceExtractorLogic",
             "GolemPedestalLogic", // TODO What happened to these?
             "MultiServantLogic"); // TODO Should Mantle handle this?
 
-    private static List<String> spatialIOSmelteryLogics = Arrays.asList(
+    private static final List<String> spatialIOSmelteryLogics = Arrays.asList(
             "AdaptiveSmelteryLogic",
             "AqueductLogic",
             "CastingBasinLogic",
@@ -36,16 +31,14 @@ public class TinkerAE2 {
             "TankAirLogic",
             "TowerFurnaceLogic");
 
-    private static List<String> spatialIOToolLogics = Arrays.asList(
+    private static final List<String> spatialIOToolLogics = Arrays.asList(
             "CraftingStationLogic",
             "FrypanLogic",
             "PartBuilderLogic",
             "PatternChestLogic",
             "StencilTableLogic",
             "ToolForgeLogic",
-            "ToolStationLogic",
-            "ToolBenchLogic",
-            "MoldingTableLogic");
+            "ToolStationLogic");
 
     @Handler
     public void init(FMLInitializationEvent event) {

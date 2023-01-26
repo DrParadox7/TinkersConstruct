@@ -13,7 +13,7 @@ import net.minecraft.network.play.client.C0DPacketCloseWindow;
 import net.minecraftforge.client.event.GuiScreenEvent;
 
 public class TabRegistry {
-    private static ArrayList<AbstractTab> tabList = new ArrayList<>();
+    private static final ArrayList<AbstractTab> tabList = new ArrayList<>();
 
     public static void registerTab(AbstractTab tab) {
         tabList.add(tab);
@@ -38,7 +38,7 @@ public class TabRegistry {
         }
     }
 
-    private static Minecraft mc = FMLClientHandler.instance().getClient();
+    private static final Minecraft mc = FMLClientHandler.instance().getClient();
 
     public static void openInventoryGui() {
         mc.thePlayer.sendQueue.addToSendQueue(new C0DPacketCloseWindow(mc.thePlayer.openContainer.windowId));

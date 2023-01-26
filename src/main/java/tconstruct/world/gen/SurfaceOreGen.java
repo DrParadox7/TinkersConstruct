@@ -13,15 +13,15 @@ import tconstruct.util.config.PHConstruct;
 public class SurfaceOreGen extends WorldGenerator {
 
     /** The block of the ore to be placed using this generator. */
-    private Block minableBlock;
+    private final Block minableBlock;
 
     private int minableBlockMeta = 0;
 
     /** The number of blocks to generate. */
-    private int numberOfBlocks;
+    private final int numberOfBlocks;
 
-    private Block[] replaceBlocks;
-    private boolean alterSize;
+    private final Block[] replaceBlocks;
+    private final boolean alterSize;
 
     public SurfaceOreGen(Block b, int meta, int number, boolean changeSize) {
         this(

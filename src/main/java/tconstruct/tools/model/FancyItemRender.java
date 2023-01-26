@@ -19,10 +19,10 @@ import org.lwjgl.opengl.*;
 public class FancyItemRender extends Render {
     private static final ResourceLocation field_110798_h =
             new ResourceLocation("textures/misc/enchanted_item_glint.png");
-    private RenderBlocks itemRenderBlocks = new RenderBlocks();
+    private final RenderBlocks itemRenderBlocks = new RenderBlocks();
 
     /** The RNG used in RenderItem (for bobbing itemstacks on the ground) */
-    private Random random = new Random();
+    private final Random random = new Random();
 
     public boolean renderWithColor = true;
 

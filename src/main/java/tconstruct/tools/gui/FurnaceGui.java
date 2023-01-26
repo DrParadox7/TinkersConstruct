@@ -1,23 +1,19 @@
 package tconstruct.tools.gui;
 
+import cpw.mods.fml.relauncher.*;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.util.ResourceLocation;
-
 import org.lwjgl.opengl.GL11;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import tconstruct.tools.inventory.FurnaceContainer;
 import tconstruct.tools.logic.FurnaceLogic;
 
 @SideOnly(Side.CLIENT)
 public class FurnaceGui extends GuiContainer {
-
-    private static final ResourceLocation furnaceGuiTextures = new ResourceLocation(
-            "textures/gui/container/furnace.png");
-    private FurnaceLogic logic;
+    private static final ResourceLocation furnaceGuiTextures =
+            new ResourceLocation("textures/gui/container/furnace.png");
+    private final FurnaceLogic logic;
 
     public FurnaceGui(InventoryPlayer inventory, FurnaceLogic furnace) {
         super(new FurnaceContainer(inventory, furnace));
@@ -25,7 +21,8 @@ public class FurnaceGui extends GuiContainer {
     }
 
     /**
-     * Draw the foreground layer for the GuiContainer (everything in front of the items)
+     * Draw the foreground layer for the GuiContainer (everything in front of
+     * the items)
      */
     @Override
     protected void drawGuiContainerForegroundLayer(int par1, int par2) {
@@ -35,7 +32,8 @@ public class FurnaceGui extends GuiContainer {
     }
 
     /**
-     * Draw the background layer for the GuiContainer (everything behind the items)
+     * Draw the background layer for the GuiContainer (everything behind the
+     * items)
      */
     @Override
     protected void drawGuiContainerBackgroundLayer(float par1, int par2, int par3) {

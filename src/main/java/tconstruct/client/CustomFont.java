@@ -25,11 +25,11 @@ import org.lwjgl.opengl.GL11;
 public class CustomFont {
 
     private int texID;
-    private int[] xPos;
-    private int[] yPos;
-    private int startChar;
-    private int endChar;
-    private FontMetrics metrics;
+    private final int[] xPos;
+    private final int[] yPos;
+    private final int startChar;
+    private final int endChar;
+    private final FontMetrics metrics;
 
     /**
      * Instantiates the font, filling in default start and end character parameters.

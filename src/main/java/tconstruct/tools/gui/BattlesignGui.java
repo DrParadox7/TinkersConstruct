@@ -1,31 +1,25 @@
 package tconstruct.tools.gui;
 
-import net.minecraft.client.gui.GuiButton;
-import net.minecraft.client.gui.GuiScreen;
+import net.minecraft.client.gui.*;
 import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.ChatAllowedCharacters;
-import net.minecraft.util.EnumChatFormatting;
-import net.minecraft.util.ResourceLocation;
-
+import net.minecraft.util.*;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.GL11;
-
 import tconstruct.TConstruct;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.tools.logic.BattlesignLogic;
 import tconstruct.util.network.SignDataPacket;
 
 public class BattlesignGui extends GuiScreen {
-
-    private BattlesignLogic battlesign;
+    private final BattlesignLogic battlesign;
 
     private float bgColR = 1F;
     private float bgColG = 1F;
     private float bgColB = 1F;
-    private static ResourceLocation background = new ResourceLocation("tinker:textures/gui/battlesignText.png");
-    private String[] text = { "", "", "", "", "" };
+    private static final ResourceLocation background = new ResourceLocation("tinker:textures/gui/battlesignText.png");
+    private final String[] text = {"", "", "", "", ""};
     int currentLine = 0;
 
     public BattlesignGui(BattlesignLogic logic) {
@@ -103,7 +97,8 @@ public class BattlesignGui extends GuiScreen {
         super.keyTyped(c, i);
 
         if (fontRendererObj.getStringWidth(text[currentLine]) < 90 && ChatAllowedCharacters.isAllowedCharacter(c)) {
-            if (Keyboard.isKeyDown(56) && c == 'f'
+            if (Keyboard.isKeyDown(56)
+                    && c == 'f'
                     && (text[currentLine].length() == 0
                             || text[currentLine].charAt(text[currentLine].length() - 1) != '\u00A7')) {
                 text[currentLine] += "\u00A7";
@@ -151,13 +146,12 @@ public class BattlesignGui extends GuiScreen {
 
         Keyboard.enableRepeatEvents(false);
 
-        TConstruct.packetPipeline.sendToServer(
-                new SignDataPacket(
-                        battlesign.getWorldObj().provider.dimensionId,
-                        battlesign.xCoord,
-                        battlesign.yCoord,
-                        battlesign.zCoord,
-                        text));
+        TConstruct.packetPipeline.sendToServer(new SignDataPacket(
+                battlesign.getWorldObj().provider.dimensionId,
+                battlesign.xCoord,
+                battlesign.yCoord,
+                battlesign.zCoord,
+                text));
     }
 
     private float calcLuminance(float r, float g, float b) {

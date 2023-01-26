@@ -1,24 +1,18 @@
 package tconstruct.world.gen;
 
-import static net.minecraft.world.biome.BiomeGenBase.extremeHills;
-import static net.minecraft.world.biome.BiomeGenBase.extremeHillsEdge;
+import static net.minecraft.world.biome.BiomeGenBase.*;
 import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.EventType.SAND;
 
+import com.google.common.collect.*;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import java.util.Random;
-
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate;
-
-import com.google.common.collect.ImmutableCollection;
-import com.google.common.collect.ImmutableList;
-
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.world.TinkerWorld;
 
 public class TerrainGenEventHandler {
-
     private final SurfaceOreGen ironSurface = new SurfaceOreGen(TinkerWorld.oreGravel, 0, 12, true);
     private final SurfaceOreGen goldSurface = new SurfaceOreGen(TinkerWorld.oreGravel, 1, 20, true);
     private final SurfaceOreGen copperSurface = new SurfaceOreGen(TinkerWorld.oreGravel, 2, 12, true);
@@ -26,8 +20,8 @@ public class TerrainGenEventHandler {
     private final SurfaceOreGen aluminumSurface = new SurfaceOreGen(TinkerWorld.oreGravel, 4, 12, true);
     private final SurfaceOreGen cobaltSurface = new SurfaceOreGen(TinkerWorld.oreGravel, 5, 30, true);
 
-    private static ImmutableCollection<BiomeGenBase> EXTRA_ORE_BIOMES = ImmutableList
-            .of(extremeHills, extremeHillsEdge);
+    private static final ImmutableCollection<BiomeGenBase> EXTRA_ORE_BIOMES =
+            ImmutableList.of(extremeHills, extremeHillsEdge);
 
     @SubscribeEvent
     public void onDecorateEvent(Decorate e) {

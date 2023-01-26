@@ -19,7 +19,7 @@ import tconstruct.world.entity.SlimeBase;
 public class SlimeRender extends RenderLiving {
 
     static final ResourceLocation texture = new ResourceLocation("tinker", "textures/mob/slimeedible.png");
-    private ModelBase scaleAmount;
+    private final ModelBase scaleAmount;
 
     public SlimeRender(ModelBase par1ModelBase, ModelBase par2ModelBase, float par3) {
         super(par1ModelBase, par3);

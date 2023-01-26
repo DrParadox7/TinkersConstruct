@@ -22,7 +22,7 @@ import tconstruct.library.TConstructRegistry;
 
 public class Landmine extends MantleBlock {
     /** The mob type that can trigger this pressure plate. */
-    private EnumCreatureType triggerMobType;
+    private final EnumCreatureType triggerMobType;
 
     public Landmine(EnumCreatureType par3EnumCreatureType, Material par4Material) {
         super(par4Material);

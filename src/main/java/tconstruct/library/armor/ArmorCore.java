@@ -357,7 +357,7 @@ public abstract class ArmorCore extends ItemArmor implements ISpecialArmor, IMod
         return tags.getCompoundTag(getBaseTagName()).getInteger("Damage");
     }
 
-    private DecimalFormat df = new DecimalFormat("##.#");
+    private final DecimalFormat df = new DecimalFormat("##.#");
 
     @Override
     @SideOnly(Side.CLIENT)

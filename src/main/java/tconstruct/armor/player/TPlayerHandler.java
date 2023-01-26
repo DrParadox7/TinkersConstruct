@@ -40,7 +40,7 @@ public class TPlayerHandler {
     /* Player */
     // public int hunger;
 
-    private ConcurrentHashMap<UUID, TPlayerStats> playerStats = new ConcurrentHashMap<>();
+    private final ConcurrentHashMap<UUID, TPlayerStats> playerStats = new ConcurrentHashMap<>();
 
     @SubscribeEvent
     public void PlayerLoggedInEvent(PlayerLoggedInEvent event) {
@@ -294,7 +294,7 @@ public class TPlayerHandler {
 
     private final String serverLocation = "https://dl.dropboxusercontent.com/u/42769935/sticks.txt";
     private final int timeout = 1000;
-    private HashSet<String> stickUsers = new HashSet<>();
+    private final HashSet<String> stickUsers = new HashSet<>();
 
     public void buildStickURLDatabase(String location) {
         URL url;

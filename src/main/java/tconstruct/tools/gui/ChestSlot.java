@@ -15,8 +15,8 @@ public class ChestSlot extends Slot {
      * A Slot, used for adjacent Chest Inventories, that can be disabled.
      */
     public boolean enabled = true;
-    private int accessSide;
-    private int visualIndex;
+    private final int accessSide;
+    private final int visualIndex;
 
     public ChestSlot(IInventory inventory, int index, int visualIndex, int xPosition, int yPosition, int accessSide) {
         super(inventory, index, xPosition, yPosition);

@@ -22,10 +22,9 @@ public class RecipeHandlerMelting extends RecipeHandlerBase {
     public static final Rectangle MOLTEN_TANK = new Rectangle(115, 20, 18, 18);
 
     public class CachedMeltingRecipe extends CachedBaseRecipe {
-
-        private PositionedStack input;
-        private int temperature;
-        private FluidTankElement output;
+        private final PositionedStack input;
+        private final int temperature;
+        private final FluidTankElement output;
 
         public CachedMeltingRecipe(ItemStack input) {
             this.input = new PositionedStack(input, 28, 21);

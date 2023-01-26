@@ -21,10 +21,10 @@ import tconstruct.tools.entity.DaggerEntity;
 public class DaggerRender extends Render {
     private static final ResourceLocation RES_ITEM_GLINT =
             new ResourceLocation("textures/misc/enchanted_item_glint.png");
-    private RenderBlocks itemRenderBlocks = new RenderBlocks();
+    private final RenderBlocks itemRenderBlocks = new RenderBlocks();
 
     /** The RNG used in RenderItem (for bobbing itemstacks on the ground) */
-    private Random random = new Random();
+    private final Random random = new Random();
 
     public boolean renderWithColor = true;
 

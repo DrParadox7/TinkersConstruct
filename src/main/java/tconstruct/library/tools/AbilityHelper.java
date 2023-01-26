@@ -503,8 +503,8 @@ public class AbilityHelper {
         tags.setInteger("Energy", max - missing);
     }
 
-    private static boolean equalityOverrideLoaded = Loader.isModLoaded("CoFHCore"); // Mods should be loaded far enough
-                                                                                    // before this is ever initialized
+    private static final boolean equalityOverrideLoaded =
+            Loader.isModLoaded("CoFHCore"); // Mods should be loaded far enough before this is ever initialized
 
     public static void breakTool(ItemStack stack, NBTTagCompound tags, Entity entity) {
         tags.getCompoundTag("InfiTool").setBoolean("Broken", true);

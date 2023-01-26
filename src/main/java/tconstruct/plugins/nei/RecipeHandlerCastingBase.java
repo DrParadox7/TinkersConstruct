@@ -1,25 +1,21 @@
 package tconstruct.plugins.nei;
 
+import codechicken.nei.NEIServerUtils;
+import codechicken.nei.PositionedStack;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 import java.util.List;
-
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.fluids.FluidStack;
-
-import codechicken.nei.NEIServerUtils;
-import codechicken.nei.PositionedStack;
 import tconstruct.library.crafting.CastingRecipe;
 
 public abstract class RecipeHandlerCastingBase extends RecipeHandlerBase {
-
     public static final Rectangle MOLTEN_FLOW = new Rectangle(60, 8, 6, 11);
     public static final Rectangle MOLTEN_FLOW_NO_ITEM = new Rectangle(60, 8, 6, 27);
 
     public class CachedCastingRecipe extends CachedBaseRecipe {
-
-        private List<PositionedStack> resources;
-        private FluidTankElement metal;
+        private final List<PositionedStack> resources;
+        private final FluidTankElement metal;
         private PositionedStack output = null;
 
         public CachedCastingRecipe(CastingRecipe recipe) {

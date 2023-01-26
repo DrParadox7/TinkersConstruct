@@ -16,9 +16,9 @@ import tconstruct.util.config.PHConstruct;
  */
 public class GlassBlockConnected extends MantleBlock {
     protected IIcon[] icons = new IIcon[16];
-    private boolean shouldRenderSelectionBox = true;
+    private final boolean shouldRenderSelectionBox = true;
     protected String folder;
-    private int renderPass;
+    private final int renderPass;
 
     public GlassBlockConnected(String location, boolean hasAlpha) {
         super(Material.glass);

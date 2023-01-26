@@ -12,9 +12,9 @@ import net.minecraft.world.*;
 
 public class MiningExplosion extends Explosion {
     World world;
-    private Random random = new Random();
-    private int field_77289_h = 16;
-    private Map field_77288_k = new HashMap();
+    private final Random random = new Random();
+    private final int field_77289_h = 16;
+    private final Map field_77288_k = new HashMap();
 
     public MiningExplosion(World par1World, Entity par2Entity, double par3, double par5, double par7, float par9) {
         super(par1World, par2Entity, par3, par5, par7, par9);
