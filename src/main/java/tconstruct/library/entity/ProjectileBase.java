@@ -323,7 +323,7 @@ public abstract class ProjectileBase extends EntityArrow implements IEntityAddit
 
     // returns true if it was successful
     public boolean dealDamage(float damage, ToolCore ammo, NBTTagCompound tags, Entity entityHit) {
-        boolean dealtDamage = false;
+        boolean dealtDamage;
 
         // deal regular damage
         DamageSource damagesource;

@@ -77,7 +77,7 @@ public abstract class BowBase extends ToolCore {
                 speedBase = flightSpeed;
             }
 
-            EntityArrow arrowEntity = null;
+            EntityArrow arrowEntity;
             // if (tinkerArrow != null)
             if (slotID != -1 && (arrowID == -1 || slotID < arrowID)) {
                 ItemStack arrowStack = tinkerArrow.copy();

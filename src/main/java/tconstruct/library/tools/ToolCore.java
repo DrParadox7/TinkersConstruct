@@ -605,7 +605,7 @@ public abstract class ToolCore extends Item implements IEnergyContainerItem, IEq
         boolean used = false;
         int hotbarSlot = player.inventory.currentItem;
         int itemSlot = hotbarSlot == 0 ? 8 : hotbarSlot + 1;
-        ItemStack nearbyStack = null;
+        ItemStack nearbyStack;
 
         if (hotbarSlot < 8) {
             nearbyStack = player.inventory.getStackInSlot(itemSlot);

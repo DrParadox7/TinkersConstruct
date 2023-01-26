@@ -530,7 +530,7 @@ public class CartEntity extends Entity implements IInventory, IEntityAdditionalS
             }
 
             int[][] var12 = matrix[var11];
-            double var13 = 0.0D;
+            double var13;
             double var15 = (double) var7 + 0.5D + (double) var12[0][0] * 0.5D;
             double var17 = (double) var8 + 0.5D + (double) var12[0][1] * 0.5D;
             double var19 = (double) var9 + 0.5D + (double) var12[0][2] * 0.5D;

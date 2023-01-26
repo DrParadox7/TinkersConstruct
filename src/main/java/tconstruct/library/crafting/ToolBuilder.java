@@ -162,7 +162,7 @@ public class ToolBuilder {
 
         if (item == null) return null;
 
-        ToolMaterial headMat = null, handleMat = null, accessoryMat = null, extraMat = null;
+        ToolMaterial headMat, handleMat, accessoryMat = null, extraMat = null;
         headMat = TConstructRegistry.getMaterial(head);
         handleMat = TConstructRegistry.getMaterial(handle);
 

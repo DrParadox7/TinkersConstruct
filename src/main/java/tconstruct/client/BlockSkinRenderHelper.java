@@ -39,10 +39,10 @@ public class BlockSkinRenderHelper {
             float colorRed, float colorGreen, float colorBlue, RenderBlocks render, IBlockAccess world) {
         render.enableAO = true;
         boolean flag = false;
-        float f3 = 0.0F;
-        float f4 = 0.0F;
-        float f5 = 0.0F;
-        float f6 = 0.0F;
+        float f3;
+        float f4;
+        float f5;
+        float f6;
         boolean flag1 = true;
         int l = block.getMixedBrightnessForBlock(render.blockAccess, xPos, yPos, zPos);
         Tessellator tessellator = Tessellator.instance;
@@ -1027,10 +1027,10 @@ public class BlockSkinRenderHelper {
         Block block = Blocks.stone;
         render.enableAO = true;
         boolean flag = false;
-        float f3 = 0.0F;
-        float f4 = 0.0F;
-        float f5 = 0.0F;
-        float f6 = 0.0F;
+        float f3;
+        float f4;
+        float f5;
+        float f6;
         boolean flag1 = true;
         int l = block.getMixedBrightnessForBlock(render.blockAccess, xPos, yPos, zPos);
         Tessellator tessellator = Tessellator.instance;

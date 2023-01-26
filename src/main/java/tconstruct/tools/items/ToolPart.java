@@ -29,7 +29,7 @@ public class ToolPart extends CraftingItem implements IToolPart {
         String material = "";
         if (par1ItemStack.getItemDamage() < toolTextureNames.length)
             material = toolTextureNames[par1ItemStack.getItemDamage()];
-        String name = "";
+        String name;
 
         if (StatCollector.canTranslate("toolpart." + partName + "." + material)) {
             name = StatCollector.translateToLocal("toolpart." + partName + "." + material);

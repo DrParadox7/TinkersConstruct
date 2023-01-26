@@ -105,7 +105,7 @@ public class CraftingStationContainer extends Container {
                     ? ((ISidedInventory) inv).getAccessibleSlotsFromSide(accessSide)
                     : null;
 
-            int index = 0, curIndex = 0;
+            int index = 0, curIndex;
             IInventory curInv;
             final int invSize = inv.getSizeInventory() * (secondInv != null ? 2 : 1);
             for (row = 0; row < logic.invRows; row++) {

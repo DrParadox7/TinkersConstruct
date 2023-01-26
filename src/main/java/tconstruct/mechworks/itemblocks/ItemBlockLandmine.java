@@ -27,7 +27,7 @@ public class ItemBlockLandmine extends ItemBlock {
 
     @Override
     public void addInformation(ItemStack par1ItemStack, EntityPlayer par2EntityPlayer, List par3List, boolean par4) {
-        String interaction = null;
+        String interaction;
 
         switch (par1ItemStack.getItemDamage()) {
             case 0:

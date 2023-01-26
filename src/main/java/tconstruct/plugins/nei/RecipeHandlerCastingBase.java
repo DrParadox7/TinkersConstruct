@@ -16,7 +16,7 @@ public abstract class RecipeHandlerCastingBase extends RecipeHandlerBase {
     public class CachedCastingRecipe extends CachedBaseRecipe {
         private final List<PositionedStack> resources;
         private final FluidTankElement metal;
-        private PositionedStack output = null;
+        private PositionedStack output;
 
         public CachedCastingRecipe(CastingRecipe recipe) {
             this.metal = new FluidTankElement(MOLTEN_FLOW, recipe.castingMetal.amount, recipe.castingMetal);

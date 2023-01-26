@@ -315,7 +315,7 @@ public class SmelteryGui extends ActiveContainerGui {
         }
 
         // check if we have enough height to render everything
-        int sum = 0;
+        int sum;
         do {
             sum = 0;
             int biggest = -1;

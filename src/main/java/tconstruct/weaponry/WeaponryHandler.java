@@ -169,14 +169,14 @@ public class WeaponryHandler {
         NBTTagCompound tags = event.toolTag.getCompoundTag("InfiTool");
         ProjectileWeapon weapon = (ProjectileWeapon) event.tool;
 
-        int drawSpeed = 0;
-        float flightSpeed = 0;
+        int drawSpeed;
+        float flightSpeed;
 
         BowMaterial top;
         BowMaterial bottom;
         BowstringMaterial string;
 
-        boolean enchanted = false;
+        boolean enchanted;
 
         if (event.tool instanceof BowBaseAmmo) {
             top = TConstructRegistry.getBowMaterial(tags.getInteger("Head"));

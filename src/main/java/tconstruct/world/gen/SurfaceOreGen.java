@@ -15,7 +15,7 @@ public class SurfaceOreGen extends WorldGenerator {
     /** The block of the ore to be placed using this generator. */
     private final Block minableBlock;
 
-    private int minableBlockMeta = 0;
+    private int minableBlockMeta;
 
     /** The number of blocks to generate. */
     private final int numberOfBlocks;

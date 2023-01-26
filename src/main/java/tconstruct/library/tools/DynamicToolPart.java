@@ -67,8 +67,8 @@ public class DynamicToolPart extends CraftingItem implements IToolPart {
 
     @Override
     public String getItemStackDisplayName(ItemStack stack) {
-        String material = "";
-        String matName = "";
+        String material;
+        String matName;
         if (customMaterialClass == null) {
             tconstruct.library.tools.ToolMaterial toolmat = TConstructRegistry.getMaterial(getMaterialID(stack));
             if (toolmat == null) return super.getItemStackDisplayName(stack);
@@ -82,7 +82,6 @@ public class DynamicToolPart extends CraftingItem implements IToolPart {
                     .getCustomMaterial(getMaterialID(stack), customMaterialClass);
             if (customMaterial == null) return super.getItemStackDisplayName(stack);
 
-            material = "";
             if (customMaterial.input != null) {
                 material = customMaterial.input.getUnlocalizedName();
                 int firstPeriodIndex = material.indexOf('.');
@@ -113,7 +112,7 @@ public class DynamicToolPart extends CraftingItem implements IToolPart {
         int id = getMaterialID(stack);
         if (id == -1) return getUnlocalizedName();
 
-        String material = "unknown";
+        String material;
         if (customMaterialClass == null) {
             tconstruct.library.tools.ToolMaterial toolmat = TConstructRegistry.getMaterial(getMaterialID(stack));
             material = toolmat.materialName;

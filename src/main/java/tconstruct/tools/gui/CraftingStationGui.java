@@ -71,7 +71,7 @@ public class CraftingStationGui extends GuiContainer implements INEIGuiHandler {
     // Panel positions
     public String toolName;
     public GuiTextField text;
-    public String title, body = "";
+    public String title, body;
     CraftingStationLogic logic;
 
     private int craftingLeft = 0;

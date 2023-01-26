@@ -231,7 +231,7 @@ public abstract class RecipeHandlerBase extends TemplateRecipeHandler {
             if (this.fluid == null || this.fluid.getFluid() == null || this.fluid.amount <= 0) {
                 return;
             }
-            IIcon fluidIcon = null;
+            IIcon fluidIcon;
             if (this.flowingTexture && this.fluid.getFluid().getFlowingIcon() != null) {
                 fluidIcon = this.fluid.getFluid().getFlowingIcon();
             } else if (this.fluid.getFluid().getStillIcon() != null) {

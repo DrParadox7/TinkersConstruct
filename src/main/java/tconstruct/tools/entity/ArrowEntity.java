@@ -189,7 +189,7 @@ public class ArrowEntity extends EntityArrow implements IEntityAdditionalSpawnDa
                         damageInflicted += this.rand.nextInt(damageInflicted / 2 + 2);
                     }
 
-                    DamageSource damagesource = null;
+                    DamageSource damagesource;
 
                     if (this.shootingEntity == null) {
                         damagesource = DamageSource.causeArrowDamage(this, this);

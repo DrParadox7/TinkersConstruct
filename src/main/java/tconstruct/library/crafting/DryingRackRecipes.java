@@ -10,8 +10,8 @@ public class DryingRackRecipes {
     public static ArrayList<DryingRecipe> recipes = new ArrayList<>();
 
     public static void addDryingRecipe(Object input, int time, Object output) {
-        ItemStack inputItem = null;
-        ItemStack outputItem = null;
+        ItemStack inputItem;
+        ItemStack outputItem;
 
         if (input instanceof ItemStack) inputItem = (ItemStack) input;
         else if (input instanceof Item) inputItem = new ItemStack((Item) input, 1, 0);

@@ -637,10 +637,25 @@ public class TinkerWorld {
                 'm',
                 new ItemStack(TinkerTools.materials, 1, 16)); // Steel
 
-        String[] dyeTypes = { "dyeBlack", "dyeRed", "dyeGreen", "dyeBrown", "dyeBlue", "dyePurple", "dyeCyan",
-                "dyeLightGray", "dyeGray", "dyePink", "dyeLime", "dyeYellow", "dyeLightBlue", "dyeMagenta", "dyeOrange",
-                "dyeWhite" };
-        String color = "";
+        String[] dyeTypes = {
+            "dyeBlack",
+            "dyeRed",
+            "dyeGreen",
+            "dyeBrown",
+            "dyeBlue",
+            "dyePurple",
+            "dyeCyan",
+            "dyeLightGray",
+            "dyeGray",
+            "dyePink",
+            "dyeLime",
+            "dyeYellow",
+            "dyeLightBlue",
+            "dyeMagenta",
+            "dyeOrange",
+            "dyeWhite"
+        };
+        String color;
         for (int i = 0; i < 16; i++) {
             color = dyeTypes[15 - i];
             GameRegistry.addRecipe(

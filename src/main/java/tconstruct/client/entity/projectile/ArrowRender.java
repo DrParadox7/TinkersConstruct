@@ -58,7 +58,7 @@ public class ArrowRender extends Render {
             float f6;
             int i;
 
-            Block block = null;
+            Block block;
             block = BlockUtils.getBlockFromItem(itemstack.getItem());
 
             if (itemstack.getItemSpriteNumber() == 0
