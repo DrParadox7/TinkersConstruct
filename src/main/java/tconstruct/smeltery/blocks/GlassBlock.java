@@ -38,7 +38,6 @@ public class GlassBlock extends TConstructBlock {
             case 0:
                 return 0.3F;
             case 1:
-                return 50.0F;
             case 2:
                 return 50.0F;
             default:
@@ -54,7 +53,6 @@ public class GlassBlock extends TConstructBlock {
             case 0:
                 return 1.5F;
             case 1:
-                return 2000F;
             case 2:
                 return 2000F;
             default:

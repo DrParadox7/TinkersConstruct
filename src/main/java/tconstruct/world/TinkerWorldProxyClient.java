@@ -186,8 +186,6 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
                             entityfx = new EntitySuspendFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
                             break;
                         case "depthsuspend":
-                            entityfx = new EntityAuraFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
-                            break;
                         case "townaura":
                             entityfx = new EntityAuraFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
                             break;
