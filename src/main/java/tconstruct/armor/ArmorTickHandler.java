@@ -6,23 +6,19 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import tconstruct.client.ArmorControls;
+import net.minecraft.client.Minecraft;
 
 public class ArmorTickHandler {
 
-    Minecraft mc = Minecraft.getMinecraft();
-
-    ArmorControls controlInstance = ((ArmorProxyClient) TinkerArmor.proxy).controlInstance;
+    private final Minecraft mc = Minecraft.getMinecraft();
 
     @SideOnly(Side.CLIENT)
     @SubscribeEvent
     public void tickEnd(ClientTickEvent event) {
-        /*
-         * TinkerWorld.oreBerry.setGraphicsLevel(Blocks.leaves.field_150121_P);
-         * TinkerWorld.oreBerrySecond.setGraphicsLevel(Blocks.leaves.field_150121_P);
-         * TinkerWorld.slimeLeaves.setGraphicsLevel(Blocks.leaves.field_150121_P);
-         */
-        if (mc.thePlayer != null && mc.thePlayer.onGround) controlInstance.landOnGround();
+        /*TinkerWorld.oreBerry.setGraphicsLevel(Blocks.leaves.field_150121_P);
+        TinkerWorld.oreBerrySecond.setGraphicsLevel(Blocks.leaves.field_150121_P);
+        TinkerWorld.slimeLeaves.setGraphicsLevel(Blocks.leaves.field_150121_P);*/
+        if (mc.thePlayer != null && mc.thePlayer.onGround) ArmorProxyClient.controlInstance.landOnGround();
     }
 
     /*
