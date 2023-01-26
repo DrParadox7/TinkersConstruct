@@ -39,8 +39,7 @@ public class SmelteryDataProvider implements IWailaDataProvider {
                 if (fls.size() <= 0) {
                     currenttip.add(SpecialChars.ITALIC + StatCollector.translateToLocal("tconstruct.waila.empty"));
                 } else {
-                    for (int i = 0; i < fls.size(); i++) {
-                        FluidStack st = fls.get(i);
+                    for (FluidStack st : fls) {
                         currenttip.add(WailaRegistrar.fluidNameHelper(st) + " (" + st.amount + "mB)");
                     }
                 }

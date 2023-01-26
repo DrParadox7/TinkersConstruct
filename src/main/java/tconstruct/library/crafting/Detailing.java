@@ -46,12 +46,8 @@ public class Detailing {
     }
 
     public void addShapelessToolRecipe(ItemStack par1ItemStack, Object... par2ArrayOfObj) {
-        ArrayList arraylist = new ArrayList();
-        int i = par2ArrayOfObj.length;
-
-        for (int j = 0; j < i; ++j) {
-            Object object1 = par2ArrayOfObj[j];
-
+        ArrayList<ItemStack> arraylist = new ArrayList<>();
+        for (Object object1 : par2ArrayOfObj) {
             if (object1 instanceof ItemStack) {
                 arraylist.add(((ItemStack) object1).copy());
             } else if (object1 instanceof Item) {
@@ -64,13 +60,11 @@ public class Detailing {
                 arraylist.add(new ItemStack((Block) object1));
             }
         }
-
         GameRegistry.addRecipe(new ShapelessToolRecipe(par1ItemStack, arraylist));
     }
 
     public DetailInput getDetailing(Block block, int inputMeta) {
-        for (int i = 0; i < detailing.size(); i++) {
-            DetailInput detail = detailing.get(i);
+        for (DetailInput detail : detailing) {
             if (Item.getItemFromBlock(block) == detail.input.getItem() && inputMeta == detail.inputMeta) {
                 return detail;
             }

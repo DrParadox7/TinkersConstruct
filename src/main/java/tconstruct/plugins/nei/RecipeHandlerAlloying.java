@@ -121,8 +121,7 @@ public class RecipeHandlerAlloying extends RecipeHandlerBase {
 
     @Override
     public void loadUsageRecipes(FluidStack ingredient) {
-        for (Iterator<AlloyMix> i = Smeltery.getAlloyList().iterator(); i.hasNext(); ) {
-            AlloyMix recipe = i.next();
+        for (AlloyMix recipe : Smeltery.getAlloyList()) {
             for (FluidStack liquid : recipe.mixers) {
                 if (areFluidsEqual(liquid, ingredient) && !recipe.mixers.isEmpty()) {
                     this.arecipes.add(new CachedAlloyingRecipe(recipe));

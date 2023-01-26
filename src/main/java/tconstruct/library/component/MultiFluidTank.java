@@ -63,9 +63,8 @@ public class MultiFluidTank extends LogicComponent implements IFluidTank {
 
             if (doFill) {
                 if (addFluidToTank(resource, false)) {
-                    ArrayList alloys = Smeltery.mixMetals(fluidlist);
-                    for (int al = 0; al < alloys.size(); al++) {
-                        FluidStack liquid = (FluidStack) alloys.get(al);
+                    ArrayList<FluidStack> alloys = Smeltery.mixMetals(fluidlist);
+                    for (FluidStack liquid : alloys) {
                         addFluidToTank(liquid, true);
                     }
                 }

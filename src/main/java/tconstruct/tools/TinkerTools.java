@@ -599,13 +599,14 @@ public class TinkerTools {
                 }
             }
         } else {
-            for (int mat = 0; mat < nonMetals.length; mat++) {
+            for (int nonMetal : nonMetals) {
                 for (int meta = 0; meta < TinkerTools.patternOutputs.length; meta++) {
-                    if (TinkerTools.patternOutputs[meta] != null) TConstructRegistry.addPartMapping(
-                            TinkerTools.woodPattern,
-                            meta + 1,
-                            nonMetals[mat],
-                            new ItemStack(TinkerTools.patternOutputs[meta], 1, nonMetals[mat]));
+                    if (TinkerTools.patternOutputs[meta] != null)
+                        TConstructRegistry.addPartMapping(
+                                TinkerTools.woodPattern,
+                                meta + 1,
+                                nonMetal,
+                                new ItemStack(TinkerTools.patternOutputs[meta], 1, nonMetal));
                 }
             }
         }

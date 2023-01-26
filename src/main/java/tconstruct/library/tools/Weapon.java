@@ -42,8 +42,8 @@ public abstract class Weapon extends ToolCore
 
         if (stack.getTagCompound().getCompoundTag("InfiTool").getBoolean("Broken")) return 0.1f;
 
-        for (int i = 0; i < web.length; i++) {
-            if (web[i] == block.getMaterial()) {
+        for (Material material : web) {
+            if (material == block.getMaterial()) {
                 return effectiveSpeed();
             }
         }
@@ -86,8 +86,8 @@ public abstract class Weapon extends ToolCore
      */
     @Override
     public boolean canHarvestBlock(Block block, ItemStack is) {
-        for (int i = 0; i < web.length; i++) {
-            if (block.getMaterial() == web[i]) return true;
+        for (Material material : web) {
+            if (block.getMaterial() == material) return true;
         }
         return super.canHarvestBlock(block, is);
     }

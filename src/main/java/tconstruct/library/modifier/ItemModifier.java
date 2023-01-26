@@ -41,16 +41,14 @@ public abstract class ItemModifier {
 
         ArrayList<ItemStack> list = new ArrayList<>(this.stacks);
 
-        for (int iter = 0; iter < recipe.length; ++iter) {
-            ItemStack craftingStack = recipe[iter];
-
+        for (ItemStack craftingStack : recipe) {
             if (craftingStack != null) {
                 boolean canCraft = false;
 
                 for (ItemStack removeStack : list) {
                     if (craftingStack.getItem() == removeStack.getItem()
                             && (removeStack.getItemDamage() == Short.MAX_VALUE
-                                    || craftingStack.getItemDamage() == removeStack.getItemDamage())) {
+                            || craftingStack.getItemDamage() == removeStack.getItemDamage())) {
                         canCraft = true;
                         list.remove(removeStack);
                         break;

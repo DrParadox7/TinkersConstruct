@@ -90,12 +90,11 @@ public class MiningExplosion extends Explosion {
         int l1 = MathHelper.floor_double(this.explosionY + (double) this.explosionSize + 1.0D);
         int i2 = MathHelper.floor_double(this.explosionZ - (double) this.explosionSize - 1.0D);
         int j2 = MathHelper.floor_double(this.explosionZ + (double) this.explosionSize + 1.0D);
-        List list = this.world.getEntitiesWithinAABBExcludingEntity(
+        List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(
                 this.exploder, AxisAlignedBB.getBoundingBox(i, k, i2, j, l1, j2));
         Vec3 vec3 = Vec3.createVectorHelper(this.explosionX, this.explosionY, this.explosionZ);
 
-        for (int k2 = 0; k2 < list.size(); ++k2) {
-            Entity entity = (Entity) list.get(k2);
+        for (Entity entity : list) {
             double d7 =
                     entity.getDistance(this.explosionX, this.explosionY, this.explosionZ) / (double) this.explosionSize;
 

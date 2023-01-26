@@ -1058,14 +1058,10 @@ public class TinkerWorld {
                 TinkerTools.crossbar, TinkerTools.knifeBlade, TinkerTools.frypanHead, TinkerTools.signHead,
                 TinkerTools.chiselHead };
 
-        for (int partIter = 0; partIter < partTypes.length; partIter++) {
-            for (int typeIter = 0; typeIter < validTypes.length; typeIter++) {
-                TinkerWorld.tinkerHouseChest.addItem(
-                        new WeightedRandomChestContent(
-                                new ItemStack(partTypes[partIter], 1, validTypes[typeIter]),
-                                1,
-                                1,
-                                15));
+        for (Item partType : partTypes) {
+            for (int validType : validTypes) {
+                TinkerWorld.tinkerHouseChest.addItem(new WeightedRandomChestContent(
+                        new ItemStack(partType, 1, validType), 1, 1, 15));
             }
         }
 

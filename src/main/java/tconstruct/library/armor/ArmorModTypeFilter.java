@@ -16,8 +16,8 @@ public abstract class ArmorModTypeFilter extends ArmorMod {
         assert items.length == values.length
                 : "Itemstacks and their values for armor modifiers must be the same length";
         this.increase = new ArrayList<>();
-        for (int i = 0; i < values.length; i++) {
-            increase.add(values[i]);
+        for (int value : values) {
+            increase.add(value);
         }
     }
 

@@ -208,8 +208,8 @@ public class TankLayerScan extends LogicComponent {
     protected boolean isValidBlock(int x, int y, int z) {
         Block block = world.getBlock(x, y, z);
         if (block != null) {
-            for (int i = 0; i < scanBlocks.length; i++) {
-                if (block == scanBlocks[i]) return true;
+            for (Block scanBlock : scanBlocks) {
+                if (block == scanBlock) return true;
             }
         }
         return false;

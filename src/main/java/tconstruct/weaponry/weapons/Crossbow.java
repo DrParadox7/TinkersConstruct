@@ -234,12 +234,10 @@ public class Crossbow extends ProjectileWeapon {
         ItemStack[] inventory = player.inventory.mainInventory;
 
         // check hotbar for tinker arrows
-        for (int i = 0; i < inventory.length; i++) {
-            ItemStack stack = inventory[i];
+        for (ItemStack stack : inventory) {
             if (stack == null) continue;
             if (!(stack.getItem() instanceof BoltAmmo)) continue;
             if (((IAmmo) stack.getItem()).getAmmoCount(stack) <= 0) continue;
-
             return stack;
         }
 

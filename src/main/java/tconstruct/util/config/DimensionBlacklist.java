@@ -36,8 +36,8 @@ public class DimensionBlacklist {
         if (PHConstruct.slimeIslGenDim0Only) {
             return false;
         }
-        for (int len = 0; len < blacklistedDims.size(); len++) {
-            if (blacklistedDims.get(len) == dim) return false;
+        for (Integer blacklistedDim : blacklistedDims) {
+            if (blacklistedDim == dim) return false;
         }
         return true;
     }

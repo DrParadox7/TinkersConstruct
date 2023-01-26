@@ -1203,9 +1203,14 @@ public class TinkerSmeltery {
                 new ItemStack(TinkerSmeltery.metalPattern, 1, 26),
                 50);
 
-        ItemStack[] ingotShapes = { new ItemStack(Items.brick), new ItemStack(Items.netherbrick),
-                new ItemStack(TinkerTools.materials, 1, 2), new ItemStack(TinkerTools.materials, 1, 37) };
-        for (int i = 0; i < ingotShapes.length; i++) {
+        ItemStack[] ingotShapes = {
+            new ItemStack(Items.brick),
+            new ItemStack(Items.netherbrick),
+            new ItemStack(TinkerTools.materials, 1, 2),
+            new ItemStack(TinkerTools.materials, 1, 37)
+        };
+        
+        for (ItemStack ingotShape : ingotShapes) {
             if (!PHConstruct.steelPatterns) {
                 tableCasting.addCastingRecipe(
                         ingotcast,
@@ -1216,7 +1221,7 @@ public class TinkerSmeltery {
                 if (!PHConstruct.removeGoldCastRecipes) tableCasting.addCastingRecipe(
                         ingotcast,
                         new FluidStack(TinkerSmeltery.moltenGoldFluid, TConstruct.ingotLiquidValue * 2),
-                        ingotShapes[i],
+                        ingotShape,
                         false,
                         50);
             } else {

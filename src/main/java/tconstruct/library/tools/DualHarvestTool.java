@@ -38,16 +38,16 @@ public abstract class DualHarvestTool extends HarvestTool {
         if (tags.getBoolean("Broken")) return 0.1f;
 
         Material[] materials = getEffectiveMaterials();
-        for (int i = 0; i < materials.length; i++) {
-            if (materials[i] == block.getMaterial()) {
+        for (Material value : materials) {
+            if (value == block.getMaterial()) {
                 if (block.getHarvestLevel(meta) <= tags.getInteger("HarvestLevel"))
                     return AbilityHelper.calcDualToolSpeed(this, tags, false);
                 return 0.1f;
             }
         }
         materials = getEffectiveSecondaryMaterials();
-        for (int i = 0; i < materials.length; i++) {
-            if (materials[i] == block.getMaterial()) {
+        for (Material material : materials) {
+            if (material == block.getMaterial()) {
                 if (block.getHarvestLevel(meta) <= tags.getInteger("HarvestLevel2"))
                     return AbilityHelper.calcDualToolSpeed(this, tags, true);
                 return 0.1f;

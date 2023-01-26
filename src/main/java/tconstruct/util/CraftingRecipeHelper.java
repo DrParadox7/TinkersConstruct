@@ -66,9 +66,7 @@ public class CraftingRecipeHelper {
 
         if (objArray[var4] instanceof String[]) {
             String[] var7 = ((String[]) objArray[var4++]);
-
-            for (int var8 = 0; var8 < var7.length; ++var8) {
-                String var9 = var7[var8];
+            for (String var9 : var7) {
                 ++var6;
                 var5 = var9.length();
                 var3.append(var9);

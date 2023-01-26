@@ -156,13 +156,13 @@ public class Scythe extends Weapon {
                                     != null) // && (block.blockMaterial == Material.leaves || block.isLeaves(world,
                             // xPos, yPos, zPos)))
                             {
-                                for (int iter = 0; iter < materials.length; iter++) {
-                                    if (materials[iter] == localBlock.getMaterial()) {
+                                for (Material material : materials) {
+                                    if (material == localBlock.getMaterial()) {
                                         if (!player.capabilities.isCreativeMode) {
                                             if (butter
                                                     && localBlock instanceof IShearable
                                                     && ((IShearable) localBlock)
-                                                            .isShearable(stack, player.worldObj, xPos, yPos, zPos)) {
+                                                    .isShearable(stack, player.worldObj, xPos, yPos, zPos)) {
                                                 ArrayList<ItemStack> drops = ((IShearable) localBlock)
                                                         .onSheared(
                                                                 stack,

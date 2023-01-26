@@ -431,9 +431,8 @@ public class SmelteryLogic extends InventoryLogic implements IActiveLogic, IFaci
                                 if (addMoltenMetal(result, false)) {
                                     inventory[i] = null;
                                     activeTemps[i] = 200;
-                                    ArrayList alloys = Smeltery.mixMetals(moltenMetal);
-                                    for (int al = 0; al < alloys.size(); al++) {
-                                        FluidStack liquid = (FluidStack) alloys.get(al);
+                                    ArrayList<FluidStack> alloys = Smeltery.mixMetals(moltenMetal);
+                                    for (FluidStack liquid : alloys) {
                                         addMoltenMetal(liquid, true);
                                     }
                                     markDirty();
@@ -968,9 +967,8 @@ public class SmelteryLogic extends InventoryLogic implements IActiveLogic, IFaci
 
             if (amount > 0 && doFill) {
                 if (addMoltenMetal(resource, false)) {
-                    ArrayList alloys = Smeltery.mixMetals(moltenMetal);
-                    for (int al = 0; al < alloys.size(); al++) {
-                        FluidStack liquid = (FluidStack) alloys.get(al);
+                    ArrayList<FluidStack> alloys = Smeltery.mixMetals(moltenMetal);
+                    for (FluidStack liquid : alloys) {
                         addMoltenMetal(liquid, true);
                     }
                 }

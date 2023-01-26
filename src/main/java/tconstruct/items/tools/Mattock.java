@@ -104,9 +104,9 @@ public class Mattock extends DualHarvestTool {
     }
 
     private boolean allowCrafting(int head) {
-        int[] nonMetals = { 0, 1, 3, 4, 5, 6, 7, 8, 9, 17 };
-        for (int i = 0; i < nonMetals.length; i++) {
-            if (head == nonMetals[i]) return false;
+        int[] nonMetals = {0, 1, 3, 4, 5, 6, 7, 8, 9, 17};
+        for (int nonMetal : nonMetals) {
+            if (head == nonMetal) return false;
         }
         return true;
     }

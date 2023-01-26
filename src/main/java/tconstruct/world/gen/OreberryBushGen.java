@@ -84,8 +84,8 @@ public class OreberryBushGen extends WorldGenerator {
         if (block == null || (block != Blocks.end_portal_frame && !world.getBlock(x, y, z).func_149730_j()))
             world.setBlock(x, y, z, this.blockB, metadata, 2);
         else {
-            for (int iter = 0; iter < replaceBlocks.length; iter++) {
-                if (world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, replaceBlocks[iter])) {
+            for (Block replaceBlock : replaceBlocks) {
+                if (world.getBlock(x, y, z).isReplaceableOreGen(world, x, y, z, replaceBlock)) {
                     world.setBlock(x, y, z, this.blockB, metadata, 2);
                     break;
                 }
