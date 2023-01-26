@@ -13,7 +13,6 @@ import cpw.mods.fml.common.gameevent.PlayerEvent.ItemCraftedEvent;
 import mantle.world.WorldHelper;
 import tconstruct.armor.player.TPlayerStats;
 import tconstruct.library.tools.AbilityHelper;
-import tconstruct.smeltery.blocks.LiquidMetalFinite;
 import tconstruct.tools.TinkerTools;
 import tconstruct.util.config.PHConstruct;
 

@@ -1,21 +1,16 @@
 package tconstruct.items.tools;
 
 import java.util.List;
-
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
+import net.minecraft.item.*;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.util.IIcon;
-import net.minecraft.util.StatCollector;
-
+import net.minecraft.util.*;
 import tconstruct.library.crafting.ToolBuilder;
-import tconstruct.library.tools.AOEHarvestTool;
+import tconstruct.library.tools.*;
 import tconstruct.tools.TinkerTools;
 
 public class Hammer extends AOEHarvestTool {
-
     public Hammer() {
         super(2, 1, 0);
         this.setUnlocalizedName("InfiTool.Hammer");
@@ -46,8 +41,9 @@ public class Hammer extends AOEHarvestTool {
         return materials;
     }
 
-    static Material[] materials = new Material[] { Material.rock, Material.iron, Material.ice, Material.glass,
-            Material.piston, Material.anvil };
+    static Material[] materials =
+            new Material[] {Material.rock, Material.iron, Material.ice, Material.glass, Material.piston, Material.anvil
+            };
 
     @Override
     public Item getHeadItem() {
@@ -137,7 +133,6 @@ public class Hammer extends AOEHarvestTool {
         tags.setInteger("BaseDurability", Integer.MAX_VALUE / 100);
         tags.setInteger("MiningSpeed", Integer.MAX_VALUE / 100);
         tags.setInteger("Unbreaking", 10);
-        tags.setInteger("Upgrades", 0);
 
         tags.setBoolean("Built", true);
         list.add(tool);
@@ -155,6 +150,6 @@ public class Hammer extends AOEHarvestTool {
 
     @Override
     public String[] getTraits() {
-        return new String[] { "weapon", "harvest", "melee", "bludgeoning" };
+        return new String[] {"weapon", "harvest", "melee", "bludgeoning"};
     }
 }

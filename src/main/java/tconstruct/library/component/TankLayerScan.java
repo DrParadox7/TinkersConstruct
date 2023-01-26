@@ -28,9 +28,10 @@ public class TankLayerScan extends LogicComponent {
     protected CoordTuple returnStone;
 
     private static final boolean debug = System.getenv("DBG_MANTLE_TankLayerScan") != null;
-    private static final int MAX_LAYER_RECURSION_DEPTH = System.getProperty("os.arch").equals("amd64")
-            ? 4000
-            : 2000; // Recursion causes overflows on 32-bit, so reduce if not 64-bit
+    private static final int MAX_LAYER_RECURSION_DEPTH =
+            System.getProperty("os.arch").equals("amd64")
+                    ? 4000
+                    : 2000; // Recursion causes overflows on 32-bit, so reduce if not 64-bit
 
     public TankLayerScan(TileEntity te, Block... ids) {
         assert te instanceof IMasterLogic : "TileEntity must be an instance of IMasterLogic";
