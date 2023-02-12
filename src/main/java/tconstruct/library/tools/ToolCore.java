@@ -523,7 +523,7 @@ public abstract class ToolCore extends Item implements IEnergyContainerItem, IEq
     // Attacking
     @Override
     public boolean onLeftClickEntity(ItemStack stack, EntityPlayer player, Entity entity) {
-        return AbilityHelper.onLeftClickEntity(stack, player, entity, this, 0);
+        return AbilityHelper.onLeftClickEntity(stack, player, entity, this);
     }
 
     @Override

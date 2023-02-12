@@ -3,6 +3,9 @@ package tconstruct;
 import java.util.Map;
 import java.util.Random;
 
+import mantle.pulsar.config.ForgeCFG;
+import mantle.pulsar.control.PulseManager;
+
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.world.gen.structure.MapGenStructureIO;
 import net.minecraftforge.common.MinecraftForge;
@@ -70,11 +73,20 @@ import tconstruct.util.network.PacketPipeline;
 import tconstruct.weaponry.TinkerWeaponry;
 import tconstruct.world.TinkerWorld;
 import tconstruct.world.gen.SlimeIslandGen;
-import tconstruct.world.village.ComponentSmeltery;
-import tconstruct.world.village.ComponentToolWorkshop;
-import tconstruct.world.village.TVillageTrades;
-import tconstruct.world.village.VillageSmelteryHandler;
-import tconstruct.world.village.VillageToolStationHandler;
+import tconstruct.world.village.*;
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.Loader;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.network.NetworkCheckHandler;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.VillagerRegistry;
+import cpw.mods.fml.relauncher.Side;
 
 /**
  * TConstruct, the tool mod. Craft your tools with style, then modify until the original is gone!
@@ -196,9 +208,7 @@ public class TConstruct {
         MinecraftForge.EVENT_BUS.register(playerTracker);
         NetworkRegistry.INSTANCE.registerGuiHandler(TConstruct.instance, proxy);
 
-        if (PHConstruct.globalDespawn != 6000 && PHConstruct.globalDespawn != 0) {
-            MinecraftForge.EVENT_BUS.register(new Spawntercepter());
-        }
+        if (PHConstruct.globalDespawn != 6000) MinecraftForge.EVENT_BUS.register(new Spawntercepter());
 
         pulsar.preInit(event);
 
@@ -300,6 +310,8 @@ public class TConstruct {
 
         @SubscribeEvent
         public void onEntitySpawn(EntityJoinWorldEvent event) {
+            // return if config is zero to keep vanilla functionality
+            if (PHConstruct.globalDespawn == 0) return;
             if (event.entity instanceof EntityItem) {
                 EntityItem ourGuy = (EntityItem) event.entity;
                 if (ourGuy.lifespan == 6000) {

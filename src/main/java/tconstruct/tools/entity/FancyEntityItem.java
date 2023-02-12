@@ -43,6 +43,11 @@ public class FancyEntityItem extends EntityItem {
     }
 
     public boolean attackEntityFrom(DamageSource par1DamageSource, float par2) {
-        return par1DamageSource.getDamageType().equals("outOfWorld");
+        if (PHConstruct.indestructible) {
+            if (par1DamageSource.getDamageType().equals("outOfWorld")) return true;
+            return false;
+        } else {
+            return super.attackEntityFrom(par1DamageSource, par2);
+        }
     }
 }

@@ -80,8 +80,7 @@ public class PHConstruct {
                 0,
                 "Changes the despawn time of all items, 0 is vanilla behavior").getInt(0);
         dropCanisters = config.get("Difficulty Changes", "Drop heart canisters on death", false).getBoolean(false);
-        daggerAdditionalThrowDamage = config.get("Difficulty Changes", "Additional throw damage of dagger", 0)
-                .getInt(0);
+        daggerThrowMultiplier = config.get("Difficulty Changes", "Thrown dagger output multiplier", 1).getDouble(1);
 
         naturalSlimeSpawn = config.get("Mobs", "Blue Slime spawn chance", 1, "Set to 0 to disable").getInt(1);
 
@@ -470,7 +469,7 @@ public class PHConstruct {
     public static boolean indestructible;
     public static int globalDespawn;
     public static boolean dropCanisters;
-    public static int daggerAdditionalThrowDamage;
+    public static double daggerThrowMultiplier;
 
     // Smeltery Output Modification
     public static double ingotsPerOre;
