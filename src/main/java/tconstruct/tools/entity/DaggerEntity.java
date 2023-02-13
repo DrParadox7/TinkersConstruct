@@ -61,7 +61,7 @@ public class DaggerEntity extends ProjectileBase {
                 (EntityPlayer) shootingEntity,
                 movingobjectposition.entityHit,
                 (ToolCore) returnStack.getItem(),
-                PHConstruct.daggerThrowMultiplier);
+                PHConstruct.daggerAdditionalThrowDamage);
         // super.onHitEntity(movingobjectposition);
     }
 
