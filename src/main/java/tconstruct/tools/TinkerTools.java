@@ -1439,28 +1439,28 @@ public class TinkerTools {
         // Ingot Template
         GameRegistry.addShapelessRecipe(
                 new ItemStack(TinkerTools.clayPattern, 1, 0),
-                Items.iron_ingot.setContainerItem(Items.iron_ingot),
+                Items.iron_ingot,
                 new ItemStack(TinkerTools.blankPattern, 1, 3)); // Iron Ingot
 
         GameRegistry.addShapelessRecipe(
                 new ItemStack(TinkerTools.clayPattern, 1, 0),
-                Items.gold_ingot.setContainerItem(Items.gold_ingot),
+                Items.gold_ingot,
                 new ItemStack(TinkerTools.blankPattern, 1, 3)); // Gold Ingot
 
         GameRegistry.addShapelessRecipe(
                 new ItemStack(TinkerTools.clayPattern, 1, 0),
-                Items.brick.setContainerItem(Items.brick),
+                Items.brick,
                 new ItemStack(TinkerTools.blankPattern, 1, 3)); // Brick
 
         GameRegistry.addShapelessRecipe(
                 new ItemStack(TinkerTools.clayPattern, 1, 0),
-                Items.netherbrick.setContainerItem(Items.netherbrick),
+                Items.netherbrick,
                 new ItemStack(TinkerTools.blankPattern, 1, 3)); // Nether Brick
 
         // Nugget Template
         GameRegistry.addShapelessRecipe(
                 new ItemStack(TinkerTools.clayPattern, 1, 27),
-                Items.gold_nugget.setContainerItem(Items.gold_nugget),
+                Items.gold_nugget,
                 new ItemStack(TinkerTools.blankPattern, 1, 3));
     }
 
