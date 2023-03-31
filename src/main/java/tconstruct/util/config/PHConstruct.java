@@ -156,6 +156,7 @@ public class PHConstruct {
         moltenStone = config.get(
                         "Balance", "Allow Stone to be molted into smeltery blocks", true, "Set to false to disable")
                 .getBoolean(true);
+        gearCasting = config.get("Balance", "Enable casting of Gears", true).getBoolean(true);
 
         boolean ic2 = true;
         boolean xycraft = true;
@@ -348,6 +349,8 @@ public class PHConstruct {
         meltableVillagers = config.get("Experimental", "Allow villagers to be melted down for emeralds", true)
                 .getBoolean(true);
         minimalTextures = config.get("Experimental", "Minimal Textures", false).getBoolean(false);
+        experimentalBackports =
+                config.get("Experimental", "Enable experimental backports", true).getBoolean(true);
         extraBlockUpdates = config.get(
                         "Experimental",
                         "Send additional block updates when using AOE tools",
@@ -487,6 +490,8 @@ public class PHConstruct {
     public static int repairModifier;
     public static boolean balancedPartCrafting;
     public static boolean moltenStone;
+    public static boolean experimentalBackports;
+    public static boolean gearCasting;
 
     public static boolean disableWoodTools;
     public static boolean disableStoneTools;

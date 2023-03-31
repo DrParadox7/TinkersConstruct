@@ -34,6 +34,7 @@ import tconstruct.modifiers.accessory.GloveSpeed;
 import tconstruct.modifiers.armor.*;
 import tconstruct.modifiers.tools.ModAttack;
 import tconstruct.tools.TinkerTools;
+import tconstruct.util.config.PHConstruct;
 import tconstruct.world.TinkerWorld;
 
 @ObjectHolder(TConstruct.modID)
@@ -204,18 +205,19 @@ public class TinkerArmor {
                 new ItemStack(Items.golden_apple, 1, 1));
         // GameRegistry.addShapelessRecipe(new ItemStack(heartCanister, 1, 6), new ItemStack(heartCanister, 1, 0), new
         // ItemStack(heartCanister, 1, 4), new ItemStack(heartCanister, 1, 5));
-
-        GameRegistry.addRecipe(new ShapedOreRecipe(
-                new ItemStack(TinkerArmor.knapsack, 1, 0),
-                "###",
-                "rmr",
-                "###",
-                '#',
-                new ItemStack(Items.leather),
-                'r',
-                new ItemStack(TinkerTools.toughRod, 1, 2),
-                'm',
-                "ingotGold"));
+        if (!PHConstruct.removeGoldCastRecipes) {
+            GameRegistry.addRecipe(new ShapedOreRecipe(
+                    new ItemStack(TinkerArmor.knapsack, 1, 0),
+                    "###",
+                    "rmr",
+                    "###",
+                    '#',
+                    new ItemStack(Items.leather),
+                    'r',
+                    new ItemStack(TinkerTools.toughRod, 1, 2),
+                    'm',
+                    "ingotGold"));
+        }
         ItemStack aluBrass = new ItemStack(TinkerTools.materials, 1, 14);
         GameRegistry.addRecipe(
                 new ItemStack(TinkerArmor.knapsack, 1, 0),
@@ -236,6 +238,7 @@ public class TinkerArmor {
         ItemStack leather = new ItemStack(Items.leather);
         ItemStack glass = new ItemStack(Blocks.glass);
         ItemStack string = new ItemStack(Items.string);
+
         GameRegistry.addRecipe(new ShapedOreRecipe(
                 travelGoggles.getDefaultItem(),
                 "# #",

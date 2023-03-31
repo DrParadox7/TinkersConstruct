@@ -11,6 +11,7 @@ import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 import tconstruct.mechworks.TinkerMechworks;
 import tconstruct.tools.TinkerTools;
+import tconstruct.util.config.PHConstruct;
 import tconstruct.world.TinkerWorld;
 
 public class TVillageTrades implements IVillageTradeHandler {
@@ -43,7 +44,7 @@ public class TVillageTrades implements IVillageTradeHandler {
 
     @Override
     public void manipulateTradesForVillager(EntityVillager villager, MerchantRecipeList recipeList, Random random) {
-        if (villager.getProfession() == 78943) {
+        if (PHConstruct.allowVillagerTrading && villager.getProfession() == 78943) {
             ItemStack ingredient;
             ItemStack ingredient2;
             ItemStack result;
