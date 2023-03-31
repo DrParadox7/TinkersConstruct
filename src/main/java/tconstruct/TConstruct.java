@@ -142,7 +142,6 @@ public class TConstruct {
         pulsar.registerPulse(new TinkerMechworks());
         pulsar.registerPulse(new TinkerArmor());
         pulsar.registerPulse(new TinkerWeaponry());
-        pulsar.registerPulse(new TinkerGadgets());
         pulsar.registerPulse(new TinkerThaumcraft());
         pulsar.registerPulse(new TinkerWaila());
         pulsar.registerPulse(new TinkerBuildCraft());
@@ -154,8 +153,10 @@ public class TConstruct {
         pulsar.registerPulse(new TinkersThermalFoundation());
         pulsar.registerPulse(new TinkerFMP());
         pulsar.registerPulse(new TinkerUBC());
-        pulsar.registerPulse(new TinkerGears());
         pulsar.registerPulse(new TinkerRfTools());
+        if (PHConstruct.gearCasting) pulsar.registerPulse(new TinkerGears());
+        if (PHConstruct.experimentalBackports) pulsar.registerPulse(new TinkerGadgets());
+
         /*pulsar.registerPulse(new TinkerPrayers());
         pulsar.registerPulse(new TinkerCropify());*/
 
@@ -165,7 +166,8 @@ public class TConstruct {
         TConstructRegistry.blockTab = new TConstructCreativeTab("TConstructBlocks");
         TConstructRegistry.equipableTab = new TConstructCreativeTab("TConstructEquipables");
         TConstructRegistry.weaponryTab = new TConstructCreativeTab("TConstructWeaponry");
-        TConstructRegistry.gadgetsTab = new TConstructCreativeTab("TConstructGadgets");
+        if (PHConstruct.experimentalBackports)
+            TConstructRegistry.gadgetsTab = new TConstructCreativeTab("TConstructGadgets");
 
         tableCasting = new LiquidCasting();
         basinCasting = new LiquidCasting();
@@ -189,8 +191,7 @@ public class TConstruct {
             // adds to the villager spawner egg
             VillagerRegistry.instance().registerVillagerId(78943);
             // moved down, not needed if 'addToVillages' is false
-            if (PHConstruct.allowVillagerTrading)
-                VillagerRegistry.instance().registerVillageTradeHandler(78943, new TVillageTrades());
+            VillagerRegistry.instance().registerVillageTradeHandler(78943, new TVillageTrades());
 
             VillagerRegistry.instance().registerVillageCreationHandler(new VillageToolStationHandler());
             MapGenStructureIO.func_143031_a(ComponentToolWorkshop.class, "TConstruct:ToolWorkshopStructure");
@@ -234,8 +235,10 @@ public class TConstruct {
     /** Called on server shutdown to prevent memory leaks */
     @EventHandler
     public void serverStopping(FMLServerStoppingEvent event) {
-        TinkerGadgets.log.info("Cleaning up SlimeBounceHandler data.");
-        SlimeBounceHandler.BOUNCING_ENTITIES.clear();
+        if (PHConstruct.experimentalBackports) {
+            TinkerGadgets.log.info("Cleaning up SlimeBounceHandler data.");
+            SlimeBounceHandler.BOUNCING_ENTITIES.clear();
+        }
     }
 
     /* IMC Mod Support */
