@@ -619,7 +619,6 @@ public class SmelteryLogic extends InventoryLogic implements IActiveLogic, IFaci
     @Override
     public void markDirty() {
         updateTemperatures();
-        updateEntity();
 
         super.markDirty();
         needsUpdate = true;

@@ -173,6 +173,7 @@ public class SmelteryDrainLogic extends MultiServantLogic implements IFluidHandl
         if (smeltery == null) return 0;
 
         if (smeltery.maxLiquid == 0) return 0;
-        return 15 * smeltery.currentLiquid / smeltery.maxLiquid;
+
+        return MathHelper.ceiling_float_int(15f * smeltery.currentLiquid / smeltery.maxLiquid);
     }
 }
