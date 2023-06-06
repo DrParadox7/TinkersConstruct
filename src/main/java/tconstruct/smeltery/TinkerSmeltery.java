@@ -588,7 +588,7 @@ public class TinkerSmeltery {
         TConstructRegistry.addItemToDirectory("ceramicPattern", TinkerSmeltery.ceramicPattern);
         for (int i = 0; i < patternTypes.length; i++) {
             TConstructRegistry.addItemStackToDirectory(
-                    patternTypes[i] + "Cast",
+                    patternTypes[i] + "CastCeramic",
                     new ItemStack(TinkerSmeltery.ceramicPattern, 1, i));
         }
 

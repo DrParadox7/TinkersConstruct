@@ -246,7 +246,7 @@ public class TinkerTools {
             TConstructRegistry
                     .addItemStackToDirectory(patternTypes[i] + "Pattern", new ItemStack(TinkerTools.woodPattern, 1, i));
             TConstructRegistry
-                    .addItemStackToDirectory(patternTypes[i] + "Pattern", new ItemStack(TinkerTools.clayPattern, 1, i));
+                    .addItemStackToDirectory(patternTypes[i] + "PatternClay", new ItemStack(TinkerTools.clayPattern, 1, i));
         }
 
         TinkerTools.manualBook = new Manual();
