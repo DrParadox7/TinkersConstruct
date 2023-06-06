@@ -2,8 +2,6 @@ package tconstruct.client.entity.projectile;
 
 import java.util.Random;
 
-import mantle.blocks.BlockUtils;
-
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.ItemRenderer;
@@ -21,9 +19,10 @@ import net.minecraft.util.ResourceLocation;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import tconstruct.tools.entity.ArrowEntity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import mantle.blocks.BlockUtils;
+import tconstruct.tools.entity.ArrowEntity;
 
 @SideOnly(Side.CLIENT)
 @Deprecated

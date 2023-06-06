@@ -3,12 +3,11 @@ package tconstruct.mechworks.logic;
 import java.util.ArrayList;
 import java.util.Iterator;
 
-import mantle.world.WorldHelper;
-
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import mantle.world.WorldHelper;
 import tconstruct.mechworks.landmine.behavior.Behavior;
 
 /**

@@ -41,8 +41,7 @@ public class LiquidCasting {
             ItemStack ceramic_cast = new ItemStack(TinkerSmeltery.ceramicPattern, 1, cast.getItemDamage());
             CastingRecipe ccr = new CastingRecipe(output, metal, ceramic_cast, true, delay, props);
             if (!contains(ccr)) casts.add(ccr);
-        }
-        else if (cast != null && cast.getItem() == TinkerWeaponry.metalPattern) {
+        } else if (cast != null && cast.getItem() == TinkerWeaponry.metalPattern) {
             ItemStack ceramic_cast = new ItemStack(TinkerWeaponry.ceramicPattern, 1, cast.getItemDamage());
             CastingRecipe ccr = new CastingRecipe(output, metal, ceramic_cast, true, delay, props);
             if (!contains(ccr)) casts.add(ccr);

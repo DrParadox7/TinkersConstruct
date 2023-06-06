@@ -16,10 +16,10 @@ import net.minecraftforge.client.IItemRenderer;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
-import tconstruct.client.ToolCoreRenderer;
-import tconstruct.tools.entity.DaggerEntity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import tconstruct.client.ToolCoreRenderer;
+import tconstruct.tools.entity.DaggerEntity;
 
 @SideOnly(Side.CLIENT)
 @Deprecated

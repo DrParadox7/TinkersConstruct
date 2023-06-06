@@ -1,8 +1,5 @@
 package tconstruct.smeltery;
 
-import mantle.client.MProxyClient;
-import mantle.lib.client.MantleClientRegistry;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -14,6 +11,10 @@ import net.minecraftforge.client.MinecraftForgeClient;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.RenderBlockFluid;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import mantle.client.MProxyClient;
+import mantle.lib.client.MantleClientRegistry;
 import tconstruct.armor.TinkerArmor;
 import tconstruct.armor.modelblock.DryingRackRender;
 import tconstruct.armor.modelblock.DryingRackSpecialRender;
@@ -26,8 +27,6 @@ import tconstruct.smeltery.logic.CastingTableLogic;
 import tconstruct.smeltery.logic.SmelteryLogic;
 import tconstruct.smeltery.model.*;
 import tconstruct.tools.TinkerTools;
-import cpw.mods.fml.client.registry.ClientRegistry;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class SmelteryProxyClient extends SmelteryProxyCommon {
 

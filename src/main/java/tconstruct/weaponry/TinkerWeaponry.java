@@ -5,9 +5,6 @@ import static tconstruct.tools.TinkerTools.MaterialID;
 import java.util.Map;
 import java.util.Random;
 
-import mantle.pulsar.pulse.Handler;
-import mantle.pulsar.pulse.Pulse;
-
 import net.minecraft.block.BlockDispenser;
 import net.minecraft.dispenser.IPosition;
 import net.minecraft.init.Blocks;
@@ -21,6 +18,14 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.common.SidedProxy;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
+import mantle.pulsar.pulse.Handler;
+import mantle.pulsar.pulse.Pulse;
 import tconstruct.TConstruct;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.*;
@@ -50,12 +55,6 @@ import tconstruct.weaponry.entity.*;
 import tconstruct.weaponry.items.*;
 import tconstruct.weaponry.weapons.*;
 import tconstruct.world.TinkerWorld;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.FMLInitializationEvent;
-import cpw.mods.fml.common.event.FMLPostInitializationEvent;
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
-import cpw.mods.fml.common.registry.GameRegistry;
 
 @GameRegistry.ObjectHolder(TConstruct.modID)
 @Pulse(
@@ -232,7 +231,6 @@ public class TinkerWeaponry {
         StencilBuilder.registerStencil(25, woodPattern, 1); // crossbow limb
         if (!PHConstruct.balancedPartCrafting) StencilBuilder.registerStencil(26, woodPattern, 2); // crossbow body
         StencilBuilder.registerStencil(27, woodPattern, 3); // bow limb
-
 
         PatternBuilder.instance.addToolPattern(woodPattern);
 

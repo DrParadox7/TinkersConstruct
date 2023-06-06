@@ -4,12 +4,12 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import tconstruct.client.BlockSkinRenderHelper;
 import tconstruct.util.ItemHelper;
 import tconstruct.world.TinkerWorld;
 import tconstruct.world.blocks.SlimePad;
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class SlimePadRender implements ISimpleBlockRenderingHandler {
 

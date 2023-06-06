@@ -14,10 +14,10 @@ import net.minecraft.util.MovingObjectPosition;
 import net.minecraft.util.Vec3;
 import net.minecraft.world.World;
 
-import tconstruct.library.tools.AbilityHelper;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.registry.IEntityAdditionalSpawnData;
 import io.netty.buffer.ByteBuf;
+import tconstruct.library.tools.AbilityHelper;
 
 @Deprecated
 public class RotatingBase extends Entity implements IEntityAdditionalSpawnData {

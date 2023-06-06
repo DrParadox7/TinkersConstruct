@@ -13,15 +13,15 @@ import net.minecraft.util.IIcon;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.Optional;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import tconstruct.armor.ArmorProxyClient;
 import tconstruct.armor.TinkerArmor;
 import tconstruct.library.armor.ArmorCore;
 import tconstruct.library.armor.ArmorPart;
 import thaumcraft.api.IGoggles;
 import thaumcraft.api.nodes.IRevealer;
-import cpw.mods.fml.common.Optional;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 @Optional.InterfaceList({ @Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.nodes.IRevealer"),
         @Optional.Interface(modid = "Thaumcraft", iface = "thaumcraft.api.IGoggles") })

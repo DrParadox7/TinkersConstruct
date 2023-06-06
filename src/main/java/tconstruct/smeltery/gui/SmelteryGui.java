@@ -18,12 +18,12 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import cpw.mods.fml.common.Loader;
 import tconstruct.TConstruct;
 import tconstruct.smeltery.inventory.ActiveContainer;
 import tconstruct.smeltery.inventory.SmelteryContainer;
 import tconstruct.smeltery.logic.SmelteryLogic;
 import tconstruct.util.network.SmelteryPacket;
-import cpw.mods.fml.common.Loader;
 
 public class SmelteryGui extends ActiveContainerGui {
 

@@ -3,8 +3,6 @@ package tconstruct.blocks.slime;
 import java.util.List;
 import java.util.Random;
 
-import mantle.blocks.MantleBlock;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -20,10 +18,11 @@ import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import tconstruct.library.TConstructRegistry;
-import tconstruct.tools.TinkerTools;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import mantle.blocks.MantleBlock;
+import tconstruct.library.TConstructRegistry;
+import tconstruct.tools.TinkerTools;
 
 public class SlimeGrass extends MantleBlock {
 

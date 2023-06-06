@@ -8,11 +8,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.ResourceLocation;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import tconstruct.armor.ArmorProxyClient;
 import tconstruct.library.accessory.AccessoryCore;
 import tconstruct.library.accessory.IAccessoryModel;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public class TravelGlove extends AccessoryCore implements IAccessoryModel {
 

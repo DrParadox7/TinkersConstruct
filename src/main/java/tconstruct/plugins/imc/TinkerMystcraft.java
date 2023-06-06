@@ -2,14 +2,13 @@ package tconstruct.plugins.imc;
 
 import static tconstruct.smeltery.TinkerSmeltery.*;
 
-import mantle.pulsar.pulse.Handler;
-import mantle.pulsar.pulse.Pulse;
-
 import net.minecraftforge.fluids.Fluid;
 
-import tconstruct.TConstruct;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms;
+import mantle.pulsar.pulse.Handler;
+import mantle.pulsar.pulse.Pulse;
+import tconstruct.TConstruct;
 
 @Pulse(
         id = "Tinkers Mystcraft Compatibility",

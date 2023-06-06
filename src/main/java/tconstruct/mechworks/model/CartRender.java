@@ -11,9 +11,9 @@ import net.minecraft.util.Vec3;
 
 import org.lwjgl.opengl.GL11;
 
-import tconstruct.world.entity.CartEntity;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import tconstruct.world.entity.CartEntity;
 
 @SideOnly(Side.CLIENT)
 public class CartRender extends Render {

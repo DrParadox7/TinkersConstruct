@@ -23,12 +23,12 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 import net.minecraftforge.common.IShearable;
 
+import cpw.mods.fml.client.FMLClientHandler;
 import tconstruct.library.ActiveToolMod;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.tools.Weapon;
 import tconstruct.tools.TinkerTools;
-import cpw.mods.fml.client.FMLClientHandler;
 
 public class Scythe extends Weapon {
 

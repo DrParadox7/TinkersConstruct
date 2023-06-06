@@ -9,10 +9,10 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import tconstruct.mechworks.entity.item.ExplosivePrimed;
-import tconstruct.world.TinkerWorld;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import tconstruct.mechworks.entity.item.ExplosivePrimed;
+import tconstruct.world.TinkerWorld;
 
 @SideOnly(Side.CLIENT)
 public class ExplosiveRender extends Render {

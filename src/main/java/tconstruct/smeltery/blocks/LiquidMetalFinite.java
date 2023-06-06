@@ -10,10 +10,10 @@ import net.minecraft.world.World;
 import net.minecraftforge.fluids.BlockFluidFinite;
 import net.minecraftforge.fluids.Fluid;
 
-import tconstruct.library.TConstructRegistry;
-import tconstruct.smeltery.TinkerSmeltery;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import tconstruct.library.TConstructRegistry;
+import tconstruct.smeltery.TinkerSmeltery;
 
 public class LiquidMetalFinite extends BlockFluidFinite {
 

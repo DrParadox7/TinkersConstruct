@@ -1,8 +1,5 @@
 package tconstruct.client.pages;
 
-import mantle.client.pages.BookPage;
-import mantle.lib.client.MantleClientRegistry;
-
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.StatCollector;
@@ -12,6 +9,8 @@ import org.lwjgl.opengl.GL12;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
 
+import mantle.client.pages.BookPage;
+import mantle.lib.client.MantleClientRegistry;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.PatternBuilder;
 import tconstruct.library.tools.ToolMaterial;

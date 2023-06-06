@@ -2,9 +2,6 @@ package tconstruct.util.network;
 
 import java.util.*;
 
-import mantle.common.network.AbstractPacket;
-import mantle.common.network.PacketUpdateTE;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.EntityPlayerMP;
@@ -23,6 +20,8 @@ import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.handler.codec.MessageToMessageCodec;
+import mantle.common.network.AbstractPacket;
+import mantle.common.network.PacketUpdateTE;
 
 /**
  * Packet pipeline class. Directs all registered packet data to be handled by the packets themselves.

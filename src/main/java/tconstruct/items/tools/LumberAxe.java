@@ -4,8 +4,6 @@ import java.util.Queue;
 import java.util.Set;
 import java.util.Stack;
 
-import mantle.player.PlayerUtils;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.EntityLivingBase;
@@ -16,12 +14,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
 
-import tconstruct.library.ActiveToolMod;
-import tconstruct.library.TConstructRegistry;
-import tconstruct.library.tools.AOEHarvestTool;
-import tconstruct.library.tools.AbilityHelper;
-import tconstruct.tools.TinkerTools;
-
 import com.google.common.collect.Lists;
 
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -29,6 +21,12 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent;
 import gnu.trove.set.hash.THashSet;
+import mantle.player.PlayerUtils;
+import tconstruct.library.ActiveToolMod;
+import tconstruct.library.TConstructRegistry;
+import tconstruct.library.tools.AOEHarvestTool;
+import tconstruct.library.tools.AbilityHelper;
+import tconstruct.tools.TinkerTools;
 
 public class LumberAxe extends AOEHarvestTool {
 

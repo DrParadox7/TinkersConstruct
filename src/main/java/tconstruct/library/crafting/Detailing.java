@@ -8,8 +8,8 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import tconstruct.library.tools.ToolCore;
 import cpw.mods.fml.common.registry.GameRegistry;
+import tconstruct.library.tools.ToolCore;
 
 public class Detailing {
 

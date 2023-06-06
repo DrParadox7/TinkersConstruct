@@ -13,10 +13,10 @@ import net.minecraft.potion.PotionEffect;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
-import tconstruct.blocks.TConstructBlock;
-import tconstruct.library.TConstructRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import tconstruct.blocks.TConstructBlock;
+import tconstruct.library.TConstructRegistry;
 
 public class SlimeGel extends TConstructBlock {
 

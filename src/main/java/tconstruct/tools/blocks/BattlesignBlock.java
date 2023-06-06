@@ -13,10 +13,10 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import tconstruct.tools.logic.BattlesignLogic;
-import tconstruct.tools.model.BattlesignRender;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import tconstruct.tools.logic.BattlesignLogic;
+import tconstruct.tools.model.BattlesignRender;
 
 public class BattlesignBlock extends EquipBlock {
 

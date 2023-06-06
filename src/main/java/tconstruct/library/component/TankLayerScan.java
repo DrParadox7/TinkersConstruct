@@ -5,18 +5,17 @@ import java.util.Collections;
 import java.util.HashSet;
 import java.util.Iterator;
 
-import mantle.blocks.iface.IFacingLogic;
-import mantle.blocks.iface.IMasterLogic;
-import mantle.blocks.iface.IServantLogic;
-import mantle.world.CoordTuple;
-import mantle.world.CoordTupleSort;
-
 import net.minecraft.block.Block;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagIntArray;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 
+import mantle.blocks.iface.IFacingLogic;
+import mantle.blocks.iface.IMasterLogic;
+import mantle.blocks.iface.IServantLogic;
+import mantle.world.CoordTuple;
+import mantle.world.CoordTupleSort;
 import tconstruct.TConstruct;
 
 public class TankLayerScan extends LogicComponent {

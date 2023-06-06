@@ -9,10 +9,10 @@ import net.minecraft.tileentity.TileEntity;
 
 import org.lwjgl.opengl.GL11;
 
-import tconstruct.blocks.logic.DryingRackLogic;
-import tconstruct.tools.entity.FancyEntityItem;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import tconstruct.blocks.logic.DryingRackLogic;
+import tconstruct.tools.entity.FancyEntityItem;
 
 /* Special renderer, only used for drawing tools */
 

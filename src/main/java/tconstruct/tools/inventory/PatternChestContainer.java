@@ -7,10 +7,10 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
+import invtweaks.api.container.ChestContainer;
 import tconstruct.library.util.IPattern;
 import tconstruct.tools.TinkerTools;
 import tconstruct.tools.logic.PatternChestLogic;
-import invtweaks.api.container.ChestContainer;
 
 @ChestContainer
 public class PatternChestContainer extends Container {

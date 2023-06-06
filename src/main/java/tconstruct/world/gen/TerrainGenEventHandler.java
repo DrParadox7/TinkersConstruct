@@ -10,12 +10,12 @@ import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate;
 
-import tconstruct.util.config.PHConstruct;
-import tconstruct.world.TinkerWorld;
-
 import com.google.common.collect.ImmutableCollection;
 import com.google.common.collect.ImmutableList;
+
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import tconstruct.util.config.PHConstruct;
+import tconstruct.world.TinkerWorld;
 
 public class TerrainGenEventHandler {
 

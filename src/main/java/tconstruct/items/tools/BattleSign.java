@@ -5,13 +5,13 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.FMLCommonHandler;
+import cpw.mods.fml.relauncher.Side;
 import tconstruct.TConstruct;
 import tconstruct.library.tools.Weapon;
 import tconstruct.tools.TinkerTools;
 import tconstruct.tools.ToolProxyClient;
 import tconstruct.tools.logic.EquipLogic;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.relauncher.Side;
 
 public class BattleSign extends Weapon {
 

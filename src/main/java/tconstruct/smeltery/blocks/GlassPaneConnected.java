@@ -12,10 +12,10 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
-import tconstruct.smeltery.model.PaneConnectedRender;
-import tconstruct.util.config.PHConstruct;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import tconstruct.smeltery.model.PaneConnectedRender;
+import tconstruct.util.config.PHConstruct;
 
 public class GlassPaneConnected extends GlassBlockConnected {
 

@@ -10,14 +10,14 @@ import net.minecraftforge.event.entity.living.LivingDeathEvent;
 import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.player.ItemTooltipEvent;
 
+import com.mojang.realmsclient.gui.ChatFormatting;
+
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import tconstruct.items.tools.FryingPan;
 import tconstruct.library.event.ToolCraftedEvent;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.library.tools.Weapon;
 import tconstruct.tools.logic.ToolForgeLogic;
-
-import com.mojang.realmsclient.gui.ChatFormatting;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class AchievementEvents {
 
