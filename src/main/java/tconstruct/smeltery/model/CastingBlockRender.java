@@ -6,6 +6,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.IBlockAccess;
 import net.minecraftforge.fluids.Fluid;
 
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import tconstruct.TConstruct;
 import tconstruct.client.BlockSkinRenderHelper;
 import tconstruct.library.crafting.CastingRecipe;
@@ -14,8 +16,6 @@ import tconstruct.smeltery.logic.CastingBasinLogic;
 import tconstruct.smeltery.logic.CastingTableLogic;
 import tconstruct.smeltery.logic.FaucetLogic;
 import tconstruct.util.ItemHelper;
-import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
-import cpw.mods.fml.client.registry.RenderingRegistry;
 
 public class CastingBlockRender implements ISimpleBlockRenderingHandler {
 

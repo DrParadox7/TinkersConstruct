@@ -15,6 +15,7 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 
+import cpw.mods.fml.client.FMLClientHandler;
 import tconstruct.library.accessory.AccessoryCore;
 import tconstruct.library.armor.ArmorCore;
 import tconstruct.library.modifier.IModifyable;
@@ -25,7 +26,6 @@ import tconstruct.library.util.XpUtils;
 import tconstruct.library.weaponry.AmmoWeapon;
 import tconstruct.library.weaponry.IAmmo;
 import tconstruct.library.weaponry.ProjectileWeapon;
-import cpw.mods.fml.client.FMLClientHandler;
 
 public final class ToolStationGuiHelper {
 

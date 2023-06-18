@@ -3,12 +3,12 @@ package tconstruct.plugins.imc;
 import java.util.Arrays;
 import java.util.List;
 
-import mantle.pulsar.pulse.Handler;
-import mantle.pulsar.pulse.Pulse;
-import tconstruct.TConstruct;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
+import mantle.pulsar.pulse.Handler;
+import mantle.pulsar.pulse.Pulse;
+import tconstruct.TConstruct;
 
 @ObjectHolder(TConstruct.modID)
 @Pulse(

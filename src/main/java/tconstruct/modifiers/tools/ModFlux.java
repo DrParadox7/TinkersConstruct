@@ -5,8 +5,8 @@ import java.util.ArrayList;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 
-import tconstruct.library.tools.ToolCore;
 import cofh.api.energy.IEnergyContainerItem;
+import tconstruct.library.tools.ToolCore;
 
 /* TE3 support */
 

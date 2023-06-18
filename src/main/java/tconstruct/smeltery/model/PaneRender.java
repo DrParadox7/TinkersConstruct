@@ -4,9 +4,9 @@ import net.minecraft.block.Block;
 import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.world.IBlockAccess;
 
-import tconstruct.util.ItemHelper;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import tconstruct.util.ItemHelper;
 
 public class PaneRender implements ISimpleBlockRenderingHandler {
 

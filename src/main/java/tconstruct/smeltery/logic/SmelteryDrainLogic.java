@@ -1,9 +1,5 @@
 package tconstruct.smeltery.logic;
 
-import mantle.blocks.abstracts.MultiServantLogic;
-import mantle.blocks.iface.IFacingLogic;
-import mantle.world.CoordTuple;
-
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.network.NetworkManager;
@@ -15,6 +11,10 @@ import net.minecraftforge.fluids.Fluid;
 import net.minecraftforge.fluids.FluidStack;
 import net.minecraftforge.fluids.FluidTankInfo;
 import net.minecraftforge.fluids.IFluidHandler;
+
+import mantle.blocks.abstracts.MultiServantLogic;
+import mantle.blocks.iface.IFacingLogic;
+import mantle.world.CoordTuple;
 
 public class SmelteryDrainLogic extends MultiServantLogic implements IFluidHandler, IFacingLogic {
 

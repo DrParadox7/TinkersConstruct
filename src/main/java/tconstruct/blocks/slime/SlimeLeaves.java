@@ -13,10 +13,10 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-import tconstruct.library.TConstructRegistry;
-import tconstruct.world.TinkerWorld;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import tconstruct.library.TConstructRegistry;
+import tconstruct.world.TinkerWorld;
 
 public class SlimeLeaves extends BlockLeaves {
 

@@ -1,15 +1,14 @@
 package tconstruct.plugins.imc;
 
-import mantle.pulsar.pulse.Handler;
-import mantle.pulsar.pulse.Pulse;
-
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemStack;
 
-import tconstruct.TConstruct;
-import tconstruct.smeltery.TinkerSmeltery;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLInterModComms;
+import mantle.pulsar.pulse.Handler;
+import mantle.pulsar.pulse.Pulse;
+import tconstruct.TConstruct;
+import tconstruct.smeltery.TinkerSmeltery;
 
 @Pulse(
         id = "Tinkers BuildCraft Compatibility",

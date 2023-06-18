@@ -7,10 +7,10 @@ import net.minecraft.util.ResourceLocation;
 
 import org.lwjgl.opengl.GL11;
 
-import tconstruct.tools.inventory.FurnaceContainer;
-import tconstruct.tools.logic.FurnaceLogic;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import tconstruct.tools.inventory.FurnaceContainer;
+import tconstruct.tools.logic.FurnaceLogic;
 
 @SideOnly(Side.CLIENT)
 public class FurnaceGui extends GuiContainer {

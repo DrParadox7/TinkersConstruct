@@ -13,6 +13,10 @@ import net.minecraft.world.World;
 
 import org.lwjgl.opengl.GL11;
 
+import codechicken.nei.VisiblityData;
+import codechicken.nei.api.INEIGuiHandler;
+import codechicken.nei.api.TaggedInventoryArea;
+import cpw.mods.fml.common.Optional;
 import tconstruct.TConstruct;
 import tconstruct.library.client.MoldGuiElement;
 import tconstruct.library.client.TConstructClientRegistry;
@@ -20,10 +24,6 @@ import tconstruct.library.crafting.MoldBuilder;
 import tconstruct.tools.inventory.MoldingTableContainer;
 import tconstruct.tools.logic.MoldingTableLogic;
 import tconstruct.util.network.MoldingTablePacket;
-import codechicken.nei.VisiblityData;
-import codechicken.nei.api.INEIGuiHandler;
-import codechicken.nei.api.TaggedInventoryArea;
-import cpw.mods.fml.common.Optional;
 
 @Optional.Interface(iface = "codechicken.nei.api.INEIGuiHandler", modid = "NotEnoughItems")
 public class MoldingTableGui extends GuiContainer implements INEIGuiHandler {

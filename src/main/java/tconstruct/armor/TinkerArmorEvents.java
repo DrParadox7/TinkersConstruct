@@ -16,13 +16,13 @@ import net.minecraftforge.event.entity.living.LivingDropsEvent;
 import net.minecraftforge.event.entity.living.LivingEvent.LivingJumpEvent;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import tconstruct.TConstruct;
 import tconstruct.armor.items.TravelWings;
 import tconstruct.armor.player.TPlayerStats;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.util.network.ArmourGuiSyncPacket;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class TinkerArmorEvents {
 

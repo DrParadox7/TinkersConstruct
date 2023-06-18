@@ -2,11 +2,11 @@ package tconstruct.armor;
 
 import net.minecraft.client.Minecraft;
 
-import tconstruct.client.ArmorControls;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.gameevent.TickEvent.ClientTickEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import tconstruct.client.ArmorControls;
 
 public class ArmorTickHandler {
 

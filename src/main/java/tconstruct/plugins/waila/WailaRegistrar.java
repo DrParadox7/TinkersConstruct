@@ -1,9 +1,8 @@
 package tconstruct.plugins.waila;
 
-import mcp.mobius.waila.api.IWailaRegistrar;
-
 import net.minecraftforge.fluids.FluidStack;
 
+import mcp.mobius.waila.api.IWailaRegistrar;
 import tconstruct.TConstruct;
 import tconstruct.smeltery.blocks.LavaTankBlock;
 import tconstruct.smeltery.blocks.SmelteryBlock;

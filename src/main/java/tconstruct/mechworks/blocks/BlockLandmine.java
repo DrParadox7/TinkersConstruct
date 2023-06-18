@@ -6,9 +6,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
-import mantle.blocks.BlockUtils;
-import mantle.world.WorldHelper;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockPressurePlate.Sensitivity;
@@ -33,14 +30,16 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.util.ForgeDirection;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import mantle.blocks.BlockUtils;
+import mantle.world.WorldHelper;
 import tconstruct.TConstruct;
 import tconstruct.mechworks.MechworksProxyCommon;
 import tconstruct.mechworks.landmine.Helper;
 import tconstruct.mechworks.logic.LandmineExplodeLogic;
 import tconstruct.mechworks.logic.TileEntityLandmine;
 import tconstruct.world.model.RenderLandmine;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 /**
  *

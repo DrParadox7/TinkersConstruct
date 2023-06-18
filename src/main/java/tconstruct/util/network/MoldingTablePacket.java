@@ -1,17 +1,16 @@
 package tconstruct.util.network;
 
-import mantle.common.network.AbstractPacket;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemStack;
 
+import cpw.mods.fml.common.network.ByteBufUtils;
+import io.netty.buffer.ByteBuf;
+import io.netty.channel.ChannelHandlerContext;
+import mantle.common.network.AbstractPacket;
 import tconstruct.TConstruct;
 import tconstruct.library.crafting.MoldBuilder;
 import tconstruct.tools.inventory.MoldingTableContainer;
 import tconstruct.tools.logic.MoldingTableLogic;
-import cpw.mods.fml.common.network.ByteBufUtils;
-import io.netty.buffer.ByteBuf;
-import io.netty.channel.ChannelHandlerContext;
 
 public class MoldingTablePacket extends AbstractPacket {
 

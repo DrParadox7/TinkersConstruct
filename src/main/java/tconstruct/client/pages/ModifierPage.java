@@ -3,9 +3,6 @@ package tconstruct.client.pages;
 import java.util.LinkedList;
 import java.util.List;
 
-import mantle.client.pages.BookPage;
-import mantle.lib.client.MantleClientRegistry;
-
 import net.minecraft.client.renderer.RenderHelper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -15,6 +12,9 @@ import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
+
+import mantle.client.pages.BookPage;
+import mantle.lib.client.MantleClientRegistry;
 
 public class ModifierPage extends BookPage {
 

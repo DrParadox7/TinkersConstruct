@@ -4,8 +4,6 @@ import static net.minecraftforge.common.util.ForgeDirection.*;
 
 import java.util.Random;
 
-import mantle.blocks.MantleBlock;
-
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -17,6 +15,7 @@ import net.minecraft.world.World;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import mantle.blocks.MantleBlock;
 
 public class StoneTorch extends MantleBlock {
 

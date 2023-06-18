@@ -13,10 +13,10 @@ import net.minecraftforge.fluids.FluidTankInfo;
 
 import org.lwjgl.opengl.GL11;
 
-import tconstruct.client.BlockSkinRenderHelper;
-import tconstruct.smeltery.logic.CastingChannelLogic;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
+import tconstruct.client.BlockSkinRenderHelper;
+import tconstruct.smeltery.logic.CastingChannelLogic;
 
 /**
  * @author BluSunrize

@@ -1,7 +1,5 @@
 package tconstruct.smeltery.logic;
 
-import mantle.blocks.abstracts.InventoryLogic;
-
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -16,6 +14,8 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.fluids.*;
 
+import cpw.mods.fml.common.eventhandler.Event;
+import mantle.blocks.abstracts.InventoryLogic;
 import tconstruct.TConstruct;
 import tconstruct.library.crafting.CastingRecipe;
 import tconstruct.library.crafting.LiquidCasting;
@@ -24,7 +24,6 @@ import tconstruct.library.event.SmelteryCastedEvent;
 import tconstruct.library.event.SmelteryEvent;
 import tconstruct.library.tools.AbilityHelper;
 import tconstruct.library.util.IPattern;
-import cpw.mods.fml.common.eventhandler.Event;
 
 public abstract class CastingBlockLogic extends InventoryLogic implements IFluidTank, IFluidHandler, ISidedInventory {
 

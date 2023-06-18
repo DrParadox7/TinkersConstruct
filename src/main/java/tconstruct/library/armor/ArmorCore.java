@@ -22,13 +22,13 @@ import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
 import net.minecraftforge.common.ISpecialArmor;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.modifier.ActiveArmorMod;
 import tconstruct.library.modifier.IModifyable;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.tools.entity.FancyEntityItem;
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class ArmorCore extends ItemArmor implements ISpecialArmor, IModifyable {
 

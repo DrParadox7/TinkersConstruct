@@ -4,10 +4,10 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.client.event.FOVUpdateEvent;
 import net.minecraftforge.client.event.RenderPlayerEvent;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import tconstruct.library.weaponry.BowBaseAmmo;
 import tconstruct.library.weaponry.IWindup;
 import tconstruct.weaponry.TinkerWeaponry;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class RenderEventHandler {
 

@@ -13,11 +13,11 @@ import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.ChunkProviderFlat;
 import net.minecraft.world.gen.feature.WorldGenerator;
 
+import cpw.mods.fml.common.IWorldGenerator;
 import tconstruct.tools.TinkerTools;
 import tconstruct.util.config.DimensionBlacklist;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.world.TinkerWorld;
-import cpw.mods.fml.common.IWorldGenerator;
 
 public class SlimeIslandGen extends WorldGenerator implements IWorldGenerator {
 

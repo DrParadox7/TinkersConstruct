@@ -10,11 +10,11 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.village.MerchantRecipe;
 import net.minecraft.village.MerchantRecipeList;
 
+import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
 import tconstruct.mechworks.TinkerMechworks;
 import tconstruct.tools.TinkerTools;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.world.TinkerWorld;
-import cpw.mods.fml.common.registry.VillagerRegistry.IVillageTradeHandler;
 
 public class TVillageTrades implements IVillageTradeHandler {
 
