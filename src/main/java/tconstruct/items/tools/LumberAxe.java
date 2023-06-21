@@ -198,6 +198,11 @@ public class LumberAxe extends AOEHarvestTool {
             if (event.world.provider.dimensionId != world.provider.dimensionId) {
                 return;
             }
+            if (stack != player.getCurrentEquippedItem()) {
+                // Player switched held item, we shouldn't proceed furthermore
+                finish();
+                return;
+            }
 
             // setup
             int left = blocksPerTick;
