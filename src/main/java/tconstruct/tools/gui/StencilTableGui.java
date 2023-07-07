@@ -119,7 +119,7 @@ public class StencilTableGui extends GuiContainer implements INEIGuiHandler {
 
         // get the correct setting :I
         ItemStack stack;
-        if (logic.getStackInSlot(1) != null) {
+        if (logic.getStackInSlot(1) != null && StencilBuilder.getId(logic.getStackInSlot(1)) < this.buttonList.size()) {
             activeButton = StencilBuilder.getId(logic.getStackInSlot(1));
             setActiveButton(activeButton);
             stack = StencilBuilder
