@@ -4,6 +4,7 @@ itemGroup.TConstructBlocks=TConstruct Blocks
 itemGroup.TConstructParts=TConstruct Tool Parts
 itemGroup.TConstructEquipables=TConstruct Equipables
 itemGroup.TConstructWeaponry=TConstruct Weaponry
+itemGroup.TConstructGadgets=TConstruct Gadgets
 
 crafters.ToolBench=Tool Bench
 crafters.ToolStation=Tool Station
