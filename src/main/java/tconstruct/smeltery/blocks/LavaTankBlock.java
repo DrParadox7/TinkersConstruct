@@ -150,8 +150,9 @@ public class LavaTankBlock extends BlockContainer {
                 int amount = logic.fill(ForgeDirection.UNKNOWN, liquid, false);
                 if (amount == liquid.amount) {
                     logic.fill(ForgeDirection.UNKNOWN, liquid, true);
-                    if (!entityplayer.capabilities.isCreativeMode)
-                        replaceHeldItem(entityplayer, getEmptyContainer(entityplayer.inventory.getCurrentItem()));
+                    if (!entityplayer.capabilities.isCreativeMode) {
+                        replaceHeldItem(entityplayer, getEmptyContainer(current));
+                    }
 
                     // update
                     entityplayer.inventoryContainer.detectAndSendChanges();
