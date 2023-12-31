@@ -216,6 +216,12 @@ public class LavaTankBlock extends BlockContainer {
         }
     }
 
+    /**
+     * This was probably not meant to be public and should ideally be removed. It's a direct copy of code found in
+     * buildcraft.core.lib.inventory.InvUtils.
+     * <p>
+     * In any case it is no longer useful here.
+     */
     public static ItemStack consumeItem(ItemStack stack) {
         if (stack.stackSize == 1) {
             if (stack.getItem().hasContainerItem()) return stack.getItem().getContainerItem(stack);
