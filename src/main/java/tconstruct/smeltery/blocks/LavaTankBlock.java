@@ -161,7 +161,7 @@ public class LavaTankBlock extends BlockContainer {
                 return true;
             }
             // taking liquit out of the tank
-            else if (FluidContainerRegistry.isBucket(current)) {
+            else if (FluidContainerRegistry.isContainer(current)) {
                 FluidTankInfo[] tanks = logic.getTankInfo(ForgeDirection.UNKNOWN);
                 FluidStack fillFluid = tanks[0].fluid; // getFluid();
                 if (!world.isRemote) {
