@@ -151,7 +151,7 @@ public class LavaTankBlock extends BlockContainer {
                 if (amount == liquid.amount) {
                     logic.fill(ForgeDirection.UNKNOWN, liquid, true);
                     if (!entityplayer.capabilities.isCreativeMode) {
-                        replaceHeldItem(entityplayer, getEmptyContainer(current));
+                        replaceHeldItem(entityplayer, FluidContainerRegistry.drainFluidContainer(current));
                     }
 
                     // update
@@ -188,14 +188,6 @@ public class LavaTankBlock extends BlockContainer {
         }
 
         return false;
-    }
-
-    private static ItemStack getEmptyContainer(ItemStack stack) {
-        Item item = stack.getItem();
-        if (item != null && item.hasContainerItem(stack)) return item.getContainerItem(stack);
-        else if (FluidContainerRegistry.isFilledContainer(stack))
-            return FluidContainerRegistry.drainFluidContainer(stack);
-        else return null;
     }
 
     /**
