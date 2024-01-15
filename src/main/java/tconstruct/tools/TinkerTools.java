@@ -1,6 +1,18 @@
 package tconstruct.tools;
 
-import static net.minecraft.util.EnumChatFormatting.*;
+import static net.minecraft.util.EnumChatFormatting.AQUA;
+import static net.minecraft.util.EnumChatFormatting.DARK_AQUA;
+import static net.minecraft.util.EnumChatFormatting.DARK_GRAY;
+import static net.minecraft.util.EnumChatFormatting.DARK_GREEN;
+import static net.minecraft.util.EnumChatFormatting.DARK_PURPLE;
+import static net.minecraft.util.EnumChatFormatting.DARK_RED;
+import static net.minecraft.util.EnumChatFormatting.GOLD;
+import static net.minecraft.util.EnumChatFormatting.GRAY;
+import static net.minecraft.util.EnumChatFormatting.GREEN;
+import static net.minecraft.util.EnumChatFormatting.LIGHT_PURPLE;
+import static net.minecraft.util.EnumChatFormatting.RED;
+import static net.minecraft.util.EnumChatFormatting.WHITE;
+import static net.minecraft.util.EnumChatFormatting.YELLOW;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockDispenser;
@@ -30,20 +42,83 @@ import mantle.utils.RecipeRemover;
 import tconstruct.TConstruct;
 import tconstruct.achievements.items.CraftAchievementItem;
 import tconstruct.common.itemblocks.MetadataItemBlock;
-import tconstruct.items.tools.*;
+import tconstruct.items.tools.Arrow;
+import tconstruct.items.tools.BattleSign;
+import tconstruct.items.tools.Battleaxe;
+import tconstruct.items.tools.Broadsword;
+import tconstruct.items.tools.Chisel;
+import tconstruct.items.tools.Cleaver;
+import tconstruct.items.tools.Cutlass;
+import tconstruct.items.tools.Dagger;
+import tconstruct.items.tools.Excavator;
+import tconstruct.items.tools.FryingPan;
+import tconstruct.items.tools.Hammer;
+import tconstruct.items.tools.Hatchet;
+import tconstruct.items.tools.Longsword;
+import tconstruct.items.tools.LumberAxe;
+import tconstruct.items.tools.Mattock;
+import tconstruct.items.tools.Pickaxe;
+import tconstruct.items.tools.PotionLauncher;
+import tconstruct.items.tools.Rapier;
+import tconstruct.items.tools.Scythe;
+import tconstruct.items.tools.Shovel;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.client.TConstructClientRegistry;
-import tconstruct.library.crafting.*;
+import tconstruct.library.crafting.Detailing;
+import tconstruct.library.crafting.ModifyBuilder;
+import tconstruct.library.crafting.MoldBuilder;
+import tconstruct.library.crafting.PatternBuilder;
+import tconstruct.library.crafting.StencilBuilder;
+import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.tools.DynamicToolPart;
 import tconstruct.library.tools.ToolCore;
 import tconstruct.library.util.IPattern;
-import tconstruct.modifiers.tools.*;
+import tconstruct.modifiers.tools.ModAntiSpider;
+import tconstruct.modifiers.tools.ModAttack;
+import tconstruct.modifiers.tools.ModAutoSmelt;
+import tconstruct.modifiers.tools.ModBlaze;
+import tconstruct.modifiers.tools.ModButtertouch;
+import tconstruct.modifiers.tools.ModCreativeToolModifier;
+import tconstruct.modifiers.tools.ModDurability;
+import tconstruct.modifiers.tools.ModExtraModifier;
+import tconstruct.modifiers.tools.ModFlux;
+import tconstruct.modifiers.tools.ModInteger;
+import tconstruct.modifiers.tools.ModLapis;
+import tconstruct.modifiers.tools.ModMoss;
+import tconstruct.modifiers.tools.ModPiston;
+import tconstruct.modifiers.tools.ModRedstone;
+import tconstruct.modifiers.tools.ModReinforced;
+import tconstruct.modifiers.tools.ModSmite;
+import tconstruct.modifiers.tools.ModToolRepair;
 import tconstruct.smeltery.TinkerSmeltery;
-import tconstruct.tools.blocks.*;
+import tconstruct.tools.blocks.BattlesignBlock;
+import tconstruct.tools.blocks.CraftingSlab;
+import tconstruct.tools.blocks.CraftingStationBlock;
+import tconstruct.tools.blocks.EquipBlock;
+import tconstruct.tools.blocks.FurnaceSlab;
+import tconstruct.tools.blocks.ToolBenchBlock;
+import tconstruct.tools.blocks.ToolForgeBlock;
+import tconstruct.tools.blocks.ToolStationBlock;
 import tconstruct.tools.itemblocks.CraftingSlabItemBlock;
 import tconstruct.tools.itemblocks.ToolBenchItemBlock;
-import tconstruct.tools.items.*;
-import tconstruct.tools.logic.*;
+import tconstruct.tools.items.ClayPattern;
+import tconstruct.tools.items.CreativeModifier;
+import tconstruct.tools.items.Manual;
+import tconstruct.tools.items.MaterialItem;
+import tconstruct.tools.items.Pattern;
+import tconstruct.tools.items.TitleIcon;
+import tconstruct.tools.items.ToolShard;
+import tconstruct.tools.logic.BattlesignLogic;
+import tconstruct.tools.logic.CraftingStationLogic;
+import tconstruct.tools.logic.FrypanLogic;
+import tconstruct.tools.logic.FurnaceLogic;
+import tconstruct.tools.logic.MoldingTableLogic;
+import tconstruct.tools.logic.PartBuilderLogic;
+import tconstruct.tools.logic.PatternChestLogic;
+import tconstruct.tools.logic.StencilTableLogic;
+import tconstruct.tools.logic.ToolBenchLogic;
+import tconstruct.tools.logic.ToolForgeLogic;
+import tconstruct.tools.logic.ToolStationLogic;
 import tconstruct.util.ItemHelper;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.weaponry.TinkerWeaponry;
@@ -156,6 +231,7 @@ public class TinkerTools {
 
     // recipe stuff
     public static boolean thaumcraftAvailable;
+    public static boolean metallurgyAvailable;
 
     // Dev/Null Stuff
     public static Item openBlocksDevNull;
@@ -1431,6 +1507,7 @@ public class TinkerTools {
                         0xf3414f);
             } catch (Exception e) {} // No need to handle
         }
+        TinkerTools.metallurgyAvailable = Loader.isModLoaded("Metallurgy");
 
         // OpenBlocks
         openBlocksDevNull = GameRegistry.findItem("OpenBlocks", "devnull");
