@@ -1,6 +1,33 @@
 package tconstruct.plugins.imc;
 
-import static tconstruct.smeltery.TinkerSmeltery.*;
+import static tconstruct.smeltery.TinkerSmeltery.moltenAlubrassFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenAluminumFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenAlumiteFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenArditeFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenBronzeFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenCobaltFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenCopperFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenElectrumFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenEmeraldFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenEnderFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenEnderiumFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenGlassFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenGoldFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenInvarFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenIronFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenLeadFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenLumiumFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenManyullynFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenMithrilFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenNickelFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenObsidianFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenQuartzFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenShinyFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenSignalumFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenSilverFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenSteelFluid;
+import static tconstruct.smeltery.TinkerSmeltery.moltenTinFluid;
+import static tconstruct.smeltery.TinkerSmeltery.pigIronFluid;
 
 import net.minecraftforge.fluids.Fluid;
 

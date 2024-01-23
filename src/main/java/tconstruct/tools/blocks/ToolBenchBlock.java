@@ -25,7 +25,11 @@ import tconstruct.TConstruct;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.tools.TinkerTools;
 import tconstruct.tools.ToolProxyCommon;
-import tconstruct.tools.logic.*;
+import tconstruct.tools.logic.MoldingTableLogic;
+import tconstruct.tools.logic.PartBuilderLogic;
+import tconstruct.tools.logic.PatternChestLogic;
+import tconstruct.tools.logic.StencilTableLogic;
+import tconstruct.tools.logic.ToolBenchLogic;
 import tconstruct.tools.model.TableRender;
 import tconstruct.util.config.PHConstruct;
 

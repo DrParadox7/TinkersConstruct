@@ -2,7 +2,11 @@ package tconstruct.weaponry;
 
 import cpw.mods.fml.common.registry.EntityRegistry;
 import tconstruct.TConstruct;
-import tconstruct.weaponry.entity.*;
+import tconstruct.weaponry.entity.ArrowEntity;
+import tconstruct.weaponry.entity.BoltEntity;
+import tconstruct.weaponry.entity.JavelinEntity;
+import tconstruct.weaponry.entity.ShurikenEntity;
+import tconstruct.weaponry.entity.ThrowingKnifeEntity;
 
 public class WeaponryCommonProxy {
 

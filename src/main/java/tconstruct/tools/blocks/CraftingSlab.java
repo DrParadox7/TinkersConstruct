@@ -23,7 +23,13 @@ import tconstruct.TConstruct;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.tools.TinkerTools;
 import tconstruct.tools.ToolProxyCommon;
-import tconstruct.tools.logic.*;
+import tconstruct.tools.logic.CraftingStationLogic;
+import tconstruct.tools.logic.PartBuilderLogic;
+import tconstruct.tools.logic.PatternChestLogic;
+import tconstruct.tools.logic.StencilTableLogic;
+import tconstruct.tools.logic.ToolBenchLogic;
+import tconstruct.tools.logic.ToolForgeLogic;
+import tconstruct.tools.logic.ToolStationLogic;
 import tconstruct.util.config.PHConstruct;
 
 public class CraftingSlab extends InventorySlab {

@@ -1,6 +1,13 @@
 package tconstruct.weaponry;
 
-import static tconstruct.weaponry.TinkerWeaponry.*;
+import static tconstruct.weaponry.TinkerWeaponry.arrowAmmo;
+import static tconstruct.weaponry.TinkerWeaponry.boltAmmo;
+import static tconstruct.weaponry.TinkerWeaponry.crossbow;
+import static tconstruct.weaponry.TinkerWeaponry.javelin;
+import static tconstruct.weaponry.TinkerWeaponry.longbow;
+import static tconstruct.weaponry.TinkerWeaponry.shortbow;
+import static tconstruct.weaponry.TinkerWeaponry.shuriken;
+import static tconstruct.weaponry.TinkerWeaponry.throwingknife;
 
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
@@ -28,7 +35,11 @@ import tconstruct.weaponry.client.item.BowRenderer;
 import tconstruct.weaponry.client.item.CrossbowRenderer;
 import tconstruct.weaponry.client.item.JavelinRenderer;
 import tconstruct.weaponry.client.item.ThrowingKnifeRenderer;
-import tconstruct.weaponry.entity.*;
+import tconstruct.weaponry.entity.ArrowEntity;
+import tconstruct.weaponry.entity.BoltEntity;
+import tconstruct.weaponry.entity.JavelinEntity;
+import tconstruct.weaponry.entity.ShurikenEntity;
+import tconstruct.weaponry.entity.ThrowingKnifeEntity;
 
 public class WeaponryClientProxy extends WeaponryCommonProxy {
 

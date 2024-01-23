@@ -25,7 +25,15 @@ import tconstruct.smeltery.gui.SmelteryGui;
 import tconstruct.smeltery.logic.CastingBasinLogic;
 import tconstruct.smeltery.logic.CastingTableLogic;
 import tconstruct.smeltery.logic.SmelteryLogic;
-import tconstruct.smeltery.model.*;
+import tconstruct.smeltery.model.BlockRenderCastingChannel;
+import tconstruct.smeltery.model.CastingBasinSpecialRender;
+import tconstruct.smeltery.model.CastingBlockRender;
+import tconstruct.smeltery.model.CastingTableSpecialRenderer;
+import tconstruct.smeltery.model.PaneConnectedRender;
+import tconstruct.smeltery.model.PaneRender;
+import tconstruct.smeltery.model.SmelteryRender;
+import tconstruct.smeltery.model.TankItemRenderer;
+import tconstruct.smeltery.model.TankRender;
 import tconstruct.tools.TinkerTools;
 
 public class SmelteryProxyClient extends SmelteryProxyCommon {

@@ -17,7 +17,13 @@ import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.SidedProxy;
-import cpw.mods.fml.common.event.*;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
+import cpw.mods.fml.common.event.FMLLoadCompleteEvent;
+import cpw.mods.fml.common.event.FMLMissingMappingsEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStoppingEvent;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import cpw.mods.fml.common.network.NetworkCheckHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
@@ -64,7 +70,11 @@ import tconstruct.util.network.PacketPipeline;
 import tconstruct.weaponry.TinkerWeaponry;
 import tconstruct.world.TinkerWorld;
 import tconstruct.world.gen.SlimeIslandGen;
-import tconstruct.world.village.*;
+import tconstruct.world.village.ComponentSmeltery;
+import tconstruct.world.village.ComponentToolWorkshop;
+import tconstruct.world.village.TVillageTrades;
+import tconstruct.world.village.VillageSmelteryHandler;
+import tconstruct.world.village.VillageToolStationHandler;
 
 /**
  * TConstruct, the tool mod. Craft your tools with style, then modify until the original is gone!
