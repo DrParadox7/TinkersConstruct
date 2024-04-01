@@ -52,14 +52,23 @@ public class OreBerries extends CraftingItem {
     @Override
     public ItemStack onItemRightClick(ItemStack stack, World world, EntityPlayer player) {
         if (stack.getItemDamage() == 5) {
-            EntityXPOrb entity = new EntityXPOrb(
-                    world,
-                    player.posX,
-                    player.posY + 1,
-                    player.posZ,
-                    itemRand.nextInt(14) + 6);
-            spawnEntity(player.posX, player.posY + 1, player.posZ, entity, world, player);
-            if (!player.capabilities.isCreativeMode) stack.stackSize--;
+            if (!player.isSneaking()) {
+                EntityXPOrb entity = new EntityXPOrb(
+                        world,
+                        player.posX,
+                        player.posY + 1,
+                        player.posZ,
+                        itemRand.nextInt(14) + 6);
+                spawnEntity(player.posX, player.posY + 1, player.posZ, entity, world, player);
+                if (!player.capabilities.isCreativeMode) stack.stackSize--;
+            } else {
+                int xpToAdd = 0;
+                for (int i = stack.stackSize; i > 0; i--) {
+                    xpToAdd += itemRand.nextInt(14) + 6;
+                }
+                player.addExperience(xpToAdd);
+                if (!player.capabilities.isCreativeMode) stack.stackSize = 0;
+            }
         }
         return stack;
     }
