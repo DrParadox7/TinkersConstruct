@@ -16,12 +16,6 @@ import cpw.mods.fml.common.gameevent.InputEvent.KeyInputEvent;
 import mantle.common.network.AbstractPacket;
 import modwarriors.notenoughkeys.api.Api;
 import modwarriors.notenoughkeys.api.KeyBindingPressedEvent;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.settings.KeyBinding;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.potion.Potion;
-import org.lwjgl.input.Keyboard;
 import tconstruct.TConstruct;
 import tconstruct.armor.ArmorProxyClient;
 import tconstruct.armor.ArmorProxyCommon;
@@ -35,7 +29,7 @@ import tconstruct.util.network.GogglePacket;
 public class ArmorControls {
 
     public static final String keybindCategory = "tconstruct.keybindings";
-    public static final String[] keyDescs = new String[] {"key.tarmor", "key.tgoggles", "key.tbelt", "key.tzoom"};
+    public static final String[] keyDescs = new String[] { "key.tarmor", "key.tgoggles", "key.tbelt", "key.tzoom" };
     public static KeyBinding armorKey = new KeyBinding(keyDescs[0], Keyboard.KEY_NONE, keybindCategory);
     public static KeyBinding toggleGoggles = new KeyBinding(keyDescs[1], Keyboard.KEY_NONE, keybindCategory);
     public static KeyBinding beltSwap = new KeyBinding(keyDescs[2], Keyboard.KEY_NONE, keybindCategory);

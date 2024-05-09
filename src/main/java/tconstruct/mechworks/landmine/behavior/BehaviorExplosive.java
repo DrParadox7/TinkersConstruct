@@ -3,7 +3,6 @@ package tconstruct.mechworks.landmine.behavior;
 import java.util.List;
 
 import net.minecraft.entity.Entity;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityTNTPrimed;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -29,7 +28,12 @@ public class BehaviorExplosive extends Behavior {
         }
 
         par1World.createExplosion(
-                new EntityTNTPrimed(par1World, par2, par3, par4, null), par2, par3, par4, explodeStrenght, true);
+                new EntityTNTPrimed(par1World, par2, par3, par4, null),
+                par2,
+                par3,
+                par4,
+                explodeStrenght,
+                true);
     }
 
     @Override

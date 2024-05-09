@@ -41,8 +41,8 @@ public class ToolStationGui extends GuiContainer implements INEIGuiHandler {
     public boolean active;
     public String title, body = "";
 
-    public ToolStationGui(
-            InventoryPlayer inventoryplayer, ToolStationLogic stationlogic, World world, int x, int y, int z) {
+    public ToolStationGui(InventoryPlayer inventoryplayer, ToolStationLogic stationlogic, World world, int x, int y,
+            int z) {
         super(stationlogic.getGuiContainer(inventoryplayer, world, x, y, z));
         this.logic = stationlogic;
         toolSlots = (ToolStationContainer) inventorySlots;

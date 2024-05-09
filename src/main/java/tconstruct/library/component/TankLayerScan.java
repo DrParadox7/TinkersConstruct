@@ -1,14 +1,24 @@
 package tconstruct.library.component;
 
-import java.util.*;
-import mantle.blocks.iface.*;
-import mantle.world.*;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
+
 import net.minecraft.block.Block;
-import net.minecraft.nbt.*;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.nbt.NBTTagIntArray;
+import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+
+import mantle.blocks.iface.IFacingLogic;
+import mantle.blocks.iface.IMasterLogic;
+import mantle.blocks.iface.IServantLogic;
+import mantle.world.CoordTuple;
+import mantle.world.CoordTupleSort;
 import tconstruct.TConstruct;
 
 public class TankLayerScan extends LogicComponent {
+
     protected TileEntity master;
     protected IMasterLogic imaster;
     protected Block[] scanBlocks;
@@ -28,10 +38,16 @@ public class TankLayerScan extends LogicComponent {
     protected CoordTuple returnStone;
 
     private static final boolean debug = System.getenv("DBG_MANTLE_TankLayerScan") != null;
-    private static final int MAX_LAYER_RECURSION_DEPTH =
-            System.getProperty("os.arch").equals("amd64")
-                    ? 4000
-                    : 2000; // Recursion causes overflows on 32-bit, so reduce if not 64-bit
+    private static final int MAX_LAYER_RECURSION_DEPTH = System.getProperty("os.arch").equals("amd64") ? 4000 : 2000; // Recursion
+                                                                                                                      // causes
+                                                                                                                      // overflows
+                                                                                                                      // on
+                                                                                                                      // 32-bit,
+                                                                                                                      // so
+                                                                                                                      // reduce
+                                                                                                                      // if
+                                                                                                                      // not
+                                                                                                                      // 64-bit
 
     public TankLayerScan(TileEntity te, Block... ids) {
         assert te instanceof IMasterLogic : "TileEntity must be an instance of IMasterLogic";
@@ -39,14 +55,16 @@ public class TankLayerScan extends LogicComponent {
         imaster = (IMasterLogic) te;
         scanBlocks = ids;
         masterCoord = new CoordTuple(te.xCoord, te.yCoord, te.zCoord);
-        validAirCoords.add(new int[] {1, 0});
-        validAirCoords.add(new int[] {-1, 0});
-        validAirCoords.add(new int[] {0, 1});
-        validAirCoords.add(new int[] {0, -1});
+        validAirCoords.add(new int[] { 1, 0 });
+        validAirCoords.add(new int[] { -1, 0 });
+        validAirCoords.add(new int[] { 0, 1 });
+        validAirCoords.add(new int[] { 0, -1 });
         if (debug) {
             TConstruct.logger.info("In debug mode: " + this);
-            TConstruct.logger.info("Using recursion size " + MAX_LAYER_RECURSION_DEPTH + " on JVM arch "
-                    + System.getProperty("os.arch"));
+            TConstruct.logger.info(
+                    "Using recursion size " + MAX_LAYER_RECURSION_DEPTH
+                            + " on JVM arch "
+                            + System.getProperty("os.arch"));
         }
     }
 
@@ -62,12 +80,14 @@ public class TankLayerScan extends LogicComponent {
             case 2: // +z
             case 3: // -z
                 if (checkAir(master.xCoord, master.yCoord, master.zCoord - 1)
-                        && checkAir(master.xCoord, master.yCoord, master.zCoord + 1)) validAir = true;
+                        && checkAir(master.xCoord, master.yCoord, master.zCoord + 1))
+                    validAir = true;
                 break;
             case 4: // +x
             case 5: // -x
                 if (checkAir(master.xCoord - 1, master.yCoord, master.zCoord)
-                        && checkAir(master.xCoord + 1, master.yCoord, master.zCoord)) validAir = true;
+                        && checkAir(master.xCoord + 1, master.yCoord, master.zCoord))
+                    validAir = true;
                 break;
         }
 
@@ -434,19 +454,19 @@ public class TankLayerScan extends LogicComponent {
         super.writeToNBT(tags);
         NBTTagList layerAir = new NBTTagList();
         for (CoordTuple coord : layerAirCoords) {
-            layerAir.appendTag(new NBTTagIntArray(new int[] {coord.x, coord.y, coord.z}));
+            layerAir.appendTag(new NBTTagIntArray(new int[] { coord.x, coord.y, coord.z }));
         }
         tags.setTag("AirLayer", layerAir);
 
         NBTTagList blocks = new NBTTagList();
         for (CoordTuple coord : blockCoords) {
-            blocks.appendTag(new NBTTagIntArray(new int[] {coord.x, coord.y, coord.z}));
+            blocks.appendTag(new NBTTagIntArray(new int[] { coord.x, coord.y, coord.z }));
         }
         tags.setTag("Blocks", blocks);
 
         NBTTagList air = new NBTTagList();
         for (CoordTuple coord : airCoords) {
-            air.appendTag(new NBTTagIntArray(new int[] {coord.x, coord.y, coord.z}));
+            air.appendTag(new NBTTagIntArray(new int[] { coord.x, coord.y, coord.z }));
         }
         tags.setTag("Air", air);
         tags.setInteger("structureTop", structureTop);

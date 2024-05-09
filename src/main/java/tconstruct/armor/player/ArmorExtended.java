@@ -1,10 +1,5 @@
 package tconstruct.armor.player;
 
-import java.io.IOException;
-import cpw.mods.fml.common.FMLCommonHandler;
-import cpw.mods.fml.common.network.ByteBufUtils;
-import cpw.mods.fml.relauncher.Side;
-import io.netty.buffer.ByteBuf;
 import java.lang.ref.WeakReference;
 import java.util.UUID;
 
@@ -18,8 +13,6 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 
-import tconstruct.library.accessory.IHealthAccessory;
-import tconstruct.util.config.PHConstruct;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.relauncher.Side;
@@ -139,10 +132,9 @@ public class ArmorExtended implements IInventory {
                         .getAttributeInstance(SharedMonsterAttributes.maxHealth);
                 try {
                     attributeinstance.removeModifier(attributeinstance.getModifier(globalID));
-                } catch (Exception ignored) {
-                }
-                attributeinstance.applyModifier(
-                        new AttributeModifier(globalID, "tconstruct.heartCanister", bonusHP, 0));
+                } catch (Exception ignored) {}
+                attributeinstance
+                        .applyModifier(new AttributeModifier(globalID, "tconstruct.heartCanister", bonusHP, 0));
             }
         } else if (parent != null && parent.get() != null) {
             int prevHealth = stats.bonusHealth;
@@ -154,8 +146,7 @@ public class ArmorExtended implements IInventory {
                         .getAttributeInstance(SharedMonsterAttributes.maxHealth);
                 try {
                     attributeinstance.removeModifier(attributeinstance.getModifier(globalID));
-                } catch (Exception ignored) {
-                }
+                } catch (Exception ignored) {}
             }
         }
     }

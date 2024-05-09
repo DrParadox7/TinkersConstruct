@@ -12,7 +12,7 @@ import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 import cpw.mods.fml.common.Loader;
-import mods.battlegear2.api.core.InventoryPlayerBattle;
+import mods.battlegear2.api.core.IInventoryPlayerBattle;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.tools.AbilityHelper;
@@ -27,6 +27,8 @@ import tconstruct.weaponry.ammo.BoltAmmo;
 import tconstruct.weaponry.entity.BoltEntity;
 
 public class Crossbow extends ProjectileWeapon {
+
+    private static final boolean isBattlegear2Loaded = Loader.isModLoaded("battlegear2");
 
     public Crossbow() {
         super(0, "Crossbow");
@@ -223,8 +225,8 @@ public class Crossbow extends ProjectileWeapon {
     @Override
     public ItemStack searchForAmmo(EntityPlayer player, ItemStack weapon) {
         // arrow priority: hotbar > inventory, tinker arrows > regular arrows
-        if (Loader.isModLoaded("battlegear2")) {
-            ItemStack offhand = ((InventoryPlayerBattle) player.inventory).getCurrentOffhandWeapon();
+        if (isBattlegear2Loaded) {
+            ItemStack offhand = ((IInventoryPlayerBattle) player.inventory).battlegear2$getCurrentOffhandWeapon();
             if (offhand != null && (offhand.getItem() instanceof BoltAmmo)
                     && ((IAmmo) offhand.getItem()).getAmmoCount(offhand) > 0) {
                 return offhand;

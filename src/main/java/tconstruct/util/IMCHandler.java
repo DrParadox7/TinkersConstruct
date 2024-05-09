@@ -72,9 +72,8 @@ public final class IMCHandler {
                         // add additional render mapping so resource packs or the mods themselves can have custom
                         // textures
                         // for the tools
-                        if (FMLCommonHandler.instance().getSide().isClient())
-                            TConstructClientRegistry.addMaterialRenderMapping(
-                                    id, "tinker", mat.name().toLowerCase(), true);
+                        if (FMLCommonHandler.instance().getSide().isClient()) TConstructClientRegistry
+                                .addMaterialRenderMapping(id, "tinker", mat.name().toLowerCase(), true);
                     }
                     break;
                 }
@@ -108,7 +107,12 @@ public final class IMCHandler {
 
                     // register the material
                     PatternBuilder.instance.registerFullMaterial(
-                            item, value, TConstructRegistry.getMaterial(matID).materialName, shard, rod, matID);
+                            item,
+                            value,
+                            TConstructRegistry.getMaterial(matID).materialName,
+                            shard,
+                            rod,
+                            matID);
 
                     List<Item> addItems = new LinkedList<>();
                     List<Integer> addMetas = new LinkedList<>();
@@ -139,8 +143,9 @@ public final class IMCHandler {
                     for (int i = 0; i < addItems.size(); i++)
                         TConstructRegistry.addPartMapping(addItems.get(i), addMetas.get(i), matID, addOUtputs.get(i));
 
-                    TConstruct.logger.debug("PartBuilder IMC: Added Part builder mapping for "
-                            + TConstructRegistry.getMaterial(matID).materialName);
+                    TConstruct.logger.debug(
+                            "PartBuilder IMC: Added Part builder mapping for "
+                                    + TConstructRegistry.getMaterial(matID).materialName);
                     break;
                 }
                 case "addPartCastingMaterial": {
@@ -172,13 +177,12 @@ public final class IMCHandler {
 
                     // we add the toolpart to all smeltery recipies that use iron and create a toolpart
                     List<CastingRecipe> newRecipies = new LinkedList<>();
-                    for (CastingRecipe recipe :
-                            TConstructRegistry.getTableCasting().getCastingRecipes()) {
+                    for (CastingRecipe recipe : TConstructRegistry.getTableCasting().getCastingRecipes()) {
                         if (recipe.castingMetal.getFluid() != TinkerSmeltery.moltenIronFluid) continue;
                         if (recipe.cast == null || !(recipe.cast.getItem() instanceof IPattern)) continue;
-                        if (!(recipe.getResult().getItem()
-                                instanceof DynamicToolPart)) // has to be dynamic toolpart to support automatic addition
-                        continue;
+                        if (!(recipe.getResult().getItem() instanceof DynamicToolPart)) // has to be dynamic toolpart to
+                                                                                        // support automatic addition
+                            continue;
 
                         newRecipies.add(recipe);
                     }
@@ -203,8 +207,8 @@ public final class IMCHandler {
                         Smeltery.addMelting(ft, output, 0, liquid2.amount);
                     }
 
-                    TConstruct.logger.debug(
-                            "Casting IMC: Added fluid " + tag.getString("FluidName") + " to part casting");
+                    TConstruct.logger
+                            .debug("Casting IMC: Added fluid " + tag.getString("FluidName") + " to part casting");
                     break;
                 }
                 case "addMaterialItem": {
@@ -243,7 +247,12 @@ public final class IMCHandler {
 
                         // register the material
                         PatternBuilder.instance.registerFullMaterial(
-                                stack, value, TConstructRegistry.getMaterial(id).materialName, shard, rod, id);
+                                stack,
+                                value,
+                                TConstructRegistry.getMaterial(id).materialName,
+                                shard,
+                                rod,
+                                id);
                     }
                     break;
                 }
@@ -270,19 +279,23 @@ public final class IMCHandler {
                     ItemStack block = ItemStack.loadItemStackFromNBT(tag.getCompoundTag("Block"));
                     int temperature = tag.getInteger("Temperature");
 
-                    if (FluidType.getFluidType(liquid.getFluid()) == null)
-                        FluidType.registerFluidType(
-                                liquid.getFluid().getName(),
-                                Block.getBlockFromItem(block.getItem()),
-                                block.getItemDamage(),
-                                temperature,
-                                liquid.getFluid(),
-                                false);
+                    if (FluidType.getFluidType(liquid.getFluid()) == null) FluidType.registerFluidType(
+                            liquid.getFluid().getName(),
+                            Block.getBlockFromItem(block.getItem()),
+                            block.getItemDamage(),
+                            temperature,
+                            liquid.getFluid(),
+                            false);
 
                     Smeltery.addMelting(
-                            item, Block.getBlockFromItem(block.getItem()), block.getItemDamage(), temperature, liquid);
-                    TConstruct.logger.debug("Smeltery IMC: Added melting: " + item.getDisplayName() + " to "
-                            + liquid.amount + "mb " + liquid.getLocalizedName());
+                            item,
+                            Block.getBlockFromItem(block.getItem()),
+                            block.getItemDamage(),
+                            temperature,
+                            liquid);
+                    TConstruct.logger.debug(
+                            "Smeltery IMC: Added melting: " + item
+                                    .getDisplayName() + " to " + liquid.amount + "mb " + liquid.getLocalizedName());
                     break;
                 }
                 case "addSmelteryFuel": {
@@ -305,8 +318,9 @@ public final class IMCHandler {
 
                     Smeltery.addSmelteryFuel(liquid.getFluid(), temperature, duration);
 
-                    TConstruct.logger.debug("Smeltery IMC: Added fuel: " + liquid.getLocalizedName() + " ("
-                            + temperature + ", " + duration + ")");
+                    TConstruct.logger.debug(
+                            "Smeltery IMC: Added fuel: " + liquid
+                                    .getLocalizedName() + " (" + temperature + ", " + duration + ")");
                     break;
                 }
                 case "addFluxBattery":

@@ -1,6 +1,5 @@
 package tconstruct.tools.entity;
 
-import java.util.Iterator;
 import java.util.List;
 
 import net.minecraft.entity.EntityLivingBase;
@@ -94,8 +93,8 @@ public class LaunchedPotion extends EntityThrowable {
 
             if (list != null && !list.isEmpty()) {
                 AxisAlignedBB axisalignedbb = this.boundingBox.expand(4.0D, 2.0D, 4.0D);
-                List<EntityLivingBase> list1 =
-                        this.worldObj.getEntitiesWithinAABB(EntityLivingBase.class, axisalignedbb);
+                List<EntityLivingBase> list1 = this.worldObj
+                        .getEntitiesWithinAABB(EntityLivingBase.class, axisalignedbb);
 
                 if (list1 != null && !list1.isEmpty()) {
 

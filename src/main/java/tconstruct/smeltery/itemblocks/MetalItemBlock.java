@@ -10,9 +10,9 @@ import net.minecraft.util.StatCollector;
 import mantle.blocks.abstracts.MultiItemBlock;
 
 public class MetalItemBlock extends MultiItemBlock {
-    public static final String[] blockTypes = {
-        "Cobalt", "Ardite", "Manyullyn", "Copper", "Bronze", "Tin", "Aluminum", "AlBrass", "Alumite", "Steel", "Ender"
-    };
+
+    public static final String[] blockTypes = { "Cobalt", "Ardite", "Manyullyn", "Copper", "Bronze", "Tin", "Aluminum",
+            "AlBrass", "Alumite", "Steel", "Ender" };
 
     public MetalItemBlock(Block b) {
         super(b, "StorageMetals", blockTypes);

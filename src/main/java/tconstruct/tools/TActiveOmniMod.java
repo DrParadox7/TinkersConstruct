@@ -277,13 +277,8 @@ public class TActiveOmniMod extends ActiveToolMod {
     }
 
     @Override
-    public boolean doesCriticalHit(
-            ToolCore tool,
-            NBTTagCompound tags,
-            NBTTagCompound toolTags,
-            ItemStack stack,
-            EntityLivingBase player,
-            Entity entity) {
+    public boolean doesCriticalHit(ToolCore tool, NBTTagCompound tags, NBTTagCompound toolTags, ItemStack stack,
+            EntityLivingBase player, Entity entity) {
         return tool == TinkerTools.cutlass && random.nextInt(10) == 0;
     }
 }

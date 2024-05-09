@@ -14,8 +14,8 @@ public class StencilBuilder {
 
     public static StencilBuilder instance = new StencilBuilder();
 
-    public List<ItemStack> blanks =
-            new LinkedList<>(); // i wish ItemStack would support equals so i could use a Set here...
+    public List<ItemStack> blanks = new LinkedList<>(); // i wish ItemStack would support equals so i could use a Set
+                                                        // here...
     public Map<Integer, ItemStack> stencils = new TreeMap<>();
 
     /**

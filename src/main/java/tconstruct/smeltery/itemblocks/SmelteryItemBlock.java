@@ -14,19 +14,9 @@ import mantle.blocks.abstracts.MultiItemBlock;
 import tconstruct.achievements.TAchievements;
 
 public class SmelteryItemBlock extends MultiItemBlock {
-    public static final String[] blockTypes = {
-        "Controller",
-        "Drain",
-        "Brick",
-        "Furnace",
-        "Stone",
-        "Cobblestone",
-        "Paver",
-        "Brick.Cracked",
-        "Road",
-        "Brick.Fancy",
-        "Brick.Square"
-    };
+
+    public static final String[] blockTypes = { "Controller", "Drain", "Brick", "Furnace", "Stone", "Cobblestone",
+            "Paver", "Brick.Cracked", "Road", "Brick.Fancy", "Brick.Square" };
 
     public SmelteryItemBlock(Block b) {
         super(b, "Smeltery", blockTypes);

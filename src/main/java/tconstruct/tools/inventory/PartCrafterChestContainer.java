@@ -28,16 +28,10 @@ public class PartCrafterChestContainer extends ActiveContainer {
         patternLogic = pLogic;
         largeInventory = true;
 
-        inventory = new Slot[] {
-            new SlotPattern(partLogic, 0, 156, 27),
-            new SlotPattern(partLogic, 1, 156, 45),
-            new Slot(partLogic, 2, 174, 27),
-            new Slot(partLogic, 3, 174, 45),
-            new SlotOnlyTake(partLogic, 4, 218, 27),
-            new SlotOnlyTake(partLogic, 5, 236, 27),
-            new SlotOnlyTake(partLogic, 6, 218, 45),
-            new SlotOnlyTake(partLogic, 7, 236, 45)
-        };
+        inventory = new Slot[] { new SlotPattern(partLogic, 0, 156, 27), new SlotPattern(partLogic, 1, 156, 45),
+                new Slot(partLogic, 2, 174, 27), new Slot(partLogic, 3, 174, 45),
+                new SlotOnlyTake(partLogic, 4, 218, 27), new SlotOnlyTake(partLogic, 5, 236, 27),
+                new SlotOnlyTake(partLogic, 6, 218, 45), new SlotOnlyTake(partLogic, 7, 236, 45) };
         for (Slot slot : inventory) {
             this.addSlotToContainer(slot);
         }

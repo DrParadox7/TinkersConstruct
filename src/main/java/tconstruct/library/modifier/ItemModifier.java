@@ -1,7 +1,7 @@
 package tconstruct.library.modifier;
 
 import java.util.ArrayList;
-import java.util.Iterator;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 import java.util.UUID;
@@ -48,7 +48,7 @@ public abstract class ItemModifier {
                 for (ItemStack removeStack : list) {
                     if (craftingStack.getItem() == removeStack.getItem()
                             && (removeStack.getItemDamage() == Short.MAX_VALUE
-                            || craftingStack.getItemDamage() == removeStack.getItemDamage())) {
+                                    || craftingStack.getItemDamage() == removeStack.getItemDamage())) {
                         canCraft = true;
                         list.remove(removeStack);
                         break;

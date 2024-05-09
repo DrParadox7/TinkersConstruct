@@ -193,8 +193,7 @@ public class StencilTableGui extends GuiContainer implements INEIGuiHandler {
         }
 
         // is it in the horizontal column of the left buttons?
-        return x + w > this.buttonsLeftRect[0]
-                && x < this.guiLeft
+        return x + w > this.buttonsLeftRect[0] && x < this.guiLeft
                 && y + h > this.guiTop
                 && y < this.buttonsLeftRect[1];
     }

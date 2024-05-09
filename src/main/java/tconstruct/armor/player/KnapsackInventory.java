@@ -1,8 +1,5 @@
 package tconstruct.armor.player;
 
-import java.io.IOException;
-import cpw.mods.fml.common.network.ByteBufUtils;
-import io.netty.buffer.ByteBuf;
 import java.lang.ref.WeakReference;
 
 import net.minecraft.entity.Entity;

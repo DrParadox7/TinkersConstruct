@@ -13,6 +13,7 @@ import tconstruct.library.tools.ToolCore;
  */
 
 public class ToolRecipe {
+
     protected LinkedList<Item> headList = new LinkedList<>();
     protected LinkedList<Item> handleList = new LinkedList<>();
     protected LinkedList<Item> accessoryList = new LinkedList<>();

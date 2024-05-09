@@ -1,14 +1,21 @@
 package tconstruct.tools.inventory;
 
-import cpw.mods.fml.relauncher.*;
-import net.minecraft.entity.player.*;
-import net.minecraft.inventory.*;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.entity.player.InventoryPlayer;
+import net.minecraft.inventory.Container;
+import net.minecraft.inventory.ICrafting;
+import net.minecraft.inventory.Slot;
+import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.tileentity.TileEntityFurnace;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import tconstruct.tools.logic.FurnaceLogic;
 
 public class FurnaceContainer extends Container {
+
     private final FurnaceLogic furnace;
     private int lastCookTime;
     private int lastBurnTime;
@@ -90,8 +97,7 @@ public class FurnaceContainer extends Container {
     }
 
     /**
-     * Called when a player shift-clicks on a slot. You must override this or
-     * you will crash when someone does that.
+     * Called when a player shift-clicks on a slot. You must override this or you will crash when someone does that.
      */
     @Override
     public ItemStack transferStackInSlot(EntityPlayer par1EntityPlayer, int par2) {

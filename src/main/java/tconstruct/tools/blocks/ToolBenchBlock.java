@@ -47,40 +47,16 @@ public class ToolBenchBlock extends InventoryBlock {
     /* Rendering */
     @Override
     public String[] getTextureNames() {
-        return new String[]{ "toolstation_top",
-                "toolstation_side",
-                "toolstation_bottom",
-                "partbuilder_oak_top",
-                "partbuilder_oak_side",
-                "partbuilder_oak_bottom",
-                "partbuilder_spruce_top",
-                "partbuilder_spruce_side",
-                "partbuilder_spruce_bottom",
-                "partbuilder_birch_top",
-                "partbuilder_birch_side",
-                "partbuilder_birch_bottom",
-                "partbuilder_jungle_top",
-                "partbuilder_jungle_side",
-                "partbuilder_jungle_bottom",
-                "patternchest_top",
-                "patternchest_side",
-                "patternchest_bottom",
-                "stenciltable_oak_top",
-                "stenciltable_oak_side",
-                "stenciltable_oak_bottom",
-                "stenciltable_spruce_top",
-                "stenciltable_spruce_side",
-                "stenciltable_spruce_bottom",
-                "stenciltable_birch_top",
-                "stenciltable_birch_side",
-                "stenciltable_birch_bottom",
-                "stenciltable_jungle_top",
-                "stenciltable_jungle_side",
-                "stenciltable_jungle_bottom",
-                "moldingtable_top",
-                "moldingtable_side",
-                "moldingtable_bottom"
-        };
+        return new String[] { "toolstation_top", "toolstation_side", "toolstation_bottom", "partbuilder_oak_top",
+                "partbuilder_oak_side", "partbuilder_oak_bottom", "partbuilder_spruce_top", "partbuilder_spruce_side",
+                "partbuilder_spruce_bottom", "partbuilder_birch_top", "partbuilder_birch_side",
+                "partbuilder_birch_bottom", "partbuilder_jungle_top", "partbuilder_jungle_side",
+                "partbuilder_jungle_bottom", "patternchest_top", "patternchest_side", "patternchest_bottom",
+                "stenciltable_oak_top", "stenciltable_oak_side", "stenciltable_oak_bottom", "stenciltable_spruce_top",
+                "stenciltable_spruce_side", "stenciltable_spruce_bottom", "stenciltable_birch_top",
+                "stenciltable_birch_side", "stenciltable_birch_bottom", "stenciltable_jungle_top",
+                "stenciltable_jungle_side", "stenciltable_jungle_bottom", "moldingtable_top", "moldingtable_side",
+                "moldingtable_bottom" };
 
     } // We keep it "toolstation" for the sake of texture pack support.
 

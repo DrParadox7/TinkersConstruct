@@ -153,7 +153,7 @@ public class TinkerToolEvents {
     }
 
     private boolean allowCrafting(int head, int handle, int accessory) {
-        int[] nonMetals = {0, 1, 3, 4, 5, 6, 7, 8, 9, 17};
+        int[] nonMetals = { 0, 1, 3, 4, 5, 6, 7, 8, 9, 17 };
         for (int nonMetal : nonMetals) {
             if (head == nonMetal || handle == nonMetal || accessory == nonMetal) return false;
         }

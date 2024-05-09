@@ -180,7 +180,7 @@ public class FrypanLogic extends EquipLogic implements IActiveLogic {
         if (stack != null) {
             ItemStack result = FurnaceRecipes.smelting().getSmeltingResult(stack);
             if (result != null && result.getItem() instanceof ItemFood) // Only valid for food
-            return result.copy();
+                return result.copy();
         }
         return null;
     }

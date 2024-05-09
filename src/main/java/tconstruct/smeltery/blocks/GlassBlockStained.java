@@ -11,24 +11,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 import tconstruct.blocks.TConstructBlock;
 
 public class GlassBlockStained extends TConstructBlock {
-    static String[] blockTextures = {
-        "white",
-        "orange",
-        "magenta",
-        "lightblue",
-        "yellow",
-        "lime",
-        "pink",
-        "gray",
-        "lightgray",
-        "cyan",
-        "purple",
-        "blue",
-        "brown",
-        "green",
-        "red",
-        "black"
-    };
+
+    static String[] blockTextures = { "white", "orange", "magenta", "lightblue", "yellow", "lime", "pink", "gray",
+            "lightgray", "cyan", "purple", "blue", "brown", "green", "red", "black" };
     String textureName;
 
     public GlassBlockStained(String tex) {

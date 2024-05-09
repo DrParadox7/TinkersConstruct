@@ -159,12 +159,26 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
                 case "largeexplode":
                     this.mc.effectRenderer.addEffect(
                             entityfx = new EntityLargeExplodeFX(
-                                    mc.renderEngine, mc.theWorld, par2, par4, par6, par8, par10, par12));
+                                    mc.renderEngine,
+                                    mc.theWorld,
+                                    par2,
+                                    par4,
+                                    par6,
+                                    par8,
+                                    par10,
+                                    par12));
                     break;
                 case "fireworksSpark":
                     this.mc.effectRenderer.addEffect(
                             entityfx = new EntityFireworkSparkFX(
-                                    mc.theWorld, par2, par4, par6, par8, par10, par12, this.mc.effectRenderer));
+                                    mc.theWorld,
+                                    par2,
+                                    par4,
+                                    par6,
+                                    par8,
+                                    par10,
+                                    par12,
+                                    this.mc.effectRenderer));
                     break;
             }
 
@@ -225,7 +239,13 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
                             break;
                         case "enchantmenttable":
                             entityfx = new EntityEnchantmentTableParticleFX(
-                                    mc.theWorld, par2, par4, par6, par8, par10, par12);
+                                    mc.theWorld,
+                                    par2,
+                                    par4,
+                                    par6,
+                                    par8,
+                                    par10,
+                                    par12);
                             break;
                         case "explode":
                             entityfx = new EntityExplodeFX(mc.theWorld, par2, par4, par6, par8, par10, par12);
@@ -250,7 +270,13 @@ public class TinkerWorldProxyClient extends TinkerWorldProxyCommon {
                             break;
                         case "reddust":
                             entityfx = new EntityReddustFX(
-                                    mc.theWorld, par2, par4, par6, (float) par8, (float) par10, (float) par12);
+                                    mc.theWorld,
+                                    par2,
+                                    par4,
+                                    par6,
+                                    (float) par8,
+                                    (float) par10,
+                                    (float) par12);
                             break;
                         case "snowballpoof":
                             entityfx = new EntityBreakingFX(mc.theWorld, par2, par4, par6, Items.snowball);

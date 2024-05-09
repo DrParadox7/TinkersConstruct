@@ -1,7 +1,5 @@
 package tconstruct.util.network;
 
-import java.util.Collections;
-import java.util.Comparator;
 import java.util.EnumMap;
 import java.util.LinkedList;
 import java.util.List;

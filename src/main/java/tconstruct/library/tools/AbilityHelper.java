@@ -1,10 +1,5 @@
 package tconstruct.library.tools;
 
-import cofh.api.energy.IEnergyContainerItem;
-import cpw.mods.fml.common.Loader;
-import cpw.mods.fml.common.eventhandler.Event.Result;
-
-import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
 
@@ -325,17 +320,15 @@ public class AbilityHelper {
                 List<EntityWolf> var6 = player.worldObj.getEntitiesWithinAABB(
                         EntityWolf.class,
                         AxisAlignedBB.getBoundingBox(
-                                        player.posX,
-                                        player.posY,
-                                        player.posZ,
-                                        player.posX + 1.0D,
-                                        player.posY + 1.0D,
-                                        player.posZ + 1.0D)
-                                .expand(16.0D, 4.0D, 16.0D));
+                                player.posX,
+                                player.posY,
+                                player.posZ,
+                                player.posX + 1.0D,
+                                player.posY + 1.0D,
+                                player.posZ + 1.0D).expand(16.0D, 4.0D, 16.0D));
 
                 for (EntityWolf var5 : var6) {
-                    if (var5.isTamed()
-                            && var5.getEntityToAttack() == null
+                    if (var5.isTamed() && var5.getEntityToAttack() == null
                             && player.getDisplayName().equals(var5.func_152113_b())
                             && (!par2 || !var5.isSitting())) {
                         var5.setSitting(false);
@@ -406,7 +399,7 @@ public class AbilityHelper {
                 int toolDamage = (damage * 100 / maxDamage) + 1;
                 int stackDamage = stack.getItemDamage();
                 // if (toolDamage != stackDamage) {
-                //    // stack.setItemDamage((damage * 100 / maxDamage) + 1);
+                // // stack.setItemDamage((damage * 100 / maxDamage) + 1);
                 // }
             }
         }
@@ -503,8 +496,9 @@ public class AbilityHelper {
         tags.setInteger("Energy", max - missing);
     }
 
-    private static final boolean equalityOverrideLoaded =
-            Loader.isModLoaded("CoFHCore"); // Mods should be loaded far enough before this is ever initialized
+    private static final boolean equalityOverrideLoaded = Loader.isModLoaded("CoFHCore"); // Mods should be loaded far
+                                                                                          // enough before this is ever
+                                                                                          // initialized
 
     public static void breakTool(ItemStack stack, NBTTagCompound tags, Entity entity) {
         tags.getCompoundTag("InfiTool").setBoolean("Broken", true);

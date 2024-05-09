@@ -1,9 +1,13 @@
 package tconstruct.plugins.imc;
 
-import cpw.mods.fml.common.event.*;
+import java.util.Arrays;
+import java.util.List;
+
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLInterModComms;
 import cpw.mods.fml.common.registry.GameRegistry.ObjectHolder;
-import java.util.*;
-import mantle.pulsar.pulse.*;
+import mantle.pulsar.pulse.Handler;
+import mantle.pulsar.pulse.Pulse;
 import tconstruct.TConstruct;
 
 @ObjectHolder(TConstruct.modID)
@@ -13,6 +17,7 @@ import tconstruct.TConstruct;
         modsRequired = "appliedenergistics2",
         forced = true)
 public class TinkerAE2 {
+
     private static final List<String> spatialIOLogics = Arrays.asList(
             "EssenceExtractorLogic",
             "GolemPedestalLogic", // TODO What happened to these?

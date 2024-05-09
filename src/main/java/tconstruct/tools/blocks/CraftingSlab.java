@@ -44,29 +44,12 @@ public class CraftingSlab extends InventorySlab {
     /* Rendering */
     @Override
     public String[] getTextureNames() {
-        return new String[] {
-            "craftingstation_top",
-            "craftingstation_slab_side",
-            "craftingstation_bottom",
-            "toolstation_top",
-            "toolstation_slab_side",
-            "toolstation_bottom",
-            "partbuilder_oak_top",
-            "partbuilder_slab_side",
-            "partbuilder_oak_bottom",
-            "stenciltable_oak_top",
-            "stenciltable_slab_side",
-            "stenciltable_oak_bottom",
-            "patternchest_top",
-            "patternchest_slab_side",
-            "patternchest_bottom",
-            "toolforge_top",
-            "toolforge_slab_side",
-            "toolforge_top",
-            "toolforge_top_nether",
-            "toolforge_slab_side_nether",
-            "toolforge_top_nether"
-        };
+        return new String[] { "craftingstation_top", "craftingstation_slab_side", "craftingstation_bottom",
+                "toolstation_top", "toolstation_slab_side", "toolstation_bottom", "partbuilder_oak_top",
+                "partbuilder_slab_side", "partbuilder_oak_bottom", "stenciltable_oak_top", "stenciltable_slab_side",
+                "stenciltable_oak_bottom", "patternchest_top", "patternchest_slab_side", "patternchest_bottom",
+                "toolforge_top", "toolforge_slab_side", "toolforge_top", "toolforge_top_nether",
+                "toolforge_slab_side_nether", "toolforge_top_nether" };
     } // We keep it "toolforge" for the sake of texture pack support.
 
     @Override

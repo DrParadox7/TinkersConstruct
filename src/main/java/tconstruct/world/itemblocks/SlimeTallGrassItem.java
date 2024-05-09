@@ -1,13 +1,17 @@
 package tconstruct.world.itemblocks;
 
-import cpw.mods.fml.relauncher.*;
-import mantle.blocks.abstracts.MultiItemBlock;
 import net.minecraft.block.Block;
-import net.minecraft.util.*;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import mantle.blocks.abstracts.MultiItemBlock;
 import tconstruct.world.TinkerWorld;
 
 public class SlimeTallGrassItem extends MultiItemBlock {
-    public static final String[] blockTypes = {"tallgrass", "tallgrass.fern"};
+
+    public static final String[] blockTypes = { "tallgrass", "tallgrass.fern" };
 
     public SlimeTallGrassItem(Block b) {
         super(b, "block.slime", blockTypes);

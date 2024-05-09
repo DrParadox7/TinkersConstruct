@@ -9,9 +9,8 @@ public class EnvironmentChecks {
     private EnvironmentChecks() {} // Singleton
 
     /**
-     * Checks for conflicting stuff in environment; adds callable to any crash
-     * logs if so. Note: This code adds additional data to crashlogs. It does
-     * not trigger any crashes.
+     * Checks for conflicting stuff in environment; adds callable to any crash logs if so. Note: This code adds
+     * additional data to crashlogs. It does not trigger any crashes.
      */
     // private static List<String> incompatibilities = new ArrayList<>();
     // private static EnvironmentChecks instance = new EnvironmentChecks();

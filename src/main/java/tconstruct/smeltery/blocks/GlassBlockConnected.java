@@ -1,12 +1,16 @@
 package tconstruct.smeltery.blocks;
 
-import cpw.mods.fml.relauncher.*;
-import mantle.blocks.MantleBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.util.*;
-import net.minecraft.world.*;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.IIcon;
+import net.minecraft.world.IBlockAccess;
+import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import mantle.blocks.MantleBlock;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.util.config.PHConstruct;
 
@@ -15,6 +19,7 @@ import tconstruct.util.config.PHConstruct;
  *
  */
 public class GlassBlockConnected extends MantleBlock {
+
     protected IIcon[] icons = new IIcon[16];
     private final boolean shouldRenderSelectionBox = true;
     protected String folder;
@@ -51,6 +56,7 @@ public class GlassBlockConnected extends MantleBlock {
 
     /**
      * This is checked to see if the texture should connect to this block
+     * 
      * @param par2 x
      * @param par3 y
      * @param par4 z
@@ -58,21 +64,20 @@ public class GlassBlockConnected extends MantleBlock {
      * @param par6 Metadata of the block this block is trying to connect to
      * @return true if should connect
      */
-    public boolean shouldConnectToBlock(
-            IBlockAccess par1IBlockAccess, int par2, int par3, int par4, Block par5, int par6) {
+    public boolean shouldConnectToBlock(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, Block par5,
+            int par6) {
         return par5 == this;
     }
 
     @Override
     @SideOnly(Side.CLIENT)
     public IIcon getIcon(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5) {
-        return par1IBlockAccess.getBlockMetadata(par2, par3, par4) == 15
-                ? icons[0]
+        return par1IBlockAccess.getBlockMetadata(par2, par3, par4) == 15 ? icons[0]
                 : getConnectedBlockTexture(par1IBlockAccess, par2, par3, par4, par5, icons);
     }
 
-    public IIcon getConnectedBlockTexture(
-            IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5, IIcon[] icons) {
+    public IIcon getConnectedBlockTexture(IBlockAccess par1IBlockAccess, int par2, int par3, int par4, int par5,
+            IIcon[] icons) {
         if (PHConstruct.connectedTexturesMode == 0) {
             return icons[0];
         }

@@ -45,8 +45,8 @@ public class FaucetLogic extends TileEntity implements IFacingLogic, IActiveLogi
             TileEntity tankte = worldObj.getTileEntity(xCoord, yCoord - 1, zCoord);
 
             if (drainte instanceof IFluidHandler && tankte instanceof IFluidHandler) {
-                FluidStack templiquid =
-                        ((IFluidHandler) drainte).drain(getForgeDirection(), TConstruct.ingotLiquidValue, false);
+                FluidStack templiquid = ((IFluidHandler) drainte)
+                        .drain(getForgeDirection(), TConstruct.ingotLiquidValue, false);
                 if (templiquid != null) {
                     int drained = ((IFluidHandler) tankte).fill(ForgeDirection.UP, templiquid, false);
                     if (drained > 0) {

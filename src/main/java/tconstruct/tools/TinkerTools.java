@@ -601,12 +601,11 @@ public class TinkerTools {
         } else {
             for (int nonMetal : nonMetals) {
                 for (int meta = 0; meta < TinkerTools.patternOutputs.length; meta++) {
-                    if (TinkerTools.patternOutputs[meta] != null)
-                        TConstructRegistry.addPartMapping(
-                                TinkerTools.woodPattern,
-                                meta + 1,
-                                nonMetal,
-                                new ItemStack(TinkerTools.patternOutputs[meta], 1, nonMetal));
+                    if (TinkerTools.patternOutputs[meta] != null) TConstructRegistry.addPartMapping(
+                            TinkerTools.woodPattern,
+                            meta + 1,
+                            nonMetal,
+                            new ItemStack(TinkerTools.patternOutputs[meta], 1, nonMetal));
                 }
             }
         }
@@ -635,23 +634,44 @@ public class TinkerTools {
 
     private void addRecipesForToolBuilder() {
         ToolBuilder.addNormalToolRecipe(
-                TinkerTools.pickaxe, TinkerTools.pickaxeHead, TinkerTools.toolRod, TinkerTools.binding);
+                TinkerTools.pickaxe,
+                TinkerTools.pickaxeHead,
+                TinkerTools.toolRod,
+                TinkerTools.binding);
         ToolBuilder.addNormalToolRecipe(
-                TinkerTools.broadsword, TinkerTools.swordBlade, TinkerTools.toolRod, TinkerTools.wideGuard);
+                TinkerTools.broadsword,
+                TinkerTools.swordBlade,
+                TinkerTools.toolRod,
+                TinkerTools.wideGuard);
         ToolBuilder.addNormalToolRecipe(TinkerTools.hatchet, TinkerTools.hatchetHead, TinkerTools.toolRod);
         ToolBuilder.addNormalToolRecipe(TinkerTools.shovel, TinkerTools.shovelHead, TinkerTools.toolRod);
         ToolBuilder.addNormalToolRecipe(
-                TinkerTools.longsword, TinkerTools.swordBlade, TinkerTools.toolRod, TinkerTools.handGuard);
+                TinkerTools.longsword,
+                TinkerTools.swordBlade,
+                TinkerTools.toolRod,
+                TinkerTools.handGuard);
         ToolBuilder.addNormalToolRecipe(
-                TinkerTools.rapier, TinkerTools.swordBlade, TinkerTools.toolRod, TinkerTools.crossbar);
+                TinkerTools.rapier,
+                TinkerTools.swordBlade,
+                TinkerTools.toolRod,
+                TinkerTools.crossbar);
         ToolBuilder.addNormalToolRecipe(TinkerTools.frypan, TinkerTools.frypanHead, TinkerTools.toolRod);
         ToolBuilder.addNormalToolRecipe(TinkerTools.battlesign, TinkerTools.signHead, TinkerTools.toolRod);
         ToolBuilder.addNormalToolRecipe(
-                TinkerTools.mattock, TinkerTools.hatchetHead, TinkerTools.toolRod, TinkerTools.shovelHead);
+                TinkerTools.mattock,
+                TinkerTools.hatchetHead,
+                TinkerTools.toolRod,
+                TinkerTools.shovelHead);
         ToolBuilder.addNormalToolRecipe(
-                TinkerTools.dagger, TinkerTools.knifeBlade, TinkerTools.toolRod, TinkerTools.crossbar);
+                TinkerTools.dagger,
+                TinkerTools.knifeBlade,
+                TinkerTools.toolRod,
+                TinkerTools.crossbar);
         ToolBuilder.addNormalToolRecipe(
-                TinkerTools.cutlass, TinkerTools.swordBlade, TinkerTools.toolRod, TinkerTools.fullGuard);
+                TinkerTools.cutlass,
+                TinkerTools.swordBlade,
+                TinkerTools.toolRod,
+                TinkerTools.fullGuard);
         ToolBuilder.addNormalToolRecipe(TinkerTools.chisel, TinkerTools.chiselHead, TinkerTools.toolRod);
 
         ToolBuilder.addNormalToolRecipe(
@@ -1514,8 +1534,7 @@ public class TinkerTools {
                         1.1F,
                         1.2f,
                         0xf3414f);
-            } catch (Exception ignored) {
-            } // No need to handle
+            } catch (Exception ignored) {} // No need to handle
         }
         TinkerTools.metallurgyAvailable = Loader.isModLoaded("Metallurgy");
 

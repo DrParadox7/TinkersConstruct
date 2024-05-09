@@ -1,21 +1,23 @@
 /*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+ * To change this template, choose Tools | Templates and open the template in the editor.
  */
 
 package exterminatorJeff.undergroundBiomes.api;
 
-import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import net.minecraft.block.Block;
 import net.minecraft.world.World;
 
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+
 /**
- * Striped down version, get the full API from here: https://github.com/Zeno410/UndergroundBiomes1.7API
- * This is an interface for the class that can create Underground Biomes versions of arbitary ores
- * It creates three new blocks for each texturized ore.
+ * Striped down version, get the full API from here: https://github.com/Zeno410/UndergroundBiomes1.7API This is an
+ * interface for the class that can create Underground Biomes versions of arbitary ores It creates three new blocks for
+ * each texturized ore.
+ * 
  * @author Zeno410
  */
 public interface UBOreTexturizer {
+
     // usage: Block is the ore block.
     // Overlay name is the fully qualified name, e.g. modname:overlayName
     // that static vars are fully qualified names for all the textures in the UB pack, just pass as is
@@ -24,8 +26,8 @@ public interface UBOreTexturizer {
 
     void setupUBOre(Block oreBlock, int metadata, String overlayName, FMLPreInitializationEvent event);
 
-    void setupUBOre(
-            Block oreBlock, int metadata, String overlayName, String blockName, FMLPreInitializationEvent event);
+    void setupUBOre(Block oreBlock, int metadata, String overlayName, String blockName,
+            FMLPreInitializationEvent event);
 
     void requestUBOreSetup(Block oreBlock, String overlayName) throws BlocksAreAlreadySet;
 
@@ -54,6 +56,7 @@ public interface UBOreTexturizer {
     String uranium_overlay = "undergroundbiomes:uranium_overlay";
 
     class BlocksAreAlreadySet extends RuntimeException {
+
         // this is thrown if UB has already run its pre-initialization step and can no longer register blocks
         public final Block oreBlock;
         public final String overlayName;
@@ -69,7 +72,9 @@ public interface UBOreTexturizer {
             String overlayDescription = "undefined overlay";
             if (oreBlock != null) blockDescription = oreBlock.getUnlocalizedName();
             if (overlayName != null) overlayDescription = overlayName;
-            return "Attempt to create Underground Biomes ore for " + blockDescription + " with " + overlayDescription
+            return "Attempt to create Underground Biomes ore for " + blockDescription
+                    + " with "
+                    + overlayDescription
                     + " after blocks have already been defined";
         }
     }

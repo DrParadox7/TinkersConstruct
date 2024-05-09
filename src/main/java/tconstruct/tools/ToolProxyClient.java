@@ -33,7 +33,6 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import mantle.client.MProxyClient;
 import mantle.lib.client.MantleClientRegistry;
-import tconstruct.TConstruct;
 import tconstruct.client.FlexibleToolRenderer;
 import tconstruct.client.entity.projectile.LaunchedItemRender;
 import tconstruct.client.pages.MaterialPage;
@@ -680,14 +679,12 @@ public class ToolProxyClient extends ToolProxyCommon {
     public void onSound(SoundLoadEvent event) {
         // try {
         /*
-         * SoundManager soundmanager = event.manager;
-         * soundmanager.addSound("tinker:frypan_hit.ogg");
-         * soundmanager.addSound("tinker:little_saw.ogg");
-         * soundmanager.addSound("tinker:launcher_clank.ogg");
+         * SoundManager soundmanager = event.manager; soundmanager.addSound("tinker:frypan_hit.ogg");
+         * soundmanager.addSound("tinker:little_saw.ogg"); soundmanager.addSound("tinker:launcher_clank.ogg");
          * TConstruct.logger.info("Successfully loaded sounds.");
          */
         // } catch (Exception e) {
-        //    TConstruct.logger.error("Failed to register one or more sounds");
+        // TConstruct.logger.error("Failed to register one or more sounds");
         // }
 
         MinecraftForge.EVENT_BUS.unregister(this);

@@ -1,16 +1,28 @@
 package tconstruct.world;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+
 import net.minecraft.block.Block;
 import net.minecraft.enchantment.EnchantmentProtection;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.util.*;
-import net.minecraft.world.*;
+import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.DamageSource;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.Vec3;
+import net.minecraft.world.ChunkPosition;
+import net.minecraft.world.Explosion;
+import net.minecraft.world.World;
 
 public class MiningExplosion extends Explosion {
+
     World world;
     private final Random random = new Random();
     private final int field_77289_h = 16;
@@ -35,8 +47,7 @@ public class MiningExplosion extends Explosion {
         for (i = 0; i < this.field_77289_h; ++i) {
             for (j = 0; j < this.field_77289_h; ++j) {
                 for (k = 0; k < this.field_77289_h; ++k) {
-                    if (i == 0
-                            || i == this.field_77289_h - 1
+                    if (i == 0 || i == this.field_77289_h - 1
                             || j == 0
                             || j == this.field_77289_h - 1
                             || k == 0
@@ -63,13 +74,19 @@ public class MiningExplosion extends Explosion {
                                 float f3 = this.exploder != null
                                         ? this.exploder.func_145772_a(this, this.world, l, i1, j1, k1)
                                         : k1.getExplosionResistance(
-                                                this.exploder, world, l, i1, j1, explosionX, explosionY, explosionZ);
+                                                this.exploder,
+                                                world,
+                                                l,
+                                                i1,
+                                                j1,
+                                                explosionX,
+                                                explosionY,
+                                                explosionZ);
                                 f1 -= (f3 + 0.8F) * f2 * 0.25f;
                             }
 
-                            if (f1 > 0.0F
-                                    && (this.exploder == null
-                                            || this.exploder.func_145774_a(this, this.world, l, i1, j1, k1, f1))) {
+                            if (f1 > 0.0F && (this.exploder == null
+                                    || this.exploder.func_145774_a(this, this.world, l, i1, j1, k1, f1))) {
                                 hashset.add(new ChunkPosition(l, i1, j1));
                             }
 
@@ -90,13 +107,13 @@ public class MiningExplosion extends Explosion {
         int l1 = MathHelper.floor_double(this.explosionY + (double) this.explosionSize + 1.0D);
         int i2 = MathHelper.floor_double(this.explosionZ - (double) this.explosionSize - 1.0D);
         int j2 = MathHelper.floor_double(this.explosionZ + (double) this.explosionSize + 1.0D);
-        List<Entity> list = this.world.getEntitiesWithinAABBExcludingEntity(
-                this.exploder, AxisAlignedBB.getBoundingBox(i, k, i2, j, l1, j2));
+        List<Entity> list = this.world
+                .getEntitiesWithinAABBExcludingEntity(this.exploder, AxisAlignedBB.getBoundingBox(i, k, i2, j, l1, j2));
         Vec3 vec3 = Vec3.createVectorHelper(this.explosionX, this.explosionY, this.explosionZ);
 
         for (Entity entity : list) {
-            double d7 =
-                    entity.getDistance(this.explosionX, this.explosionY, this.explosionZ) / (double) this.explosionSize;
+            double d7 = entity.getDistance(this.explosionX, this.explosionY, this.explosionZ)
+                    / (double) this.explosionSize;
 
             if (d7 <= 1.0D) {
                 d0 = entity.posX - this.explosionX;
@@ -110,9 +127,9 @@ public class MiningExplosion extends Explosion {
                     d2 /= d8;
                     double d9 = this.world.getBlockDensity(vec3, entity.boundingBox);
                     double d10 = (1.0D - d7) * d9;
-                    if (!(entity instanceof EntityItem))
-                        entity.attackEntityFrom(DamageSource.setExplosionSource(this), (float)
-                                ((int) ((d10 * d10 + d10) / 2.0D * 8.0D * (double) this.explosionSize + 1.0D)));
+                    if (!(entity instanceof EntityItem)) entity.attackEntityFrom(
+                            DamageSource.setExplosionSource(this),
+                            (float) ((int) ((d10 * d10 + d10) / 2.0D * 8.0D * (double) this.explosionSize + 1.0D)));
                     double d11 = EnchantmentProtection.func_92092_a(entity, d10);
                     entity.motionX += d0 * d11;
                     entity.motionY += d1 * d11;
@@ -140,10 +157,16 @@ public class MiningExplosion extends Explosion {
 
         if (this.explosionSize >= 2.0F && this.isSmoking) {
             this.world.spawnParticle(
-                    "hugeexplosion", this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D);
+                    "hugeexplosion",
+                    this.explosionX,
+                    this.explosionY,
+                    this.explosionZ,
+                    1.0D,
+                    0.0D,
+                    0.0D);
         } else {
-            this.world.spawnParticle(
-                    "largeexplode", this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D);
+            this.world
+                    .spawnParticle("largeexplode", this.explosionX, this.explosionY, this.explosionZ, 1.0D, 0.0D, 0.0D);
         }
 
         Iterator<ChunkPosition> iterator;

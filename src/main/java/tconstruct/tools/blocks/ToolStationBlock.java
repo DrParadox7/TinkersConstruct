@@ -36,13 +36,8 @@ public class ToolStationBlock extends InventoryBlock {
 
     @Override
     public String[] getTextureNames() {
-        return new String[]{
-            "toolforge_bronze",
-            "toolforge_steel",
-            "toolforge_alumite"
-        };
-    }     // We keep it "toolforge" for the sake of texture pack support.
-
+        return new String[] { "toolforge_bronze", "toolforge_steel", "toolforge_alumite" };
+    } // We keep it "toolforge" for the sake of texture pack support.
 
     @Override
     public String getTextureDomain(int textureNameIndex) {
@@ -73,7 +68,7 @@ public class ToolStationBlock extends InventoryBlock {
                     return TinkerWorld.metalBlock.getIcon(side, 4);
             }
         }
-        if (meta <= textureNames.length - 1) return this.icons[meta];
+        if (meta <= getTextureNames().length - 1) return this.icons[meta];
 
         return this.icons[0];
     }
@@ -127,7 +122,7 @@ public class ToolStationBlock extends InventoryBlock {
 
     @Override
     public void getSubBlocks(Item b, CreativeTabs tab, List list) {
-        for (int iter = 0; iter < textureNames.length; iter++) {
+        for (int iter = 0; iter < getTextureNames().length; iter++) {
             list.add(new ItemStack(b, 1, iter));
         }
     }

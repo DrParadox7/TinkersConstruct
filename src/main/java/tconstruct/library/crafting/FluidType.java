@@ -1,7 +1,6 @@
 package tconstruct.library.crafting;
 
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import net.minecraft.block.Block;

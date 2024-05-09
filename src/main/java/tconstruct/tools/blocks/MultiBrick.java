@@ -14,22 +14,10 @@ import cpw.mods.fml.relauncher.SideOnly;
 import tconstruct.blocks.TConstructBlock;
 
 public class MultiBrick extends TConstructBlock {
-    static String[] blockTextures = {
-        "brick_obsidian",
-        "brick_sandstone",
-        "brick_netherrack",
-        "brick_stone_refined",
-        "brick_iron",
-        "brick_gold",
-        "brick_lapis",
-        "brick_diamond",
-        "brick_redstone",
-        "brick_bone",
-        "brick_slime",
-        "brick_blueslime",
-        "brick_endstone",
-        "brick_obsidian_ingot"
-    };
+
+    static String[] blockTextures = { "brick_obsidian", "brick_sandstone", "brick_netherrack", "brick_stone_refined",
+            "brick_iron", "brick_gold", "brick_lapis", "brick_diamond", "brick_redstone", "brick_bone", "brick_slime",
+            "brick_blueslime", "brick_endstone", "brick_obsidian_ingot" };
 
     public MultiBrick() {
         super(Material.rock, 3f, blockTextures);
@@ -77,8 +65,8 @@ public class MultiBrick extends TConstructBlock {
         switch (meta) {
             case 0:
             case 13:
-                return Blocks.obsidian.getExplosionResistance(
-                        entity, world, meta, meta, meta, explosionZ, explosionZ, explosionZ);
+                return Blocks.obsidian
+                        .getExplosionResistance(entity, world, meta, meta, meta, explosionZ, explosionZ, explosionZ);
             case 1:
                 return Blocks.sandstone
                         .getExplosionResistance(entity, world, meta, meta, meta, explosionZ, explosionZ, explosionZ);
@@ -109,8 +97,8 @@ public class MultiBrick extends TConstructBlock {
             case 11:
                 return 1.5F;
             case 12:
-                return Blocks.end_stone.getExplosionResistance(
-                        entity, world, meta, meta, meta, explosionZ, explosionZ, explosionZ);
+                return Blocks.end_stone
+                        .getExplosionResistance(entity, world, meta, meta, meta, explosionZ, explosionZ, explosionZ);
             default:
                 return getExplosionResistance(entity, world, meta, meta, meta, explosionZ, explosionZ, explosionZ);
         }

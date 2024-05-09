@@ -12,24 +12,9 @@ import cpw.mods.fml.relauncher.SideOnly;
 import mantle.blocks.abstracts.MultiItemBlock;
 
 public class MultiBrickFancyItem extends MultiItemBlock {
-    static String[] blockTypes = {
-        "obsidian",
-        "sandstone",
-        "netherrack",
-        "stone.refined",
-        "iron",
-        "gold",
-        "lapis",
-        "diamond",
-        "redstone",
-        "bone",
-        "slime",
-        "blueslime",
-        "endstone",
-        "obsidian.ingot",
-        "stone",
-        "stone.road"
-    };
+
+    static String[] blockTypes = { "obsidian", "sandstone", "netherrack", "stone.refined", "iron", "gold", "lapis",
+            "diamond", "redstone", "bone", "slime", "blueslime", "endstone", "obsidian.ingot", "stone", "stone.road" };
 
     public MultiBrickFancyItem(Block b) {
         super(b, "block.fancybrick", blockTypes);

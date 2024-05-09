@@ -7,6 +7,7 @@ import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
 public class DryingRackRecipes {
+
     public static ArrayList<DryingRecipe> recipes = new ArrayList<>();
 
     public static void addDryingRecipe(Object input, int time, Object output) {

@@ -94,7 +94,11 @@ public class SlimeExplosive extends TConstructBlock {
         if (!par1World.isRemote) {
             if ((par5 % 2) == 1) {
                 ExplosivePrimed entitytntprimed = new ExplosivePrimed(
-                        par1World, (float) par2 + 0.5F, (float) par3 + 0.5F, (float) par4 + 0.5F, par6EntityLivingBase);
+                        par1World,
+                        (float) par2 + 0.5F,
+                        (float) par3 + 0.5F,
+                        (float) par4 + 0.5F,
+                        par6EntityLivingBase);
                 par1World.spawnEntityInWorld(entitytntprimed);
                 par1World.playSoundAtEntity(entitytntprimed, "random.fuse", 1.0F, 1.0F);
             }

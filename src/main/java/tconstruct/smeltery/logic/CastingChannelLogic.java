@@ -57,12 +57,12 @@ public class CastingChannelLogic extends TileEntity implements IFluidHandler {
     public void updateEntity() {
         ticks++;
 
-        //boolean flagActiveFaucet = false;
+        // boolean flagActiveFaucet = false;
 
         TileEntity possibleFaucet = worldObj.getTileEntity(xCoord, yCoord + 1, zCoord);
-        //if (possibleFaucet instanceof FaucetLogic) {
-        //    flagActiveFaucet = ((FaucetLogic) possibleFaucet).active;
-        //}
+        // if (possibleFaucet instanceof FaucetLogic) {
+        // flagActiveFaucet = ((FaucetLogic) possibleFaucet).active;
+        // }
 
         if (ticks == 6) // && !flagActiveFaucet)
             this.distributeFluids();
@@ -211,8 +211,8 @@ public class CastingChannelLogic extends TileEntity implements IFluidHandler {
 
         HashMap<ForgeDirection, TileEntity> connected = this.getOutputs();
         connected.remove(lastProvider);
-        if (connected.containsKey(ForgeDirection.DOWN)
-                && this.internalTank.getFluid() != null) // Prioritizes FluidHandlers below
+        if (connected.containsKey(ForgeDirection.DOWN) && this.internalTank.getFluid() != null) // Prioritizes
+                                                                                                // FluidHandlers below
         {
             int output = Math.min(internalTank.getFluid().amount, outputMax);
             FluidStack tempFS = new FluidStack(internalTank.getFluid().getFluid(), output);

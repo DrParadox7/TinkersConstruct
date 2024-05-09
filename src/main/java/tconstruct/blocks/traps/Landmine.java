@@ -1,11 +1,8 @@
 package tconstruct.blocks.traps;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import java.util.List;
 import java.util.Random;
-import mantle.blocks.MantleBlock;
-import mantle.world.WorldHelper;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.material.Material;
@@ -18,9 +15,15 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import mantle.blocks.MantleBlock;
+import mantle.world.WorldHelper;
 import tconstruct.library.TConstructRegistry;
 
 public class Landmine extends MantleBlock {
+
     /** The mob type that can trigger this pressure plate. */
     private final EnumCreatureType triggerMobType;
 
@@ -60,8 +63,8 @@ public class Landmine extends MantleBlock {
     }
 
     /**
-     * Returns a bounding box from the pool of bounding boxes (this means this
-     * box can change after the pool has been cleared to be reused)
+     * Returns a bounding box from the pool of bounding boxes (this means this box can change after the pool has been
+     * cleared to be reused)
      */
     @Override
     public AxisAlignedBB getCollisionBoundingBoxFromPool(World par1World, int par2, int par3, int par4) {
@@ -69,9 +72,8 @@ public class Landmine extends MantleBlock {
     }
 
     /**
-     * Is this block (a) opaque and (b) a full 1m cube? This determines whether
-     * or not to render the shared face of two adjacent blocks and also whether
-     * the player can attach torches, redstone wire, etc to this block.
+     * Is this block (a) opaque and (b) a full 1m cube? This determines whether or not to render the shared face of two
+     * adjacent blocks and also whether the player can attach torches, redstone wire, etc to this block.
      */
     @Override
     public boolean isOpaqueCube() {
@@ -79,8 +81,7 @@ public class Landmine extends MantleBlock {
     }
 
     /**
-     * If this block doesn't render as an ordinary block it will return False
-     * (examples: signs, buttons, stairs, etc)
+     * If this block doesn't render as an ordinary block it will return False (examples: signs, buttons, stairs, etc)
      */
     @Override
     public boolean renderAsNormalBlock() {
@@ -93,8 +94,7 @@ public class Landmine extends MantleBlock {
     }
 
     /**
-     * Checks to see if its valid to put this block at the specified
-     * coordinates. Args: world, x, y, z
+     * Checks to see if its valid to put this block at the specified coordinates. Args: world, x, y, z
      */
     @Override
     public boolean canPlaceBlockAt(World par1World, int par2, int par3, int par4) {
@@ -103,9 +103,8 @@ public class Landmine extends MantleBlock {
     }
 
     /**
-     * Lets the block know when one of its neighbor changes. Doesn't know which
-     * neighbor changed (coordinates passed are their own) Args: x, y, z,
-     * neighbor blockID
+     * Lets the block know when one of its neighbor changes. Doesn't know which neighbor changed (coordinates passed are
+     * their own) Args: x, y, z, neighbor blockID
      */
     public void onNeighborBlockChange(World par1World, int par2, int par3, int par4, Block par5) {
         boolean var6 = !World.doesBlockHaveSolidTopSurface(par1World, par2, par3 - 1, par4)
@@ -130,8 +129,7 @@ public class Landmine extends MantleBlock {
     }
 
     /**
-     * Triggered whenever an entity collides with this block (enters into the
-     * block). Args: world, x, y, z, entity
+     * Triggered whenever an entity collides with this block (enters into the block). Args: world, x, y, z, entity
      */
     @Override
     public void onEntityCollidedWithBlock(World par1World, int par2, int par3, int par4, Entity par5Entity) {
@@ -143,8 +141,7 @@ public class Landmine extends MantleBlock {
     }
 
     /**
-     * Checks if there are mobs on the plate. If a mob is on the plate and it is
-     * off, it turns it on, and vice versa.
+     * Checks if there are mobs on the plate. If a mob is on the plate and it is off, it turns it on, and vice versa.
      */
     private void setStateIfMobInteractsWithPlate(World world, int posX, int posY, int posZ) {
         boolean var5 = world.getBlockMetadata(posX, posY, posZ) == 1;
@@ -177,11 +174,9 @@ public class Landmine extends MantleBlock {
         }
 
         /*
-         * if (this.triggerMobType == EnumCreatureType.players) { var8 =
-         * world.getEntitiesWithinAABB( EntityPlayer.class,
-         * AxisAlignedBB.getBoundingBox((double) ((float) posX + var7),
-         * (double) posY, (double) ((float) posZ + var7), (double) ((float)
-         * (posX + 1) - var7), (double) posY + 0.25D, (double) ((float) (posZ +
+         * if (this.triggerMobType == EnumCreatureType.players) { var8 = world.getEntitiesWithinAABB(
+         * EntityPlayer.class, AxisAlignedBB.getBoundingBox((double) ((float) posX + var7), (double) posY, (double)
+         * ((float) posZ + var7), (double) ((float) (posX + 1) - var7), (double) posY + 0.25D, (double) ((float) (posZ +
          * 1) - var7))); }
          */
 
@@ -198,34 +193,25 @@ public class Landmine extends MantleBlock {
             WorldHelper.setBlockToAir(world, posX, posY, posZ);
             world.createExplosion(null, posX, posY, posZ, 2.0F, true);
             /*
-             * par1World.setBlockMetadataWithNotify(posX, posY, posZ, 1);
-             * par1World.notifyBlocksOfNeighborChange(posX, posY, posZ,
-             * this.blockID); par1World.notifyBlocksOfNeighborChange(posX, posY
-             * - 1, posZ, this.blockID);
-             * par1World.func_147479_m(posX, posY, posZ, posX,
-             * posY, posZ); par1World.playSoundEffect((double)posX + 0.5D,
-             * (double)posY + 0.1D, (double)posZ + 0.5D, "random.click", 0.3F,
-             * 0.6F);
+             * par1World.setBlockMetadataWithNotify(posX, posY, posZ, 1); par1World.notifyBlocksOfNeighborChange(posX,
+             * posY, posZ, this.blockID); par1World.notifyBlocksOfNeighborChange(posX, posY - 1, posZ, this.blockID);
+             * par1World.func_147479_m(posX, posY, posZ, posX, posY, posZ); par1World.playSoundEffect((double)posX +
+             * 0.5D, (double)posY + 0.1D, (double)posZ + 0.5D, "random.click", 0.3F, 0.6F);
              */
         }
 
         /*
-         * if (!var6 && var5) { par1World.setBlockMetadataWithNotify(posX, posY,
-         * posZ, 0); par1World.notifyBlocksOfNeighborChange(posX, posY, posZ,
-         * this.blockID); par1World.notifyBlocksOfNeighborChange(posX, posY - 1,
-         * posZ, this.blockID); par1World.func_147479_m(posX,
-         * posY, posZ, posX, posY, posZ); par1World.playSoundEffect((double)posX
-         * + 0.5D, (double)posY + 0.1D, (double)posZ + 0.5D, "random.click",
-         * 0.3F, 0.5F); }
-         *
-         * if (var6) { par1World.scheduleBlockUpdate(posX, posY, posZ,
-         * this.blockID, this.tickRate()); }
+         * if (!var6 && var5) { par1World.setBlockMetadataWithNotify(posX, posY, posZ, 0);
+         * par1World.notifyBlocksOfNeighborChange(posX, posY, posZ, this.blockID);
+         * par1World.notifyBlocksOfNeighborChange(posX, posY - 1, posZ, this.blockID); par1World.func_147479_m(posX,
+         * posY, posZ, posX, posY, posZ); par1World.playSoundEffect((double)posX + 0.5D, (double)posY + 0.1D,
+         * (double)posZ + 0.5D, "random.click", 0.3F, 0.5F); } if (var6) { par1World.scheduleBlockUpdate(posX, posY,
+         * posZ, this.blockID, this.tickRate()); }
          */
     }
 
     /**
-     * ejects contained items into the world, and notifies neighbours of an
-     * update, as appropriate
+     * ejects contained items into the world, and notifies neighbours of an update, as appropriate
      */
     @Override
     public void breakBlock(World par1World, int par2, int par3, int par4, Block par5, int par6) {
@@ -238,8 +224,7 @@ public class Landmine extends MantleBlock {
     }
 
     /**
-     * Updates the blocks bounds based on its current state. Args: world, x, y,
-     * z
+     * Updates the blocks bounds based on its current state. Args: world, x, y, z
      */
     @Override
     public void setBlockBoundsBasedOnState(IBlockAccess par1IBlockAccess, int par2, int par3, int par4) {
@@ -265,8 +250,8 @@ public class Landmine extends MantleBlock {
     }
 
     /**
-     * Returns the mobility information of the block, 0 = free, 1 = can't push
-     * but can move over, 2 = total immobility and stop pistons
+     * Returns the mobility information of the block, 0 = free, 1 = can't push but can move over, 2 = total immobility
+     * and stop pistons
      */
     @Override
     public int getMobilityFlag() {

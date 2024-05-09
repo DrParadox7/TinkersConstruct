@@ -2,7 +2,6 @@ package tconstruct.smeltery;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -651,24 +650,9 @@ public class TinkerSmeltery {
         String[] patSurround = { "###", "#m#", "###" };
 
         // stained Glass Recipes
-        String[] dyeTypes = {
-            "dyeBlack",
-            "dyeRed",
-            "dyeGreen",
-            "dyeBrown",
-            "dyeBlue",
-            "dyePurple",
-            "dyeCyan",
-            "dyeLightGray",
-            "dyeGray",
-            "dyePink",
-            "dyeLime",
-            "dyeYellow",
-            "dyeLightBlue",
-            "dyeMagenta",
-            "dyeOrange",
-            "dyeWhite"
-        };
+        String[] dyeTypes = { "dyeBlack", "dyeRed", "dyeGreen", "dyeBrown", "dyeBlue", "dyePurple", "dyeCyan",
+                "dyeLightGray", "dyeGray", "dyePink", "dyeLime", "dyeYellow", "dyeLightBlue", "dyeMagenta", "dyeOrange",
+                "dyeWhite" };
         String color;
         for (int i = 0; i < 16; i++) {
             color = dyeTypes[15 - i];
@@ -728,17 +712,18 @@ public class TinkerSmeltery {
 
         // Glass Recipes
         GameRegistry.addRecipe(new ItemStack(Items.glass_bottle, 3), "# #", " # ", '#', TinkerSmeltery.clearGlass);
-        GameRegistry.addRecipe(new ShapedOreRecipe(
-                new ItemStack(Blocks.daylight_detector),
-                "GGG",
-                "QQQ",
-                "WWW",
-                'G',
-                "blockGlass",
-                'Q',
-                "gemQuartz",
-                'W',
-                "slabWood"));
+        GameRegistry.addRecipe(
+                new ShapedOreRecipe(
+                        new ItemStack(Blocks.daylight_detector),
+                        "GGG",
+                        "QQQ",
+                        "WWW",
+                        'G',
+                        "blockGlass",
+                        'Q',
+                        "gemQuartz",
+                        'W',
+                        "slabWood"));
         GameRegistry.addRecipe(
                 new ItemStack(Blocks.beacon, 1),
                 "GGG",
@@ -750,8 +735,13 @@ public class TinkerSmeltery {
                 Items.nether_star,
                 'O',
                 Blocks.obsidian);
-        GameRegistry.addRecipe(new ShapedOreRecipe(
-                new ItemStack(TinkerSmeltery.glassPane, 16, 0), "GGG", "GGG", 'G', TinkerSmeltery.clearGlass));
+        GameRegistry.addRecipe(
+                new ShapedOreRecipe(
+                        new ItemStack(TinkerSmeltery.glassPane, 16, 0),
+                        "GGG",
+                        "GGG",
+                        'G',
+                        TinkerSmeltery.clearGlass));
 
         // Smeltery Components Recipes
         ItemStack searedBrick = new ItemStack(TinkerTools.materials, 1, 2);
@@ -973,7 +963,10 @@ public class TinkerSmeltery {
 
             // Ores
             Smeltery.addDictionaryMelting(
-                    "ore" + fluidTypeName, ft, 0, (TConstruct.ingotLiquidValue * (int) PHConstruct.ingotsPerOre));
+                    "ore" + fluidTypeName,
+                    ft,
+                    0,
+                    (TConstruct.ingotLiquidValue * (int) PHConstruct.ingotsPerOre));
 
             // Poor ores
             Smeltery.addDictionaryMelting(
@@ -1204,19 +1197,15 @@ public class TinkerSmeltery {
                 new ItemStack(TinkerSmeltery.metalPattern, 1, 26),
                 50);
 
-        ItemStack[] ingotShapes = {
-            new ItemStack(Items.brick),
-            new ItemStack(Items.netherbrick),
-            new ItemStack(TinkerTools.materials, 1, 2),
-            new ItemStack(TinkerTools.materials, 1, 37)
-        };
-        
+        ItemStack[] ingotShapes = { new ItemStack(Items.brick), new ItemStack(Items.netherbrick),
+                new ItemStack(TinkerTools.materials, 1, 2), new ItemStack(TinkerTools.materials, 1, 37) };
+
         for (ItemStack ingotShape : ingotShapes) {
             if (!PHConstruct.steelPatterns) {
                 tableCasting.addCastingRecipe(
                         ingotcast,
                         new FluidStack(TinkerSmeltery.moltenAlubrassFluid, TConstruct.ingotLiquidValue),
-                        ingotShapes[i],
+                        ingotShape,
                         false,
                         50);
                 if (!PHConstruct.removeGoldCastRecipes) tableCasting.addCastingRecipe(
@@ -1229,7 +1218,7 @@ public class TinkerSmeltery {
                 tableCasting.addCastingRecipe(
                         ingotcast,
                         new FluidStack(TinkerSmeltery.moltenSteelFluid, TConstruct.ingotLiquidValue),
-                        ingotShapes[i],
+                        ingotShape,
                         false,
                         50);
             }

@@ -1,6 +1,5 @@
 package tconstruct.mechworks.landmine.behavior;
 
-import java.util.Iterator;
 import java.util.List;
 
 import net.minecraft.entity.Entity;

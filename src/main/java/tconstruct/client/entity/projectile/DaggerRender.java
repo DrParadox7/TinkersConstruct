@@ -1,26 +1,38 @@
 package tconstruct.client.entity.projectile;
 
-import cpw.mods.fml.relauncher.*;
 import java.util.Random;
-import mantle.blocks.BlockUtils;
+
 import net.minecraft.block.Block;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.FontRenderer;
-import net.minecraft.client.renderer.*;
+import net.minecraft.client.renderer.ItemRenderer;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.entity.Render;
-import net.minecraft.client.renderer.texture.*;
+import net.minecraft.client.renderer.texture.TextureManager;
+import net.minecraft.client.renderer.texture.TextureMap;
 import net.minecraft.entity.Entity;
-import net.minecraft.item.*;
-import net.minecraft.util.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
+import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.ForgeHooksClient;
-import org.lwjgl.opengl.*;
+
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import mantle.blocks.BlockUtils;
 import tconstruct.tools.entity.DaggerEntity;
 
 @SideOnly(Side.CLIENT)
 @Deprecated
 public class DaggerRender extends Render {
-    private static final ResourceLocation RES_ITEM_GLINT =
-            new ResourceLocation("textures/misc/enchanted_item_glint.png");
+
+    private static final ResourceLocation RES_ITEM_GLINT = new ResourceLocation(
+            "textures/misc/enchanted_item_glint.png");
     private final RenderBlocks itemRenderBlocks = new RenderBlocks();
 
     /** The RNG used in RenderItem (for bobbing itemstacks on the ground) */
@@ -41,8 +53,8 @@ public class DaggerRender extends Render {
     /**
      * Renders the item
      */
-    public void doRenderItem(
-            DaggerEntity par1ArrowEntity, double par2, double par4, double par6, float par8, float par9) {
+    public void doRenderItem(DaggerEntity par1ArrowEntity, double par2, double par4, double par6, float par8,
+            float par9) {
         this.bindEntityTexture(par1ArrowEntity);
         this.random.setSeed(187L);
         ItemStack itemstack = par1ArrowEntity.getEntityItem();
@@ -62,10 +74,8 @@ public class DaggerRender extends Render {
 
             Block block = BlockUtils.getBlockFromItem(itemstack.getItem());
 
-            if (itemstack.getItemSpriteNumber() == 0
-                    && block != null
-                    && RenderBlocks.renderItemIn3d(
-                            BlockUtils.getBlockFromItem(itemstack.getItem()).getRenderType())) {
+            if (itemstack.getItemSpriteNumber() == 0 && block != null
+                    && RenderBlocks.renderItemIn3d(BlockUtils.getBlockFromItem(itemstack.getItem()).getRenderType())) {
                 GL11.glRotatef(f3, 0.0F, 1.0F, 0.0F);
 
                 if (renderInFrame) {
@@ -153,26 +163,26 @@ public class DaggerRender extends Render {
     }
 
     protected ResourceLocation func_110796_a(DaggerEntity par1ArrowEntity) {
-        return this.renderManager.renderEngine.getResourceLocation(
-                par1ArrowEntity.getEntityItem().getItemSpriteNumber());
+        return this.renderManager.renderEngine
+                .getResourceLocation(par1ArrowEntity.getEntityItem().getItemSpriteNumber());
     }
 
     /**
      * Renders a dropped item
      */
-    private void renderDroppedItem(
-            DaggerEntity par1ArrowEntity, IIcon par2Icon, int par3, float par4, float par5, float par6, float par7) {
+    private void renderDroppedItem(DaggerEntity par1ArrowEntity, IIcon par2Icon, int par3, float par4, float par5,
+            float par6, float par7) {
         renderDroppedItem(par1ArrowEntity, par2Icon, par3, par4, par5, par6, par7, 0);
     }
 
-    private void renderDroppedItem(
-            DaggerEntity dagger, IIcon par2Icon, int par3, float par4, float par5, float par6, float par7, int pass) {
+    private void renderDroppedItem(DaggerEntity dagger, IIcon par2Icon, int par3, float par4, float par5, float par6,
+            float par7, int pass) {
         Tessellator tessellator = Tessellator.instance;
 
         if (par2Icon == null) {
             TextureManager texturemanager = Minecraft.getMinecraft().getTextureManager();
-            ResourceLocation resourcelocation =
-                    texturemanager.getResourceLocation(dagger.getEntityItem().getItemSpriteNumber());
+            ResourceLocation resourcelocation = texturemanager
+                    .getResourceLocation(dagger.getEntityItem().getItemSpriteNumber());
             par2Icon = ((TextureMap) texturemanager.getTexture(resourcelocation)).getAtlasSprite("missingno");
         }
 
@@ -222,28 +232,27 @@ public class DaggerRender extends Render {
             GL11.glRotatef(90, 0.0F, 1.0F, 0.0F);
             GL11.glRotatef(rotation, 0.0F, 0.0F, 1.0F);
             ItemRenderer.renderItemIn2D(
-                    tessellator, f5, f6, f4, f7, par2Icon.getIconWidth(), par2Icon.getIconHeight(), f12);
+                    tessellator,
+                    f5,
+                    f6,
+                    f4,
+                    f7,
+                    par2Icon.getIconWidth(),
+                    par2Icon.getIconHeight(),
+                    f12);
 
             /*
-             * if (itemstack.hasEffect(pass)) { GL11.glDepthFunc(GL11.GL_EQUAL);
-             * GL11.glDisable(GL11.GL_LIGHTING);
-             * this.renderManager.renderEngine.bindTexture(RES_ITEM_GLINT);
-             * GL11.glEnable(GL11.GL_BLEND); GL11.glBlendFunc(GL11.GL_SRC_COLOR,
-             * GL11.GL_ONE); float f13 = 0.76F; GL11.glColor4f(0.5F * f13, 0.25F
-             * * f13, 0.8F * f13, 1.0F); GL11.glMatrixMode(GL11.GL_TEXTURE);
-             * GL11.glPushMatrix(); float f14 = 0.125F; GL11.glScalef(f14, f14,
-             * f14); float f15 = (float) (Minecraft.getSystemTime() % 3000L) /
-             * 3000.0F * 8.0F; GL11.glTranslatef(f15, 0.0F, 0.0F);
-             * GL11.glRotatef(-50.0F, 0.0F, 0.0F, 1.0F);
-             * ItemRenderer.renderItemIn2D(tessellator, 0.0F, 0.0F, 1.0F, 1.0F,
-             * 255, 255, f12); GL11.glPopMatrix(); GL11.glPushMatrix();
-             * GL11.glScalef(f14, f14, f14); f15 = (float)
-             * (Minecraft.getSystemTime() % 4873L) / 4873.0F * 8.0F;
-             * GL11.glTranslatef(-f15, 0.0F, 0.0F); GL11.glRotatef(10.0F, 0.0F,
-             * 0.0F, 1.0F); ItemRenderer.renderItemIn2D(tessellator, 0.0F, 0.0F,
-             * 1.0F, 1.0F, 255, 255, f12); GL11.glPopMatrix();
-             * GL11.glMatrixMode(GL11.GL_MODELVIEW);
-             * GL11.glDisable(GL11.GL_BLEND); GL11.glEnable(GL11.GL_LIGHTING);
+             * if (itemstack.hasEffect(pass)) { GL11.glDepthFunc(GL11.GL_EQUAL); GL11.glDisable(GL11.GL_LIGHTING);
+             * this.renderManager.renderEngine.bindTexture(RES_ITEM_GLINT); GL11.glEnable(GL11.GL_BLEND);
+             * GL11.glBlendFunc(GL11.GL_SRC_COLOR, GL11.GL_ONE); float f13 = 0.76F; GL11.glColor4f(0.5F * f13, 0.25F *
+             * f13, 0.8F * f13, 1.0F); GL11.glMatrixMode(GL11.GL_TEXTURE); GL11.glPushMatrix(); float f14 = 0.125F;
+             * GL11.glScalef(f14, f14, f14); float f15 = (float) (Minecraft.getSystemTime() % 3000L) / 3000.0F * 8.0F;
+             * GL11.glTranslatef(f15, 0.0F, 0.0F); GL11.glRotatef(-50.0F, 0.0F, 0.0F, 1.0F);
+             * ItemRenderer.renderItemIn2D(tessellator, 0.0F, 0.0F, 1.0F, 1.0F, 255, 255, f12); GL11.glPopMatrix();
+             * GL11.glPushMatrix(); GL11.glScalef(f14, f14, f14); f15 = (float) (Minecraft.getSystemTime() % 4873L) /
+             * 4873.0F * 8.0F; GL11.glTranslatef(-f15, 0.0F, 0.0F); GL11.glRotatef(10.0F, 0.0F, 0.0F, 1.0F);
+             * ItemRenderer.renderItemIn2D(tessellator, 0.0F, 0.0F, 1.0F, 1.0F, 255, 255, f12); GL11.glPopMatrix();
+             * GL11.glMatrixMode(GL11.GL_MODELVIEW); GL11.glDisable(GL11.GL_BLEND); GL11.glEnable(GL11.GL_LIGHTING);
              * GL11.glDepthFunc(GL11.GL_LEQUAL); }
              */
         }
@@ -254,22 +263,13 @@ public class DaggerRender extends Render {
     /**
      * Renders the item's icon or block into the UI at the specified position.
      */
-    public void renderItemIntoGUI(
-            FontRenderer par1FontRenderer,
-            TextureManager par2TextureManager,
-            ItemStack par3ItemStack,
-            int par4,
-            int par5) {
+    public void renderItemIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager,
+            ItemStack par3ItemStack, int par4, int par5) {
         renderItemIntoGUI(par1FontRenderer, par2TextureManager, par3ItemStack, par4, par5, false);
     }
 
-    public void renderItemIntoGUI(
-            FontRenderer par1FontRenderer,
-            TextureManager par2TextureManager,
-            ItemStack par3ItemStack,
-            int par4,
-            int par5,
-            boolean renderEffect) {
+    public void renderItemIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager,
+            ItemStack par3ItemStack, int par4, int par5, boolean renderEffect) {
         Item k = par3ItemStack.getItem();
         int l = par3ItemStack.getItemDamage();
         IIcon iIcon = par3ItemStack.getIconIndex();
@@ -279,8 +279,7 @@ public class DaggerRender extends Render {
         float f2;
 
         Block block = BlockUtils.getBlockFromItem(k);
-        if (par3ItemStack.getItemSpriteNumber() == 0
-                && block != null
+        if (par3ItemStack.getItemSpriteNumber() == 0 && block != null
                 && RenderBlocks.renderItemIn3d(BlockUtils.getBlockFromItem(k).getRenderType())) {
             par2TextureManager.bindTexture(TextureMap.locationBlocksTexture);
             GL11.glPushMatrix();
@@ -309,8 +308,7 @@ public class DaggerRender extends Render {
 
             for (int j1 = 0; j1 < k.getRenderPasses(l); ++j1) {
                 par2TextureManager.bindTexture(
-                        par3ItemStack.getItemSpriteNumber() == 0
-                                ? TextureMap.locationBlocksTexture
+                        par3ItemStack.getItemSpriteNumber() == 0 ? TextureMap.locationBlocksTexture
                                 : TextureMap.locationItemsTexture);
                 IIcon icon = k.getIcon(par3ItemStack, j1);
                 int k1 = k.getColorFromItemStack(par3ItemStack, j1);
@@ -332,13 +330,12 @@ public class DaggerRender extends Render {
             GL11.glEnable(GL11.GL_LIGHTING);
         } else {
             GL11.glDisable(GL11.GL_LIGHTING);
-            ResourceLocation resourcelocation =
-                    par2TextureManager.getResourceLocation(par3ItemStack.getItemSpriteNumber());
+            ResourceLocation resourcelocation = par2TextureManager
+                    .getResourceLocation(par3ItemStack.getItemSpriteNumber());
             par2TextureManager.bindTexture(resourcelocation);
 
             if (iIcon == null) {
-                iIcon = ((TextureMap)
-                                Minecraft.getMinecraft().getTextureManager().getTexture(resourcelocation))
+                iIcon = ((TextureMap) Minecraft.getMinecraft().getTextureManager().getTexture(resourcelocation))
                         .getAtlasSprite("missingno");
             }
 
@@ -382,32 +379,28 @@ public class DaggerRender extends Render {
     /**
      * Render the item's icon or block into the GUI, including the glint effect.
      */
-    public void renderItemAndEffectIntoGUI(
-            FontRenderer par1FontRenderer,
-            TextureManager par2TextureManager,
-            ItemStack par3ItemStack,
-            int par4,
-            int par5) {
+    public void renderItemAndEffectIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager,
+            ItemStack par3ItemStack, int par4, int par5) {
         if (par3ItemStack != null) {
             if (!ForgeHooksClient.renderInventoryItem(
-                    field_147909_c, par2TextureManager, par3ItemStack, renderWithColor, zLevel, (float) par4, (float)
-                            par5)) {
+                    field_147909_c,
+                    par2TextureManager,
+                    par3ItemStack,
+                    renderWithColor,
+                    zLevel,
+                    (float) par4,
+                    (float) par5)) {
                 this.renderItemIntoGUI(par1FontRenderer, par2TextureManager, par3ItemStack, par4, par5, true);
             }
 
             /*
-             * Modders must handle this themselves if they use custom renderers!
-             * if (par3ItemStack.hasEffect()) {
-             * GL11.glDepthFunc(GL11.GL_GREATER);
-             * GL11.glDisable(GL11.GL_LIGHTING); GL11.glDepthMask(false);
-             * par2TextureManager.bindTexture(RES_ITEM_GLINT); this.zLevel -=
-             * 50.0F; GL11.glEnable(GL11.GL_BLEND);
-             * GL11.glBlendFunc(GL11.GL_DST_COLOR, GL11.GL_DST_COLOR);
-             * GL11.glColor4f(0.5F, 0.25F, 0.8F, 1.0F); this.renderGlint(par4 *
-             * 431278612 + par5 * 32178161, par4 - 2, par5 - 2, 20, 20);
-             * GL11.glDisable(GL11.GL_BLEND); GL11.glDepthMask(true);
-             * this.zLevel += 50.0F; GL11.glEnable(GL11.GL_LIGHTING);
-             * GL11.glDepthFunc(GL11.GL_LEQUAL); }
+             * Modders must handle this themselves if they use custom renderers! if (par3ItemStack.hasEffect()) {
+             * GL11.glDepthFunc(GL11.GL_GREATER); GL11.glDisable(GL11.GL_LIGHTING); GL11.glDepthMask(false);
+             * par2TextureManager.bindTexture(RES_ITEM_GLINT); this.zLevel -= 50.0F; GL11.glEnable(GL11.GL_BLEND);
+             * GL11.glBlendFunc(GL11.GL_DST_COLOR, GL11.GL_DST_COLOR); GL11.glColor4f(0.5F, 0.25F, 0.8F, 1.0F);
+             * this.renderGlint(par4 * 431278612 + par5 * 32178161, par4 - 2, par5 - 2, 20, 20);
+             * GL11.glDisable(GL11.GL_BLEND); GL11.glDepthMask(true); this.zLevel += 50.0F;
+             * GL11.glEnable(GL11.GL_LIGHTING); GL11.glDepthFunc(GL11.GL_LEQUAL); }
              */
         }
     }
@@ -424,8 +417,7 @@ public class DaggerRender extends Render {
 
             float f = 0.00390625F;
             float f1 = 0.00390625F;
-            float f2 = (float) (Minecraft.getSystemTime() % (long) (3000 + j1 * 1873))
-                    / (3000.0F + (float) (j1 * 1873))
+            float f2 = (float) (Minecraft.getSystemTime() % (long) (3000 + j1 * 1873)) / (3000.0F + (float) (j1 * 1873))
                     * 256.0F;
             float f3 = 0.0F;
             Tessellator tessellator = Tessellator.instance;
@@ -437,7 +429,11 @@ public class DaggerRender extends Render {
 
             tessellator.startDrawingQuads();
             tessellator.addVertexWithUV(
-                    par2 + 0, par3 + par5, this.zLevel, (f2 + (float) par5 * f4) * f, (f3 + (float) par5) * f1);
+                    par2 + 0,
+                    par3 + par5,
+                    this.zLevel,
+                    (f2 + (float) par5 * f4) * f,
+                    (f3 + (float) par5) * f1);
             tessellator.addVertexWithUV(
                     par2 + par4,
                     par3 + par5,
@@ -451,44 +447,36 @@ public class DaggerRender extends Render {
     }
 
     /**
-     * Renders the item's overlay information. Examples being stack count or
-     * damage on top of the item's image at the specified position.
+     * Renders the item's overlay information. Examples being stack count or damage on top of the item's image at the
+     * specified position.
      */
-    public void renderItemOverlayIntoGUI(
-            FontRenderer par1FontRenderer,
-            TextureManager par2TextureManager,
-            ItemStack par3ItemStack,
-            int par4,
-            int par5) {
+    public void renderItemOverlayIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager,
+            ItemStack par3ItemStack, int par4, int par5) {
         this.renderItemOverlayIntoGUI(par1FontRenderer, par2TextureManager, par3ItemStack, par4, par5, null);
     }
 
-    public void renderItemOverlayIntoGUI(
-            FontRenderer par1FontRenderer,
-            TextureManager par2TextureManager,
-            ItemStack par3ItemStack,
-            int par4,
-            int par5,
-            String par6Str) {
+    public void renderItemOverlayIntoGUI(FontRenderer par1FontRenderer, TextureManager par2TextureManager,
+            ItemStack par3ItemStack, int par4, int par5, String par6Str) {
         if (par3ItemStack != null) {
             if (par3ItemStack.stackSize > 1 || par6Str != null) {
                 String s1 = par6Str == null ? String.valueOf(par3ItemStack.stackSize) : par6Str;
                 GL11.glDisable(GL11.GL_LIGHTING);
                 GL11.glDisable(GL11.GL_DEPTH_TEST);
                 par1FontRenderer.drawStringWithShadow(
-                        s1, par4 + 19 - 2 - par1FontRenderer.getStringWidth(s1), par5 + 6 + 3, 16777215);
+                        s1,
+                        par4 + 19 - 2 - par1FontRenderer.getStringWidth(s1),
+                        par5 + 6 + 3,
+                        16777215);
                 GL11.glEnable(GL11.GL_LIGHTING);
                 GL11.glEnable(GL11.GL_DEPTH_TEST);
             }
 
             if (par3ItemStack.isItemDamaged()) {
-                int k = (int) Math.round(13.0D
-                        - (double) par3ItemStack.getItemDamageForDisplay()
-                                * 13.0D
+                int k = (int) Math.round(
+                        13.0D - (double) par3ItemStack.getItemDamageForDisplay() * 13.0D
                                 / (double) par3ItemStack.getMaxDamage());
-                int l = (int) Math.round(255.0D
-                        - (double) par3ItemStack.getItemDamageForDisplay()
-                                * 255.0D
+                int l = (int) Math.round(
+                        255.0D - (double) par3ItemStack.getItemDamageForDisplay() * 255.0D
                                 / (double) par3ItemStack.getMaxDamage());
                 GL11.glDisable(GL11.GL_LIGHTING);
                 GL11.glDisable(GL11.GL_DEPTH_TEST);
@@ -508,8 +496,8 @@ public class DaggerRender extends Render {
     }
 
     /**
-     * Adds a quad to the tesselator at the specified position with the set
-     * width and height and color. Args: tessellator, x, y, width, height, color
+     * Adds a quad to the tesselator at the specified position with the set width and height and color. Args:
+     * tessellator, x, y, width, height, color
      */
     private void renderQuad(Tessellator par1Tessellator, int par2, int par3, int par4, int par5, int par6) {
         par1Tessellator.startDrawingQuads();
@@ -537,12 +525,10 @@ public class DaggerRender extends Render {
     }
 
     /**
-     * Actually renders the given argument. This is a synthetic bridge method,
-     * always casting down its argument and then handing it off to a worker
-     * function which does the actual work. In all probabilty, the class Render
-     * is generic (Render<T extends Entity) and this method has signature public
-     * void doRender(T entity, double d, double d1, double d2, float f, float
-     * f1). But JAD is pre 1.5 so doesn't do that.
+     * Actually renders the given argument. This is a synthetic bridge method, always casting down its argument and then
+     * handing it off to a worker function which does the actual work. In all probabilty, the class Render is generic
+     * (Render<T extends Entity) and this method has signature public void doRender(T entity, double d, double d1,
+     * double d2, float f, float f1). But JAD is pre 1.5 so doesn't do that.
      */
     @Override
     public void doRender(Entity par1Entity, double par2, double par4, double par6, float par8, float par9) {
@@ -577,8 +563,7 @@ public class DaggerRender extends Render {
     }
 
     /**
-     * Allows for a subclass to override how many rendered items appear in a
-     * "mini item 3d stack"
+     * Allows for a subclass to override how many rendered items appear in a "mini item 3d stack"
      *
      * @param stack
      * @return

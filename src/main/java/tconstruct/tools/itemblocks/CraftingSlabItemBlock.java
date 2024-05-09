@@ -7,9 +7,9 @@ import net.minecraft.util.MathHelper;
 import mantle.blocks.abstracts.MultiItemBlock;
 
 public class CraftingSlabItemBlock extends MultiItemBlock {
-    public static final String[] blockTypes = {
-        "tile.CraftingStation", "Crafter", "Parts", "PatternShaper", "PatternChest", "tile.ToolForge"
-    };
+
+    public static final String[] blockTypes = { "tile.CraftingStation", "Crafter", "Parts", "PatternShaper",
+            "PatternChest", "tile.ToolForge" };
 
     public CraftingSlabItemBlock(Block b) {
         super(b, "ToolBench", blockTypes);

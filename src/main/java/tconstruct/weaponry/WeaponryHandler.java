@@ -362,19 +362,13 @@ public class WeaponryHandler {
         // golden carrot + bone
         if (event.headStack.getItem() == Items.golden_carrot && event.handleStack.getItem() == Items.bone) {
             // golden carrot must be named banana
-            if (!event.headStack.hasTagCompound()
-                    || !event.headStack.getTagCompound().hasKey("display")
-                    || !event.headStack
-                            .getTagCompound()
-                            .getCompoundTag("display")
-                            .hasKey("Name")
-                    || !event.headStack
-                            .getTagCompound()
-                            .getCompoundTag("display")
-                            .getString("Name")
-                            .equalsIgnoreCase("banana")) return;
-            event.name =
-                    '\u2400' + "Bonæna"; // the \u2400 is a non-printable unicode character so you can't just type it
+            if (!event.headStack.hasTagCompound() || !event.headStack.getTagCompound().hasKey("display")
+                    || !event.headStack.getTagCompound().getCompoundTag("display").hasKey("Name")
+                    || !event.headStack.getTagCompound().getCompoundTag("display").getString("Name")
+                            .equalsIgnoreCase("banana"))
+                return;
+            event.name = '\u2400' + "Bonæna"; // the \u2400 is a non-printable unicode character so you can't just type
+                                              // it
             event.headStack = new ItemStack(TinkerTools.swordBlade, 1, TinkerTools.MaterialID.Bone);
             event.handleStack = new ItemStack(TinkerTools.toolRod, 1, TinkerTools.MaterialID.Bone);
             event.accessoryStack = new ItemStack(TinkerTools.wideGuard, 1, TinkerTools.MaterialID.Bone);

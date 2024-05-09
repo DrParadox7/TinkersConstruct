@@ -1,20 +1,22 @@
 package tconstruct.mechworks.entity.item;
 
-import cpw.mods.fml.relauncher.*;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import tconstruct.util.DamageSourceFireworkExplode;
 
 public class EntityLandmineFirework extends Entity {
+
     /** The age of the firework in ticks. */
     private int fireworkAge;
 
     /**
-     * The lifetime of the firework in ticks. When the age reaches the lifetime
-     * the firework explodes.
+     * The lifetime of the firework in ticks. When the age reaches the lifetime the firework explodes.
      */
     private int lifetime;
 
@@ -47,8 +49,8 @@ public class EntityLandmineFirework extends Entity {
         return par1 < 4096.0D;
     }
 
-    public EntityLandmineFirework(
-            World par1World, double par2, double par4, double par6, ItemStack par8ItemStack, int moveDirection) {
+    public EntityLandmineFirework(World par1World, double par2, double par4, double par6, ItemStack par8ItemStack,
+            int moveDirection) {
         super(par1World);
         this.fireworkAge = 0;
         this.setSize(0.25F, 0.25F);
@@ -166,7 +168,13 @@ public class EntityLandmineFirework extends Entity {
             }
 
             this.worldObj.makeFireworks(
-                    this.posX, this.posY, this.posZ, this.motionX, this.motionY, this.motionZ, nbttagcompound);
+                    this.posX,
+                    this.posY,
+                    this.posZ,
+                    this.motionX,
+                    this.motionY,
+                    this.motionZ,
+                    nbttagcompound);
         }
 
         super.handleHealthUpdate(par1);

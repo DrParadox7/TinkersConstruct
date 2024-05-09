@@ -1,13 +1,17 @@
 package tconstruct.items.tools;
 
-import cpw.mods.fml.relauncher.*;
 import java.util.List;
+
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.*;
+import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.StatCollector;
 import net.minecraft.world.World;
+
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import tconstruct.library.TConstructRegistry;
 import tconstruct.library.crafting.ToolBuilder;
 import tconstruct.library.tools.CustomMaterial;
@@ -85,7 +89,7 @@ public class Arrow extends ToolCore {
 
     @Override
     public String[] getTraits() {
-        return new String[] {"ammo"};
+        return new String[] { "ammo" };
     }
 
     @Override
@@ -152,17 +156,8 @@ public class Arrow extends ToolCore {
     }
 
     @Override
-    public boolean onItemUse(
-            ItemStack stack,
-            EntityPlayer player,
-            World world,
-            int x,
-            int y,
-            int z,
-            int side,
-            float clickX,
-            float clickY,
-            float clickZ) {
+    public boolean onItemUse(ItemStack stack, EntityPlayer player, World world, int x, int y, int z, int side,
+            float clickX, float clickY, float clickZ) {
         return false;
     }
 
@@ -212,9 +207,13 @@ public class Arrow extends ToolCore {
             }
         }
         int attack = (int) (tags.getCompoundTag("InfiTool").getInteger("Attack") * this.getDamageModifier());
-        list.add("\u00A79+" + attack + " "
-                + StatCollector.translateToLocalFormatted("attribute.name.generic.attackDamage"));
-        list.add("\u00A79+" + tags.getCompoundTag("InfiTool").getInteger("Attack") + " "
-                + StatCollector.translateToLocalFormatted("attribute.name.ammo.attackDamage"));
+        list.add(
+                "\u00A79+" + attack
+                        + " "
+                        + StatCollector.translateToLocalFormatted("attribute.name.generic.attackDamage"));
+        list.add(
+                "\u00A79+" + tags.getCompoundTag("InfiTool").getInteger("Attack")
+                        + " "
+                        + StatCollector.translateToLocalFormatted("attribute.name.ammo.attackDamage"));
     }
 }
