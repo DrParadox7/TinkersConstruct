@@ -1479,6 +1479,20 @@ public class TinkerTools {
                     .addToolMaterial(MaterialID.Thaumium, "Thaumium", 3, 400, 700, 2, 1.3F, 0, 0f, "\u00A75", 0x51437c);
             TConstructRegistry
                     .addToolMaterial(MaterialID.Void, "Void", 3, 150, 1400, 3, 0.8F, 0, 0f, "\u00A75", 0x210c35);
+            PatternBuilder.instance.registerFullMaterial(
+                    new ItemStack((Item) obj, 1, 2),
+                    2,
+                    "Thaumium",
+                    new ItemStack(TinkerTools.toolShard, 1, MaterialID.Thaumium),
+                    new ItemStack(TinkerTools.toolRod, 1, MaterialID.Thaumium),
+                    MaterialID.Thaumium);
+            PatternBuilder.instance.registerFullMaterial(
+                    new ItemStack((Item) obj, 1, 16),
+                    2,
+                    "Void",
+                    new ItemStack(TinkerTools.toolShard, 1, MaterialID.Void),
+                    new ItemStack(TinkerTools.toolRod, 1, MaterialID.Void),
+                    MaterialID.Void);
 
             // Thaumium weaponry toolparts
             if (TConstruct.pulsar.isPulseLoaded("Tinkers' Weaponry")) {
