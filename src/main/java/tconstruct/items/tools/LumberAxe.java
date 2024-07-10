@@ -13,6 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.ChunkPosition;
 import net.minecraft.world.World;
+import net.minecraftforge.common.util.FakePlayer;
 
 import com.google.common.collect.Lists;
 
@@ -196,16 +197,23 @@ public class LumberAxe extends AOEHarvestTool {
                 finish();
                 return;
             }
+
+            // only if real player
+            if (player instanceof FakePlayer) {
+                finish();
+                return;
+            }
+
             // only if same dimension
             if (event.world.provider.dimensionId != world.provider.dimensionId) {
                 return;
             }
+
             if (stack != player.getCurrentEquippedItem()) {
                 // Player switched held item, we shouldn't proceed furthermore
                 finish();
                 return;
             }
-
             // setup
             int left = blocksPerTick;
             NBTTagCompound tags = stack.getTagCompound().getCompoundTag("InfiTool");
