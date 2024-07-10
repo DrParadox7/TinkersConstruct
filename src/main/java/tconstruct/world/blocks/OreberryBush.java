@@ -21,6 +21,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import net.minecraftforge.common.EnumPlantType;
 import net.minecraftforge.common.IPlantable;
+import net.minecraftforge.common.util.FakePlayer;
 import net.minecraftforge.common.util.ForgeDirection;
 
 import cpw.mods.fml.relauncher.Side;
@@ -177,6 +178,8 @@ public class OreberryBush extends BlockLeavesBase implements IPlantable {
     }
 
     public boolean harvest(World world, int x, int y, int z, EntityPlayer player) {
+        if (player instanceof FakePlayer) return false;
+
         int meta = world.getBlockMetadata(x, y, z);
         if (meta >= 12) {
             if (world.isRemote) return true;
