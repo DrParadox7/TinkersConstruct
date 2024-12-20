@@ -6,6 +6,7 @@ import java.util.List;
 import net.minecraft.client.gui.GuiButton;
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ResourceLocation;
@@ -40,11 +41,13 @@ public class ToolStationGui extends GuiContainer implements INEIGuiHandler {
     public int[] slotX, slotY, iconX, iconY;
     public boolean active;
     public String title, body = "";
+    public EntityPlayer player;
 
     public ToolStationGui(InventoryPlayer inventoryplayer, ToolStationLogic stationlogic, World world, int x, int y,
             int z) {
         super(stationlogic.getGuiContainer(inventoryplayer, world, x, y, z));
         this.logic = stationlogic;
+        this.player = inventoryplayer.player;
         toolSlots = (ToolStationContainer) inventorySlots;
         text = new GuiTextField(this.fontRendererObj, 83, 8, 30, 12);
         this.text.setMaxStringLength(40);
@@ -179,7 +182,7 @@ public class ToolStationGui extends GuiContainer implements INEIGuiHandler {
                 .drawString(StatCollector.translateToLocal("container.inventory"), 118, this.ySize - 96 + 2, 0x000000);
         this.fontRendererObj.drawString(toolName + "_", 180, 8, 0xffffff);
 
-        if (logic.isStackInSlot(0)) ToolStationGuiHelper.drawToolStats(logic.getStackInSlot(0), 294, 0);
+        if (logic.isStackInSlot(0)) ToolStationGuiHelper.drawToolStats(player, logic.getStackInSlot(0), 294, 0);
         else drawToolInformation();
     }
 

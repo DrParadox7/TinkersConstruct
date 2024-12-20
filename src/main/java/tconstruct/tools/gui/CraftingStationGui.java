@@ -6,6 +6,7 @@ import java.util.List;
 
 import net.minecraft.client.gui.GuiTextField;
 import net.minecraft.client.gui.inventory.GuiContainer;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.inventory.Slot;
@@ -85,10 +86,12 @@ public class CraftingStationGui extends GuiContainer implements INEIGuiHandler {
     private int chestTop = 0;
     private int chestWidth = 0;
     private int chestHeight = 0;
+    private EntityPlayer player;
 
     public CraftingStationGui(InventoryPlayer inventory, CraftingStationLogic logic, World world, int x, int y, int z) {
         super(logic.getGuiContainer(inventory, world, x, y, z));
         this.logic = logic;
+        this.player = inventory.player;
 
         title = "\u00A7n" + StatCollector.translateToLocal("gui.toolforge1");
         body = StatCollector.translateToLocal("gui.toolforge2");
@@ -165,7 +168,8 @@ public class CraftingStationGui extends GuiContainer implements INEIGuiHandler {
     }
 
     void drawToolStats(ItemStack stack) {
-        if (stack.getItem() instanceof IModifyable) ToolStationGuiHelper.drawToolStats(stack, descTextLeft + 10, 0);
+        if (stack.getItem() instanceof IModifyable)
+            ToolStationGuiHelper.drawToolStats(player, stack, descTextLeft + 10, 0);
 
         int matID = PatternBuilder.instance.getPartID(stack);
 

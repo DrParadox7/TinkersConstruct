@@ -15,7 +15,6 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.util.EnumChatFormatting;
 import net.minecraft.util.StatCollector;
 
-import cpw.mods.fml.client.FMLClientHandler;
 import tconstruct.library.accessory.AccessoryCore;
 import tconstruct.library.armor.ArmorCore;
 import tconstruct.library.modifier.IModifyable;
@@ -46,7 +45,7 @@ public final class ToolStationGuiHelper {
         newline();
     }
 
-    public static void drawToolStats(ItemStack stack, int x, int y) {
+    public static void drawToolStats(EntityPlayer player, ItemStack stack, int x, int y) {
         String name = stack.getItem() instanceof ToolCore ? ((ToolCore) stack.getItem()).getLocalizedToolName()
                 : stack.getDisplayName();
         Item item = stack.getItem();
@@ -109,7 +108,7 @@ public final class ToolStationGuiHelper {
 
         if (true) {
             newline();
-            drawXPCosts(tags);
+            drawXPCosts(tags, player);
         }
     }
 
@@ -290,8 +289,7 @@ public final class ToolStationGuiHelper {
         }
     }
 
-    private static void drawXPCosts(NBTTagCompound tags) {
-        EntityPlayer player = FMLClientHandler.instance().getClient().thePlayer;
+    private static void drawXPCosts(NBTTagCompound tags, EntityPlayer player) {
 
         if (tags.hasKey("XP_Cost") && !player.capabilities.isCreativeMode) {
             int xpCost = tags.getInteger("XP_Cost");
