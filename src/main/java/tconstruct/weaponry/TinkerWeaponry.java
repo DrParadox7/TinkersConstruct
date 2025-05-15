@@ -244,14 +244,25 @@ public class TinkerWeaponry {
     }
 
     private void addPartRecipes() {
-        StencilBuilder.registerStencil(21, TinkerTools.woodPattern, 25); // arrow head
-        StencilBuilder.registerStencil(22, TinkerTools.woodPattern, 24); // fletchling
-        StencilBuilder.registerStencil(23, TinkerTools.woodPattern, 23); // bowstring
+        if (PHConstruct.balancedPartCrafting) {
+            StencilBuilder.registerStencil(11, TinkerTools.woodPattern, 25); // arrow head
+            StencilBuilder.registerStencil(12, TinkerTools.woodPattern, 24); // fletchling
 
-        StencilBuilder.registerStencil(24, woodPattern, 0); // shuriken
-        StencilBuilder.registerStencil(25, woodPattern, 1); // crossbow limb
-        if (!PHConstruct.balancedPartCrafting) StencilBuilder.registerStencil(26, woodPattern, 2); // crossbow body
-        StencilBuilder.registerStencil(27, woodPattern, 3); // bow limb
+            StencilBuilder.registerStencil(13, woodPattern, 3); // bow limb
+            StencilBuilder.registerStencil(14, TinkerTools.woodPattern, 23); // bowstring
+            StencilBuilder.registerStencil(15, woodPattern, 1); // crossbow limb
+
+            StencilBuilder.registerStencil(16, woodPattern, 0); // shuriken
+        } else {
+            StencilBuilder.registerStencil(21, TinkerTools.woodPattern, 25); // arrow head
+            StencilBuilder.registerStencil(22, TinkerTools.woodPattern, 24); // fletchling
+            StencilBuilder.registerStencil(23, TinkerTools.woodPattern, 23); // bowstring
+
+            StencilBuilder.registerStencil(24, woodPattern, 0); // shuriken
+            StencilBuilder.registerStencil(25, woodPattern, 1); // crossbow limb
+            StencilBuilder.registerStencil(26, woodPattern, 2); // crossbow body
+            StencilBuilder.registerStencil(27, woodPattern, 3); // bow limb
+        }
 
         PatternBuilder.instance.addToolPattern(woodPattern);
 

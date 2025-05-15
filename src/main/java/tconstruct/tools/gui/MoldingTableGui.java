@@ -21,9 +21,11 @@ import tconstruct.TConstruct;
 import tconstruct.library.client.MoldGuiElement;
 import tconstruct.library.client.TConstructClientRegistry;
 import tconstruct.library.crafting.MoldBuilder;
+import tconstruct.tools.TinkerTools;
 import tconstruct.tools.inventory.MoldingTableContainer;
 import tconstruct.tools.logic.MoldingTableLogic;
 import tconstruct.util.network.MoldingTablePacket;
+import tconstruct.weaponry.TinkerWeaponry;
 
 @Optional.Interface(iface = "codechicken.nei.api.INEIGuiHandler", modid = "NotEnoughItems")
 public class MoldingTableGui extends GuiContainer implements INEIGuiHandler {
@@ -118,8 +120,13 @@ public class MoldingTableGui extends GuiContainer implements INEIGuiHandler {
 
         // get the correct setting :I
         ItemStack stack;
-        if (logic.getStackInSlot(1) != null) {
-            activeButton = MoldBuilder.getId(logic.getStackInSlot(1));
+        ItemStack setting = logic.getStackInSlot(1);
+
+        boolean isValidTemplate = setting != null
+                && (setting.getItem() == TinkerTools.clayPattern || setting.getItem() == TinkerWeaponry.clayPattern);
+
+        if (isValidTemplate) {
+            activeButton = MoldBuilder.getId(setting);
             setActiveButton(activeButton);
             stack = MoldBuilder.getMold(((GuiButtonMold) this.buttonList.get(activeButton)).element.moldIndex);
         } else stack = null;
@@ -144,6 +151,11 @@ public class MoldingTableGui extends GuiContainer implements INEIGuiHandler {
     }
 
     private void setActiveButton(int id) {
+        if (id > this.buttonList.size()) {
+            TConstruct.logger.error(
+                    "Invalid button ID for Molding Table. Requested = " + id + " | Max= " + this.buttonList.size());
+            return;
+        }
         // deactivate old button
         ((GuiButton) this.buttonList.get(activeButton)).enabled = true;
         // update active button

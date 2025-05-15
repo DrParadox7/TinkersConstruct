@@ -1857,7 +1857,7 @@ public class TinkerTools {
 
     private void registerStencils() {
         StencilBuilder.registerBlankStencil(new ItemStack(TinkerTools.blankPattern, 1, 0));
-
+        // we register this manually because we want that specific order
         if (PHConstruct.balancedPartCrafting) {
             StencilBuilder.registerStencil(0, TinkerTools.woodPattern, 1); // tool rod
             StencilBuilder.registerStencil(1, TinkerTools.woodPattern, 9); // binding
@@ -1874,7 +1874,6 @@ public class TinkerTools {
             StencilBuilder.registerStencil(9, TinkerTools.woodPattern, 11); // battlesign
             StencilBuilder.registerStencil(10, TinkerTools.woodPattern, 13); // chisel
         } else {
-            // we register this manually because we want that specific order
             StencilBuilder.registerStencil(0, TinkerTools.woodPattern, 1); // tool rod
             StencilBuilder.registerStencil(1, TinkerTools.woodPattern, 9); // binding
             StencilBuilder.registerStencil(2, TinkerTools.woodPattern, 14); // large tool rod

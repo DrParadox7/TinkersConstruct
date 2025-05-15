@@ -21,10 +21,12 @@ import tconstruct.TConstruct;
 import tconstruct.library.client.StencilGuiElement;
 import tconstruct.library.client.TConstructClientRegistry;
 import tconstruct.library.crafting.StencilBuilder;
+import tconstruct.tools.TinkerTools;
 import tconstruct.tools.inventory.PatternShaperContainer;
 import tconstruct.tools.logic.StencilTableLogic;
 import tconstruct.util.config.PHConstruct;
 import tconstruct.util.network.PatternTablePacket;
+import tconstruct.weaponry.TinkerWeaponry;
 
 @Optional.Interface(iface = "codechicken.nei.api.INEIGuiHandler", modid = "NotEnoughItems")
 public class StencilTableGui extends GuiContainer implements INEIGuiHandler {
@@ -120,9 +122,12 @@ public class StencilTableGui extends GuiContainer implements INEIGuiHandler {
         // get the correct setting :I
         ItemStack stack;
         ItemStack setting = logic.getStackInSlot(1);
-        int currentSetting = setting != null ? StencilBuilder.getId(setting) : -1;
-        if (currentSetting >= 0) {
-            setActiveButton(currentSetting);
+
+        boolean isValidPattern = setting != null
+                && (setting.getItem() == TinkerTools.woodPattern || setting.getItem() == TinkerWeaponry.woodPattern);
+
+        if (isValidPattern) {
+            setActiveButton(StencilBuilder.getId(setting));
             stack = StencilBuilder
                     .getStencil(((GuiButtonStencil) this.buttonList.get(activeButton)).element.stencilIndex);
         } else stack = null;
@@ -150,6 +155,12 @@ public class StencilTableGui extends GuiContainer implements INEIGuiHandler {
     }
 
     private void setActiveButton(int id) {
+        if (id > this.buttonList.size()) {
+            TConstruct.logger
+                    .error("Invalid ID for Stencil Table. Requested = " + id + " | Max = " + this.buttonList.size());
+            return;
+        }
+
         // deactivate old button
         ((GuiButton) this.buttonList.get(activeButton)).enabled = true;
         // update active button

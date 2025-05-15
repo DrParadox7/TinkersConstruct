@@ -124,15 +124,15 @@ public class WeaponryClientProxy extends WeaponryCommonProxy {
 
         // Stencil Table
         if (PHConstruct.balancedPartCrafting) {
-            TConstructClientRegistry.addStencilButton2(11, 3, 21, Reference.RESOURCE, tex); // arrow head
-            TConstructClientRegistry.addStencilButton2(12, 3, 22, Reference.RESOURCE, tex); // fletchling
+            TConstructClientRegistry.addStencilButton2(11, 3, 11, Reference.RESOURCE, tex); // arrow head
+            TConstructClientRegistry.addStencilButton2(12, 3, 12, Reference.RESOURCE, tex); // fletchling
             TConstructClientRegistry.addStencilButton2(0, 0, -1, null, null);
 
-            TConstructClientRegistry.addStencilButton2(3, 4, 27, Reference.RESOURCE, tex); // bow limb
-            TConstructClientRegistry.addStencilButton2(10, 3, 23, Reference.RESOURCE, tex); // bowstring
-            TConstructClientRegistry.addStencilButton2(1, 4, 25, Reference.RESOURCE, tex); // crossbow limb
+            TConstructClientRegistry.addStencilButton2(3, 4, 13, Reference.RESOURCE, tex); // bow limb
+            TConstructClientRegistry.addStencilButton2(10, 3, 14, Reference.RESOURCE, tex); // bowstring
+            TConstructClientRegistry.addStencilButton2(1, 4, 15, Reference.RESOURCE, tex); // crossbow limb
 
-            TConstructClientRegistry.addStencilButton2(0, 4, 24, Reference.RESOURCE, tex); // shuriken
+            TConstructClientRegistry.addStencilButton2(0, 4, 16, Reference.RESOURCE, tex); // shuriken
             // TConstructClientRegistry.addStencilButton2(4, 4, index, Reference.RESOURCE, "textures/gui/icons.png"); //
             // bolt
 
