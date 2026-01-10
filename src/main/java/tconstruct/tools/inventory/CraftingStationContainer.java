@@ -22,6 +22,7 @@ import tconstruct.library.modifier.IModifyable;
 import tconstruct.tools.TinkerTools;
 import tconstruct.tools.gui.ChestSlot;
 import tconstruct.tools.logic.CraftingStationLogic;
+import tconstruct.util.config.PHConstruct;
 
 public class CraftingStationContainer extends Container {
 
@@ -135,6 +136,7 @@ public class CraftingStationContainer extends Container {
     }
 
     public ItemStack modifyItem() {
+        if (PHConstruct.repairPerXp > 0) return null;
         ItemStack input = craftMatrix.getStackInSlot(4);
         if (input != null) {
             Item item = input.getItem();
